@@ -10,39 +10,58 @@ const app = express();
 // use dotenv?
 app.use(logger('dev'));
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({extended: false}));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+// Separated Routes for each Resource
+// Note: Feel free to replace the example routes below with your own
+const usersRouter = require('./routes/users');
+// const widgetsRoutes = require('./routes/widgets');
+
+// Mount all resource routes
+// Note: Feel free to replace the example routes below with your own
+app.use('/api/users', usersRouter(dbHelpers));
+// app.use('/api/widgets', widgetsRoutes(db));
+// Note: mount other resources here, using the same pattern above
+
+// Home page
+// Warning: avoid creating more routes in this file!
+// Separate them into separate routes files (see above).
+
+app.get('/', (req, res) => {
+  res.render('index');
+});
+
 // EXAMPLES
-app.get('/api/candidates', (req, res) => {
-	const candidates = [];
+// app.get('/api/candidates', (req, res) => {
+// 	const candidates = [];
 
-	res.json(candidates);
-});
+// 	res.json(candidates);
+// });
 
-app.get('/api/candidates/:candidate_id', (req, res) => {
-	const candidate = { name: 'Martin' };
+// app.get('/api/candidates/:candidate_id', (req, res) => {
+// 	const candidate = { name: 'Martin' };
 
-	res.json(candidate);
-});
+// 	res.json(candidate);
+// });
 
 //EXAMPLE LOGIN IN ROUTE
 //have authorization here
-app.post('/api/login', (req, res) => {
-	const someUser = { name: 'Little Chicken' };
-	res.cookie('name', 'Little Chicken');
-	//add authentication here
+// app.post('/api/login', (req, res) => {
+// 	const someUser = { name: 'Little Chicken' };
+// 	res.cookie('name', 'Little Chicken');
+// 	//add authentication here
 
-	res.json(someUser);
-});
+// 	res.json(someUser);
+// });
 
 // EXAMPLE AUTHENTICATE ROUTE- DIFFERENT FROM LOGIN
 // only reads the cookie and returns appropriate cookie based on the cookie- to use on first load- the persist login when use leaves our page
-app.post('/api/login', (req, res) => {
-	const someUser = req.cookies.name ? { name: 'Little Chicken' } : null;
-	//add authentication here
+// app.post('/api/login', (req, res) => {
+// 	const someUser = req.cookies.name ? { name: 'Little Chicken' } : null;
+// 	//add authentication here
 
-	res.json(someUser);
-});
+// 	res.json(someUser);
+// });
 module.exports = app;

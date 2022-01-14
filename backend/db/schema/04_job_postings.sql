@@ -1,0 +1,15 @@
+DROP TABLE IF EXISTS job_postings CASCADE;
+
+CREATE TABLE "job_postings" (
+  "id" SERIAL PRIMARY KEY NOT NULL,
+  "employer_id" INTEGER REFERENCES employers(id) ON DELETE CASCADE,
+  "job_title" VARCHAR(50) NOT NULL,
+  "description" VARCHAR(500) NOT NULL,
+  "city" VARCHAR(50),
+  "salary_min" INTEGER NOT NULL,
+  "salary_max" INTEGER NOT NULL,
+  "type" VARCHAR(50) NOT NULL,
+  "is_remote" BOOLEAN NOT NULL,
+  "date_posted" CURRENT_TIMESTAMP NOT NULL,
+  "is_open" BOOLEAN DEFAULT TRUE
+);

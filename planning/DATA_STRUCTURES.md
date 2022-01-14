@@ -55,10 +55,10 @@ interface Job_posting {
   city: String;
   salary_min: Int;
   salary_max: Int;
-  type: String;
+  type: String; //full-time, part-time, internship, gig
   is_remote: Boolean;
   date_posted: Timestamp;
-  is_open: Boolean;
+  is_open: Boolean; // if the position is still open
 }
 ```
 
@@ -69,7 +69,7 @@ interface Job_application {
   id: Int;
   job_posting_id: Int;
   junior_dev_id: Int;
-  is_accepted: Boolean;
+  is_accepted: Boolean; // if the junior dev was accepted for position
 }
 ```
 
@@ -83,7 +83,7 @@ interface Gig_posting {
   description: String;
   pay: Int;
   date_posted: Timestamp;
-  deadline: Date;
+  deadline: Date; // when the project is due
   photo_url: String;
 }
 ```
@@ -95,7 +95,7 @@ interface Gig_application {
   id: Int;
   gig_posting_id: Int;
   junior_dev_id: Int;
-  is_accepted: Boolean;
+  is_accepted: Boolean; // if the junior dev has been accepted for gig
 }
 ```
 

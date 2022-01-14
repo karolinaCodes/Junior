@@ -16,6 +16,7 @@ interface Junior_dev {
   resume_url:String;
   location:String
 ```
+}
 
 ## Employer
 

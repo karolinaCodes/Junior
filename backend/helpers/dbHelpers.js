@@ -1,7 +1,7 @@
 module.exports = (db) => {
-  const getUsers = () => {
+  const getDevs = () => {
       const query = {
-          text: 'SELECT * FROM users',
+          text: 'SELECT * FROM junior_devs',
       };
 
       return db
@@ -10,10 +10,10 @@ module.exports = (db) => {
           .catch((err) => err);
   };
 
-  const getUserByEmail = email => {
+  const getDevByEmail = email => {
 
       const query = {
-          text: `SELECT * FROM users WHERE email = $1` ,
+          text: `SELECT * FROM junior_devs WHERE email = $1` ,
           values: [email]
       }
 
@@ -23,10 +23,10 @@ module.exports = (db) => {
           .catch((err) => err);
   }
 
-  const addUser = (firstName, lastName, email, password) => {
+  const addDev = (first_name, last_name, email, password, bio, photo_url, github_url, linkedIn_url, resume_url, location) => {
       const query = {
-          text: `INSERT INTO users (first_name, last_name, email, password) VALUES ($1, $2, $3, $4) RETURNING *` ,
-          values: [firstName, lastName, email, password]
+          text: `INSERT INTO junior_devs (first_name, last_name, email, password, bio, photo_url, github_url, linkedIn_url, resume_url, location) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING *` ,
+          values: [first_name, last_name, email, password, bio, photo_url, github_url, linkedIn_url, resume_url, location]
       }
 
       return db.query(query)
@@ -34,12 +34,12 @@ module.exports = (db) => {
           .catch(err => err);
   }
 
-  const getUsersPosts = () => {
+  const getDevProjects = () => {
       const query = {
-          text: `SELECT users.id as user_id, first_name, last_name, email, posts.id as post_id, title, content
-      FROM users
-      INNER JOIN posts
-      ON users.id = posts.user_id`
+          text: `SELECT junior_devs.id as junior_dev_id, first_name, last_name, email, projects.id as project_id, title, description, thumbnail_photo_url, github_link, live_link
+          FROM junior_devs
+          INNER JOIN projects
+          ON junior_devs.id = projects.junior_dev_id`
       }
 
       return db.query(query)
@@ -49,9 +49,9 @@ module.exports = (db) => {
   }
 
   return {
-      getUsers,
-      getUserByEmail,
-      addUser,
-      getUsersPosts
+      getDevs,
+      getDevByEmail,
+      addDev,
+      getDevProjects
   };
 };

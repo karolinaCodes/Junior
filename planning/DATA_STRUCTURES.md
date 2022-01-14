@@ -5,8 +5,8 @@
 ```ts
 interface Junior_dev {
   id: Int;
-  first_name: String; // first_name of the junior_dev
-  last_name: String; // last_name of the junior_dev
+  first_name: String;
+  last_name: String;
   email: String;
   password: Hash;
   bio: String;
@@ -21,7 +21,7 @@ interface Junior_dev {
 
 ```ts
 interface Employer {
-  id: Int; // id of the employer
+  id: Int;
   email: String;
   password: Hash;
   company_name: String;

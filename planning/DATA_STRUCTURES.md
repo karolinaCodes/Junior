@@ -57,7 +57,7 @@ interface Job_posting {
   city: String;
   salary_min: Int;
   salary_max: Int;
-  type: String; //full-time, part-time, internship, gig
+  type: String; // full-time, part-time, internship, gig
   is_remote: Boolean;
   date_posted: Timestamp;
   is_open: Boolean; // if the position is still open

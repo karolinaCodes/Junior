@@ -6,7 +6,7 @@ CREATE TABLE "gig_postings" (
   "gig_name" VARCHAR(50) NOT NULL,
   "description" VARCHAR(225),
   "pay" INTEGER NOT NULL,
-  "date_posted" CURRENT_TIMESTAMP NOT NULL,
+  "date_posted" TIMESTAMP NOT NULL DEFAULT NOW(),
   "deadline" DATE,
-  "photo_url" VARCHAR(50) DEFAULT 'https://www.elegantthemes.com/blog/wp-content/uploads/2020/02/000-Online-Code-Editors.png'
+  "photo_url" VARCHAR(255) DEFAULT 'https://www.elegantthemes.com/blog/wp-content/uploads/2020/02/000-Online-Code-Editors.png'
 );

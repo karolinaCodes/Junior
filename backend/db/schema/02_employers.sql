@@ -6,5 +6,5 @@ CREATE TABLE "employers" (
   "password" VARCHAR(50) NOT NULL,
   "company_name" VARCHAR(50) NOT NULL,
   "bio" VARCHAR(225),
-  "photo_url" VARCHAR(50) DEFAULT 'https://isobarscience.com/wp-content/uploads/2020/09/default-profile-picture1-300x300.jpg'
+  "photo_url" VARCHAR(255) DEFAULT 'https://isobarscience.com/wp-content/uploads/2020/09/default-profile-picture1-300x300.jpg'
 );

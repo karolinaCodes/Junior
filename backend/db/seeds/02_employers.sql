@@ -1,5 +1,5 @@
-INSERT INTO junior_devs (email,password,company_name, bio) VALUES ('tweeter@junior.com','123','Google','Typical student. Proud pop culture aficionado. Certified web ninja. Reader. Hardcore coffee junkie. Introvert.');
-INSERT INTO junior_devs (email,password,company_name, bio) VALUES ('tinyapp@junior.com','123','TinyApp','Beer expert. Lifelong explorer. General troublemaker. Typical analyst. Web evangelist.');
-INSERT INTO junior_devs (email,password,company_name, bio) VALUES ('jungle@junior.com','123','Jungle','Zombie ninja. Freelance internet lover. Social media evangelist. Baconaholic. Alcohol trailblazer. Tv expert. Avid pop culture nerd. Amateur twitter advocate.');
-INSERT INTO junior_devs (email,password,company_name, bio) VALUES ('lightbnb@junior.com','123','LightBNB','Alcohol fanatic. Avid beer fan. Lifelong troublemaker. Food fanatic. Subtly charming explorer.');
-INSERT INTO junior_devs (email,password,company_name, bio) VALUES ('vampr@junior.com','123','Vampr','Zombie expert. Alcohol advocate. Social mediaholic. Pop culture nerd. Troublemaker. Beer ninja.');
+INSERT INTO employers (email,password,company_name, bio) VALUES ('tweeter@junior.com','123','Google','Typical student. Proud pop culture aficionado. Certified web ninja. Reader. Hardcore coffee junkie. Introvert.');
+INSERT INTO employers (email,password,company_name, bio) VALUES ('tinyapp@junior.com','123','TinyApp','Beer expert. Lifelong explorer. General troublemaker. Typical analyst. Web evangelist.');
+INSERT INTO employers (email,password,company_name, bio) VALUES ('jungle@junior.com','123','Jungle','Zombie ninja. Freelance internet lover. Social media evangelist. Baconaholic. Alcohol trailblazer. Tv expert. Avid pop culture nerd. Amateur twitter advocate.');
+INSERT INTO employers (email,password,company_name, bio) VALUES ('lightbnb@junior.com','123','LightBNB','Alcohol fanatic. Avid beer fan. Lifelong troublemaker. Food fanatic. Subtly charming explorer.');
+INSERT INTO employers (email,password,company_name, bio) VALUES ('vampr@junior.com','123','Vampr','Zombie expert. Alcohol advocate. Social mediaholic. Pop culture nerd. Troublemaker. Beer ninja.');

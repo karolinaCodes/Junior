@@ -1,27 +1,30 @@
-const getPostsByUsers = (usersPosts) => {
-  const postsByUsers = {};
+const getProjectsByDevs = (devsProjects) => {
+  const projectsByDevs = {};
 
-  for (let post of usersPosts) {
-      if (!postsByUsers[post.user_id]) {
-          postsByUsers[post.user_id] = {
-              userId: post.user_id,
-              firstName: post.first_name,
-              lastName: post.last_name,
-              email: post.email,
-              posts: [],
-          };
-      }
+  for (let project of devsProjects) {
+    if (!projectsByDevs[project.junior_dev_id]) {
+      projectsByDevs[project.junior_dev_id] = {
+          devId: project.junior_dev_id,
+          firstName: project.first_name,
+          lastName: project.last_name,
+          email: project.email,
+          projects: [],
+        };
+    }
 
-      postsByUsers[post.user_id].posts.push({
-          title: post.title,
-          content: post.content,
-      });
+    projectsByDevs[project.junior_dev_id].projects.push({
+      title: project.title,
+      description: project.description,
+      thumbnailPhotoUrl: project.thumbnail_photo_url,
+      githubLink: project.github_link,
+      liveLink: project.live_link,
+    });
 
   }
 
-  return Object.values(postsByUsers);
+  return Object.values(projectsByDevs);
 };
 
 module.exports = {
-  getPostsByUsers,
+  getProjectsByDevs,
 };

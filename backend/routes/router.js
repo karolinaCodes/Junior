@@ -1,37 +1,33 @@
 const express = require('express');
 const router = express.Router();
-const {
-  getProjectsByDevs
-} = require('../helpers/dataHelpers');
+const {getProjectsByDevs} = require('../helpers/dataHelpers');
 
-module.exports = ({
-  getDevs,
-  getDevByEmail,
-  addDev,
-  getDevProjects
-}) => {
+module.exports = ({getDevs, getDevByEmail, addDev, getDevProjects}) => {
   /* GET list of devs */
-  router.get('/', (req, res) => {
+  router.get('/devs', (req, res) => {
     getDevs()
-      .then((devs) => res.json(devs))
-      .catch((err) => res.json({
-        error: err.message
-      }));
+      .then(devs => res.json(devs))
+      .catch(err =>
+        res.json({
+          error: err.message,
+        })
+      );
   });
 
   router.get('/projects', (req, res) => {
     getDevProjects()
-      .then((devProjects) => {
+      .then(devProjects => {
         const formattedProjects = getProjectsByDevs(devProjects);
         res.json(formattedProjects);
       })
-      .catch((err) => res.json({
-        error: err.message
-      }));
+      .catch(err =>
+        res.json({
+          error: err.message,
+        })
+      );
   });
 
   router.post('/', (req, res) => {
-
     const {
       first_name,
       last_name,
@@ -42,15 +38,15 @@ module.exports = ({
       github_url,
       linkedIn_url,
       resume_url,
-      location
+      location,
     } = req.body;
 
     getDevByEmail(email)
       .then(dev => {
-
-        if (dev.email) { //changed from original
+        if (dev.email) {
+          //changed from original
           res.json({
-            msg: 'Sorry, an account with this email already exists'
+            msg: 'Sorry, an account with this email already exists',
           });
         } else {
           return addDev(
@@ -64,16 +60,16 @@ module.exports = ({
             linkedIn_url,
             resume_url,
             location
-          )
+          );
         }
-
       })
       .then(newDev => res.json(newDev))
-      .catch(err => res.json({
-          error: err.message
-      }));
-
-  })
+      .catch(err =>
+        res.json({
+          error: err.message,
+        })
+      );
+  });
 
   return router;
 };

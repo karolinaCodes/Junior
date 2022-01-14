@@ -1,57 +1,112 @@
 # Data Structures
 
-## Question
+## Junior_dev
 
 ```ts
-interface Question {
-  question: String; // Question statement
-  startingCode?: String; // Starting code
-  readOnly: Boolean; // If the question is readOnly (verbal assessment)
-  answer?: String; // Candidate's answer
-  duration?: Int; // Duration in minutes for answering the question
-  rating?: Int; // Rating out of 5
-  comment?: String; // Interviewer's comment on performance
+interface Junior_dev {
+  id: Int;
+  first_name: String;
+  last_name: String;
+  email: String;
+  password: Hash;
+  bio: String;
+  photo_url: String;
+  github_url:String;
+  linkedIn_url:String;
+  resume_url:String;
+  location:String
 }
 ```
 
-## Interviewer
+
+## Employer
 
 ```ts
-interface Interviewer {
-  id: String; // id of the interviewer
-  name: String; // name of the interviewer
-  description: String; // description of the interviewer
-  email: String; // email address of the interviewer
+interface Employer {
+  id: Int;
+  email: String;
+  password: Hash;
+  company_name: String;
+  bio: String;
+  photo_url: String;
 }
 ```
 
-## Candidate
+## Project
 
 ```ts
-interface Candidate {
-  name: String; // name of the candidate
-  email: String; // email address of the candidate
+interface Project {
+  id: Int;
+  junior_dev_id: Int;
+  title: String;
+  description: String;
+  thumbnail_photo_url: String;
+  github_link: String;
+  live_link: String;
 }
 ```
 
-## Interview
+## Job_posting
 
 ```ts
-interface Interview {
-  id: String; // id of the interview
-  name: String; // Name of the interview
-  description?: String; // Description of the interview
-  duration: Int; // Intended duration in minutes
-  questions: [Question]; // List of questions for specific interview
-  interviewer?: Interviewer; // Interviewer information
-  candidate?: Candidate; // Name of the candidate
+interface Job_posting {
+  id: Int;
+  employer_id: Int;
+  job_title: String;
+  description: String;
+  city: String;
+  salary_min: Int;
+  salary_max: Int;
+  type: String; // full-time, part-time, internship, gig
+  is_remote: Boolean;
+  date_posted: Timestamp;
+  is_open: Boolean; // if the position is still open
 }
 ```
 
-## Interviews
+## Job_application
 
 ```ts
-interface Interviews {
-  interviews: [Interview]; // List of available interviews
+interface Job_application {
+  id: Int;
+  job_posting_id: Int;
+  junior_dev_id: Int;
+  is_accepted: Boolean; // if the junior dev was accepted for position
+}
+```
+
+## Gig_posting
+
+```ts
+interface Gig_posting {
+  id: Int;
+  employer_id: Int;
+  gig_name: String;
+  description: String;
+  pay: Int;
+  date_posted: Timestamp;
+  deadline: Date; // when the project is due
+  photo_url: String;
+}
+```
+
+## Gig_application
+
+```ts
+interface Gig_application {
+  id: Int;
+  gig_posting_id: Int;
+  junior_dev_id: Int;
+  is_accepted: Boolean; // if the junior dev has been accepted for gig
+}
+```
+
+## Project_image
+
+```ts
+interface Project_image {
+  id: Int;
+  project_id: Int;
+  photo_url: String;
 }
 ```

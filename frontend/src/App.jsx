@@ -35,7 +35,7 @@ function App() {
 	return (
 		<div className='App'>
 			<Link to='/'>Home </Link>
-			{!currentUser && <button onClick={login}>LOG IN</button>}
+			{/* {!currentUser && <button onClick={login}>LOG IN</button>} */}
 			<Routes>
 				<Route path='/' element={<h1>Hello</h1>} />
 			</Routes>

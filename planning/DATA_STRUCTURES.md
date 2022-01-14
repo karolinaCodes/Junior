@@ -15,8 +15,9 @@ interface Junior_dev {
   linkedIn_url:String;
   resume_url:String;
   location:String
+  }
 ```
-}
+
 
 ## Employer
 

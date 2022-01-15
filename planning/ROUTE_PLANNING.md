@@ -61,6 +61,6 @@
 
 - addGig WHERE employer_id = :id (POST /new)
 
-## New Project page
+## New Project page DONE
 
 - addProject WHERE junior_dev_id = :id (POST /new)

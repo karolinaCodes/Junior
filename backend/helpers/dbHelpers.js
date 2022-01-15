@@ -127,6 +127,30 @@ module.exports = db => {
       .catch(err => err);
   };
 
+  const addProject = (
+    junior_dev_id,
+    title,
+    description,
+    thumbnail_photo_url,
+    github_link,
+    live_link
+  ) => {
+    const query = {
+      text: `INSERT INTO projects (junior_dev_id, title, description, thumbnail_photo_url, github_link, live_link) VALUES ($1, $2, $3, $4, $5, $6,) RETURNING *`,
+      values: [
+        junior_dev_id,
+        title,
+        description,
+        thumbnail_photo_url,
+        github_link,
+        live_link,
+      ],
+    };
+    return db
+      .query(query)
+      .then(result => result.rows)
+      .catch(err => err);
+  };
   //
 
   // JOB POSTINGS //
@@ -202,5 +226,6 @@ module.exports = db => {
     getEmployerById,
     getJobPostings,
     addJobPosting,
+    addProject,
   };
 };

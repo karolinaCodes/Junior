@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-module.exports = ({getProjectsByDevId}) => {
+module.exports = ({getProjectsByDevId, getProjectById}) => {
   // get all projects for single dev, with dev info
   router.get('/:devId', (req, res) => {
     getProjectsByDevId(req.params.devId)
@@ -15,18 +15,27 @@ module.exports = ({getProjectsByDevId}) => {
       );
   });
 
+  // GET single project by project id
+  router.get('/project/:id', (req, res) => {
+    getProjectById(req.params.id)
+      .then(project => {
+        res.json(project);
+      })
+      .catch(err =>
+        res.json({
+          error: err.message,
+        })
+      );
+  });
+
   router.post('/', (req, res) => {
     const {
-      first_name,
-      last_name,
-      email,
-      password,
-      bio,
-      photo_url,
-      github_url,
-      linkedIn_url,
-      resume_url,
-      location,
+      junior_dev_id,
+      title,
+      description,
+      thumbnail_photo_url,
+      github_link,
+      live_link,
     } = req.body;
 
     getDevByEmail(email)

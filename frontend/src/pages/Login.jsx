@@ -16,8 +16,16 @@ export default function Login(props) {
 	// // EXAMPLE LOGIN FUNCTIONALITY
 	const login = e => {
 		e.preventDefault();
+
+		const data = {
+			email: document.getElementById('email').value,
+			password: document.getElementById('password').value,
+		};
+
+		console.log(data);
+
 		axios
-			.post('/api/login')
+			.post('/api/login', data)
 			.then(res => {
 				// setCurrentUser(res.data);
 				console.log(res.data);

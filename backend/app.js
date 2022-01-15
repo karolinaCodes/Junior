@@ -16,13 +16,13 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // Separated Routes for each Resource
 // Note: Feel free to replace the example routes below with your own
-const usersRouter = require('./routes/users');
+const devsRouter = require('./routes/devs');
 const employersRouter = require('./routes/employers');
 // const widgetsRoutes = require('./routes/widgets');
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
-app.use('/api/users', usersRouter(dbHelpers));
+app.use('/api/devs', devsRouter(dbHelpers));
 app.use('/api/employers', employersRouter(dbHelpers));
 // app.use('/api/widgets', widgetsRoutes(db));
 // Note: mount other resources here, using the same pattern above

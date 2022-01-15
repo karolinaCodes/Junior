@@ -17,30 +17,6 @@ import NavBar from './pages/NavBar.jsx';
 import './App.scss';
 
 function App() {
-	// FOR EXAMPLE LOGIN FUNCTIONALITY
-	// const {currentUser, setCurrentUser} = useState();
-
-	//EXAMPLE
-	// useEffect(() => {
-	//   axios.get("/api/candidates").then(res => {
-	//     setCandidates(res.data);
-	//   });
-	// }, []);
-
-	// EXAMPLE LOGIN FUNCTIONALITY
-	// const login = () => {
-	//   axios.post("/api/login").then(res => {
-	//     setCurrentUser(res.data);
-	//   });
-	// };
-
-	// TO CHECK FOR COOKIE (IF USER SIGNED IN) ON FIRST LOAD
-	// useEffect(() => {
-	//   axios.post("/api/authenticate").then(res => {
-	//     setCurrentUser(res.data);
-	//   });
-	// }, []);
-
 	return (
 		<div className='App'>
 			<NavBar />

@@ -28,7 +28,7 @@ module.exports = ({getProjectsByDevId, getProjectById}) => {
       );
   });
 
-  router.post('/', (req, res) => {
+  router.post('/new', (req, res) => {
     const {
       junior_dev_id,
       title,
@@ -38,29 +38,17 @@ module.exports = ({getProjectsByDevId, getProjectById}) => {
       live_link,
     } = req.body;
 
-    getDevByEmail(email)
-      .then(dev => {
-        if (dev.email) {
-          //changed from original
-          res.json({
-            msg: 'Sorry, an account with this email already exists',
-          });
-        } else {
-          return addDev(
-            first_name,
-            last_name,
-            email,
-            password,
-            bio,
-            photo_url,
-            github_url,
-            linkedIn_url,
-            resume_url,
-            location
-          );
-        }
+    addProject(
+      junior_dev_id,
+      title,
+      description,
+      thumbnail_photo_url,
+      github_link,
+      live_link
+    )
+      .then(addedProject => {
+        res.json(addedProject);
       })
-      .then(newDev => res.json(newDev))
       .catch(err =>
         res.json({
           error: err.message,

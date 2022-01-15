@@ -14,11 +14,17 @@ export default function Login(props) {
 	// }, []);
 
 	// // EXAMPLE LOGIN FUNCTIONALITY
-	const login = () => {
-		axios.post('/api/login').then(res => {
-			// setCurrentUser(res.data);
-			res.redirect('/profile');
-		});
+	const login = e => {
+		e.preventDefault();
+		axios
+			.post('/api/login')
+			.then(res => {
+				// setCurrentUser(res.data);
+				console.log(res.data);
+			})
+			.catch(err => {
+				console.log(err);
+			});
 	};
 
 	// // TO CHECK FOR COOKIE (IF USER SIGNED IN) ON FIRST LOAD
@@ -30,10 +36,10 @@ export default function Login(props) {
 
 	return (
 		<div className='login-content'>
-			<form className='login'>
+			<form className='login' onSubmit={login}>
 				<TextField id='email' label='email' variant='outlined' />
 				<TextField id='password' label='password' variant='outlined' />
-				<Button variant='contained' size='large' onSubmit={login}>
+				<Button variant='contained' size='large' type='submit'>
 					LOG IN
 				</Button>
 			</form>

@@ -15,7 +15,7 @@ export default function NavBar(props) {
 				<Link to='/profile'>Profile</Link>
 			</div>
 			<div className='nav-button'>
-				<Button variant='contained' href='/login'>
+				<Button component={Link} to='/login' variant='contained'>
 					Login
 				</Button>
 				<Button variant='contained'>Sign Up</Button>

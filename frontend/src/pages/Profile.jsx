@@ -5,8 +5,8 @@ export default function Profile(props) {
 
 	return (
 		<div className='profile-content'>
-			<h1>{name}</h1>
-			<h1>{email}</h1>
+			<h1>Name: {name}</h1>
+			<h1>Email: {email}</h1>
 		</div>
 	);
 }

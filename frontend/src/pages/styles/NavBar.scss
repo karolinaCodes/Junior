@@ -20,7 +20,6 @@
 		font-size: 20px;
 		font-weight: $reg;
 		color: $white;
-		font-family: $text;
 		text-decoration: none;
 		margin-left: 2rem;
 	}
@@ -33,7 +32,12 @@
 	margin-right: 8rem;
 
 	button {
+		font-weight: $bold;
 		margin-left: 2rem;
+	}
+
+	a {
+		font-weight: $bold;
 	}
 }
 

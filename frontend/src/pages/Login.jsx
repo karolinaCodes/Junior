@@ -30,26 +30,20 @@ export default function Login(props) {
       });
   };
 
-  // // TO CHECK FOR COOKIE (IF USER SIGNED IN) ON FIRST LOAD
-  // useEffect(() => {
-  //   axios.post("/api/authenticate").then(res => {
-  //     setCurrentUser(res.data);
-  //   });
-  // }, []);
-
   return (
     <div className="login-content">
       <form className="login" onSubmit={login}>
-        <input id="email" name="email" label="email" variant="outlined" />
-        <input
+        <h1>Login:</h1>
+        <TextField id="email" label="email" variant="outlined" />
+        <TextField
           id="password"
-          name="password"
+          sx={{mt: '1rem'}}
           label="password"
           variant="outlined"
         />
-        <button variant="contained" size="large" type="submit">
+        <Button variant="contained" size="large" type="submit">
           LOG IN
-        </button>
+        </Button>
       </form>
     </div>
   );

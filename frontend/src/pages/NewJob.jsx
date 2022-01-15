@@ -1,4 +1,4 @@
-import './NewJob.scss';
+import './styles/NewJob.scss';
 
 export default function NewJob(props) {
 	return (

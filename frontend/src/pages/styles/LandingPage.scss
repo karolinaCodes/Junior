@@ -1,0 +1,51 @@
+@import 'variables';
+
+.landing-wrapper {
+	display: flex;
+	flex-direction: column;
+}
+
+#landing-image img {
+	margin-left: 0;
+	height: 100vh;
+	position: fixed;
+	z-index: 0;
+}
+
+.landing-content {
+	position: absolute;
+	z-index: 1;
+
+	h1 {
+		margin: 0;
+	}
+
+	.title-text {
+		margin: 10rem 0 0 5rem;
+		font-family: $brand;
+		font-size: 45px;
+		font-weight: $bold;
+		color: $blue;
+	}
+
+	.search-bar {
+		margin-top: 2rem;
+		input {
+			margin-left: 5rem;
+			width: 60%;
+			height: 3rem;
+			font-size: 30px;
+		}
+
+		button {
+			border: none;
+			background-color: $yellow;
+			color: $blue;
+			font-family: $text;
+			font-weight: $bold;
+			font-size: 30px;
+			width: 8rem;
+			height: 3.3rem;
+		}
+	}
+}

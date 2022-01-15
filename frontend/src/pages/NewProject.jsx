@@ -1,4 +1,4 @@
-import './NewProject.scss';
+import './styles/NewProject.scss';
 
 export default function NewProject(props) {
 	return (

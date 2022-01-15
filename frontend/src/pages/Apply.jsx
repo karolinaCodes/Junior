@@ -1,4 +1,4 @@
-import './Apply.scss';
+import './styles/Apply.scss';
 
 export default function Apply(props) {
 	return (

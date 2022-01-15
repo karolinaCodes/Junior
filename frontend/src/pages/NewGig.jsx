@@ -1,4 +1,4 @@
-import './NewGig.scss';
+import './styles/NewGig.scss';
 
 export default function NewGig(props) {
 	return (

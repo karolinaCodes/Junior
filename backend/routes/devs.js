@@ -1,8 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const {getPostsByUsers} = require('../helpers/dataHelpers');
 
-module.exports = ({getDevs, getUserByEmail, addUser, getUsersPosts}) => {
+module.exports = ({getDevs}) => {
   /* GET list of devs */
   router.get('/', (req, res) => {
     getDevs()

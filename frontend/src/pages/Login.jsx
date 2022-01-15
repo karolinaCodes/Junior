@@ -16,8 +16,16 @@ export default function Login(props) {
   // // EXAMPLE LOGIN FUNCTIONALITY
   const login = e => {
     e.preventDefault();
+
+    const data = {
+      email: document.getElementById('email').value,
+      password: document.getElementById('password').value,
+    };
+
+    console.log(data);
+
     axios
-      .post('/api/login')
+      .post('/api/login', data)
       .then(res => {
         // setCurrentUser(res.data);
         console.log(res.data);
@@ -27,18 +35,17 @@ export default function Login(props) {
       });
   };
 
-  // // TO CHECK FOR COOKIE (IF USER SIGNED IN) ON FIRST LOAD
-  // useEffect(() => {
-  //   axios.post("/api/authenticate").then(res => {
-  //     setCurrentUser(res.data);
-  //   });
-  // }, []);
-
   return (
     <div className="login-content">
       <form className="login" onSubmit={login}>
+        <h1>Login:</h1>
         <TextField id="email" label="email" variant="outlined" />
-        <TextField id="password" label="password" variant="outlined" />
+        <TextField
+          id="password"
+          sx={{mt: '1rem'}}
+          label="password"
+          variant="outlined"
+        />
         <Button variant="contained" size="large" type="submit">
           LOG IN
         </Button>

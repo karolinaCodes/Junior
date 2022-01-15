@@ -206,6 +206,73 @@ module.exports = db => {
       .catch(err => err);
   };
 
+  // GIG POSTING //
+
+  const getGigPostings = () => {
+    const query = {
+      text: `SELECT employers.id as employer_id, employers.email as email, gig_postings.*
+        FROM employers
+        JOIN gig_postings ON employers.id = gig_postings.employer_id`,
+    };
+
+    return db
+      .query(query)
+      .then(result => result.rows)
+      .catch(err => err);
+  };
+
+  const getGigPostingsByEmployerId = (id) => {
+    const query = {
+      text: `SELECT employers.id as employer_id, employers.email as email, gig_postings.*
+        FROM employers
+        JOIN gig_postings ON employers.id = gig_postings.employer_id
+        WHERE employers.id = $1`,
+      values: [id],
+    };
+  
+      return db
+        .query(query)
+        .then(result => result.rows[0])
+        .catch(err => err);
+  };
+  
+  const addGigPosting = (
+    employer_id,
+    gig_name,
+    description,
+    pay,
+    date_posted,
+    deadline,
+    photo_url
+    ) => {
+      const query = {
+        text: `INSERT INTO gig_postings (
+          employer_id,
+          gig_name,
+          description,
+          pay,
+          date_posted,
+          deadline,
+          photo_url
+          ) VALUES (
+            $1, $2, $3, $4, $5, $6, $7
+          ) RETURNING *`,
+        values: [
+          employer_id,
+          gig_name,
+          description,
+          pay,
+          date_posted,
+          deadline,
+          photo_url
+        ],
+      };
+  
+      return db
+        .query(query)
+        .then(result => result.rows[0])
+        .catch(err => err);
+    };
   //
 
   return {
@@ -218,6 +285,10 @@ module.exports = db => {
     getEmployers,
     getEmployerById,
     getJobPostings,
+    getJobPostingsByEmployerId,
     addJobPosting,
+    getGigPostings,
+    getGigPostingsByEmployerId,
+    addGigPosting,
   };
 };

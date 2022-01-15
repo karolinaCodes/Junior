@@ -131,17 +131,6 @@ module.exports = db => {
 
   // JOB POSTINGS //
 
-  // const getJobPostings = () => {
-  // 	const query = {
-  // 		text: 'SELECT * FROM job_postings',
-  // 	};
-
-  // 	return db
-  // 		.query(query)
-  // 		.then(result => result.rows)
-  // 		.catch(err => err);
-  // };
-
   const getJobPostings = () => {
     const query = {
       text: `SELECT employers.id as employer_id, employers.email as email, job_postings.*
@@ -153,6 +142,21 @@ module.exports = db => {
       .query(query)
       .then(result => result.rows)
       .catch(err => err);
+  };
+
+  const getJobPostingsByEmployerId = (id) => {
+    const query = {
+      text: `SELECT employers.id as employer_id, employers.email as email, job_postings.*
+        FROM employers
+        JOIN job_postings ON employers.id = job_postings.employer_id
+        WHERE employers.id = $1`,
+      values: [id],
+    };
+  
+      return db
+        .query(query)
+        .then(result => result.rows[0])
+        .catch(err => err);
   };
 
   const addJobPosting = (
@@ -168,7 +172,20 @@ module.exports = db => {
     is_open
   ) => {
     const query = {
-      text: `INSERT INTO job_postings (employer_id,job_title,description,city,salary_min,salary_max,type,is_remote,date_posted,is_open) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING *`,
+      text: `INSERT INTO job_postings (
+        employer_id,
+        job_title,
+        description,
+        city,
+        salary_min,
+        salary_max,
+        type,
+        is_remote,
+        date_posted,
+        is_open
+        ) VALUES (
+          $1, $2, $3, $4, $5, $6, $7, $8, $9, $10
+        ) RETURNING *`,
       values: [
         employer_id,
         job_title,

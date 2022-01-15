@@ -33,6 +33,18 @@ module.exports = db => {
       .catch(err => err);
   };
 
+  const getDevById = id => {
+    const query = {
+      text: `SELECT * FROM junior_devs WHERE id = $1`,
+      values: [id],
+    };
+
+    return db
+      .query(query)
+      .then(result => result.rows[0])
+      .catch(err => err);
+  };
+
   const addDev = (
     first_name,
     last_name,
@@ -67,12 +79,16 @@ module.exports = db => {
       .catch(err => err);
   };
 
-  const getDevProjects = () => {
+  const getProjectsByDevId = id => {
+    console.log(id, 'eh');
     const query = {
       text: `SELECT junior_devs.id as junior_dev_id, first_name, last_name, email, projects.id as project_id, title, description, thumbnail_photo_url, github_link, live_link
         FROM junior_devs
         INNER JOIN projects
-        ON junior_devs.id = projects.junior_dev_id`,
+        ON junior_devs.id = projects.junior_dev_id
+        WHERE junior_dev_id= $1
+        `,
+      values: [id],
     };
 
     return db
@@ -142,8 +158,9 @@ module.exports = db => {
   return {
     getDevs,
     getDevByEmail,
+    getDevById,
     addDev,
-    getDevProjects,
+    getProjectsByDevId,
     getEmployers,
     getJobPostings,
     addJobPosting,

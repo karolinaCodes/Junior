@@ -2,10 +2,6 @@ const express = require('express');
 const router = express.Router();
 
 module.exports = ({getDevByEmail}) => {
-  router.get('/', (req, res) => {
-    res.render('login');
-  });
-
   // get email and password from form
   // retrieve dev by email -with email and pw
   // authenticate if the password matches the pw then log them in

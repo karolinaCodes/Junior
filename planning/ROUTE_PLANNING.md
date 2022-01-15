@@ -8,14 +8,14 @@
 
 - getDevByEmail
 
-## Signup (/signup)
+## Signup (/signup) - Stretch
 
 - getDevByEmail
 - addDev (POST /new)
 
 ## Portfolio (Dev)
 
-- getDevs WHERE id (all information)
+- getDevById WHERE id (all information)
 - getProjectsByDevId
 - Stretch
   - interviews (stretch)

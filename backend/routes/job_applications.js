@@ -1,10 +1,11 @@
 const express = require('express');
 const router = express.Router();
 
-module.exports = ({getEmployers}) => {
+/* Get all job applications */
+module.exports = ({getJobApplications}) => {
   router.get('/', (req, res) => {
-    getEmployers()
-      .then(employers => res.json(employers))
+    getJobApplications()
+      .then(applications => res.json(applications))
       .catch(err =>
         res.json({
           error: err.message,

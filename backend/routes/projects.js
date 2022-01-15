@@ -1,13 +1,12 @@
 const express = require('express');
 const router = express.Router();
-const {getPostsByUsers} = require('../helpers/dataHelpers');
 
-module.exports = ({getDevs, getUserByEmail, addUser, getUsersPosts}) => {
+module.exports = ({getDevProjects}) => {
+  // get all dev projects (with the project and dev info)
   router.get('/', (req, res) => {
     getDevProjects()
       .then(devProjects => {
-        const formattedProjects = getProjectsByDevs(devProjects);
-        res.json(formattedProjects);
+        res.json(devProjects);
       })
       .catch(err =>
         res.json({

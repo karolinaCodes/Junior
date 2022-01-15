@@ -1,0 +1,18 @@
+.cards {
+	display: flex;
+	justify-self: center;
+	align-self: center;
+	width: 65%;
+
+	img {
+		width: 18rem;
+	}
+
+	h1 {
+		margin-top: 0;
+	}
+
+	p {
+		margin-bottom: 0;
+	}
+}

@@ -1,5 +1,6 @@
 import './styles/Profile.scss';
 import { Grid, Paper } from '@mui/material';
+import PortfolioCard from '../components/PortfolioCard';
 
 export default function Profile(props) {
 	const { name, email, github, linkedin, bio } = props;
@@ -18,44 +19,7 @@ export default function Profile(props) {
 					<h1>LinkedIn: {linkedin}</h1>
 				</section>
 			</section>
-			<section className='cards'>
-				<Grid
-					container
-					direction='row'
-					justifyContent='space-around'
-					alignItems='center'
-					spacing={1}
-				>
-					<Grid item xs={10} md={3}>
-						<Paper>
-							<h1>Title</h1>
-							<img src='images/landing-page-image.png'></img>
-							<p>Description Testing How Long This Is.</p>
-						</Paper>
-					</Grid>
-					<Grid item xs={10} md={3}>
-						<Paper>
-							<h1>Title</h1>
-							<img src='images/landing-page-image.png'></img>
-							<p>Description Testing How Long This Is.</p>
-						</Paper>
-					</Grid>
-					<Grid item xs={10} md={3}>
-						<Paper>
-							<h1>Title</h1>
-							<img src='images/landing-page-image.png'></img>
-							<p>Description Testing How Long This Is.</p>
-						</Paper>
-					</Grid>
-					<Grid item xs={10} md={3}>
-						<Paper>
-							<h1>Title</h1>
-							<img src='images/landing-page-image.png'></img>
-							<p>Description Testing How Long This Is.</p>
-						</Paper>
-					</Grid>
-				</Grid>
-			</section>
+			<PortfolioCard />
 		</div>
 	);
 }

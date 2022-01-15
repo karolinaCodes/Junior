@@ -81,16 +81,61 @@ module.exports = db => {
       .catch(err => err);
   };
 
-  //TODO: Fix/ Complete
-  const getJobApplications = jobapplications => {
+  // const getJobPostings = () => {
+  // 	const query = {
+  // 		text: 'SELECT * FROM job_postings',
+  // 	};
+
+  // 	return db
+  // 		.query(query)
+  // 		.then(result => result.rows)
+  // 		.catch(err => err);
+  // };
+
+  const getJobPostings = () => {
     const query = {
-      text: `SELECT * FROM job_applications WHERE id ='1'`,
-      // values: [jobposting],
+      text: `SELECT employers.id as employer_id, employers.email as email, job_postings.*
+      FROM employers
+      JOIN job_postings ON employers.id = job_postings.employer_id`,
     };
 
     return db
       .query(query)
       .then(result => result.rows)
+      .catch(err => err);
+  };
+
+  const addJobPosting = (
+    employer_id,
+    job_title,
+    description,
+    city,
+    salary_min,
+    salary_max,
+    type,
+    is_remote,
+    date_posted,
+    is_open
+  ) => {
+    const query = {
+      text: `INSERT INTO job_postings (employer_id,job_title,description,city,salary_min,salary_max,type,is_remote,date_posted,is_open) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING *`,
+      values: [
+        employer_id,
+        job_title,
+        description,
+        city,
+        salary_min,
+        salary_max,
+        type,
+        is_remote,
+        date_posted,
+        is_open,
+      ],
+    };
+
+    return db
+      .query(query)
+      .then(result => result.rows[0])
       .catch(err => err);
   };
 
@@ -100,6 +145,7 @@ module.exports = db => {
     addDev,
     getDevProjects,
     getEmployers,
-    getJobApplications,
+    getJobPostings,
+    addJobPosting,
   };
 };

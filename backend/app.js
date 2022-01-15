@@ -20,6 +20,8 @@ const devsRouter = require('./routes/devs');
 const employersRouter = require('./routes/employers');
 const projectsRouter = require('./routes/projects');
 const jobApplicationsRouter = require('./routes/job_applications');
+const jobsRouter = require('./routes/job_postings');
+// const widgetsRoutes = require('./routes/widgets');
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
@@ -28,6 +30,8 @@ app.use('/api/employers', employersRouter(dbHelpers));
 app.use('/api/projects', projectsRouter(dbHelpers));
 app.use('/api/job_applications/:id', jobApplicationsRouter(dbHelpers));
 
+app.use('/api/job_postings', jobsRouter(dbHelpers));
+// app.use('/api/widgets', widgetsRoutes(db));
 // Note: mount other resources here, using the same pattern above
 
 // Home page

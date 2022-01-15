@@ -35,13 +35,6 @@ export default function Login(props) {
 			});
 	};
 
-	// // TO CHECK FOR COOKIE (IF USER SIGNED IN) ON FIRST LOAD
-	// useEffect(() => {
-	//   axios.post("/api/authenticate").then(res => {
-	//     setCurrentUser(res.data);
-	//   });
-	// }, []);
-
 	return (
 		<div className='login-content'>
 			<form className='login' onSubmit={login}>

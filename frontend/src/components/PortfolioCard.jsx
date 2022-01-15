@@ -23,27 +23,6 @@ export default function Profile(props) {
 						<p>Description Testing How Long This Is.</p>
 					</Paper>
 				</Grid>
-				<Grid item xs={10} md={3}>
-					<Paper>
-						<h1>Title</h1>
-						<img src='images/landing-page-image.png'></img>
-						<p>Description Testing How Long This Is.</p>
-					</Paper>
-				</Grid>
-				<Grid item xs={10} md={3}>
-					<Paper>
-						<h1>Title</h1>
-						<img src='images/landing-page-image.png'></img>
-						<p>Description Testing How Long This Is.</p>
-					</Paper>
-				</Grid>
-				<Grid item xs={10} md={3}>
-					<Paper>
-						<h1>Title</h1>
-						<img src='images/landing-page-image.png'></img>
-						<p>Description Testing How Long This Is.</p>
-					</Paper>
-				</Grid>
 			</Grid>
 		</section>
 	);

@@ -299,6 +299,64 @@ module.exports = db => {
   };
   //
 
+  // Jobs and Gigs Search //
+  const getJobsAndGigsByQuery = queryString => {
+    const q1 = {
+      text: `SELECT * FROM job_postings WHERE job_title LIKE '%${queryString}%';`,
+      // values: [queryString],
+    };
+    const q2 = {
+      text: `SELECT * FROM gig_postings WHERE job_title LIKE '%${queryString}%';`,
+      // values: [queryString],
+    };
+
+    return db
+      .query(q1)
+      .then(result => {
+        const jobs = result.rows;
+        console.log('++++++++++++++++++++', jobs);
+        db.query(q2).then(result2 => {
+          const gigs = result2.rows;
+          console.log('================', gigs);
+        });
+      })
+      .catch(err => err);
+  };
+  // getJobsAndGigsByQuery('act');
+
+  const getJobsByCity = city => {
+    const query = {
+      text: `SELECT * FROM job_postings WHERE city = $1`,
+      values: [city],
+    };
+
+    return db
+      .query(query)
+      .then(result => {
+        const jobs = result.rows;
+        console.log('++++++++++++++++++++', jobs);
+      })
+      .catch(err => err);
+  };
+  // getJobsByCity('Saskatoon');
+
+  const getJobsByType = type => {
+    const query = {
+      text: `SELECT * FROM job_postings WHERE job_type = $1;`,
+      values: [type],
+    };
+
+    return db
+      .query(query)
+      .then(result => {
+        const jobs = result.rows;
+        console.log('================', jobs);
+      })
+      .catch(err => err);
+  };
+  // getJobsByType('Full-time');
+  //
+
   return {
     getDevs,
     getDevByEmail,
@@ -315,5 +373,8 @@ module.exports = db => {
     getGigPostings,
     getGigPostingsByEmployerId,
     addGigPosting,
+    getJobsAndGigsByQuery,
+    getJobsByCity,
+    getJobsByType,
   };
 };

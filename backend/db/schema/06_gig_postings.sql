@@ -3,7 +3,7 @@ DROP TABLE IF EXISTS gig_postings CASCADE;
 CREATE TABLE "gig_postings" (
   "id" SERIAL PRIMARY KEY NOT NULL,
   "employer_id" INTEGER REFERENCES employers(id) ON DELETE CASCADE,
-  "gig_name" VARCHAR(50) NOT NULL,
+  "job_title" VARCHAR(50) NOT NULL,
   "description" VARCHAR(225),
   "pay" INTEGER NOT NULL,
   "date_posted" TIMESTAMP NOT NULL DEFAULT NOW(),

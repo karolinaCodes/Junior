@@ -8,7 +8,7 @@ CREATE TABLE "job_postings" (
   "city" VARCHAR(50),
   "salary_min" INTEGER NOT NULL,
   "salary_max" INTEGER NOT NULL,
-  "type" VARCHAR(50) NOT NULL,
+  "job_type" VARCHAR(50) NOT NULL,
   "is_remote" BOOLEAN NOT NULL,
   "date_posted" TIMESTAMP NOT NULL DEFAULT NOW(),
   "is_open" BOOLEAN DEFAULT TRUE

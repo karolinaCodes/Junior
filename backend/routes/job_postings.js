@@ -15,5 +15,28 @@ module.exports = ({ getJobPostings }) => {
 	});
 
 
+	/* POST a new job posting */
+	router.post('/', (req, res) => {
+		const {
+			employer_id,
+      job_title,
+      description,
+      city,
+      salary_min,
+      salary_max,
+      type,
+      is_remote,
+      date_posted,
+      is_open
+		} = req.body;
+
+		newJobPosting => res.json(newJobPosting)
+		.catch(err =>
+			res.json({
+				error: err.message,
+			})
+		);
+	});
+	
 	return router;
 };

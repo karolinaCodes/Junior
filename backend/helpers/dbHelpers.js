@@ -1,18 +1,8 @@
 module.exports = db => {
+  // DEVS //
   const getDevs = () => {
     const query = {
       text: 'SELECT * FROM junior_devs',
-    };
-
-    return db
-      .query(query)
-      .then(result => result.rows)
-      .catch(err => err);
-  };
-
-  const getEmployers = () => {
-    const query = {
-      text: 'SELECT * FROM employers',
     };
 
     return db
@@ -79,8 +69,36 @@ module.exports = db => {
       .catch(err => err);
   };
 
+  //
+
+  // EMPLOYERS //
+  const getEmployers = () => {
+    const query = {
+      text: 'SELECT * FROM employers',
+    };
+
+    return db
+      .query(query)
+      .then(result => result.rows)
+      .catch(err => err);
+  };
+
+  const getEmployerById = id => {
+    const query = {
+      text: 'SELECT * FROM employers WHERE id = $1',
+      values: [id],
+    };
+
+    return db
+      .query(query)
+      .then(result => result.rows)
+      .catch(err => err);
+  };
+
+  //
+
+  // PROJECTS //
   const getProjectsByDevId = id => {
-    console.log(id, 'eh');
     const query = {
       text: `SELECT junior_devs.id as junior_dev_id, first_name, last_name, email, projects.id as project_id, title, description, thumbnail_photo_url, github_link, live_link
         FROM junior_devs
@@ -96,6 +114,22 @@ module.exports = db => {
       .then(result => result.rows)
       .catch(err => err);
   };
+
+  const getProjectById = id => {
+    const query = {
+      text: `SELECT * FROM projects WHERE id= $1`,
+      values: [id],
+    };
+
+    return db
+      .query(query)
+      .then(result => result.rows)
+      .catch(err => err);
+  };
+
+  //
+
+  // JOB POSTINGS //
 
   // const getJobPostings = () => {
   // 	const query = {
@@ -155,13 +189,17 @@ module.exports = db => {
       .catch(err => err);
   };
 
+  //
+
   return {
     getDevs,
     getDevByEmail,
     getDevById,
     addDev,
     getProjectsByDevId,
+    getProjectById,
     getEmployers,
+    getEmployerById,
     getJobPostings,
     addJobPosting,
   };

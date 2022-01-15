@@ -3,9 +3,8 @@ const router = express.Router();
 
 module.exports = ({getProjectsByDevId}) => {
   // get all projects for single dev, with dev info
-  router.get('/:id', (req, res) => {
-    console.log(req.params.id);
-    getProjectsByDevId(req.params.id)
+  router.get('/:devId', (req, res) => {
+    getProjectsByDevId(req.params.devId)
       .then(projects => {
         res.json(projects);
       })

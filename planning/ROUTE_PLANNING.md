@@ -20,11 +20,11 @@
 - Stretch
   - interviews (stretch)
 
-## Project page (project/:id)
+## Project Page (project/:id)
 
-- getProjectsByDevId WHERE projects.id = :id
+- getProjectById WHERE projects.id = :id
 
-## Profile (Employer)
+## Employer Profile
 
 - getEmployerById WHERE id (from cookie)
 - getJobPostingsByEmployerId

@@ -19,6 +19,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 const devsRouter = require('./routes/devs');
 const employersRouter = require('./routes/employers');
 const projectsRouter = require('./routes/projects');
+const projectRouter = require('./routes/project');
 // const jobApplicationsRouter = require('./routes/job_applications');
 // const jobsRouter = require('./routes/job_postings');
 const loginRouter = require('./routes/login');
@@ -29,6 +30,7 @@ const authenticateRouter = require('./routes/authenticate');
 app.use('/api/devs', devsRouter(dbHelpers));
 app.use('/api/employers', employersRouter(dbHelpers));
 app.use('/api/projects', projectsRouter(dbHelpers));
+app.use('/api/project', projectRouter(dbHelpers));
 app.use('/api/login', loginRouter(dbHelpers));
 app.use('/api/authenticate', authenticateRouter(dbHelpers));
 

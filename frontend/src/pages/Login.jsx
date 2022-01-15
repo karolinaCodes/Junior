@@ -39,7 +39,12 @@ export default function Login(props) {
 			<form className='login' onSubmit={login}>
 				<h1>Login:</h1>
 				<TextField id='email' label='email' variant='outlined' />
-				<TextField id='password' label='password' variant='outlined' />
+				<TextField
+					id='password'
+					sx={{ mt: '1rem' }}
+					label='password'
+					variant='outlined'
+				/>
 				<Button variant='contained' size='large' type='submit'>
 					LOG IN
 				</Button>

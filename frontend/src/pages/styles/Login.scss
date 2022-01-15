@@ -4,9 +4,13 @@
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	justify-content: space-between;
 	margin-top: 10rem;
 
-	a {
+	#email {
+	}
+
+	button {
 		margin-top: 2rem;
 	}
 }

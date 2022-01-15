@@ -1,4 +1,6 @@
 import './styles/LandingPage.scss';
+import { Link } from 'react-router-dom';
+import { TextField, Button } from '@mui/material';
 
 export default function LandingPage(props) {
 	return (
@@ -15,8 +17,10 @@ export default function LandingPage(props) {
 					<h1 className='get-paid'>Get Paid. Find Work.</h1>
 				</div>
 				<div className='search-bar'>
-					<input placeholder='Find Jobs'></input>
-					<button>Search</button>
+					<TextField id='outlined-basic' label='Find Work' variant='outlined' />
+					<Button variant='contained' size='large' href='/jobs'>
+						SEARCH
+					</Button>
 				</div>
 			</div>
 		</div>

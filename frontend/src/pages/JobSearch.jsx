@@ -1,5 +1,4 @@
 import './styles/JobSearch.scss';
-import NavBar from './NavBar';
 
 export default function JobSearch(props) {
 	return (

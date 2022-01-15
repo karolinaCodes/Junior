@@ -3,6 +3,15 @@ import axios from 'axios';
 import { BrowserRouter, Link, Routes, Route } from 'react-router-dom';
 
 //import components
+import Apply from './pages/Apply.jsx';
+import JobSearch from './pages/JobSearch.jsx';
+import LandingPage from './pages/LandingPage.jsx';
+import Login from './pages/Login.jsx';
+import NewGig from './pages/NewGig.jsx';
+import NewJob from './pages/NewJob.jsx';
+import NewProject from './pages/NewProject.jsx';
+import Profile from './pages/Profile.jsx';
+import NavBar from './pages/NavBar.jsx';
 
 //import css
 import './App.scss';
@@ -34,10 +43,17 @@ function App() {
 
 	return (
 		<div className='App'>
-			<Link to='/'>Home </Link>
+			<NavBar />
 			{/* {!currentUser && <button onClick={login}>LOG IN</button>} */}
 			<Routes>
-				<Route path='/' element={<h1>Hello</h1>} />
+				<Route exact path='/' element={<LandingPage />} />
+				<Route path='/login' element={<Login />} />
+				<Route path='/profile' element={<Profile />} />
+				<Route path='/jobs' element={<JobSearch />} />
+				<Route path='/newproject' element={<NewProject />} />
+				<Route path='/newgig' element={<NewGig />} />
+				<Route path='/newjob' element={<NewJob />} />
+				<Route path='/apply' element={<Apply />} />
 			</Routes>
 		</div>
 	);

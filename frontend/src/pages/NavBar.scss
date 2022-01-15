@@ -1,0 +1,17 @@
+@import 'variables';
+
+.nav-bar {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	background-color: $blue;
+	height: 100px;
+
+	a {
+		font-size: 30px;
+		font-weight: $bold;
+		color: $white;
+		font-family: $text;
+		text-decoration: none;
+	}
+}

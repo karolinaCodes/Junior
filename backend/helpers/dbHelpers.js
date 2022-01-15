@@ -81,11 +81,38 @@ module.exports = db => {
 			.catch(err => err);
 	};
 
+	const getJobPostings = () => {
+		const query = {
+			text: 'SELECT * FROM job_postings',
+		};
+
+		return db
+			.query(query)
+			.then(result => result.rows)
+			.catch(err => err);
+	};
+
+	const getJobPostingsByEmployerEmail = (email) => {
+		const query = {
+			text: `SELECT employers.id as employer_id, employers.email as email, job_postings.*
+      FROM employers
+      JOIN job_postings ON employers.id = job_postings.employer_id
+			WHERE employers.email = $1`
+		};
+
+		return db
+			.query(query)
+			.then(result => result.rows)
+			.catch(err => err);
+	};
+
 	return {
 		getDevs,
 		getDevByEmail,
 		addDev,
 		getDevProjects,
 		getEmployers,
+		getJobPostings,
+		getJobPostingsByEmployerEmail,
 	};
 };

@@ -37,6 +37,7 @@ export default function Login(props) {
 	return (
 		<div className='login-content'>
 			<form className='login' onSubmit={login}>
+				<h1>Login:</h1>
 				<TextField id='email' label='email' variant='outlined' />
 				<TextField id='password' label='password' variant='outlined' />
 				<Button variant='contained' size='large' type='submit'>

@@ -1,14 +1,11 @@
 import {useEffect} from 'react';
 import './styles/JobSearch.scss';
 import axios from 'axios';
-import JobSearchCard from '../components/JobSearchCard';
-import axios from 'axios';
 
 export default function JobSearch(props) {
-  // const data = {city: 'Saskatoon'};
   useEffect(() => {
     axios
-      .get('/api/job_gig_search/city', {
+      .get('/api/search/city', {
         params: {
           city: 'Saskatoon',
         },
@@ -22,7 +19,6 @@ export default function JobSearch(props) {
   return (
     <div className="jobsearch-content">
       <h1>Job Search Page</h1>
-      <JobSearchCard />
     </div>
   );
 }

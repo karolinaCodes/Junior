@@ -9,7 +9,7 @@ export default function JobSearch(props) {
 		console.log('FRONTEND', query);
 
 		axios
-			.get('/api/job_gig_search', query)
+			.get('/api/job_postings')
 			.then(res => {
 				console.log(res.data);
 			})

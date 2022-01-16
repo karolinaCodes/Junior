@@ -21,19 +21,20 @@ import './App.scss';
 function App() {
 	const [login, setLogin] = useState(false);
 
-	const handleLogin = () => {
+	const handleLoginView = () => {
 		login ? setLogin(false) : setLogin(true);
 	};
 
 	return (
 		<div className='App'>
-			<NavBar handleLogin={handleLogin} />
-			{/* {!currentUser && <button onClick={login}>LOG IN</button>} */}
+			<NavBar handleLoginView={handleLoginView} />
 			<Routes>
-				<Route exact path='/' element={<LandingPage login={login} />} />
 				<Route
-					path='/login'
-					element={<LoginForm handleLogin={handleLogin} />}
+					exact
+					path='/'
+					element={
+						<LandingPage login={login} handleLoginView={handleLoginView} />
+					}
 				/>
 				<Route path='/profile' element={<Profile />} />
 				<Route path='/jobs' element={<JobSearch />} />

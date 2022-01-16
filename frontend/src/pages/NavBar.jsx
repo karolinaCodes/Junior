@@ -3,7 +3,7 @@ import './styles/NavBar.scss';
 import Button from '@mui/material/Button';
 
 export default function NavBar(props) {
-	const { handleLogin } = props;
+	const { handleLoginView } = props;
 
 	return (
 		<div className='nav-bar'>
@@ -21,7 +21,7 @@ export default function NavBar(props) {
 					component={Link}
 					to='/'
 					variant='contained'
-					onClick={handleLogin}
+					onClick={handleLoginView}
 				>
 					Login
 				</Button>

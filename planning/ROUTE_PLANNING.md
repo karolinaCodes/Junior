@@ -1,66 +1,71 @@
 ## Landing
 
-- None
-- Authenticate (check for cookie - then save cookie in state to persist log in)
-- AND everything on #jobgigsearch
+- [ ] None
+- [ ] Authenticate (check for cookie - then save cookie in state to persist log in)
+- [ ] AND everything on #jobgigsearch
 
 ## Login (/login)
 
-- getDevByEmail
+- [X]  getDevByEmail
 
 ## Signup (/signup) - Stretch
 
-- getDevByEmail
-- addDev (POST /new)
+- [X]  getDevByEmail
+- [X] addDev (POST /new)
 
 ## Portfolio (Dev)
 
-- getDevById WHERE id (all information)
-- getProjectsByDevId
+- [X] getDevById WHERE id (all information)
+- [X] getProjectsByDevId
 - Stretch
   - interviews (stretch)
 
 ## Project Page (project/:id) DONE
 
-- getProjectById WHERE projects.id = :id
+- [X] getProjectById WHERE projects.id = :id
 
 ## Employer Profile
 
-- getEmployerById WHERE id (from cookie)
-- getJobPostingsByEmployerId
-- getGigPostingsByEmployerId
-- Stretch
-  - interviews
+- [X] getEmployerById WHERE id (from cookie)
+- [X] getJobPostingsByEmployerId
+- [X] getGigPostingsByEmployerId
+- **Stretch**
+  - [ ] interviews
 
 ## Job/Gig Search DONE
 
-- getJobByTitleAndDescription (title = x || description = x)
-- getJobByCity
-- getJobByType
-- Stretch
-  - getJobBySalary
-  - getJobByRemote
-  - getJobByEmployer (maybe)
-  - getJobByTag (stretch)
+- [X] getJobsAndGigsByQuery (title = x || description = x)
+- [X] getJobByCity
+- [X] getJobByType
+- **Stretch**
+  - [ ] getJobBySalary
+  - [ ] getJobByRemote
+  - [ ] getJobByEmployer (maybe)
+  - [ ] getJobByTag (stretch)
 
 ## Job page
 
-- getDevById (for cookie)
-- getJobById (JOIN employers)
+- [X] getDevById (for cookie)
+- [X] getJobById (JOIN employers)
 
 ## Gig page
 
-- getDevById (for cookie)
-- getGigById (JOIN employers)
+- [X] getDevById (for cookie)
+- [X] getGigById (JOIN employers)
 
-## New Job Posting Page
+## New Job Posting Page DONE
 
-- addJob WHERE employer_id = :id (POST /new)
+- [X] addJobPosting WHERE employer_id = :id (POST /new)
 
 ## New Gig Posting Page DONE
 
-- addGig WHERE employer_id = :id (POST /new)
+- [X] addGigPosting WHERE employer_id = :id (POST /new)
 
 ## New Project Page DONE
 
-- addProject WHERE junior_dev_id = :id (POST /new)
+- [X] addProject WHERE junior_dev_id = :id (POST /new)
+
+## Applications
+
+- [ ] getApplicationByPostingId
+- [ ] getApplicationById

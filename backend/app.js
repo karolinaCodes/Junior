@@ -28,7 +28,6 @@ const gigPostingsRouter = require('./routes/gig_postings');
 const searchRouter = require('./routes/search');
 
 // const jobApplicationsRouter = require('./routes/job_applications');
-// const jobsRouter = require('./routes/job_postings');
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
@@ -42,7 +41,6 @@ app.use('/api/gig_postings', gigPostingsRouter(dbHelpers));
 app.use('/api/search', searchRouter(dbHelpers));
 
 // app.use('/api/job_applications/:id', jobApplicationsRouter(dbHelpers)); // <- doesnt work
-// app.use('/api/job_postings', jobsRouter(dbHelpers)); //<- doesnt work
 
 // Note: mount other resources here, using the same pattern above
 

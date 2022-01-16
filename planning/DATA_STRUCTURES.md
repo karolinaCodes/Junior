@@ -11,13 +11,12 @@ interface Junior_dev {
   password: Hash;
   bio: String;
   photo_url: String;
-  github_url:String;
-  linkedIn_url:String;
-  resume_url:String;
-  location:String
+  github_url: String;
+  linkedIn_url: String;
+  resume_url: String;
+  location: String;
 }
 ```
-
 
 ## Employer
 
@@ -110,3 +109,9 @@ interface Project_image {
   photo_url: String;
 }
 ```
+
+/api/query
+{
+jobs: [{},{}],
+gigs: [{},{}]
+}

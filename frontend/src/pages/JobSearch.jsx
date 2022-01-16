@@ -8,9 +8,35 @@ import SearchBar from '../components/SearchBar';
 export default function JobSearch(props) {
 	useEffect(() => {
 		axios
+			.get('/api/search/query', {
+				params: {
+					queryString: 'JavaScript',
+				},
+			})
+			.then(res => {
+				console.log(res.data);
+			})
+			.catch(err => console.log(err));
+	});
+
+	useEffect(() => {
+		axios
 			.get('/api/search/city', {
 				params: {
-					city: 'Saskatoon',
+					city: 'Toronto',
+				},
+			})
+			.then(res => {
+				console.log(res.data);
+			})
+			.catch(err => console.log(err));
+	});
+
+	useEffect(() => {
+		axios
+			.get('/api/search/type', {
+				params: {
+					type: 'Part-time',
 				},
 			})
 			.then(res => {
@@ -22,8 +48,6 @@ export default function JobSearch(props) {
 	return (
 		<div className='jobsearch-content'>
 			<h1>Job Search Page</h1>
-			<SearchBar />
-			<JobSearchCard />
 		</div>
 	);
 }

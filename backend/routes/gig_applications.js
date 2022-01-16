@@ -1,13 +1,8 @@
 const express = require('express');
 const router = express.Router();
 
-<<<<<<< HEAD
-/* Get gig application based on gig application id*/
-module.exports = ({getGigApplicationById}) => {
-=======
 module.exports = ({getGigApplicationById, addGigApplication}) => {
   /* GET a gig application by gig_applications.id */
->>>>>>> main
   router.get('/:id', (req, res) => {
     getGigApplicationById(req.params.id)
       .then(job => res.json(job))

@@ -20,7 +20,7 @@
 - Stretch
   - interviews (stretch)
 
-## Project Page (project/:id)
+## Project Page (project/:id) DONE
 
 - getProjectById WHERE projects.id = :id
 
@@ -32,7 +32,7 @@
 - Stretch
   - interviews
 
-## Job/Gig Search
+## Job/Gig Search DONE
 
 - getJobByTitleAndDescription (title = x || description = x)
 - getJobByCity
@@ -53,14 +53,14 @@
 - getDevById (for cookie)
 - getGigById (JOIN employers)
 
-## New Job
+## New Job Posting Page
 
 - addJob WHERE employer_id = :id (POST /new)
 
-## New Gig page
+## New Gig Posting Page DONE
 
 - addGig WHERE employer_id = :id (POST /new)
 
-## New Project page
+## New Project Page DONE
 
 - addProject WHERE junior_dev_id = :id (POST /new)

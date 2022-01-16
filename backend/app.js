@@ -10,7 +10,7 @@ const app = express();
 // use dotenv?
 app.use(logger('dev'));
 app.use(express.json());
-app.use(express.urlencoded({extended: false}));
+app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 const bodyParser = require('body-parser');
@@ -23,6 +23,7 @@ const employersRouter = require('./routes/employers');
 const projectsRouter = require('./routes/projects');
 const loginRouter = require('./routes/login');
 const authenticateRouter = require('./routes/authenticate');
+const jobPostingsRouter = require('./routes/job_postings');
 const gigPostingsRouter = require('./routes/gig_postings');
 const jobGigSearchRouter = require('./routes/job_gig_search');
 
@@ -36,6 +37,7 @@ app.use('/api/employers', employersRouter(dbHelpers));
 app.use('/api/projects', projectsRouter(dbHelpers));
 app.use('/api/login', loginRouter(dbHelpers));
 app.use('/api/authenticate', authenticateRouter(dbHelpers));
+app.use('/api/job_postings', jobPostingsRouter(dbHelpers));
 app.use('/api/gig_postings', gigPostingsRouter(dbHelpers));
 app.use('/api/job_gig_search', jobGigSearchRouter(dbHelpers));
 
@@ -49,7 +51,7 @@ app.use('/api/job_gig_search', jobGigSearchRouter(dbHelpers));
 // Separate them into separate routes files (see above).
 
 app.get('/', (req, res) => {
-  res.render('index');
+	res.render('index');
 });
 
 // EXAMPLES

@@ -1,5 +1,6 @@
 import {useEffect} from 'react';
 import './styles/JobSearch.scss';
+import axios from 'axios';
 import JobSearchCard from '../components/JobSearchCard';
 import axios from 'axios';
 

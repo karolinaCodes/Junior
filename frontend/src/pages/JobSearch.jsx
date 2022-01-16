@@ -36,7 +36,11 @@ export default function JobSearch(props) {
 				},
 			})
 			.then(res => {
-				setSearchResults(res.data);
+				setSearchResults(prev => ({
+					...prev,
+					jobs: res.data.jobs,
+					gigs: res.data.gigs,
+				}));
 				return;
 			})
 			.catch(err => console.log(err));

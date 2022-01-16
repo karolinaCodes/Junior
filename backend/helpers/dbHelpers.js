@@ -346,7 +346,7 @@ module.exports = db => {
       // values: [queryString],
     };
     const q2 = {
-      text: `SELECT * FROM gig_postings WHERE job_title LIKE '%${queryString}%' OR description LIKE '%${queryString}%;`,
+      text: `SELECT * FROM gig_postings WHERE job_title LIKE '%${queryString}%' OR description LIKE '%${queryString}%';`,
       // values: [queryString],
     };
 
@@ -448,9 +448,7 @@ module.exports = db => {
       text: `INSERT INTO job_applications (
         job_posting_id, junior_dev_id
         ) VALUES ($1, $2) RETURNING *`,
-      values: [
-        job_posting_id, junior_dev_id
-      ],
+      values: [job_posting_id, junior_dev_id],
     };
 
     return db
@@ -508,9 +506,7 @@ module.exports = db => {
       text: `INSERT INTO gig_applications (
         gig_posting_id, junior_dev_id
         ) VALUES ($1, $2) RETURNING *`,
-      values: [
-        gig_posting_id, junior_dev_id
-      ],
+      values: [gig_posting_id, junior_dev_id],
     };
 
     return db

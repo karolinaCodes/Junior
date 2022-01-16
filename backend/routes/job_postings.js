@@ -1,8 +1,13 @@
 const express = require('express');
 const router = express.Router();
 
-module.exports = ({getJobPostings, getJobById, getApplicationByJobPostingId, addJobPosting}) => {
-  /* GET list of jobs */
+module.exports = ({
+  getJobPostings,
+  getJobById,
+  getApplicationByJobPostingId,
+  addJobPosting,
+}) => {
+  /* GET list of all job postings with employer data*/
   router.get('/', (req, res) => {
     getJobPostings()
       .then(job => res.json(job))
@@ -22,8 +27,8 @@ module.exports = ({getJobPostings, getJobById, getApplicationByJobPostingId, add
           error: err.message,
         })
       );
-    });
-    
+  });
+
   router.get('/:id/applications', (req, res) => {
     getApplicationByJobPostingId(req.params.id)
       .then(application => res.json(application))
@@ -43,22 +48,22 @@ module.exports = ({getJobPostings, getJobById, getApplicationByJobPostingId, add
       city,
       salary_min,
       salary_max,
-      type,
+      job_type,
       is_remote,
-      date_posted,
-      is_open
+      is_open,
     } = req.body;
 
-    addJobPosting(employer_id,
+    addJobPosting(
+      employer_id,
       job_title,
       description,
       city,
       salary_min,
       salary_max,
-      type,
+      job_type,
       is_remote,
-      date_posted,
-      is_open)
+      is_open
+    )
       .then(newJobPosting => res.json(newJobPosting))
       .catch(err =>
         res.json({

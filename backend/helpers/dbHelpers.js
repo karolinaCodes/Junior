@@ -300,36 +300,26 @@ module.exports = db => {
       .catch(err => err);
   };
 
-  const addGigPosting = (
-    employer_id,
-    gig_name,
-    description,
-    pay,
-    date_posted,
-    deadline,
-    photo_url
-  ) => {
+  const addGigPosting = (employer_id, gig_name, description, pay, deadline) => {
+    console.log(
+      'addGigPosting',
+      employer_id,
+      gig_name,
+      description,
+      pay,
+      deadline
+    );
     const query = {
       text: `INSERT INTO gig_postings (
         employer_id,
-        gig_name,
+        job_title,
         description,
         pay,
-        date_posted,
-        deadline,
-        photo_url
+        deadline
         ) VALUES (
-          $1, $2, $3, $4, $5, $6, $7
+          $1, $2, $3, $4, $5
         ) RETURNING *`,
-      values: [
-        employer_id,
-        gig_name,
-        description,
-        pay,
-        date_posted,
-        deadline,
-        photo_url,
-      ],
+      values: [employer_id, gig_name, description, pay, deadline],
     };
 
     return db

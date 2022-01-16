@@ -66,5 +66,5 @@
 
 ## Applications
 
-- [ ] getApplicationByPostingId
-- [ ] getApplicationById
+- [x] getApplicationByPostingId
+- [x] getApplicationById

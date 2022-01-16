@@ -26,15 +26,15 @@
 
 ## Job_applications
 
-- [ ] /api/job_applications/:id
-- [ ] /api/job_applications/new
+- [x] /api/job_applications/:id
+- [ ] /api/job_applications/new - can't find
 
 ## Gig_postings
 
-- [ ] /api/gig_postings
-- [ ] /api/gig_postings/:id
-- [ ] /api/gig_postings/:id/applications
-- [ ] /api/gig_postings/new
+- [x] /api/gig_postings
+- [x] /api/gig_postings/:id
+- [x] /api/gig_postings/:id/applications
+- [x] /api/gig_postings/new
 
 ## Gig_applications
 

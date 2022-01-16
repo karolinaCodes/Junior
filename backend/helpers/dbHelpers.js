@@ -354,12 +354,14 @@ module.exports = db => {
 
 		return db
 			.query(q1)
-			.then(result => {
-				const jobs = result.rows;
-				console.log('++++++++++++++++++++', jobs);
+			.then(result1 => {
+				result1.rows[0];
+				// const jobs = result1.rows;
+				// console.log('++++++++++++++++++++', jobs);
 				db.query(q2).then(result2 => {
-					const gigs = result2.rows;
-					console.log('================', gigs);
+					result2.rows[0];
+					// const gigs = result2.rows;
+					// console.log('================', gigs);
 				});
 			})
 			.catch(err => err);
@@ -368,15 +370,16 @@ module.exports = db => {
 
 	const getJobsByCity = city => {
 		const query = {
-			text: `SELECT * FROM job_postings WHERE city = $1`,
+			text: `SELECT * FROM job_postings WHERE city=$1;`,
 			values: [city],
 		};
 
 		return db
 			.query(query)
 			.then(result => {
-				const jobs = result.rows;
-				console.log('++++++++++++++++++++', jobs);
+				return result.rows[0];
+				// const jobs = result.rows;
+				// console.log('++++++++++++++++++++', jobs);
 			})
 			.catch(err => err);
 	};
@@ -391,8 +394,9 @@ module.exports = db => {
 		return db
 			.query(query)
 			.then(result => {
-				const jobs = result.rows;
-				console.log('================', jobs);
+				result.rows[0];
+				// const jobs = result.rows;
+				// console.log('================', jobs);
 			})
 			.catch(err => err);
 	};

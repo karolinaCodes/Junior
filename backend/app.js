@@ -10,7 +10,7 @@ const app = express();
 // use dotenv?
 app.use(logger('dev'));
 app.use(express.json());
-app.use(express.urlencoded({extended: false}));
+app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -44,7 +44,7 @@ app.use('/api/authenticate', authenticateRouter(dbHelpers));
 // Separate them into separate routes files (see above).
 
 app.get('/', (req, res) => {
-  res.render('index');
+	res.render('index');
 });
 
 // EXAMPLES

@@ -46,30 +46,35 @@ export default function JobSearch(props) {
       .catch(err => console.log(err));
   }, [searchTerm]);
 
-  // useEffect(() => {
-  // 	const results = axios
-  // 		.get('/api/search/city', {
-  // 			params: {
-  // 				city: 'Toronto',
-  // 			},
-  // 		})
-  // 		.then(res => {
-  // 			console.log(res.data);
-  // 			return res.data;
-  // 		})
-  // 		.catch(err => console.log(err));
-  // 	axios
-  // 		.get('/api/search/type', {
-  // 			params: {
-  // 				type: 'Part-time',
-  // 			},
-  // 		})
-  // 		.then(res => {
-  // 			console.log(res.data);
-  // 		})
-  // 		.catch(err => console.log(err));
-
-  // });
+  useEffect(() => {
+    // 	const results = axios
+    // 		.get('/api/search/city', {
+    // 			params: {
+    // 				city: 'Toronto',
+    // 			},
+    // 		})
+    // 		.then(res => {
+    // 			console.log(res.data);
+    // 			return res.data;
+    // 		})
+    // 		.catch(err => console.log(err));
+    // 	axios
+    // 		.get('/api/search/type', {
+    // 			params: {
+    // 				type: 'Part-time',
+    // 			},
+    // 		})
+    // 		.then(res => {
+    // 			console.log(res.data);
+    // 		})
+    // 		.catch(err => console.log(err));
+    axios
+      .post('/api/gig_applications/new', {gig_posting_id: 1, junior_dev_id: 1})
+      .then(res => {
+        console.log(res.data);
+      })
+      .catch(err => console.log(err));
+  });
 
   return (
     <div className="jobsearch-content">

@@ -30,6 +30,7 @@
   - :id = job application id
 - [ ] /api/job_applications/new
   - written but not tested
+- NOTE: applications by posting ID are in /api/job_postings/:id/applications
 
 ## Gig_postings
 
@@ -44,6 +45,7 @@
   - :id = gig application id
 - [ ] /api/gig_applications/new
   - written but not tested
+- NOTE: applications by posting ID are in /api/gig_postings/:id/applications
 
 ## Projects
 

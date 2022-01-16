@@ -1,9 +1,8 @@
 const express = require('express');
 const router = express.Router();
 
-/* Get all gig applications */
 module.exports = ({getGigApplicationById, addGigApplication}) => {
-  /* GET a gig posting by gig_postings.id */
+  /* GET a gig application by gig_applications.id */
   router.get('/:id', (req, res) => {
     getGigApplicationById(req.params.id)
       .then(job => res.json(job))

@@ -31,6 +31,14 @@ export default function Profile(props) {
   //     console.log(res.data);
   //   })
   //   .catch(err => console.log(err));
+
+  // get gig application based on gig application id
+  // axios
+  //   .get('/api/gig_applications/1')
+  //   .then(res => {
+  //     console.log(res.data);
+  //   })
+  //   .catch(err => console.log(err));
   // }, []);
 
   const {

@@ -136,8 +136,9 @@ module.exports = db => {
     github_link,
     live_link
   ) => {
+    console.log('here');
     const query = {
-      text: `INSERT INTO projects (junior_dev_id, title, description, thumbnail_photo_url, github_link, live_link) VALUES ($1, $2, $3, $4, $5, $6,) RETURNING *`,
+      text: `INSERT INTO projects (junior_dev_id, title, description, thumbnail_photo_url, github_link, live_link) VALUES ($1, $2, $3, $4, $5, $6) RETURNING *`,
       values: [
         junior_dev_id,
         title,
@@ -149,7 +150,7 @@ module.exports = db => {
     };
     return db
       .query(query)
-      .then(result => result.rows)
+      .then(result => result.rows[0])
       .catch(err => err);
   };
   //

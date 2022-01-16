@@ -27,7 +27,7 @@
 ## Job_applications
 
 - [x] /api/job_applications/:id
-- [ ] /api/job_applications/new - can't find
+- [ ] /api/job_applications/new - just added need the pull
 
 ## Gig_postings
 
@@ -38,13 +38,13 @@
 
 ## Gig_applications
 
-- [ ] /api/gig_applications/:id
-- [ ] /api/gig_applications/new
+- [x] /api/gig_applications/:id
+- [ ] /api/gig_applications/new - just added need to pull
 
 ## Projects
 
 - [x] /api/project/:id
-- [ ] /api/new
+- [x] /api/projects/new
 
 ## Search DONE
 

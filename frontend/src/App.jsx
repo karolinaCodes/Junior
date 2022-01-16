@@ -6,7 +6,7 @@ import { Link, Routes, Route } from 'react-router-dom';
 import Apply from './pages/Apply.jsx';
 import JobSearch from './pages/JobSearch.jsx';
 import LandingPage from './pages/LandingPage.jsx';
-import Login from './pages/Login.jsx';
+import LoginForm from './components/LoginForm.jsx';
 import NewGig from './pages/NewGig.jsx';
 import NewJob from './pages/NewJob.jsx';
 import NewProject from './pages/NewProject.jsx';
@@ -25,7 +25,7 @@ function App() {
 			{/* {!currentUser && <button onClick={login}>LOG IN</button>} */}
 			<Routes>
 				<Route exact path='/' element={<LandingPage />} />
-				<Route path='/login' element={<Login />} />
+				<Route path='/login' element={<LoginForm />} />
 				<Route path='/profile' element={<Profile />} />
 				<Route path='/jobs' element={<JobSearch />} />
 				<Route path='/newproject' element={<NewProject />} />

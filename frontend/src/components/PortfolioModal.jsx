@@ -1,24 +1,49 @@
+import { useState } from 'react';
 import './styles/PortfolioModal.scss';
-import { Modal, Button, Box, Typography } from '@mui/material';
-import { style } from '@mui/system';
+import { Button, Modal, Box, Typography, makeStyles } from '@mui/material';
 
-export default function SearchBar(props) {
+export default function PortfolioModal() {
+	const [open, setOpen] = useState(false);
+
+	const style = {
+		width: 1 / 2,
+		height: 1 / 2,
+		display: 'flex',
+		flexDirection: 'column',
+		margin: '10% 0 0 25%',
+		background: '#223d55',
+		color: 'black',
+		alignItems: 'center',
+		justifyContent: 'center',
+		borderRadius: '2rem',
+	};
+
+	const handleView = () => {
+		open === true ? setOpen(false) : setOpen(true);
+	};
+
 	return (
-		<div>
-			<Button onClick={'handleOpen'}>Open modal</Button>
+		<div className='portfolio-modal'>
+			<Button onClick={handleView} variant='contained'>
+				Open modal
+			</Button>
 			<Modal
-				open={'open'}
-				onClose={'handleClose'}
-				aria-labelledby='modal-modal-title'
-				aria-describedby='modal-modal-description'
+				open={open}
+				onClose={handleView}
+				// aria-labelledby='modal-modal-title'
+				// aria-describedby='modal-modal-description'
 			>
 				<Box sx={style}>
-					<Typography id='modal-modal-title' variant='h6' component='h2'>
+					<h1>HELLO</h1>
+					{/* <Typography id='modal-modal-title' variant='h6' component='h2'>
 						Text in a modal
 					</Typography>
 					<Typography id='modal-modal-description' sx={{ mt: 2 }}>
 						Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-					</Typography>
+					</Typography> */}
+					<Button onClick={handleView} variant='contained'>
+						Close
+					</Button>
 				</Box>
 			</Modal>
 		</div>

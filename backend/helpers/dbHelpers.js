@@ -184,7 +184,7 @@ module.exports = db => {
 
     return db
       .query(query)
-      .then(result => result.rows[0])
+      .then(result => result.rows)
       .catch(err => err);
   };
 
@@ -268,7 +268,7 @@ module.exports = db => {
 
   const getGigPostingsByEmployerId = id => {
     const query = {
-      text: `SSELECT employers.id as employer_id, 
+      text: `SELECT employers.id as employer_id, 
         company_name, email, bio, employers.photo_url as employer_photo_url, 
         gig_postings.*
         FROM employers
@@ -279,7 +279,7 @@ module.exports = db => {
 
     return db
       .query(query)
-      .then(result => result.rows[0])
+      .then(result => result.rows)
       .catch(err => err);
   };
 

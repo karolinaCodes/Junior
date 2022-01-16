@@ -21,6 +21,7 @@ const employersRouter = require('./routes/employers');
 const projectsRouter = require('./routes/projects');
 const loginRouter = require('./routes/login');
 const authenticateRouter = require('./routes/authenticate');
+const jobPostingsRouter = require('./routes/job_postings');
 const gigPostingsRouter = require('./routes/gig_postings');
 const jobSearchRouter = require('./routes/job_gig_search');
 // const jobApplicationsRouter = require('./routes/job_applications');
@@ -33,6 +34,7 @@ app.use('/api/employers', employersRouter(dbHelpers));
 app.use('/api/projects', projectsRouter(dbHelpers));
 app.use('/api/login', loginRouter(dbHelpers));
 app.use('/api/authenticate', authenticateRouter(dbHelpers));
+app.use('/api/job_postings', jobPostingsRouter(dbHelpers));
 app.use('/api/gig_postings', gigPostingsRouter(dbHelpers));
 app.use('/api/job_gig_search', jobSearchRouter(dbHelpers));
 

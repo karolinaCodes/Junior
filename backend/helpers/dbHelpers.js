@@ -323,96 +323,95 @@ module.exports = db => {
         ) VALUES (
           $1, $2, $3, $4, $5, $6, $7
         ) RETURNING *`,
-			values: [
-				employer_id,
-				gig_name,
-				description,
-				pay,
-				date_posted,
-				deadline,
-				photo_url,
-			],
-		};
+      values: [
+        employer_id,
+        gig_name,
+        description,
+        pay,
+        date_posted,
+        deadline,
+        photo_url,
+      ],
+    };
 
-		return db
-			.query(query)
-			.then(result => result.rows[0])
-			.catch(err => err);
-	};
-	//
+    return db
+      .query(query)
+      .then(result => result.rows[0])
+      .catch(err => err);
+  };
+  //
 
-	// Jobs and Gigs Search //
-	const getJobsAndGigsByQuery = queryString => {
-		const q1 = {
-			text: `SELECT * FROM job_postings WHERE job_title LIKE '%${queryString}%';`,
-			// values: [queryString],
-		};
-		const q2 = {
-			text: `SELECT * FROM gig_postings WHERE job_title LIKE '%${queryString}%';`,
-			// values: [queryString],
-		};
+  // Jobs and Gigs Search //
+  const getJobsAndGigsByQuery = queryString => {
+    const q1 = {
+      text: `SELECT * FROM job_postings WHERE job_title LIKE '%${queryString}%';`,
+      // values: [queryString],
+    };
+    const q2 = {
+      text: `SELECT * FROM gig_postings WHERE job_title LIKE '%${queryString}%';`,
+      // values: [queryString],
+    };
 
-		return db
-			.query(q1)
-			.then(result1 => {
-				result1.rows[0];
-				// const jobs = result1.rows;
-				// console.log('++++++++++++++++++++', jobs);
-				db.query(q2).then(result2 => {
-					result2.rows[0];
-					// const gigs = result2.rows;
-					// console.log('================', gigs);
-				});
-			})
-			.catch(err => err);
-	};
-	// getJobsAndGigsByQuery('act');
+    return db
+      .query(q1)
+      .then(result1 => {
+        const jobs = result1.rows;
+        // console.log('++++++++++++++++++++', jobs);
+        return db.query(q2).then(result2 => {
+          const gigs = result2.rows;
+          // console.log('================', gigs);
+          // console.log({jobs, gigs});
+          return {jobs, gigs};
+        });
+      })
+      .catch(err => err);
+  };
+  // getJobsAndGigsByQuery('act');
 
-	const getJobsByCity = city => {
-		const query = {
-			text: `SELECT * FROM job_postings WHERE city=$1;`,
-			values: [city],
-		};
+  const getJobsByCity = city => {
+    const query = {
+      text: `SELECT * FROM job_postings WHERE city=$1;`,
+      values: [city],
+    };
 
-		return db
-			.query(query)
-			.then(result => {
-				return result.rows[0];
-				// const jobs = result.rows;
-				// console.log('++++++++++++++++++++', jobs);
-			})
-			.catch(err => err);
-	};
-	// getJobsByCity('Saskatoon');
+    return db
+      .query(query)
+      .then(result => {
+        return result.rows[0];
+        // const jobs = result.rows;
+        // console.log('++++++++++++++++++++', jobs);
+      })
+      .catch(err => err);
+  };
+  // getJobsByCity('Saskatoon');
 
-	const getJobsByType = type => {
-		const query = {
-			text: `SELECT * FROM job_postings WHERE job_type = $1;`,
-			values: [type],
-		};
+  const getJobsByType = type => {
+    const query = {
+      text: `SELECT * FROM job_postings WHERE job_type = $1;`,
+      values: [type],
+    };
+    return db
+      .query(query)
+      .then(result => {
+        return result.rows;
+        // const jobs = result.rows;
+        // console.log('================', jobs);
+      })
+      .catch(err => err);
+  };
+  // getJobsByType('Full-time');
+  //
 
-		return db
-			.query(query)
-			.then(result => {
-				result.rows[0];
-				// const jobs = result.rows;
-				// console.log('================', jobs);
-			})
-			.catch(err => err);
-	};
-	// getJobsByType('Full-time');
-	//
+// Job Applications //
+/* Retrieve all job application data, job posting data,
+    employer email, company_name, bio, photo_url,
+    junior_dev email, first_name, last_name, bio, photo_url,
+    github_url, linkedIn_url, resume_url, location
+*/
 
-  // Job Applications //
-  /* Retrieve all job application data, job posting data,
-     employer email, company_name, bio, photo_url,
-     junior_dev email, first_name, last_name, bio, photo_url,
-     github_url, linkedIn_url, resume_url, location
-  */
-
-  const getJobApplicationById = id => {
-		const query = {
-			text: `SELECT job_applications.*, job_postings.*, 
+    const getJobApplicationById = id => {
+    const query = {
+      text: `SELECT job_applications.*, job_postings.*, 
         employers.email as employer_email, company_name, employers.bio as employer_bio, employers.photo_url as employer_photo_url,
         junior_devs.email as dev_email, first_name, last_name, junior_devs.bio as dev_bio, junior_devs.photo_url as dev_photo_url
         FROM job_applications
@@ -420,41 +419,41 @@ module.exports = db => {
         JOIN employers ON job_postings.employer_id = employers.id
         JOIN junior_devs ON job_applications.junior_dev_id = junior_devs.id
         WHERE job_applications.id = $1`,
-			values: [id],
-		};
+      values: [id],
+    };
 
-		return db
-			.query(query)
-			.then(result => result.rows[0])
-			.catch(err => err);
-	};
+    return db
+      .query(query)
+      .then(result => result.rows[0])
+      .catch(err => err);
+  };
 
   const getApplicationByJobPostingId = id => {
     const query = {
-			text: `SELECT job_applications.*, job_postings.*
+      text: `SELECT job_applications.*, job_postings.*
         FROM job_applications
         JOIN job_postings ON job_applications.job_posting_id = job_postings.id
         JOIN employers ON job_postings.employer_id = employers.id
         JOIN junior_devs ON job_applications.junior_dev_id = junior_devs.id
         WHERE job_applications.job_posting_id = $1`,
-			values: [id],
-		};
+      values: [id],
+    };
 
-		return db
-			.query(query)
-			.then(result => result.rows[0])
-			.catch(err => err);
-	};
+    return db
+      .query(query)
+      .then(result => result.rows[0])
+      .catch(err => err);
+  };
 
   /* Retrieve all gig application data, gig posting data,
-     employer email, company_name, bio, photo_url,
-     junior_dev email, first_name, last_name, bio, photo_url,
-     github_url, linkedIn_url, resume_url, location
+      employer email, company_name, bio, photo_url,
+      junior_dev email, first_name, last_name, bio, photo_url,
+      github_url, linkedIn_url, resume_url, location
   */
 
   const getGigApplicationById = id => {
-		const query = {
-			text: `SELECT gig_applications.*, gig_postings.*, 
+    const query = {
+      text: `SELECT gig_applications.*, gig_postings.*, 
         employers.email as employer_email, company_name, employers.bio as employer_bio, employers.photo_url as employer_photo_url,
         junior_devs.email as dev_email, first_name, last_name, junior_devs.bio as dev_bio, junior_devs.photo_url as dev_photo_url
         FROM gig_applications
@@ -462,18 +461,18 @@ module.exports = db => {
         JOIN employers ON gig_postings.employer_id = employers.id
         JOIN junior_devs ON gig_applications.junior_dev_id = junior_devs.id
         WHERE gig_applications.id = $1`,
-			values: [id],
-		};
+      values: [id],
+    };
 
-		return db
-			.query(query)
-			.then(result => result.rows[0])
-			.catch(err => err);
-	};
+    return db
+      .query(query)
+      .then(result => result.rows[0])
+      .catch(err => err);
+  };
 
   const getApplicationByGigPostingId = id => {
     const query = {
-			text: `SELECT gig_applications.*, gig_postings.*, 
+      text: `SELECT gig_applications.*, gig_postings.*, 
         employers.email as employer_email, company_name, employers.bio as employer_bio, employers.photo_url as employer_photo_url,
         junior_devs.email as dev_email, first_name, last_name, junior_devs.bio as dev_bio, junior_devs.photo_url as dev_photo_url
         FROM gig_applications
@@ -481,39 +480,39 @@ module.exports = db => {
         JOIN employers ON gig_postings.employer_id = employers.id
         JOIN junior_devs ON gig_applications.junior_dev_id = junior_devs.id
         WHERE gig_applications.gig_posting_id = $1`,
-			values: [id],
-		};
+      values: [id],
+    };
 
-		return db
-			.query(query)
-			.then(result => result.rows[0])
-			.catch(err => err);
-	};
+    return db
+      .query(query)
+      .then(result => result.rows[0])
+      .catch(err => err);
+  };
 
-	return {
-		getDevs,
-		getDevByEmail,
-		getDevById,
-		addDev,
-		getProjectsByDevId,
-		getProjectById,
-		getEmployers,
-		getEmployerById,
-		getJobPostings,
-		getJobPostingsByEmployerId,
-		getJobById,
-		addJobPosting,
-		addProject,
-		getGigPostings,
-		getGigById,
-		getGigPostingsByEmployerId,
-		addGigPosting,
-		getJobsAndGigsByQuery,
-		getJobsByCity,
-		getJobsByType,
+  return {
+    getDevs,
+    getDevByEmail,
+    getDevById,
+    addDev,
+    getProjectsByDevId,
+    getProjectById,
+    getEmployers,
+    getEmployerById,
+    getJobPostings,
+    getJobPostingsByEmployerId,
+    getJobById,
+    addJobPosting,
+    addProject,
+    getGigPostings,
+    getGigById,
+    getGigPostingsByEmployerId,
+    addGigPosting,
+    getJobsAndGigsByQuery,
+    getJobsByCity,
+    getJobsByType,
     getJobApplicationById,
     getApplicationByJobPostingId,
     getGigApplicationById,
     getApplicationByGigPostingId,
-	};
+  };
 };

@@ -1,24 +1,50 @@
-import { useEffect } from 'react';
+import {useEffect} from 'react';
 import './styles/JobSearch.scss';
 import axios from 'axios';
 
 export default function JobSearch(props) {
-	useEffect(() => {
-		axios
-			.get('/api/search/city', {
-				params: {
-					city: 'Saskatoon',
-				},
-			})
-			.then(res => {
-				console.log(res.data);
-			})
-			.catch(err => console.log(err));
-	});
+  useEffect(() => {
+    axios
+      .get('/api/search/query', {
+        params: {
+          queryString: 'JavaScript',
+        },
+      })
+      .then(res => {
+        console.log(res.data);
+      })
+      .catch(err => console.log(err));
+  });
 
-	return (
-		<div className='jobsearch-content'>
-			<h1>Job Search Page</h1>
-		</div>
-	);
+  useEffect(() => {
+    axios
+      .get('/api/search/city', {
+        params: {
+          city: 'Toronto',
+        },
+      })
+      .then(res => {
+        console.log(res.data);
+      })
+      .catch(err => console.log(err));
+  });
+
+  useEffect(() => {
+    axios
+      .get('/api/search/type', {
+        params: {
+          type: 'Part-time',
+        },
+      })
+      .then(res => {
+        console.log(res.data);
+      })
+      .catch(err => console.log(err));
+  });
+
+  return (
+    <div className="jobsearch-content">
+      <h1>Job Search Page</h1>
+    </div>
+  );
 }

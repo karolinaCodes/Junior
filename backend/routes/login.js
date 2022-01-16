@@ -15,13 +15,10 @@ module.exports = ({getDevByEmail}) => {
       .then(dev => {
         // authenticate
         if (dev.password === submittedPassword) {
-          console.log('yes');
           res.json('Sucessful login!');
           // res.cookie('id', dev.id);
-          // console.log('Sucessful login!');
         } else {
           res.json('Unsuccessful login.');
-          // console.log('Unsuccessful login.');
         }
       })
       .catch(err =>

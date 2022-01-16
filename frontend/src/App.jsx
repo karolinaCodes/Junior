@@ -19,13 +19,22 @@ import ApplyModal from './components/ApplyModal';
 import './App.scss';
 
 function App() {
+	const [login, setLogin] = useState(false);
+
+	const handleLogin = () => {
+		login ? setLogin(false) : setLogin(true);
+	};
+
 	return (
 		<div className='App'>
-			<NavBar />
+			<NavBar handleLogin={handleLogin} />
 			{/* {!currentUser && <button onClick={login}>LOG IN</button>} */}
 			<Routes>
-				<Route exact path='/' element={<LandingPage />} />
-				<Route path='/login' element={<LoginForm />} />
+				<Route exact path='/' element={<LandingPage login={login} />} />
+				<Route
+					path='/login'
+					element={<LoginForm handleLogin={handleLogin} />}
+				/>
 				<Route path='/profile' element={<Profile />} />
 				<Route path='/jobs' element={<JobSearch />} />
 				<Route path='/newproject' element={<NewProject />} />

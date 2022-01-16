@@ -3,6 +3,7 @@ import { TextField, Button } from '@mui/material';
 import axios from 'axios';
 
 export default function Login(props) {
+	const { handleLogin } = props;
 	// // FOR EXAMPLE LOGIN FUNCTIONALITY
 	// const {currentUser, setCurrentUser} = useState();
 
@@ -38,6 +39,9 @@ export default function Login(props) {
 	return (
 		<div className='login-content'>
 			<form className='login' onSubmit={login}>
+				{/* <Button variant='contained' size='large' onClick={handleLogin}>
+					Cancel
+				</Button> */}
 				<h1>Login:</h1>
 				<TextField id='email' label='email' variant='outlined' />
 				<TextField

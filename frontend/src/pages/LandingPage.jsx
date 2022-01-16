@@ -6,11 +6,7 @@ import { useEffect, useState } from 'react';
 import LoginForm from '../components/LoginForm';
 
 export default function LandingPage(props) {
-	const [login, setLogin] = useState(false);
-
-	const handleLogin = () => {
-		login ? setLogin(false) : setLogin(true);
-	};
+	const { login } = props;
 
 	const searchView = () => {
 		return (

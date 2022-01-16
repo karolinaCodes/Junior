@@ -355,13 +355,13 @@ module.exports = db => {
     return db
       .query(q1)
       .then(result1 => {
-        result1.rows[0];
-        // const jobs = result1.rows;
+        const jobs = result1.rows;
         // console.log('++++++++++++++++++++', jobs);
-        db.query(q2).then(result2 => {
-          result2.rows[0];
-          // const gigs = result2.rows;
+        return db.query(q2).then(result2 => {
+          const gigs = result2.rows;
           // console.log('================', gigs);
+          // console.log({jobs, gigs});
+          return {jobs, gigs};
         });
       })
       .catch(err => err);
@@ -390,11 +390,10 @@ module.exports = db => {
       text: `SELECT * FROM job_postings WHERE job_type = $1;`,
       values: [type],
     };
-
     return db
       .query(query)
       .then(result => {
-        result.rows[0];
+        return result.rows;
         // const jobs = result.rows;
         // console.log('================', jobs);
       })

@@ -53,7 +53,7 @@
 - getDevById (for cookie)
 - getGigById (JOIN employers)
 
-## New Job Posting Page
+## New Job Posting Page DONE
 
 - addJob WHERE employer_id = :id (POST /new)
 

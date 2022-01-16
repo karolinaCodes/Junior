@@ -185,7 +185,7 @@ module.exports = db => {
 
     return db
       .query(query)
-      .then(result => result.rows[0])
+      .then(result => result.rows)
       .catch(err => err);
   };
 
@@ -269,7 +269,7 @@ module.exports = db => {
 
   const getGigPostingsByEmployerId = id => {
     const query = {
-      text: `SSELECT employers.id as employer_id, 
+      text: `SELECT employers.id as employer_id, 
         company_name, email, bio, employers.photo_url as employer_photo_url, 
         gig_postings.*
         FROM employers
@@ -280,7 +280,7 @@ module.exports = db => {
 
     return db
       .query(query)
-      .then(result => result.rows[0])
+      .then(result => result.rows)
       .catch(err => err);
   };
 
@@ -337,7 +337,7 @@ module.exports = db => {
       // values: [queryString],
     };
     const q2 = {
-      text: `SELECT * FROM gig_postings WHERE job_title LIKE '%${queryString}%' OR description LIKE '%${queryString}%;`,
+      text: `SELECT * FROM gig_postings WHERE job_title LIKE '%${queryString}%' OR description LIKE '%${queryString}%';`,
       // values: [queryString],
     };
 
@@ -417,7 +417,7 @@ module.exports = db => {
       .catch(err => err);
   };
 
-  const getApplicationByJobPostingId = id => {
+  const getApplicationsByJobPostingId = id => {
     const query = {
       text: `SELECT job_applications.*, job_postings.*
         FROM job_applications
@@ -426,6 +426,20 @@ module.exports = db => {
         JOIN junior_devs ON job_applications.junior_dev_id = junior_devs.id
         WHERE job_applications.job_posting_id = $1`,
       values: [id],
+    };
+
+    return db
+      .query(query)
+      .then(result => result.rows)
+      .catch(err => err);
+  };
+
+  const addJobApplication = (job_posting_id, junior_dev_id) => {
+    const query = {
+      text: `INSERT INTO job_applications (
+        job_posting_id, junior_dev_id
+        ) VALUES ($1, $2) RETURNING *`,
+      values: [job_posting_id, junior_dev_id],
     };
 
     return db
@@ -459,7 +473,7 @@ module.exports = db => {
       .catch(err => err);
   };
 
-  const getApplicationByGigPostingId = id => {
+  const getApplicationsByGigPostingId = id => {
     const query = {
       text: `SELECT gig_applications.*, gig_postings.*, 
         employers.email as employer_email, company_name, employers.bio as employer_bio, employers.photo_url as employer_photo_url,
@@ -470,6 +484,20 @@ module.exports = db => {
         JOIN junior_devs ON gig_applications.junior_dev_id = junior_devs.id
         WHERE gig_applications.gig_posting_id = $1`,
       values: [id],
+    };
+
+    return db
+      .query(query)
+      .then(result => result.rows)
+      .catch(err => err);
+  };
+
+  const addGigApplication = (gig_posting_id, junior_dev_id) => {
+    const query = {
+      text: `INSERT INTO gig_applications (
+        gig_posting_id, junior_dev_id
+        ) VALUES ($1, $2) RETURNING *`,
+      values: [gig_posting_id, junior_dev_id],
     };
 
     return db
@@ -500,8 +528,10 @@ module.exports = db => {
     getJobsByCity,
     getJobsByType,
     getJobApplicationById,
-    getApplicationByJobPostingId,
+    getApplicationsByJobPostingId,
+    addJobApplication,
     getGigApplicationById,
-    getApplicationByGigPostingId,
+    getApplicationsByGigPostingId,
+    addGigApplication,
   };
 };

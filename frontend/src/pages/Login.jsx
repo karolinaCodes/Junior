@@ -22,8 +22,6 @@ export default function Login(props) {
       password: document.getElementById('password').value,
     };
 
-    console.log(data);
-
     axios
       .post('/api/login', data)
       .then(res => {

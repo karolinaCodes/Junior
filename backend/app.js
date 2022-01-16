@@ -5,16 +5,17 @@ const logger = require('morgan');
 const db = require('./db');
 const dbHelpers = require('./helpers/dbHelpers')(db);
 const app = express();
+const bodyParser = require('body-parser');
 
 // MIDDLEWARE
 // use dotenv?
 app.use(logger('dev'));
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({extended: false}));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-const bodyParser = require('body-parser');
-app.use(bodyParser.urlencoded({ extended: true }));
+
+app.use(bodyParser.urlencoded({extended: true}));
 
 // Separated Routes for each Resource
 // Note: Feel free to replace the example routes below with your own
@@ -22,14 +23,12 @@ const devsRouter = require('./routes/devs');
 const employersRouter = require('./routes/employers');
 const projectsRouter = require('./routes/projects');
 const loginRouter = require('./routes/login');
-const authenticateRouter = require('./routes/authenticate');
 const jobPostingsRouter = require('./routes/job_postings');
 const gigPostingsRouter = require('./routes/gig_postings');
 const jobApplicationsRouter = require('./routes/job_applications');
 const gigApplicationsRouter = require('./routes/gig_applications');
 const searchRouter = require('./routes/search');
-
-// const jobApplicationsRouter = require('./routes/job_applications');
+// const authenticateRouter = require('./routes/authenticate');
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
@@ -37,12 +36,12 @@ app.use('/api/devs', devsRouter(dbHelpers));
 app.use('/api/employers', employersRouter(dbHelpers));
 app.use('/api/projects', projectsRouter(dbHelpers));
 app.use('/api/login', loginRouter(dbHelpers));
-app.use('/api/authenticate', authenticateRouter(dbHelpers));
 app.use('/api/job_postings', jobPostingsRouter(dbHelpers));
 app.use('/api/gig_postings', gigPostingsRouter(dbHelpers));
 app.use('/api/job_applications', jobApplicationsRouter(dbHelpers));
 app.use('/api/gig_applications', gigApplicationsRouter(dbHelpers));
 app.use('/api/search', searchRouter(dbHelpers));
+// app.use('/api/authenticate', authenticateRouter(dbHelpers));
 
 // app.use('/api/job_applications/:id', jobApplicationsRouter(dbHelpers)); // <- doesnt work
 
@@ -53,7 +52,7 @@ app.use('/api/search', searchRouter(dbHelpers));
 // Separate them into separate routes files (see above).
 
 app.get('/', (req, res) => {
-	res.render('index');
+  res.render('index');
 });
 
 // EXAMPLES

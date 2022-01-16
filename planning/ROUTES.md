@@ -4,7 +4,7 @@
 
 ## Authenticate
 
-- [ ] /api/authenticate
+- [x] /api/authenticate
 
 ## Devs
 
@@ -16,6 +16,8 @@
 
 - [x] /api/employers
 - [x] /api/employers/:id
+- [x] /api/employers/:id/job_postings
+- [x] /api/employers/:id/gig_postings
 
 ## Job_postings
 
@@ -27,19 +29,23 @@
 ## Job_applications
 
 - [x] /api/job_applications/:id
-- [ ] /api/job_applications/new - just added need the pull
+  - :id = job application id
+- [ ] /api/job_applications/new
+- NOTE: applications by posting ID are in /api/job_postings/:id/applications
 
 ## Gig_postings
 
 - [x] /api/gig_postings
 - [x] /api/gig_postings/:id
 - [x] /api/gig_postings/:id/applications
-- [x] /api/gig_postings/new
+- [ ] /api/gig_postings/new
 
 ## Gig_applications
 
 - [x] /api/gig_applications/:id
-- [ ] /api/gig_applications/new - just added need to pull
+  - :id = gig application id
+- [ ] /api/gig_applications/new
+- NOTE: applications by posting ID are in /api/gig_postings/:id/applications
 
 ## Projects
 

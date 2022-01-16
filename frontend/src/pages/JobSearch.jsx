@@ -28,77 +28,50 @@ export default function JobSearch(props) {
     );
   });
 
-  // useEffect(() => {
-  //   const results = axios
-  //     .get('/api/search/query', {
-  //       params: {
-  //         queryString: searchTerm,
-  //       },
-  //     })
-  //     .then(res => {
-  //       setSearchResults(prev => ({
-  //         ...prev,
-  //         jobs: res.data.jobs,
-  //         gigs: res.data.gigs,
-  //       }));
-  //       return;
-  //     })
-  //     .catch(err => console.log(err));
-  // }, [searchTerm]);
-
   useEffect(() => {
-    // 	const results = axios
-    // 		.get('/api/search/city', {
-    // 			params: {
-    // 				city: 'Toronto',
-    // 			},
-    // 		})
-    // 		.then(res => {
-    // 			console.log(res.data);
-    // 			return res.data;
-    // 		})
-    // 		.catch(err => console.log(err));
-    // 	axios
-    // 		.get('/api/search/type', {
-    // 			params: {
-    // 				type: 'Part-time',
-    // 			},
-    // 		})
-    // 		.then(res => {
-    // 			console.log(res.data);
-    // 		})
-    // 		.catch(err => console.log(err));
-    // axios
-    //   .get('/api/gig_postings')
-    //   .then(res => {
-    //     console.log(res.data);
-    //   })
-    //   .catch(err => console.log(err));
-    // axios
-    //   .get('/api/gig_postings/1')
-    //   .then(res => {
-    //     console.log(res.data);
-    //   })
-    //   .catch(err => console.log(err));
-    // axios
-    //   .get('/api/gig_postings/1/applications')
-    //   .then(res => {
-    //     console.log(res.data);
-    //   })
-    //   .catch(err => console.log(err));
-    // axios
-    //   .post('/api/gig_postings/new', {
-    //     employer_id: 1,
-    //     gig_name: 'Create my landing page',
-    //     description: 'I need a new landing page for my company.',
-    //     pay: 1000,
-    //     deadline: '2022-02-19',
-    //   })
-    //   .then(res => {
-    //     console.log(res.data);
-    //   })
-    //   .catch(err => console.log(err));
-  });
+    const results = axios
+      .get('/api/search/query', {
+        params: {
+          queryString: searchTerm,
+        },
+      })
+      .then(res => {
+        setSearchResults(prev => ({
+          ...prev,
+          jobs: res.data.jobs,
+          gigs: res.data.gigs,
+        }));
+        return;
+      })
+      .catch(err => console.log(err));
+  }, [searchTerm]);
+
+  // useEffect(() => {
+  // 	const results = axios
+  // 		.get('/api/search/city', {
+  // 			params: {
+  // 				city: 'Toronto',
+  // 			},
+  // 		})
+  // 		.then(res => {
+  // 			console.log(res.data);
+  // 			return res.data;
+  // 		})
+  // 		.catch(err => console.log(err));
+  // });
+
+  // useEffect(() => {
+  // 	axios
+  // 		.get('/api/search/type', {
+  // 			params: {
+  // 				type: 'Part-time',
+  // 			},
+  // 		})
+  // 		.then(res => {
+  // 			console.log(res.data);
+  // 		})
+  // 		.catch(err => console.log(err));
+  // });
 
   return (
     <div className="jobsearch-content">

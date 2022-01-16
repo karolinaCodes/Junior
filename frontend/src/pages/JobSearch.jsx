@@ -2,6 +2,9 @@ import { useEffect } from 'react';
 import './styles/JobSearch.scss';
 import axios from 'axios';
 
+import JobSearchCard from '../components/JobSearchCard';
+import SearchBar from '../components/SearchBar';
+
 export default function JobSearch(props) {
 	useEffect(() => {
 		axios
@@ -19,6 +22,8 @@ export default function JobSearch(props) {
 	return (
 		<div className='jobsearch-content'>
 			<h1>Job Search Page</h1>
+			<SearchBar />
+			<JobSearchCard />
 		</div>
 	);
 }

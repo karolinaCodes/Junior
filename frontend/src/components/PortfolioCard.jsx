@@ -2,28 +2,15 @@ import './styles/PortfolioCard.scss';
 import { Grid, Paper } from '@mui/material';
 
 export default function Profile(props) {
-	const { title, thumbnail, description } = props;
-
-	// Need to loop through each project from user
-	// and ad new card for each one.
+	const {title, description, thumbnail_photo_url, github_link, live_link} = props;
 
 	return (
-		<section className='cards'>
-			<Grid
-				container
-				direction='row'
-				justifyContent='space-around'
-				alignItems='center'
-				spacing={1}
-			>
-				<Grid item xs={10} md={3}>
-					<Paper>
-						<h1>Title</h1>
-						<img src='images/landing-page-image.png'></img>
-						<p>Description Testing How Long This Is.</p>
-					</Paper>
-				</Grid>
-			</Grid>
-		</section>
+		<Paper>
+			<h1>{title}</h1>
+			<img src={thumbnail_photo_url}></img>
+			<p>{description}</p>
+			<p><a href={github_link} target="_blank">Github</a></p>
+			<p><a href={live_link} target="_blank">Link</a></p>
+		</Paper>
 	);
 }

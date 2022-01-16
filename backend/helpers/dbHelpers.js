@@ -149,7 +149,7 @@ module.exports = db => {
     };
     return db
       .query(query)
-      .then(result => result.rows)
+      .then(result => result.rows[0])
       .catch(err => err);
   };
   //
@@ -426,7 +426,7 @@ module.exports = db => {
       .catch(err => err);
   };
 
-  const getApplicationByJobPostingId = id => {
+  const getApplicationsByJobPostingId = id => {
     const query = {
       text: `SELECT job_applications.*, job_postings.*
         FROM job_applications
@@ -439,7 +439,7 @@ module.exports = db => {
 
     return db
       .query(query)
-      .then(result => result.rows[0])
+      .then(result => result.rows)
       .catch(err => err);
   };
 
@@ -484,7 +484,7 @@ module.exports = db => {
       .catch(err => err);
   };
 
-  const getApplicationByGigPostingId = id => {
+  const getApplicationsByGigPostingId = id => {
     const query = {
       text: `SELECT gig_applications.*, gig_postings.*, 
         employers.email as employer_email, company_name, employers.bio as employer_bio, employers.photo_url as employer_photo_url,
@@ -499,7 +499,7 @@ module.exports = db => {
 
     return db
       .query(query)
-      .then(result => result.rows[0])
+      .then(result => result.rows)
       .catch(err => err);
   };
 
@@ -541,10 +541,10 @@ module.exports = db => {
     getJobsByCity,
     getJobsByType,
     getJobApplicationById,
-    getApplicationByJobPostingId,
+    getApplicationsByJobPostingId,
     addJobApplication,
     getGigApplicationById,
-    getApplicationByGigPostingId,
+    getApplicationsByGigPostingId,
     addGigApplication,
   };
 };

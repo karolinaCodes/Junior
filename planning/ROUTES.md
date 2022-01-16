@@ -16,6 +16,8 @@
 
 - [x] /api/employers
 - [x] /api/employers/:id
+- [ ] /api/employers/:id/job_postings
+- [ ] /api/employers/:id/gig_postings
 
 ## Job_postings TESTED
 
@@ -51,6 +53,7 @@
 
 - [x] /api/project/:id
 - [ ] /api/new
+  - written but not tested
 
 ## Search DONE
 

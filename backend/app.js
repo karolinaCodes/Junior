@@ -10,11 +10,11 @@ const app = express();
 // use dotenv?
 app.use(logger('dev'));
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({extended: false}));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 const bodyParser = require('body-parser');
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({extended: true}));
 
 // Separated Routes for each Resource
 // Note: Feel free to replace the example routes below with your own
@@ -53,7 +53,7 @@ app.use('/api/search', searchRouter(dbHelpers));
 // Separate them into separate routes files (see above).
 
 app.get('/', (req, res) => {
-	res.render('index');
+  res.render('index');
 });
 
 // EXAMPLES

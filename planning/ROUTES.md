@@ -16,6 +16,8 @@
 
 - [x] /api/employers
 - [x] /api/employers/:id
+- [x] /api/employers/:id/job_postings
+- [x] /api/employers/:id/gig_postings
 
 ## Job_postings
 
@@ -26,20 +28,24 @@
 
 ## Job_applications
 
-- [ ] /api/job_applications/:id
+- [x] /api/job_applications/:id
+  - :id = job application id
 - [ ] /api/job_applications/new
+- NOTE: applications by posting ID are in /api/job_postings/:id/applications
 
 ## Gig_postings
 
-- [ ] /api/gig_postings
-- [ ] /api/gig_postings/:id
-- [ ] /api/gig_postings/:id/applications
+- [x] /api/gig_postings
+- [x] /api/gig_postings/:id
+- [x] /api/gig_postings/:id/applications
 - [ ] /api/gig_postings/new
 
 ## Gig_applications
 
-- [ ] /api/gig_applications/:id
+- [x] /api/gig_applications/:id
+  - :id = gig application id
 - [ ] /api/gig_applications/new
+- NOTE: applications by posting ID are in /api/gig_postings/:id/applications
 
 ## Projects
 

@@ -157,7 +157,9 @@ module.exports = db => {
 
   const getJobPostings = () => {
     const query = {
-      text: `SELECT employers.id as employer_id, employers.email as email, job_postings.*
+      text: `SELECT employers.id as employer_id, 
+      company_name, email, bio, photo_url, 
+      job_postings.*
       FROM employers
       JOIN job_postings ON employers.id = job_postings.employer_id`,
     };
@@ -170,7 +172,9 @@ module.exports = db => {
 
   const getJobPostingsByEmployerId = id => {
     const query = {
-      text: `SELECT employers.id as employer_id, employers.email as email, job_postings.*
+      text: `SELECT employers.id as employer_id, 
+        company_name, email, bio, employers.photo_url as employer_photo_url, 
+        job_postings.*
         FROM employers
         JOIN job_postings ON employers.id = job_postings.employer_id
         WHERE employers.id = $1`,
@@ -185,7 +189,9 @@ module.exports = db => {
 
   const getJobById = id => {
     const query = {
-      text: `SELECT employers.id as employer_id, employers.email as email, job_postings.*
+      text: `SELECT employers.id as employer_id, 
+        company_name, email, bio, employers.photo_url as employer_photo_url, 
+        job_postings.*
         FROM employers
         JOIN job_postings ON employers.id = job_postings.employer_id
         WHERE job_postings.id = $1`,
@@ -249,7 +255,9 @@ module.exports = db => {
 
   const getGigPostings = () => {
     const query = {
-      text: `SELECT employers.id as employer_id, employers.email as email, gig_postings.*
+      text: `SELECT employers.id as employer_id, 
+        company_name, email, bio, employers.photo_url as employer_photo_url, 
+        gig_postings.*
         FROM employers
         JOIN gig_postings ON employers.id = gig_postings.employer_id`,
     };
@@ -262,7 +270,9 @@ module.exports = db => {
 
   const getGigPostingsByEmployerId = id => {
     const query = {
-      text: `SELECT employers.id as employer_id, employers.email as email, gig_postings.*
+      text: `SSELECT employers.id as employer_id, 
+        company_name, email, bio, employers.photo_url as employer_photo_url, 
+        gig_postings.*
         FROM employers
         JOIN gig_postings ON employers.id = gig_postings.employer_id
         WHERE employers.id = $1`,
@@ -277,7 +287,9 @@ module.exports = db => {
 
   const getGigById = id => {
     const query = {
-      text: `SELECT employers.id as employer_id, employers.email as email, gig_postings.*
+      text: `SELECT employers.id as employer_id, 
+        company_name, email, bio, employers.photo_url as employer_photo_url, 
+        gig_postings.*
         FROM employers
         JOIN gig_postings ON employers.id = gig_postings.employer_id
         WHERE gig_postings.id = $1`,
@@ -301,16 +313,16 @@ module.exports = db => {
   ) => {
     const query = {
       text: `INSERT INTO gig_postings (
-          employer_id,
-          gig_name,
-          description,
-          pay,
-          date_posted,
-          deadline,
-          photo_url
-          ) VALUES (
-            $1, $2, $3, $4, $5, $6, $7
-          ) RETURNING *`,
+        employer_id,
+        gig_name,
+        description,
+        pay,
+        date_posted,
+        deadline,
+        photo_url
+        ) VALUES (
+          $1, $2, $3, $4, $5, $6, $7
+        ) RETURNING *`,
       values: [
         employer_id,
         gig_name,

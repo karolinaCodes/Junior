@@ -2,16 +2,16 @@ const express = require('express');
 const router = express.Router();
 
 module.exports = ({getGigPostings, addGigPosting}) => {
-  /* GET list of gigs - fix */
-  // router.get('/', (req, res) => {
-  //   getGigPostings()
-  //     .then(job => res.json(job))
-  //     .catch(err =>
-  //       res.json({
-  //         error: err.message,
-  //       })
-  //     );
-  // });
+  /* GET list of gigs */
+  router.get('/', (req, res) => {
+    getGigPostings()
+      .then(job => res.json(job))
+      .catch(err =>
+        res.json({
+          error: err.message,
+        })
+      );
+  });
 
   /* POST a new gig posting */
   router.post('/new', (req, res) => {

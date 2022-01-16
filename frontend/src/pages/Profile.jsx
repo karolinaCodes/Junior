@@ -8,15 +8,31 @@ export default function Profile(props) {
   const {name, email, github, linkedin, bio} = props;
 
   useEffect(() => {
+    // DEV BY IS
     axios
       .get('/api/devs/2')
       .then(res => {
         console.log(res.data);
       })
       .catch(err => console.log(err));
-  });
 
-  useEffect(() => {
+    // EMPLOYER BY ID
+    axios
+      .get('/api/employers/1')
+      .then(res => {
+        console.log(res.data);
+      })
+      .catch(err => console.log(err));
+
+    /// ----> tomorrow morning
+    // JOB APPLICATIONS BY ID
+    axios
+      .get('/api/employers/1')
+      .then(res => {
+        console.log(res.data);
+      })
+      .catch(err => console.log(err));
+    // CREATE NEW JOB APPLICATION
     axios
       .get('/api/employers/1')
       .then(res => {

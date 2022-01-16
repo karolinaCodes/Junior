@@ -39,9 +39,6 @@ export default function Login(props) {
 	return (
 		<div className='login-content'>
 			<form className='login' onSubmit={login}>
-				<Button variant='contained' size='large' onClick={handleLoginView}>
-					Cancel
-				</Button>
 				<h1>Login:</h1>
 				<TextField id='email' label='email' variant='outlined' />
 				<TextField
@@ -50,9 +47,19 @@ export default function Login(props) {
 					label='password'
 					variant='outlined'
 				/>
-				<Button variant='contained' size='large' type='submit'>
-					LOG IN
-				</Button>
+				<div>
+					<Button variant='contained' size='large' type='submit'>
+						LOG IN
+					</Button>
+					<Button
+						id='cancelLogin'
+						variant='contained'
+						size='large'
+						onClick={handleLoginView}
+					>
+						Cancel
+					</Button>
+				</div>
 			</form>
 		</div>
 	);

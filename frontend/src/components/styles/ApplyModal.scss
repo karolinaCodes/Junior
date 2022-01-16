@@ -1,0 +1,18 @@
+@import 'variables';
+
+.apply-modal {
+	button {
+		color: $white;
+		background-color: $blue;
+	}
+}
+
+.MuiBox-root {
+	h1 {
+		color: $yellow;
+	}
+
+	h1:hover {
+		color: $white;
+	}
+}

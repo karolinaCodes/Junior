@@ -4,7 +4,7 @@
 
 ## Authenticate
 
-- [ ] /api/authenticate
+- [x] /api/authenticate
 
 ## Devs
 

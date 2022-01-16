@@ -1,4 +1,4 @@
-## Login DONE
+## Login TESTED
 
 - /api/login
 
@@ -6,17 +6,17 @@
 
 - /api/authenticate
 
-## Devs
+## Devs TESTED
 
 - /api/devs
 - /api/devs/:id
 
-## Employers
+## Employers TESTED
 
 - /api/employers
 - /api/employers/:id
 
-## Job_postings
+## Job_postings TESTED
 
 - /api/job_postings
 - /api/job_postings/:id

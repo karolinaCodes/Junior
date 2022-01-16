@@ -92,7 +92,7 @@ module.exports = db => {
 
     return db
       .query(query)
-      .then(result => result.rows)
+      .then(result => result.rows[0])
       .catch(err => err);
   };
 
@@ -212,9 +212,8 @@ module.exports = db => {
     city,
     salary_min,
     salary_max,
-    type,
+    job_type,
     is_remote,
-    date_posted,
     is_open
   ) => {
     const query = {
@@ -225,12 +224,11 @@ module.exports = db => {
         city,
         salary_min,
         salary_max,
-        type,
+        job_type,
         is_remote,
-        date_posted,
         is_open
         ) VALUES (
-          $1, $2, $3, $4, $5, $6, $7, $8, $9, $10
+          $1, $2, $3, $4, $5, $6, $7, $8, $9
         ) RETURNING *`,
       values: [
         employer_id,
@@ -239,9 +237,8 @@ module.exports = db => {
         city,
         salary_min,
         salary_max,
-        type,
+        job_type,
         is_remote,
-        date_posted,
         is_open,
       ],
     };
@@ -403,14 +400,14 @@ module.exports = db => {
   // getJobsByType('Full-time');
   //
 
-// Job Applications //
-/* Retrieve all job application data, job posting data,
+  // Job Applications //
+  /* Retrieve all job application data, job posting data,
     employer email, company_name, bio, photo_url,
     junior_dev email, first_name, last_name, bio, photo_url,
     github_url, linkedIn_url, resume_url, location
 */
 
-    const getJobApplicationById = id => {
+  const getJobApplicationById = id => {
     const query = {
       text: `SELECT job_applications.*, job_postings.*, 
         employers.email as employer_email, company_name, employers.bio as employer_bio, employers.photo_url as employer_photo_url,

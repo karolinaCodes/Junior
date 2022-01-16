@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-module.exports = ({getJobPostings, getJobById, addJobPosting}) => {
+module.exports = ({getJobPostings, getJobById, getApplicationByJobPostingId, addJobPosting}) => {
   /* GET list of jobs */
   router.get('/', (req, res) => {
     getJobPostings()
@@ -17,6 +17,16 @@ module.exports = ({getJobPostings, getJobById, addJobPosting}) => {
   router.get('/:id', (req, res) => {
     getJobById(req.params.id)
       .then(job => res.json(job))
+      .catch(err =>
+        res.json({
+          error: err.message,
+        })
+      );
+    });
+    
+  router.get('/:id/applications', (req, res) => {
+    getApplicationByJobPostingId(req.params.id)
+      .then(application => res.json(application))
       .catch(err =>
         res.json({
           error: err.message,

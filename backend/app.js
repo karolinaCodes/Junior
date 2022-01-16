@@ -25,6 +25,8 @@ const loginRouter = require('./routes/login');
 const authenticateRouter = require('./routes/authenticate');
 const jobPostingsRouter = require('./routes/job_postings');
 const gigPostingsRouter = require('./routes/gig_postings');
+const jobApplicationsRouter = require('./routes/job_applications');
+const gigApplicationsRouter = require('./routes/gig_applications');
 const searchRouter = require('./routes/search');
 
 // const jobApplicationsRouter = require('./routes/job_applications');
@@ -39,6 +41,8 @@ app.use('/api/login', loginRouter(dbHelpers));
 app.use('/api/authenticate', authenticateRouter(dbHelpers));
 app.use('/api/job_postings', jobPostingsRouter(dbHelpers));
 app.use('/api/gig_postings', gigPostingsRouter(dbHelpers));
+app.use('/api/job_applications', jobApplicationsRouter(dbHelpers));
+app.use('/api/gig_applications', gigApplicationsRouter(dbHelpers));
 app.use('/api/search', searchRouter(dbHelpers));
 
 // app.use('/api/job_applications/:id', jobApplicationsRouter(dbHelpers)); // <- doesnt work

@@ -2,10 +2,10 @@ const express = require('express');
 const router = express.Router();
 
 /* Get all job applications */
-module.exports = ({getJobApplicationById}) => {
+module.exports = ({getGigApplicationById}) => {
   router.get('/:id', (req, res) => {
-    getJobApplicationById(req.params.id)
-      .then(application => res.json(application))
+    getGigApplicationById(req.params.id)
+      .then(job => res.json(job))
       .catch(err =>
         res.json({
           error: err.message,

@@ -1,4 +1,4 @@
-## Login TESTED
+## Login
 
 - [x] /api/login
 
@@ -6,20 +6,20 @@
 
 - [ ] /api/authenticate
 
-## Devs TESTED
+## Devs
 
 - [x] /api/devs
 - [x] /api/devs/:id
 - [x] /api/devs/:id/projects
 
-## Employers TESTED
+## Employers
 
 - [x] /api/employers
 - [x] /api/employers/:id
 - [ ] /api/employers/:id/job_postings
 - [ ] /api/employers/:id/gig_postings
 
-## Job_postings TESTED
+## Job_postings
 
 - [x] /api/job_postings
 - [x] /api/job_postings/:id

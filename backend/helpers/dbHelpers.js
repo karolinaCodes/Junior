@@ -342,11 +342,11 @@ module.exports = db => {
   // Jobs and Gigs Search //
   const getJobsAndGigsByQuery = queryString => {
     const q1 = {
-      text: `SELECT * FROM job_postings WHERE job_title LIKE '%${queryString}%';`,
+      text: `SELECT * FROM job_postings WHERE job_title LIKE '%${queryString}%' OR description LIKE '%${queryString}%';`,
       // values: [queryString],
     };
     const q2 = {
-      text: `SELECT * FROM gig_postings WHERE job_title LIKE '%${queryString}%';`,
+      text: `SELECT * FROM gig_postings WHERE job_title LIKE '%${queryString}%' OR description LIKE '%${queryString}%;`,
       // values: [queryString],
     };
 

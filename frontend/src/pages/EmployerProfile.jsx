@@ -64,7 +64,7 @@ export default function Profile(props) {
       <section className="profile-bio">
         <img id="profile-pic" src={photo_url} alt="Avatar"></img>
         <section>
-          <h1>Name: {company_name}</h1>
+          <h1>Company Name: {company_name}</h1>
           <h1>Bio: {bio ? bio : 'N/A'}</h1>
         </section>
         <section>

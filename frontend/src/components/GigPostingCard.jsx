@@ -1,25 +1,21 @@
 import './styles/PortfolioCard.scss';
-import { Grid, Paper } from '@mui/material';
+import { Paper } from '@mui/material';
 
 export default function Profile(props) {
-	const { title, description, thumbnail_photo_url, github_link, live_link } =
+	const { job_title, description, pay, date_posted, deadline, photo_url } =
 		props;
-
+	const datePostedFormatted = new Date(date_posted).toLocaleDateString();
+	const deadlineFormatted = new Date(deadline).toLocaleDateString();
 	return (
 		<Paper>
-			<h1>{title}</h1>
-			<img src={thumbnail_photo_url}></img>
+			<h1>{job_title}</h1>
+			
+			<h3>${pay / 100.00}</h3>
+			<img src={photo_url}></img>
+			<h3>Date Posted: {datePostedFormatted}</h3>
+			<h3>Deadline: {deadlineFormatted}</h3>
 			<p>{description}</p>
-			<p>
-				<a href={github_link} target='_blank'>
-					Github
-				</a>
-			</p>
-			<p>
-				<a href={live_link} target='_blank'>
-					Link
-				</a>
-			</p>
+
 		</Paper>
 	);
 }

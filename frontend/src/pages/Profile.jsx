@@ -34,19 +34,20 @@ export default function Profile(props) {
   const projectsArray = profile.projects;
 	const parsedProjects = projectsArray.map(project => {
 		return (
-			<PortfolioCard key={project.id}
-				{...project}
-			/>
+      <Grid item xs={10} md={4}>
+        <PortfolioCard key={project.id}
+          {...project}
+        />
+      </Grid>
 		)
 	});
 
   return (
     <div className="profile-content">
       <section className="profile-bio">
-        <img id="profile-pic" src={photo_url}></img>
+        <img id="profile-pic" src={photo_url} alt="Avatar"></img>
         <section>
           <h1>Name: {`${first_name} ${last_name}`}</h1>
-          {/* <h1>Bio: {bio}</h1> */}
           <h1>Bio: {bio ? bio : 'N/A'}</h1>
         </section>
         <section>
@@ -56,16 +57,10 @@ export default function Profile(props) {
         </section>
       </section>
       <section className='cards'>
-        <Grid
-          container
-          direction='row'
-          justifyContent='space-around'
-          spacing={1}
-          item xs={10} md={3}
+        <Grid container
+          spacing={3}
         >
-          <Grid item>
-            {parsedProjects}
-          </Grid>
+          {parsedProjects}
         </Grid>
 		  </section>
     </div>

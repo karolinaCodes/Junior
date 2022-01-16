@@ -183,6 +183,21 @@ module.exports = db => {
       .catch(err => err);
   };
 
+  const getJobById = id => {
+    const query = {
+      text: `SELECT employers.id as employer_id, employers.email as email, job_postings.*
+        FROM employers
+        JOIN job_postings ON employers.id = job_postings.employer_id
+        WHERE job_postings.id = $1`,
+      values: [id],
+    };
+
+    return db
+      .query(query)
+      .then(result => result.rows[0])
+      .catch(err => err);
+  };
+
   const addJobPosting = (
     employer_id,
     job_title,
@@ -251,6 +266,21 @@ module.exports = db => {
         FROM employers
         JOIN gig_postings ON employers.id = gig_postings.employer_id
         WHERE employers.id = $1`,
+      values: [id],
+    };
+
+    return db
+      .query(query)
+      .then(result => result.rows[0])
+      .catch(err => err);
+  };
+
+  const getGigById = id => {
+    const query = {
+      text: `SELECT employers.id as employer_id, employers.email as email, gig_postings.*
+        FROM employers
+        JOIN gig_postings ON employers.id = gig_postings.employer_id
+        WHERE gig_postings.id = $1`,
       values: [id],
     };
 
@@ -368,9 +398,11 @@ module.exports = db => {
     getEmployerById,
     getJobPostings,
     getJobPostingsByEmployerId,
+    getJobById,
     addJobPosting,
     addProject,
     getGigPostings,
+    getGigById,
     getGigPostingsByEmployerId,
     addGigPosting,
     getJobsAndGigsByQuery,

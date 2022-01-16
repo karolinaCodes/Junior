@@ -12,6 +12,7 @@ import NewJob from './pages/NewJob.jsx';
 import NewProject from './pages/NewProject.jsx';
 import Profile from './pages/Profile.jsx';
 import NavBar from './pages/NavBar.jsx';
+import PortfolioModal from './components/PortfolioModal';
 
 //import css
 import './App.scss';
@@ -30,6 +31,7 @@ function App() {
 				<Route path='/newgig' element={<NewGig />} />
 				<Route path='/newjob' element={<NewJob />} />
 				<Route path='/apply' element={<Apply />} />
+				<Route path='/portfoliomodal' element={<PortfolioModal />} />
 			</Routes>
 		</div>
 	);

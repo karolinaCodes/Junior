@@ -7,6 +7,12 @@ import { TextField, Button } from '@mui/material';
 export default function SearchBar(props) {
 	const { state, onSubmit, onChange } = props;
 
+	const keyCheck = e => {
+		if (e.keyCode === 13) {
+			onSubmit();
+		}
+	};
+
 	return (
 		<form className='search' onSubmit={e => e.preventDefault()}>
 			<TextField
@@ -15,6 +21,7 @@ export default function SearchBar(props) {
 				variant='outlined'
 				onChange={onChange}
 				value={state}
+				onKeyDown={e => keyCheck(e)}
 			/>
 			<Button variant='contained' size='large' onClick={onSubmit}>
 				SEARCH

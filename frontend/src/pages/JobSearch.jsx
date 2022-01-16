@@ -8,7 +8,10 @@ import SearchBar from '../components/SearchBar';
 export default function JobSearch(props) {
 	const [query, setQuery] = useState('');
 	const [searchTerm, setSearchTerm] = useState('');
-	const [searchResults, setSearchResults] = useState({});
+	const [searchResults, setSearchResults] = useState({
+		jobs: [],
+		gigs: [],
+	});
 
 	const jobs = searchResults.jobs.map(item => {
 		return (

@@ -136,8 +136,9 @@ module.exports = db => {
     github_link,
     live_link
   ) => {
+    console.log('here');
     const query = {
-      text: `INSERT INTO projects (junior_dev_id, title, description, thumbnail_photo_url, github_link, live_link) VALUES ($1, $2, $3, $4, $5, $6,) RETURNING *`,
+      text: `INSERT INTO projects (junior_dev_id, title, description, thumbnail_photo_url, github_link, live_link) VALUES ($1, $2, $3, $4, $5, $6) RETURNING *`,
       values: [
         junior_dev_id,
         title,
@@ -300,36 +301,26 @@ module.exports = db => {
       .catch(err => err);
   };
 
-  const addGigPosting = (
-    employer_id,
-    gig_name,
-    description,
-    pay,
-    date_posted,
-    deadline,
-    photo_url
-  ) => {
+  const addGigPosting = (employer_id, gig_name, description, pay, deadline) => {
+    console.log(
+      'addGigPosting',
+      employer_id,
+      gig_name,
+      description,
+      pay,
+      deadline
+    );
     const query = {
       text: `INSERT INTO gig_postings (
         employer_id,
-        gig_name,
+        job_title,
         description,
         pay,
-        date_posted,
-        deadline,
-        photo_url
+        deadline
         ) VALUES (
-          $1, $2, $3, $4, $5, $6, $7
+          $1, $2, $3, $4, $5
         ) RETURNING *`,
-      values: [
-        employer_id,
-        gig_name,
-        description,
-        pay,
-        date_posted,
-        deadline,
-        photo_url,
-      ],
+      values: [employer_id, gig_name, description, pay, deadline],
     };
 
     return db

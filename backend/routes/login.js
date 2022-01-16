@@ -5,9 +5,7 @@ module.exports = ({getDevByEmail}) => {
   // get email and password from form
   // retrieve dev by email -with email and pw
   // authenticate if the password matches the pw then log them in
-
   router.post('/', (req, res) => {
-    console.log(req.body);
     const {email: submittedEmail} = req.body;
     const {password: submittedPassword} = req.body;
 
@@ -15,10 +13,9 @@ module.exports = ({getDevByEmail}) => {
       .then(dev => {
         // authenticate
         if (dev.password === submittedPassword) {
-          res.json('Sucessful login!');
-          // res.cookie('id', dev.id);
+          res.json(dev);
         } else {
-          res.json('Unsuccessful login.');
+          res.json(false);
         }
       })
       .catch(err =>

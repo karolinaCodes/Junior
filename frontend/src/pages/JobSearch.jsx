@@ -58,9 +58,6 @@ export default function JobSearch(props) {
   // 			return res.data;
   // 		})
   // 		.catch(err => console.log(err));
-  // });
-
-  // useEffect(() => {
   // 	axios
   // 		.get('/api/search/type', {
   // 			params: {
@@ -71,6 +68,7 @@ export default function JobSearch(props) {
   // 			console.log(res.data);
   // 		})
   // 		.catch(err => console.log(err));
+
   // });
 
   return (

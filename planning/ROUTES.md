@@ -10,6 +10,7 @@
 
 - /api/devs
 - /api/devs/:id
+- /api/devs/:id/projects
 
 ## Employers TESTED
 
@@ -42,7 +43,6 @@
 
 ## Projects
 
-- /api/projects/:devId
 - /api/project/:id
 - /api/new
 

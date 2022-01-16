@@ -1,22 +1,9 @@
 const express = require('express');
 const router = express.Router();
 
-module.exports = ({getProjectsByDevId, getProjectById}) => {
-  // get all projects for single dev, with dev info
-  router.get('/:devId', (req, res) => {
-    getProjectsByDevId(req.params.devId)
-      .then(projects => {
-        res.json(projects);
-      })
-      .catch(err =>
-        res.json({
-          error: err.message,
-        })
-      );
-  });
-
+module.exports = ({getProjectById}) => {
   // GET single project by project id
-  router.get('/project/:id', (req, res) => {
+  router.get('/:id', (req, res) => {
     getProjectById(req.params.id)
       .then(project => {
         res.json(project);

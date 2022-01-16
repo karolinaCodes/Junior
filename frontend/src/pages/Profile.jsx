@@ -18,7 +18,7 @@ export default function Profile(props) {
 
   useEffect(() => {
     const devUrl = '/api/devs/' + id;
-    const projectsByDevUrl = '/api/projects/' + id;
+    const projectsByDevUrl = '/api/devs/' + id + '/projects';
     Promise.all([
       axios.get(devUrl),
       axios.get(projectsByDevUrl),

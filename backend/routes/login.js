@@ -15,7 +15,7 @@ module.exports = ({getDevByEmail}) => {
         if (dev.password === submittedPassword) {
           res.json(dev);
         } else {
-          res.json('Unsuccessful login.');
+          res.json(false);
         }
       })
       .catch(err =>

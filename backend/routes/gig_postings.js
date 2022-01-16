@@ -42,10 +42,10 @@ module.exports = ({
 
   /* POST a new gig posting */
   router.post('/new', (req, res) => {
-    const {employer_id, gig_name, description, pay, deadline, photo_url} =
+    const {employer_id, job_title, description, pay, deadline, photo_url} =
       req.body;
 
-    addGigPosting(employer_id, gig_name, description, pay, deadline, photo_url)
+    addGigPosting(employer_id, job_title, description, pay, deadline, photo_url)
       .then(addedGig => {
         res.json(addedGig);
       })

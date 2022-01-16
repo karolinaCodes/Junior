@@ -443,6 +443,22 @@ module.exports = db => {
       .catch(err => err);
   };
 
+  const addJobApplication = (job_posting_id, junior_dev_id) => {
+    const query = {
+      text: `INSERT INTO job_applications (
+        job_posting_id, junior_dev_id
+        ) VALUES ($1, $2) RETURNING *`,
+      values: [
+        job_posting_id, junior_dev_id
+      ],
+    };
+
+    return db
+      .query(query)
+      .then(result => result.rows[0])
+      .catch(err => err);
+  };
+
   /* Retrieve all gig application data, gig posting data,
       employer email, company_name, bio, photo_url,
       junior_dev email, first_name, last_name, bio, photo_url,
@@ -487,6 +503,22 @@ module.exports = db => {
       .catch(err => err);
   };
 
+  const addGigApplication = (gig_posting_id, junior_dev_id) => {
+    const query = {
+      text: `INSERT INTO gig_applications (
+        gig_posting_id, junior_dev_id
+        ) VALUES ($1, $2) RETURNING *`,
+      values: [
+        gig_posting_id, junior_dev_id
+      ],
+    };
+
+    return db
+      .query(query)
+      .then(result => result.rows[0])
+      .catch(err => err);
+  };
+
   return {
     getDevs,
     getDevByEmail,
@@ -510,7 +542,9 @@ module.exports = db => {
     getJobsByType,
     getJobApplicationById,
     getApplicationByJobPostingId,
+    addJobApplication,
     getGigApplicationById,
     getApplicationByGigPostingId,
+    addGigApplication,
   };
 };

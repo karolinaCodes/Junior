@@ -38,6 +38,7 @@ export default function ApplyModal() {
 		github_url,
 		linkedIn_url,
 		bio,
+		resume_link,
 	} = profile.dev;
 
 	useEffect(() => {
@@ -72,6 +73,7 @@ export default function ApplyModal() {
 							<h1>Email: {email}</h1>
 							<h1>GitHub: {github_url ? github_url : 'N/A'}</h1>
 							<h1>LinkedIn: {linkedIn_url ? linkedIn_url : 'N/A'}</h1>
+							<h1>Resume: {resume_link ? resume_link : 'N/A'}</h1>
 						</section>
 					</section>
 					{/* <Typography id='modal-modal-title' variant='h6' component='h2'>

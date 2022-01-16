@@ -44,7 +44,7 @@
 
 - [x] /api/gig_applications/:id
   - :id = gig application id
-- [ ] /api/gig_applications/new
+- [x] /api/gig_applications/new
 - NOTE: applications by posting ID are in /api/gig_postings/:id/applications
 
 ## Projects

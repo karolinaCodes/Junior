@@ -13,6 +13,8 @@ app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+const bodyParser = require('body-parser');
+app.use(bodyParser.urlencoded({extended: true}));
 
 // Separated Routes for each Resource
 // Note: Feel free to replace the example routes below with your own
@@ -22,6 +24,8 @@ const projectsRouter = require('./routes/projects');
 const loginRouter = require('./routes/login');
 const authenticateRouter = require('./routes/authenticate');
 const gigPostingsRouter = require('./routes/gig_postings');
+const jobGigSearchRouter = require('./routes/job_gig_search');
+
 // const jobApplicationsRouter = require('./routes/job_applications');
 // const jobsRouter = require('./routes/job_postings');
 
@@ -33,6 +37,7 @@ app.use('/api/projects', projectsRouter(dbHelpers));
 app.use('/api/login', loginRouter(dbHelpers));
 app.use('/api/authenticate', authenticateRouter(dbHelpers));
 app.use('/api/gig_postings', gigPostingsRouter(dbHelpers));
+app.use('/api/job_gig_search', jobGigSearchRouter(dbHelpers));
 
 // app.use('/api/job_applications/:id', jobApplicationsRouter(dbHelpers)); // <- doesnt work
 // app.use('/api/job_postings', jobsRouter(dbHelpers)); //<- doesnt work

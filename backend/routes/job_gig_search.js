@@ -15,7 +15,8 @@ module.exports = ({getJobsAndGigsByQuery, getJobsByCity, getJobsByType}) => {
 
   /* GET list of job and gigs by city */
   router.get('/city', (req, res) => {
-    getJobsByCity(req.body.city)
+    // console.log(req.query.city);
+    getJobsByCity(req.query.city)
       .then(job => res.json(job))
       .catch(err =>
         res.json({

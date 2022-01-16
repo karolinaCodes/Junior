@@ -6,7 +6,7 @@ import { useEffect, useState } from 'react';
 import LoginForm from '../components/LoginForm';
 
 export default function LandingPage(props) {
-	const { login, handleLoginView } = props;
+	const { loginView, handleLoginView, user, setUser } = props;
 
 	const searchView = () => {
 		return (
@@ -71,8 +71,14 @@ export default function LandingPage(props) {
 				></img>
 			</div>
 			<div className='landing-content'>
-				{login && <LoginForm handleLoginView={handleLoginView} />}
-				{!login && searchView()}
+				{loginView && (
+					<LoginForm
+						handleLoginView={handleLoginView}
+						user={user}
+						setUser={setUser}
+					/>
+				)}
+				{!loginView && searchView()}
 			</div>
 			<div className='footer'>
 				<section>TinyApp</section>

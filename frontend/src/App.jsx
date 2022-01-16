@@ -19,10 +19,24 @@ import ApplyModal from './components/ApplyModal';
 import './App.scss';
 
 function App() {
-	const [login, setLogin] = useState(false);
+	const [loginView, setLoginView] = useState(false);
+	const [currentUser, setCurrentUser] = useState({
+		id: null,
+		first_name: String,
+		last_name: String,
+		email: String,
+		password: String,
+		bio: String,
+		photo_url: String,
+		github_url: String,
+		linkedIn_url: String,
+		resume_url: String,
+		location: String,
+		company_name: String,
+	});
 
 	const handleLoginView = () => {
-		login ? setLogin(false) : setLogin(true);
+		loginView ? setLoginView(false) : setLoginView(true);
 	};
 
 	return (
@@ -33,7 +47,12 @@ function App() {
 					exact
 					path='/'
 					element={
-						<LandingPage login={login} handleLoginView={handleLoginView} />
+						<LandingPage
+							loginView={loginView}
+							handleLoginView={handleLoginView}
+							setCurrentUser={setCurrentUser}
+							currentUser={currentUser}
+						/>
 					}
 				/>
 				<Route path='/profile' element={<Profile />} />

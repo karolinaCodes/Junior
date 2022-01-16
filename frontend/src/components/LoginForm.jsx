@@ -1,18 +1,27 @@
 import './styles/LoginForm.scss';
 import { TextField, Button } from '@mui/material';
 import axios from 'axios';
+import { useEffect } from 'react';
+
+const testUser = {
+	id: null,
+	first_name: String,
+	last_name: String,
+	email: String,
+	password: String,
+	bio: String,
+	photo_url: String,
+	github_url: String,
+	linkedIn_url: String,
+	resume_url: String,
+	location: String,
+	company_name: String,
+};
 
 export default function Login(props) {
-	const { handleLoginView } = props;
+	const { handleLoginView, currentUser, setCurrentUser } = props;
 	// // FOR EXAMPLE LOGIN FUNCTIONALITY
 	// const {currentUser, setCurrentUser} = useState();
-
-	// // EXAMPLE
-	// useEffect(() => {
-	//   axios.get("/api/candidates").then(res => {
-	//     setCandidates(res.data);
-	//   });
-	// }, []);
 
 	// // EXAMPLE LOGIN FUNCTIONALITY
 	const login = e => {
@@ -28,7 +37,7 @@ export default function Login(props) {
 		axios
 			.post('/api/login', data)
 			.then(res => {
-				// setCurrentUser(res.data);
+				setCurrentUser(testUser);
 				console.log(res.data);
 			})
 			.catch(err => {
@@ -45,10 +54,16 @@ export default function Login(props) {
 					id='password'
 					sx={{ mt: '1rem' }}
 					label='password'
+					type='password'
 					variant='outlined'
 				/>
 				<div>
-					<Button variant='contained' size='large' type='submit'>
+					<Button
+						variant='contained'
+						size='large'
+						type='submit'
+						onClick={e => console.log('USER:', currentUser)}
+					>
 						LOG IN
 					</Button>
 					<Button

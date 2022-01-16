@@ -1,4 +1,4 @@
-## Login
+## Login DONE
 
 - /api/login
 
@@ -38,7 +38,7 @@
 - /api/project/:id
 - /api/new
 
-## Search
+## Search DONE
 
 - /api/query
 - /api/city

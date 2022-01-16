@@ -77,10 +77,18 @@ export default function JobSearch(props) {
 				onChange={e => setQuery(e.target.value)}
 				onSubmit={() => setSearchTerm(query)}
 			/>
-			<h1>Jobs:</h1>
-			{searchResults.jobs && <div>{jobs}</div>}
-			<h1>Gigs:</h1>
-			{searchResults.jobs && <div>{gigs}</div>}
+			{searchResults.jobs.length > 0 && (
+				<div>
+					<h1>Jobs:</h1>
+					{jobs}
+				</div>
+			)}
+			{searchResults.gigs.length > 0 && (
+				<div>
+					<h1>Gigs:</h1>
+					{gigs}
+				</div>
+			)}
 		</div>
 	);
 }

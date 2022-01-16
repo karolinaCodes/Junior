@@ -11,6 +11,7 @@ import NewGig from './pages/NewGig.jsx';
 import NewJob from './pages/NewJob.jsx';
 import NewProject from './pages/NewProject.jsx';
 import Profile from './pages/Profile.jsx';
+import EmployerProfile from './pages/EmployerProfile.jsx';
 import NavBar from './pages/NavBar.jsx';
 import PortfolioModal from './components/PortfolioModal';
 import ApplyModal from './components/ApplyModal';
@@ -27,6 +28,7 @@ function App() {
 				<Route exact path='/' element={<LandingPage />} />
 				<Route path='/login' element={<Login />} />
 				<Route path='/profile' element={<Profile />} />
+				<Route path='/employerprofile' element={<EmployerProfile />} />
 				<Route path='/jobs' element={<JobSearch />} />
 				<Route path='/newproject' element={<NewProject />} />
 				<Route path='/newgig' element={<NewGig />} />

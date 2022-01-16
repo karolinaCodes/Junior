@@ -16,8 +16,8 @@
 
 - [x] /api/employers
 - [x] /api/employers/:id
-- [ ] /api/employers/:id/job_postings
-- [ ] /api/employers/:id/gig_postings
+- [x] /api/employers/:id/job_postings
+- [x] /api/employers/:id/gig_postings
 
 ## Job_postings
 

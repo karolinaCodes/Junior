@@ -1,7 +1,8 @@
 import {useEffect, useState} from 'react';
 import './styles/Profile.scss';
-import {Grid} from '@mui/material';
+import {Grid, Paper, Box, Modal} from '@mui/material';
 import PortfolioCard from '../components/PortfolioCard';
+import PortfolioModal from '../components/PortfolioModal';
 import axios from 'axios';
 
 export default function Profile(props) {
@@ -9,10 +10,29 @@ export default function Profile(props) {
     dev: {},
     projects: [],
   });
+  const [openModal, setOpenModal] = useState(false);
+  const [modalData, setModalData] = useState();
+
+	const handleView = () => {
+		openModal === true ? setOpenModal(false) : setOpenModal(true);
+	};
 
   // FOR TESTING
   const id = 1;
   //
+
+  const style = {
+		width: 1 / 2,
+		height: 1 / 2,
+		display: 'flex',
+		flexDirection: 'column',
+		margin: '10% 0 0 25%',
+		background: '#223d55',
+		color: 'black',
+		alignItems: 'center',
+		justifyContent: 'center',
+		borderRadius: '2rem',
+	};
 
   // FOR TESTING ENDPOINTS
   // useEffect(() => {
@@ -66,11 +86,18 @@ export default function Profile(props) {
 
   const projectsArray = profile.projects;
 	const parsedProjects = projectsArray.map(project => {
+    const data = (<PortfolioModal {...project} />);
 		return (
-      <Grid item xs={10} md={4} key={'Portfolio-grid-' + project.id}>
-        <PortfolioCard key={'Portfolio-card-' + project.id}
-          {...project}
-        />
+      <Grid item xs={10} sm={6} md={4}>
+        <Paper sx={{height: '300px', overflow: 'hidden'}}
+          onClick={() => {
+          setModalData(data);
+          handleView();
+        }} key={'Project-grid-' + project.id}>
+          <PortfolioCard key={'Portfolio-card-' + project.id}
+            {...project}
+          />
+        </Paper>
       </Grid>
     );
   });
@@ -94,6 +121,14 @@ export default function Profile(props) {
           {parsedProjects}
         </Grid>
       </section>
+      <Modal
+        open={openModal}
+        onClose={handleView}
+      >
+        <Box sx={style}>
+          {modalData}
+        </Box>
+      </Modal>
     </div>
   );
 }

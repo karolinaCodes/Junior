@@ -28,23 +28,23 @@ export default function JobSearch(props) {
     );
   });
 
-  useEffect(() => {
-    const results = axios
-      .get('/api/search/query', {
-        params: {
-          queryString: searchTerm,
-        },
-      })
-      .then(res => {
-        setSearchResults(prev => ({
-          ...prev,
-          jobs: res.data.jobs,
-          gigs: res.data.gigs,
-        }));
-        return;
-      })
-      .catch(err => console.log(err));
-  }, [searchTerm]);
+  // useEffect(() => {
+  //   const results = axios
+  //     .get('/api/search/query', {
+  //       params: {
+  //         queryString: searchTerm,
+  //       },
+  //     })
+  //     .then(res => {
+  //       setSearchResults(prev => ({
+  //         ...prev,
+  //         jobs: res.data.jobs,
+  //         gigs: res.data.gigs,
+  //       }));
+  //       return;
+  //     })
+  //     .catch(err => console.log(err));
+  // }, [searchTerm]);
 
   useEffect(() => {
     // 	const results = axios
@@ -68,12 +68,36 @@ export default function JobSearch(props) {
     // 			console.log(res.data);
     // 		})
     // 		.catch(err => console.log(err));
-    axios
-      .post('/api/gig_applications/new', {gig_posting_id: 1, junior_dev_id: 1})
-      .then(res => {
-        console.log(res.data);
-      })
-      .catch(err => console.log(err));
+    // axios
+    //   .get('/api/gig_postings')
+    //   .then(res => {
+    //     console.log(res.data);
+    //   })
+    //   .catch(err => console.log(err));
+    // axios
+    //   .get('/api/gig_postings/1')
+    //   .then(res => {
+    //     console.log(res.data);
+    //   })
+    //   .catch(err => console.log(err));
+    // axios
+    //   .get('/api/gig_postings/1/applications')
+    //   .then(res => {
+    //     console.log(res.data);
+    //   })
+    //   .catch(err => console.log(err));
+    // axios
+    //   .post('/api/gig_postings/new', {
+    //     employer_id: 1,
+    //     gig_name: 'Create my landing page',
+    //     description: 'I need a new landing page for my company.',
+    //     pay: 1000,
+    //     deadline: '2022-02-19',
+    //   })
+    //   .then(res => {
+    //     console.log(res.data);
+    //   })
+    //   .catch(err => console.log(err));
   });
 
   return (

@@ -7,26 +7,59 @@ import axios from 'axios';
 export default function Profile(props) {
   const [profile, setProfile] = useState({
     dev: {},
-    projects: []
+    projects: [],
   });
-  
+
   // FOR TESTING
   const id = 1;
   //
 
-  const {first_name, last_name, email, photo_url, github_url, linkedIn_url, bio} = profile.dev;
+  // FOR TESTING ENDPOINTS
+  // useEffect(() => {
+  //	-retrieve a job application by application id
+  //   axios
+  //     .get('/api/job_applications/1')
+  //     .then(res => {
+  //       console.log(res.data);
+  //     })
+  //     .catch(err => console.log(err));
+
+  //	-create a new job application
+  // axios
+  //   .get('/api/job_applications/new')
+  //   .then(res => {
+  //     console.log(res.data);
+  //   })
+  //   .catch(err => console.log(err));
+
+  // get gig application based on gig application id
+  // axios
+  //   .get('/api/gig_applications/1')
+  //   .then(res => {
+  //     console.log(res.data);
+  //   })
+  //   .catch(err => console.log(err));
+  // }, []);
+
+  const {
+    first_name,
+    last_name,
+    email,
+    photo_url,
+    github_url,
+    linkedIn_url,
+    bio,
+  } = profile.dev;
 
   useEffect(() => {
     const devUrl = '/api/devs/' + id;
     const projectsByDevUrl = '/api/devs/' + id + '/projects';
-    Promise.all([
-      axios.get(devUrl),
-      axios.get(projectsByDevUrl),
-    ]).then((all) => {
+    Promise.all([axios.get(devUrl), axios.get(projectsByDevUrl)]).then(all => {
       const [devData, projectsByDevData] = all;
-      setProfile(prev => ({...prev,
+      setProfile(prev => ({
+        ...prev,
         dev: devData.data,
-        projects: projectsByDevData.data
+        projects: projectsByDevData.data,
       }));
     });
   }, []);
@@ -39,8 +72,8 @@ export default function Profile(props) {
           {...project}
         />
       </Grid>
-		)
-	});
+    );
+  });
 
   return (
     <div className="profile-content">
@@ -56,13 +89,11 @@ export default function Profile(props) {
           <h1>LinkedIn: {linkedIn_url ? linkedIn_url : 'N/A'}</h1>
         </section>
       </section>
-      <section className='cards'>
-        <Grid container
-          spacing={3}
-        >
+      <section className="cards">
+        <Grid container spacing={3}>
           {parsedProjects}
         </Grid>
-		  </section>
+      </section>
     </div>
   );
 }

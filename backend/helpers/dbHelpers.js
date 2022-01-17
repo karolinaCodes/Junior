@@ -11,15 +11,26 @@ module.exports = db => {
       .catch(err => err);
   };
 
-  const getDevByEmail = email => {
-    const query = {
+  const getUserByEmail = email => {
+    const q1 = {
       text: `SELECT * FROM junior_devs WHERE email = $1`,
       values: [email],
     };
 
+    const q2 = {
+      text: `SELECT * FROM employers WHERE email = $1`,
+      values: [email],
+    };
+
     return db
-      .query(query)
-      .then(result => result.rows[0])
+      .query(q1)
+      .then(result1 => {
+        const junior_dev = result1.rows[0];
+        return db.query(q2).then(result2 => {
+          const employer = result2.rows[0];
+          return junior_dev || employer;
+        });
+      })
       .catch(err => err);
   };
 
@@ -136,8 +147,9 @@ module.exports = db => {
     github_link,
     live_link
   ) => {
+    console.log('here');
     const query = {
-      text: `INSERT INTO projects (junior_dev_id, title, description, thumbnail_photo_url, github_link, live_link) VALUES ($1, $2, $3, $4, $5, $6,) RETURNING *`,
+      text: `INSERT INTO projects (junior_dev_id, title, description, thumbnail_photo_url, github_link, live_link) VALUES ($1, $2, $3, $4, $5, $6) RETURNING *`,
       values: [
         junior_dev_id,
         title,
@@ -300,36 +312,26 @@ module.exports = db => {
       .catch(err => err);
   };
 
-  const addGigPosting = (
-    employer_id,
-    gig_name,
-    description,
-    pay,
-    date_posted,
-    deadline,
-    photo_url
-  ) => {
+  const addGigPosting = (employer_id, gig_name, description, pay, deadline) => {
+    console.log(
+      'addGigPosting',
+      employer_id,
+      gig_name,
+      description,
+      pay,
+      deadline
+    );
     const query = {
       text: `INSERT INTO gig_postings (
         employer_id,
-        gig_name,
+        job_title,
         description,
         pay,
-        date_posted,
-        deadline,
-        photo_url
+        deadline
         ) VALUES (
-          $1, $2, $3, $4, $5, $6, $7
+          $1, $2, $3, $4, $5
         ) RETURNING *`,
-      values: [
-        employer_id,
-        gig_name,
-        description,
-        pay,
-        date_posted,
-        deadline,
-        photo_url,
-      ],
+      values: [employer_id, gig_name, description, pay, deadline],
     };
 
     return db
@@ -346,7 +348,7 @@ module.exports = db => {
       // values: [queryString],
     };
     const q2 = {
-      text: `SELECT * FROM gig_postings WHERE job_title LIKE '%${queryString}%' OR description LIKE '%${queryString}%;`,
+      text: `SELECT * FROM gig_postings WHERE job_title LIKE '%${queryString}%' OR description LIKE '%${queryString}%';`,
       // values: [queryString],
     };
 
@@ -448,9 +450,7 @@ module.exports = db => {
       text: `INSERT INTO job_applications (
         job_posting_id, junior_dev_id
         ) VALUES ($1, $2) RETURNING *`,
-      values: [
-        job_posting_id, junior_dev_id
-      ],
+      values: [job_posting_id, junior_dev_id],
     };
 
     return db
@@ -508,9 +508,7 @@ module.exports = db => {
       text: `INSERT INTO gig_applications (
         gig_posting_id, junior_dev_id
         ) VALUES ($1, $2) RETURNING *`,
-      values: [
-        gig_posting_id, junior_dev_id
-      ],
+      values: [gig_posting_id, junior_dev_id],
     };
 
     return db
@@ -521,7 +519,7 @@ module.exports = db => {
 
   return {
     getDevs,
-    getDevByEmail,
+    getUserByEmail,
     getDevById,
     addDev,
     getProjectsByDevId,

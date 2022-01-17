@@ -5,11 +5,11 @@
 
 ## Login (/login)
 
-- [x] getDevByEmail
+- [x] getUserByEmail
 
 ## Signup (/signup) - Stretch
 
-- [x] getDevByEmail
+- [x] getUserByEmail
 - [x] addDev (POST /new)
 
 ## Portfolio (Dev)
@@ -66,5 +66,5 @@
 
 ## Applications
 
-- [ ] getApplicationByPostingId
-- [ ] getApplicationById
+- [x] getApplicationByPostingId
+- [x] getApplicationById

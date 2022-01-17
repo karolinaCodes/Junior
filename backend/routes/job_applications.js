@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-module.exports = ({getJobApplicationById}) => {
+module.exports = ({getJobApplicationById, addJobApplication}) => {
   /* GET a job application by job_applications.id */
   router.get('/:id', (req, res) => {
     getJobApplicationById(req.params.id)
@@ -24,6 +24,6 @@ module.exports = ({getJobApplicationById}) => {
         })
       );
   });
-  
+
   return router;
 };

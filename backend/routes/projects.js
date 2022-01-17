@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-module.exports = ({getProjectById}) => {
+module.exports = ({getProjectById, addProject}) => {
   // GET single project by project id
   router.get('/:id', (req, res) => {
     getProjectById(req.params.id)
@@ -24,6 +24,15 @@ module.exports = ({getProjectById}) => {
       github_link,
       live_link,
     } = req.body;
+
+    console.log(
+      junior_dev_id,
+      title,
+      description,
+      thumbnail_photo_url,
+      github_link,
+      live_link
+    );
 
     addProject(
       junior_dev_id,

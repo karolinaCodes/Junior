@@ -4,7 +4,7 @@
 
 ## Authenticate
 
-- [ ] /api/authenticate
+- [x] /api/authenticate
 
 ## Devs
 
@@ -30,7 +30,7 @@
 
 - [x] /api/job_applications/:id
   - :id = job application id
-- [ ] /api/job_applications/new
+- [x] /api/job_applications/new
 - NOTE: applications by posting ID are in /api/job_postings/:id/applications
 
 ## Gig_postings
@@ -38,19 +38,19 @@
 - [x] /api/gig_postings
 - [x] /api/gig_postings/:id
 - [x] /api/gig_postings/:id/applications
-- [ ] /api/gig_postings/new
+- [x] /api/gig_postings/new
 
 ## Gig_applications
 
 - [x] /api/gig_applications/:id
   - :id = gig application id
-- [ ] /api/gig_applications/new
+- [x] /api/gig_applications/new
 - NOTE: applications by posting ID are in /api/gig_postings/:id/applications
 
 ## Projects
 
 - [x] /api/project/:id
-- [ ] /api/new
+- [x] /api/projects/new
 
 ## Search DONE
 

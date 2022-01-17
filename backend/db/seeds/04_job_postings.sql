@@ -5,7 +5,7 @@ INSERT INTO job_postings (employer_id,job_title,description,city,salary_min,sala
 INSERT INTO job_postings (employer_id,job_title,description,city,salary_min,salary_max,job_type,is_remote) VALUES (
     1,'Ruby on Rails Coordinator',
     'Bring to the table win-win survival strategies to ensure proactive domination. At the end of the day, going forward, a new normal that has evolved from generation X is on the runway heading towards a streamlined cloud solution. User generated content in real-time will have multiple touchpoints for offshoring.',
-    'Saskatoon',40000,50000,'Full-time',true);
+    'Toronto',40000,50000,'Full-time',true);
 
 INSERT INTO job_postings (employer_id,job_title,description,city,salary_min,salary_max,job_type,is_remote) VALUES (
     1,'JavaScript Developer',

@@ -377,7 +377,7 @@ module.exports = db => {
     return db
       .query(query)
       .then(result => {
-        return result.rows[0];
+        return {jobs: result.rows, gigs: []};
         // const jobs = result.rows;
         // console.log('++++++++++++++++++++', jobs);
       })
@@ -393,13 +393,56 @@ module.exports = db => {
     return db
       .query(query)
       .then(result => {
-        return result.rows;
+        return {jobs: result.rows, gigs: []};
         // const jobs = result.rows;
         // console.log('================', jobs);
       })
       .catch(err => err);
   };
   // getJobsByType('Full-time');
+
+  const getJobsByMulti = sqlQuery => {
+    console.log(sqlQuery);
+    let sqlQueryString = '';
+    sqlQuery.toggle === 'jobs'
+      ? (sqlQueryString += 'SELECT * FROM job_postings WHERE')
+      : (sqlQueryString += 'SELECT * FROM gig_postings WHERE');
+
+    if (sqlQuery.queryString) {
+      sqlQueryString += ` (job_title LIKE '%${sqlQuery.queryString}%' OR description LIKE '%${sqlQuery.queryString}%')`;
+    }
+
+    if (sqlQuery.city) {
+      // console.log(!sqlQueryString.slice(-6));
+      // console.log(sqlQueryString.slice(-6) !== 'WHERE ');
+      if (sqlQueryString.slice(-5) !== 'WHERE') {
+        sqlQueryString += ' AND';
+      }
+      sqlQueryString += ` city = '${sqlQuery.city}'`;
+    }
+
+    if (sqlQuery.job_type) {
+      if (!sqlQueryString.slice(-5) === ' WHERE') {
+        sqlQueryString += ' AND';
+      }
+      sqlQueryString += ` job_type = ${sqlQuery.job_type} `;
+    }
+    sqlQueryString += ';';
+
+    const query = {
+      text: sqlQueryString,
+    };
+    console.log(query.text);
+    return db
+      .query(query)
+      .then(result => {
+        console.log(result.rows);
+        return result.rows;
+        // const jobs = result.rows;
+        // console.log('================', jobs);
+      })
+      .catch(err => err);
+  };
   //
 
   // Job Applications //
@@ -538,6 +581,7 @@ module.exports = db => {
     getJobsAndGigsByQuery,
     getJobsByCity,
     getJobsByType,
+    getJobsByMulti,
     getJobApplicationById,
     getApplicationsByJobPostingId,
     addJobApplication,

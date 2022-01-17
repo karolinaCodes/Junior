@@ -4,7 +4,7 @@ const router = express.Router();
 module.exports = ({
   getJobPostings,
   getJobById,
-  getApplicationByJobPostingId,
+  getApplicationsByJobPostingId,
   addJobPosting,
 }) => {
   /* GET list of all job postings with employer data*/
@@ -30,7 +30,7 @@ module.exports = ({
   });
 
   router.get('/:id/applications', (req, res) => {
-    getApplicationByJobPostingId(req.params.id)
+    getApplicationsByJobPostingId(req.params.id)
       .then(application => res.json(application))
       .catch(err =>
         res.json({

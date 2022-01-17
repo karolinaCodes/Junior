@@ -40,6 +40,7 @@ function App() {
     axios
       .post('/api/auth/check')
       .then(res => {
+        console.log(res.data, 'successfully retrieved cookie');
         setCurrentUser(res.data);
       })
       .catch(err => {

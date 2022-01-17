@@ -25,43 +25,6 @@ export default function LandingPage(props) {
 		);
 	};
 
-	// FOR TETSING ENDPOINTS
-	// useEffect(() => {
-	//   // // SEARCH BY QUERY
-	//   // axios
-	//   //   .get('/api/search/query', {
-	//   //     params: {
-	//   //       queryString: 'JavaScript',
-	//   //     },
-	//   //   })
-	//   //   .then(res => {
-	//   //     console.log(res.data);
-	//   //   })
-	//   //   .catch(err => console.log(err));
-	//   // // SEARCH BY CITY
-	//   // axios
-	//   //   .get('/api/search/city', {
-	//   //     params: {
-	//   //       city: 'Toronto',
-	//   //     },
-	//   //   })
-	//   //   .then(res => {
-	//   //     console.log(res.data);
-	//   //   })
-	//   //   .catch(err => console.log(err));
-	//   // // SEARCH BY TYPE
-	//   // axios
-	//   //   .get('/api/search/type', {
-	//   //     params: {
-	//   //       type: 'Part-time',
-	//   //     },
-	//   //   })
-	//   //   .then(res => {
-	//   //     console.log(res.data);
-	//   //   })
-	//   //   .catch(err => console.log(err));
-	// }, []);
-
 	return (
 		<div className='landing-wrapper'>
 			<div id='landing-image'>

@@ -20,10 +20,7 @@ const testUser = {
 
 export default function Login(props) {
 	const { handleLoginView, currentUser, setCurrentUser } = props;
-	// // FOR EXAMPLE LOGIN FUNCTIONALITY
-	// const {currentUser, setCurrentUser} = useState();
 
-	// // EXAMPLE LOGIN FUNCTIONALITY
 	const login = e => {
 		e.preventDefault();
 

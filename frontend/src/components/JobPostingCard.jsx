@@ -1,8 +1,9 @@
+import { useState } from 'react';
 import './styles/PortfolioCard.scss';
-import { Paper } from '@mui/material';
-
+import { Paper, Button, Modal, Box } from '@mui/material';
 export default function Profile(props) {
-	const { job_title, description, city, salary_min, salary_max, job_type, is_remote, date_posted, is_open } =
+	const [open, setOpen] = useState(false);
+	const { handleView, job_title, description, city, salary_min, salary_max, job_type, is_remote, date_posted, is_open } =
 		props;
 	const datePostedFormatted = new Date(date_posted).toLocaleDateString();
 
@@ -15,7 +16,6 @@ export default function Profile(props) {
 			<h3>Date Posted: {datePostedFormatted}</h3>
 			<h3>Accepting Applicants: {is_open ? 'Yes' : 'No'}</h3>
 			<p>{description}</p>
-
 		</Paper>
 	);
 }

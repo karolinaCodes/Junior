@@ -1,6 +1,6 @@
 import {useEffect, useState} from 'react';
 import './styles/Profile.scss';
-import {Grid} from '@mui/material';
+import {Grid, Button, Modal, Box} from '@mui/material';
 import PortfolioCard from '../components/PortfolioCard';
 import JobPostingCard from '../components/JobPostingCard';
 import GigPostingCard from '../components/GigPostingCard';
@@ -12,10 +12,27 @@ export default function Profile(props) {
     jobs: [],
     gigs: []
   });
-  
+  const [open, setOpen] = useState(false);
+
+	const handleView = () => {
+		open === true ? setOpen(false) : setOpen(true);
+	};
   // FOR TESTING
   const id = 1;
   //
+
+	const style = {
+		width: 1 / 2,
+		height: 1 / 2,
+		display: 'flex',
+		flexDirection: 'column',
+		margin: '10% 0 0 25%',
+		background: '#223d55',
+		color: 'black',
+		alignItems: 'center',
+		justifyContent: 'center',
+		borderRadius: '2rem',
+	};
 
   const {company_name, email, photo_url, bio} = profile.employer;
 
@@ -42,20 +59,50 @@ export default function Profile(props) {
 
 	const parsedJobs = jobsArray.map(job => {
 		return (
-      <Grid item xs={10} md={4}>
-        <JobPostingCard key={job.id}
-          {...job}
-        />
-      </Grid>
+      <>
+        <Grid item xs={10} md={4} onClick={handleView} variant='contained'>
+          <JobPostingCard key={job.id}
+            {...job}
+            onClick={handleView}
+          />
+        </Grid>
+        <Modal
+          open={open}
+          onClose={handleView}
+        >
+          <Box sx={style}>
+            <section>
+              <Button onClick={handleView} variant='contained'>
+                Close
+              </Button>
+            </section>
+          </Box>
+        </Modal>
+      </>
 		)
 	});
   const parsedGigs = gigsArray.map(gig => {
 		return (
-      <Grid item xs={10} md={4}>
-        <GigPostingCard key={gig.id}
-          {...gig}
-        />
-      </Grid>
+      <>
+        <Grid item xs={10} md={4} onClick={handleView} variant='contained'>
+          <GigPostingCard key={gig.id}
+            {...gig}
+            onClick={handleView}
+          />
+        </Grid>
+        <Modal
+          open={open}
+          onClose={handleView}
+        >
+          <Box sx={style}>
+            <section>
+              <Button onClick={handleView} variant='contained'>
+                Close
+              </Button>
+            </section>
+          </Box>
+        </Modal>
+      </>
 		)
 	});
 

@@ -1,9 +1,10 @@
 import {useEffect, useState} from 'react';
 import './styles/Profile.scss';
 import {Grid, Button, Modal, Box} from '@mui/material';
-import PortfolioCard from '../components/PortfolioCard';
 import JobPostingCard from '../components/JobPostingCard';
+import JobPostingModal from '../components/JobPostingModal';
 import GigPostingCard from '../components/GigPostingCard';
+import GigPostingModal from '../components/GigPostingModal';
 import axios from 'axios';
 
 export default function Profile(props) {
@@ -12,11 +13,14 @@ export default function Profile(props) {
     jobs: [],
     gigs: []
   });
-  const [open, setOpen] = useState(false);
+  const [openModal, setOpenModal] = useState(false);
+  const [modalData, setModalData] = useState();
 
 	const handleView = () => {
-		open === true ? setOpen(false) : setOpen(true);
+		openModal === true ? setOpenModal(false) : setOpenModal(true);
 	};
+
+
   // FOR TESTING
   const id = 1;
   //
@@ -58,51 +62,30 @@ export default function Profile(props) {
   const gigsArray = profile.gigs;
 
 	const parsedJobs = jobsArray.map(job => {
+    const data = (<JobPostingModal {...job} />);
 		return (
-      <>
-        <Grid item xs={10} md={4} onClick={handleView} variant='contained'>
-          <JobPostingCard key={job.id}
-            {...job}
-            onClick={handleView}
-          />
-        </Grid>
-        <Modal
-          open={open}
-          onClose={handleView}
-        >
-          <Box sx={style}>
-            <section>
-              <Button onClick={handleView} variant='contained'>
-                Close
-              </Button>
-            </section>
-          </Box>
-        </Modal>
-      </>
-		)
+      <Grid item xs={10} md={4} onClick={() => {
+        setModalData(data);
+        handleView();
+      }} key={'Job-grid-' + job.id}>
+        <JobPostingCard key={'Job-card-' + job.id}
+          {...job}
+        />
+      </Grid>
+    )
 	});
   const parsedGigs = gigsArray.map(gig => {
+    const data = (<GigPostingModal {...gig} />);
 		return (
-      <>
-        <Grid item xs={10} md={4} onClick={handleView} variant='contained'>
-          <GigPostingCard key={gig.id}
-            {...gig}
-            onClick={handleView}
-          />
-        </Grid>
-        <Modal
-          open={open}
-          onClose={handleView}
-        >
-          <Box sx={style}>
-            <section>
-              <Button onClick={handleView} variant='contained'>
-                Close
-              </Button>
-            </section>
-          </Box>
-        </Modal>
-      </>
+      <Grid item xs={10} md={4} onClick={() => {
+        setModalData(data);
+        handleView();
+      }} key={'Gig-grid-' + gig.id}>
+        <GigPostingCard key={'Gig-card-' + gig.id}
+          {...gig}
+          onClick={handleView}
+        />
+      </Grid>
 		)
 	});
 
@@ -124,7 +107,7 @@ export default function Profile(props) {
         <section className='cards'>
           <Grid container spacing={3}>
             <Grid item xs={12}>
-              <h1>Job postings:</h1>
+              <h1>{company_name ? company_name + "'s " : null}Job Postings:</h1>
             </Grid>
             {parsedJobs}
           </Grid>
@@ -134,12 +117,20 @@ export default function Profile(props) {
         <section className='cards'>
           <Grid container spacing={3}>
             <Grid item xs={12}>
-              <h1>Gig postings:</h1>
+            <h1>{company_name ? company_name + "'s " : null}Gig Postings:</h1>
             </Grid>
             {parsedGigs}
           </Grid>
         </section>
       )}
+      <Modal
+        open={openModal}
+        onClose={handleView}
+      >
+        <Box sx={style}>
+          {modalData}
+        </Box>
+      </Modal>
     </div>
   );
 }

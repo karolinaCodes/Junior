@@ -13,7 +13,8 @@ module.exports = ({getUserByEmail}) => {
       .then(dev => {
         // authenticate
         if (dev.password === submittedPassword) {
-          res.cookie('email', submittedEmail);
+          console.log(dev.email);
+          res.cookie('email', dev.email);
         } else {
           res.json(false);
         }

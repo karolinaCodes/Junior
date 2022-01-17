@@ -1,10 +1,10 @@
 @import 'variables';
 
-.new-project-content {
+.new-gig-content {
 	width: 100%;
 }
 
-.new-project-form {
+.new-gig-form {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -13,8 +13,8 @@
 	button {
 		margin-top: 2rem;
 	}
-	#cancel-project,
-	#post-project {
+	#cancel-gig,
+	#post-gig {
 		margin-left: 1rem;
 	}
 }

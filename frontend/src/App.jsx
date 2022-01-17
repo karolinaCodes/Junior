@@ -40,7 +40,11 @@ function App() {
 
 	return (
 		<div className='App'>
-			<NavBar handleLoginView={handleLoginView} currentUser={currentUser} />
+			<NavBar
+				handleLoginView={handleLoginView}
+				currentUser={currentUser}
+				setCurrentUser={setCurrentUser}
+			/>
 			<Routes>
 				<Route
 					exact

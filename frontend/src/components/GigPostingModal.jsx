@@ -11,6 +11,7 @@ export default function JobPostingModal(props) {
 		<>
 			<h1>{job_title}</h1>
 			<h3>Compensation: ${pay / 100.00}</h3>
+			{/* <img src={photo_url}></img> */}
 			<h3>Date Posted: {datePostedFormatted}</h3>
 			<h3>Deadline: {deadlineFormatted}</h3>
 			<p>{description}</p>

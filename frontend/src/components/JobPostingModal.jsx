@@ -8,8 +8,6 @@ export default function JobPostingModal(props) {
 	const datePostedFormatted = new Date(date_posted).toLocaleDateString();
 
 	return (
-
-		
 		<>
 			<h1>{job_title}</h1>
 			<h3>{city}</h3>

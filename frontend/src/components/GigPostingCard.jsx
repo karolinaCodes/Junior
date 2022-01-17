@@ -1,5 +1,5 @@
 import './styles/PortfolioCard.scss';
-import { Paper, Button } from '@mui/material';
+import { Paper } from '@mui/material';
 
 export default function Profile(props) {
 	const { job_title, description, pay, date_posted, deadline, photo_url } =
@@ -16,9 +16,6 @@ export default function Profile(props) {
 				<h3>Deadline: {deadlineFormatted}</h3>
 				<p>{description}</p>
 			</Paper>
-			<Button>
-				View Applicants
-			</Button>
 		</>
 	);
 }

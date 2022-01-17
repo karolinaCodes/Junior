@@ -64,27 +64,40 @@ export default function Profile(props) {
 	const parsedJobs = jobsArray.map(job => {
     const data = (<JobPostingModal {...job} />);
 		return (
-      <Grid item xs={10} md={4} onClick={() => {
-        setModalData(data);
-        handleView();
-      }} key={'Job-grid-' + job.id}>
-        <JobPostingCard key={'Job-card-' + job.id}
-          {...job}
-        />
+      <Grid item xs={10} md={4}>
+        <Grid container direction='column'>
+          <Box onClick={() => {
+            setModalData(data);
+            handleView();
+          }} key={'Job-grid-' + job.id}>
+            <JobPostingCard key={'Job-card-' + job.id}
+              {...job}
+            />
+          </Box>
+          <Box>
+            <Button>View Applications</Button>
+          </Box>
+        </Grid>
       </Grid>
     )
 	});
   const parsedGigs = gigsArray.map(gig => {
     const data = (<GigPostingModal {...gig} />);
 		return (
-      <Grid item xs={10} md={4} onClick={() => {
-        setModalData(data);
-        handleView();
-      }} key={'Gig-grid-' + gig.id}>
-        <GigPostingCard key={'Gig-card-' + gig.id}
-          {...gig}
-          onClick={handleView}
-        />
+      <Grid item xs={10} md={4}>
+        <Grid container direction='column'>
+          <Box onClick={() => {
+            setModalData(data);
+            handleView();
+        }} key={'Gig-grid-' + gig.id}>
+          <GigPostingCard key={'Gig-card-' + gig.id}
+            {...gig}
+          />
+          </Box>
+          <Box>
+            <Button>View Applications</Button>
+          </Box>
+        </Grid>
       </Grid>
 		)
 	});
@@ -105,7 +118,7 @@ export default function Profile(props) {
       </section>
       {parsedJobs.length != 0 && (
         <section className='cards'>
-          <Grid container spacing={3}>
+          <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
             <Grid item xs={12}>
               <h1>{company_name ? company_name + "'s " : null}Job Postings:</h1>
             </Grid>
@@ -115,7 +128,7 @@ export default function Profile(props) {
       )}
       {parsedGigs.length != 0 && (
         <section className='cards'>
-          <Grid container spacing={3}>
+          <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
             <Grid item xs={12}>
             <h1>{company_name ? company_name + "'s " : null}Gig Postings:</h1>
             </Grid>

@@ -7,6 +7,8 @@ import {useParams} from 'react-router-dom';
 import LoginForm from '../components/LoginForm';
 import axios from 'axios';
 
+// import ApplyModal from '../components/ApplyModal';
+
 export default function LandingPage(props) {
   const [open, setOpen] = useState(false);
   const {gig_id} = useParams();
@@ -43,13 +45,23 @@ export default function LandingPage(props) {
 
   return (
     <div className="gig-content">
-      <h1>{gigPosting.gig_title}</h1>
+      <h1>{gigPosting.job_title}</h1>
       <img src={gigPosting.photo_url} />
       <h2>Description</h2>
       <p>{gigPosting.description}</p>
+      <p>
+        Deadline:{' '}
+        {new Date(gigPosting.deadline).toLocaleDateString('en-US', {
+          year: 'numeric',
+          month: 'long',
+          day: 'numeric',
+        })}
+      </p>
+      <p>Offer: {`$${gigPosting.pay} CAD`}</p>
       <Button variant="contained" onClick={handleView}>
         Apply
       </Button>
+      {/* <ApplyModal /> */}
       <Modal
         open={open}
         onClose={handleView}
@@ -58,8 +70,12 @@ export default function LandingPage(props) {
       >
         <Box sx={style}>
           <section className="profile-bio">
-            <h1>Apply for {gigPosting.gig_title}</h1>
-            {/* <img id="profile-pic" src={photo_url} alt="Avatar"></img> */}
+            <h1>Apply for {gigPosting.job_title}</h1>
+            <img
+              id="profile-pic"
+              src="https://isobarscience.com/wp-content/uploads/2020/09/default-profile-picture1-300x300.jpg"
+              alt="Avatar"
+            ></img>
             <section>
               {/* <h1>Name: {`${first_name} ${last_name}`}</h1>
               <h1>Bio: {bio ? bio : 'N/A'}</h1>

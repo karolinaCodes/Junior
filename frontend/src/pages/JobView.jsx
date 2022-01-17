@@ -62,20 +62,20 @@ export default function LandingPage(props) {
       <h1>{jobPosting.job_title}</h1>
       <div>
         <WorkIcon />
-        <h5>{jobPosting.is_remote ? 'Remote' : jobPosting.city}</h5>
+        <span>{jobPosting.is_remote ? 'Remote' : jobPosting.city}</span>
         <LocationOnIcon />
-        <h5>{jobPosting.job_type}</h5>
+        <span>{jobPosting.job_type}</span>
         <LocalOfferIcon />
-        <h5>{jobPosting.salary_min}</h5>
+        <span>{jobPosting.salary_min}</span>
       </div>
-      <h5>
+      <span>
         Posted{' '}
         {new Date(jobPosting.date_posted).toLocaleDateString('en-US', {
           year: 'numeric',
           month: 'long',
           day: 'numeric',
         })}
-      </h5>
+      </span>
       <img src={jobPosting.photo_url} />
       <h2>Description</h2>
       <div className="job-description">

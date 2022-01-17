@@ -35,6 +35,17 @@ function App() {
     company_name: String,
   });
 
+  useEffect(() => {
+    axios
+      .post('/api/auth/check')
+      .then(res => {
+        setCurrentUser(res.data);
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  }, []);
+
   const handleLoginView = () => {
     loginView ? setLoginView(false) : setLoginView(true);
   };

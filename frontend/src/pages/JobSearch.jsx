@@ -1,7 +1,6 @@
 import {useEffect, useState} from 'react';
 import './styles/JobSearch.scss';
 import axios from 'axios';
-import * as React from 'react';
 import Box from '@mui/material/Box';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
@@ -11,6 +10,12 @@ import Select from '@mui/material/Select';
 import JobSearchCard from '../components/JobSearchCard';
 import SearchBar from '../components/SearchBar';
 import {TextField, Button} from '@mui/material';
+import * as React from 'react';
+import Card from '@mui/material/Card';
+import CardActions from '@mui/material/CardActions';
+import CardContent from '@mui/material/CardContent';
+import CardMedia from '@mui/material/CardMedia';
+import Typography from '@mui/material/Typography';
 
 export default function JobSearch(props) {
   const [query, setQuery] = useState('');
@@ -178,9 +183,23 @@ export default function JobSearch(props) {
       {searchResults.length > 0 &&
         searchResults.map(item => {
           return (
-            <div>
-              <p>{item.job_title}</p>
-            </div>
+            <Card sx={{maxWidth: 345}}>
+              <CardContent>
+                <Typography gutterBottom variant="h5" component="div">
+                  {item.job_title}
+                </Typography>
+                <Typography gutterBottom variant="h6" component="div">
+                  {item.city}
+                </Typography>
+                <Typography variant="body2" color="text.secondary">
+                  {item.description}
+                </Typography>
+              </CardContent>
+              <CardActions>
+                <Button size="small">Apply</Button>
+                <Button size="small">Learn More</Button>
+              </CardActions>
+            </Card>
           );
         })}
       {/* {searchResults.gigs.length > 0 && (

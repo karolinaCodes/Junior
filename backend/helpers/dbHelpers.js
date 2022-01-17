@@ -344,13 +344,14 @@ module.exports = db => {
   // Jobs and Gigs Search //
   const getJobsAndGigsByQuery = queryString => {
     const q1 = {
-      text: `SELECT * FROM job_postings WHERE job_title LIKE '%${queryString}%' OR description LIKE '%${queryString}%';`,
+      text: `SELECT employers.id as employer_id, company_name, email, bio, employers.photo_url as employer_photo_url, job_postings.* FROM employers JOIN job_postings ON employers.id = job_postings.employer_id WHERE job_title LIKE '%${queryString}%' OR description LIKE '%${queryString}%';`,
       // values: [queryString],
     };
     const q2 = {
-      text: `SELECT * FROM gig_postings WHERE job_title LIKE '%${queryString}%' OR description LIKE '%${queryString}%';`,
+      text: `SELECT employers.id as employer_id, company_name, email, bio, employers.photo_url as employer_photo_url, gig_postings.* FROM employers JOIN gig_postings ON employers.id = gig_postings.employer_id WHERE job_title LIKE '%${queryString}%' OR description LIKE '%${queryString}%';`,
       // values: [queryString],
     };
+    // SELECT employers.id as employer_id, company_name, email, bio, employers.photo_url as employer_photo_url, job_postings.* FROM employers JOIN job_postings ON employers.id = job_postings.employer_id WHERE
 
     return db
       .query(q1)
@@ -361,7 +362,7 @@ module.exports = db => {
           const gigs = result2.rows;
           // console.log('================', gigs);
           // console.log({jobs, gigs});
-          return {jobs, gigs};
+          return gigs.concat(jobs);
         });
       })
       .catch(err => err);
@@ -377,7 +378,7 @@ module.exports = db => {
     return db
       .query(query)
       .then(result => {
-        return {jobs: result.rows, gigs: []};
+        return result.rows;
         // const jobs = result.rows;
         // console.log('++++++++++++++++++++', jobs);
       })
@@ -393,7 +394,7 @@ module.exports = db => {
     return db
       .query(query)
       .then(result => {
-        return {jobs: result.rows, gigs: []};
+        return result.rows;
         // const jobs = result.rows;
         // console.log('================', jobs);
       })

@@ -20,6 +20,9 @@ import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
 
+import Chip from '@mui/material/Chip';
+import Stack from '@mui/material/Stack';
+
 export default function JobSearch(props) {
   const [query, setQuery] = useState('');
   const [city, setCity] = useState('');
@@ -28,6 +31,7 @@ export default function JobSearch(props) {
   const [searchResults, setSearchResults] = useState([]);
   const [toggle, setToggle] = useState('jobs');
 
+  // TO ADD? every time queryString changes, make send new request, so changes as typing
   useEffect(() => {
     const results = axios
       .get('/api/search/query', {
@@ -36,12 +40,12 @@ export default function JobSearch(props) {
         },
       })
       .then(res => {
-        console.log(res);
+        console.log(res.data);
         setSearchResults(res.data);
         return;
       })
       .catch(err => console.log(err));
-  }, [queryString]);
+  }, []);
 
   // const searchByCity = city => {
   //   console.log(city);
@@ -164,25 +168,6 @@ export default function JobSearch(props) {
             onKeyDown={e => keyCheck(e)}
           />
         ) : null}
-        {/* {toggle === 'jobs' ? (
-          <Box sx={{minWidth: 120}}>
-            <FormControl fullWidth>
-              <InputLabel id="demo-simple-select-label">Job Type</InputLabel>
-              <Select
-                labelId="demo-simple-select-label"
-                id="demo-simple-select"
-                value={jobType}
-                label="Job Type"
-                onChange={handleChange}
-              >
-                <MenuItem value={'Full-time'}>Full-time</MenuItem>
-                <MenuItem value={'Part-time'}>Part-time</MenuItem>
-                <MenuItem value={'Internship'}>Internship</MenuItem>
-                <MenuItem value={'Gig'}>Gig</MenuItem>
-              </Select>
-            </FormControl>
-          </Box>
-        ) : null} */}
         <Button variant="contained" size="large" type="submit">
           FIND JOBS
         </Button>
@@ -246,54 +231,163 @@ export default function JobSearch(props) {
               label="Internship"
             />
           </FormGroup>
+          <hr />
+          {/* Languages----------- */}
+          <h4>Languages</h4>
+          <FormGroup>
+            <FormControlLabel
+              control={
+                <Checkbox
+                  color="default"
+                  size="small"
+                  value="React"
+                  // onClick={e => {
+                  //   if (e.target.checked) {
+                  //     setJobType(e.target.value);
+                  //   } else {
+                  //     setJobType('');
+                  //   }
+                  // }}
+                />
+              }
+              label="React"
+            />
+            <FormControlLabel
+              control={
+                <Checkbox
+                  color="default"
+                  size="small"
+                  value="JavaScript"
+                  // onClick={e => {
+                  //   console.log(e.target.value);
+                  //   if (e.target.checked) {
+                  //     setJobType(e.target.value);
+                  //   } else {
+                  //     setJobType('');
+                  //   }
+                  // }}
+                />
+              }
+              label="JavaScript"
+            />
+            <FormControlLabel
+              control={
+                <Checkbox
+                  color="default"
+                  size="small"
+                  value="Angular"
+                  // onClick={e => {
+                  //   if (e.target.checked) {
+                  //     setJobType(e.target.value);
+                  //   } else {
+                  //     setJobType('');
+                  //   }
+                  // }}
+                />
+              }
+              label="Angular"
+            />
+            <FormControlLabel
+              control={
+                <Checkbox
+                  color="default"
+                  size="small"
+                  value="Java"
+                  // onClick={e => {
+                  //   if (e.target.checked) {
+                  //     setJobType(e.target.value);
+                  //   } else {
+                  //     setJobType('');
+                  //   }
+                  // }}
+                />
+              }
+              label="Java"
+            />
+            <FormControlLabel
+              control={
+                <Checkbox
+                  color="default"
+                  size="small"
+                  value="Node.js"
+                  // onClick={e => {
+                  //   if (e.target.checked) {
+                  //     setJobType(e.target.value);
+                  //   } else {
+                  //     setJobType('');
+                  //   }
+                  // }}
+                />
+              }
+              label="Node.js"
+            />
+          </FormGroup>
         </div>
-        <div className="searchResults">
-          {searchResults.length > 0 &&
-            searchResults.map(item => {
-              return (
-                <Card sx={{maxWidth: 345}}>
-                  <div className="card-header">
-                    <CardMedia
-                      component="img"
-                      height="194"
-                      image={item.employer_photo_url}
-                      alt="Company Photo"
-                    />
-                    <Typography gutterBottom variant="p" component="div">
-                      {new Date(item.date_posted).toLocaleDateString('en-US', {
-                        year: 'numeric',
-                        month: 'long',
-                        day: 'numeric',
-                      })}
-                    </Typography>
-                  </div>
-                  <CardContent>
-                    <Typography gutterBottom variant="h5" component="div">
-                      {item.job_title}
-                    </Typography>
-
-                    <Typography gutterBottom variant="h6" component="div">
-                      {`${item.city}, Canada`}
-                    </Typography>
-                    <Typography
-                      variant="body2"
-                      color="text.secondary"
-                      className="description"
-                    >
-                      {item.description}
-                    </Typography>
-                  </CardContent>
-                  <CardActions>
-                    <Button size="small" variant="contained">
-                      Apply
-                    </Button>
-                    <Button size="small" variant="outlined">
-                      Learn More
-                    </Button>
-                  </CardActions>
-                </Card>
-              );
-            })}
+        <div className="searchResults-container">
+          <h4>Recommended Jobs {searchResults.length}</h4>
+          <div className="searchResults">
+            {searchResults.length > 0 &&
+              searchResults.map(item => {
+                return (
+                  <Card sx={{maxWidth: 345}}>
+                    <div className="card-header">
+                      <CardMedia
+                        component="img"
+                        height="194"
+                        image={item.employer_photo_url}
+                        alt="Company Photo"
+                      />
+                      <Typography gutterBottom variant="p" component="div">
+                        {new Date(item.date_posted).toLocaleDateString(
+                          'en-US',
+                          {
+                            year: 'numeric',
+                            month: 'long',
+                            day: 'numeric',
+                          }
+                        )}
+                      </Typography>
+                    </div>
+                    <CardContent>
+                      <Typography gutterBottom variant="h5" component="div">
+                        {item.job_title}
+                      </Typography>
+                      <Typography gutterBottom variant="h7" component="div">
+                        {item.city && `${item.city}, Canada`}
+                        {item.deadline &&
+                          `Deadline: ${new Date(
+                            item.deadline
+                          ).toLocaleDateString('en-US', {
+                            year: 'numeric',
+                            month: 'long',
+                            day: 'numeric',
+                          })}`}
+                      </Typography>
+                      {item.deadline ? (
+                        <Chip label="Gig" color="success" />
+                      ) : (
+                        <Chip label="Job" color="primary" />
+                      )}
+                      <Typography
+                        variant="body2"
+                        color="text.secondary"
+                        className="description"
+                      >
+                        {item.description}
+                      </Typography>
+                    </CardContent>
+                    <CardActions>
+                      <Button size="small" variant="contained">
+                        Apply
+                      </Button>
+                      <Button size="small" variant="outlined">
+                        Learn More
+                      </Button>
+                    </CardActions>
+                  </Card>
+                );
+              })}
+          </div>
         </div>
         {/* {searchResults.gigs.length > 0 && (
         <div>

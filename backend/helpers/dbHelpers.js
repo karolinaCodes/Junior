@@ -11,15 +11,26 @@ module.exports = db => {
       .catch(err => err);
   };
 
-  const getDevByEmail = email => {
-    const query = {
+  const getUserByEmail = email => {
+    const q1 = {
       text: `SELECT * FROM junior_devs WHERE email = $1`,
       values: [email],
     };
 
+    const q2 = {
+      text: `SELECT * FROM employers WHERE email = $1`,
+      values: [email],
+    };
+
     return db
-      .query(query)
-      .then(result => result.rows[0])
+      .query(q1)
+      .then(result1 => {
+        const junior_dev = result1.rows[0];
+        return db.query(q2).then(result2 => {
+          const employer = result2.rows[0];
+          return junior_dev || employer;
+        });
+      })
       .catch(err => err);
   };
 
@@ -508,7 +519,7 @@ module.exports = db => {
 
   return {
     getDevs,
-    getDevByEmail,
+    getUserByEmail,
     getDevById,
     addDev,
     getProjectsByDevId,

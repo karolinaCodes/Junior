@@ -6,7 +6,6 @@ import JobPostingModal from '../components/JobPostingModal';
 import GigPostingCard from '../components/GigPostingCard';
 import GigPostingModal from '../components/GigPostingModal';
 import axios from 'axios';
-import { maxHeight } from '@mui/system';
 
 export default function Profile(props) {
   const [profile, setProfile] = useState({
@@ -63,15 +62,15 @@ export default function Profile(props) {
   const gigsArray = profile.gigs;
 
 	const parsedJobs = jobsArray.map(job => {
-    const data = (<JobPostingModal {...job} />);
+    const data = (<JobPostingModal key={'Job-modal-' + job.id} {...job} />);
 		return (
-      <Grid item xs={10} sm={6} md={4}>
-        <Grid container direction='column'>
+      <Grid item xs={10} sm={6} md={4} key={'Job-grid-item-' + job.id}>
+        <Grid container direction='column' key={'Job-grid-container-' + job.id}>
           <Paper sx={{height: '300px', overflow: 'hidden'}}
             onClick={() => {
             setModalData(data);
             handleView();
-          }} key={'Job-grid-' + job.id}>
+          }} key={'Job-paper-' + job.id}>
             <JobPostingCard key={'Job-card-' + job.id}
               {...job}
             />
@@ -84,15 +83,15 @@ export default function Profile(props) {
     )
 	});
   const parsedGigs = gigsArray.map(gig => {
-    const data = (<GigPostingModal {...gig} />);
+    const data = (<GigPostingModal key={'Gig-modal-' + gig.id} {...gig} />);
 		return (
-      <Grid item xs={10} sm={6} md={4}>
-        <Grid container direction='column'>
+      <Grid item xs={10} sm={6} md={4} key={'Gig-grid-item-' + gig.id} >
+        <Grid container direction='column' key={'Gig-grid-container-' + gig.id}>
           <Paper sx={{height: '300px', overflow: 'hidden'}}
             onClick={() => {
             setModalData(data);
             handleView();
-          }} key={'Gig-grid-' + gig.id}>
+          }} key={'Gig-paper-' + gig.id}>
           <GigPostingCard key={'Gig-card-' + gig.id}
             {...gig}
           />
@@ -115,11 +114,12 @@ export default function Profile(props) {
         </section>
         <section>
           <h1>Email: {email}</h1>
-          <h1>Job Postings: {profile.jobs.length ? profile.jobs.length : '0'}</h1>
-          <h1>Gig Postings: {profile.gigs.length ? profile.gigs.length : '0'}</h1>
+          <h1>Job Postings: {profile.jobs.length}</h1>
+          <h1>Gig Postings: {profile.gigs.length}</h1>
         </section>
       </section>
-      {parsedJobs.length != 0 && (
+      {(parsedJobs.length === 0 && parsedGigs.length === 0) && (<h1>No postings.</h1>)}
+      {parsedJobs.length !== 0 && (
         <section className='cards'>
           <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
             <Grid item xs={12}>
@@ -129,7 +129,7 @@ export default function Profile(props) {
           </Grid>
         </section>
       )}
-      {parsedGigs.length != 0 && (
+      {parsedGigs.length !== 0 && (
         <section className='cards'>
           <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
             <Grid item xs={12}>

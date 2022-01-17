@@ -52,8 +52,8 @@ export default function NewProjectPost(props) {
 	};
 
 	return (
-		<div className='new-gig-content'>
-			<form className='new-gig-form' onSubmit={postProject}>
+		<div className='new-project-content'>
+			<form className='new-project-form' onSubmit={postProject}>
 				<h1>New Project:</h1>
 				<TextField
 					id='project-name'
@@ -120,7 +120,7 @@ export default function NewProjectPost(props) {
 						Post Project
 					</Button>
 					<Button
-						id='cancel-post'
+						id='cancel-project'
 						variant='contained'
 						size='large'
 						onClick={null}

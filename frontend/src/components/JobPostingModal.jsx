@@ -1,6 +1,5 @@
-import { useState } from 'react';
-import './styles/PortfolioCard.scss';
-import { Paper, Button, Modal, Box } from '@mui/material';
+import './styles/PortfolioModal.scss';
+import { Paper } from '@mui/material';
 
 export default function JobPostingModal(props) {
 	const { job_title, description, city, salary_min, salary_max, job_type, is_remote, date_posted, is_open } =
@@ -8,7 +7,7 @@ export default function JobPostingModal(props) {
 	const datePostedFormatted = new Date(date_posted).toLocaleDateString();
 
 	return (
-		<>
+		<Paper>
 			<h1>{job_title}</h1>
 			<h3>{city}</h3>
 			<h3>${salary_min} - ${salary_max}</h3>
@@ -16,6 +15,6 @@ export default function JobPostingModal(props) {
 			<h3>Date Posted: {datePostedFormatted}</h3>
 			<h3>Accepting Applicants: {is_open ? 'Yes' : 'No'}</h3>
 			<p>{description}</p>
-		</>
+		</Paper>
 	);
 };

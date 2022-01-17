@@ -6,6 +6,9 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
+import {Modal} from '@mui/material';
+
+import {Link} from 'react-router-dom';
 
 import JobSearchCard from '../components/JobSearchCard';
 import SearchBar from '../components/SearchBar';
@@ -30,6 +33,8 @@ export default function JobSearch(props) {
   const [queryString, setQueryString] = useState('');
   const [searchResults, setSearchResults] = useState([]);
   const [toggle, setToggle] = useState('jobs');
+  const [open, setOpen] = useState(false);
+  const [jobApplying, setJobApplying] = useState('');
 
   // TO ADD? every time queryString changes, make send new request, so changes as typing
   useEffect(() => {
@@ -40,7 +45,7 @@ export default function JobSearch(props) {
         },
       })
       .then(res => {
-        console.log(res.data);
+        // console.log(res.data);
         setSearchResults(res.data);
         return;
       })
@@ -51,13 +56,30 @@ export default function JobSearch(props) {
     setJobType(event.target.value);
   };
 
+  const handleView = () => {
+    open === true ? setOpen(false) : setOpen(true);
+  };
+
+  const style = {
+    width: 1 / 2,
+    height: 1 / 2,
+    display: 'flex',
+    flexDirection: 'column',
+    margin: '10% 0 0 25%',
+    background: '#223d55',
+    color: 'black',
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: '2rem',
+  };
+
   const keyCheck = e => {
     if (e.keyCode === 13) {
       e.preventDefault();
     }
   };
   const handleSubmit = e => {
-    console.log(queryString, city, jobType, toggle);
+    // console.log(queryString, city, jobType, toggle);
     e.preventDefault();
     const results = axios
       .get('/api/search/multi-filter', {
@@ -69,7 +91,7 @@ export default function JobSearch(props) {
         },
       })
       .then(res => {
-        console.log(res.data);
+        // console.log(res.data);
         setSearchResults(res.data);
         return;
       })
@@ -82,6 +104,33 @@ export default function JobSearch(props) {
     setCity('');
     setJobType('');
     setQueryString('');
+  };
+
+  const openApplication = index => {
+    const posting = searchResults[index];
+    // console.log(posting);
+    if (posting.deadline) {
+      axios
+        .get(`/api/gig_postings/${posting.id}`)
+        .then(res => {
+          // console.log(res.data);
+          setJobApplying(res.data);
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    } else {
+      axios
+        .get(`/api/job_postings/${posting.id}`)
+        .then(res => {
+          // console.log(res.data);
+          setJobApplying(res.data);
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    }
+    setOpen(true);
   };
   // useEffect(() => {
   // 	const results = axios
@@ -345,12 +394,61 @@ export default function JobSearch(props) {
                       </Typography>
                     </CardContent>
                     <CardActions>
-                      <Button size="small" variant="contained">
+                      <Button
+                        size="small"
+                        variant="contained"
+                        // // id={searchResults.indexOf(item)}
+                        onClick={() =>
+                          openApplication(searchResults.indexOf(item))
+                        }
+                      >
                         Apply
                       </Button>
-                      <Button size="small" variant="outlined">
-                        Learn More
-                      </Button>
+                      {item.deadline ? (
+                        <Link to={`/gig/${item.id}`}>
+                          <Button size="small" variant="outlined">
+                            Learn More
+                          </Button>
+                        </Link>
+                      ) : (
+                        <Link to={`/job/${item.id}`}>
+                          <Button size="small" variant="outlined">
+                            Learn More
+                          </Button>
+                        </Link>
+                      )}
+                      <Modal
+                        open={open}
+                        onClose={handleView}
+                        // aria-labelledby='modal-modal-title'
+                        // aria-describedby='modal-modal-description'
+                      >
+                        <Box sx={style}>
+                          <section className="profile-bio">
+                            <h1>Apply for {jobApplying.job_title}</h1>
+                            {/* <img id="profile-pic" src={photo_url} alt="Avatar"></img> */}
+                            <section>
+                              {/* <h1>Name: {`${first_name} ${last_name}`}</h1>
+              <h1>Bio: {bio ? bio : 'N/A'}</h1>
+            </section>
+            <section>
+              <h1>Email: {email}</h1>
+              <h1>GitHub: {github_url ? github_url : 'N/A'}</h1>
+              <h1>LinkedIn: {linkedIn_url ? linkedIn_url : 'N/A'}</h1>
+              <h1>Resume: {resume_link ? resume_link : 'N/A'}</h1> */}
+                            </section>
+                          </section>
+                          {/* <Typography id='modal-modal-title' variant='h6' component='h2'>
+						Text in a modal
+					</Typography>
+					<Typography id='modal-modal-description' sx={{ mt: 2 }}>
+						Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
+					</Typography> */}
+                          <Button onClick={handleView} variant="contained">
+                            Close
+                          </Button>
+                        </Box>
+                      </Modal>
                     </CardActions>
                   </Card>
                 );

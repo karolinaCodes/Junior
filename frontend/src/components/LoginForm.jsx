@@ -37,7 +37,7 @@ export default function Login(props) {
 		axios
 			.post('/api/login', data)
 			.then(res => {
-				setCurrentUser(testUser);
+				setCurrentUser(res.data);
 				console.log(res.data);
 			})
 			.catch(err => {

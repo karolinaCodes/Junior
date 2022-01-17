@@ -6,7 +6,7 @@ import { useEffect, useState } from 'react';
 import LoginForm from '../components/LoginForm';
 
 export default function LandingPage(props) {
-	const { loginView, handleLoginView, user, setUser } = props;
+	const { loginView, handleLoginView, currentUser, setCurrentUser } = props;
 
 	const searchView = () => {
 		return (
@@ -74,8 +74,8 @@ export default function LandingPage(props) {
 				{loginView && (
 					<LoginForm
 						handleLoginView={handleLoginView}
-						user={user}
-						setUser={setUser}
+						currentUser={currentUser}
+						setCurrentUser={setCurrentUser}
 					/>
 				)}
 				{!loginView && searchView()}

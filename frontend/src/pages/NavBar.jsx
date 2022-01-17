@@ -3,7 +3,7 @@ import './styles/NavBar.scss';
 import Button from '@mui/material/Button';
 
 export default function NavBar(props) {
-	const { handleLoginView } = props;
+	const { handleLoginView, currentUser } = props;
 
 	return (
 		<div className='nav-bar'>
@@ -13,6 +13,9 @@ export default function NavBar(props) {
 				</Link>
 			</div>
 			<div className='nav-links'>
+				<Button variant='contained' onClick={e => console.log(currentUser)}>
+					LOG CURRENT USER
+				</Button>
 				<Link to='/jobs'>Job Search</Link>
 				<Link to='/profile'>Profile</Link>
 			</div>

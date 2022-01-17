@@ -62,15 +62,15 @@ export default function Profile(props) {
   const gigsArray = profile.gigs;
 
 	const parsedJobs = jobsArray.map(job => {
-    const data = (<JobPostingModal {...job} />);
+    const data = (<JobPostingModal key={'Job-modal-' + job.id} {...job} />);
 		return (
-      <Grid item xs={10} sm={6} md={4}>
-        <Grid container direction='column'>
+      <Grid item xs={10} sm={6} md={4} key={'Job-grid-item-' + job.id}>
+        <Grid container direction='column' key={'Job-grid-container-' + job.id}>
           <Paper sx={{height: '300px', overflow: 'hidden'}}
             onClick={() => {
             setModalData(data);
             handleView();
-          }} key={'Job-grid-' + job.id}>
+          }} key={'Job-paper-' + job.id}>
             <JobPostingCard key={'Job-card-' + job.id}
               {...job}
             />
@@ -83,15 +83,15 @@ export default function Profile(props) {
     )
 	});
   const parsedGigs = gigsArray.map(gig => {
-    const data = (<GigPostingModal {...gig} />);
+    const data = (<GigPostingModal key={'Gig-modal-' + gig.id} {...gig} />);
 		return (
-      <Grid item xs={10} sm={6} md={4}>
-        <Grid container direction='column'>
+      <Grid item xs={10} sm={6} md={4} key={'Gig-grid-item-' + gig.id} >
+        <Grid container direction='column' key={'Gig-grid-container-' + gig.id}>
           <Paper sx={{height: '300px', overflow: 'hidden'}}
             onClick={() => {
             setModalData(data);
             handleView();
-          }} key={'Gig-grid-' + gig.id}>
+          }} key={'Gig-paper-' + gig.id}>
           <GigPostingCard key={'Gig-card-' + gig.id}
             {...gig}
           />

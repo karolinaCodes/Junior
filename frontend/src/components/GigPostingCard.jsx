@@ -10,7 +10,7 @@ export default function Profile(props) {
 		<Typography zeroMinWidth>
 			<h1><p>{job_title}</p></h1>
 			<strong><p>Compensation: ${pay / 100.00}</p></strong>
-			<img src={photo_url}></img>
+			<img src={photo_url} alt={job_title}></img>
 			<strong><p>Date Posted: {datePostedFormatted}</p></strong>
 			<strong><p>Deadline: {deadlineFormatted}</p></strong>
 			<strong><p>{description}</p></strong>

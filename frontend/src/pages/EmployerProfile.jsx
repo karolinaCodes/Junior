@@ -6,7 +6,6 @@ import JobPostingModal from '../components/JobPostingModal';
 import GigPostingCard from '../components/GigPostingCard';
 import GigPostingModal from '../components/GigPostingModal';
 import axios from 'axios';
-import { maxHeight } from '@mui/system';
 
 export default function Profile(props) {
   const [profile, setProfile] = useState({
@@ -115,11 +114,12 @@ export default function Profile(props) {
         </section>
         <section>
           <h1>Email: {email}</h1>
-          <h1>Job Postings: {profile.jobs.length ? profile.jobs.length : '0'}</h1>
-          <h1>Gig Postings: {profile.gigs.length ? profile.gigs.length : '0'}</h1>
+          <h1>Job Postings: {profile.jobs.length}</h1>
+          <h1>Gig Postings: {profile.gigs.length}</h1>
         </section>
       </section>
-      {parsedJobs.length != 0 && (
+      {(parsedJobs.length === 0 && parsedGigs.length === 0) && (<h1>No postings.</h1>)}
+      {parsedJobs.length !== 0 && (
         <section className='cards'>
           <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
             <Grid item xs={12}>
@@ -129,7 +129,7 @@ export default function Profile(props) {
           </Grid>
         </section>
       )}
-      {parsedGigs.length != 0 && (
+      {parsedGigs.length !== 0 && (
         <section className='cards'>
           <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
             <Grid item xs={12}>

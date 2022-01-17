@@ -1,6 +1,4 @@
-import { useState } from 'react';
 import './styles/PortfolioCard.scss';
-import { Paper, Button, Modal, Box } from '@mui/material';
 
 export default function JobPostingModal(props) {
 	const { job_title, description, pay, date_posted, deadline, photo_url } =

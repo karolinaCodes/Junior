@@ -8,5 +8,5 @@ CREATE TABLE "projects" (
   "thumbnail_photo_url" VARCHAR(255) NOT NULL DEFAULT 'https://www.elegantthemes.com/blog/wp-content/uploads/2020/02/000-Online-Code-Editors.png',
   "github_link" VARCHAR(225),
   "live_link" VARCHAR(225),
-  "original_request" VARCHAR(1000),
+  "original_request" VARCHAR(1000)
 );

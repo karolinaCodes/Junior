@@ -63,6 +63,7 @@ function App() {
 					element={<NewProjectPost currentUser={currentUser} />}
 				/>
 				<Route path='/newjob' element={<NewJob />} />
+				<Route path='/newjob' element={<NewGig />} />
 				<Route path='/portfoliomodal' element={<PortfolioModal />} />
 				<Route path='/applymodal' element={<ApplyModal />} />
 			</Routes>

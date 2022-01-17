@@ -401,12 +401,20 @@ module.exports = db => {
   };
   // getJobsByType('Full-time');
 
+  // SELECT employers.id as employer_id,
+  //     company_name, email, bio, employers.photo_url as employer_photo_url,
+  //     gig_postings.*
+  //     FROM employers
+  //     JOIN gig_postings ON employers.id = gig_postings.employer_id
+
   const getJobsByMulti = sqlQuery => {
     console.log(sqlQuery);
     let sqlQueryString = '';
     sqlQuery.toggle === 'jobs'
-      ? (sqlQueryString += 'SELECT * FROM job_postings WHERE')
-      : (sqlQueryString += 'SELECT * FROM gig_postings WHERE');
+      ? (sqlQueryString +=
+          'SELECT employers.id as employer_id, company_name, email, bio, employers.photo_url as employer_photo_url, job_postings.* FROM employers JOIN job_postings ON employers.id = job_postings.employer_id WHERE')
+      : (sqlQueryString +=
+          'SELECT employers.id as employer_id, company_name, email, bio, employers.photo_url as employer_photo_url, gig_postings.* FROM employers JOIN gig_postings ON employers.id = gig_postings.employer_id WHERE');
 
     if (sqlQuery.queryString) {
       sqlQueryString += ` (job_title LIKE '%${sqlQuery.queryString}%' OR description LIKE '%${sqlQuery.queryString}%')`;
@@ -422,10 +430,10 @@ module.exports = db => {
     }
 
     if (sqlQuery.job_type) {
-      if (!sqlQueryString.slice(-5) === ' WHERE') {
+      if (sqlQueryString.slice(-5) !== 'WHERE') {
         sqlQueryString += ' AND';
       }
-      sqlQueryString += ` job_type = ${sqlQuery.job_type} `;
+      sqlQueryString += ` job_type = '${sqlQuery.job_type}' `;
     }
     sqlQueryString += ';';
 

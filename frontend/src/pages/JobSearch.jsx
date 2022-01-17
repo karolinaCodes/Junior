@@ -16,6 +16,9 @@ import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
+import FormGroup from '@mui/material/FormGroup';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import Checkbox from '@mui/material/Checkbox';
 
 export default function JobSearch(props) {
   const [query, setQuery] = useState('');
@@ -82,6 +85,7 @@ export default function JobSearch(props) {
     }
   };
   const handleSubmit = e => {
+    console.log(queryString, city, jobType, toggle);
     e.preventDefault();
     const results = axios
       .get('/api/search/multi-filter', {
@@ -93,6 +97,7 @@ export default function JobSearch(props) {
         },
       })
       .then(res => {
+        console.log(res.data);
         setSearchResults(res.data);
         return;
       })
@@ -102,6 +107,9 @@ export default function JobSearch(props) {
   const handleClick = e => {
     e.preventDefault();
     toggle === 'jobs' ? setToggle('gigs') : setToggle('jobs');
+    setCity('');
+    setJobType('');
+    setQueryString('');
   };
   // useEffect(() => {
   // 	const results = axios
@@ -134,11 +142,10 @@ export default function JobSearch(props) {
   // }, []);
   return (
     <div className="jobsearch-content">
-      <h1>Job Search Page</h1>
-      <Button variant="contained" size="large" onClick={handleClick}>
-        {`Search ${toggle}`}
-      </Button>
       <form className="search" onSubmit={handleSubmit}>
+        <Button variant="contained" size="large" onClick={handleClick}>
+          {`${toggle}`}
+        </Button>
         <TextField
           id="search-bar"
           label="Search"
@@ -177,32 +184,118 @@ export default function JobSearch(props) {
           </Box>
         ) : null} */}
         <Button variant="contained" size="large" type="submit">
-          SEARCH
+          FIND JOBS
         </Button>
       </form>
-      {searchResults.length > 0 &&
-        searchResults.map(item => {
-          return (
-            <Card sx={{maxWidth: 345}}>
-              <CardContent>
-                <Typography gutterBottom variant="h5" component="div">
-                  {item.job_title}
-                </Typography>
-                <Typography gutterBottom variant="h6" component="div">
-                  {item.city}
-                </Typography>
-                <Typography variant="body2" color="text.secondary">
-                  {item.description}
-                </Typography>
-              </CardContent>
-              <CardActions>
-                <Button size="small">Apply</Button>
-                <Button size="small">Learn More</Button>
-              </CardActions>
-            </Card>
-          );
-        })}
-      {/* {searchResults.gigs.length > 0 && (
+      <div className="main-content">
+        <div className="checkboxes">
+          <h3>Details</h3>
+          <hr />
+          <h4>Schedule</h4>
+          <FormGroup>
+            <FormControlLabel
+              control={
+                <Checkbox
+                  color="default"
+                  size="small"
+                  value="Full-time"
+                  onClick={e => {
+                    if (e.target.checked) {
+                      setJobType(e.target.value);
+                    } else {
+                      setJobType('');
+                    }
+                  }}
+                />
+              }
+              label="Full-time"
+            />
+            <FormControlLabel
+              control={
+                <Checkbox
+                  color="default"
+                  size="small"
+                  value="Part-time"
+                  onClick={e => {
+                    console.log(e.target.value);
+                    if (e.target.checked) {
+                      setJobType(e.target.value);
+                    } else {
+                      setJobType('');
+                    }
+                  }}
+                />
+              }
+              label="Part-time"
+            />
+            <FormControlLabel
+              control={
+                <Checkbox
+                  color="default"
+                  size="small"
+                  value="Internship"
+                  onClick={e => {
+                    if (e.target.checked) {
+                      setJobType(e.target.value);
+                    } else {
+                      setJobType('');
+                    }
+                  }}
+                />
+              }
+              label="Internship"
+            />
+          </FormGroup>
+        </div>
+        <div className="searchResults">
+          {searchResults.length > 0 &&
+            searchResults.map(item => {
+              return (
+                <Card sx={{maxWidth: 345}}>
+                  <div className="card-header">
+                    <CardMedia
+                      component="img"
+                      height="194"
+                      image={item.employer_photo_url}
+                      alt="Company Photo"
+                    />
+                    <Typography gutterBottom variant="p" component="div">
+                      {new Date(item.date_posted).toLocaleDateString('en-US', {
+                        year: 'numeric',
+                        month: 'long',
+                        day: 'numeric',
+                      })}
+                    </Typography>
+                  </div>
+                  <CardContent>
+                    <Typography gutterBottom variant="h5" component="div">
+                      {item.job_title}
+                    </Typography>
+
+                    <Typography gutterBottom variant="h6" component="div">
+                      {`${item.city}, Canada`}
+                    </Typography>
+                    <Typography
+                      variant="body2"
+                      color="text.secondary"
+                      className="description"
+                    >
+                      {item.description}
+                    </Typography>
+                  </CardContent>
+                  <CardActions>
+                    <Button size="small" variant="contained">
+                      Apply
+                    </Button>
+                    <Button size="small" variant="outlined">
+                      Learn More
+                    </Button>
+                  </CardActions>
+                </Card>
+              );
+            })}
+        </div>
+        {/* {searchResults.gigs.length > 0 && (
         <div>
           <h1>Gigs:</h1>
           {searchResults.gigs.map(item => {
@@ -214,6 +307,7 @@ export default function JobSearch(props) {
           })}
         </div>
       )} */}
+      </div>
     </div>
   );
 }

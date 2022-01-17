@@ -1,8 +1,60 @@
 @import 'variables';
 
 .jobsearch-content {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	align-content: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-content: center;
+}
+
+.search {
+  justify-content: space-between;
+  & Button {
+    margin-right: 30px;
+  }
+}
+
+.main-content {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.checkboxes {
+  text-align: center;
+  width: 30%;
+  padding: 30px 50px 0px 50px;
+}
+
+.searchResults {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.css-1t6e9jv-MuiCardActions-root {
+  justify-content: center;
+}
+
+.description {
+  // max-height: 70px;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+}
+
+.css-46bh2p-MuiCardContent-root {
+  text-align: left;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.css-o69gx8-MuiCardMedia-root {
+  border-radius: 50%;
+  width: 35% !important;
+  height: 35%;
 }

@@ -46,3 +46,13 @@ INSERT INTO job_postings (employer_id,job_title,description,city,salary_min,sala
     2,'Junior Full Stack Developer',
     'Phosfluorescently engage worldwide methodologies with web-enabled technology. Interactively coordinate proactive e-commerce via process-centric "outside the box" thinking. Completely pursue scalable customer service through sustainable potentialities.',
     'Calgary',50000,65000,'Full-time',true);
+    
+INSERT INTO job_postings (employer_id,job_title,description,city,salary_min,salary_max,job_type,is_remote) VALUES (
+    2,'Junior Front-end Developer',
+    'Phosfluorescently engage worldwide methodologies with web-enabled technology. Interactively coordinate proactive e-commerce via process-centric "outside the box" thinking. Completely pursue scalable customer service through sustainable potentialities.',
+    'Toronto',40000,50000,'Full-time',true);
+
+INSERT INTO job_postings (employer_id,job_title,description,city,salary_min,salary_max,job_type,is_remote) VALUES (
+    2,'Junior Back-end Developer',
+    'Phosfluorescently engage worldwide methodologies with web-enabled technology. Interactively coordinate proactive e-commerce via process-centric "outside the box" thinking. Completely pursue scalable customer service through sustainable potentialities.',
+    'Toronto',50000,60000,'Full-time',true);

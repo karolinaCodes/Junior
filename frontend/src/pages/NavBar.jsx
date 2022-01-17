@@ -18,7 +18,22 @@ const defaultUser = {
 };
 
 export default function NavBar(props) {
-	const { handleLoginView, currentUser, setCurrentUser } = props;
+	const {
+		loginView,
+		setLoginView,
+		handleLoginView,
+		currentUser,
+		setCurrentUser,
+	} = props;
+
+	// const navLogin = e => {
+	// 	if (!loginView) {
+	// 		setLoginView(true);
+	// 		return;
+	// 	}
+
+	// 	null;
+	// };
 
 	const logout = () => setCurrentUser(defaultUser);
 

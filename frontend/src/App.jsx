@@ -6,6 +6,7 @@ import { Link, Routes, Route } from 'react-router-dom';
 import JobSearch from './pages/JobSearch.jsx';
 import LandingPage from './pages/LandingPage.jsx';
 import NewJob from './pages/NewJob.jsx';
+import NewGigPost from './components/NewGigPost';
 import Profile from './pages/Profile.jsx';
 import EmployerProfile from './pages/EmployerProfile.jsx';
 import NavBar from './pages/NavBar.jsx';
@@ -20,17 +21,17 @@ function App() {
 	const [loginView, setLoginView] = useState(false);
 	const [currentUser, setCurrentUser] = useState({
 		id: null,
-		first_name: String,
-		last_name: String,
-		email: String,
-		password: String,
-		bio: String,
-		photo_url: String,
-		github_url: String,
-		linkedIn_url: String,
-		resume_url: String,
-		location: String,
-		company_name: String,
+		first_name: '',
+		last_name: '',
+		email: '',
+		password: '',
+		bio: '',
+		photo_url: '',
+		github_url: '',
+		linkedIn_url: '',
+		resume_url: '',
+		location: '',
+		company_name: '',
 	});
 
 	const handleLoginView = () => {
@@ -65,7 +66,10 @@ function App() {
 					element={<NewProjectPost currentUser={currentUser} />}
 				/>
 				<Route path='/newjob' element={<NewJob />} />
-				<Route path='/newjob' element={<NewGig />} />
+				<Route
+					path='/newgig'
+					element={<NewGigPost currentUser={currentUser} />}
+				/>
 				<Route path='/portfoliomodal' element={<PortfolioModal />} />
 				<Route path='/applymodal' element={<ApplyModal />} />
 			</Routes>

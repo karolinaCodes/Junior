@@ -60,7 +60,10 @@ function App() {
 				/>
 				<Route path='/profile' element={<Profile />} />
 				<Route path='/jobs' element={<JobSearch />} />
-				<Route path='/newproject' element={<NewProjectPost />} />
+				<Route
+					path='/newproject'
+					element={<NewProjectPost currentUser={currentUser} />}
+				/>
 				<Route path='/newjob' element={<NewJob />} />
 				<Route path='/apply' element={<Apply />} />
 				<Route path='/portfoliomodal' element={<PortfolioModal />} />

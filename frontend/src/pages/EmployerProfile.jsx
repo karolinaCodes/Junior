@@ -1,11 +1,12 @@
 import {useEffect, useState} from 'react';
 import './styles/Profile.scss';
-import {Grid, Button, Modal, Box} from '@mui/material';
+import {Grid, Button, Modal, Box, Paper} from '@mui/material';
 import JobPostingCard from '../components/JobPostingCard';
 import JobPostingModal from '../components/JobPostingModal';
 import GigPostingCard from '../components/GigPostingCard';
 import GigPostingModal from '../components/GigPostingModal';
 import axios from 'axios';
+import { maxHeight } from '@mui/system';
 
 export default function Profile(props) {
   const [profile, setProfile] = useState({
@@ -64,16 +65,17 @@ export default function Profile(props) {
 	const parsedJobs = jobsArray.map(job => {
     const data = (<JobPostingModal {...job} />);
 		return (
-      <Grid item xs={10} md={4}>
+      <Grid item xs={10} sm={6} md={4}>
         <Grid container direction='column'>
-          <Box onClick={() => {
+          <Paper sx={{height: '300px', overflow: 'hidden'}}
+            onClick={() => {
             setModalData(data);
             handleView();
           }} key={'Job-grid-' + job.id}>
             <JobPostingCard key={'Job-card-' + job.id}
               {...job}
             />
-          </Box>
+          </Paper>
           <Box>
             <Button>View Applications</Button>
           </Box>
@@ -84,16 +86,17 @@ export default function Profile(props) {
   const parsedGigs = gigsArray.map(gig => {
     const data = (<GigPostingModal {...gig} />);
 		return (
-      <Grid item xs={10} md={4}>
+      <Grid item xs={10} sm={6} md={4}>
         <Grid container direction='column'>
-          <Box onClick={() => {
+          <Paper sx={{height: '300px', overflow: 'hidden'}}
+            onClick={() => {
             setModalData(data);
             handleView();
-        }} key={'Gig-grid-' + gig.id}>
+          }} key={'Gig-grid-' + gig.id}>
           <GigPostingCard key={'Gig-card-' + gig.id}
             {...gig}
           />
-          </Box>
+          </Paper>
           <Box>
             <Button>View Applications</Button>
           </Box>

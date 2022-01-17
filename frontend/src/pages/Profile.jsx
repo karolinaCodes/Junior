@@ -34,8 +34,8 @@ export default function Profile(props) {
   const projectsArray = profile.projects;
 	const parsedProjects = projectsArray.map(project => {
 		return (
-      <Grid item xs={10} md={4}>
-        <PortfolioCard key={project.id}
+      <Grid item xs={10} md={4} key={'Portfolio-grid-' + project.id}>
+        <PortfolioCard key={'Portfolio-card-' + project.id}
           {...project}
         />
       </Grid>

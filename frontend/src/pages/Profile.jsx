@@ -86,15 +86,15 @@ export default function Profile(props) {
 
   const projectsArray = profile.projects;
 	const parsedProjects = projectsArray.map(project => {
-    const data = (<PortfolioModal {...project} />);
+    const data = (<PortfolioModal key={'Project-modal-' + project.project_id} {...project} />);
 		return (
-      <Grid item xs={10} sm={6} md={4}>
+      <Grid item xs={10} sm={6} md={4} key={'Project-grid-' + project.project_id}>
         <Paper sx={{height: '300px', overflow: 'hidden'}}
           onClick={() => {
           setModalData(data);
           handleView();
-        }} key={'Project-grid-' + project.id}>
-          <PortfolioCard key={'Portfolio-card-' + project.id}
+        }} key={'Project-paper-' + project.project_id}>
+          <PortfolioCard key={'Portfolio-card-' + project.project_id}
             {...project}
           />
         </Paper>

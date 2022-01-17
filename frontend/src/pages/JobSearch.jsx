@@ -47,38 +47,6 @@ export default function JobSearch(props) {
       .catch(err => console.log(err));
   }, []);
 
-  // const searchByCity = city => {
-  //   console.log(city);
-
-  //   const results = axios
-  //     .get('/api/search/city', {
-  //       params: {
-  //         city: city,
-  //       },
-  //     })
-  //     .then(res => {
-  //       console.log(res.data);
-  //       setSearchResults(res.data);
-  //       return;
-  //     })
-  //     .catch(err => console.log(err));
-  // };
-
-  // const searchByType = type => {
-  //   console.log(type);
-  //   const results = axios
-  //     .get('/api/search/type', {
-  //       params: {
-  //         type: type,
-  //       },
-  //     })
-  //     .then(res => {
-  //       setSearchResults(res.data);
-  //       return;
-  //     })
-  //     .catch(err => console.log(err));
-  // };
-
   const handleChange = event => {
     setJobType(event.target.value);
   };
@@ -389,18 +357,6 @@ export default function JobSearch(props) {
               })}
           </div>
         </div>
-        {/* {searchResults.gigs.length > 0 && (
-        <div>
-          <h1>Gigs:</h1>
-          {searchResults.gigs.map(item => {
-            return (
-              <div>
-                <p>{item.job_title}</p>
-              </div>
-            );
-          })}
-        </div>
-      )} */}
       </div>
     </div>
   );

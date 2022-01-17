@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-module.exports = ({getDevByEmail}) => {
+module.exports = ({getUserByEmail}) => {
   // get email and password from form
   // retrieve dev by email -with email and pw
   // authenticate if the password matches the pw then log them in
@@ -9,7 +9,7 @@ module.exports = ({getDevByEmail}) => {
     const {email: submittedEmail} = req.body;
     const {password: submittedPassword} = req.body;
 
-    getDevByEmail(submittedEmail)
+    getUserByEmail(submittedEmail)
       .then(dev => {
         // authenticate
         if (dev.password === submittedPassword) {

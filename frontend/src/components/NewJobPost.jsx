@@ -9,6 +9,7 @@ import {
 	Switch,
 	MenuItem,
 } from '@mui/material';
+import { useEffect } from 'react';
 
 // export default function NewJob(props) {
 // 	useEffect(() => {
@@ -43,7 +44,12 @@ export default function NewJobPost(props) {
 		salary_max: '',
 		job_type: 'Full-Time',
 		is_remote: false,
+		is_open: true,
 	});
+
+	useEffect(() => {
+		setJobForm({ ...jobForm, employer_id: currentUser.id });
+	}, []);
 
 	const isRemote = e => {
 		if (!jobForm.is_remote) {
@@ -55,6 +61,7 @@ export default function NewJobPost(props) {
 
 	const postJob = e => {
 		e.preventDefault();
+		// console.log(currentUser.id);
 
 		axios
 			.post('/api/job_postings/new', jobForm)
@@ -69,6 +76,7 @@ export default function NewJobPost(props) {
 					salary_max: '',
 					job_type: 'Full-Time',
 					is_remote: false,
+					is_open: true,
 				});
 			})
 			.catch(err => {
@@ -129,7 +137,7 @@ export default function NewJobPost(props) {
 					label='Remote Position'
 					onChange={e => isRemote(e)}
 				/>
-				<Button onClick={e => console.log(jobForm.type)}>CLick</Button>
+				<Button onClick={e => console.log(jobForm.type)}>Click</Button>
 				<TextField
 					id='job-description'
 					sx={{ mt: '1rem' }}

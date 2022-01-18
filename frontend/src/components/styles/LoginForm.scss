@@ -1,19 +1,19 @@
 @import 'variables';
 
 .login-content {
-	width: 50%;
+  width: 50%;
 }
 
 .login {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: space-between;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
 
-	button {
-		margin-top: 2rem;
-	}
-	#cancelLogin {
-		margin-left: 1rem;
-	}
+  button {
+    margin-top: 2rem;
+  }
+  #cancelLogin {
+    margin-left: 1rem;
+  }
 }

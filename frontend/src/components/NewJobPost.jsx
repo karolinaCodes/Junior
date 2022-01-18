@@ -2,7 +2,13 @@ import { useState } from 'react';
 import './styles/NewJobPost.scss';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import { Button, TextField, FormControlLabel, Switch } from '@mui/material';
+import {
+	Button,
+	TextField,
+	FormControlLabel,
+	Switch,
+	MenuItem,
+} from '@mui/material';
 
 // export default function NewJob(props) {
 // 	useEffect(() => {
@@ -26,23 +32,7 @@ import { Button, TextField, FormControlLabel, Switch } from '@mui/material';
 // 	);
 // }
 
-/* 
-	interface Job_posting {
-	id: Int;
-	employer_id: Int;
-	job_title: String;
-	description: String;
-	city: String;
-	salary_min: Int;
-	salary_max: Int;
-	type: String; // full-time, part-time, internship, gig
-	is_remote: Boolean;
-	date_posted: Timestamp;
-	is_open: Boolean; // if the position is still open
-}
-*/
-
-export default function NewGigPost(props) {
+export default function NewJobPost(props) {
 	const { currentUser } = props;
 	const [jobForm, setJobForm] = useState({
 		employer_id: currentUser.id,
@@ -51,11 +41,19 @@ export default function NewGigPost(props) {
 		city: '',
 		salary_min: '',
 		salary_max: '',
-		type: '',
+		job_type: 'Full-Time',
 		is_remote: false,
 	});
 
-	const postGig = e => {
+	const isRemote = e => {
+		if (!jobForm.is_remote) {
+			setJobForm({ ...jobForm, is_remote: true });
+		} else {
+			setJobForm({ ...jobForm, is_remote: false });
+		}
+	};
+
+	const postJob = e => {
 		e.preventDefault();
 
 		axios
@@ -67,9 +65,9 @@ export default function NewGigPost(props) {
 					job_title: '',
 					description: '',
 					city: '',
-					salary_min: 0,
-					salary_max: 0,
-					type: '',
+					salary_min: '',
+					salary_max: '',
+					job_type: 'Full-Time',
 					is_remote: false,
 				});
 			})
@@ -80,7 +78,7 @@ export default function NewGigPost(props) {
 
 	return (
 		<div className='new-job-content'>
-			<form className='new-job-form' onSubmit={postGig}>
+			<form className='new-job-form' onSubmit={postJob}>
 				<h1>New Job:</h1>
 				<TextField
 					id='job-title'
@@ -114,35 +112,24 @@ export default function NewGigPost(props) {
 					/>
 				</div>
 				<TextField
-					id='type'
-					sx={{ mt: '1rem' }}
+					id='job-type'
 					label='Job Type'
-					variant='outlined'
-					value={jobForm.type}
+					value={jobForm.job_type}
+					select
 					onChange={e => {
-						setJobForm({ ...jobForm, type: e.target.value });
+						setJobForm({ ...jobForm, job_type: e.target.value });
 					}}
-				/>
+				>
+					<MenuItem value='Full-Time'>Full-Time</MenuItem>
+					<MenuItem value='Part-Time'>Part-Time</MenuItem>
+				</TextField>
 				<FormControlLabel
 					id='remote-switch'
-					control={<Switch defaultChecked={false} />}
+					control={<Switch default value={jobForm.is_remote} />}
 					label='Remote Position'
-					onChange={e => {
-						if (!jobForm.is_remote) {
-							setJobForm({ ...jobForm, is_remote: true });
-						} else {
-							setJobForm({ ...jobForm, is_remote: false });
-						}
-					}}
+					onChange={e => isRemote(e)}
 				/>
-				<TextField
-					id='photo-url'
-					sx={{ mt: '1rem' }}
-					label='Thumbnail Photo'
-					variant='outlined'
-					value={jobForm.photo_url}
-					onChange={e => setJobForm({ ...jobForm, photo_url: e.target.value })}
-				/>
+				<Button onClick={e => console.log(jobForm.type)}>CLick</Button>
 				<TextField
 					id='job-description'
 					sx={{ mt: '1rem' }}
@@ -153,6 +140,15 @@ export default function NewGigPost(props) {
 					onChange={e =>
 						setJobForm({ ...jobForm, description: e.target.value })
 					}
+				/>
+				<TextField
+					id='city'
+					sx={{ mt: '1rem' }}
+					label='city'
+					variant='outlined'
+					multiline={true}
+					value={jobForm.city}
+					onChange={e => setJobForm({ ...jobForm, city: e.target.value })}
 				/>
 				<div>
 					{/* <Button variant='contained' size='large' type='submit' onClick={null}>
@@ -165,7 +161,7 @@ export default function NewGigPost(props) {
 						type='submit'
 						onClick={null}
 					>
-						Post Gig
+						Post Job
 					</Button>
 					<Button
 						id='cancel-job'

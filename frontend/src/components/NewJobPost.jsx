@@ -2,7 +2,7 @@ import { useState } from 'react';
 import './styles/NewJobPost.scss';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import { Button, TextField } from '@mui/material';
+import { Button, TextField, FormControlLabel, Switch } from '@mui/material';
 
 // export default function NewJob(props) {
 // 	useEffect(() => {
@@ -26,15 +26,33 @@ import { Button, TextField } from '@mui/material';
 // 	);
 // }
 
+/* 
+	interface Job_posting {
+	id: Int;
+	employer_id: Int;
+	job_title: String;
+	description: String;
+	city: String;
+	salary_min: Int;
+	salary_max: Int;
+	type: String; // full-time, part-time, internship, gig
+	is_remote: Boolean;
+	date_posted: Timestamp;
+	is_open: Boolean; // if the position is still open
+}
+*/
+
 export default function NewGigPost(props) {
 	const { currentUser } = props;
 	const [jobForm, setJobForm] = useState({
 		employer_id: currentUser.id,
 		job_title: '',
 		description: '',
-		pay: '',
-		deadline: '',
-		photo_url: '',
+		city: '',
+		salary_min: '',
+		salary_max: '',
+		type: '',
+		is_remote: false,
 	});
 
 	const postGig = e => {
@@ -48,9 +66,11 @@ export default function NewGigPost(props) {
 					employer_id: currentUser.id,
 					job_title: '',
 					description: '',
-					pay: '',
-					deadline: '',
-					photo_url: '',
+					city: '',
+					salary_min: 0,
+					salary_max: 0,
+					type: '',
+					is_remote: false,
 				});
 			})
 			.catch(err => {
@@ -61,30 +81,59 @@ export default function NewGigPost(props) {
 	return (
 		<div className='new-job-content'>
 			<form className='new-job-form' onSubmit={postGig}>
-				<h1>New Gig:</h1>
+				<h1>New Job:</h1>
 				<TextField
-					id='job-name'
-					label='Gig Name'
+					id='job-title'
+					label='Job Title'
 					variant='outlined'
 					onChange={e => setJobForm({ ...jobForm, job_title: e.target.value })}
 					value={jobForm.job_title}
 				/>
+				<div>
+					<TextField
+						id='salary-min'
+						sx={{ mt: '1rem' }}
+						label='Salary Min'
+						variant='outlined'
+						type='number'
+						value={jobForm.salary_min}
+						onChange={e => {
+							setJobForm({ ...jobForm, salary_min: e.target.value });
+						}}
+					/>
+					<TextField
+						id='salary-max'
+						sx={{ mt: '1rem' }}
+						label='Salary Max'
+						variant='outlined'
+						type='number'
+						value={jobForm.salary_max}
+						onChange={e => {
+							setJobForm({ ...jobForm, salary_max: e.target.value });
+						}}
+					/>
+				</div>
 				<TextField
-					id='pay'
+					id='type'
 					sx={{ mt: '1rem' }}
-					label='Pay'
+					label='Job Type'
 					variant='outlined'
-					type='number'
-					value={jobForm.pay}
-					onChange={e => setJobForm({ ...jobForm, pay: e.target.value })}
+					value={jobForm.type}
+					onChange={e => {
+						setJobForm({ ...jobForm, type: e.target.value });
+					}}
 				/>
-				<TextField
-					id='deadline'
-					sx={{ mt: '1rem' }}
-					label='Deadline'
-					variant='outlined'
-					value={jobForm.deadline}
-					onChange={e => setJobForm({ ...jobForm, deadline: e.target.value })}
+				<FormControlLabel
+					id='remote-switch'
+					control={<Switch defaultChecked={false} />}
+					label='Remote Position'
+					onChange={e => {
+						if (!jobForm.is_remote) {
+							setJobForm({ ...jobForm, is_remote: true });
+						} else {
+							setJobForm({ ...jobForm, is_remote: false });
+						}
+					}}
 				/>
 				<TextField
 					id='photo-url'

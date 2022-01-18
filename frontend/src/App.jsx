@@ -67,7 +67,10 @@ function App() {
 					path='/newproject'
 					element={<NewProjectPost currentUser={currentUser} />}
 				/>
-				<Route path='/newjob' element={<NewJobPost user={currentUser} />} />
+				<Route
+					path='/newjob'
+					element={<NewJobPost currentUser={currentUser} />}
+				/>
 				<Route
 					path='/newgig'
 					element={<NewGigPost currentUser={currentUser} />}
@@ -84,11 +87,13 @@ function App() {
 					element={<JobView currentUser={currentUser} />}
 				/>
 				<Route
-					path="/gig/:posting_id/applications"
-					element={<Applications currentUser={currentUser} type='gig' />} />
-        <Route
-					path="/job/:posting_id/applications"
-					element={<Applications currentUser={currentUser} type='job' />} />
+					path='/gig/:posting_id/applications'
+					element={<Applications currentUser={currentUser} type='gig' />}
+				/>
+				<Route
+					path='/job/:posting_id/applications'
+					element={<Applications currentUser={currentUser} type='job' />}
+				/>
 			</Routes>
 		</div>
 	);

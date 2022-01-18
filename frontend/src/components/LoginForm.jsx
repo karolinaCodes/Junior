@@ -3,21 +3,6 @@ import { TextField, Button } from '@mui/material';
 import axios from 'axios';
 import { useEffect } from 'react';
 
-const testUser = {
-	id: null,
-	first_name: String,
-	last_name: String,
-	email: String,
-	password: String,
-	bio: String,
-	photo_url: String,
-	github_url: String,
-	linkedIn_url: String,
-	resume_url: String,
-	location: String,
-	company_name: String,
-};
-
 export default function Login(props) {
 	const { handleLoginView, currentUser, setCurrentUser } = props;
 
@@ -29,10 +14,8 @@ export default function Login(props) {
 			password: document.getElementById('password').value,
 		};
 
-		console.log(data);
-
 		axios
-			.post('/api/login', data)
+			.post('/api/auth/login', data)
 			.then(res => {
 				setCurrentUser(res.data);
 				console.log(res.data);

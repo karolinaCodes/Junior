@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 export default function NewGigPost(props) {
 	const { currentUser } = props;
 	const [gigForm, setGigForm] = useState({
-		employer_id: Number,
+		employer_id: currentUser.id,
 		job_title: '',
 		description: '',
 		pay: '',
@@ -19,24 +19,12 @@ export default function NewGigPost(props) {
 	const postGig = e => {
 		e.preventDefault();
 
-		setGigForm({
-			employer_id: currentUser.id,
-			job_title: document.getElementById('gig-name').value,
-			description: document.getElementById('gig-description').value,
-			photo_url: document.getElementById('photo-url').value,
-			pay: document.getElementById('pay').value,
-			deadline: document.getElementById('deadline').value,
-		});
-
-		console.log(gigForm);
-
 		axios
 			.post('/api/gig_postings/new', gigForm)
 			.then(res => {
-				// setCurrentUser(res.data);
 				console.log(res.data);
 				setGigForm({
-					employer_id: Number,
+					employer_id: currentUser.id,
 					job_title: '',
 					description: '',
 					pay: '',
@@ -57,7 +45,7 @@ export default function NewGigPost(props) {
 					id='gig-name'
 					label='Gig Name'
 					variant='outlined'
-					onChange={e => setGigForm({ ...gigForm, title: e.target.value })}
+					onChange={e => setGigForm({ ...gigForm, job_title: e.target.value })}
 					value={gigForm.job_title}
 				/>
 				<TextField
@@ -111,7 +99,7 @@ export default function NewGigPost(props) {
 					</Button>
 					<Button
 						id='cancel-gig'
-						Component={Link}
+						component={Link}
 						to='/profile'
 						variant='contained'
 						size='large'

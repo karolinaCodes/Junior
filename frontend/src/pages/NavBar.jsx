@@ -35,7 +35,9 @@ export default function NavBar(props) {
 	// 	null;
 	// };
 
-	const logout = () => setCurrentUser(defaultUser);
+	const logout = () => {
+		setCurrentUser(defaultUser);
+	};
 
 	return (
 		<div className='nav-bar'>

@@ -2,7 +2,7 @@ import './styles/NewProjectPost.scss';
 
 import { TextField, Button } from '@mui/material';
 import axios from 'axios';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 export default function NewProjectPost(props) {
 	const { currentUser } = props;
@@ -15,6 +15,10 @@ export default function NewProjectPost(props) {
 		live_link: '',
 		original_request: '',
 	});
+
+	useEffect(() => {
+		setProjectForm({ ...projectForm, employer_id: currentUser.id });
+	}, [currentUser]);
 
 	const postProject = e => {
 		e.preventDefault();

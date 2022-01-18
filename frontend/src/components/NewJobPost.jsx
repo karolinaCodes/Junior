@@ -11,32 +11,23 @@ import {
 } from '@mui/material';
 import { useEffect } from 'react';
 
-// export default function NewJob(props) {
-// 	useEffect(() => {
-// 		axios
-// 			.post('/api/job_applications/new', {
-// 				job_posting_id: 1,
-// 				junior_dev_id: 1,
-// 			})
-// 			.then(res => {
-// 				console.log(res.data);
-// 			})
-// 			.catch(err => {
-// 				console.log(err);
-// 			});
-// 	});
-
-// 	return (
-// 		<div className='new-job-content'>
-// 			<div></div>
-// 		</div>
-// 	);
-// }
-
 export default function NewJobPost(props) {
-	const { user } = props;
-	const ID = user.id;
-	const [jobForm, setJobForm] = useState({});
+	const { currentUser } = props;
+	const [jobForm, setJobForm] = useState({
+		employer_id: currentUser.id,
+		job_title: '',
+		description: '',
+		city: '',
+		salary_min: '',
+		salary_max: '',
+		job_type: 'Full-Time',
+		is_remote: false,
+		is_open: true,
+	});
+
+	useEffect(() => {
+		setJobForm({ ...jobForm, employer_id: currentUser.id });
+	}, [currentUser]);
 
 	const isRemote = e => {
 		if (!jobForm.is_remote) {
@@ -46,30 +37,15 @@ export default function NewJobPost(props) {
 		}
 	};
 
-	useEffect(() => {
-		setJobForm({
-			employer_id: ID,
-			job_title: '',
-			description: '',
-			city: '',
-			salary_min: '',
-			salary_max: '',
-			job_type: 'Full-Time',
-			is_remote: false,
-			is_open: true,
-		});
-	}, []);
-
 	const postJob = e => {
 		e.preventDefault();
-		// console.log(ID);
 
 		axios
 			.post('/api/job_postings/new', jobForm)
 			.then(res => {
 				console.log(res.data);
 				setJobForm({
-					employer_id: ID,
+					employer_id: currentUser.id,
 					job_title: '',
 					description: '',
 					city: '',
@@ -139,7 +115,7 @@ export default function NewJobPost(props) {
 					label='Remote Position'
 					onChange={e => isRemote(e)}
 				/>
-				<Button onClick={e => console.log(ID)}>CLick</Button>
+				<Button onClick={e => console.log(currentUser.id)}>CLick</Button>
 				<TextField
 					id='job-description'
 					sx={{ mt: '1rem' }}

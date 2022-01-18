@@ -9,6 +9,7 @@ import {
 	Switch,
 	MenuItem,
 } from '@mui/material';
+import { useEffect } from 'react';
 
 // export default function NewJob(props) {
 // 	useEffect(() => {
@@ -33,18 +34,9 @@ import {
 // }
 
 export default function NewJobPost(props) {
-	const { currentUser } = props;
-	const [jobForm, setJobForm] = useState({
-		employer_id: currentUser.id,
-		job_title: '',
-		description: '',
-		city: '',
-		salary_min: '',
-		salary_max: '',
-		job_type: 'Full-Time',
-		is_remote: false,
-		is_open: true,
-	});
+	const { user } = props;
+	const ID = user.id;
+	const [jobForm, setJobForm] = useState({});
 
 	const isRemote = e => {
 		if (!jobForm.is_remote) {
@@ -54,16 +46,30 @@ export default function NewJobPost(props) {
 		}
 	};
 
+	useEffect(() => {
+		setJobForm({
+			employer_id: ID,
+			job_title: '',
+			description: '',
+			city: '',
+			salary_min: '',
+			salary_max: '',
+			job_type: 'Full-Time',
+			is_remote: false,
+			is_open: true,
+		});
+	}, []);
+
 	const postJob = e => {
 		e.preventDefault();
-		// console.log(currentUser.id);
+		// console.log(ID);
 
 		axios
 			.post('/api/job_postings/new', jobForm)
 			.then(res => {
 				console.log(res.data);
 				setJobForm({
-					employer_id: currentUser.id,
+					employer_id: ID,
 					job_title: '',
 					description: '',
 					city: '',
@@ -125,6 +131,7 @@ export default function NewJobPost(props) {
 				>
 					<MenuItem value='Full-Time'>Full-Time</MenuItem>
 					<MenuItem value='Part-Time'>Part-Time</MenuItem>
+					<MenuItem value='Internship'>Internship</MenuItem>
 				</TextField>
 				<FormControlLabel
 					id='remote-switch'
@@ -132,7 +139,7 @@ export default function NewJobPost(props) {
 					label='Remote Position'
 					onChange={e => isRemote(e)}
 				/>
-				<Button onClick={e => console.log(jobForm.type)}>CLick</Button>
+				<Button onClick={e => console.log(ID)}>CLick</Button>
 				<TextField
 					id='job-description'
 					sx={{ mt: '1rem' }}

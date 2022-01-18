@@ -66,10 +66,7 @@ function App() {
 					path='/newproject'
 					element={<NewProjectPost currentUser={currentUser} />}
 				/>
-				<Route
-					path='/newjob'
-					element={<NewJobPost currentUser={currentUser} />}
-				/>
+				<Route path='/newjob' element={<NewJobPost user={currentUser} />} />
 				<Route
 					path='/newgig'
 					element={<NewGigPost currentUser={currentUser} />}

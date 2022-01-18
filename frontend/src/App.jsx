@@ -15,6 +15,7 @@ import JobView from './pages/JobView.jsx';
 import PortfolioModal from './components/PortfolioModal';
 import ApplyModal from './components/ApplyModal';
 import NewProjectPost from './components/NewProjectPost.jsx';
+import Applications from './pages/Applications.jsx';
 
 //import css
 import './App.scss';
@@ -82,6 +83,12 @@ function App() {
 					path='/job/:job_id'
 					element={<JobView currentUser={currentUser} />}
 				/>
+				<Route
+					path="/gig/:posting_id/applications"
+					element={<Applications currentUser={currentUser} type='gig' />} />
+        <Route
+					path="/job/:posting_id/applications"
+					element={<Applications currentUser={currentUser} type='job' />} />
 			</Routes>
 		</div>
 	);

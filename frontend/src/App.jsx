@@ -21,20 +21,7 @@ import './App.scss';
 
 function App() {
   const [loginView, setLoginView] = useState(false);
-  const [currentUser, setCurrentUser] = useState({
-    id: Number,
-    first_name: '',
-    last_name: '',
-    email: '',
-    password: '',
-    bio: '',
-    photo_url: '',
-    github_url: '',
-    linkedIn_url: '',
-    resume_url: '',
-    location: '',
-    company_name: '',
-  });
+  const [currentUser, setCurrentUser] = useState({});
 
   useEffect(() => {
     axios
@@ -79,7 +66,10 @@ function App() {
           path="/newproject"
           element={<NewProjectPost currentUser={currentUser} />}
         />
-        <Route path="/newjob" element={<NewJobPost />} />
+        <Route
+          path="/newjob"
+          element={<NewJobPost currentUser={currentUser} />}
+        />
         <Route
           path="/newgig"
           element={<NewGigPost currentUser={currentUser} />}

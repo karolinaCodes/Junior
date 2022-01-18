@@ -28,10 +28,7 @@ export default function LandingPage(props) {
   return (
     <div className="landing-wrapper">
       <div id="landing-image">
-        <img
-          src="images/landing-page-image.png"
-          alt="Girl sitting at desk"
-        ></img>
+        <img src="images/landing-page-image.png"></img>
       </div>
       <div className="landing-content">
         {loginView && (

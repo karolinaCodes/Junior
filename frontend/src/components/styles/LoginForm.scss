@@ -1,35 +1,35 @@
 @import 'variables';
 
 .login-content {
-	width: 50%;
+  width: 50%;
 }
 
 .login {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: space-between;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
 
-	button {
-		margin-top: 2rem;
-	}
-	#cancelLogin {
-		margin-left: 1rem;
-	}
+  button {
+    margin-top: 2rem;
+  }
+  #cancelLogin {
+    margin-left: 1rem;
+  }
 
-	h2 {
-		font-size: 20px;
-		font-weight: lighter;
-		color: #00000056;
-		width: 30%;
-		margin-top: 0;
-	}
+  h2 {
+    font-size: 20px;
+    font-weight: lighter;
+    color: #00000056;
+    width: 30%;
+    margin-top: 0;
+  }
 
-	p {
-		color: #00000056;
+  p {
+    color: #00000056;
 
-		a {
-			color: #0091ffa8;
-		}
-	}
+    a {
+      color: #0091ffa8;
+    }
+  }
 }

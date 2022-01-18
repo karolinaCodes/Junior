@@ -496,6 +496,24 @@ module.exports = db => {
       .then(result => result.rows)
       .catch(err => err);
   };
+  
+  const getAllJobApplicationsForEmployer = id => {
+    const query = {
+      text: `SELECT job_applications.*, job_postings.*, job_postings.id as post_id, employers.id as employer_id,
+        junior_devs.id as dev_id, junior_devs.email as dev_email, first_name, last_name, junior_devs.bio as dev_bio, junior_devs.photo_url as dev_photo_url
+        FROM job_applications
+        JOIN job_postings ON job_applications.job_posting_id = job_postings.id
+        JOIN employers ON job_postings.employer_id = employers.id
+        JOIN junior_devs ON job_applications.junior_dev_id = junior_devs.id
+        WHERE job_postings.employer_id = $1`,
+      values: [id],
+    };
+
+    return db
+      .query(query)
+      .then(result => result.rows)
+      .catch(err => err);
+  };
 
   const addJobApplication = (job_posting_id, junior_dev_id) => {
     const query = {
@@ -555,6 +573,24 @@ module.exports = db => {
       .catch(err => err);
   };
 
+  const getAllGigApplicationsForEmployer = id => {
+    const query = {
+      text: `SELECT gig_applications.*, gig_postings.*, gig_postings.id as post_id, employers.id as employer_id,
+        junior_devs.id as dev_id, junior_devs.email as dev_email, first_name, last_name, junior_devs.bio as dev_bio, junior_devs.photo_url as dev_photo_url
+        FROM gig_applications
+        JOIN gig_postings ON gig_applications.gig_posting_id = gig_postings.id
+        JOIN employers ON gig_postings.employer_id = employers.id
+        JOIN junior_devs ON gig_applications.junior_dev_id = junior_devs.id
+        WHERE gig_postings.employer_id = $1`,
+      values: [id],
+    };
+
+    return db
+      .query(query)
+      .then(result => result.rows)
+      .catch(err => err);
+  };
+
   const addGigApplication = (gig_posting_id, junior_dev_id) => {
     const query = {
       text: `INSERT INTO gig_applications (
@@ -597,5 +633,7 @@ module.exports = db => {
     getGigApplicationById,
     getApplicationsByGigPostingId,
     addGigApplication,
+    getAllJobApplicationsForEmployer,
+    getAllGigApplicationsForEmployer
   };
 };

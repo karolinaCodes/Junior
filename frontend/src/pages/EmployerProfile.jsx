@@ -1,13 +1,16 @@
 import {useEffect, useState} from 'react';
 import './styles/Profile.scss';
 import {Grid, Button, Modal, Box, Paper} from '@mui/material';
+import {Link} from 'react-router-dom';
 import JobPostingCard from '../components/JobPostingCard';
 import JobPostingModal from '../components/JobPostingModal';
 import GigPostingCard from '../components/GigPostingCard';
 import GigPostingModal from '../components/GigPostingModal';
+import Applications from './Applications';
 import axios from 'axios';
 
 export default function Profile(props) {
+  // const {id} = useParams();
   const [profile, setProfile] = useState({
     employer: {},
     jobs: [],
@@ -19,7 +22,6 @@ export default function Profile(props) {
 	const handleView = () => {
 		openModal === true ? setOpenModal(false) : setOpenModal(true);
 	};
-
 
   // FOR TESTING
   const id = 1;
@@ -60,9 +62,10 @@ export default function Profile(props) {
 
   const jobsArray = profile.jobs;
   const gigsArray = profile.gigs;
-
+  
 	const parsedJobs = jobsArray.map(job => {
     const data = (<JobPostingModal key={'Job-modal-' + job.id} {...job} />);
+    const applicationLink = `employerprofile/job/${job.id}/applications`;
 		return (
       <Grid item xs={10} sm={6} md={4} key={'Job-grid-item-' + job.id}>
         <Grid container direction='column' key={'Job-grid-container-' + job.id}>
@@ -75,15 +78,18 @@ export default function Profile(props) {
               {...job}
             />
           </Paper>
-          <Box>
-            <Button>View Applications</Button>
-          </Box>
+            <Box>
+              <Button onClick={() => window.open(applicationLink, "_self")}>
+                View Applications
+              </Button>
+            </Box>
         </Grid>
       </Grid>
     )
 	});
   const parsedGigs = gigsArray.map(gig => {
     const data = (<GigPostingModal key={'Gig-modal-' + gig.id} {...gig} />);
+    const applicationLink = `employerprofile/gig/${gig.id}/applications`;
 		return (
       <Grid item xs={10} sm={6} md={4} key={'Gig-grid-item-' + gig.id} >
         <Grid container direction='column' key={'Gig-grid-container-' + gig.id}>
@@ -97,7 +103,9 @@ export default function Profile(props) {
           />
           </Paper>
           <Box>
-            <Button>View Applications</Button>
+            <Button onClick={() => window.open(applicationLink, "_self")}>
+              View Applications
+            </Button>
           </Box>
         </Grid>
       </Grid>

@@ -84,11 +84,8 @@ function App() {
 					element={<JobView currentUser={currentUser} />}
 				/>
 				<Route
-					path="/gig/:posting_id/applications"
-					element={<Applications currentUser={currentUser} type='gig' />} />
-        <Route
-					path="/job/:posting_id/applications"
-					element={<Applications currentUser={currentUser} type='job' />} />
+					path="/employerprofile/:posttype/:postid/applications"
+					element={<Applications currentUser={currentUser} />} />
 			</Routes>
 		</div>
 	);

@@ -58,10 +58,6 @@ export default function JobSearch(props) {
     setJobType(event.target.value);
   };
 
-  const handleView = () => {
-    open === true ? setOpen(false) : setOpen(true);
-  };
-
   const style = {
     width: 1 / 2,
     height: 1 / 2,
@@ -81,7 +77,7 @@ export default function JobSearch(props) {
     }
   };
   const handleSubmit = e => {
-    // console.log(queryString, city, jobType, toggle);
+    console.log(queryString, city, jobType, toggle);
     e.preventDefault();
     const results = axios
       .get('/api/search/multi-filter', {
@@ -134,35 +130,7 @@ export default function JobSearch(props) {
     }
     setOpen(true);
   };
-  // useEffect(() => {
-  // 	const results = axios
-  // 		.get('/api/search/city', {
-  // 			params: {
-  // 				city: 'Toronto',
-  // 			},
-  // 		})
-  // 		.then(res => {
-  // 			console.log(res.data);
-  // 			return res.data;
-  // 		})
-  // 		.catch(err => console.log(err));
-  // 	axios
-  // 		.get('/api/search/type', {
-  // 			params: {
-  // 				type: 'Part-time',
-  // 			},
-  // 		})
-  // 		.then(res => {
-  // 			console.log(res.data);
-  // 		})
-  // 		.catch(err => console.log(err));
-  //   axios
-  //     .post('/api/gig_applications/new', {gig_posting_id: 1, junior_dev_id: 1})
-  //     .then(res => {
-  //       console.log(res.data);
-  //     })
-  //     .catch(err => console.log(err));
-  // }, []);
+
   return (
     <div className="jobsearch-content">
       <form className="search" onSubmit={handleSubmit}>
@@ -221,7 +189,6 @@ export default function JobSearch(props) {
                   size="small"
                   value="Part-time"
                   onClick={e => {
-                    console.log(e.target.value);
                     if (e.target.checked) {
                       setJobType(e.target.value);
                     } else {
@@ -260,13 +227,14 @@ export default function JobSearch(props) {
                   color="default"
                   size="small"
                   value="React"
-                  // onClick={e => {
-                  //   if (e.target.checked) {
-                  //     setJobType(e.target.value);
-                  //   } else {
-                  //     setJobType('');
-                  //   }
-                  // }}
+                  onClick={e => {
+                    console.log(e.target.value);
+                    if (e.target.checked) {
+                      setQueryString(e.target.value);
+                    } else {
+                      setQueryString('');
+                    }
+                  }}
                 />
               }
               label="React"
@@ -277,14 +245,14 @@ export default function JobSearch(props) {
                   color="default"
                   size="small"
                   value="JavaScript"
-                  // onClick={e => {
-                  //   console.log(e.target.value);
-                  //   if (e.target.checked) {
-                  //     setJobType(e.target.value);
-                  //   } else {
-                  //     setJobType('');
-                  //   }
-                  // }}
+                  onClick={e => {
+                    console.log(e.target.value);
+                    if (e.target.checked) {
+                      setQueryString(e.target.value);
+                    } else {
+                      setJobType('');
+                    }
+                  }}
                 />
               }
               label="JavaScript"
@@ -295,13 +263,14 @@ export default function JobSearch(props) {
                   color="default"
                   size="small"
                   value="Angular"
-                  // onClick={e => {
-                  //   if (e.target.checked) {
-                  //     setJobType(e.target.value);
-                  //   } else {
-                  //     setJobType('');
-                  //   }
-                  // }}
+                  onClick={e => {
+                    console.log(e.target.value);
+                    if (e.target.checked) {
+                      setQueryString(e.target.value);
+                    } else {
+                      setJobType('');
+                    }
+                  }}
                 />
               }
               label="Angular"
@@ -311,17 +280,18 @@ export default function JobSearch(props) {
                 <Checkbox
                   color="default"
                   size="small"
-                  value="Java"
-                  // onClick={e => {
-                  //   if (e.target.checked) {
-                  //     setJobType(e.target.value);
-                  //   } else {
-                  //     setJobType('');
-                  //   }
-                  // }}
+                  value="SQL"
+                  onClick={e => {
+                    console.log(e.target.value);
+                    if (e.target.checked) {
+                      setQueryString(e.target.value);
+                    } else {
+                      setJobType('');
+                    }
+                  }}
                 />
               }
-              label="Java"
+              label="SQL"
             />
             <FormControlLabel
               control={
@@ -329,16 +299,53 @@ export default function JobSearch(props) {
                   color="default"
                   size="small"
                   value="Node.js"
-                  // onClick={e => {
-                  //   if (e.target.checked) {
-                  //     setJobType(e.target.value);
-                  //   } else {
-                  //     setJobType('');
-                  //   }
-                  // }}
+                  onClick={e => {
+                    console.log(e.target.value);
+                    if (e.target.checked) {
+                      setQueryString(e.target.value);
+                    } else {
+                      setJobType('');
+                    }
+                  }}
                 />
               }
               label="Node.js"
+            />
+            <FormControlLabel
+              control={
+                <Checkbox
+                  color="default"
+                  size="small"
+                  value="C#"
+                  onClick={e => {
+                    console.log(e.target.value);
+                    if (e.target.checked) {
+                      setQueryString(e.target.value);
+                    } else {
+                      setJobType('');
+                    }
+                  }}
+                />
+              }
+              label="C#"
+            />
+            <FormControlLabel
+              control={
+                <Checkbox
+                  color="default"
+                  size="small"
+                  value="Python"
+                  onClick={e => {
+                    console.log(e.target.value);
+                    if (e.target.checked) {
+                      setQueryString(e.target.value);
+                    } else {
+                      setJobType('');
+                    }
+                  }}
+                />
+              }
+              label="Python"
             />
           </FormGroup>
         </div>

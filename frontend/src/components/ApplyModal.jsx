@@ -6,11 +6,11 @@ import {Link} from 'react-router-dom';
 
 export default function ApplyModal(props) {
   const {currentUser, jobApplying, handleClick} = props;
-
   const [open, setOpen] = useState(false);
   const [profile, setProfile] = useState({
     dev: {},
   });
+  const [applicationSubmitted, setApplicationSubmitted] = useState(false);
 
   const handleView = () => {
     open === true ? setOpen(false) : setOpen(true);
@@ -49,6 +49,21 @@ export default function ApplyModal(props) {
     resume_link,
   } = profile.dev;
 
+  const submitApplication = () => {
+    // job_posting_id, junior_dev_id
+    axios
+      .post('/api/job_applications/new', {
+        job_posting_id: jobApplying.id,
+        junior_dev_id: currentUser.id,
+      })
+      .then(res => {
+        console.log(res.data);
+        setApplicationSubmitted(true);
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
   // useEffect(() => {
   //   const devUrl = '/api/devs/' + id;
   //   axios.get(devUrl).then(profile => {
@@ -71,43 +86,61 @@ export default function ApplyModal(props) {
         // aria-describedby='modal-modal-description'
       >
         <Box sx={style}>
-          <section className="profile-bio">
-            <h1>Apply for {jobApplying.job_title}</h1>
-            <div className="profile-data">
-              <div className="profile-pic">
-                <img
-                  id="user-photo"
-                  src={currentUser.photo_url}
-                  alt="Avatar"
-                ></img>
-                <Link to="/">Profile</Link>
+          {applicationSubmitted ? (
+            'Application Submitted'
+          ) : (
+            <section className="profile-bio">
+              <h1>Apply for {jobApplying.job_title}</h1>
+              <div className="profile-data">
+                <div className="profile-pic">
+                  <img
+                    id="user-photo"
+                    src={currentUser.photo_url}
+                    alt="Avatar"
+                  ></img>
+                  <Link
+                    to={{
+                      pathname: '/profile',
+                      state: {goBack: 'true'},
+                    }}
+                  >
+                    Profile
+                  </Link>
+                </div>
+                <div>
+                  <h1>{`${currentUser.first_name} ${currentUser.last_name}`}</h1>
+                  <h1>{currentUser.headline ? currentUser.headline : 'N/A'}</h1>
+                  <h1> {currentUser.phone_number}</h1>
+                  <h1> {currentUser.email}</h1>
+                  <h1>
+                    Github{' '}
+                    {currentUser.github_url ? currentUser.github_url : 'N/A'}
+                  </h1>
+                  <h1>
+                    Resume Link{' '}
+                    {currentUser.resume_link ? currentUser.resume_link : 'N/A'}
+                  </h1>
+                  <h1>
+                    LinkedIn{' '}
+                    {currentUser.linkedIn_url
+                      ? currentUser.linkedIn_url
+                      : 'N/A'}
+                  </h1>
+                </div>
               </div>
-              <div>
-                <h1>{`${currentUser.first_name} ${currentUser.last_name}`}</h1>
-                <h1>{currentUser.headline ? currentUser.headline : 'N/A'}</h1>
-                <h1> {currentUser.phone_number}</h1>
-                <h1> {currentUser.email}</h1>
-                <h1>
-                  Github{' '}
-                  {currentUser.github_url ? currentUser.github_url : 'N/A'}
-                </h1>
-                <h1>
-                  Resume Link{' '}
-                  {currentUser.resume_link ? currentUser.resume_link : 'N/A'}
-                </h1>
-                <h1>
-                  LinkedIn{' '}
-                  {currentUser.linkedIn_url ? currentUser.linkedIn_url : 'N/A'}
-                </h1>
-              </div>
-            </div>
-          </section>
+            </section>
+          )}
           {/* <Typography id='modal-modal-title' variant='h6' component='h2'>
-						Text in a modal
-					</Typography>
-					<Typography id='modal-modal-description' sx={{ mt: 2 }}>
-						Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-					</Typography> */}
+							Text in a modal
+						</Typography>
+						<Typography id='modal-modal-description' sx={{ mt: 2 }}>
+							Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
+						</Typography> */}
+          {applicationSubmitted ? null : (
+            <Button variant="contained" onClick={submitApplication}>
+              Submit Application
+            </Button>
+          )}
           <Button onClick={handleView} variant="contained">
             Close
           </Button>

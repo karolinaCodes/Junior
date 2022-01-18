@@ -79,7 +79,7 @@ function App() {
           path="/newproject"
           element={<NewProjectPost currentUser={currentUser} />}
         />
-        <Route path="/newjob" element={<NewJob />} />
+        <Route path="/newjob" element={<NewJobPost />} />
         <Route
           path="/newgig"
           element={<NewGigPost currentUser={currentUser} />}

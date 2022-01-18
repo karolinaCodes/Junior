@@ -1,11 +1,15 @@
 import {useEffect, useState} from 'react';
 import './styles/Profile.scss';
-import {Grid, Paper, Box, Modal} from '@mui/material';
+import {Grid, Paper, Box, Modal, Button} from '@mui/material';
 import PortfolioCard from '../components/PortfolioCard';
 import PortfolioModal from '../components/PortfolioModal';
 import axios from 'axios';
+import {useNavigate} from 'react-router-dom';
 
 export default function Profile(props) {
+  let navigate = useNavigate();
+
+  const {goBack} = props;
   const [profile, setProfile] = useState({
     dev: {},
     projects: [],
@@ -13,26 +17,26 @@ export default function Profile(props) {
   const [openModal, setOpenModal] = useState(false);
   const [modalData, setModalData] = useState();
 
-	const handleView = () => {
-		openModal === true ? setOpenModal(false) : setOpenModal(true);
-	};
+  const handleView = () => {
+    openModal === true ? setOpenModal(false) : setOpenModal(true);
+  };
 
   // FOR TESTING
   const id = 1;
   //
 
   const style = {
-		width: 1 / 2,
-		height: 1 / 2,
-		display: 'flex',
-		flexDirection: 'column',
-		margin: '10% 0 0 25%',
-		background: '#223d55',
-		color: 'black',
-		alignItems: 'center',
-		justifyContent: 'center',
-		borderRadius: '2rem',
-	};
+    width: 1 / 2,
+    height: 1 / 2,
+    display: 'flex',
+    flexDirection: 'column',
+    margin: '10% 0 0 25%',
+    background: '#223d55',
+    color: 'black',
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: '2rem',
+  };
 
   // FOR TESTING ENDPOINTS
   // useEffect(() => {
@@ -85,16 +89,31 @@ export default function Profile(props) {
   }, []);
 
   const projectsArray = profile.projects;
-	const parsedProjects = projectsArray.map(project => {
-    const data = (<PortfolioModal key={'Project-modal-' + project.project_id} {...project} />);
-		return (
-      <Grid item xs={10} sm={6} md={4} key={'Project-grid-' + project.project_id}>
-        <Paper sx={{height: '300px', overflow: 'hidden'}}
+  const parsedProjects = projectsArray.map(project => {
+    const data = (
+      <PortfolioModal
+        key={'Project-modal-' + project.project_id}
+        {...project}
+      />
+    );
+    return (
+      <Grid
+        item
+        xs={10}
+        sm={6}
+        md={4}
+        key={'Project-grid-' + project.project_id}
+      >
+        <Paper
+          sx={{height: '300px', overflow: 'hidden'}}
           onClick={() => {
-          setModalData(data);
-          handleView();
-        }} key={'Project-paper-' + project.project_id}>
-          <PortfolioCard key={'Portfolio-card-' + project.project_id}
+            setModalData(data);
+            handleView();
+          }}
+          key={'Project-paper-' + project.project_id}
+        >
+          <PortfolioCard
+            key={'Portfolio-card-' + project.project_id}
             {...project}
           />
         </Paper>
@@ -104,6 +123,14 @@ export default function Profile(props) {
 
   return (
     <div className="profile-content">
+      <Button
+        variant="outlined"
+        onClick={() => {
+          navigate(-1);
+        }}
+      >
+        GO BACK
+      </Button>
       <section className="profile-bio">
         <img id="profile-pic" src={photo_url} alt="Avatar"></img>
         <section>
@@ -121,13 +148,8 @@ export default function Profile(props) {
           {parsedProjects}
         </Grid>
       </section>
-      <Modal
-        open={openModal}
-        onClose={handleView}
-      >
-        <Box sx={style}>
-          {modalData}
-        </Box>
+      <Modal open={openModal} onClose={handleView}>
+        <Box sx={style}>{modalData}</Box>
       </Modal>
     </div>
   );

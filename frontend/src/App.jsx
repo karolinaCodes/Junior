@@ -5,7 +5,7 @@ import {Link, Routes, Route} from 'react-router-dom';
 //import components
 import JobSearch from './pages/JobSearch.jsx';
 import LandingPage from './pages/LandingPage.jsx';
-import NewJob from './pages/NewJob.jsx';
+import NewJobPost from './components/NewJobPost.jsx';
 import NewGigPost from './components/NewGigPost';
 import Profile from './pages/Profile.jsx';
 import EmployerProfile from './pages/EmployerProfile.jsx';
@@ -22,7 +22,7 @@ import './App.scss';
 function App() {
   const [loginView, setLoginView] = useState(false);
   const [currentUser, setCurrentUser] = useState({
-    id: null,
+    id: Number,
     first_name: '',
     last_name: '',
     email: '',

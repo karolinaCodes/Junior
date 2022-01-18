@@ -1,13 +1,34 @@
-import './styles/NewGigPost.scss';
-
-import { TextField, Button } from '@mui/material';
-import axios from 'axios';
 import { useState } from 'react';
+import './styles/NewJobPost.scss';
+import axios from 'axios';
 import { Link } from 'react-router-dom';
+import { Button, TextField } from '@mui/material';
+
+// export default function NewJob(props) {
+// 	useEffect(() => {
+// 		axios
+// 			.post('/api/job_applications/new', {
+// 				job_posting_id: 1,
+// 				junior_dev_id: 1,
+// 			})
+// 			.then(res => {
+// 				console.log(res.data);
+// 			})
+// 			.catch(err => {
+// 				console.log(err);
+// 			});
+// 	});
+
+// 	return (
+// 		<div className='new-job-content'>
+// 			<div></div>
+// 		</div>
+// 	);
+// }
 
 export default function NewGigPost(props) {
 	const { currentUser } = props;
-	const [gigForm, setGigForm] = useState({
+	const [jobForm, setJobForm] = useState({
 		employer_id: currentUser.id,
 		job_title: '',
 		description: '',
@@ -20,10 +41,10 @@ export default function NewGigPost(props) {
 		e.preventDefault();
 
 		axios
-			.post('/api/gig_postings/new', gigForm)
+			.post('/api/job_postings/new', jobForm)
 			.then(res => {
 				console.log(res.data);
-				setGigForm({
+				setJobForm({
 					employer_id: currentUser.id,
 					job_title: '',
 					description: '',
@@ -38,15 +59,15 @@ export default function NewGigPost(props) {
 	};
 
 	return (
-		<div className='new-gig-content'>
-			<form className='new-gig-form' onSubmit={postGig}>
+		<div className='new-job-content'>
+			<form className='new-job-form' onSubmit={postGig}>
 				<h1>New Gig:</h1>
 				<TextField
-					id='gig-name'
+					id='job-name'
 					label='Gig Name'
 					variant='outlined'
-					onChange={e => setGigForm({ ...gigForm, job_title: e.target.value })}
-					value={gigForm.job_title}
+					onChange={e => setJobForm({ ...jobForm, job_title: e.target.value })}
+					value={jobForm.job_title}
 				/>
 				<TextField
 					id='pay'
@@ -54,34 +75,34 @@ export default function NewGigPost(props) {
 					label='Pay'
 					variant='outlined'
 					type='number'
-					value={gigForm.pay}
-					onChange={e => setGigForm({ ...gigForm, pay: e.target.value })}
+					value={jobForm.pay}
+					onChange={e => setJobForm({ ...jobForm, pay: e.target.value })}
 				/>
 				<TextField
 					id='deadline'
 					sx={{ mt: '1rem' }}
 					label='Deadline'
 					variant='outlined'
-					value={gigForm.deadline}
-					onChange={e => setGigForm({ ...gigForm, deadline: e.target.value })}
+					value={jobForm.deadline}
+					onChange={e => setJobForm({ ...jobForm, deadline: e.target.value })}
 				/>
 				<TextField
 					id='photo-url'
 					sx={{ mt: '1rem' }}
 					label='Thumbnail Photo'
 					variant='outlined'
-					value={gigForm.photo_url}
-					onChange={e => setGigForm({ ...gigForm, photo_url: e.target.value })}
+					value={jobForm.photo_url}
+					onChange={e => setJobForm({ ...jobForm, photo_url: e.target.value })}
 				/>
 				<TextField
-					id='gig-description'
+					id='job-description'
 					sx={{ mt: '1rem' }}
-					label='Gig Description'
+					label='Job Description'
 					variant='outlined'
 					multiline={true}
-					value={gigForm.description}
+					value={jobForm.description}
 					onChange={e =>
-						setGigForm({ ...gigForm, description: e.target.value })
+						setJobForm({ ...jobForm, description: e.target.value })
 					}
 				/>
 				<div>
@@ -89,7 +110,7 @@ export default function NewGigPost(props) {
 						Upload Images
 					</Button> */}
 					<Button
-						id='post-gig'
+						id='post-job'
 						variant='contained'
 						size='large'
 						type='submit'
@@ -98,7 +119,7 @@ export default function NewGigPost(props) {
 						Post Gig
 					</Button>
 					<Button
-						id='cancel-gig'
+						id='cancel-job'
 						component={Link}
 						to='/profile'
 						variant='contained'

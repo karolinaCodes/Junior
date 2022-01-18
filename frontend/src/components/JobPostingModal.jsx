@@ -7,7 +7,7 @@ export default function JobPostingModal(props) {
 	const datePostedFormatted = new Date(date_posted).toLocaleDateString();
 
 	return (
-		<Paper>
+		<>
 			<h1>{job_title}</h1>
 			<h3>{city}</h3>
 			<h3>${salary_min} - ${salary_max}</h3>
@@ -15,6 +15,6 @@ export default function JobPostingModal(props) {
 			<h3>Date Posted: {datePostedFormatted}</h3>
 			<h3>Accepting Applicants: {is_open ? 'Yes' : 'No'}</h3>
 			<p>{description}</p>
-		</Paper>
+		</>
 	);
 };

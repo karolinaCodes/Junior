@@ -4,7 +4,7 @@ const router = express.Router();
 module.exports = ({
   getGigPostings,
   getGigById,
-  getApplicationByGigPostingId,
+  getApplicationsByGigPostingId,
   addGigPosting,
 }) => {
   /* GET list of gigs */
@@ -31,7 +31,7 @@ module.exports = ({
 
   // return application data for a single gig posting
   router.get('/:id/applications', (req, res) => {
-    getApplicationByGigPostingId(req.params.id)
+    getApplicationsByGigPostingId(req.params.id)
       .then(application => res.json(application))
       .catch(err =>
         res.json({

@@ -1,7 +1,14 @@
 const express = require('express');
 const router = express.Router();
 
-module.exports = ({getEmployers, getEmployerById, getJobPostingsByEmployerId, getGigPostingsByEmployerId}) => {
+module.exports = ({
+  getEmployers,
+  getEmployerById,
+  getJobPostingsByEmployerId,
+  getGigPostingsByEmployerId,
+  getAllJobApplicationsForEmployer,
+  getAllGigApplicationsForEmployer
+}) => {
   /* GET all employers */
   router.get('/', (req, res) => {
     getEmployers()
@@ -36,6 +43,26 @@ module.exports = ({getEmployers, getEmployerById, getJobPostingsByEmployerId, ge
 
   router.get('/:id/gig_postings', (req, res) => {
     getGigPostingsByEmployerId(req.params.id)
+      .then(postings => res.json(postings))
+      .catch(err =>
+        res.json({
+          error: err.message,
+        })
+      );
+  });
+
+  router.get('/:id/job/applications', (req, res) => {
+    getAllJobApplicationsForEmployer(req.params.id)
+      .then(postings => res.json(postings))
+      .catch(err =>
+        res.json({
+          error: err.message,
+        })
+      );
+  });
+
+  router.get('/:id/gig/applications', (req, res) => {
+    getAllGigApplicationsForEmployer(req.params.id)
       .then(postings => res.json(postings))
       .catch(err =>
         res.json({

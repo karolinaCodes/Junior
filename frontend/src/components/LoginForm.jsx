@@ -48,7 +48,8 @@ export default function Login(props) {
 	return (
 		<div className='login-content'>
 			<form className='login' onSubmit={login}>
-				<h1>Login:</h1>
+				<h1>Log in to your account</h1>
+				<h2>Log in now to blah blah blah blah blah blah blah</h2>
 				<TextField id='email' label='email' variant='outlined' />
 				<TextField
 					id='password'
@@ -74,6 +75,9 @@ export default function Login(props) {
 					>
 						Cancel
 					</Button>
+					<p>
+						Not registered yet? <a href='/sign-up'>Create an account</a>
+					</p>
 				</div>
 			</form>
 		</div>

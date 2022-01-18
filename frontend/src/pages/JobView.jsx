@@ -11,7 +11,10 @@ import LocalOfferIcon from '@mui/icons-material/LocalOffer';
 
 import axios from 'axios';
 
+import ApplyModal from '../components/ApplyModal';
+
 export default function LandingPage(props) {
+  const {currentUser} = props;
   const [open, setOpen] = useState(false);
   const {job_id} = useParams();
   const [jobPosting, setJobPosting] = useState('');
@@ -66,7 +69,9 @@ export default function LandingPage(props) {
         <LocationOnIcon />
         <span>{jobPosting.job_type}</span>
         <LocalOfferIcon />
-        <span>{jobPosting.salary_min}</span>
+        <span>
+          ${jobPosting.salary_min} - ${jobPosting.salary_max}
+        </span>
       </div>
       <span>
         Posted{' '}
@@ -82,41 +87,7 @@ export default function LandingPage(props) {
         <p>{jobPosting.description}</p>
         <img src={jobPosting.employer_photo_url} />
       </div>
-      <Button variant="contained" onClick={handleView}>
-        Apply
-      </Button>
-      <Modal
-        open={open}
-        onClose={handleView}
-        // aria-labelledby='modal-modal-title'
-        // aria-describedby='modal-modal-description'
-      >
-        <Box sx={style}>
-          <section className="profile-bio">
-            <h1>Apply for {jobPosting.job_title}</h1>
-            {/* <img id="profile-pic" src={photo_url} alt="Avatar"></img> */}
-            <section>
-              {/* <h1>Name: {`${first_name} ${last_name}`}</h1>
-              <h1>Bio: {bio ? bio : 'N/A'}</h1>
-            </section>
-            <section>
-              <h1>Email: {email}</h1>
-              <h1>GitHub: {github_url ? github_url : 'N/A'}</h1>
-              <h1>LinkedIn: {linkedIn_url ? linkedIn_url : 'N/A'}</h1>
-              <h1>Resume: {resume_link ? resume_link : 'N/A'}</h1> */}
-            </section>
-          </section>
-          {/* <Typography id='modal-modal-title' variant='h6' component='h2'>
-						Text in a modal
-					</Typography>
-					<Typography id='modal-modal-description' sx={{ mt: 2 }}>
-						Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-					</Typography> */}
-          <Button onClick={handleView} variant="contained">
-            Close
-          </Button>
-        </Box>
-      </Modal>
+      <ApplyModal currentUser={currentUser} jobApplying={jobPosting} />
     </div>
   );
 }

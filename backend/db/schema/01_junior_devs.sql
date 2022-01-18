@@ -6,6 +6,8 @@ CREATE TABLE "junior_devs" (
   "last_name" VARCHAR(50) NOT NULL,
   "email" VARCHAR(50) NOT NULL,
   "password" VARCHAR(50) NOT NULL,
+  "phone_number" VARCHAR(25),
+  "headline" VARCHAR(25),
   "bio" VARCHAR(225),
   "photo_url" VARCHAR(255) DEFAULT 'https://isobarscience.com/wp-content/uploads/2020/09/default-profile-picture1-300x300.jpg',
   "github_url" VARCHAR(50),

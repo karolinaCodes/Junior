@@ -52,6 +52,8 @@ module.exports = db => {
     last_name,
     email,
     password,
+    phone_number,
+    headline,
     bio,
     photo_url,
     github_url,
@@ -60,12 +62,14 @@ module.exports = db => {
     location
   ) => {
     const query = {
-      text: `INSERT INTO junior_devs (first_name, last_name, email, password, bio, photo_url, github_url, linkedIn_url, resume_url, location) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING *`,
+      text: `INSERT INTO junior_devs (first_name, last_name, email, password, phone_number, headline, bio, photo_url, github_url, linkedIn_url, resume_url, location) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING *`,
       values: [
         first_name,
         last_name,
         email,
         password,
+        phone_number,
+        headline,
         bio,
         photo_url,
         github_url,
@@ -465,7 +469,7 @@ module.exports = db => {
     const query = {
       text: `SELECT job_applications.*, job_postings.*, 
         employers.email as employer_email, company_name, employers.bio as employer_bio, employers.photo_url as employer_photo_url,
-        junior_devs.email as dev_email, first_name, last_name, junior_devs.bio as dev_bio, junior_devs.photo_url as dev_photo_url
+        junior_devs.email as dev_email, first_name, last_name,phone_number,headline, junior_devs.bio as dev_bio, junior_devs.photo_url as dev_photo_url
         FROM job_applications
         JOIN job_postings ON job_applications.job_posting_id = job_postings.id
         JOIN employers ON job_postings.employer_id = employers.id
@@ -513,7 +517,7 @@ module.exports = db => {
 
   /* Retrieve all gig application data, gig posting data,
       employer email, company_name, bio, photo_url,
-      junior_dev email, first_name, last_name, bio, photo_url,
+      junior_dev email, first_name, last_name, headline, bio, photo_url,
       github_url, linkedIn_url, resume_url, location
   */
 
@@ -521,7 +525,7 @@ module.exports = db => {
     const query = {
       text: `SELECT gig_applications.*, gig_postings.*, 
         employers.email as employer_email, company_name, employers.bio as employer_bio, employers.photo_url as employer_photo_url,
-        junior_devs.email as dev_email, first_name, last_name, junior_devs.bio as dev_bio, junior_devs.photo_url as dev_photo_url
+        junior_devs.email as dev_email, first_name, last_name,phone_number, headline, junior_devs.bio as dev_bio, junior_devs.photo_url as dev_photo_url
         FROM gig_applications
         JOIN gig_postings ON gig_applications.gig_posting_id = gig_postings.id
         JOIN employers ON gig_postings.employer_id = employers.id
@@ -540,7 +544,7 @@ module.exports = db => {
     const query = {
       text: `SELECT gig_applications.*, gig_postings.*, 
         employers.email as employer_email, company_name, employers.bio as employer_bio, employers.photo_url as employer_photo_url,
-        junior_devs.email as dev_email, first_name, last_name, junior_devs.bio as dev_bio, junior_devs.photo_url as dev_photo_url
+        junior_devs.email as dev_email, first_name, last_name,phone_number, headline, junior_devs.bio as dev_bio, junior_devs.photo_url as dev_photo_url
         FROM gig_applications
         JOIN gig_postings ON gig_applications.gig_posting_id = gig_postings.id
         JOIN employers ON gig_postings.employer_id = employers.id

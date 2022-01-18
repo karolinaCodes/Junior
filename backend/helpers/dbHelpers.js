@@ -482,7 +482,7 @@ module.exports = db => {
 
   const getApplicationsByJobPostingId = id => {
     const query = {
-      text: `SELECT job_applications.*, job_postings.*, junior_devs.*
+      text: `SELECT job_applications.*, job_postings.*, junior_devs.*, junior_devs.photo_url as dev_photo_url
         FROM job_applications
         JOIN job_postings ON job_applications.job_posting_id = job_postings.id
         JOIN employers ON job_postings.employer_id = employers.id

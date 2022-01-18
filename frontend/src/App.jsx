@@ -74,7 +74,7 @@ function App() {
         />
         <Route path="/profile" element={<Profile />} />
         <Route path="/employerprofile" element={<EmployerProfile />} />
-        <Route path="/jobs" element={<JobSearch />} />
+        <Route path="/jobs" element={<JobSearch currentUser={currentUser} />} />
         <Route
           path="/newproject"
           element={<NewProjectPost currentUser={currentUser} />}
@@ -87,8 +87,14 @@ function App() {
         {/* <Route path="/newjob" element={<NewGig />} /> */}
         <Route path="/portfoliomodal" element={<PortfolioModal />} />
         <Route path="/applymodal" element={<ApplyModal />} />
-        <Route path="/gig/:gig_id" element={<GigView />} />
-        <Route path="/job/:job_id" element={<JobView />} />
+        <Route
+          path="/gig/:gig_id"
+          element={<GigView currentUser={currentUser} />}
+        />
+        <Route
+          path="/job/:job_id"
+          element={<JobView currentUser={currentUser} />}
+        />
       </Routes>
     </div>
   );

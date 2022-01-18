@@ -7,9 +7,8 @@ import axios from 'axios';
 import {useNavigate} from 'react-router-dom';
 
 export default function Profile(props) {
-  let navigate = useNavigate();
+  const navigate = useNavigate();
 
-  const {goBack} = props;
   const [profile, setProfile] = useState({
     dev: {},
     projects: [],

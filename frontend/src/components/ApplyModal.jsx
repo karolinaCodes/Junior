@@ -3,6 +3,7 @@ import axios from 'axios';
 import './styles/ApplyModal.scss';
 import {Button, Modal, Box, Typography} from '@mui/material';
 import {Link} from 'react-router-dom';
+import {useNavigate} from 'react-router-dom';
 
 export default function ApplyModal(props) {
   const {currentUser, jobApplying, handleClick} = props;
@@ -11,6 +12,8 @@ export default function ApplyModal(props) {
     dev: {},
   });
   const [applicationSubmitted, setApplicationSubmitted] = useState(false);
+
+  const navigate = useNavigate();
 
   const handleView = () => {
     open === true ? setOpen(false) : setOpen(true);
@@ -87,7 +90,22 @@ export default function ApplyModal(props) {
       >
         <Box sx={style}>
           {applicationSubmitted ? (
-            'Application Submitted'
+            <div>
+              'Application Submitted'
+              <div>
+                <Button
+                  variant="contained"
+                  onClick={() => {
+                    navigate(-1);
+                  }}
+                >
+                  Search More Jobs
+                </Button>
+                <Link to="/">
+                  <Button variant="contained">View Application</Button>
+                </Link>
+              </div>
+            </div>
           ) : (
             <section className="profile-bio">
               <h1>Apply for {jobApplying.job_title}</h1>
@@ -98,14 +116,7 @@ export default function ApplyModal(props) {
                     src={currentUser.photo_url}
                     alt="Avatar"
                   ></img>
-                  <Link
-                    to={{
-                      pathname: '/profile',
-                      state: {goBack: 'true'},
-                    }}
-                  >
-                    Profile
-                  </Link>
+                  <Link to="/profile">Profile</Link>
                 </div>
                 <div>
                   <h1>{`${currentUser.first_name} ${currentUser.last_name}`}</h1>
@@ -143,9 +154,11 @@ export default function ApplyModal(props) {
               Submit Application
             </Button>
           )}
-          <Button onClick={handleView} variant="contained">
-            Close
-          </Button>
+          {!applicationSubmitted && (
+            <Button onClick={handleView} variant="contained">
+              Close
+            </Button>
+          )}
         </Box>
       </Modal>
     </div>

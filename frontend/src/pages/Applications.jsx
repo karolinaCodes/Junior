@@ -1,9 +1,8 @@
 import './styles/LandingPage.scss';
-import './styles/JobView.scss';
 import {Modal, Box, Grid, Paper} from '@mui/material';
 import {useEffect, useState} from 'react';
 import {useParams} from 'react-router-dom';
-import ApplicationCard from '../components/Applications';
+import ApplicationCard from '../components/ApplicationCard';
 
 import axios from 'axios';
 

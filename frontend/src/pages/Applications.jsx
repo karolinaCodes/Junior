@@ -8,45 +8,43 @@ import ApplicationCard from '../components/Applications';
 import axios from 'axios';
 
 export default function Applications(props) {
-  // Get the gig_posting id from url
-  const {gig_id} = useParams();
-  
+  // Get the posting id from url
+  const {posting_id} = useParams();
+  // Declare job or gig
+  const postingType = props.type;
+
   const [profile, setProfile] = useState({
     employer: {},
   });
   const [posting, setPosting] = useState({
-    job: {},
-    gig: {},
+    posting: {},
     applications: []
   });
 
   const [openModal, setOpenModal] = useState(false);
   const [modalData, setModalData] = useState();
-
+  
   const handleView = () => {
     openModal === true ? setOpenModal(false) : setOpenModal(true);
   };
-
-  const {company_name, email, bio} = profile.employer;
-  const {employer_photo_url, job_title, description, pay, date_posted, deadline, photo_url} = posting.gig;
 
   // TESTING
   const employer_id = 1;
   // TESTING
 
   useEffect(() => {
-    const employerUrl = '/api/employers/' + employer_id;
-    const gigUrl = '/api/gig_postings/' + gig_id;
-    const applicationsUrl = '/api/gig_postings/' + gig_id + '/applications';
+    const employerUrl = `/api/employers/${employer_id}`;
+    const postingUrl = `/api/${postingType}_postings/${posting_id}`;
+    const applicationsUrl = `/api/${postingType}_postings/${posting_id}/applications`;
     Promise.all([
       axios.get(employerUrl),
-      axios.get(gigUrl),
+      axios.get(postingUrl),
       axios.get(applicationsUrl),
     ]).then((all) => {
-      const [employerData, gigData, applicationsData] = all;
+      const [employerData, postingData, applicationsData] = all;
       setProfile(prev => ({...prev, employer: employerData.data}));
       setPosting(prev => ({...prev,
-        gig: gigData.data,
+        posting: postingData.data,
         applications: applicationsData.data
       }));
     });
@@ -67,15 +65,15 @@ export default function Applications(props) {
 
   const applicationsArray = posting.applications;
 	const parsedApplications = applicationsArray.map(application => {
-    const data = (<ApplicationCard key={'Application-modal-' + application.id} {...application} />);
+    const data = (<ApplicationCard key={'Application-modal-' + application.junior_dev_id} {...application} />);
 		return (
-      <Grid item xs={10} key={'Application-grid-' + application.id}>
+      <Grid item xs={10} key={'Application-grid-' + application.junior_dev_id}>
         <Paper
           onClick={() => {
           setModalData(data);
           handleView();
-        }} key={'Application-paper-' + application.id}>
-          <ApplicationCard key={'Application-card-' + application.id}
+        }} key={'Application-paper-' + application.junior_dev_id}>
+          <ApplicationCard key={'Application-card-' + application.junior_dev_id}
             {...application}
           />
         </Paper>
@@ -84,35 +82,36 @@ export default function Applications(props) {
   });
 
   return (
-    <div className="gig-content">
-      <h1>{job_title}</h1>
-      <img src={photo_url} />
+    <div className="posting-content">
+      <h1>{posting.posting.job_title}</h1>
       <h2>Description</h2>
-      <p>{description}</p>
-      <p>
-        Deadline:{' '}
-        {new Date(deadline).toLocaleDateString('en-US', {
+      <p>{posting.posting.description}</p>
+      <div>
+        <p>
+          Posted {new Date(posting.posting.date_posted).toLocaleDateString('en-US', {
           year: 'numeric',
           month: 'long',
           day: 'numeric',
-        })}
-      </p>
-      <p>Offer: {`$${pay} CAD`}</p>
-      <div className="application-list">
+          })}
+          {posting.posting.salary_min && ` $${posting.posting.salary_min} - $${posting.posting.salary_max}`}
+          {posting.posting.pay && ` Offer: ${posting.posting.pay} CAD`}
+        </p>
+      </div>
+      <div className="application-content">
         <Grid container direction='column' spacing={3}>
           <h1>Applications</h1>
           Total applications: {posting.applications.length}
           {parsedApplications}
         </Grid>
+        <Modal
+          open={openModal}
+          onClose={handleView}
+        >
+          <Box sx={style}>
+            {modalData}
+          </Box>
+        </Modal>
       </div>
-      <Modal
-        open={openModal}
-        onClose={handleView}
-      >
-        <Box sx={style}>
-          {modalData}
-        </Box>
-      </Modal>
     </div>
-  );
+  )
 }

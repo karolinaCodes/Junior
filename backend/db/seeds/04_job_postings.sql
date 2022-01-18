@@ -1,6 +1,34 @@
 INSERT INTO job_postings (employer_id,job_title,description,city,salary_min,salary_max,job_type,is_remote) VALUES (
     1,'React Developer',
-    'Leverage agile frameworks to provide a robust synopsis for high level overviews. Iterative approaches to corporate strategy foster collaborative thinking to further the overall value proposition. Organically grow the holistic world view of disruptive innovation via workplace diversity and empowerment.',
+    'Job Description: We are looking for a Front-End Web and Mobile Developer motivated to combine the art of design with the art of programming. Responsibilities will include translating UI/UX design wireframes to actual code to produce visual elements of the application. You will work with the UI/UX designer and bridge the gap between graphical design and technical implementation, taking an active role on both sides and defining how the application looks as well as how it works.
+
+    Front End Developers work in teams alongside Backend Developers and User Experience Designers to ensure all elements of web creation are consistent. This requires excellent communication and interpersonal skills.
+    Responsibilities:
+
+    Ensuring user experience determines design choices.
+    Developing features to enhance the user experience.
+    Balancing functional and aesthetic design.
+    Ensuring optimized web design for mobile devices.
+    Building reusable code for future use.
+    Optimizing mobile applications for maximum speed and scalability.
+    Maintaining brand consistency throughout the design.
+    
+    Requirements:
+
+Proficient understanding of :
+
+React Native
+Objective C & Swift for iOS applications
+ReactJS
+Web markup, including HTML5, CSS and preprocessors
+Client-side scripting and debugging using JavaScript and Typescript with libraries and their interactions with RESTful APIs.
+Cross-browser compatibility issues and ways to work around them.
+Code versioning tools, such as Git.
+
+Additional experience to get you to the front of the line:
+server-side CSS pre-processing platforms
+asynchronous request handling, partial page updates
+',
     'Toronto',45000,50000,'Full-time',true);
 INSERT INTO job_postings (employer_id,job_title,description,city,salary_min,salary_max,job_type,is_remote) VALUES (
     1,'Ruby on Rails Coordinator',

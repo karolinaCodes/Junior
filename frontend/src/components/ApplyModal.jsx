@@ -111,6 +111,8 @@ export default function ApplyModal(props) {
                   <h1>{`${currentUser.first_name} ${currentUser.last_name}`}</h1>
                   <h1>{currentUser.headline ? currentUser.headline : 'N/A'}</h1>
                   <h1> {currentUser.phone_number}</h1>
+                  <h1> {currentUser.city}, Canada</h1>
+
                   <h1> {currentUser.email}</h1>
                   <h1>
                     Github{' '}
@@ -118,12 +120,12 @@ export default function ApplyModal(props) {
                   </h1>
                   <h1>
                     Resume Link{' '}
-                    {currentUser.resume_link ? currentUser.resume_link : 'N/A'}
+                    {currentUser.resume_url ? currentUser.resume_url : 'N/A'}
                   </h1>
                   <h1>
                     LinkedIn{' '}
-                    {currentUser.linkedIn_url
-                      ? currentUser.linkedIn_url
+                    {currentUser.linkedin_url
+                      ? currentUser.linkedin_url
                       : 'N/A'}
                   </h1>
                 </div>

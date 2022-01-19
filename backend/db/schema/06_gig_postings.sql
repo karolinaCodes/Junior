@@ -4,7 +4,7 @@ CREATE TABLE "gig_postings" (
   "id" SERIAL PRIMARY KEY NOT NULL,
   "employer_id" INTEGER REFERENCES employers(id) ON DELETE CASCADE,
   "job_title" VARCHAR(50) NOT NULL,
-  "description" VARCHAR(225),
+  "description" VARCHAR(500),
   "pay" INTEGER NOT NULL,
   "date_posted" TIMESTAMP NOT NULL DEFAULT NOW(),
   "deadline" DATE,

@@ -1,6 +1,6 @@
 import {useEffect, useState} from 'react';
 import './styles/Profile.scss';
-import {Grid, Button, Modal, Box, Paper} from '@mui/material';
+import {Grid, Button, Modal, Box, Paper, Card, CardActions} from '@mui/material';
 import {Link} from 'react-router-dom';
 import JobPostingCard from '../components/JobPostingCard';
 import JobPostingModal from '../components/JobPostingModal';
@@ -10,7 +10,6 @@ import Applications from './Applications';
 import axios from 'axios';
 
 export default function Profile(props) {
-  // const {id} = useParams();
   const [profile, setProfile] = useState({
     employer: {},
     jobs: [],
@@ -67,22 +66,26 @@ export default function Profile(props) {
     const data = (<JobPostingModal key={'Job-modal-' + job.id} {...job} />);
     const applicationLink = `employerprofile/job/${job.id}/applications`;
 		return (
-      <Grid item xs={10} sm={6} md={4} key={'Job-grid-item-' + job.id}>
+      <Grid item xs={12} sm={6} md={4} lg={3} key={'Job-grid-item-' + job.id}>
         <Grid container direction='column' key={'Job-grid-container-' + job.id}>
-          <Paper sx={{height: '300px', overflow: 'hidden'}}
+          <Paper
             onClick={() => {
             setModalData(data);
             handleView();
           }} key={'Job-paper-' + job.id}>
-            <JobPostingCard key={'Job-card-' + job.id}
-              {...job}
-            />
+            <Card>
+              <JobPostingCard key={'Job-card-' + job.id}
+                type='job'
+                {...job}
+              />
+              <CardActions className='card-footer'>
+                <Button
+                  onClick={() => window.open(applicationLink, "_self")}>
+                  View Applications
+                </Button>
+              </CardActions>
+            </Card>
           </Paper>
-            <Box>
-              <Button onClick={() => window.open(applicationLink, "_self")}>
-                View Applications
-              </Button>
-            </Box>
         </Grid>
       </Grid>
     )
@@ -91,22 +94,24 @@ export default function Profile(props) {
     const data = (<GigPostingModal key={'Gig-modal-' + gig.id} {...gig} />);
     const applicationLink = `employerprofile/gig/${gig.id}/applications`;
 		return (
-      <Grid item xs={10} sm={6} md={4} key={'Gig-grid-item-' + gig.id} >
+      <Grid item xs={12} sm={6} md={4} lg={3} key={'Gig-grid-item-' + gig.id} >
         <Grid container direction='column' key={'Gig-grid-container-' + gig.id}>
-          <Paper sx={{height: '300px', overflow: 'hidden'}}
+          <Paper
             onClick={() => {
             setModalData(data);
             handleView();
           }} key={'Gig-paper-' + gig.id}>
-          <GigPostingCard key={'Gig-card-' + gig.id}
-            {...gig}
-          />
+            <Card>
+              <GigPostingCard key={'Gig-card-' + gig.id}
+                type='gig'
+                {...gig}
+              />
+              <Button className='card-footer'
+                onClick={() => window.open(applicationLink, "_self")}>
+                View Applications
+              </Button>
+            </Card>
           </Paper>
-          <Box>
-            <Button onClick={() => window.open(applicationLink, "_self")}>
-              View Applications
-            </Button>
-          </Box>
         </Grid>
       </Grid>
 		)
@@ -114,21 +119,23 @@ export default function Profile(props) {
 
   return (
     <div className="profile-content">
-      <section className="profile-bio">
-        <img id="profile-pic" src={photo_url} alt="Avatar"></img>
-        <section>
-          <h1>Company Name: {company_name}</h1>
-          <h1>Bio: {bio ? bio : 'N/A'}</h1>
-        </section>
-        <section>
-          <h1>Email: {email}</h1>
-          <h1>Job Postings: {profile.jobs.length}</h1>
-          <h1>Gig Postings: {profile.gigs.length}</h1>
-        </section>
-      </section>
+      <Grid container className="profile-bio" columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
+        <Grid item class="profile-pic">
+          <img id="profile-pic" src={photo_url} alt="Avatar"></img>
+        </Grid>
+        <Grid item className="profile-name">
+          <h4>Company Name: {company_name}</h4>
+          <h4>Bio: {bio ? bio : 'N/A'}</h4>
+        </Grid>
+        <Grid item className="profile-links">
+          <h4>Email: {email}</h4>
+          <h4>Job Postings: {profile.jobs.length}</h4>
+          <h4>Gig Postings: {profile.gigs.length}</h4>
+        </Grid>
+      </Grid>
       {(parsedJobs.length === 0 && parsedGigs.length === 0) && (<h1>No postings.</h1>)}
       {parsedJobs.length !== 0 && (
-        <section className='cards'>
+        <section className='profile-cards'>
           <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
             <Grid item xs={12}>
               <h1>{company_name ? company_name + "'s " : null}Job Postings:</h1>
@@ -138,7 +145,7 @@ export default function Profile(props) {
         </section>
       )}
       {parsedGigs.length !== 0 && (
-        <section className='cards'>
+        <section className='profile-cards'>
           <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
             <Grid item xs={12}>
             <h1>{company_name ? company_name + "'s " : null}Gig Postings:</h1>

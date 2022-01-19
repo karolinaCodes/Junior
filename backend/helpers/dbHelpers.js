@@ -348,11 +348,11 @@ module.exports = db => {
   // Jobs and Gigs Search //
   const getJobsAndGigsByQuery = queryString => {
     const q1 = {
-      text: `SELECT employers.id as employer_id, company_name, email, bio, employers.photo_url as employer_photo_url, job_postings.* FROM employers JOIN job_postings ON employers.id = job_postings.employer_id WHERE job_title LIKE '%${queryString}%' OR description LIKE '%${queryString}%';`,
+      text: `SELECT employers.id as employer_id, company_name, email, bio, employers.photo_url as employer_photo_url, job_postings.* FROM employers JOIN job_postings ON employers.id = job_postings.employer_id WHERE job_title ILIKE '%${queryString}%' OR description ILIKE '%${queryString}%';`,
       // values: [queryString],
     };
     const q2 = {
-      text: `SELECT employers.id as employer_id, company_name, email, bio, employers.photo_url as employer_photo_url, gig_postings.* FROM employers JOIN gig_postings ON employers.id = gig_postings.employer_id WHERE job_title LIKE '%${queryString}%' OR description LIKE '%${queryString}%';`,
+      text: `SELECT employers.id as employer_id, company_name, email, bio, employers.photo_url as employer_photo_url, gig_postings.* FROM employers JOIN gig_postings ON employers.id = gig_postings.employer_id WHERE job_title ILIKE '%${queryString}%' OR description ILIKE '%${queryString}%';`,
       // values: [queryString],
     };
     // SELECT employers.id as employer_id, company_name, email, bio, employers.photo_url as employer_photo_url, job_postings.* FROM employers JOIN job_postings ON employers.id = job_postings.employer_id WHERE
@@ -417,28 +417,26 @@ module.exports = db => {
     let sqlQueryString = '';
     sqlQuery.toggle === 'jobs'
       ? (sqlQueryString +=
-          'SELECT employers.id as employer_id, company_name, email, bio, employers.photo_url as employer_photo_url, job_postings.* FROM employers JOIN job_postings ON employers.id = job_postings.employer_id WHERE')
+          'SELECT employers.id as employer_id, company_name, email, bio, employers.photo_url as employer_photo_url, job_postings.* FROM employers JOIN job_postings ON employers.id = job_postings.employer_id')
       : (sqlQueryString +=
-          'SELECT employers.id as employer_id, company_name, email, bio, employers.photo_url as employer_photo_url, gig_postings.* FROM employers JOIN gig_postings ON employers.id = gig_postings.employer_id WHERE');
+          'SELECT employers.id as employer_id, company_name, email, bio, employers.photo_url as employer_photo_url, gig_postings.* FROM employers JOIN gig_postings ON employers.id = gig_postings.employer_id');
 
     if (sqlQuery.queryString) {
-      sqlQueryString += ` (job_title LIKE '%${sqlQuery.queryString}%' OR description LIKE '%${sqlQuery.queryString}%')`;
+      sqlQueryString += ` WHERE (job_title ILIKE '%${sqlQuery.queryString}%' OR description ILIKE '%${sqlQuery.queryString}%')`;
     }
 
     if (sqlQuery.city) {
-      // console.log(!sqlQueryString.slice(-6));
-      // console.log(sqlQueryString.slice(-6) !== 'WHERE ');
       if (sqlQueryString.slice(-5) !== 'WHERE') {
         sqlQueryString += ' AND';
       }
-      sqlQueryString += ` city = '${sqlQuery.city}'`;
+      sqlQueryString += ` city ILIKE '${sqlQuery.city}'`;
     }
 
     if (sqlQuery.job_type) {
       if (sqlQueryString.slice(-5) !== 'WHERE') {
         sqlQueryString += ' AND';
       }
-      sqlQueryString += ` job_type = '${sqlQuery.job_type}' `;
+      sqlQueryString += ` job_type ILIKE '${sqlQuery.job_type}' `;
     }
     sqlQueryString += ';';
 

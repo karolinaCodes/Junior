@@ -66,7 +66,7 @@ export default function NavBar(props) {
         <Button id="signup" variant="contained">
           Sign Up
         </Button>
-        <UserMenu />
+        <UserMenu currentUser={currentUser} />
       </div>
     </div>
   );

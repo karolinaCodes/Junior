@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, useNavigate } from 'react-router-dom';
 
 //import components
 import JobSearch from './pages/JobSearch.jsx';
@@ -23,6 +23,7 @@ import './App.scss';
 function App() {
 	const [loginView, setLoginView] = useState(false);
 	const [currentUser, setCurrentUser] = useState({});
+	let navigate = useNavigate();
 
 	useEffect(() => {
 		axios
@@ -36,8 +37,20 @@ function App() {
 			});
 	}, []);
 
+	const checkUser = () => {
+		if (currentUser.id) {
+			return true;
+		} else {
+			return false;
+		}
+	};
+
 	const handleLoginView = () => {
-		loginView ? setLoginView(false) : setLoginView(true);
+		if (checkUser()) {
+			setLoginView(false);
+		} else {
+			setLoginView(true);
+		}
 	};
 
 	return (

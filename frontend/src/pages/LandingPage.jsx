@@ -11,29 +11,32 @@ export default function LandingPage(props) {
   const searchView = () => {
     return (
       <div className="search-wrapper">
-        <section className="title-text">
-          <h1 className="build">Build your portfolio.</h1>
-          <h1 className="get-paid">Get paid. Find work.</h1>
+        <section className="search-content">
+          <section className="title-text">
+            <h1 className="build">Build Your Portfolio.</h1>
+            <h1 className="get-paid">Get Paid. Find Work.</h1>
+          </section>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            <br></br>
+            eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          </p>
+          <form className="search">
+            <TextField id="search-bar" label="Find Work" variant="outlined" />
+            <Button variant="contained" size="large" href="/jobs">
+              SEARCH
+            </Button>
+          </form>
         </section>
-        <p className="card-description">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua.{' '}
-        </p>
-        <form className="search">
-          <TextField id="search-bar" label="Find Work" variant="outlined" />
-          <Button variant="contained" size="large" href="/jobs">
-            SEARCH
-          </Button>
-        </form>
+        <div id="brand-logos">
+          <img src="images/homepage-brands.png" alt="trusted brands" />
+        </div>
       </div>
     );
   };
 
   return (
     <div className="landing-wrapper">
-      <div id="landing-image">
-        <img src="images/landing-page-image.png"></img>
-      </div>
       <div className="landing-content">
         {loginView && (
           <LoginForm

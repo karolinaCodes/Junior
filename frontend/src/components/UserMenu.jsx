@@ -16,7 +16,9 @@ function ImageAvatars() {
   );
 }
 
-export default function PositionedMenu() {
+export default function PositionedMenu(props) {
+  const {currentUser, logout} = props;
+
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const handleClick = event => {
@@ -26,10 +28,15 @@ export default function PositionedMenu() {
     setAnchorEl(null);
   };
 
+  const handleLogout = () => {
+    logout();
+    handleClose();
+  };
+
   return (
     <div>
       <div className="profile-info">
-        <span className="name">Sarah Dela Cruz</span>
+        <span className="name">{currentUser.first_name}</span>
         <Button
           id="demo-positioned-button"
           aria-controls={open ? 'demo-positioned-menu' : undefined}
@@ -66,8 +73,8 @@ export default function PositionedMenu() {
         <Link to="/">
           <MenuItem onClick={handleClose}>Settings</MenuItem>
         </Link>
-        <Link>
-          <MenuItem onClick={handleClose}>Logout</MenuItem>
+        <Link to="/">
+          <MenuItem onClick={handleLogout}>Logout</MenuItem>
         </Link>
       </Menu>
     </div>

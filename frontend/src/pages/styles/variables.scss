@@ -6,7 +6,20 @@ $bold: 700;
 
 // COLORS
 $white: #f9f9f9;
-$black: #1c1c1c;
-$mint: #9ad1d4;
-$blue: #223d55;
-$yellow: #ffc857;
+$black: #26242a;
+$blue: #182c5b;
+$invis: #182c5b00;
+$sand: #e3d3ca;
+$brown: #3d2b2a;
+
+// .MuiButton-root
+@mixin outline {
+	color: $white;
+	border-color: $white;
+}
+
+// .MuiButton-root
+@mixin solid {
+	color: $white;
+	background-color: $blue;
+}

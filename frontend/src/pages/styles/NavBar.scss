@@ -1,51 +1,61 @@
 @import 'variables';
 
 .nav-bar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background-color: #182c5b;
-  height: 100px;
-  width: 100%;
-  z-index: 999;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	background-color: $invis;
+	height: 90px;
+	width: 100%;
+	z-index: 999;
+	position: fixed;
 }
 
 .nav-links {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+	width: 70%;
 
-  a {
-    font-size: 20px;
-    font-weight: $reg;
-    color: $white;
-    text-decoration: none;
-    margin-left: 2rem;
-  }
+	a {
+		font-size: 20px;
+		font-weight: $reg;
+		color: $white;
+		text-decoration: none;
+		margin-left: 2rem;
+	}
+	a:hover {
+		color: $sand;
+	}
 }
 
 .nav-button {
-  display: flex;
-  justify-content: flex-end;
-  width: 20%;
-  margin-right: 8rem;
+	display: flex;
+	justify-content: flex-end;
+	width: 20%;
+	margin-right: 8rem;
 
-  button {
-    font-weight: $bold;
-    margin-left: 2rem;
-  }
+	button,
+	#login {
+		@include outline;
+		font-weight: $bold;
+		margin-left: 2rem;
+	}
 
-  a {
-    font-weight: $bold;
-  }
+	#signup {
+		@include solid;
+	}
+
+	a {
+		font-weight: $bold;
+	}
 }
 
 #logo {
-  text-decoration: none;
-  font-size: 60px;
-  font-family: $brand;
-  font-weight: $bold;
-  color: $yellow;
-  margin: 8rem;
+	text-decoration: none;
+	font-size: 60px;
+	font-family: $brand;
+	font-weight: $bold;
+	color: $blue;
+	margin: 8rem;
 }

@@ -1,9 +1,9 @@
-import './styles/NewGigPost.scss';
-
-import { TextField, Button } from '@mui/material';
 import axios from 'axios';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { TextField, Button, FormLabel } from '@mui/material';
+
+import './styles/NewGigPost.scss';
 
 export default function NewGigPost(props) {
 	const { currentUser } = props;
@@ -15,6 +15,10 @@ export default function NewGigPost(props) {
 		deadline: '',
 		photo_url: '',
 	});
+
+	useEffect(() => {
+		setGigForm({ ...gigForm, employer_id: currentUser.id });
+	}, [currentUser]);
 
 	const postGig = e => {
 		e.preventDefault();
@@ -57,10 +61,11 @@ export default function NewGigPost(props) {
 					value={gigForm.pay}
 					onChange={e => setGigForm({ ...gigForm, pay: e.target.value })}
 				/>
+				<h3>Deadline</h3>
 				<TextField
 					id='deadline'
 					sx={{ mt: '1rem' }}
-					label='Deadline'
+					type='date'
 					variant='outlined'
 					value={gigForm.deadline}
 					onChange={e => setGigForm({ ...gigForm, deadline: e.target.value })}

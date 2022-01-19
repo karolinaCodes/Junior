@@ -8,9 +8,10 @@ import axios from 'axios';
 
 export default function Applications(props) {
   // Get the posting id from url
-  const {posting_id} = useParams();
+  // const {employerid, posttype, postid} = useParams();
+  const {posttype, postid} = useParams();
+  // path="/:employerid/:type/:posting_id/applications"
   // Declare job or gig
-  const postingType = props.type;
 
   const [profile, setProfile] = useState({
     employer: {},
@@ -28,13 +29,13 @@ export default function Applications(props) {
   };
 
   // TESTING
-  const employer_id = 1;
+  const employerid = 1;
   // TESTING
 
   useEffect(() => {
-    const employerUrl = `/api/employers/${employer_id}`;
-    const postingUrl = `/api/${postingType}_postings/${posting_id}`;
-    const applicationsUrl = `/api/${postingType}_postings/${posting_id}/applications`;
+    const employerUrl = `/api/employers/${employerid}`;
+    const postingUrl = `/api/${posttype}_postings/${postid}`;
+    const applicationsUrl = `/api/${posttype}_postings/${postid}/applications`;
     Promise.all([
       axios.get(employerUrl),
       axios.get(postingUrl),
@@ -63,9 +64,9 @@ export default function Applications(props) {
   };
 
   const applicationsArray = posting.applications;
-	const parsedApplications = applicationsArray.map(application => {
+  const parsedApplications = applicationsArray.map(application => {
     const data = (<ApplicationCard key={'Application-modal-' + application.junior_dev_id} {...application} />);
-		return (
+    return (
       <Grid item xs={10} key={'Application-grid-' + application.junior_dev_id}>
         <Paper
           onClick={() => {

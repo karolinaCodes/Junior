@@ -25,6 +25,8 @@
 		justify-content: center;
 		align-items: center;
 		width: 50%;
+		height: 50vh;
+		background: #ffffff75;
 
 		h1 {
 			margin: 0;
@@ -48,8 +50,8 @@
 			}
 
 			a {
-				background-color: $sand;
-				color: $blue;
+				background-color: $blue;
+				color: $white;
 				font-weight: $bold;
 				margin-left: 2rem;
 			}

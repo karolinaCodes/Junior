@@ -1,21 +1,26 @@
 @import 'variables';
 
+// --------------------- HOMEPAGE NAV BAR ----------------- //
+.nav-home {
+	@include navHome;
+}
+
+// --------------------- NORMAL NAV BAR ----------------- //
 .nav-bar {
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	background-color: $invis;
-	height: 90px;
+	background-color: $blue;
+	height: 100px;
 	width: 100%;
 	z-index: 999;
-	position: fixed;
 }
 
 .nav-links {
 	display: flex;
 	align-items: center;
 	justify-content: flex-end;
-	width: 70%;
+	width: 75%;
 
 	a {
 		font-size: 20px;
@@ -23,9 +28,10 @@
 		color: $white;
 		text-decoration: none;
 		margin-left: 2rem;
-	}
-	a:hover {
-		color: $sand;
+
+		&:hover {
+			color: $sand;
+		}
 	}
 }
 
@@ -35,19 +41,27 @@
 	width: 20%;
 	margin-right: 8rem;
 
-	button,
 	#login {
-		@include outline;
 		font-weight: $bold;
 		margin-left: 2rem;
-	}
+		color: $white;
+		border-color: $white;
 
+		&:hover {
+			color: $sand;
+			border-color: $sand;
+		}
+	}
 	#signup {
-		@include solid;
-	}
-
-	a {
 		font-weight: $bold;
+		margin-left: 2rem;
+		color: $blue;
+		background-color: $white;
+
+		&:hover {
+			color: $sand;
+			border-color: $sand;
+		}
 	}
 }
 
@@ -56,6 +70,6 @@
 	font-size: 60px;
 	font-family: $brand;
 	font-weight: $bold;
-	color: $blue;
+	color: $white;
 	margin: 8rem;
 }

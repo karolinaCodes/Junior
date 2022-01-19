@@ -21,9 +21,7 @@ export default function Login(props) {
 			.post('/api/auth/login', data)
 			.then(res => {
 				setCurrentUser(res.data);
-				setTimeout(() => {
-					navigate('/profile');
-				}, 1000);
+				navigate('/profile');
 				console.log(res.data);
 			})
 			.catch(err => {

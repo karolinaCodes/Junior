@@ -3,39 +3,27 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Outfit:wght@100;200;300;400;500;600;700&display=swap');
 
 * {
-  // font-family: 'Poppins', sans-serif !important;
+	// font-family: 'Poppins', sans-serif !important;
 }
 .name {
-  color: white;
-  width: 120px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-#demo-positioned-button {
-  border-radius: 50%;
-  height: 40px;
-  width: 40px;
-  margin-left: 0px;
+	color: white;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 20px;
 }
 
 .profile-info {
-  display: flex;
+	display: flex;
 }
 
 #demo-positioned-button > div > div > div {
-  border: 1px solid white;
-}
-
-#demo-positioned-menu
-  > div.MuiPaper-root.MuiPaper-elevation.MuiPaper-rounded.MuiPaper-elevation1.MuiMenu-paper.MuiPaper-root.MuiPaper-elevation.MuiPaper-rounded.MuiPaper-elevation8.MuiPopover-paper.css-1poimk-MuiPaper-root-MuiMenu-paper-MuiPaper-root-MuiPopover-paper {
-  margin-top: 42px;
+	border: 1px solid white;
 }
 
 ul {
-  & a {
-    text-decoration: none;
-    color: #666666;
-  }
+	& a {
+		text-decoration: none;
+		color: #666666;
+	}
 }

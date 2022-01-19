@@ -38,6 +38,7 @@ export default function PositionedMenu(props) {
 			<div className='profile-info'>
 				<span className='name'>{currentUser.first_name}</span>
 				<Button
+					sx={{ mr: '8rem', borderRadius: 50 }}
 					id='demo-positioned-button'
 					aria-controls={open ? 'demo-positioned-menu' : undefined}
 					aria-haspopup='true'
@@ -52,17 +53,17 @@ export default function PositionedMenu(props) {
 			<Menu
 				id='demo-positioned-menu'
 				aria-labelledby='demo-positioned-button'
-				anchorEl={anchorEl}
-				open={open}
-				onClose={handleClose}
 				anchorOrigin={{
-					vertical: 'top',
-					horizontal: 'left',
+					vertical: 'bottom',
+					horizontal: 'right',
 				}}
 				transformOrigin={{
 					vertical: 'top',
-					horizontal: 'left',
+					horizontal: 'right',
 				}}
+				anchorEl={anchorEl}
+				open={open}
+				onClose={handleClose}
 			>
 				<Link to='/profile'>
 					<MenuItem onClick={handleClose}>Profile</MenuItem>

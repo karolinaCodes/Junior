@@ -10,12 +10,10 @@ export default function LandingPage(props) {
 
 	const searchView = () => {
 		return (
-			<div className='search-wrapper'>
-				<section className='search-content'>
-					<section className='title-text'>
-						<h1 className='build'>Build Your Portfolio.</h1>
-						<h1 className='get-paid'>Get Paid. Find Work.</h1>
-					</section>
+			<div>
+				<div id='white-box'>
+					<h1 className='build'>Build Your Portfolio.</h1>
+					<h1 className='get-paid'>Get Paid. Find Work.</h1>
 					<p>
 						Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
 						<br></br>
@@ -23,12 +21,15 @@ export default function LandingPage(props) {
 					</p>
 					<form className='search'>
 						<TextField id='search-bar' label='Find Work' variant='outlined' />
-						<Button variant='contained' size='large' href='/jobs'>
+						<Button
+							sx={{ ml: '2rem' }}
+							variant='contained'
+							size='large'
+							href='/jobs'
+						>
 							SEARCH
 						</Button>
 					</form>
-				</section>
-				<div id='brand-logos'>
 					<img src='images/homepage-brands.png' alt='trusted brands' />
 				</div>
 			</div>
@@ -37,22 +38,14 @@ export default function LandingPage(props) {
 
 	return (
 		<div className='landing-wrapper'>
-			<div className='landing-content'>
-				{loginView && (
-					<LoginForm
-						handleLoginView={handleLoginView}
-						currentUser={currentUser}
-						setCurrentUser={setCurrentUser}
-					/>
-				)}
-				{!loginView && searchView()}
-			</div>
-			{/* <div className='footer'>
-				<section>TinyApp</section>
-				<section>Tweeter</section>
-				<section>Jungle</section>
-				<section>Vampr</section>
-			</div> */}
+			{loginView && (
+				<LoginForm
+					handleLoginView={handleLoginView}
+					currentUser={currentUser}
+					setCurrentUser={setCurrentUser}
+				/>
+			)}
+			{!loginView && searchView()}
 		</div>
 	);
 }

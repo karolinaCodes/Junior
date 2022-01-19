@@ -8,7 +8,8 @@
 #landing-image img {
 	display: block;
 	height: 100vh;
-	width: auto;
+	// width: auto;
+	width: 100vw;
 	position: fixed;
 	z-index: 0;
 }

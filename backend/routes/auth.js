@@ -40,5 +40,10 @@ module.exports = ({getUserByEmail}) => {
       );
   });
 
+  router.post('/logout', (req, res) => {
+    res.clearCookie('email');
+    res.send('');
+  });
+
   return router;
 };

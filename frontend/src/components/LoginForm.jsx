@@ -35,7 +35,7 @@ export default function Login(props) {
 
 	return (
 		<div>
-			<div id='white-box'>
+			<div id='login-box'>
 				<form className='login' onSubmit={login}>
 					<h1>Log in to your account</h1>
 					<h2>

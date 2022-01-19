@@ -1,12 +1,12 @@
 @import 'variables';
 
-#white-box {
+#login-box {
 	display: flex;
 	flex-direction: column;
 	justify-content: space-around;
 	margin: 12rem 0 0 8rem;
-	max-width: 40%;
-	max-height: 70vh;
+	min-width: 40%;
+	min-height: 70vh;
 	border-radius: 1%;
 	background: #ffffff75;
 	position: absolute;
@@ -66,5 +66,20 @@
 		font-size: small;
 		display: flex;
 		align-self: flex-center;
+		justify-content: space-around;
+	}
+}
+
+@media only screen and (min-width: 1900px) {
+	.login-footer {
+		font-size: small;
+		display: flex;
+		align-self: flex-center;
+		justify-content: space-around;
+		margin-top: 2rem;
+
+		p {
+			margin: 0;
+		}
 	}
 }

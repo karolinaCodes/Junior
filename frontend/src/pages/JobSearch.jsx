@@ -27,6 +27,12 @@ import Checkbox from '@mui/material/Checkbox';
 import Chip from '@mui/material/Chip';
 import Stack from '@mui/material/Stack';
 
+import TimeAgo from 'react-timeago';
+import frenchStrings from 'react-timeago/lib/language-strings/en';
+import buildFormatter from 'react-timeago/lib/formatters/buildFormatter';
+
+const formatter = buildFormatter(frenchStrings);
+
 export default function JobSearch(props) {
   const {currentUser} = props;
   const [query, setQuery] = useState('');
@@ -364,14 +370,12 @@ export default function JobSearch(props) {
                         alt="Company Photo"
                       />
                       <Typography gutterBottom variant="p" component="div">
-                        {new Date(item.date_posted).toLocaleDateString(
-                          'en-US',
-                          {
-                            year: 'numeric',
-                            month: 'long',
-                            day: 'numeric',
-                          }
-                        )}
+                        {
+                          <TimeAgo
+                            date={item.date_posted}
+                            formatter={formatter}
+                          />
+                        }
                       </Typography>
                     </div>
                     <CardContent>

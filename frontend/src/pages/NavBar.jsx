@@ -1,6 +1,7 @@
 import {Link} from 'react-router-dom';
 import './styles/NavBar.scss';
 import Button from '@mui/material/Button';
+import UserMenu from '../components/UserMenu.jsx';
 
 const defaultUser = {
   id: null,
@@ -71,6 +72,7 @@ export default function NavBar(props) {
         </Button>
         <Button variant="contained">Sign Up</Button>
       </div>
+      <UserMenu />
     </div>
   );
 }

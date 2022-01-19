@@ -10,6 +10,6 @@ CREATE TABLE "job_postings" (
   "salary_max" INTEGER NOT NULL,
   "job_type" VARCHAR(50) NOT NULL,
   "is_remote" BOOLEAN NOT NULL,
-  "date_posted" TIMESTAMP NOT NULL DEFAULT NOW(),
+  "date_posted" VARCHAR(25) NOT NULL DEFAULT NOW(),
   "is_open" BOOLEAN DEFAULT TRUE
 );

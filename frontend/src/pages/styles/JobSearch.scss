@@ -1,7 +1,7 @@
 @import 'variables';
 
-.App {
-  background: grey;
+.main-content {
+  color: #26242a;
 }
 
 .jobsearch-content {
@@ -9,17 +9,37 @@
   flex-direction: column;
   align-items: center;
   align-content: center;
-  margin: 20px;
-  border: 1px solid grey;
-  border-radius: 20px;
-  background: white;
 }
 
-.search {
-  justify-content: space-between;
+.jobsearch-search {
+  display: flex;
+  justify-content: center;
+  background: white;
+  height: 80px;
+  margin: 0;
+  width: 100%;
+  // box-shadow: 0px 4px 8px rgba(8, 35, 48, 0.2);
+  box-shadow: 0px 3px 8px rgba(8, 35, 48, 0.05);
   & Button {
     margin-right: 30px;
   }
+}
+
+.jobsearch-search input {
+  font-family: 'Assistant';
+  padding: 0 50px 0 50px;
+  width: 13rem;
+  border-right: 1px solid #f0f0f0;
+  margin: 20px;
+}
+
+.search-query::placeholder {
+  font-family: 'Assistant';
+}
+
+textarea:focus,
+input:focus {
+  outline: none;
 }
 
 .main-content {
@@ -29,14 +49,41 @@
 }
 
 .checkboxes {
-  text-align: center;
-  width: 30%;
-  padding: 30px 50px 0px 50px;
+  text-align: left;
+  width: 25%;
+  padding: 0px 50px 0px 80px;
+}
+
+.checkboxes,
+.css-j204z7-MuiFormControlLabel-root .MuiFormControlLabel-label {
+  font-family: 'Assistant' !important;
+}
+
+.checkboxes svg {
+  color: $blue;
+}
+
+.checkboxes hr {
+  border: 1px solid #f0f0f0;
+}
+
+.checkboxes-section {
+  border-bottom: 1px solid black;
+  margin: 0;
+  padding: 18px;
 }
 
 .searchResults {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+}
+
+#recommended-num {
+  color: #aaaaaa;
+}
+
+.searchResults-container {
+  margin-top: 18px;
 }
 
 .css-1t6e9jv-MuiCardActions-root {
@@ -74,5 +121,61 @@
 }
 
 #root > div > div.jobsearch-content > form > div.MuiBox-root.css-1v5z18m {
-  width: 200px;
+  width: 150px;
+}
+
+input,
+fieldset {
+  border: transparent;
+}
+
+#root
+  > div
+  > div.jobsearch-content
+  > form
+  > div.MuiBox-root.css-ece9u5
+  > div
+  > div
+  > div {
+  width: 10rem;
+}
+
+// job type drop down
+#root
+  > div
+  > div.jobsearch-content
+  > form
+  > div.MuiBox-root.css-ece9u5
+  > div
+  > div
+  > fieldset {
+  border: transparent;
+}
+
+div .salary-slider {
+  font-family: 'Assistant';
+  color: black;
+  font-size: 13px;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+}
+
+// drop down text
+#menu-
+  > div.MuiPaper-root.MuiPaper-elevation.MuiPaper-rounded.MuiPaper-elevation1.MuiMenu-paper.MuiPaper-root.MuiPaper-elevation.MuiPaper-rounded.MuiPaper-elevation8.MuiPopover-paper.css-1poimk-MuiPaper-root-MuiMenu-paper-MuiPaper-root-MuiPopover-paper
+  > ul
+  > li {
+  font-family: 'Assistant';
+}
+
+#root
+  > div
+  > div.jobsearch-content
+  > form
+  > div.MuiBox-root.css-ece9u5
+  > div
+  > div
+  > div {
+  font-family: 'Assistant';
 }

@@ -28,12 +28,6 @@ import Stack from '@mui/material/Stack';
 
 import Slider from '@mui/material/Slider';
 
-import {grey} from '@mui/material/colors';
-
-function valuetext(value) {
-  return `${value}°C`;
-}
-
 export default function JobSearch(props) {
   const {currentUser} = props;
   const [query, setQuery] = useState('');
@@ -44,7 +38,8 @@ export default function JobSearch(props) {
   const [jobType, setJobType] = useState('');
   const [open, setOpen] = useState(false);
   const [jobApplying, setJobApplying] = useState('');
-  const [value, setValue] = React.useState([50000, 60000]);
+  const [value, setValue] = React.useState([50000, 70000]);
+  // value = salary range
 
   console.log(value);
 
@@ -83,10 +78,12 @@ export default function JobSearch(props) {
     }
   };
   const handleSubmit = e => {
-    console.log(queryString, city, schedule, jobType);
+    console.log(queryString, city, schedule, jobType, value[0], value[1]);
     e.preventDefault();
 
-    if (!queryString && !city && !schedule && !jobType) {
+    if (
+      (!queryString && !city && !schedule && !jobType, !value[0], !value[1])
+    ) {
       const results = axios
         .get('/api/search/query', {
           params: {
@@ -108,7 +105,9 @@ export default function JobSearch(props) {
           queryString,
           city,
           job_type: schedule,
-          toggle: jobType,
+          toggle: jobType === 'All' ? '' : jobType,
+          salary_min: value[0],
+          salary_max: value[1],
         },
       })
       .then(res => {
@@ -162,69 +161,65 @@ export default function JobSearch(props) {
     setOpen(true);
   };
 
-  function valueLabelFormat(value) {
-    const units = ['KB', 'MB', 'GB', 'TB'];
-
-    let unitIndex = 0;
-    let scaledValue = value;
-
-    while (scaledValue >= 1024 && unitIndex < units.length - 1) {
-      unitIndex += 1;
-      scaledValue /= 1024;
-    }
-
-    return `${scaledValue} ${units[unitIndex]}`;
-  }
-
   return (
     <div className="jobsearch-content">
-      <form className="search" onSubmit={handleSubmit}>
+      <form className="jobsearch-search" onSubmit={handleSubmit}>
+        {/* {JOB TYPE DROPDOWN----------------------} */}
         <Box sx={{minWidth: 120}}>
           <FormControl fullWidth>
-            <InputLabel id="demo-simple-select-label">Job Type</InputLabel>
             <Select
-              labelId="demo-simple-select-label"
-              id="demo-simple-select"
               value={jobType}
-              label="Job Type"
               onChange={handleChange}
+              displayEmpty
+              inputProps={{'aria-label': 'Without label'}}
             >
-              <MenuItem value={''}>All</MenuItem>
+              <MenuItem value={'All'}>All</MenuItem>
               <MenuItem value={'jobs'}>Jobs</MenuItem>
               <MenuItem value={'gigs'}>Gigs</MenuItem>
             </Select>
           </FormControl>
         </Box>
-        <TextField
-          id="search-bar"
-          label="Keywords"
-          variant="outlined"
+        <input
+          placeholder="Keywords, job title"
           onChange={e => setQueryString(e.target.value)}
           value={queryString}
           onKeyDown={e => keyCheck(e)}
-        />
-        <TextField
+          className="search-query"
+        ></input>
+        {/* <TextField
           id="search-bar"
-          label="City"
+          label="Keywords"
           variant="outlined"
+          
+        /> */}
+        <input
+          placeholder="City"
           onChange={e => setCity(e.target.value)}
           value={city}
           onKeyDown={e => keyCheck(e)}
-        />
+        ></input>
+        {/* <TextField
+          id="search-bar"
+          label="City"
+          variant="outlined"
+          
+        /> */}
         {/* {SLIDER---------------------------------} */}
         <Box sx={{width: 300}}>
-          <Typography id="non-linear-slider" gutterBottom>
-            Salary Range {`${value[0]} - ${value[1]}`}
+          <Typography
+            id="non-linear-slider"
+            gutterBottom
+            className="salary-slider"
+          >
+            <span>Salary</span> <span> {`$${value[0]} -$${value[1]}`}</span>
           </Typography>
           <Slider
             size="small"
             color="info"
-            getAriaLabel={() => 'Temperature range'}
             value={value}
             min={40000}
             max={80000}
             onChange={handleSlider}
-            valueLabelDisplay="auto"
           />
         </Box>
 
@@ -235,198 +230,206 @@ export default function JobSearch(props) {
       <div className="main-content">
         {/* {CHECKBOXES-------------------------------} */}
         <div className="checkboxes">
-          <h3>Details</h3>
-          <hr />
+          <div className="checkboxes-section">
+            <h3>Details</h3>
+          </div>
           {/* {SCHEDULE---------------------------} */}
-          <h4>Schedule</h4>
-          <FormGroup>
-            <FormControlLabel
-              control={
-                <Checkbox
-                  color="default"
-                  size="small"
-                  value="Full-time"
-                  onClick={e => {
-                    if (e.target.checked) {
-                      setSchedule(e.target.value);
-                    } else {
-                      setSchedule('');
-                    }
-                  }}
-                />
-              }
-              label="Full-time"
-            />
-            <FormControlLabel
-              control={
-                <Checkbox
-                  color="default"
-                  size="small"
-                  value="Part-time"
-                  onClick={e => {
-                    if (e.target.checked) {
-                      setSchedule(e.target.value);
-                    } else {
-                      setSchedule('');
-                    }
-                  }}
-                />
-              }
-              label="Part-time"
-            />
-            <FormControlLabel
-              control={
-                <Checkbox
-                  color="default"
-                  size="small"
-                  value="Internship"
-                  onClick={e => {
-                    if (e.target.checked) {
-                      setSchedule(e.target.value);
-                    } else {
-                      setSchedule('');
-                    }
-                  }}
-                />
-              }
-              label="Internship"
-            />
-          </FormGroup>
-          <hr />
+          <div className="checkboxes-section">
+            <h4>Schedule</h4>
+            <FormGroup>
+              <FormControlLabel
+                control={
+                  <Checkbox
+                    color="default"
+                    size="small"
+                    value="Full-time"
+                    onClick={e => {
+                      if (e.target.checked) {
+                        setSchedule(e.target.value);
+                      } else {
+                        setSchedule('');
+                      }
+                    }}
+                  />
+                }
+                label="Full-time"
+              />
+              <FormControlLabel
+                control={
+                  <Checkbox
+                    color="default"
+                    size="small"
+                    value="Part-time"
+                    onClick={e => {
+                      if (e.target.checked) {
+                        setSchedule(e.target.value);
+                      } else {
+                        setSchedule('');
+                      }
+                    }}
+                  />
+                }
+                label="Part-time"
+              />
+              <FormControlLabel
+                control={
+                  <Checkbox
+                    color="default"
+                    size="small"
+                    value="Internship"
+                    onClick={e => {
+                      if (e.target.checked) {
+                        setSchedule(e.target.value);
+                      } else {
+                        setSchedule('');
+                      }
+                    }}
+                  />
+                }
+                label="Internship"
+              />
+            </FormGroup>
+          </div>
           {/* LANGUAGES--------------------------------- */}
-          <h4>Languages</h4>
-          <FormGroup>
-            <FormControlLabel
-              control={
-                <Checkbox
-                  color="default"
-                  size="small"
-                  value="React"
-                  onClick={e => {
-                    console.log(e.target.value);
-                    if (e.target.checked) {
-                      setQueryString(e.target.value);
-                    } else {
-                      setQueryString('');
-                    }
-                  }}
-                />
-              }
-              label="React"
-            />
-            <FormControlLabel
-              control={
-                <Checkbox
-                  color="default"
-                  size="small"
-                  value="JavaScript"
-                  onClick={e => {
-                    console.log(e.target.value);
-                    if (e.target.checked) {
-                      setQueryString(e.target.value);
-                    } else {
-                      setSchedule('');
-                    }
-                  }}
-                />
-              }
-              label="JavaScript"
-            />
-            <FormControlLabel
-              control={
-                <Checkbox
-                  color="default"
-                  size="small"
-                  value="Angular"
-                  onClick={e => {
-                    console.log(e.target.value);
-                    if (e.target.checked) {
-                      setQueryString(e.target.value);
-                    } else {
-                      setSchedule('');
-                    }
-                  }}
-                />
-              }
-              label="Angular"
-            />
-            <FormControlLabel
-              control={
-                <Checkbox
-                  color="default"
-                  size="small"
-                  value="SQL"
-                  onClick={e => {
-                    console.log(e.target.value);
-                    if (e.target.checked) {
-                      setQueryString(e.target.value);
-                    } else {
-                      setSchedule('');
-                    }
-                  }}
-                />
-              }
-              label="SQL"
-            />
-            <FormControlLabel
-              control={
-                <Checkbox
-                  color="default"
-                  size="small"
-                  value="Node.js"
-                  onClick={e => {
-                    console.log(e.target.value);
-                    if (e.target.checked) {
-                      setQueryString(e.target.value);
-                    } else {
-                      setSchedule('');
-                    }
-                  }}
-                />
-              }
-              label="Node.js"
-            />
-            <FormControlLabel
-              control={
-                <Checkbox
-                  color="default"
-                  size="small"
-                  value="C#"
-                  onClick={e => {
-                    console.log(e.target.value);
-                    if (e.target.checked) {
-                      setQueryString(e.target.value);
-                    } else {
-                      setSchedule('');
-                    }
-                  }}
-                />
-              }
-              label="C#"
-            />
-            <FormControlLabel
-              control={
-                <Checkbox
-                  color="default"
-                  size="small"
-                  value="Python"
-                  onClick={e => {
-                    console.log(e.target.value);
-                    if (e.target.checked) {
-                      setQueryString(e.target.value);
-                    } else {
-                      setSchedule('');
-                    }
-                  }}
-                />
-              }
-              label="Python"
-            />
-          </FormGroup>
+          <div className="checkboxes-section">
+            <h4>Languages</h4>
+            <FormGroup>
+              <FormControlLabel
+                control={
+                  <Checkbox
+                    color="default"
+                    size="small"
+                    value="React"
+                    onClick={e => {
+                      console.log(e.target.value);
+                      if (e.target.checked) {
+                        setQueryString(e.target.value);
+                      } else {
+                        setQueryString('');
+                      }
+                    }}
+                  />
+                }
+                label="React"
+              />
+              <FormControlLabel
+                control={
+                  <Checkbox
+                    color="default"
+                    size="small"
+                    value="JavaScript"
+                    onClick={e => {
+                      console.log(e.target.value);
+                      if (e.target.checked) {
+                        setQueryString(e.target.value);
+                      } else {
+                        setSchedule('');
+                      }
+                    }}
+                  />
+                }
+                label="JavaScript"
+              />
+              <FormControlLabel
+                control={
+                  <Checkbox
+                    color="default"
+                    size="small"
+                    value="Angular"
+                    onClick={e => {
+                      console.log(e.target.value);
+                      if (e.target.checked) {
+                        setQueryString(e.target.value);
+                      } else {
+                        setSchedule('');
+                      }
+                    }}
+                  />
+                }
+                label="Angular"
+              />
+              <FormControlLabel
+                control={
+                  <Checkbox
+                    color="default"
+                    size="small"
+                    value="SQL"
+                    onClick={e => {
+                      console.log(e.target.value);
+                      if (e.target.checked) {
+                        setQueryString(e.target.value);
+                      } else {
+                        setSchedule('');
+                      }
+                    }}
+                  />
+                }
+                label="SQL"
+              />
+              <FormControlLabel
+                control={
+                  <Checkbox
+                    color="default"
+                    size="small"
+                    value="Node.js"
+                    onClick={e => {
+                      console.log(e.target.value);
+                      if (e.target.checked) {
+                        setQueryString(e.target.value);
+                      } else {
+                        setSchedule('');
+                      }
+                    }}
+                  />
+                }
+                label="Node.js"
+              />
+              <FormControlLabel
+                control={
+                  <Checkbox
+                    color="default"
+                    size="small"
+                    value="C#"
+                    onClick={e => {
+                      console.log(e.target.value);
+                      if (e.target.checked) {
+                        setQueryString(e.target.value);
+                      } else {
+                        setSchedule('');
+                      }
+                    }}
+                  />
+                }
+                label="C#"
+              />
+              <FormControlLabel
+                control={
+                  <Checkbox
+                    color="default"
+                    size="small"
+                    value="Python"
+                    onClick={e => {
+                      console.log(e.target.value);
+                      if (e.target.checked) {
+                        setQueryString(e.target.value);
+                      } else {
+                        setSchedule('');
+                      }
+                    }}
+                  />
+                }
+                label="Python"
+              />
+            </FormGroup>
+          </div>
         </div>
+
         {/* {SEARCH RESULTS---------------------------------} */}
         <div className="searchResults-container">
-          <h4>Recommended Jobs {searchResults.length}</h4>
+          <h3>
+            <span>Recommended Jobs </span>
+            <span id="recommended-num">{searchResults.length}</span>
+          </h3>
           <div className="searchResults">
             {searchResults.length > 0 &&
               searchResults.map(item => {

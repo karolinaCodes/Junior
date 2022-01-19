@@ -414,12 +414,12 @@ module.exports = db => {
     let sqlQueryString = '';
     sqlQuery.toggle === 'jobs'
       ? (sqlQueryString +=
-          'SELECT employers.id as employer_id, company_name, email, bio, employers.photo_url as employer_photo_url, job_postings.* FROM employers JOIN job_postings ON employers.id = job_postings.employer_id')
+          'SELECT employers.id as employer_id, company_name, email, bio, employers.photo_url as employer_photo_url, job_postings.* FROM employers JOIN job_postings ON employers.id = job_postings.employer_id WHERE')
       : (sqlQueryString +=
-          'SELECT employers.id as employer_id, company_name, email, bio, employers.photo_url as employer_photo_url, gig_postings.* FROM employers JOIN gig_postings ON employers.id = gig_postings.employer_id');
+          'SELECT employers.id as employer_id, company_name, email, bio, employers.photo_url as employer_photo_url, gig_postings.* FROM employers JOIN gig_postings ON employers.id = gig_postings.employer_id WHERE');
 
     if (sqlQuery.queryString) {
-      sqlQueryString += ` WHERE (job_title ILIKE '%${sqlQuery.queryString}%' OR description ILIKE '%${sqlQuery.queryString}%')`;
+      sqlQueryString += ` (job_title ILIKE '%${sqlQuery.queryString}%' OR description ILIKE '%${sqlQuery.queryString}%')`;
     }
 
     if (sqlQuery.city) {
@@ -435,6 +435,18 @@ module.exports = db => {
       }
       sqlQueryString += ` job_type ILIKE '${sqlQuery.job_type}' `;
     }
+
+    if (sqlQuery.salary_min) {
+      if (sqlQueryString.slice(-5) !== 'WHERE') {
+        sqlQueryString += ' AND';
+      }
+      sqlQueryString += ` (salary > ${sqlQuery.salary_min} AND salary < ${sqlQuery.salary_max})`;
+    }
+
+    if (sqlQueryString.slice(-5) === 'WHERE') {
+      sqlQueryString.slice('WHERE');
+    }
+
     sqlQueryString += ';';
 
     const query = {

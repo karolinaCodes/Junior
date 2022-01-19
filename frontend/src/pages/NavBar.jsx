@@ -44,7 +44,7 @@ export default function NavBar(props) {
     <div className="nav-bar">
       <div className="logo">
         <Link id="logo" to="/">
-          Junior.
+          Junior
         </Link>
       </div>
       <div className="nav-links">

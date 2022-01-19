@@ -14,87 +14,93 @@ $brown: #3d2b2a;
 
 // .MuiButton-root
 @mixin outline {
-	color: $white;
-	border-color: $white;
+  color: $white;
+  border-color: $white;
 }
 
 // .MuiButton-root
 @mixin solid {
-	color: $white;
-	background-color: $blue;
+  color: $white;
+  background-color: $blue;
 }
 
 @mixin solidwhite {
-	color: $blue;
-	background-color: $white;
+  color: $blue;
+  background-color: $white;
 }
 
 // --------------------- HOMEPAGE NAV BAR ----------------- //
 @mixin navHome {
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-	background-color: $invis;
-	height: 90px;
-	width: 100%;
-	z-index: 999;
-	position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: $invis;
+  height: 90px;
+  width: 100%;
+  z-index: 999;
+  position: fixed;
 
-	.nav-links {
-		display: flex;
-		align-items: center;
-		justify-content: flex-end;
-		width: 70%;
+  .nav-links {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    width: 70%;
 
-		a {
-			font-size: 20px;
-			font-weight: $reg;
-			color: $white;
-			text-decoration: none;
-			margin-left: 2rem;
-		}
-		a:hover {
-			color: $sand;
-		}
-	}
+    a {
+      font-size: 18px;
+      font-weight: 600;
+      color: $white;
+      text-decoration: none;
+      margin-left: 2rem;
+    }
+    a:hover {
+      color: $sand;
+    }
+  }
 
-	.nav-button {
-		display: flex;
-		justify-content: flex-end;
-		width: 20%;
-		margin-right: 8rem;
+  .nav-button {
+    display: flex;
+    justify-content: flex-end;
+    width: 25%;
+    margin-right: 8rem;
 
-		button,
-		#login {
-			@include outline;
-			font-weight: $bold;
-			margin-left: 2rem;
+    #login {
+      @include outline;
+      font-size: 17px;
+      font-weight: 600;
+      margin-left: 2rem;
+      height: 45px;
+      border: 2px solid $white;
+      width: 100px;
 
-			&:hover {
-				color: $sand;
-				border-color: $sand;
-			}
-		}
+      &:hover {
+        color: $sand;
+        border-color: $sand;
+      }
+    }
 
-		#signup {
-			@include solid;
+    #signup {
+      @include solid;
+      font-size: 17px;
+      font-weight: 600;
+      width: 100px;
 
-			&:hover {
-				color: $sand;
-			}
-		}
+      &:hover {
+        color: $sand;
+      }
+    }
 
-		a {
-			font-weight: $bold;
-		}
-	}
+    a {
+      font-weight: $bold;
+    }
+  }
 
-	#logo {
-		text-decoration: none;
-		font-size: 60px;
-		font-family: $brand;
-		font-weight: $bold;
-		color: $blue;
-		margin: 8rem;
-	}
+  #logo {
+    text-decoration: none;
+    font-size: 60px;
+    font-family: $brand;
+    font-weight: $bold;
+    color: $blue;
+    margin: 8rem;
+  }
 }

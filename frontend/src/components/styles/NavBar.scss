@@ -23,8 +23,8 @@
   width: 75%;
 
   a {
-    font-size: 20px;
-    font-weight: $reg;
+    font-size: 18px;
+    font-weight: 600;
     color: $white;
     text-decoration: none;
     margin-left: 2rem;
@@ -42,21 +42,22 @@
   margin-right: 8rem;
 
   #login {
-    font-weight: $bold;
     margin-left: 2rem;
     color: $white;
     border-color: $white;
+    text-transform: none;
 
     &:hover {
       color: $sand;
       border-color: $sand;
     }
   }
+
   #signup {
-    font-weight: $bold;
     margin-left: 2rem;
     color: $blue;
     background-color: $white;
+    text-transform: none;
 
     &:hover {
       color: $sand;

@@ -12,9 +12,13 @@ export default function LandingPage(props) {
     return (
       <div className="search-wrapper">
         <section className="title-text">
-          <h1 className="build">Build Your Portfolio.</h1>
-          <h1 className="get-paid">Get Paid. Find Work.</h1>
+          <h1 className="build">Build your portfolio.</h1>
+          <h1 className="get-paid">Get paid. Find work.</h1>
         </section>
+        <p className="card-description">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua.{' '}
+        </p>
         <form className="search">
           <TextField id="search-bar" label="Find Work" variant="outlined" />
           <Button variant="contained" size="large" href="/jobs">

@@ -1,12 +1,10 @@
 import {useEffect, useState} from 'react';
 import './styles/Profile.scss';
-import {Grid, Button, Modal, Box, Paper, Card, CardActions} from '@mui/material';
-import {Link} from 'react-router-dom';
+import {Grid, Button, Modal, Box, Paper, Card, CardActionArea, CardActions} from '@mui/material';
 import JobPostingCard from '../components/JobPostingCard';
 import JobPostingModal from '../components/JobPostingModal';
 import GigPostingCard from '../components/GigPostingCard';
 import GigPostingModal from '../components/GigPostingModal';
-import Applications from './Applications';
 import axios from 'axios';
 
 export default function Profile(props) {
@@ -68,18 +66,20 @@ export default function Profile(props) {
 		return (
       <Grid item xs={12} sm={6} md={4} lg={3} key={'Job-grid-item-' + job.id}>
         <Grid container direction='column' key={'Job-grid-container-' + job.id}>
-          <Paper
-            onClick={() => {
-            setModalData(data);
-            handleView();
-          }} key={'Job-paper-' + job.id}>
-            <Card>
-              <JobPostingCard key={'Job-card-' + job.id}
-                type='job'
-                {...job}
-              />
-              <CardActions className='card-footer'>
-                <Button
+        <Paper key={'Job-paper-' + job.id}>
+            <Card key={'Job-card-' + job.id}>
+              <CardActionArea key={'Job-card-action' + job.id}
+                onClick={() => {
+                setModalData(data);
+                handleView();
+              }}>
+                <JobPostingCard key={'Job-card-' + job.id}
+                  type='job'
+                  {...job}
+                />
+              </CardActionArea>
+              <CardActions key={'Job-card-actions-' + job.id}>
+                <Button key={'Job-button-' + job.id}
                   onClick={() => window.open(applicationLink, "_self")}>
                   View Applications
                 </Button>
@@ -96,20 +96,25 @@ export default function Profile(props) {
 		return (
       <Grid item xs={12} sm={6} md={4} lg={3} key={'Gig-grid-item-' + gig.id} >
         <Grid container direction='column' key={'Gig-grid-container-' + gig.id}>
-          <Paper
-            onClick={() => {
-            setModalData(data);
-            handleView();
-          }} key={'Gig-paper-' + gig.id}>
-            <Card>
-              <GigPostingCard key={'Gig-card-' + gig.id}
-                type='gig'
-                {...gig}
-              />
-              <Button className='card-footer'
-                onClick={() => window.open(applicationLink, "_self")}>
-                View Applications
-              </Button>
+          <Paper key={'Gig-paper-' + gig.id}>
+            <Card key={'Gig-card-' + gig.id}>
+              <CardActionArea key={'Gig-card-action' + gig.id}
+                onClick={() => {
+                setModalData(data);
+                handleView();
+              }}>
+                <GigPostingCard key={'Gig-card-post-' + gig.id}
+                  type='gig'
+                  {...gig}
+                />
+              </CardActionArea>
+              <CardActions key={'Gig-card-actions-' + gig.id}>
+                <Button key={'Gig-button-' + gig.id}
+                  className='card-footer'
+                  onClick={() => window.open(applicationLink, "_self")}>
+                  View Applications
+                </Button>
+              </CardActions>
             </Card>
           </Paper>
         </Grid>
@@ -120,7 +125,7 @@ export default function Profile(props) {
   return (
     <div className="profile-content">
       <Grid container className="profile-bio" columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
-        <Grid item class="profile-pic">
+        <Grid item className="profile-pic">
           <img id="profile-pic" src={photo_url} alt="Avatar"></img>
         </Grid>
         <Grid item className="profile-name">

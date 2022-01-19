@@ -9,16 +9,14 @@ export default function Profile(props) {
 	const datePostedFormatted = new Date(date_posted).toLocaleDateString();
 
 	return (
-		<CardActionArea>
-			<CardContent>
-				<h1>{job_title}</h1>
-				<p>{city}</p>
-				<p>${salary_min} - ${salary_max}</p>
-				<p>{job_type}, Remote: {is_remote ? 'Yes' : 'No'}</p>
-				<p>Date Posted: {datePostedFormatted}</p>
-				<p>Accepting Applicants: {is_open ? 'Yes' : 'No'}</p>
-				<p>{description}</p>
-			</CardContent>
-		</CardActionArea>
+		<CardContent>
+			<h1>{job_title}</h1>
+			<p>{city}</p>
+			<p>${salary_min} - ${salary_max}</p>
+			<p>{job_type}, Remote: {is_remote ? 'Yes' : 'No'}</p>
+			<p>Date Posted: {datePostedFormatted}</p>
+			<p>Accepting Applicants: {is_open ? 'Yes' : 'No'}</p>
+			<p>{description}</p>
+		</CardContent>
 	);
 }

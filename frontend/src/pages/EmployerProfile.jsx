@@ -62,11 +62,11 @@ export default function Profile(props) {
   
 	const parsedJobs = jobsArray.map(job => {
     const data = (<JobPostingModal key={'Job-modal-' + job.id} {...job} />);
-    const applicationLink = `employerprofile/job/${job.id}/applications`;
+    const applicationLink = `job/${job.id}/applications`;
 		return (
       <Grid item xs={12} sm={6} md={4} lg={3} key={'Job-grid-item-' + job.id}>
         <Grid container direction='column' key={'Job-grid-container-' + job.id}>
-        <Paper key={'Job-paper-' + job.id}>
+          <Paper key={'Job-paper-' + job.id}>
             <Card key={'Job-card-' + job.id}>
               <CardActionArea key={'Job-card-action' + job.id}
                 onClick={() => {
@@ -92,7 +92,7 @@ export default function Profile(props) {
 	});
   const parsedGigs = gigsArray.map(gig => {
     const data = (<GigPostingModal key={'Gig-modal-' + gig.id} {...gig} />);
-    const applicationLink = `employerprofile/gig/${gig.id}/applications`;
+    const applicationLink = `gig/${gig.id}/applications`;
 		return (
       <Grid item xs={12} sm={6} md={4} lg={3} key={'Gig-grid-item-' + gig.id} >
         <Grid container direction='column' key={'Gig-grid-container-' + gig.id}>
@@ -162,6 +162,7 @@ export default function Profile(props) {
       <Modal
         open={openModal}
         onClose={handleView}
+        className='portfolio-modal'
       >
         <Box sx={style}>
           {modalData}

@@ -131,21 +131,22 @@ export default function JobSearch(props) {
     setOpen(true);
   };
 
-  const logout = () => {
-    axios
-      .post('/api/auth/logout')
-      .then(res => {
-        // set current user to updated page
-        console.log(res.data);
-      })
-      .catch(err => {
-        console.log(err);
-      });
-  };
+  // FOR TESTING LOGOUT
+  // const logout = () => {
+  //   axios
+  //     .post('/api/auth/logout')
+  //     .then(res => {
+  //       // set current user to updated page
+  //       console.log(res.data);
+  //     })
+  //     .catch(err => {
+  //       console.log(err);
+  //     });
+  // };
 
   return (
     <div className="jobsearch-content">
-      <Button onClick={logout}>Logout</Button>
+      {/* <Button onClick={logout}>Logout</Button> */}
       <form className="search" onSubmit={handleSubmit}>
         <Button variant="contained" size="large" onClick={handleClick}>
           {`${toggle}`}

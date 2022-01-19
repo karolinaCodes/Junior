@@ -1,10 +1,18 @@
 @import 'variables';
 
+.App {
+  background: grey;
+}
+
 .jobsearch-content {
   display: flex;
   flex-direction: column;
   align-items: center;
   align-content: center;
+  margin: 20px;
+  border: 1px solid grey;
+  border-radius: 20px;
+  background: white;
 }
 
 .search {

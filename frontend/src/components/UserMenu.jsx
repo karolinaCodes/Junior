@@ -31,7 +31,10 @@ export default function PositionedMenu(props) {
   return (
     <div>
       <div className="profile-info">
-        <span className="name">{currentUser.first_name}</span>
+        <span className="name">
+          {`${currentUser.first_name}
+          ${currentUser.last_name}`}
+        </span>
         <Button
           id="demo-positioned-button"
           aria-controls={open ? 'demo-positioned-menu' : undefined}

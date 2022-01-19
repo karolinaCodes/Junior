@@ -3,6 +3,10 @@
 .landing-wrapper {
 	display: flex;
 	flex-direction: column;
+	min-height: 100vh;
+	background-image: url('/images/landing-page-image-gradient.png');
+	background-size: cover;
+	background-position: center right;
 }
 
 #landing-image img {
@@ -35,7 +39,7 @@
 		.search-content {
 			display: flex;
 			flex-direction: column;
-			justify-content: left;
+			justify-content: center;
 			align-items: left;
 			width: 80%;
 			margin-bottom: 5rem;
@@ -64,10 +68,9 @@
 
 		.search {
 			display: flex;
-			justify-content: flex-start;
-			align-items: left;
+			justify-content: left;
+			align-items: center;
 			margin-top: 2rem;
-			margin-left: 0;
 
 			#search-bar {
 				width: 25rem;
@@ -89,7 +92,6 @@
 		width: 60%;
 		flex-grow: 1;
 		margin-bottom: 5rem;
-
 		img {
 			width: 100%;
 			max-height: auto;

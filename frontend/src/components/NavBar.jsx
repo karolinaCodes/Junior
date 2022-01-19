@@ -29,32 +29,28 @@ export default function NavBar(props) {
 
 	return (
 		<div className={navClassCheck()}>
-			<div className='logo'>
-				<Link id='logo' to='/'>
-					Junior.
-				</Link>
-			</div>
-			<div className='nav-links'>
-				<Link to='/jobs'>Find Work</Link>
-				<Link to='/profile'>How it works</Link>
-				<Link to='/profile'>Company</Link>
-				<Link to='/profile'>Hire Talent</Link>
-			</div>
-			<div className='nav-button'>
-				<Button
-					id='login'
-					component={Link}
-					to='/'
-					variant='outlined'
-					onClick={handleLoginView}
-				>
-					Login
-				</Button>
-				<Button id='signup' variant='contained'>
-					Sign Up
-				</Button>
-				<UserMenu currentUser={currentUser} logout={logout} />
-			</div>
+			<Link id='logo' to='/'>
+				Junior.
+			</Link>
+
+			<Link to='/jobs'>Find Work</Link>
+			<Link to='/profile'>How it works</Link>
+			<Link to='/profile'>Company</Link>
+			<Link to='/profile'>Hire Talent</Link>
+
+			<Button
+				id='login'
+				component={Link}
+				to='/'
+				variant='outlined'
+				onClick={handleLoginView}
+			>
+				Login
+			</Button>
+			<Button id='signup' variant='contained'>
+				Sign Up
+			</Button>
+			<UserMenu currentUser={currentUser} logout={logout} />
 		</div>
 	);
 }

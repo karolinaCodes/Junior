@@ -9,7 +9,7 @@ import NewJobPost from './components/NewJobPost.jsx';
 import NewGigPost from './components/NewGigPost';
 import Profile from './pages/Profile.jsx';
 import EmployerProfile from './pages/EmployerProfile.jsx';
-import NavBar from './pages/NavBar.jsx';
+import NavBar from './components/NavBar.jsx';
 import GigView from './pages/GigView.jsx';
 import JobView from './pages/JobView.jsx';
 import PortfolioModal from './components/PortfolioModal';
@@ -87,9 +87,9 @@ function App() {
 					element={<JobView currentUser={currentUser} />}
 				/>
 				<Route
-					path="/employerprofile/:posttype/:postid/applications"
+					path='/employerprofile/:posttype/:postid/applications'
 					element={<Applications currentUser={currentUser} />}
-        />
+				/>
 			</Routes>
 		</div>
 	);

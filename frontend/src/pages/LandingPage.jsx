@@ -40,6 +40,12 @@ export default function LandingPage(props) {
         )}
         {!loginView && searchView()}
       </div>
+      {/* <div className='footer'>
+				<section>TinyApp</section>
+				<section>Tweeter</section>
+				<section>Jungle</section>
+				<section>Vampr</section>
+			</div> */}
     </div>
   );
 }

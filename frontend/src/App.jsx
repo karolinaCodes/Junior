@@ -45,10 +45,11 @@ function App() {
 		}
 	};
 
-	const handleLoginView = () => {
+	const handleLoginView = e => {
 		if (checkUser()) {
 			setLoginView(false);
 		} else {
+			navigate('/');
 			setLoginView(true);
 		}
 	};

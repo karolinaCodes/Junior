@@ -33,24 +33,25 @@ export default function NavBar(props) {
 				Junior.
 			</Link>
 
-			<Link to='/jobs'>Find Work</Link>
+			<Link id='find-work' to='/jobs'>
+				Find Work
+			</Link>
 			<Link to='/profile'>How it works</Link>
 			<Link to='/profile'>Company</Link>
-			<Link to='/profile'>Hire Talent</Link>
-
-			<Button
-				id='login'
-				component={Link}
-				to='/'
-				variant='outlined'
-				onClick={handleLoginView}
-			>
-				Login
-			</Button>
-			<Button id='signup' variant='contained'>
-				Sign Up
-			</Button>
-			<UserMenu currentUser={currentUser} logout={logout} />
+			<Link id='hire-talent' to='/profile'>
+				Hire Talent
+			</Link>
+			{!currentUser.id && (
+				<Button id='login' variant='outlined' onClick={e => handleLoginView(e)}>
+					Login
+				</Button>
+			)}
+			{!currentUser.id && (
+				<Button id='signup' variant='contained'>
+					Sign Up
+				</Button>
+			)}
+			{currentUser.id && <UserMenu currentUser={currentUser} logout={logout} />}
 		</div>
 	);
 }

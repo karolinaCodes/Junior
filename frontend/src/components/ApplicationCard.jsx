@@ -1,5 +1,5 @@
 import './styles/PortfolioCard.scss';
-import {Grid, CardContent, CardMedia, CardActionArea} from '@mui/material';
+import {Grid} from '@mui/material';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 
 export default function ApplicationCard(props) {
@@ -26,7 +26,7 @@ export default function ApplicationCard(props) {
 						<p>Resume: {resume_url}</p>
 						<p><LocationOnIcon /> {location}</p>
 					</Grid>
-					<Grid item xs={9}>
+					<Grid item>
 						<p>{bio}</p>
 					</Grid>
 				</Grid>

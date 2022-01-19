@@ -17,7 +17,7 @@
 	flex-direction: column;
 	justify-content: space-between;
 	text-align: justify;
-	padding: 0 1rem 0 1rem;
+	padding: 0 1em;
 	.cards {
 		justify-self: center;
 		align-self: center;
@@ -29,9 +29,12 @@
 		p {
 			margin-bottom: 0;
 		}
+		img {
+			max-width: 500px;
+		}
 	}
 	.profile-pic {
-		padding: 1rem;
+		padding: 1em;
 		display: flex;
 		align-items: center;
 		justify-content: center;

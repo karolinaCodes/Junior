@@ -1,6 +1,6 @@
 import {useEffect, useState} from 'react';
 import './styles/Profile.scss';
-import {Grid, Button, Modal, Box, Paper, Card, CardActionArea, CardActions} from '@mui/material';
+import {Grid, Button, Modal, Dialog, Box, Paper, Card, CardActionArea, CardActions} from '@mui/material';
 import PortfolioCard from '../components/PortfolioCard';
 import PortfolioModal from '../components/PortfolioModal';
 import axios from 'axios';
@@ -23,19 +23,6 @@ export default function Profile(props) {
   // FOR TESTING
   const id = 1;
   //
-
-  const style = {
-    width: 1 / 2,
-    height: 1 / 2,
-    display: 'flex',
-    flexDirection: 'column',
-    margin: '10% 0 0 25%',
-    background: '#223d55',
-    color: 'black',
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderRadius: '2rem',
-  };
 
   const {
     first_name,
@@ -140,15 +127,18 @@ export default function Profile(props) {
           {parsedProjects}
         </Grid>
       </section>
-      <Modal
-      open={openModal}
-      onClose={handleView}
-      className='portfolio-modal'
+      <Dialog
+        open={openModal}
+        onClose={handleView}
+        fullWidth={true}
+        maxWidth={'md'}
       >
-        <Box sx={style}>
+        <Box
+          className='portfolio-modal'
+        >
           {modalData}
         </Box>
-      </Modal>
+      </Dialog>
     </div>
   );
 }

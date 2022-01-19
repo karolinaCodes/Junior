@@ -1,24 +1,33 @@
 @import 'variables';
 
-.portfolio-modal {
+.portfolio-modal, .application-modal {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	text-align: justify;
+	padding: 0 1em;
+	background: $blue;
+	color: $white;
+	align-items: flex-start;
 	button {
 		color: $white;
 		background-color: $white;
 	}
-}
-
-.MuiBox-root {
-	padding: 1rem 1rem 1rem 1rem;
-	text-align: justify;
-	p, h3 {
-		color: $white;
+	.profile-pic {
+		padding: 1em;
+		display: flex;
+		align-items: center;
+		justify-content: center;
 	}
-	h1 {
-		padding-top: 0;
-		color: $yellow;
+	img#profile-pic {
+		max-width: 150px;
+		height: auto;
+		border-radius: 50%;
 	}
-
-	h1:hover {
-		color: $white;
+	.profile-info {
+		width: auto;
+	}
+	.application-info {
+		justify-content: space-evenly;
 	}
 }

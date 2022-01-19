@@ -18,12 +18,12 @@ export default function Applications(props) {
   });
   const [posting, setPosting] = useState({
     posting: {},
-    applications: []
+    applications: [],
   });
 
   const [openModal, setOpenModal] = useState(false);
   const [modalData, setModalData] = useState();
-  
+
   const handleView = () => {
     openModal === true ? setOpenModal(false) : setOpenModal(true);
   };
@@ -40,12 +40,13 @@ export default function Applications(props) {
       axios.get(employerUrl),
       axios.get(postingUrl),
       axios.get(applicationsUrl),
-    ]).then((all) => {
+    ]).then(all => {
       const [employerData, postingData, applicationsData] = all;
       setProfile(prev => ({...prev, employer: employerData.data}));
-      setPosting(prev => ({...prev,
+      setPosting(prev => ({
+        ...prev,
         posting: postingData.data,
-        applications: applicationsData.data
+        applications: applicationsData.data,
       }));
     });
   }, []);
@@ -65,15 +66,23 @@ export default function Applications(props) {
 
   const applicationsArray = posting.applications;
   const parsedApplications = applicationsArray.map(application => {
-    const data = (<ApplicationCard key={'Application-modal-' + application.junior_dev_id} {...application} />);
+    const data = (
+      <ApplicationCard
+        key={'Application-modal-' + application.junior_dev_id}
+        {...application}
+      />
+    );
     return (
       <Grid item xs={10} key={'Application-grid-' + application.junior_dev_id}>
         <Paper
           onClick={() => {
-          setModalData(data);
-          handleView();
-        }} key={'Application-paper-' + application.junior_dev_id}>
-          <ApplicationCard key={'Application-card-' + application.junior_dev_id}
+            setModalData(data);
+            handleView();
+          }}
+          key={'Application-paper-' + application.junior_dev_id}
+        >
+          <ApplicationCard
+            key={'Application-card-' + application.junior_dev_id}
             {...application}
           />
         </Paper>
@@ -88,30 +97,26 @@ export default function Applications(props) {
       <p>{posting.posting.description}</p>
       <div>
         <p>
-          Posted {new Date(posting.posting.date_posted).toLocaleDateString('en-US', {
-          year: 'numeric',
-          month: 'long',
-          day: 'numeric',
+          Posted{' '}
+          {new Date(posting.posting.date_posted).toLocaleDateString('en-US', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric',
           })}
-          {posting.posting.salary_min && ` $${posting.posting.salary_min} - $${posting.posting.salary_max}`}
+          {posting.posting.salary && ` $${posting.posting.salary}`}
           {posting.posting.pay && ` Offer: ${posting.posting.pay} CAD`}
         </p>
       </div>
       <div className="application-content">
-        <Grid container direction='column' spacing={3}>
+        <Grid container direction="column" spacing={3}>
           <h1>Applications</h1>
           Total applications: {posting.applications.length}
           {parsedApplications}
         </Grid>
-        <Modal
-          open={openModal}
-          onClose={handleView}
-        >
-          <Box sx={style}>
-            {modalData}
-          </Box>
+        <Modal open={openModal} onClose={handleView}>
+          <Box sx={style}>{modalData}</Box>
         </Modal>
       </div>
     </div>
-  )
+  );
 }

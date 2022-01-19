@@ -28,6 +28,8 @@ import Stack from '@mui/material/Stack';
 
 import Slider from '@mui/material/Slider';
 
+import {grey} from '@mui/material/colors';
+
 function valuetext(value) {
   return `${value}°C`;
 }
@@ -42,6 +44,9 @@ export default function JobSearch(props) {
   const [jobType, setJobType] = useState('');
   const [open, setOpen] = useState(false);
   const [jobApplying, setJobApplying] = useState('');
+  const [value, setValue] = React.useState([50000, 60000]);
+
+  console.log(value);
 
   // TO ADD? every time queryString changes, make send new request, so changes as typing
   useEffect(() => {
@@ -126,9 +131,6 @@ export default function JobSearch(props) {
     setJobType(event.target.value);
   };
 
-  const [value, setValue] = React.useState([20, 37]);
-
-  console.log(value);
   const handleSlider = (event, newValue) => {
     setValue(newValue);
   };
@@ -159,6 +161,20 @@ export default function JobSearch(props) {
     }
     setOpen(true);
   };
+
+  function valueLabelFormat(value) {
+    const units = ['KB', 'MB', 'GB', 'TB'];
+
+    let unitIndex = 0;
+    let scaledValue = value;
+
+    while (scaledValue >= 1024 && unitIndex < units.length - 1) {
+      unitIndex += 1;
+      scaledValue /= 1024;
+    }
+
+    return `${scaledValue} ${units[unitIndex]}`;
+  }
 
   return (
     <div className="jobsearch-content">
@@ -197,13 +213,18 @@ export default function JobSearch(props) {
         />
         {/* {SLIDER---------------------------------} */}
         <Box sx={{width: 300}}>
+          <Typography id="non-linear-slider" gutterBottom>
+            Salary Range {`${value[0]} - ${value[1]}`}
+          </Typography>
           <Slider
             size="small"
+            color="info"
             getAriaLabel={() => 'Temperature range'}
             value={value}
+            min={40000}
+            max={80000}
             onChange={handleSlider}
             valueLabelDisplay="auto"
-            getAriaValueText={valuetext}
           />
         </Box>
 

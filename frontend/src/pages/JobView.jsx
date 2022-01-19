@@ -69,9 +69,7 @@ export default function LandingPage(props) {
         <LocationOnIcon />
         <span>{jobPosting.job_type}</span>
         <LocalOfferIcon />
-        <span>
-          ${jobPosting.salary_min} - ${jobPosting.salary_max}
-        </span>
+        <span>${jobPosting.salary}</span>
       </div>
       <span>
         Posted{' '}

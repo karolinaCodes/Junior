@@ -226,8 +226,7 @@ module.exports = db => {
     job_title,
     description,
     city,
-    salary_min,
-    salary_max,
+    salary,
     job_type,
     is_remote,
     is_open
@@ -238,21 +237,19 @@ module.exports = db => {
         job_title,
         description,
         city,
-        salary_min,
-        salary_max,
+        salary,
         job_type,
         is_remote,
         is_open
         ) VALUES (
-          $1, $2, $3, $4, $5, $6, $7, $8, $9
+          $1, $2, $3, $4, $5, $6, $7, $8
         ) RETURNING *`,
       values: [
         employer_id,
         job_title,
         description,
         city,
-        salary_min,
-        salary_max,
+        salary,
         job_type,
         is_remote,
         is_open,

@@ -2,10 +2,12 @@ import './styles/LoginForm.scss';
 import { TextField, Button } from '@mui/material';
 import axios from 'axios';
 import { useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 export default function Login(props) {
 	const { handleLoginView, currentUser, setCurrentUser } = props;
+
+	const navigate = useNavigate();
 
 	const login = e => {
 		e.preventDefault();
@@ -19,12 +21,19 @@ export default function Login(props) {
 			.post('/api/auth/login', data)
 			.then(res => {
 				setCurrentUser(res.data);
+				setTimeout(() => {
+					navigate('/profile');
+				}, 1000);
 				console.log(res.data);
 			})
 			.catch(err => {
 				console.log(err);
 			});
 	};
+
+	useEffect(() => {
+		handleLoginView();
+	}, [currentUser]);
 
 	return (
 		<div className='login-content'>

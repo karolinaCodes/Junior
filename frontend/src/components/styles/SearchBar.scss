@@ -6,13 +6,19 @@
   align-items: center;
   margin-top: 100px;
 
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px;
+  box-shadow: rgb(8 35 48 / 10%) 0px 4px 8px;
+
   #search-bar {
     width: 26rem;
   }
 
   button {
-    background-color: $sand;
-    color: $blue;
+    background-color: #182c5b;
+    color: #f9f9f9;
     font-weight: $bold;
     margin-left: 2rem;
   }

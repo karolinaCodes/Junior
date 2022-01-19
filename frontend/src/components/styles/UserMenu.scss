@@ -32,3 +32,10 @@
   > div.MuiPaper-root.MuiPaper-elevation.MuiPaper-rounded.MuiPaper-elevation1.MuiMenu-paper.MuiPaper-root.MuiPaper-elevation.MuiPaper-rounded.MuiPaper-elevation8.MuiPopover-paper.css-1poimk-MuiPaper-root-MuiMenu-paper-MuiPaper-root-MuiPopover-paper {
   margin-top: 42px;
 }
+
+ul {
+  & a {
+    text-decoration: none;
+    color: #666666;
+  }
+}

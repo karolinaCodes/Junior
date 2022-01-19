@@ -34,11 +34,7 @@ export default function NavBar(props) {
 	};
 
 	const navClassCheck = () => {
-		if (location.pathname === '/') {
-			return 'nav-home';
-		} else {
-			return 'nav-bar';
-		}
+		return location.pathname === '/' ? 'nav-home' : 'nav-bar';
 	};
 
 	return (

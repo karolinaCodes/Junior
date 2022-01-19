@@ -3,7 +3,7 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Outfit:wght@100;200;300;400;500;600;700&display=swap');
 
 * {
-  font-family: 'Poppins', sans-serif !important;
+  // font-family: 'Poppins', sans-serif !important;
 }
 .name {
   color: white;
@@ -17,6 +17,7 @@
   border-radius: 50%;
   height: 40px;
   width: 40px;
+  margin-left: 0px;
 }
 
 .profile-info {

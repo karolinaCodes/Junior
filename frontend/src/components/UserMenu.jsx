@@ -3,6 +3,7 @@ import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import './styles/UserMenu.scss';
+import {Link} from 'react-router-dom';
 
 import Avatar from '@mui/material/Avatar';
 import Stack from '@mui/material/Stack';
@@ -56,11 +57,18 @@ export default function PositionedMenu() {
           horizontal: 'left',
         }}
       >
-        <MenuItem onClick={handleClose}>Profile</MenuItem>
-        <MenuItem onClick={handleClose}>Applications</MenuItem>
-        <MenuItem onClick={handleClose}>Settings</MenuItem>
-
-        <MenuItem onClick={handleClose}>Logout</MenuItem>
+        <Link to="/profile">
+          <MenuItem onClick={handleClose}>Profile</MenuItem>
+        </Link>
+        <Link to="/applications">
+          <MenuItem onClick={handleClose}>Applications</MenuItem>
+        </Link>
+        <Link to="/">
+          <MenuItem onClick={handleClose}>Settings</MenuItem>
+        </Link>
+        <Link>
+          <MenuItem onClick={handleClose}>Logout</MenuItem>
+        </Link>
       </Menu>
     </div>
   );

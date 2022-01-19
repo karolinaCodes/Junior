@@ -500,7 +500,7 @@ module.exports = db => {
       .then(result => result.rows)
       .catch(err => err);
   };
-  
+
   const getAllJobApplicationsForEmployer = id => {
     const query = {
       text: `SELECT job_applications.*, job_postings.*, job_postings.id as post_id, employers.id as employer_id,
@@ -638,6 +638,6 @@ module.exports = db => {
     getApplicationsByGigPostingId,
     addGigApplication,
     getAllJobApplicationsForEmployer,
-    getAllGigApplicationsForEmployer
+    getAllGigApplicationsForEmployer,
   };
 };

@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, useNavigate } from 'react-router-dom';
 
 //import components
 import JobSearch from './pages/JobSearch.jsx';
@@ -9,7 +9,7 @@ import NewJobPost from './components/NewJobPost.jsx';
 import NewGigPost from './components/NewGigPost';
 import Profile from './pages/Profile.jsx';
 import EmployerProfile from './pages/EmployerProfile.jsx';
-import NavBar from './pages/NavBar.jsx';
+import NavBar from './components/NavBar.jsx';
 import GigView from './pages/GigView.jsx';
 import JobView from './pages/JobView.jsx';
 import PortfolioModal from './components/PortfolioModal';
@@ -23,6 +23,7 @@ import './App.scss';
 function App() {
 	const [loginView, setLoginView] = useState(false);
 	const [currentUser, setCurrentUser] = useState({});
+	let navigate = useNavigate();
 
 	useEffect(() => {
 		axios
@@ -36,8 +37,21 @@ function App() {
 			});
 	}, []);
 
-	const handleLoginView = () => {
-		loginView ? setLoginView(false) : setLoginView(true);
+	const checkUser = () => {
+		if (currentUser.id) {
+			return true;
+		} else {
+			return false;
+		}
+	};
+
+	const handleLoginView = e => {
+		if (checkUser()) {
+			setLoginView(false);
+		} else {
+			navigate('/');
+			setLoginView(true);
+		}
 	};
 
 	return (
@@ -87,9 +101,9 @@ function App() {
 					element={<JobView currentUser={currentUser} />}
 				/>
 				<Route
-					path="/employerprofile/:posttype/:postid/applications"
+					path='/employerprofile/:posttype/:postid/applications'
 					element={<Applications currentUser={currentUser} />}
-        />
+				/>
 			</Routes>
 		</div>
 	);

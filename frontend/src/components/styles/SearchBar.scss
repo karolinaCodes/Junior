@@ -1,26 +1,32 @@
 @import './variables.scss';
 
 .search {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	margin-top: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 100px;
 
-	#search-bar {
-		width: 26rem;
-	}
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px;
+  // box-shadow: rgb(8 35 48 / 10%) 0px 4px 8px;
 
-	button {
-		background-color: $yellow;
-		color: $blue;
-		font-weight: $bold;
-		margin-left: 2rem;
-	}
+  #search-bar {
+    width: 26rem;
+  }
 
-	button:hover {
-		background-color: $yellow;
-		color: $blue;
-		font-weight: $bold;
-		margin-left: 2rem;
-	}
+  button {
+    background-color: #182c5b;
+    color: #f9f9f9;
+    font-weight: $bold;
+    margin-left: 2rem;
+  }
+
+  button:hover {
+    background-color: $sand;
+    color: $blue;
+    font-weight: $bold;
+    margin-left: 2rem;
+  }
 }

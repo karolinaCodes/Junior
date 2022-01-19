@@ -65,7 +65,7 @@ export default function NewGigPost(props) {
 				<TextField
 					id='deadline'
 					sx={{ mt: '1rem' }}
-					label='yyyy-mm-dd'
+					type='date'
 					variant='outlined'
 					value={gigForm.deadline}
 					onChange={e => setGigForm({ ...gigForm, deadline: e.target.value })}

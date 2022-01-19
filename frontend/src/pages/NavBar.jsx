@@ -1,6 +1,7 @@
 import {Link} from 'react-router-dom';
 import './styles/NavBar.scss';
 import Button from '@mui/material/Button';
+import UserMenu from '../components/UserMenu.jsx';
 
 const defaultUser = {
   id: null,
@@ -47,29 +48,25 @@ export default function NavBar(props) {
         </Link>
       </div>
       <div className="nav-links">
-        <Button variant="contained" id="logout" onClick={logout}>
-          Log Out
-        </Button>
-        <Button
-          id="log-curr-user"
-          variant="contained"
-          onClick={e => console.log(currentUser)}
-        >
-          LOG CURRENT USER
-        </Button>
-        <Link to="/jobs">Job Search</Link>
-        <Link to="/profile">Profile</Link>
+        <Link to="/jobs">Find Work</Link>
+        <Link to="/profile">How it works</Link>
+        <Link to="/profile">Company</Link>
+        <Link to="/profile">Hire Talent</Link>
       </div>
       <div className="nav-button">
         <Button
+          id="login"
           component={Link}
           to="/"
-          variant="contained"
+          variant="outlined"
           onClick={handleLoginView}
         >
           Login
         </Button>
-        <Button variant="contained">Sign Up</Button>
+        <Button id="signup" variant="contained">
+          Sign Up
+        </Button>
+        <UserMenu currentUser={currentUser} />
       </div>
     </div>
   );

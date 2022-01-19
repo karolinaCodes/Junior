@@ -15,21 +15,27 @@
 }
 
 .MuiBox-root {
-  h1 {
-    color: $yellow;
-  }
+	h1 {
+		color: $sand;
+	}
 
-  h1:hover {
-    color: $white;
-  }
+	h1:hover {
+		color: $white;
+	}
 }
 
 .profile-data {
-  display: flex;
+	display: flex;
 }
 
 #user-photo {
-  border-radius: 50%;
+	border-radius: 50%;
 }
 
-
+.profile-pic {
+	text-align: center;
+	& a {
+		color: $sand;
+		text-decoration: none;
+	}
+}

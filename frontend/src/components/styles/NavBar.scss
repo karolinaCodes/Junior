@@ -1,40 +1,16 @@
-// FONTS
-$brand: 'Assistant', sans-serif;
-$text: 'Roboto', sans-serif;
-$reg: 400;
-$bold: 700;
-
-// COLORS
-$white: #f9f9f9;
-$black: #26242a;
-$blue: #182c5b;
-$invis: #182c5b00;
-$sand: #e3d3ca;
-$brown: #3d2b2a;
-
-// .MuiButton-root
-@mixin outline {
-	color: $white;
-	border-color: $white;
-}
-
-// .MuiButton-root
-@mixin solid {
-	color: $white;
-	background-color: $blue;
-}
-
-@mixin solidwhite {
-	color: $blue;
-	background-color: $white;
-}
+@import 'variables';
 
 // --------------------- HOMEPAGE NAV BAR ----------------- //
-@mixin navHome {
+.nav-home {
+	@include navHome;
+}
+
+// --------------------- NORMAL NAV BAR ----------------- //
+.nav-bar {
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	background-color: $invis;
+	background-color: $blue;
 	height: 90px;
 	width: 100%;
 	z-index: 999;
@@ -67,7 +43,7 @@ $brown: #3d2b2a;
 	}
 
 	#signup {
-		@include solid;
+		@include solidwhite;
 		margin-right: 8rem;
 		margin-left: 1rem;
 
@@ -81,7 +57,7 @@ $brown: #3d2b2a;
 		font-size: 60px;
 		font-family: $brand;
 		font-weight: $bold;
-		color: $blue;
+		color: $white;
 		margin: 0 0 0 8rem;
 	}
 }

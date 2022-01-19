@@ -1,35 +1,65 @@
 @import 'variables';
 
 .login-content {
-  width: 50%;
+	width: 35%;
+	margin-top: 8rem;
 }
 
 .login {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
+	display: flex;
+	flex-direction: column;
+	// align-items: center;
+	justify-content: space-between;
 
-  button {
-    margin-top: 2rem;
-  }
-  #cancelLogin {
-    margin-left: 1rem;
-  }
+	.login-text {
+		justify-content: flex-start;
 
-  h2 {
-    font-size: 20px;
-    font-weight: lighter;
-    color: #00000056;
-    width: 30%;
-    margin-top: 0;
-  }
+		h1 {
+			text-align: left;
+		}
 
-  p {
-    color: #00000056;
+		h2 {
+			font-size: 20px;
+			font-weight: lighter;
+			color: #1c1c1c56;
+			width: 65%;
+			margin-top: 0;
+			margin-bottom: 4rem;
+			text-align: left;
+		}
+	}
 
-    a {
-      color: #0091ffa8;
-    }
-  }
+	button {
+		@include solid;
+		margin-top: 2rem;
+		width: 100%;
+		height: 3rem;
+	}
+
+	p {
+		color: #1c1c1c56;
+
+		a {
+			color: #0091ffa8;
+			text-decoration: none;
+		}
+	}
+
+	.login-footer {
+		display: flex;
+		justify-content: space-between;
+		margin-top: 10rem;
+	}
+	.forgot-password {
+		margin-top: 1rem;
+		text-align: right;
+		align-self: right;
+		text-decoration: none;
+		color: #0091ff;
+		text-shadow: black;
+	}
+
+	.tos-text {
+		justify-content: space-between;
+	}
 }

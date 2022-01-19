@@ -6,22 +6,21 @@
 }
 
 #landing-image img {
-  display: block;
-  height: 100vh;
-  // width: auto;
-  width: 100vw;
-  position: fixed;
-  z-index: 0;
+	display: block;
+	height: 100vh;
+	width: auto;
+	position: fixed;
+	z-index: 0;
 }
 
 .landing-content {
-  display: flex;
-  flex-direction: column;
-  margin-top: 8rem;
-  margin-left: 8rem;
-  width: 80%;
-  position: absolute;
-  z-index: 1;
+	display: flex;
+	flex-direction: column;
+	margin-top: 8rem;
+	margin-left: 8rem;
+	width: 95rem;
+	position: absolute;
+	z-index: 1;
 
   .search-wrapper {
     display: flex;

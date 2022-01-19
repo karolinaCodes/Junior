@@ -34,13 +34,9 @@ export default function NavBar(props) {
     setCurrentUser(defaultUser);
   };
 
-  const navClassCheck = () => {
-    if (location.pathname === '/') {
-      return 'nav-home';
-    } else {
-      return 'nav-bar';
-    }
-  };
+	const navClassCheck = () => {
+		return location.pathname === '/' ? 'nav-home' : 'nav-bar';
+	};
 
   return (
     <div className={navClassCheck()}>

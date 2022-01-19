@@ -1,74 +1,70 @@
 @import 'variables';
 
-.App {
-  background: grey;
-}
-
 .jobsearch-content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  align-content: center;
-  margin: 20px;
-  border: 1px solid grey;
-  border-radius: 20px;
-  background: white;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	align-content: center;
+	margin: 20px;
+	border: 1px solid grey;
+	border-radius: 20px;
+	background: white;
 }
 
 .search {
-  justify-content: space-between;
-  & Button {
-    margin-right: 30px;
-  }
+	justify-content: space-between;
+	& Button {
+		margin-right: 30px;
+	}
 }
 
 .main-content {
-  display: flex;
-  width: 100%;
-  justify-content: space-between;
+	display: flex;
+	width: 100%;
+	justify-content: space-between;
 }
 
 .checkboxes {
-  text-align: center;
-  width: 30%;
-  padding: 30px 50px 0px 50px;
+	text-align: center;
+	width: 30%;
+	padding: 30px 50px 0px 50px;
 }
 
 .searchResults {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
 }
 
 .css-1t6e9jv-MuiCardActions-root {
-  justify-content: center;
+	justify-content: center;
 }
 
 .description {
-  // max-height: 70px;
-  overflow: hidden;
-  display: -webkit-box;
-  -webkit-line-clamp: 4;
-  -webkit-box-orient: vertical;
+	// max-height: 70px;
+	overflow: hidden;
+	display: -webkit-box;
+	-webkit-line-clamp: 4;
+	-webkit-box-orient: vertical;
 }
 
 .css-46bh2p-MuiCardContent-root {
-  text-align: left;
+	text-align: left;
 }
 
 .card-header {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
 }
 
 .css-o69gx8-MuiCardMedia-root {
-  border-radius: 50%;
-  width: 35% !important;
-  height: 35%;
+	border-radius: 50%;
+	width: 35% !important;
+	height: 35%;
 }
 
 .searchResults-container {
-  & h4 {
-    text-align: left;
-  }
+	& h4 {
+		text-align: left;
+	}
 }

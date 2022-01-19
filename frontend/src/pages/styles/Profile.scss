@@ -7,13 +7,20 @@
 	justify-content: space-evenly;
 	text-align: justify;
 	max-width: 1500px;
+	.MuiGrid-item {
+		padding: 0;
+	}
 	.profile-pic {
-		min-width: 200px;
+		display: flex;
+		align-items: center;
+		max-height: 200px;
+		max-width:  200px;
+		width: 25%;
 	}
 	img#profile-pic {
-		height: 200px;
-		width:  200px;
 		border-radius: 50%;
+		width: 100%;
+		height: auto;
 	}
 	.profile-name {
 		width: 45%;

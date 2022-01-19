@@ -3,12 +3,18 @@
 .portfolio-modal {
 	button {
 		color: $white;
-		background-color: $blue;
+		background-color: $white;
 	}
 }
 
 .MuiBox-root {
+	padding: 1rem 1rem 1rem 1rem;
+	text-align: justify;
+	p, h3 {
+		color: $white;
+	}
 	h1 {
+		padding-top: 0;
 		color: $yellow;
 	}
 

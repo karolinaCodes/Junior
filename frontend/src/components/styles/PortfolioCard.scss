@@ -4,15 +4,44 @@
 	align-self: center;
 	width: 65%;
 
-	img.profile {
-		width: 18rem;
-	}
-
 	h1 {
 		margin-top: 0;
 	}
 
 	p {
 		margin-bottom: 0;
+	}
+}
+
+.application-cards {
+	flex-direction: column;
+	justify-content: space-between;
+	text-align: justify;
+	padding: 0 1rem 0 1rem;
+	.cards {
+		justify-self: center;
+		align-self: center;
+		width: 100%;
+		h1 {
+			margin-top: 0;
+		}
+		
+		p {
+			margin-bottom: 0;
+		}
+	}
+	.profile-pic {
+		padding: 1rem;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+	img#profile-pic {
+		max-width: 150px;
+		height: auto;
+		border-radius: 50%;
+	}
+	.profile-info {
+		min-width: 400px;
 	}
 }

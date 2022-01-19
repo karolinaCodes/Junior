@@ -1,5 +1,5 @@
 import './styles/LandingPage.scss';
-import {Modal, Box, Grid, Paper} from '@mui/material';
+import {Card, Modal, Box, Grid, Paper} from '@mui/material';
 import {useEffect, useState} from 'react';
 import {useParams} from 'react-router-dom';
 import ApplicationCard from '../components/ApplicationCard';
@@ -98,11 +98,13 @@ export default function Applications(props) {
         </p>
       </div>
       <div className="application-content">
-        <Grid container direction='column' spacing={3}>
           <h1>Applications</h1>
           Total applications: {posting.applications.length}
-          {parsedApplications}
-        </Grid>
+          <section className="application-cards">
+            <Grid item xs={12} container direction='column' rowSpacing={1}>
+              {parsedApplications}
+            </Grid>
+          </section>
         <Modal
           open={openModal}
           onClose={handleView}

@@ -1,6 +1,6 @@
 import {useEffect, useState} from 'react';
 import './styles/Profile.scss';
-import {Grid, Paper, Box, Modal, Button} from '@mui/material';
+import {Grid, Button, Modal, Box, Paper, Card, CardActionArea, CardActions} from '@mui/material';
 import PortfolioCard from '../components/PortfolioCard';
 import PortfolioModal from '../components/PortfolioModal';
 import axios from 'axios';
@@ -37,33 +37,6 @@ export default function Profile(props) {
     borderRadius: '2rem',
   };
 
-  // FOR TESTING ENDPOINTS
-  // useEffect(() => {
-  //	-retrieve a job application by application id
-  //   axios
-  //     .get('/api/job_applications/1')
-  //     .then(res => {
-  //       console.log(res.data);
-  //     })
-  //     .catch(err => console.log(err));
-
-  //	-create a new job application
-  // axios
-  //   .get('/api/job_applications/new')
-  //   .then(res => {
-  //     console.log(res.data);
-  //   })
-  //   .catch(err => console.log(err));
-
-  // get gig application based on gig application id
-  // axios
-  //   .get('/api/gig_applications/1')
-  //   .then(res => {
-  //     console.log(res.data);
-  //   })
-  //   .catch(err => console.log(err));
-  // }, []);
-
   const {
     first_name,
     last_name,
@@ -98,24 +71,38 @@ export default function Profile(props) {
     return (
       <Grid
         item
-        xs={10}
+        xs={1}
         sm={6}
         md={4}
+        lg={3}
         key={'Project-grid-' + project.project_id}
       >
-        <Paper
-          sx={{height: '300px', overflow: 'hidden'}}
-          onClick={() => {
-            setModalData(data);
-            handleView();
-          }}
-          key={'Project-paper-' + project.project_id}
-        >
-          <PortfolioCard
-            key={'Portfolio-card-' + project.project_id}
-            {...project}
-          />
-        </Paper>
+        <Grid container direction='column' key={'Project-grid-container-' + project.project_id}>
+          <Paper key={'Project-paper-' + project.project_id}>
+            <Card key={'Project-card-' + project.project_id}>
+              <CardActionArea key={'Job-card-action' + project.project_id}
+                onClick={() => {
+                setModalData(data);
+                handleView();
+              }}>
+                <PortfolioCard
+                  key={'Portfolio-card-' + project.project_id}
+                  {...project}
+                />
+              </CardActionArea>
+              <CardActions key={'Job-card-actions-' + project.project_id}>
+                <Button key={'Job-button-github-' + project.project_id}
+                  onClick={() => window.open(project.github_link, "_self")}>
+                  Github
+                </Button>
+                <Button key={'Job-button-live-' + project.project_id}
+                  onClick={() => window.open(project.live_link, "_self")}>
+                  Live Link
+                </Button>
+              </CardActions>
+            </Card>
+          </Paper>
+        </Grid>
       </Grid>
     );
   });
@@ -130,25 +117,37 @@ export default function Profile(props) {
       >
         GO BACK
       </Button>
-      <section className="profile-bio">
-        <img id="profile-pic" src={photo_url} alt="Avatar"></img>
-        <section>
-          <h1>Name: {`${first_name} ${last_name}`}</h1>
-          <h1>Bio: {bio ? bio : 'N/A'}</h1>
-        </section>
-        <section>
-          <h1>Email: {email}</h1>
-          <h1>GitHub: {github_url ? github_url : 'N/A'}</h1>
-          <h1>LinkedIn: {linkedIn_url ? linkedIn_url : 'N/A'}</h1>
-        </section>
-      </section>
-      <section className="cards">
-        <Grid container spacing={3}>
+      <Grid container className="profile-bio" columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
+        <Grid item className="profile-pic">
+          <img id="profile-pic" src={photo_url} alt="Avatar"></img>
+        </Grid>
+        <Grid item className="profile-name">
+          <h4>Name: {`${first_name} ${last_name}`}</h4>
+          <h4>Bio: {bio ? bio : 'N/A'}</h4>
+        </Grid>
+        <Grid item className="profile-links">
+          <h4>Email: {email}</h4>
+          <h4>GitHub: {github_url ? github_url : 'N/A'}</h4>
+          <h4>LinkedIn: {linkedIn_url ? linkedIn_url : 'N/A'}</h4>
+        </Grid>
+      </Grid>
+      {profile.projects.length === 0 && <h1>No projects added</h1> }
+      <section className='profile-cards'>
+        <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
+          <Grid item xs={12}>
+          <h1>{`${first_name} ${last_name}`} Portfolio:</h1>
+          </Grid>
           {parsedProjects}
         </Grid>
       </section>
-      <Modal open={openModal} onClose={handleView}>
-        <Box sx={style}>{modalData}</Box>
+      <Modal
+      open={openModal}
+      onClose={handleView}
+      className='portfolio-modal'
+      >
+        <Box sx={style}>
+          {modalData}
+        </Box>
       </Modal>
     </div>
   );

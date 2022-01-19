@@ -5,6 +5,13 @@
     color: $white;
     background-color: $blue;
   }
+  .profile-pic {
+    text-align: center;
+    & a {
+      color: $yellow;
+      text-decoration: none;
+    }
+  }
 }
 
 .MuiBox-root {
@@ -25,10 +32,4 @@
   border-radius: 50%;
 }
 
-.profile-pic {
-  text-align: center;
-  & a {
-    color: $yellow;
-    text-decoration: none;
-  }
-}
+

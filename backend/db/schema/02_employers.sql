@@ -8,3 +8,4 @@ CREATE TABLE "employers" (
   "bio" VARCHAR(225),
   "photo_url" VARCHAR(255) DEFAULT 'https://isobarscience.com/wp-content/uploads/2020/09/default-profile-picture1-300x300.jpg'
 );
+

@@ -14,14 +14,16 @@
 .jobsearch-search {
   display: flex;
   justify-content: center;
-  background: white;
+  align-items: center;
+  background: #fbfbfb;
   height: 80px;
   margin: 0;
   width: 100%;
   // box-shadow: 0px 4px 8px rgba(8, 35, 48, 0.2);
   box-shadow: 0px 3px 8px rgba(8, 35, 48, 0.05);
   & Button {
-    margin-right: 30px;
+    height: 45px;
+    margin: 0 30px;
   }
 }
 
@@ -31,6 +33,7 @@
   width: 13rem;
   border-right: 1px solid #f0f0f0;
   margin: 20px;
+  background: #fbfbfb;
 }
 
 .search-query::placeholder {
@@ -68,9 +71,9 @@ input:focus {
 }
 
 .checkboxes-section {
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid #c4c4c4;
   margin: 0;
-  padding: 18px;
+  padding: 18px 0px 18px 0px;
 }
 
 .searchResults {

@@ -28,6 +28,10 @@ import Stack from '@mui/material/Stack';
 
 import Slider from '@mui/material/Slider';
 
+import {InputAdornment} from '@mui/material';
+import SearchIcon from '@mui/icons-material/Search';
+import LocationOnIcon from '@mui/icons-material/LocationOn';
+
 export default function JobSearch(props) {
   const {currentUser} = props;
   const [query, setQuery] = useState('');
@@ -179,25 +183,41 @@ export default function JobSearch(props) {
             </Select>
           </FormControl>
         </Box>
-        <input
+        <TextField
           placeholder="Keywords, job title"
           onChange={e => setQueryString(e.target.value)}
           value={queryString}
           onKeyDown={e => keyCheck(e)}
           className="search-query"
-        ></input>
-        {/* <TextField
+          InputProps={{
+            startAdornment: (
+              <InputAdornment position="start">
+                <SearchIcon />
+              </InputAdornment>
+            ),
+          }}
+        ></TextField>
+        <TextField
           id="search-bar"
-          label="Keywords"
           variant="outlined"
-          
-        /> */}
-        <input
           placeholder="City"
           onChange={e => setCity(e.target.value)}
           value={city}
           onKeyDown={e => keyCheck(e)}
-        ></input>
+          InputProps={{
+            startAdornment: (
+              <InputAdornment position="start">
+                <LocationOnIcon />
+              </InputAdornment>
+            ),
+          }}
+        />
+        {/* <input
+          placeholder="City"
+          onChange={e => setCity(e.target.value)}
+          value={city}
+          onKeyDown={e => keyCheck(e)}
+        ></input> */}
         {/* <TextField
           id="search-bar"
           label="City"
@@ -426,7 +446,7 @@ export default function JobSearch(props) {
 
         {/* {SEARCH RESULTS---------------------------------} */}
         <div className="searchResults-container">
-          <h3>
+          <h3 id="recommended">
             <span>Recommended Jobs </span>
             <span id="recommended-num">{searchResults.length}</span>
           </h3>

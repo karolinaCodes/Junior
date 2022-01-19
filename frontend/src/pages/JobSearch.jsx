@@ -6,7 +6,6 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
-import {Modal} from '@mui/material';
 
 import {Link} from 'react-router-dom';
 
@@ -27,14 +26,20 @@ import Checkbox from '@mui/material/Checkbox';
 import Chip from '@mui/material/Chip';
 import Stack from '@mui/material/Stack';
 
+import Slider from '@mui/material/Slider';
+
+function valuetext(value) {
+  return `${value}°C`;
+}
+
 export default function JobSearch(props) {
   const {currentUser} = props;
   const [query, setQuery] = useState('');
   const [city, setCity] = useState('');
-  const [jobType, setJobType] = useState('');
+  const [schedule, setSchedule] = useState('');
   const [queryString, setQueryString] = useState('');
   const [searchResults, setSearchResults] = useState([]);
-  const [toggle, setToggle] = useState('jobs');
+  const [jobType, setJobType] = useState('');
   const [open, setOpen] = useState(false);
   const [jobApplying, setJobApplying] = useState('');
 
@@ -53,10 +58,6 @@ export default function JobSearch(props) {
       })
       .catch(err => console.log(err));
   }, []);
-
-  const handleChange = event => {
-    setJobType(event.target.value);
-  };
 
   const style = {
     width: 1 / 2,
@@ -77,15 +78,32 @@ export default function JobSearch(props) {
     }
   };
   const handleSubmit = e => {
-    console.log(queryString, city, jobType, toggle);
+    console.log(queryString, city, schedule, jobType);
     e.preventDefault();
+
+    if (!queryString && !city && !schedule && !jobType) {
+      const results = axios
+        .get('/api/search/query', {
+          params: {
+            queryString,
+          },
+        })
+        .then(res => {
+          console.log(res.data);
+          setSearchResults(res.data);
+          return;
+        })
+        .catch(err => console.log(err));
+      return;
+    }
+
     const results = axios
       .get('/api/search/multi-filter', {
         params: {
           queryString,
           city,
-          job_type: jobType,
-          toggle,
+          job_type: schedule,
+          toggle: jobType,
         },
       })
       .then(res => {
@@ -96,12 +114,23 @@ export default function JobSearch(props) {
       .catch(err => console.log(err));
   };
 
-  const handleClick = e => {
-    e.preventDefault();
-    toggle === 'jobs' ? setToggle('gigs') : setToggle('jobs');
-    setCity('');
-    setJobType('');
-    setQueryString('');
+  // const handleClick = e => {
+  //   e.preventDefault();
+  //   jobType === 'jobs' ? setjobType('gigs') : setjobType('jobs');
+  //   setCity('');
+  //   setSchedule('');
+  //   setQueryString('');
+  // };
+
+  const handleChange = event => {
+    setJobType(event.target.value);
+  };
+
+  const [value, setValue] = React.useState([20, 37]);
+
+  console.log(value);
+  const handleSlider = (event, newValue) => {
+    setValue(newValue);
   };
 
   const openApplication = index => {
@@ -131,52 +160,63 @@ export default function JobSearch(props) {
     setOpen(true);
   };
 
-  // FOR TESTING LOGOUT
-  // const logout = () => {
-  //   axios
-  //     .post('/api/auth/logout')
-  //     .then(res => {
-  //       // set current user to updated page
-  //       console.log(res.data);
-  //     })
-  //     .catch(err => {
-  //       console.log(err);
-  //     });
-  // };
-
   return (
     <div className="jobsearch-content">
-      {/* <Button onClick={logout}>Logout</Button> */}
       <form className="search" onSubmit={handleSubmit}>
-        <Button variant="contained" size="large" onClick={handleClick}>
-          {`${toggle}`}
-        </Button>
+        <Box sx={{minWidth: 120}}>
+          <FormControl fullWidth>
+            <InputLabel id="demo-simple-select-label">Job Type</InputLabel>
+            <Select
+              labelId="demo-simple-select-label"
+              id="demo-simple-select"
+              value={jobType}
+              label="Job Type"
+              onChange={handleChange}
+            >
+              <MenuItem value={''}>All</MenuItem>
+              <MenuItem value={'jobs'}>Jobs</MenuItem>
+              <MenuItem value={'gigs'}>Gigs</MenuItem>
+            </Select>
+          </FormControl>
+        </Box>
         <TextField
           id="search-bar"
-          label="Search"
+          label="Keywords"
           variant="outlined"
           onChange={e => setQueryString(e.target.value)}
           value={queryString}
           onKeyDown={e => keyCheck(e)}
         />
-        {toggle === 'jobs' ? (
-          <TextField
-            id="search-bar"
-            label="City"
-            variant="outlined"
-            onChange={e => setCity(e.target.value)}
-            value={city}
-            onKeyDown={e => keyCheck(e)}
+        <TextField
+          id="search-bar"
+          label="City"
+          variant="outlined"
+          onChange={e => setCity(e.target.value)}
+          value={city}
+          onKeyDown={e => keyCheck(e)}
+        />
+        {/* {SLIDER---------------------------------} */}
+        <Box sx={{width: 300}}>
+          <Slider
+            size="small"
+            getAriaLabel={() => 'Temperature range'}
+            value={value}
+            onChange={handleSlider}
+            valueLabelDisplay="auto"
+            getAriaValueText={valuetext}
           />
-        ) : null}
+        </Box>
+
         <Button variant="contained" size="large" type="submit">
-          FIND JOBS
+          Search
         </Button>
       </form>
       <div className="main-content">
+        {/* {CHECKBOXES-------------------------------} */}
         <div className="checkboxes">
           <h3>Details</h3>
           <hr />
+          {/* {SCHEDULE---------------------------} */}
           <h4>Schedule</h4>
           <FormGroup>
             <FormControlLabel
@@ -187,9 +227,9 @@ export default function JobSearch(props) {
                   value="Full-time"
                   onClick={e => {
                     if (e.target.checked) {
-                      setJobType(e.target.value);
+                      setSchedule(e.target.value);
                     } else {
-                      setJobType('');
+                      setSchedule('');
                     }
                   }}
                 />
@@ -204,9 +244,9 @@ export default function JobSearch(props) {
                   value="Part-time"
                   onClick={e => {
                     if (e.target.checked) {
-                      setJobType(e.target.value);
+                      setSchedule(e.target.value);
                     } else {
-                      setJobType('');
+                      setSchedule('');
                     }
                   }}
                 />
@@ -221,9 +261,9 @@ export default function JobSearch(props) {
                   value="Internship"
                   onClick={e => {
                     if (e.target.checked) {
-                      setJobType(e.target.value);
+                      setSchedule(e.target.value);
                     } else {
-                      setJobType('');
+                      setSchedule('');
                     }
                   }}
                 />
@@ -232,7 +272,7 @@ export default function JobSearch(props) {
             />
           </FormGroup>
           <hr />
-          {/* Languages----------- */}
+          {/* LANGUAGES--------------------------------- */}
           <h4>Languages</h4>
           <FormGroup>
             <FormControlLabel
@@ -264,7 +304,7 @@ export default function JobSearch(props) {
                     if (e.target.checked) {
                       setQueryString(e.target.value);
                     } else {
-                      setJobType('');
+                      setSchedule('');
                     }
                   }}
                 />
@@ -282,7 +322,7 @@ export default function JobSearch(props) {
                     if (e.target.checked) {
                       setQueryString(e.target.value);
                     } else {
-                      setJobType('');
+                      setSchedule('');
                     }
                   }}
                 />
@@ -300,7 +340,7 @@ export default function JobSearch(props) {
                     if (e.target.checked) {
                       setQueryString(e.target.value);
                     } else {
-                      setJobType('');
+                      setSchedule('');
                     }
                   }}
                 />
@@ -318,7 +358,7 @@ export default function JobSearch(props) {
                     if (e.target.checked) {
                       setQueryString(e.target.value);
                     } else {
-                      setJobType('');
+                      setSchedule('');
                     }
                   }}
                 />
@@ -336,7 +376,7 @@ export default function JobSearch(props) {
                     if (e.target.checked) {
                       setQueryString(e.target.value);
                     } else {
-                      setJobType('');
+                      setSchedule('');
                     }
                   }}
                 />
@@ -354,7 +394,7 @@ export default function JobSearch(props) {
                     if (e.target.checked) {
                       setQueryString(e.target.value);
                     } else {
-                      setJobType('');
+                      setSchedule('');
                     }
                   }}
                 />
@@ -363,6 +403,7 @@ export default function JobSearch(props) {
             />
           </FormGroup>
         </div>
+        {/* {SEARCH RESULTS---------------------------------} */}
         <div className="searchResults-container">
           <h4>Recommended Jobs {searchResults.length}</h4>
           <div className="searchResults">

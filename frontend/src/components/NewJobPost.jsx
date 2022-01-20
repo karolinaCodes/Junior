@@ -55,6 +55,7 @@ export default function NewJobPost(props) {
 					is_remote: false,
 					is_open: true,
 				});
+				navigate('/profile');
 			})
 			.catch(err => {
 				console.log(err);

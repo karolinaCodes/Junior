@@ -57,10 +57,6 @@ input:focus {
   padding: 0px 50px 0px 60px;
 }
 
-.checkboxes h4 {
-  color: #767676;
-}
-
 .checkboxes,
 .css-j204z7-MuiFormControlLabel-root .MuiFormControlLabel-label {
   font-family: 'Assistant' !important;
@@ -186,4 +182,8 @@ div .salary-slider {
 .searchResults div,
 .searchResults p {
   font-family: 'Assistant' !important;
+}
+
+.checkboxes-section span {
+  font-size: 15px;
 }

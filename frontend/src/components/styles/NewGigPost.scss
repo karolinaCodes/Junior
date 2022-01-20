@@ -1,14 +1,30 @@
 @import 'variables';
 
 .new-gig-content {
-	width: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	min-height: 90.5vh;
+	width: auto;
+	background-image: url('/images/form-backround.png');
+	background-size: cover;
+	background-position: center right;
 }
 
 .new-gig-form {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	justify-content: space-between;
+	justify-content: space-around;
+	min-width: 40%;
+	min-height: 70vh;
+	border-radius: 1%;
+	background-color: #fff;
+	position: absolute;
+	z-index: 0;
+	box-shadow: 5px 5px 10px #1c1c1c50;
+	color: $black;
 
 	button,
 	a {

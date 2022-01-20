@@ -5,8 +5,11 @@
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	min-height: 90vh;
+	min-height: 90.5vh;
 	width: auto;
+	background-image: url('/images/form-backround.png');
+	background-size: cover;
+	background-position: center right;
 }
 
 .new-job-form {
@@ -17,7 +20,7 @@
 	min-width: 40%;
 	min-height: 70vh;
 	border-radius: 1%;
-	background-color: #ebebeb;
+	background-color: #fff;
 	position: absolute;
 	z-index: 0;
 	box-shadow: 5px 5px 10px #1c1c1c50;

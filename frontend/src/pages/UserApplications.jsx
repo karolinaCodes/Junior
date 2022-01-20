@@ -45,7 +45,11 @@ export default function UserApplications(props) {
   const parsedJobApplications = jobApplicationsArray.map(application => {
     const data = (<ApplicationModal key={'Job-application-modal-' + application.id} {...application} />);
     return (
-      <Grid item xs={10} key={'Job-application-grid-' + application.id}>
+      <Grid item
+        xs={12}
+        md={6}
+        key={'Job-application-grid-' + application.id}
+      >
         <Paper key={'Job-application-paper-' + application.id}
           onClick={() => {
           setModalData(data);
@@ -61,8 +65,11 @@ export default function UserApplications(props) {
   const parsedGigApplications = gigApplicationsArray.map(application => {
     const data = (<ApplicationModal key={'Gig-application-modal-' + application.id} {...application} />);
     return (
-      <Grid item xs={12}
-      md={6} key={'Gig-application-grid-' + application.id}>
+      <Grid item
+        xs={12}
+        md={6}
+        key={'Gig-application-grid-' + application.id}
+      >
         <Paper key={'Gig-application-paper-' + application.id}
           onClick={() => {
           setModalData(data);
@@ -81,16 +88,18 @@ export default function UserApplications(props) {
     <div className="application-content">
         <h1>Applications</h1>
         Total applications: {applications.jobApplications.length + applications.gigApplications.length}
-        <section className="application-cards">
-          <h3>Job Applications:</h3>
-          <Grid container direction='column' rowSpacing={1}>
-            {parsedJobApplications}
-          </Grid>
-          <h3>Gig Applications:</h3>
-          <Grid container direction='column' rowSpacing={1}>
-            {parsedGigApplications}
-          </Grid>
-        </section>
+        <Grid container direction='column'>
+          <section className="application-cards">
+            <h3>Job Applications:</h3>
+            <Grid container item spacing={3}>
+              {parsedJobApplications}
+            </Grid>
+            <h3>Gig Applications:</h3>
+            <Grid container item spacing={3}>
+              {parsedGigApplications}
+            </Grid>
+          </section>
+        </Grid>
       <Dialog
         open={openModal}
         onClose={handleView}

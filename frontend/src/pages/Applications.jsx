@@ -19,7 +19,7 @@ export default function Applications(props) {
   });
   const [posting, setPosting] = useState({
     posting: {},
-    applications: []
+    applications: ['']
   });
 
   const [openModal, setOpenModal] = useState(false);
@@ -55,8 +55,9 @@ export default function Applications(props) {
   const parsedApplications = applicationsArray.map(application => {
     const data = (<ApplicationModal key={'Application-modal-' + application.junior_dev_id} {...application} />);
     return (
-      <Grid item xs={10} key={'Application-grid-' + application.junior_dev_id}>
+      <Grid item xs={12} key={'Application-grid-' + application.junior_dev_id}>
         <Paper
+          className='card-click'
           onClick={() => {
           setModalData(data);
           handleView();
@@ -89,7 +90,7 @@ export default function Applications(props) {
           <h1>Applications</h1>
           Total applications: {posting.applications.length}
           <section className="application-cards">
-            <Grid item xs={12} container direction='column' rowSpacing={1}>
+            <Grid xs={12} container direction='column' rowSpacing={1}>
               {parsedApplications}
             </Grid>
           </section>

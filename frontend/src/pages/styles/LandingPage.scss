@@ -1,78 +1,79 @@
 @import 'variables';
 
 .landing-wrapper {
-	display: flex;
-	flex-direction: column;
-	min-height: 100vh;
-	background-image: url('/images/landing-page-image-gradient.png');
-	background-size: cover;
-	background-position: center right;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-image: url('/images/landing-page-image-gradient.png');
+  background-size: cover;
+  background-position: center right;
 }
 #white-box {
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	margin: 12rem 0 0 8rem;
-	min-width: 40%;
-	min-height: 70vh;
-	border-radius: 1%;
-	background: #ffffff75;
-	position: absolute;
-	z-index: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 12rem 0 0 8rem;
+  min-width: 40%;
+  min-height: 70vh;
+  border-radius: 1%;
+  // background: #ffffff75;
+  background: rgba(255, 255, 255, 0.71);
+  position: absolute;
+  z-index: 0;
 
-	h1 {
-		font-size: 50px;
-		color: $blue;
-	}
+  h1 {
+    font-size: 50px;
+    color: $blue;
+  }
 
-	p {
-		color: #1c1c1c80;
-	}
+  p {
+    color: #1c1c1c80;
+  }
 
-	h1,
-	p {
-		margin: 0 10% 0 10%;
-		text-align: left;
-	}
+  h1,
+  p {
+    margin: 0 10% 0 10%;
+    text-align: left;
+  }
 
-	.get-paid {
-		margin-bottom: 2rem;
-	}
+  .get-paid {
+    margin-bottom: 2rem;
+  }
 
-	.search {
-		display: flex;
-		justify-content: center;
-		margin: 2rem 10% 15% 10%;
+  .search {
+    display: flex;
+    justify-content: center;
+    margin: 2rem 10% 15% 10%;
 
-		#search-bar {
-			max-width: 35ch;
-		}
-	}
+    #search-bar {
+      max-width: 35ch;
+    }
+  }
 
-	img {
-		opacity: 75%;
-		align-self: center;
-		max-width: 25rem;
-	}
+  img {
+    opacity: 75%;
+    align-self: center;
+    max-width: 25rem;
+  }
 }
 
 @media only screen and (min-width: 1900px) {
-	#white-box {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		margin: 15rem 0 0 8rem;
-		min-width: 35%;
-		min-height: 60vh;
-		border-radius: 1%;
-		background: #ffffff75;
-		position: absolute;
-		z-index: 0;
+  #white-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 15rem 0 0 8rem;
+    min-width: 35%;
+    min-height: 60vh;
+    border-radius: 1%;
+    background: #ffffff75;
+    position: absolute;
+    z-index: 0;
 
-		h1,
-		p {
-			margin: 0 10% 0 10%;
-			text-align: center;
-		}
-	}
+    h1,
+    p {
+      margin: 0 10% 0 10%;
+      text-align: center;
+    }
+  }
 }

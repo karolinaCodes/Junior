@@ -3,7 +3,7 @@ import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import './styles/UserMenu.scss';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 import Avatar from '@mui/material/Avatar';
 import Stack from '@mui/material/Stack';
@@ -32,6 +32,8 @@ export default function PositionedMenu(props) {
 		logout();
 		handleClose();
 	};
+
+	const navigate = useNavigate();
 
 	return (
 		<div>
@@ -65,18 +67,71 @@ export default function PositionedMenu(props) {
 				open={open}
 				onClose={handleClose}
 			>
-				<Link to='/profile'>
-					<MenuItem onClick={handleClose}>Profile</MenuItem>
-				</Link>
-				<Link to='/applications'>
-					<MenuItem onClick={handleClose}>Applications</MenuItem>
-				</Link>
-				<Link to='/'>
-					<MenuItem onClick={handleClose}>Settings</MenuItem>
-				</Link>
-				<Link to='/'>
-					<MenuItem onClick={handleLogout}>Logout</MenuItem>
-				</Link>
+				<MenuItem
+					onClick={e => {
+						navigate('/profile');
+						handleClose();
+					}}
+				>
+					Profile
+				</MenuItem>
+				{currentUser.first_name && (
+					<div>
+						<MenuItem
+							onClick={e => {
+								navigate('/newproject');
+								handleClose();
+							}}
+						>
+							New Project
+						</MenuItem>
+						<MenuItem
+							onClick={e => {
+								navigate('/jobs');
+								handleClose();
+							}}
+						>
+							Find Work
+						</MenuItem>
+					</div>
+				)}
+				{currentUser.company_name && (
+					<div>
+						<MenuItem
+							onClick={e => {
+								navigate('/applications');
+								handleClose();
+							}}
+						>
+							Applications
+						</MenuItem>
+						<MenuItem
+							onClick={e => {
+								navigate('/newjob');
+								handleClose();
+							}}
+						>
+							Post Job
+						</MenuItem>
+						<MenuItem
+							onClick={e => {
+								navigate('/newgig');
+								handleClose();
+							}}
+						>
+							Post Gig
+						</MenuItem>
+					</div>
+				)}
+				<MenuItem
+					onClick={e => {
+						navigate('/');
+						handleLogout();
+						handleClose();
+					}}
+				>
+					Logout
+				</MenuItem>
 			</Menu>
 		</div>
 	);

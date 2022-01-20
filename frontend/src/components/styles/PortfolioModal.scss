@@ -9,6 +9,7 @@
 	background: $blue;
 	color: $white;
 	align-items: flex-start;
+	overflow-wrap: break-word;
 	h1 {
 		color: $sand;
 	}
@@ -21,6 +22,7 @@
 		display: flex;
 		align-items: center;
 		justify-content: center;
+		flex-direction: column;
 	}
 	img#profile-pic {
 		max-width: 150px;

@@ -3,7 +3,6 @@
 	justify-self: center;
 	align-self: center;
 	width: 65%;
-
 	h1 {
 		margin-top: 0;
 	}
@@ -17,7 +16,9 @@
 	flex-direction: column;
 	justify-content: space-between;
 	text-align: justify;
-	padding: 0 1em;
+	margin: 0 1em;
+	overflow-wrap: break-word;
+	cursor: pointer;
 	.cards {
 		justify-self: center;
 		align-self: center;
@@ -33,14 +34,19 @@
 			max-width: 500px;
 		}
 	}
+	.application-name {
+		padding: 1em;
+	}
 	.profile-pic {
 		padding: 1em;
 		display: flex;
 		align-items: center;
 		justify-content: center;
+		flex-direction: column;
+		max-width: 200px;
 	}
 	img#profile-pic {
-		max-width: 150px;
+		width: 100%;
 		height: auto;
 		border-radius: 50%;
 	}

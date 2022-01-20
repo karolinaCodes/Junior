@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { TextField, Button, FormLabel } from '@mui/material';
 
 import './styles/NewGigPost.scss';
@@ -35,11 +35,14 @@ export default function NewGigPost(props) {
 					deadline: '',
 					photo_url: '',
 				});
+				navigate('/profile');
 			})
 			.catch(err => {
 				console.log(err);
 			});
 	};
+
+	const navigate = useNavigate();
 
 	return (
 		<div className='new-gig-content'>
@@ -108,6 +111,7 @@ export default function NewGigPost(props) {
 						to='/profile'
 						variant='contained'
 						size='large'
+						onClick={e => navigate('/profile')}
 					>
 						Cancel
 					</Button>

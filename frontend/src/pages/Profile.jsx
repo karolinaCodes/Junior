@@ -35,17 +35,21 @@ export default function Profile(props) {
 	const { first_name, last_name, id } = currentUser;
 
 	useEffect(() => {
-		const devUrl = '/api/devs/' + id;
-		const projectsByDevUrl = '/api/devs/' + id + '/projects';
-		Promise.all([axios.get(devUrl), axios.get(projectsByDevUrl)]).then(all => {
-			const [devData, projectsByDevData] = all;
-			setProfile(prev => ({
-				...prev,
-				dev: devData.data,
-				projects: projectsByDevData.data,
-			}));
-		});
-	}, []);
+		if (id) {
+			const devUrl = '/api/devs/' + id;
+			const projectsByDevUrl = '/api/devs/' + id + '/projects';
+			Promise.all([axios.get(devUrl), axios.get(projectsByDevUrl)]).then(
+				all => {
+					const [devData, projectsByDevData] = all;
+					setProfile(prev => ({
+						...prev,
+						dev: devData.data,
+						projects: projectsByDevData.data,
+					}));
+				}
+			);
+		}
+	}, [id]);
 
 	const projectsArray = profile.projects;
 	const parsedProjects = projectsArray.map(project => {

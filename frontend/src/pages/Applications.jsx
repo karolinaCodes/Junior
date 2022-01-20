@@ -93,7 +93,7 @@ export default function Applications(props) {
       </div> */}
       <div className="application-content">
         <h1>Applications</h1>
-        Total applications: {posting.applications.length}
+        <p>Total applications: {posting.applications.length}</p>
         <Grid container direction='column'>
           <section className="application-cards">
             <Grid container item spacing={3}>

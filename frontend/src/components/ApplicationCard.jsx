@@ -11,6 +11,7 @@ export default function ApplicationCard(props) {
 		month: 'long',
 		day: 'numeric',
 	})
+	
 	return (
 		<Grid container direction='row'>
 			<Grid item className='profile-pic'>
@@ -19,49 +20,48 @@ export default function ApplicationCard(props) {
 					alt={`Photo of ${first_name} ${last_name}`}
 				/>
 				<p>{`Applied on: ${formattedApplicationDate}`}</p>
+				<p><LocationOnIcon /> {location}</p>
 			</Grid>
-			<Grid item container className='application-info' direction='column'>
+			<Grid item className='application-name' container xs='auto' direction='column'>
 				<Grid item>
 					<h3>{`${first_name} ${last_name}`}</h3>
 				</Grid>
-				<Grid item>
-					<Button
-						onClick={() => window.open(`mailto:${email}`, '_self')}
-						>
-						{email}
-					</Button>
-				</Grid>
-				<Grid item>
-					<Button
-						onClick={() => window.open(github_url, '_self')}
-					>
-						GitHub
-					</Button>
-				</Grid>
-				<Grid item>
-					<Button
-						onClick={() => window.open(linkedIn_url, '_self')}
-					>
-						LinkedIn
-					</Button>
-				</Grid>
-				<Grid item>
-					<Button
-						onClick={() => window.open(resume_url, '_self')}
-					>
-						Resume
-					</Button>
-				</Grid>
-				<Grid item>
-					<p><LocationOnIcon /> {location}</p>
-				</Grid>
-				{/* <Grid container direction='column' className='profile-info'>
-					<Grid item>
+				<Grid item container xs='auto' direction='row'>
+					<Grid item container xs='auto' direction='column'>
+						<Grid item>
+							<Button
+								onClick={() => window.open(`mailto:${email}`, '_self')}
+								>
+								{email}
+							</Button>
+						</Grid>
+						<Grid item>
+							<Button
+								onClick={() => window.open(github_url, '_self')}
+							>
+								GitHub
+							</Button>
+						</Grid>
+						<Grid item>
+							<Button
+								onClick={() => window.open(linkedIn_url, '_self')}
+							>
+								LinkedIn
+							</Button>
+						</Grid>
+						<Grid item>
+							<Button
+								onClick={() => window.open(resume_url, '_self')}
+							>
+								Resume
+							</Button>
+						</Grid>
+					</Grid>
+					<Grid item xs='auto' direction='column' className='profile-info'>
 						<p>{bio}</p>
 					</Grid>
-				</Grid> */}
+				</Grid>
 			</Grid>
 		</Grid>
-		
 	);
 }

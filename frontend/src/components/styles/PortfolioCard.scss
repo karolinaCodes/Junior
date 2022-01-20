@@ -34,19 +34,25 @@
 			max-width: 500px;
 		}
 	}
+	.application-name {
+		padding: 1em;
+	}
 	.profile-pic {
 		padding: 1em;
 		display: flex;
 		align-items: center;
 		justify-content: center;
 		flex-direction: column;
+		max-width: 200px;
 	}
 	img#profile-pic {
-		max-width: 150px;
+		width: 100%;
 		height: auto;
 		border-radius: 50%;
 	}
 	.profile-info {
+		padding: 1em;
 		min-width: 400px;
+		justify-content: center;
 	}
 }

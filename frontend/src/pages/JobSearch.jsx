@@ -81,6 +81,7 @@ export default function JobSearch(props) {
       e.preventDefault();
     }
   };
+
   const handleSubmit = e => {
     console.log(queryString, city, schedule, jobType, value[0], value[1]);
     e.preventDefault();

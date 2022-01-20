@@ -103,6 +103,7 @@ input:focus {
 
 .css-46bh2p-MuiCardContent-root {
   text-align: left;
+  padding: 16px 0 !important;
 }
 
 .css-o69gx8-MuiCardMedia-root {
@@ -186,4 +187,15 @@ div .salary-slider {
 .searchResults div,
 .searchResults p {
   font-family: 'Assistant' !important;
+}
+
+#root
+  > div
+  > div.jobsearch-content
+  > div
+  > div.searchResults-container
+  > div
+  > div:nth-child(1)
+  > div.MuiCardContent-root.css-46bh2p-MuiCardContent-root
+  > div.MuiTypography-root.MuiTypography-h5.MuiTypography-gutterBottom.css-h93ljk-MuiTypography-root {
 }

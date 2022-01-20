@@ -74,7 +74,10 @@ function App() {
 						/>
 					}
 				/>
-				<Route path='/profile' element={<Profile />} />
+				<Route
+					path='/profile'
+					element={<Profile currentUser={currentUser} />}
+				/>
 				<Route path='/employerprofile' element={<EmployerProfile />} />
 				<Route path='/jobs' element={<JobSearch currentUser={currentUser} />} />
 				<Route

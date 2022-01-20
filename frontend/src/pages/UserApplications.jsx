@@ -25,19 +25,21 @@ export default function UserApplications(props) {
   };
 
   useEffect(() => {
-    const jobApplicationsUrl = `/api/devs/${id}/applications/job`;
-    const gigApplicationsUrl = `/api/devs/${id}/applications/gig`;
-    Promise.all([
-      axios.get(jobApplicationsUrl),
-      axios.get(gigApplicationsUrl),
-    ]).then((all) => {
-      const [jobApplicationsData, gigApplicationsData] = all;
-      setApplications(prev => ({...prev,
-        jobApplications: jobApplicationsData.data,
-        gigApplications: gigApplicationsData.data
-      }));
-    });
-  }, []);
+    if (id) {
+      const jobApplicationsUrl = `/api/devs/${id}/applications/job`;
+      const gigApplicationsUrl = `/api/devs/${id}/applications/gig`;
+      Promise.all([
+        axios.get(jobApplicationsUrl),
+        axios.get(gigApplicationsUrl),
+      ]).then((all) => {
+        const [jobApplicationsData, gigApplicationsData] = all;
+        setApplications(prev => ({...prev,
+          jobApplications: jobApplicationsData.data,
+          gigApplications: gigApplicationsData.data
+        }));
+      });
+    }
+  }, [id]);
 
   const jobApplicationsArray = applications.jobApplications;
   const gigApplicationsArray = applications.gigApplications;

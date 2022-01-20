@@ -615,7 +615,7 @@ module.exports = db => {
       .catch(err => err);
   };
 
-  const getJobApplicationsByDevId = junior_dev_id => {
+  const getGigApplicationsByDevId = junior_dev_id => {
     const query = {
       text: `
         SELECT gig_applications.*, gig_postings.*,

@@ -32,7 +32,7 @@
 	h1,
 	p {
 		margin: 0 10% 0 10%;
-		text-align: center;
+		text-align: left;
 	}
 
 	.get-paid {
@@ -53,5 +53,26 @@
 		opacity: 75%;
 		align-self: center;
 		max-width: 25rem;
+	}
+}
+
+@media only screen and (min-width: 1900px) {
+	#white-box {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		margin: 15rem 0 0 8rem;
+		min-width: 35%;
+		min-height: 60vh;
+		border-radius: 1%;
+		background: #ffffff75;
+		position: absolute;
+		z-index: 0;
+
+		h1,
+		p {
+			margin: 0 10% 0 10%;
+			text-align: center;
+		}
 	}
 }

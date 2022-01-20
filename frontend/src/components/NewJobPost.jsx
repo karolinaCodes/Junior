@@ -1,13 +1,13 @@
-import {useState} from 'react';
+import { useState } from 'react';
 import './styles/NewJobPost.scss';
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
 import {
-  Button,
-  TextField,
-  FormControlLabel,
-  Switch,
-  MenuItem,
+	Button,
+	TextField,
+	FormControlLabel,
+	Switch,
+	MenuItem,
 } from '@mui/material';
 import { useEffect } from 'react';
 import { maxWidth } from '@mui/system';
@@ -25,20 +25,20 @@ export default function NewJobPost(props) {
 		is_open: true,
 	});
 
-  useEffect(() => {
-    setJobForm({...jobForm, employer_id: currentUser.id});
-  }, [currentUser]);
+	useEffect(() => {
+		setJobForm({ ...jobForm, employer_id: currentUser.id });
+	}, [currentUser]);
 
-  const isRemote = e => {
-    if (!jobForm.is_remote) {
-      setJobForm({...jobForm, is_remote: true});
-    } else {
-      setJobForm({...jobForm, is_remote: false});
-    }
-  };
+	const isRemote = e => {
+		if (!jobForm.is_remote) {
+			setJobForm({ ...jobForm, is_remote: true });
+		} else {
+			setJobForm({ ...jobForm, is_remote: false });
+		}
+	};
 
-  const postJob = e => {
-    e.preventDefault();
+	const postJob = e => {
+		e.preventDefault();
 
 		axios
 			.post('/api/job_postings/new', jobForm)
@@ -55,7 +55,6 @@ export default function NewJobPost(props) {
 					is_remote: false,
 					is_open: true,
 				});
-				navigate('/profile');
 			})
 			.catch(err => {
 				console.log(err);

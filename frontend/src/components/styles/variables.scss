@@ -14,70 +14,74 @@ $brown: #3d2b2a;
 
 // .MuiButton-root
 @mixin outline {
-  color: $white;
-  border-color: $white;
+	color: $white;
+	border-color: $white;
 }
 
 // .MuiButton-root
 @mixin solid {
-  color: $white;
-  background-color: $blue;
+	color: $white;
+	background-color: $blue;
 }
 
 @mixin solidwhite {
-  color: $blue;
-  background-color: $white;
+	color: $blue;
+	background-color: $white;
 }
 
 // --------------------- HOMEPAGE NAV BAR ----------------- //
 @mixin navHome {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background-color: $invis;
-  height: 90px;
-  width: 100%;
-  z-index: 999;
-  position: fixed;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	background-color: $invis;
+	height: 90px;
+	width: 100%;
+	z-index: 999;
+	position: fixed;
 
-  a {
-    font-size: 18px;
-    font-weight: 600;
-    color: $white;
-    text-decoration: none;
-    margin-left: 2rem;
-  }
+	a {
+		font-size: 20px;
+		font-weight: $reg;
+		color: $white;
+		text-decoration: none;
+		margin-left: 2rem;
+	}
 
-  a:hover {
-    color: $sand;
-  }
+	#find-work {
+		margin-left: 20%;
+	}
 
-  #login {
-    @include outline;
-    margin-left: 2rem;
+	a:hover {
+		color: $sand;
+	}
 
-    &:hover {
-      color: $sand;
-      border-color: $sand;
-    }
-  }
+	#login {
+		@include outline;
+		margin-left: 2rem;
 
-  #signup {
-    @include solid;
-    margin-right: 4rem;
-    margin-left: 1rem;
+		&:hover {
+			color: $sand;
+			border-color: $sand;
+		}
+	}
 
-    &:hover {
-      color: $sand;
-    }
-  }
+	#signup {
+		@include solid;
+		margin-right: 8rem;
+		margin-left: 1rem;
 
-  #logo {
-    text-decoration: none;
-    font-size: 50px;
-    font-family: $brand;
-    font-weight: 800;
-    color: $blue;
-    margin: 0 0 0 6rem;
-  }
+		&:hover {
+			color: $sand;
+		}
+	}
+
+	#logo {
+		text-decoration: none;
+		font-size: 60px;
+		font-family: $brand;
+		font-weight: $bold;
+		color: $blue;
+		margin: 0 0 0 8rem;
+	}
 }

@@ -28,6 +28,7 @@ export default function NewProjectPost(props) {
 		axios
 			.post('/api/projects/new', projectForm)
 			.then(res => {
+				// setCurrentUser(res.data);
 				console.log(res.data);
 				setProjectForm({
 					junior_dev_id: currentUser.id,
@@ -38,7 +39,6 @@ export default function NewProjectPost(props) {
 					live_link: '',
 					original_request: '',
 				});
-				navigate('/profile');
 			})
 			.catch(err => {
 				console.log(err);
@@ -137,7 +137,9 @@ export default function NewProjectPost(props) {
 						variant='contained'
 						size='large'
 						type='submit'
-						onClick={null}
+						onClick={e => {
+							navigate('/profile');
+						}}
 					>
 						Post Project
 					</Button>

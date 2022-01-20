@@ -16,6 +16,7 @@ import PortfolioModal from './components/PortfolioModal';
 import ApplyModal from './components/ApplyModal';
 import NewProjectPost from './components/NewProjectPost.jsx';
 import Applications from './pages/Applications.jsx';
+import UserApplications from './pages/UserApplications.jsx';
 
 //import css
 import './App.scss';
@@ -106,6 +107,10 @@ function App() {
 				<Route
 					path='/employerprofile/:posttype/:postid/applications'
 					element={<Applications currentUser={currentUser} />}
+				/>
+				<Route
+					path='/profile/applications'
+					element={<UserApplications currentUser={currentUser} />}
 				/>
 			</Routes>
 		</div>

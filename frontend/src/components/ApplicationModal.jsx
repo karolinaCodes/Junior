@@ -11,7 +11,7 @@ export default function ApplicationCard(props) {
 		<Grid item>
 			<h1>{`${first_name} ${last_name}`}</h1>
 		</Grid>
-		<Grid container direction='row' xs={12} className='application-info'>
+		<Grid container direction='row' className='application-info'>
 			<Grid item className='profile-pic'>
 				<img id="profile-pic"
 					src={photo_url}
@@ -26,7 +26,7 @@ export default function ApplicationCard(props) {
 				<p><LocationOnIcon /> {location}</p>
 			</Grid>
 			</Grid>
-			<Grid item xs={9}>
+			<Grid item xs={12}>
 				<p>{bio}</p>
 			</Grid>
 		</>

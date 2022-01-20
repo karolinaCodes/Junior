@@ -5,7 +5,7 @@ import LocationOnIcon from '@mui/icons-material/LocationOn';
 export default function ApplicationCard(props) {
 	const { first_name, last_name, email, bio, photo_url, github_url, linkedIn_url, resume_url, location, dev_photo_url } =
 		props;
-
+		
 	return (
 		<Grid container direction='row' columnSpacing={3}>
 			<Grid item className='profile-pic'>

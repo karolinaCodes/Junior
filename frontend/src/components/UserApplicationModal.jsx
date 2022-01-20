@@ -1,6 +1,7 @@
-import './styles/PortfolioCard.scss';
+import './styles/PortfolioModal.scss';
 import {Grid} from '@mui/material';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
+import {Link} from 'react-router-dom';
 
 export default function ApplicationCard(props) {
 	const { job_title, description, salary, date_posted, job_type, is_remote, employer_email, company_name, employer_bio, employer_photo_url, deadline, photo_url, application_date } =	props;
@@ -20,7 +21,11 @@ export default function ApplicationCard(props) {
 		month: 'long',
 		day: 'numeric',
 	})
-
+	// <Link to='#'
+	// onClick={() => {
+	// 		window.location = `mailto: ${employer_email}`;
+	// }}>
+	// </Link>
 	return (
 		<Grid container direction='row' className='profile-info'>
 			<Grid item className='profile-pic'>

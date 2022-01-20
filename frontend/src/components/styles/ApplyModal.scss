@@ -1,10 +1,17 @@
 @import 'variables';
 
 .apply-modal {
-	button {
-		color: $white;
-		background-color: $blue;
-	}
+  button {
+    color: $white;
+    background-color: $blue;
+  }
+  .profile-pic {
+    text-align: center;
+    & a {
+      color: $sand;
+      text-decoration: none;
+    }
+  }
 }
 
 .MuiBox-root {

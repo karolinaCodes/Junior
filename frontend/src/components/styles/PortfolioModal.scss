@@ -1,18 +1,36 @@
 @import 'variables';
 
-.portfolio-modal {
-	button {
-		color: $white;
-		background-color: $blue;
-	}
-}
-
-.MuiBox-root {
+.portfolio-modal, .application-modal {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	text-align: justify;
+	padding: 0 1em;
+	background: $blue;
+	color: $white;
+	align-items: flex-start;
 	h1 {
 		color: $sand;
 	}
-
-	h1:hover {
+	button {
 		color: $white;
+		background-color: $white;
+	}
+	.profile-pic {
+		padding: 1em;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+	img#profile-pic {
+		max-width: 150px;
+		height: auto;
+		border-radius: 50%;
+	}
+	.profile-info {
+		width: auto;
+	}
+	.application-info {
+		justify-content: space-evenly;
 	}
 }

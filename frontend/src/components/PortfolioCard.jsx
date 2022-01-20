@@ -1,25 +1,19 @@
 import './styles/PortfolioCard.scss';
-import { Paper } from '@mui/material';
+import {CardContent, CardMedia} from '@mui/material';
 
 export default function Profile(props) {
 	const { title, description, thumbnail_photo_url, github_link, live_link } =
 		props;
 
 	return (
-		<Paper sx={{height: '100%'}}>
+		<CardContent>
 			<h1>{title}</h1>
-			<img src={thumbnail_photo_url} alt={title}></img>
+			<CardMedia
+				component="img"
+				image={thumbnail_photo_url}
+				alt={title}
+			/>
 			<p>{description}</p>
-			<p>
-				<a href={github_link} rel="noreferrer" target='_blank'>
-					Github
-				</a>
-			</p>
-			<p>
-				<a href={live_link} rel="noreferrer" target='_blank'>
-					Link
-				</a>
-			</p>
-		</Paper>
+		</CardContent>
 	);
 }

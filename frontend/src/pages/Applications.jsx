@@ -1,8 +1,9 @@
 import './styles/LandingPage.scss';
-import {Modal, Box, Grid, Paper} from '@mui/material';
+import {Card, Modal, Box, Grid, Paper, Dialog} from '@mui/material';
 import {useEffect, useState} from 'react';
 import {useParams} from 'react-router-dom';
 import ApplicationCard from '../components/ApplicationCard';
+import ApplicationModal from '../components/ApplicationModal';
 
 import axios from 'axios';
 
@@ -50,22 +51,9 @@ export default function Applications(props) {
     });
   }, []);
 
-  const style = {
-    width: 1 / 2,
-    height: 1 / 2,
-    display: 'flex',
-    flexDirection: 'column',
-    margin: '10% 0 0 25%',
-    background: '#223d55',
-    color: 'black',
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderRadius: '2rem',
-  };
-
   const applicationsArray = posting.applications;
   const parsedApplications = applicationsArray.map(application => {
-    const data = (<ApplicationCard key={'Application-modal-' + application.junior_dev_id} {...application} />);
+    const data = (<ApplicationModal key={'Application-modal-' + application.junior_dev_id} {...application} />);
     return (
       <Grid item xs={10} key={'Application-grid-' + application.junior_dev_id}>
         <Paper
@@ -98,19 +86,24 @@ export default function Applications(props) {
         </p>
       </div>
       <div className="application-content">
-        <Grid container direction='column' spacing={3}>
           <h1>Applications</h1>
           Total applications: {posting.applications.length}
-          {parsedApplications}
-        </Grid>
-        <Modal
+          <section className="application-cards">
+            <Grid item xs={12} container direction='column' rowSpacing={1}>
+              {parsedApplications}
+            </Grid>
+          </section>
+        <Dialog
           open={openModal}
           onClose={handleView}
-        >
-          <Box sx={style}>
+          fullWidth={true}
+          maxWidth={'md'}
+          >
+          <Box className='application-modal'
+          >
             {modalData}
           </Box>
-        </Modal>
+        </Dialog>
       </div>
     </div>
   )

@@ -26,12 +26,21 @@
 	box-shadow: 5px 5px 10px #1c1c1c50;
 	color: $black;
 
-	button,
-	a {
-		margin-top: 2rem;
+	h1 {
+		margin: 5% 0 0 0;
 	}
 	#cancel-gig,
 	#post-gig {
 		margin-left: 1rem;
+	}
+
+	button,
+	a {
+		color: $white;
+		background-color: $blue;
+	}
+
+	#gig-buttons {
+		margin-bottom: 5%;
 	}
 }

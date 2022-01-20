@@ -4,6 +4,18 @@ import './styles/ApplyModal.scss';
 import {Button, Modal, Box, Typography} from '@mui/material';
 import {Link} from 'react-router-dom';
 import {useNavigate} from 'react-router-dom';
+import {makeStyles} from '@mui/styles';
+
+const useStyles = makeStyles({
+  apply_btn: {
+    color: '#f9f9f9',
+    'background-color': '#182c5b',
+    height: '2.5rem',
+    width: '8.2rem',
+    'margin-right': '10px',
+    'text-transform': 'none',
+  },
+});
 
 export default function ApplyModal(props) {
   const {currentUser, jobApplying, handleClick} = props;
@@ -12,6 +24,7 @@ export default function ApplyModal(props) {
     dev: {},
   });
   const [applicationSubmitted, setApplicationSubmitted] = useState(false);
+  const classes = useStyles();
 
   const navigate = useNavigate();
 
@@ -37,10 +50,6 @@ export default function ApplyModal(props) {
     borderRadius: '2rem',
   };
 
-  // FOR TESTING
-  const id = 1;
-  //
-
   const {
     first_name,
     last_name,
@@ -53,7 +62,6 @@ export default function ApplyModal(props) {
   } = profile.dev;
 
   const submitApplication = () => {
-    // job_posting_id, junior_dev_id
     axios
       .post('/api/job_applications/new', {
         job_posting_id: jobApplying.id,
@@ -67,27 +75,17 @@ export default function ApplyModal(props) {
         console.log(err);
       });
   };
-  // useEffect(() => {
-  //   const devUrl = '/api/devs/' + id;
-  //   axios.get(devUrl).then(profile => {
-  //     setProfile(prev => ({
-  //       ...prev,
-  //       dev: profile.data,
-  //     }));
-  //   });
-  // }, []);
 
   return (
     <div className="apply-modal">
-      <Button onClick={handleClickandView} variant="contained">
+      <Button
+        onClick={handleClickandView}
+        variant="contained"
+        className={classes.apply_btn}
+      >
         Apply
       </Button>
-      <Modal
-        open={open}
-        onClose={handleView}
-        // aria-labelledby='modal-modal-title'
-        // aria-describedby='modal-modal-description'
-      >
+      <Modal open={open} onClose={handleView}>
         <Box sx={style}>
           {applicationSubmitted ? (
             <div>
@@ -143,12 +141,6 @@ export default function ApplyModal(props) {
               </div>
             </section>
           )}
-          {/* <Typography id='modal-modal-title' variant='h6' component='h2'>
-							Text in a modal
-						</Typography>
-						<Typography id='modal-modal-description' sx={{ mt: 2 }}>
-							Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-						</Typography> */}
           {applicationSubmitted ? null : (
             <Button variant="contained" onClick={submitApplication}>
               Submit Application

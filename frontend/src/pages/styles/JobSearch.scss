@@ -54,7 +54,11 @@ input:focus {
 .checkboxes {
   text-align: left;
   width: 25%;
-  padding: 0px 50px 0px 80px;
+  padding: 0px 50px 0px 60px;
+}
+
+.checkboxes h4 {
+  color: #767676;
 }
 
 .checkboxes,
@@ -103,8 +107,8 @@ input:focus {
 
 .css-o69gx8-MuiCardMedia-root {
   border-radius: 50%;
-  width: 30% !important;
-  height: 30%;
+  width: 25% !important;
+  height: 25%;
 }
 
 .searchResults-container {
@@ -174,7 +178,7 @@ div .salary-slider {
 }
 
 .css-1ri6ub7-MuiPaper-root-MuiCard-root {
-  padding: 40px;
+  padding: 25px 35px;
   border-radius: 10px;
   font-family: 'Assistant' !important;
 }

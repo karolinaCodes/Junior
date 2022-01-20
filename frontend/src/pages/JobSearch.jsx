@@ -32,6 +32,68 @@ import {InputAdornment} from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 
+import {makeStyles} from '@mui/styles';
+
+////////////////////IMPORTS///////////
+
+const useStyles = makeStyles({
+  searchResults: {
+    display: 'grid',
+    gridTemplateColumns: 'repeat(3, 1fr)',
+    'grid-gap': '1.4rem',
+    'margin-right': '30px',
+  },
+
+  description: {
+    overflow: 'hidden',
+    display: ' -webkit-box',
+    '-webkit-line-clamp': 3,
+    '-webkit-box-orient': 'vertical',
+    'margin-top': '10px',
+    'font-family': 'Assistant',
+    'line-height': '1.5rem',
+  },
+
+  job_title: {
+    'font-family': 'Assistant',
+    'font-weight': 600,
+    'font-size': '1.4rem',
+  },
+
+  gig_chip: {
+    background: '#66bb6a40',
+  },
+
+  job_chip: {
+    background: '#8fcaf961',
+  },
+
+  city_deadline: {
+    'font-weight': 600,
+  },
+
+  learn_more_btn: {
+    width: '8.2rem',
+    height: '2.5rem',
+    'text-transform': 'none',
+  },
+
+  learn_more_link: {
+    'text-decoration': 'none',
+  },
+
+  card: {
+    'box-shadow': '0px 3px 8px rgb(8 35 48 / 5%)',
+  },
+
+  card_header: {
+    display: 'flex',
+    'justify-content': 'space-between',
+    'align-items': 'center',
+    'text-align': 'end',
+  },
+});
+
 export default function JobSearch(props) {
   const {currentUser} = props;
   const [query, setQuery] = useState('');
@@ -44,6 +106,8 @@ export default function JobSearch(props) {
   const [jobApplying, setJobApplying] = useState('');
   const [value, setValue] = React.useState([50000, 70000]);
   // value = salary range
+
+  const classes = useStyles();
 
   console.log(value);
 
@@ -235,7 +299,6 @@ export default function JobSearch(props) {
             <span>Salary</span> <span> {`$${value[0]} -$${value[1]}`}</span>
           </Typography>
           <Slider
-            size="small"
             color="info"
             value={value}
             min={40000}
@@ -243,7 +306,6 @@ export default function JobSearch(props) {
             onChange={handleSlider}
           />
         </Box>
-
         <Button variant="contained" size="large" type="submit">
           Search
         </Button>
@@ -262,7 +324,6 @@ export default function JobSearch(props) {
                 control={
                   <Checkbox
                     color="default"
-                    size="small"
                     value="Full-time"
                     onClick={e => {
                       if (e.target.checked) {
@@ -279,7 +340,6 @@ export default function JobSearch(props) {
                 control={
                   <Checkbox
                     color="default"
-                    size="small"
                     value="Part-time"
                     onClick={e => {
                       if (e.target.checked) {
@@ -296,7 +356,6 @@ export default function JobSearch(props) {
                 control={
                   <Checkbox
                     color="default"
-                    size="small"
                     value="Internship"
                     onClick={e => {
                       if (e.target.checked) {
@@ -319,7 +378,6 @@ export default function JobSearch(props) {
                 control={
                   <Checkbox
                     color="default"
-                    size="small"
                     value="React"
                     onClick={e => {
                       console.log(e.target.value);
@@ -337,7 +395,6 @@ export default function JobSearch(props) {
                 control={
                   <Checkbox
                     color="default"
-                    size="small"
                     value="JavaScript"
                     onClick={e => {
                       console.log(e.target.value);
@@ -355,7 +412,6 @@ export default function JobSearch(props) {
                 control={
                   <Checkbox
                     color="default"
-                    size="small"
                     value="Angular"
                     onClick={e => {
                       console.log(e.target.value);
@@ -373,7 +429,6 @@ export default function JobSearch(props) {
                 control={
                   <Checkbox
                     color="default"
-                    size="small"
                     value="SQL"
                     onClick={e => {
                       console.log(e.target.value);
@@ -391,7 +446,6 @@ export default function JobSearch(props) {
                 control={
                   <Checkbox
                     color="default"
-                    size="small"
                     value="Node.js"
                     onClick={e => {
                       console.log(e.target.value);
@@ -409,7 +463,6 @@ export default function JobSearch(props) {
                 control={
                   <Checkbox
                     color="default"
-                    size="small"
                     value="C#"
                     onClick={e => {
                       console.log(e.target.value);
@@ -427,7 +480,6 @@ export default function JobSearch(props) {
                 control={
                   <Checkbox
                     color="default"
-                    size="small"
                     value="Python"
                     onClick={e => {
                       console.log(e.target.value);
@@ -451,24 +503,34 @@ export default function JobSearch(props) {
             <span>Recommended Jobs </span>
             <span id="recommended-num">{searchResults.length}</span>
           </h3>
-          <div className="searchResults">
+          <div className={classes.searchResults}>
             {searchResults.length > 0 &&
               searchResults.map(item => {
                 return (
-                  <Card sx={{maxWidth: 345}}>
-                    <div className="card-header">
+                  <Card sx={{maxWidth: 345}} className={classes.card}>
+                    <div className={classes.card_header}>
                       <CardMedia
                         component="img"
                         height="194"
                         image={item.employer_photo_url}
                         alt="Company Photo"
                       />
-                    </div>
-                    <CardContent>
-                      <Typography gutterBottom variant="h5" component="div">
+                      <Typography
+                        gutterBottom
+                        variant="h5"
+                        component="div"
+                        className={classes.job_title}
+                      >
                         {item.job_title}
                       </Typography>
-                      <Typography gutterBottom variant="h7" component="div">
+                    </div>
+                    <CardContent>
+                      <Typography
+                        gutterBottom
+                        variant="h7"
+                        component="div"
+                        className={classes.city_deadline}
+                      >
                         {item.city && `${item.city}, Canada`}
                         {item.deadline &&
                           `Deadline: ${new Date(
@@ -480,14 +542,24 @@ export default function JobSearch(props) {
                           })}`}
                       </Typography>
                       {item.deadline ? (
-                        <Chip label="Gig" color="success" />
+                        <Chip
+                          label="Gig"
+                          color="success"
+                          variant="outlined"
+                          className={classes.gig_chip}
+                        />
                       ) : (
-                        <Chip label="Job" color="primary" />
+                        <Chip
+                          label="Job"
+                          color="primary"
+                          variant="outlined"
+                          className={classes.job_chip}
+                        />
                       )}
                       <Typography
                         variant="body2"
                         color="text.secondary"
-                        className="description"
+                        className={classes.description}
                       >
                         {item.description}
                       </Typography>
@@ -501,14 +573,26 @@ export default function JobSearch(props) {
                         }
                       />
                       {item.deadline ? (
-                        <Link to={`/gig/${item.id}`}>
-                          <Button size="small" variant="outlined">
+                        <Link
+                          to={`/gig/${item.id}`}
+                          className={classes.learn_more_link}
+                        >
+                          <Button
+                            variant="outlined"
+                            className={classes.learn_more_btn}
+                          >
                             Learn More
                           </Button>
                         </Link>
                       ) : (
-                        <Link to={`/job/${item.id}`}>
-                          <Button size="small" variant="outlined">
+                        <Link
+                          to={`/job/${item.id}`}
+                          className={classes.learn_more_link}
+                        >
+                          <Button
+                            variant="outlined"
+                            className={classes.learn_more_btn}
+                          >
                             Learn More
                           </Button>
                         </Link>

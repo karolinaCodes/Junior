@@ -681,5 +681,7 @@ module.exports = db => {
     addGigApplication,
     getAllJobApplicationsForEmployer,
     getAllGigApplicationsForEmployer,
+    getJobApplicationsByDevId,
+    getGigApplicationsByDevId
   };
 };

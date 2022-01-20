@@ -1,31 +1,31 @@
 @import 'variables';
 
 .profile-bio {
-	padding-top: 1rem;
-	display: flex;
-	flex-direction: row;
-	justify-content: space-evenly;
-	text-align: justify;
-	max-width: 1500px;
-	.MuiGrid-item {
-		padding: 0;
-	}
-	.profile-pic {
-		display: flex;
-		align-items: center;
-		max-height: 200px;
-		max-width: 200px;
-		width: 25%;
-	}
-	img#profile-pic {
-		border-radius: 50%;
-		width: 100%;
-		height: auto;
-	}
-	.profile-name {
-		width: 45%;
-	}
-	.profile-links {
-		width: 15%;
-	}
+  padding-top: 1rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  text-align: justify;
+  max-width: 1500px;
+  .MuiGrid-item {
+    padding: 0;
+  }
+  .profile-pic {
+    display: flex;
+    align-items: center;
+    max-height: 200px;
+    max-width: 200px;
+    width: 24%;
+  }
+  img#profile-pic {
+    border-radius: 50%;
+    width: 100%;
+    height: auto;
+  }
+  .profile-name {
+    width: 45%;
+  }
+  .profile-links {
+    width: 15%;
+  }
 }

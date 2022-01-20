@@ -41,7 +41,7 @@ const useStyles = makeStyles({
     display: 'grid',
     gridTemplateColumns: 'repeat(3, 1fr)',
     'grid-gap': '1.4rem',
-    'margin-right': '30px',
+    'margin-right': '50px',
   },
 
   description: {
@@ -91,6 +91,10 @@ const useStyles = makeStyles({
     'justify-content': 'space-between',
     'align-items': 'center',
     'text-align': 'end',
+  },
+
+  checkbox: {
+    padding: '0.2rem 0.3rem 0.2rem 0.2rem',
   },
 });
 
@@ -324,6 +328,7 @@ export default function JobSearch(props) {
                 control={
                   <Checkbox
                     color="default"
+                    className={classes.checkbox}
                     value="Full-time"
                     onClick={e => {
                       if (e.target.checked) {
@@ -341,6 +346,7 @@ export default function JobSearch(props) {
                   <Checkbox
                     color="default"
                     value="Part-time"
+                    className={classes.checkbox}
                     onClick={e => {
                       if (e.target.checked) {
                         setSchedule(e.target.value);
@@ -357,6 +363,7 @@ export default function JobSearch(props) {
                   <Checkbox
                     color="default"
                     value="Internship"
+                    className={classes.checkbox}
                     onClick={e => {
                       if (e.target.checked) {
                         setSchedule(e.target.value);
@@ -379,6 +386,7 @@ export default function JobSearch(props) {
                   <Checkbox
                     color="default"
                     value="React"
+                    className={classes.checkbox}
                     onClick={e => {
                       console.log(e.target.value);
                       if (e.target.checked) {
@@ -396,6 +404,7 @@ export default function JobSearch(props) {
                   <Checkbox
                     color="default"
                     value="JavaScript"
+                    className={classes.checkbox}
                     onClick={e => {
                       console.log(e.target.value);
                       if (e.target.checked) {
@@ -413,6 +422,7 @@ export default function JobSearch(props) {
                   <Checkbox
                     color="default"
                     value="Angular"
+                    className={classes.checkbox}
                     onClick={e => {
                       console.log(e.target.value);
                       if (e.target.checked) {
@@ -430,6 +440,7 @@ export default function JobSearch(props) {
                   <Checkbox
                     color="default"
                     value="SQL"
+                    className={classes.checkbox}
                     onClick={e => {
                       console.log(e.target.value);
                       if (e.target.checked) {
@@ -447,6 +458,7 @@ export default function JobSearch(props) {
                   <Checkbox
                     color="default"
                     value="Node.js"
+                    className={classes.checkbox}
                     onClick={e => {
                       console.log(e.target.value);
                       if (e.target.checked) {
@@ -464,6 +476,7 @@ export default function JobSearch(props) {
                   <Checkbox
                     color="default"
                     value="C#"
+                    className={classes.checkbox}
                     onClick={e => {
                       console.log(e.target.value);
                       if (e.target.checked) {
@@ -481,6 +494,7 @@ export default function JobSearch(props) {
                   <Checkbox
                     color="default"
                     value="Python"
+                    className={classes.checkbox}
                     onClick={e => {
                       console.log(e.target.value);
                       if (e.target.checked) {

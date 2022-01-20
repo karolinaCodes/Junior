@@ -2,51 +2,38 @@
 
 // --------------------- HOMEPAGE NAV BAR ----------------- //
 .nav-home {
-	@include navHome;
+  @include navHome;
 }
 
 // --------------------- NORMAL NAV BAR ----------------- //
 .nav-bar {
-<<<<<<< HEAD
   display: flex;
   align-items: center;
   justify-content: space-between;
   background-color: $blue;
-  height: 100px;
+  height: 90px;
   width: 100%;
   z-index: 999;
-}
-
-.nav-links {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  width: 75%;
 
   a {
-    font-size: 18px;
-    font-weight: 600;
+    font-size: 20px;
+    font-weight: $reg;
     color: $white;
     text-decoration: none;
     margin-left: 2rem;
-
-    &:hover {
-      color: $sand;
-    }
   }
-}
 
-.nav-button {
-  display: flex;
-  justify-content: flex-end;
-  width: 20%;
-  margin-right: 8rem;
+  #find-work {
+    margin-left: 20%;
+  }
+
+  a:hover {
+    color: $sand;
+  }
 
   #login {
+    @include outline;
     margin-left: 2rem;
-    color: $white;
-    border-color: $white;
-    text-transform: none;
 
     &:hover {
       color: $sand;
@@ -55,77 +42,21 @@
   }
 
   #signup {
-    margin-left: 2rem;
-    color: $blue;
-    background-color: $white;
-    text-transform: none;
+    @include solidwhite;
+    margin-right: 8rem;
+    margin-left: 1rem;
 
     &:hover {
       color: $sand;
-      border-color: $sand;
     }
   }
-}
 
-#logo {
-  text-decoration: none;
-  font-size: 60px;
-  font-family: $brand;
-  font-weight: $bold;
-  color: $white;
-  margin: 8rem;
-=======
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-	background-color: $blue;
-	height: 90px;
-	width: 100%;
-	z-index: 999;
-
-	a {
-		font-size: 20px;
-		font-weight: $reg;
-		color: $white;
-		text-decoration: none;
-		margin-left: 2rem;
-	}
-
-	#find-work {
-		margin-left: 20%;
-	}
-
-	a:hover {
-		color: $sand;
-	}
-
-	#login {
-		@include outline;
-		margin-left: 2rem;
-
-		&:hover {
-			color: $sand;
-			border-color: $sand;
-		}
-	}
-
-	#signup {
-		@include solidwhite;
-		margin-right: 8rem;
-		margin-left: 1rem;
-
-		&:hover {
-			color: $sand;
-		}
-	}
-
-	#logo {
-		text-decoration: none;
-		font-size: 60px;
-		font-family: $brand;
-		font-weight: $bold;
-		color: $white;
-		margin: 0 0 0 8rem;
-	}
->>>>>>> main
+  #logo {
+    text-decoration: none;
+    font-size: 60px;
+    font-family: $brand;
+    font-weight: $bold;
+    color: $white;
+    margin: 0 0 0 8rem;
+  }
 }

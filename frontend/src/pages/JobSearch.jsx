@@ -102,6 +102,9 @@ const useStyles = makeStyles({
 
   drop_down: {
     width: '7.5rem',
+    border: '1px solid #ced4da',
+    'border-radius': '4px',
+    padding: 0,
   },
 
   slider: {
@@ -111,16 +114,22 @@ const useStyles = makeStyles({
   clear_btn: {
     'text-transform': 'none',
     color: '#182c5b',
+    padding: '20px',
+    height: '2.5rem',
   },
 
   search_btn: {
     'text-transform': 'none',
     color: '#f9f9f9',
-    width: '8.2rem',
+    width: '7rem',
     height: '2.5rem',
     'margin-right': '10px',
     'text-transform': 'none',
     'background-color': '#182c5b',
+  },
+
+  form_actions: {
+    'margin-left': '20px',
   },
 });
 
@@ -322,17 +331,19 @@ export default function JobSearch(props) {
             className={classes.slider}
           />
         </Box>
-        <Button variant="text" size="large" className={classes.clear_btn}>
-          Clear
-        </Button>
-        <Button
-          variant="outlined"
-          size="large"
-          type="submit"
-          className={classes.search_btn}
-        >
-          Search
-        </Button>
+        <div className={classes.form_actions}>
+          <Button variant="text" size="large" className={classes.clear_btn}>
+            Clear
+          </Button>
+          <Button
+            variant="outlined"
+            size="large"
+            type="submit"
+            className={classes.search_btn}
+          >
+            Search
+          </Button>
+        </div>
       </form>
       <div className="main-content">
         {/* {CHECKBOXES-------------------------------} */}

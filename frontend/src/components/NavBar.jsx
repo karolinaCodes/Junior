@@ -4,6 +4,27 @@ import {useLocation} from 'react-router-dom';
 import './styles/NavBar.scss';
 import UserMenu from '../components/UserMenu';
 import axios from 'axios';
+import {makeStyles} from '@mui/styles';
+
+const useStyles = makeStyles({
+  sign_in_btn: {
+    'text-transform': 'none !important',
+    border: '2px solid white !important',
+    'font-size': '18px !important',
+    'font-weight': '600 !important',
+    'font-family': 'Assistant !important',
+    height: '43px !important',
+  },
+
+  join_btn: {
+    'text-transform': 'none !important',
+    'font-size': '18px !important',
+    'font-weight': '600 !important',
+    'font-family': 'Assistant !important',
+    height: '43px !important',
+    width: '90px !important',
+  },
+});
 
 export default function NavBar(props) {
   const {
@@ -15,6 +36,8 @@ export default function NavBar(props) {
   } = props;
 
   const location = useLocation();
+
+  const classes = useStyles();
 
   const logout = () => {
     axios
@@ -30,7 +53,7 @@ export default function NavBar(props) {
   return (
     <div className={navClassCheck()}>
       <Link id="logo" to="/">
-        Junior.
+        Junior
       </Link>
 
       <Link id="find-work" to="/jobs">
@@ -42,13 +65,18 @@ export default function NavBar(props) {
         Hire Talent
       </Link>
       {!currentUser.id && (
-        <Button id="login" variant="outlined" onClick={e => handleLoginView(e)}>
-          Login
+        <Button
+          id="login"
+          variant="outlined"
+          onClick={e => handleLoginView(e)}
+          className={classes.sign_in_btn}
+        >
+          Sign in
         </Button>
       )}
       {!currentUser.id && (
-        <Button id="signup" variant="contained">
-          Sign Up
+        <Button id="signup" variant="contained" className={classes.join_btn}>
+          Join
         </Button>
       )}
       {currentUser.id && <UserMenu currentUser={currentUser} logout={logout} />}

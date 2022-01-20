@@ -41,8 +41,8 @@ $brown: #3d2b2a;
   position: fixed;
 
   a {
-    font-size: 20px;
-    font-weight: $reg;
+    font-size: 18px;
+    font-weight: 600;
     color: $white;
     text-decoration: none;
     margin-left: 2rem;
@@ -68,7 +68,7 @@ $brown: #3d2b2a;
 
   #signup {
     @include solid;
-    margin-right: 8rem;
+    margin-right: 4rem;
     margin-left: 1rem;
 
     &:hover {
@@ -78,10 +78,10 @@ $brown: #3d2b2a;
 
   #logo {
     text-decoration: none;
-    font-size: 60px;
+    font-size: 50px;
     font-family: $brand;
-    font-weight: $bold;
+    font-weight: 800;
     color: $blue;
-    margin: 0 0 0 8rem;
+    margin: 0 0 0 6rem;
   }
 }

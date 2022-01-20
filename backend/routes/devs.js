@@ -39,8 +39,8 @@ module.exports = ({getDevs, getDevById, getProjectsByDevId, getJobApplicationsBy
 
   router.get('/:id/applications/job', (req, res) => {
     getJobApplicationsByDevId(req.params.id)
-      .then(projects => {
-        res.json(projects);
+      .then(applications => {
+        res.json(applications);
       })
       .catch(err =>
         res.json({
@@ -49,10 +49,10 @@ module.exports = ({getDevs, getDevById, getProjectsByDevId, getJobApplicationsBy
       );
   });
 
-  router.get('/:id/gig/applications/gig', (req, res) => {
+  router.get('/:id/applications/gig', (req, res) => {
     getGigApplicationsByDevId(req.params.id)
-      .then(projects => {
-        res.json(projects);
+      .then(applications => {
+        res.json(applications);
       })
       .catch(err =>
         res.json({

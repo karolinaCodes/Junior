@@ -622,7 +622,7 @@ module.exports = db => {
         employers.email as employer_email, company_name, employers.bio as employer_bio, employers.photo_url as employer_photo_url,
         junior_devs.email as dev_email, first_name, last_name,phone_number, headline, junior_devs.bio as dev_bio, junior_devs.photo_url as dev_photo_url
         FROM gig_applications
-        JOIN gig_postings ON gig_applications.job_posting_id = gig_postings.id
+        JOIN gig_postings ON gig_applications.gig_posting_id = gig_postings.id
         JOIN junior_devs ON gig_applications.junior_dev_id = junior_devs.id
         JOIN employers ON gig_postings.employer_id = employers.id
         WHERE gig_applications.junior_dev_id = $1

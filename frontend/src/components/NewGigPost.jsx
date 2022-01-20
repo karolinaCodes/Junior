@@ -111,7 +111,7 @@ export default function NewGigPost(props) {
 						to='/profile'
 						variant='contained'
 						size='large'
-						onClick={navigate('/profile')}
+						onClick={e => navigate('/profile')}
 					>
 						Cancel
 					</Button>

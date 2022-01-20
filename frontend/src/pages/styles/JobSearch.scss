@@ -76,9 +76,8 @@ input:focus {
   padding: 18px 0px 18px 0px;
 }
 
-.searchResults {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+.css-1t6e9jv-MuiCardActions-root {
+  justify-content: center;
 }
 
 #recommended-num {
@@ -93,12 +92,8 @@ input:focus {
   justify-content: center;
 }
 
-.description {
-  // max-height: 70px;
-  overflow: hidden;
-  display: -webkit-box;
-  -webkit-line-clamp: 4;
-  -webkit-box-orient: vertical;
+.css-46bh2p-MuiCardContent-root {
+  text-align: left;
 }
 
 .css-46bh2p-MuiCardContent-root {

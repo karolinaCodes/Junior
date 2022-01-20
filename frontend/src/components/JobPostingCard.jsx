@@ -1,4 +1,5 @@
 import './styles/PortfolioCard.scss';
+import {CardContent, CardActionArea} from '@mui/material';
 
 export default function Profile(props) {
   const {

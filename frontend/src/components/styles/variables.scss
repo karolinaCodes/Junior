@@ -40,6 +40,7 @@ $brown: #3d2b2a;
   z-index: 999;
   position: fixed;
 
+<<<<<<< HEAD
   .nav-links {
     display: flex;
     align-items: center;
@@ -103,4 +104,50 @@ $brown: #3d2b2a;
     color: $blue;
     margin: 8rem;
   }
+=======
+	a {
+		font-size: 20px;
+		font-weight: $reg;
+		color: $white;
+		text-decoration: none;
+		margin-left: 2rem;
+	}
+
+	#find-work {
+		margin-left: 20%;
+	}
+
+	a:hover {
+		color: $sand;
+	}
+
+	#login {
+		@include outline;
+		margin-left: 2rem;
+
+		&:hover {
+			color: $sand;
+			border-color: $sand;
+		}
+	}
+
+	#signup {
+		@include solid;
+		margin-right: 8rem;
+		margin-left: 1rem;
+
+		&:hover {
+			color: $sand;
+		}
+	}
+
+	#logo {
+		text-decoration: none;
+		font-size: 60px;
+		font-family: $brand;
+		font-weight: $bold;
+		color: $blue;
+		margin: 0 0 0 8rem;
+	}
+>>>>>>> main
 }

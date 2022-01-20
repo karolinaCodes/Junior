@@ -21,9 +21,7 @@ export default function Login(props) {
 			.post('/api/auth/login', data)
 			.then(res => {
 				setCurrentUser(res.data);
-				setTimeout(() => {
-					navigate('/profile');
-				}, 1000);
+				navigate('/profile');
 				console.log(res.data);
 			})
 			.catch(err => {
@@ -36,28 +34,31 @@ export default function Login(props) {
 	}, [currentUser]);
 
 	return (
-		<div className='login-content'>
-			<form className='login' onSubmit={login}>
-				<div className='login-text'>
+		<div>
+			<div id='login-box'>
+				<form className='login' onSubmit={login}>
 					<h1>Log in to your account</h1>
 					<h2>
-						Log in now to get started building your portolfio and building your
+						Log in now to get started building your portolfio and launch your
 						career
 					</h2>
-				</div>
-				<TextField id='email' label='email' />
-				<TextField
-					id='password'
-					sx={{ mt: '1rem' }}
-					label='password'
-					type='password'
-					variant='outlined'
-				/>
-				<Link className='forgot-password' to='/' onClick={handleLoginView}>
-					Forgot password?
-				</Link>
-				<div>
+					<TextField
+						sx={{ mt: '0rem', ml: '10%', mr: '10%' }}
+						id='email'
+						label='email'
+					/>
+					<TextField
+						id='password'
+						sx={{ mt: '1rem', ml: '10%', mr: '10%' }}
+						label='password'
+						type='password'
+						variant='outlined'
+					/>
+					<Link className='forgot-password' to='/' onClick={handleLoginView}>
+						Forgot password?
+					</Link>
 					<Button
+						sx={{ ml: '10%', mr: '10%', mt: '1rem' }}
 						variant='contained'
 						size='large'
 						type='submit'
@@ -65,7 +66,7 @@ export default function Login(props) {
 					>
 						LOG IN
 					</Button>
-					<p>
+					<p className='signup'>
 						Not registered yet? <Link to='/sign-up'>Create an account</Link>
 					</p>
 					<div className='login-footer'>
@@ -80,8 +81,8 @@ export default function Login(props) {
 							</Link>
 						</p>
 					</div>
-				</div>
-			</form>
+				</form>
+			</div>
 		</div>
 	);
 }

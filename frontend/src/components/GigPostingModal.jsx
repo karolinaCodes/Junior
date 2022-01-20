@@ -1,4 +1,5 @@
 import './styles/PortfolioCard.scss';
+import {Grid, Button, Modal, Box, Paper, Card, CardActionArea, CardActions, CardMedia} from '@mui/material';
 
 export default function JobPostingModal(props) {
 	const { job_title, description, pay, date_posted, deadline, photo_url } =
@@ -9,7 +10,11 @@ export default function JobPostingModal(props) {
 		<>
 			<h1>{job_title}</h1>
 			<h3>Compensation: ${pay / 100.00}</h3>
-			{/* <img src={photo_url}></img> */}
+			<CardMedia
+				component="img"
+				image={photo_url}
+				alt={job_title}
+			/>
 			<h3>Date Posted: {datePostedFormatted}</h3>
 			<h3>Deadline: {deadlineFormatted}</h3>
 			<p>{description}</p>

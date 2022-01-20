@@ -1,65 +1,85 @@
 @import 'variables';
 
-.login-content {
-	width: 35%;
-	margin-top: 8rem;
-}
-
-.login {
+#login-box {
 	display: flex;
 	flex-direction: column;
-	// align-items: center;
-	justify-content: space-between;
+	justify-content: space-around;
+	margin: 12rem 0 0 8rem;
+	min-width: 40%;
+	min-height: 70vh;
+	border-radius: 1%;
+	background: #ffffff75;
+	position: absolute;
+	z-index: 0;
 
-	.login-text {
+	.login {
+		display: flex;
+		flex-direction: column;
 		justify-content: flex-start;
 
-		h1 {
+		h1,
+		h2 {
+			margin: 0 10% 0 10%;
 			text-align: left;
+		}
+
+		h1 {
+			font-size: 40px;
+			color: $blue;
 		}
 
 		h2 {
 			font-size: 20px;
 			font-weight: lighter;
 			color: #1c1c1c56;
-			width: 65%;
-			margin-top: 0;
-			margin-bottom: 4rem;
+			margin-top: 1rem;
+			margin-bottom: 2rem;
+		}
+
+		button {
+			@include solid;
+		}
+
+		p {
+			color: #1c1c1c56;
+
+			a {
+				color: #0091ffa8;
+				text-decoration: none;
+			}
+		}
+
+		.forgot-password {
+			margin: 1rem 10% 0 10%;
 			text-align: left;
-		}
-	}
-
-	button {
-		@include solid;
-		margin-top: 2rem;
-		width: 100%;
-		height: 3rem;
-	}
-
-	p {
-		color: #1c1c1c56;
-
-		a {
-			color: #0091ffa8;
+			align-self: left;
 			text-decoration: none;
+			color: #0091ffa8;
 		}
+	}
+
+	.signup {
+		margin: 1rem 0 2rem 0;
 	}
 
 	.login-footer {
+		font-size: small;
 		display: flex;
-		justify-content: space-between;
-		margin-top: 10rem;
+		align-self: flex-center;
+		justify-content: space-around;
 	}
-	.forgot-password {
-		margin-top: 1rem;
-		text-align: right;
-		align-self: right;
-		text-decoration: none;
-		color: #0091ff;
-		text-shadow: black;
-	}
+}
 
-	.tos-text {
-		justify-content: space-between;
+@media only screen and (min-width: 1900px) {
+	.login-footer {
+		font-size: small;
+		display: flex;
+		align-self: flex-center;
+		justify-content: space-around;
+		margin-top: 2rem;
+
+		p {
+			margin: 0;
+		}
 	}
 }

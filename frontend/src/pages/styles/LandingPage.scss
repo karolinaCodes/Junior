@@ -8,94 +8,71 @@
 	background-size: cover;
 	background-position: center right;
 }
-
-#landing-image img {
-	display: block;
-	height: 100vh;
-	width: auto;
-	position: fixed;
-	z-index: 0;
-}
-
-.landing-content {
+#white-box {
 	display: flex;
 	flex-direction: column;
-	margin-top: 8rem;
-	margin-left: 8rem;
-	width: 95rem;
+	justify-content: center;
+	margin: 12rem 0 0 8rem;
+	min-width: 40%;
+	min-height: 70vh;
+	border-radius: 1%;
+	background: #ffffff75;
 	position: absolute;
-	z-index: 1;
+	z-index: 0;
 
-	.search-wrapper {
+	h1 {
+		font-size: 50px;
+		color: $blue;
+	}
+
+	p {
+		color: #1c1c1c80;
+	}
+
+	h1,
+	p {
+		margin: 0 10% 0 10%;
+		text-align: left;
+	}
+
+	.get-paid {
+		margin-bottom: 2rem;
+	}
+
+	.search {
 		display: flex;
-		flex-direction: column;
 		justify-content: center;
-		align-items: center;
-		width: 50%;
-		height: 80vh;
-		border-radius: 1%;
-		background: #ffffff75;
+		margin: 2rem 10% 15% 10%;
 
-		.search-content {
-			display: flex;
-			flex-direction: column;
-			justify-content: center;
-			align-items: left;
-			width: 80%;
-			margin-bottom: 5rem;
-			margin-left: 2rem;
-			border-radius: 1%;
-		}
-
-		h1 {
-			margin: 0;
-			font-size: 65px;
-		}
-
-		p {
-			font-size: 20px;
-			text-align: left;
-		}
-
-		.title-text {
-			font-family: $brand;
-			font-size: 45px;
-			font-weight: $bold;
-			color: $blue;
-			margin-top: 10rem;
-			align-self: flex-start;
-		}
-
-		.search {
-			display: flex;
-			justify-content: left;
-			align-items: center;
-			margin-top: 2rem;
-
-			#search-bar {
-				width: 25rem;
-			}
-
-			a {
-				background-color: $blue;
-				color: $white;
-				font-weight: $bold;
-				margin-left: 2rem;
-			}
+		#search-bar {
+			max-width: 35ch;
 		}
 	}
 
-	#brand-logos {
+	img {
+		opacity: 75%;
+		align-self: center;
+		max-width: 25rem;
+	}
+}
+
+@media only screen and (min-width: 1900px) {
+	#white-box {
 		display: flex;
-		justify-content: space-between;
-		align-items: center;
-		width: 60%;
-		flex-grow: 1;
-		margin-bottom: 5rem;
-		img {
-			width: 100%;
-			max-height: auto;
-			opacity: 50%;
+		flex-direction: column;
+		justify-content: center;
+		margin: 15rem 0 0 8rem;
+		min-width: 35%;
+		min-height: 60vh;
+		border-radius: 1%;
+		background: #ffffff75;
+		position: absolute;
+		z-index: 0;
+
+		h1,
+		p {
+			margin: 0 10% 0 10%;
+			text-align: center;
 		}
 	}
 }

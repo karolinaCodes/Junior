@@ -517,6 +517,28 @@ module.exports = db => {
       .catch(err => err);
   };
 
+  const getJobApplicationsByDevId = junior_dev_id => {
+    const query = {
+      text: `
+        SELECT job_applications.*, job_postings.*,
+        employers.email as employer_email, company_name, employers.bio as employer_bio, employers.photo_url as employer_photo_url,
+        junior_devs.email as dev_email, first_name, last_name,phone_number, headline, junior_devs.bio as dev_bio, junior_devs.photo_url as dev_photo_url
+        FROM job_applications
+        JOIN job_postings ON job_applications.job_posting_id = job_postings.id
+        JOIN junior_devs ON job_applications.junior_dev_id = junior_devs.id
+        JOIN employers ON job_postings.employer_id = employers.id
+        WHERE job_applications.junior_dev_id = $1
+        `,
+      values: [junior_dev_id],
+    };
+
+    return db
+      .query(query)
+      .then(result => result.rows)
+      .catch(err => err);
+    }
+
+
   const addJobApplication = (job_posting_id, junior_dev_id) => {
     const query = {
       text: `INSERT INTO job_applications (
@@ -593,6 +615,27 @@ module.exports = db => {
       .catch(err => err);
   };
 
+  const getGigApplicationsByDevId = junior_dev_id => {
+    const query = {
+      text: `
+        SELECT gig_applications.*, gig_postings.*,
+        employers.email as employer_email, company_name, employers.bio as employer_bio, employers.photo_url as employer_photo_url,
+        junior_devs.email as dev_email, first_name, last_name,phone_number, headline, junior_devs.bio as dev_bio, junior_devs.photo_url as dev_photo_url
+        FROM gig_applications
+        JOIN gig_postings ON gig_applications.gig_posting_id = gig_postings.id
+        JOIN junior_devs ON gig_applications.junior_dev_id = junior_devs.id
+        JOIN employers ON gig_postings.employer_id = employers.id
+        WHERE gig_applications.junior_dev_id = $1
+        `,
+      values: [junior_dev_id],
+    };
+
+    return db
+      .query(query)
+      .then(result => result.rows)
+      .catch(err => err);
+    }
+
   const addGigApplication = (gig_posting_id, junior_dev_id) => {
     const query = {
       text: `INSERT INTO gig_applications (
@@ -606,6 +649,7 @@ module.exports = db => {
       .then(result => result.rows[0])
       .catch(err => err);
   };
+
 
   return {
     getDevs,
@@ -637,5 +681,7 @@ module.exports = db => {
     addGigApplication,
     getAllJobApplicationsForEmployer,
     getAllGigApplicationsForEmployer,
+    getJobApplicationsByDevId,
+    getGigApplicationsByDevId
   };
 };

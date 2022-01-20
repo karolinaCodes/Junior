@@ -1,4 +1,4 @@
-import './styles/LandingPage.scss';
+import './styles/Profile.scss';
 import {Card, Modal, Box, Grid, Paper, Dialog} from '@mui/material';
 import {useEffect, useState} from 'react';
 import {useParams} from 'react-router-dom';
@@ -19,7 +19,7 @@ export default function Applications(props) {
   });
   const [posting, setPosting] = useState({
     posting: {},
-    applications: []
+    applications: ['']
   });
 
   const [openModal, setOpenModal] = useState(false);
@@ -55,8 +55,13 @@ export default function Applications(props) {
   const parsedApplications = applicationsArray.map(application => {
     const data = (<ApplicationModal key={'Application-modal-' + application.junior_dev_id} {...application} />);
     return (
-      <Grid item xs={10} key={'Application-grid-' + application.junior_dev_id}>
+      <Grid item
+        xs={12}
+        md={6}
+        key={'Application-grid-' + application.junior_dev_id}
+      >
         <Paper
+          className='card-click'
           onClick={() => {
           setModalData(data);
           handleView();
@@ -71,7 +76,8 @@ export default function Applications(props) {
 
   return (
     <div className="posting-content">
-      <h1>{posting.posting.job_title}</h1>
+      {/* Insert post component */}
+      {/* <h1>{posting.posting.job_title}</h1>
       <h2>Description</h2>
       <p>{posting.posting.description}</p>
       <div>
@@ -84,15 +90,17 @@ export default function Applications(props) {
           {posting.posting.salary_min && ` $${posting.posting.salary_min} - $${posting.posting.salary_max}`}
           {posting.posting.pay && ` Offer: ${posting.posting.pay} CAD`}
         </p>
-      </div>
+      </div> */}
       <div className="application-content">
-          <h1>Applications</h1>
-          Total applications: {posting.applications.length}
+        <h1>Applications</h1>
+        <p>Total applications: {posting.applications.length}</p>
+        <Grid container direction='column'>
           <section className="application-cards">
-            <Grid item xs={12} container direction='column' rowSpacing={1}>
+            <Grid container item spacing={3}>
               {parsedApplications}
             </Grid>
           </section>
+        </Grid>
         <Dialog
           open={openModal}
           onClose={handleView}

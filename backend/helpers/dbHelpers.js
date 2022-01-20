@@ -176,7 +176,7 @@ module.exports = db => {
     const query = {
       text: `SELECT employers.id as employer_id, 
       company_name, email, bio, photo_url, 
-      job_postings.*
+      job_postings.*, trim(to_char(salary/100, '999,999,990')) as formatted_salary
       FROM employers
       JOIN job_postings ON employers.id = job_postings.employer_id`,
     };
@@ -191,7 +191,7 @@ module.exports = db => {
     const query = {
       text: `SELECT employers.id as employer_id, 
         company_name, email, bio, employers.photo_url as employer_photo_url, 
-        job_postings.*
+        job_postings.*, trim(to_char(salary/100, '999,999,990')) as formatted_salary
         FROM employers
         JOIN job_postings ON employers.id = job_postings.employer_id
         WHERE employers.id = $1`,
@@ -208,7 +208,7 @@ module.exports = db => {
     const query = {
       text: `SELECT employers.id as employer_id, 
         company_name, email, bio, employers.photo_url as employer_photo_url, 
-        job_postings.*
+        job_postings.*, trim(to_char(salary/100, '999,999,990')) as formatted_salary
         FROM employers
         JOIN job_postings ON employers.id = job_postings.employer_id
         WHERE job_postings.id = $1`,
@@ -231,6 +231,7 @@ module.exports = db => {
     is_remote,
     is_open
   ) => {
+    const salary_cents = salary * 100;
     const query = {
       text: `INSERT INTO job_postings (
         employer_id,
@@ -249,7 +250,7 @@ module.exports = db => {
         job_title,
         description,
         city,
-        salary,
+        salary_cents,
         job_type,
         is_remote,
         is_open,
@@ -268,7 +269,7 @@ module.exports = db => {
     const query = {
       text: `SELECT employers.id as employer_id, 
         company_name, email, bio, employers.photo_url as employer_photo_url, 
-        gig_postings.*
+        gig_postings.*, trim(to_char(pay/100, '999,999,990')) as formatted_pay
         FROM employers
         JOIN gig_postings ON employers.id = gig_postings.employer_id`,
     };
@@ -283,7 +284,7 @@ module.exports = db => {
     const query = {
       text: `SELECT employers.id as employer_id, 
         company_name, email, bio, employers.photo_url as employer_photo_url, 
-        gig_postings.*
+        gig_postings.*, trim(to_char(pay/100, '999,999,990')) as formatted_pay
         FROM employers
         JOIN gig_postings ON employers.id = gig_postings.employer_id
         WHERE employers.id = $1`,
@@ -300,7 +301,7 @@ module.exports = db => {
     const query = {
       text: `SELECT employers.id as employer_id, 
         company_name, email, bio, employers.photo_url as employer_photo_url, 
-        gig_postings.*
+        gig_postings.*, trim(to_char(pay/100, '999,999,990')) as formatted_pay
         FROM employers
         JOIN gig_postings ON employers.id = gig_postings.employer_id
         WHERE gig_postings.id = $1`,

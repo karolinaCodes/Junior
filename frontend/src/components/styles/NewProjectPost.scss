@@ -1,20 +1,46 @@
 @import 'variables';
 
 .new-project-content {
-	width: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	min-height: 90vh;
+	width: auto;
 }
 
 .new-project-form {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	justify-content: space-between;
+	justify-content: space-around;
+	min-width: 40%;
+	min-height: 70vh;
+	border-radius: 1%;
+	background-color: #ebebeb;
+	position: absolute;
+	z-index: 0;
+	box-shadow: 5px 5px 10px #1c1c1c50;
+	color: $black;
 
-	button {
-		margin-top: 2rem;
+	h1 {
+		margin: 5% 0 0 0;
 	}
 	#cancel-project,
 	#post-project {
 		margin-left: 1rem;
 	}
+
+	button {
+		color: $white;
+		background-color: $blue;
+	}
+}
+
+#desc-section {
+	min-width: 100%;
+}
+
+#project-buttons {
+	margin-bottom: 5%;
 }

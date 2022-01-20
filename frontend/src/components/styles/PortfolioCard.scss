@@ -3,7 +3,6 @@
 	justify-self: center;
 	align-self: center;
 	width: 65%;
-
 	h1 {
 		margin-top: 0;
 	}
@@ -19,6 +18,7 @@
 	text-align: justify;
 	margin: 0 1em;
 	overflow-wrap: break-word;
+	cursor: pointer;
 	.cards {
 		justify-self: center;
 		align-self: center;
@@ -51,8 +51,6 @@
 		border-radius: 50%;
 	}
 	.profile-info {
-		padding: 1em;
 		min-width: 400px;
-		justify-content: center;
 	}
 }

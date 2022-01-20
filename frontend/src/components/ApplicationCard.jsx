@@ -1,5 +1,5 @@
 import './styles/PortfolioCard.scss';
-import {Grid, Button} from '@mui/material';
+import {Grid, List, ListItem, ListItemText, ListItemButton} from '@mui/material';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 
 export default function ApplicationCard(props) {
@@ -11,7 +11,7 @@ export default function ApplicationCard(props) {
 		month: 'long',
 		day: 'numeric',
 	})
-	
+
 	return (
 		<Grid container direction='row'>
 			<Grid item className='profile-pic'>
@@ -27,37 +27,31 @@ export default function ApplicationCard(props) {
 					<h3>{`${first_name} ${last_name}`}</h3>
 				</Grid>
 				<Grid item container xs='auto' direction='row'>
-					<Grid item container xs='auto' direction='column'>
-						<Grid item>
-							<Button
-								onClick={() => window.open(`mailto:${email}`, '_self')}
-								>
-								{email}
-							</Button>
-						</Grid>
-						<Grid item>
-							<Button
-								onClick={() => window.open(github_url, '_self')}
-							>
-								GitHub
-							</Button>
-						</Grid>
-						<Grid item>
-							<Button
-								onClick={() => window.open(linkedIn_url, '_self')}
-							>
-								LinkedIn
-							</Button>
-						</Grid>
-						<Grid item>
-							<Button
-								onClick={() => window.open(resume_url, '_self')}
-							>
-								Resume
-							</Button>
-						</Grid>
+					<Grid item>
+						<List>
+							<ListItemButton>
+								<ListItem disablePadding>
+									<ListItemText primary={email} />
+								</ListItem>
+							</ListItemButton>
+							<ListItemButton>
+								<ListItem disablePadding>
+									<ListItemText primary='GitHub' />
+								</ListItem>
+							</ListItemButton>
+							<ListItemButton>
+							<ListItem disablePadding>
+								<ListItemText primary='LinkedIn' />
+							</ListItem>
+							</ListItemButton>
+							<ListItemButton>
+								<ListItem disablePadding>
+									<ListItemText primary='Resume' />
+								</ListItem>
+							</ListItemButton>
+						</List>
 					</Grid>
-					<Grid item xs='auto' direction='column' className='profile-info'>
+					<Grid item xs='auto' direction='column' className='profile-bio'>
 						<p>{bio}</p>
 					</Grid>
 				</Grid>

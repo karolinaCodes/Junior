@@ -78,7 +78,7 @@ export default function NewJobPost(props) {
 				<div id='city-salary'>
 					<TextField
 						id='city'
-						sx={{ mt: '1rem', minWidth: '37%' }}
+						sx={{ mt: '1rem', minWidth: '38%' }}
 						label='city'
 						variant='outlined'
 						multiline={true}
@@ -87,7 +87,7 @@ export default function NewJobPost(props) {
 					/>
 					<TextField
 						id='salary'
-						sx={{ mt: '1rem', ml: '2rem', minWidth: '37%' }}
+						sx={{ mt: '1rem', ml: '2rem', minWidth: '38%' }}
 						label='Yearly Salary'
 						variant='outlined'
 						type='number'

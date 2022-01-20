@@ -4,6 +4,6 @@ CREATE TABLE "job_applications" (
   "id" SERIAL PRIMARY KEY NOT NULL,
   "job_posting_id" INTEGER REFERENCES job_postings(id) ON DELETE CASCADE,
   "junior_dev_id" INTEGER REFERENCES junior_devs(id) ON DELETE CASCADE,
-  "date_applied" TIMESTAMP(25) NOT NULL DEFAULT NOW(),
+  "date_applied" TIMESTAMP NOT NULL DEFAULT NOW(),
   "is_accepted" BOOLEAN NOT NULL DEFAULT FALSE
 );

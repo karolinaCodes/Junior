@@ -21,28 +21,30 @@ export default function ApplicationCard(props) {
 		month: 'long',
 		day: 'numeric',
 	})
-	// <Link to='#'
-	// onClick={() => {
-	// 		window.location = `mailto: ${employer_email}`;
-	// }}>
-	// </Link>
+
 	return (
-		<Grid container direction='row' className='profile-info'>
-			<Grid item className='profile-pic'>
-				<img id="profile-pic"
-					src={employer_photo_url}
-					alt={`Photo of ${company_name}`}
-				/>
-				<p>{`Applied on: ${formattedApplicationDate}`}</p>
+		<>
+			<Grid item>
+				<h1>{job_title}</h1>
 			</Grid>
-			<Grid item className='application-info'>
-				<h3>{job_title}</h3>
-				<p>{company_name}</p>
-				<p><LocationOnIcon /> (Location) ({is_remote ? 'Remote' : 'On-site'})</p>
-				<p>Salary: ${salary}</p>
-				<p>{date_posted && `Date Posted: ${formattedDate}`}</p>
-				<p>{job_type ? job_type : `Deadline: ${formattedDeadline}`}</p>
+			<Grid container direction='row' className='profile-info'>
+				<Grid item className='profile-pic'>
+						<img id="profile-pic"
+							src={employer_photo_url}
+							alt={`Photo of ${company_name}`}
+						/>
+					<p>{`Applied on: ${formattedApplicationDate}`}</p>
+				</Grid>
+				<Grid item className='application-info'>
+					<a href={`mailto: ${employer_email}`}>
+						<p>{`${company_name} (${employer_email})`}</p>
+					</a>
+					<p><LocationOnIcon /> (Location) ({is_remote ? 'Remote' : 'On-site'})</p>
+					<p>Salary: ${salary}</p>
+					<p>{date_posted && `Date Posted: ${formattedDate}`}</p>
+					<p>{job_type ? job_type : `Deadline: ${formattedDeadline}`}</p>
+				</Grid>
 			</Grid>
-		</Grid>
+		</>
 	);
 }

@@ -3,7 +3,7 @@ import {Card, Modal, Box, Grid, Paper, Dialog} from '@mui/material';
 import {useEffect, useState} from 'react';
 import {useParams} from 'react-router-dom';
 import UserApplicationCard from '../components/UserApplicationCard';
-import ApplicationModal from '../components/ApplicationModal';
+import UserApplicationModal from '../components/UserApplicationModal';
 
 import axios from 'axios';
 
@@ -45,7 +45,7 @@ export default function UserApplications(props) {
   const gigApplicationsArray = applications.gigApplications;
 
   const parsedJobApplications = jobApplicationsArray.map(application => {
-    const data = (<ApplicationModal key={'Job-application-modal-' + application.id} {...application} />);
+    const data = (<UserApplicationModal key={'Job-application-modal-' + application.id} {...application} />);
     return (
       <Grid item
         xs={12}
@@ -65,7 +65,7 @@ export default function UserApplications(props) {
     );
   });
   const parsedGigApplications = gigApplicationsArray.map(application => {
-    const data = (<ApplicationModal key={'Gig-application-modal-' + application.id} {...application} />);
+    const data = (<UserApplicationModal key={'Gig-application-modal-' + application.id} {...application} />);
     return (
       <Grid item
         xs={12}
@@ -106,7 +106,7 @@ export default function UserApplications(props) {
         open={openModal}
         onClose={handleView}
         fullWidth={true}
-        maxWidth={'md'}
+        maxWidth={'sm'}
         >
         <Box className='application-modal'
         >

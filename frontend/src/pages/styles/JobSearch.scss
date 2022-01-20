@@ -24,10 +24,10 @@
   gap: 30px;
 }
 
-.jobsearch-search
-  .css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input {
-  padding: 10px 14px;
-}
+// .jobsearch-search
+//   .css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input {
+//   padding: 10px 14px;
+// }
 
 .jobsearch-search input {
   font-family: 'Assistant';
@@ -55,10 +55,10 @@ input:focus {
   padding: 0px 50px 0px 60px;
 }
 
-.checkboxes,
-.css-j204z7-MuiFormControlLabel-root .MuiFormControlLabel-label {
-  font-family: 'Assistant' !important;
-}
+// .checkboxes,
+// .css-j204z7-MuiFormControlLabel-root .MuiFormControlLabel-label {
+//   font-family: 'Assistant' !important;
+// }
 
 .checkboxes svg {
   color: $blue;
@@ -74,9 +74,9 @@ input:focus {
   padding: 18px 0px 18px 0px;
 }
 
-.css-1t6e9jv-MuiCardActions-root {
-  justify-content: center;
-}
+// .css-1t6e9jv-MuiCardActions-root {
+//   justify-content: center;
+// }
 
 #recommended-num {
   color: #aaaaaa;
@@ -86,24 +86,24 @@ input:focus {
   margin-top: 18px;
 }
 
-.css-1t6e9jv-MuiCardActions-root {
-  justify-content: center;
-}
+// .css-1t6e9jv-MuiCardActions-root {
+//   justify-content: center;
+// }
 
-.css-46bh2p-MuiCardContent-root {
-  text-align: left;
-}
+// .css-46bh2p-MuiCardContent-root {
+//   text-align: left;
+// }
 
-.css-46bh2p-MuiCardContent-root {
-  text-align: left;
-  padding: 16px 0 !important;
-}
+// .css-46bh2p-MuiCardContent-root {
+//   text-align: left;
+//   padding: 16px 0 !important;
+// }
 
-.css-o69gx8-MuiCardMedia-root {
-  border-radius: 50%;
-  width: 25% !important;
-  height: 25%;
-}
+// .css-o69gx8-MuiCardMedia-root {
+//   border-radius: 50%;
+//   width: 25% !important;
+//   height: 25%;
+// }
 
 .searchResults-container {
   & h4 {
@@ -111,26 +111,26 @@ input:focus {
   }
 }
 
-#root > div > div.jobsearch-content > form > div.MuiBox-root.css-1v5z18m {
-  width: 150px;
-}
+// #root > div > div.jobsearch-content > form > div.MuiBox-root.css-1v5z18m {
+//   width: 150px;
+// }
 
-input,
-fieldset {
-  border: transparent;
-}
+// input,
+// fieldset {
+//   border: transparent;
+// }
 
 // job type drop down
-#root
-  > div
-  > div.jobsearch-content
-  > form
-  > div.MuiBox-root.css-ece9u5
-  > div
-  > div
-  > fieldset {
-  border: transparent;
-}
+// #root
+//   > div
+//   > div.jobsearch-content
+//   > form
+//   > div.MuiBox-root.css-ece9u5
+//   > div
+//   > div
+//   > fieldset {
+//   border: transparent;
+// }
 
 div .salary-slider {
   font-family: 'Assistant';
@@ -150,29 +150,29 @@ div .salary-slider {
 }
 
 // drop down text
-#menu-
-  > div.MuiPaper-root.MuiPaper-elevation.MuiPaper-rounded.MuiPaper-elevation1.MuiMenu-paper.MuiPaper-root.MuiPaper-elevation.MuiPaper-rounded.MuiPaper-elevation8.MuiPopover-paper.css-1poimk-MuiPaper-root-MuiMenu-paper-MuiPaper-root-MuiPopover-paper
-  > ul
-  > li {
-  font-family: 'Assistant';
-}
+// #menu-
+//   > div.MuiPaper-root.MuiPaper-elevation.MuiPaper-rounded.MuiPaper-elevation1.MuiMenu-paper.MuiPaper-root.MuiPaper-elevation.MuiPaper-rounded.MuiPaper-elevation8.MuiPopover-paper.css-1poimk-MuiPaper-root-MuiMenu-paper-MuiPaper-root-MuiPopover-paper
+//   > ul
+//   > li {
+//   font-family: 'Assistant';
+// }
 
-#root
-  > div
-  > div.jobsearch-content
-  > form
-  > div.MuiBox-root.css-ece9u5
-  > div
-  > div
-  > div {
-  font-family: 'Assistant';
-}
+// #root
+//   > div
+//   > div.jobsearch-content
+//   > form
+//   > div.MuiBox-root.css-ece9u5
+//   > div
+//   > div
+//   > div {
+//   font-family: 'Assistant';
+// }
 
-.css-1ri6ub7-MuiPaper-root-MuiCard-root {
-  padding: 25px 35px;
-  border-radius: 10px;
-  font-family: 'Assistant' !important;
-}
+// .css-1ri6ub7-MuiPaper-root-MuiCard-root {
+//   padding: 25px 35px;
+//   border-radius: 10px;
+//   font-family: 'Assistant' !important;
+// }
 
 .searchResults div,
 .searchResults p {

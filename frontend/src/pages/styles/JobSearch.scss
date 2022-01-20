@@ -29,15 +29,9 @@
 
 .jobsearch-search input {
   font-family: 'Assistant';
-  padding: 0 50px 0 50px;
   width: 13rem;
   border-right: 1px solid #f0f0f0;
-  margin: 20px;
   background: #fbfbfb;
-}
-
-.search-query::placeholder {
-  font-family: 'Assistant';
 }
 
 textarea:focus,
@@ -122,17 +116,6 @@ fieldset {
   border: transparent;
 }
 
-#root
-  > div
-  > div.jobsearch-content
-  > form
-  > div.MuiBox-root.css-ece9u5
-  > div
-  > div
-  > div {
-  width: 10rem;
-}
-
 // job type drop down
 #root
   > div
@@ -151,7 +134,15 @@ div .salary-slider {
   font-size: 13px;
   font-weight: bold;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
+
+  & #salary {
+    font-weight: 700;
+  }
+
+  & #salary-range {
+    font-weight: 600;
+  }
 }
 
 // drop down text
@@ -186,4 +177,8 @@ div .salary-slider {
 
 .checkboxes-section span {
   font-size: 15px;
+}
+
+.jobsearch-search fieldset {
+  border: none;
 }

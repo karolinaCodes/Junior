@@ -1,3 +1,4 @@
+import * as React from 'react';
 import {useEffect, useState} from 'react';
 import './styles/JobSearch.scss';
 import axios from 'axios';
@@ -6,14 +7,10 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
-
 import {Link} from 'react-router-dom';
 
 import ApplyModal from '../components/ApplyModal';
-import JobSearchCard from '../components/JobSearchCard';
-import SearchBar from '../components/SearchBar';
 import {TextField, Button} from '@mui/material';
-import * as React from 'react';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
@@ -24,10 +21,7 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
 
 import Chip from '@mui/material/Chip';
-import Stack from '@mui/material/Stack';
-
 import Slider from '@mui/material/Slider';
-
 import {InputAdornment} from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
@@ -84,6 +78,7 @@ const useStyles = makeStyles({
 
   card: {
     'box-shadow': '0px 3px 8px rgb(8 35 48 / 5%)',
+    'border-radius': '13px',
   },
 
   card_header: {
@@ -95,6 +90,37 @@ const useStyles = makeStyles({
 
   checkbox: {
     padding: '0.2rem 0.3rem 0.2rem 0.2rem',
+  },
+
+  'search_query::placeholder': {
+    'font-family': 'Assistant',
+  },
+
+  'search_query fieldset': {
+    border: 'none',
+  },
+
+  drop_down: {
+    width: '7.5rem',
+  },
+
+  slider: {
+    color: '#182c5b',
+  },
+
+  clear_btn: {
+    'text-transform': 'none',
+    color: '#182c5b',
+  },
+
+  search_btn: {
+    'text-transform': 'none',
+    color: '#f9f9f9',
+    width: '8.2rem',
+    height: '2.5rem',
+    'margin-right': '10px',
+    'text-transform': 'none',
+    'background-color': '#182c5b',
   },
 });
 
@@ -113,7 +139,7 @@ export default function JobSearch(props) {
 
   const classes = useStyles();
 
-  console.log(value);
+  // console.log(value);
 
   // TO ADD? every time queryString changes, make send new request, so changes as typing
   useEffect(() => {
@@ -191,14 +217,6 @@ export default function JobSearch(props) {
       .catch(err => console.log(err));
   };
 
-  // const handleClick = e => {
-  //   e.preventDefault();
-  //   jobType === 'jobs' ? setjobType('gigs') : setjobType('jobs');
-  //   setCity('');
-  //   setSchedule('');
-  //   setQueryString('');
-  // };
-
   const handleChange = event => {
     setJobType(event.target.value);
   };
@@ -239,13 +257,16 @@ export default function JobSearch(props) {
       <form className="jobsearch-search" onSubmit={handleSubmit}>
         {/* {JOB TYPE DROPDOWN----------------------} */}
         <Box sx={{minWidth: 120}}>
-          <FormControl fullWidth>
+          <FormControl fullWidth className={classes.drop_down}>
             <Select
               value={jobType}
               onChange={handleChange}
               displayEmpty
               inputProps={{'aria-label': 'Without label'}}
             >
+              <MenuItem disabled value="">
+                <em>Job Type</em>
+              </MenuItem>
               <MenuItem value={'All'}>All</MenuItem>
               <MenuItem value={'jobs'}>Jobs</MenuItem>
               <MenuItem value={'gigs'}>Gigs</MenuItem>
@@ -257,7 +278,7 @@ export default function JobSearch(props) {
           onChange={e => setQueryString(e.target.value)}
           value={queryString}
           onKeyDown={e => keyCheck(e)}
-          className="search-query"
+          className={classes.search_query}
           InputProps={{
             startAdornment: (
               <InputAdornment position="start">
@@ -281,18 +302,6 @@ export default function JobSearch(props) {
             ),
           }}
         />
-        {/* <input
-          placeholder="City"
-          onChange={e => setCity(e.target.value)}
-          value={city}
-          onKeyDown={e => keyCheck(e)}
-        ></input> */}
-        {/* <TextField
-          id="search-bar"
-          label="City"
-          variant="outlined"
-          
-        /> */}
         {/* {SLIDER---------------------------------} */}
         <Box sx={{width: 300}}>
           <Typography
@@ -300,17 +309,28 @@ export default function JobSearch(props) {
             gutterBottom
             className="salary-slider"
           >
-            <span>Salary</span> <span> {`$${value[0]} -$${value[1]}`}</span>
+            <span id="salary">Salary</span>{' '}
+            <span id="salary-range"> {`$${value[0]} -$${value[1]}`}</span>
           </Typography>
           <Slider
             color="info"
+            size="small"
             value={value}
             min={40000}
             max={80000}
             onChange={handleSlider}
+            className={classes.slider}
           />
         </Box>
-        <Button variant="contained" size="large" type="submit">
+        <Button variant="text" size="large" className={classes.clear_btn}>
+          Clear
+        </Button>
+        <Button
+          variant="outlined"
+          size="large"
+          type="submit"
+          className={classes.search_btn}
+        >
           Search
         </Button>
       </form>

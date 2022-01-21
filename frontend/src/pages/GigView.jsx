@@ -7,7 +7,7 @@ import {useParams} from 'react-router-dom';
 import LoginForm from '../components/LoginForm';
 import axios from 'axios';
 
-import ApplyModal from '../components/ApplyModal';
+import ApplyModal from '../components/SearchResults/ApplyModal';
 
 export default function LandingPage(props) {
   const {currentUser} = props;

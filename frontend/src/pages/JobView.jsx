@@ -11,7 +11,7 @@ import LocalOfferIcon from '@mui/icons-material/LocalOffer';
 
 import axios from 'axios';
 
-import ApplyModal from '../components/ApplyModal';
+import ApplyModal from '../components/SearchResults/ApplyModal';
 
 export default function LandingPage(props) {
   const {currentUser} = props;

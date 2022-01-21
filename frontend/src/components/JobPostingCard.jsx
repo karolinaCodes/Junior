@@ -1,5 +1,5 @@
 import './styles/PortfolioCard.scss';
-import {CardContent, CardMedia} from '@mui/material';
+import {Grid, CardContent, CardMedia} from '@mui/material';
 
 export default function Posting(props) {
   const {
@@ -24,8 +24,14 @@ export default function Posting(props) {
   return (
     <CardContent>
       <h1>{job_title}</h1>
-      {is_open && <p><strong>Accepting Applicants:</strong> {is_open ? 'Yes' : 'No'} <strong>Total Applicants:</strong> {total_applications}</p>}
-      {pay && <p><strong>Total Applicants:</strong> {total_applications}</p>}
+      <Grid container direction='row' className="applicants-info">
+        {is_open && <Grid item>
+          <p><strong>Accepting Applicants:</strong> {is_open ? 'Yes' : 'No'}</p>
+        </Grid>}
+        <Grid item>
+          <p><strong>Total Applicants:</strong> {total_applications}</p>
+        </Grid>
+      </Grid>
       {photo_url && <CardMedia
 				component="img"
 				image={photo_url}

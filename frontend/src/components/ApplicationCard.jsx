@@ -6,11 +6,12 @@ export default function ApplicationCard(props) {
 	const { first_name, last_name, email, bio, photo_url, github_url, linkedIn_url, resume_url, location, dev_photo_url, date_applied, formatted_date_applied, formatted_date } =
 		props;
 
+	
 	return (
 		<Grid container direction='row'>
 			<Grid item className='profile-pic'>
 				<img id="profile-pic"
-					src={photo_url}
+					src={dev_photo_url}
 					alt={`Photo of ${first_name} ${last_name}`}
 				/>
 				<p>Applied on: <br />{formatted_date}</p>

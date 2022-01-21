@@ -12,7 +12,7 @@
 	}
 }
 
-.application-cards {
+.application-cards, .profile-cards {
 	flex-direction: column;
 	justify-content: space-between;
 	text-align: justify;
@@ -52,5 +52,9 @@
 	}
 	.profile-info {
 		min-width: 400px;
+	}
+	.applicants-info {
+		display: flex;
+		justify-content: space-between;
 	}
 }

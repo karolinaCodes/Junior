@@ -1,12 +1,4 @@
 import './styles/LandingPage.scss';
-// import {TextField, Button} from '@mui/material';
-// import {useEffect, useState} from 'react';
-// import Box from '@mui/material/Box';
-// import FormControl from '@mui/material/FormControl';
-// import Select from '@mui/material/Select';
-// import MenuItem from '@mui/material/MenuItem';
-// import axios from 'axios';
-// import {useNavigate} from 'react-router-dom';
 import LoginForm from '../components/LoginForm';
 import SearchBar from '../components/SearchBar';
 

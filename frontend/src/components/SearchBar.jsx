@@ -28,7 +28,7 @@ export default function SearchBar(props) {
       return;
     }
 
-    if (jobType == 'All') {
+    if (jobType == 'all') {
       const results = axios
         .get('/api/search/query', {
           params: {
@@ -79,7 +79,7 @@ export default function SearchBar(props) {
             <MenuItem disabled value="">
               <em>Job Type</em>
             </MenuItem>
-            <MenuItem value={'All'}>All</MenuItem>
+            <MenuItem value={'all'}>All</MenuItem>
             <MenuItem value={'jobs'}>Jobs</MenuItem>
             <MenuItem value={'gigs'}>Gigs</MenuItem>
           </Select>

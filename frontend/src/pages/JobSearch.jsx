@@ -8,7 +8,7 @@ import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import {Link} from 'react-router-dom';
 
-import ApplyModal from '../components/ApplyModal';
+import ApplyModal from '../components/SearchResults/ApplyModal';
 import {TextField, Button} from '@mui/material';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
@@ -155,12 +155,9 @@ export default function JobSearch(props) {
 
   const classes = useStyles();
 
-  console.log(searchResults);
-
   // TO ADD? every time queryString changes, make send new request, so changes as typing
   useEffect(() => {
     if (state) {
-      console.log('here');
       const {data} = state;
       return setSearchResults(data);
     }
@@ -172,7 +169,6 @@ export default function JobSearch(props) {
         },
       })
       .then(res => {
-        // console.log(res.data);
         setSearchResults(res.data);
         return;
       })
@@ -202,21 +198,7 @@ export default function JobSearch(props) {
     console.log(queryString, city, schedule, jobType, value[0], value[1]);
     e.preventDefault();
 
-    if (
-      (!queryString && !city && !schedule && !jobType, !value[0], !value[1])
-    ) {
-      const results = axios
-        .get('/api/search/query', {
-          params: {
-            queryString,
-          },
-        })
-        .then(res => {
-          console.log(res.data);
-          setSearchResults(res.data);
-          return;
-        })
-        .catch(err => console.log(err));
+    if (!queryString && !city && !schedule && !jobType) {
       return;
     }
 
@@ -226,7 +208,7 @@ export default function JobSearch(props) {
           queryString,
           city,
           job_type: schedule,
-          toggle: jobType === 'All' ? '' : jobType,
+          toggle: jobType === 'all' ? '' : jobType,
           salary_min: value[0],
           salary_max: value[1],
         },
@@ -289,7 +271,7 @@ export default function JobSearch(props) {
               <MenuItem disabled value="">
                 <em>Job Type</em>
               </MenuItem>
-              <MenuItem value={'All'}>All</MenuItem>
+              <MenuItem value={'all'}>All</MenuItem>
               <MenuItem value={'jobs'}>Jobs</MenuItem>
               <MenuItem value={'gigs'}>Gigs</MenuItem>
             </Select>
@@ -310,6 +292,9 @@ export default function JobSearch(props) {
           }}
         ></TextField>
         <TextField
+          disabled={jobType === 'gigs' || jobType === 'all'}
+          id={(jobType === 'gigs' || jobType === 'all') && 'outlined-disabled'}
+          label={(jobType === 'gigs' || jobType === 'all') && 'Disabled'}
           id="search-bar"
           variant="outlined"
           placeholder="City"
@@ -335,13 +320,13 @@ export default function JobSearch(props) {
             <span id="salary-range"> {`$${value[0]} -$${value[1]}`}</span>
           </Typography>
           <Slider
-            color="info"
             size="small"
             value={value}
             min={40000}
             max={80000}
             onChange={handleSlider}
             className={classes.slider}
+            disabled={jobType === 'gigs' || jobType === 'all'}
           />
         </Box>
         <div className={classes.form_actions}>
@@ -563,9 +548,13 @@ export default function JobSearch(props) {
           </h3>
           <div className={classes.searchResults}>
             {searchResults.length > 0 &&
-              searchResults.map(item => {
+              searchResults.map((item, index) => {
                 return (
-                  <Card sx={{maxWidth: 345}} className={classes.card}>
+                  <Card
+                    sx={{maxWidth: 345}}
+                    className={classes.card}
+                    key={index}
+                  >
                     <div className="card-content">
                       <div className={classes.card_header}>
                         <CardMedia

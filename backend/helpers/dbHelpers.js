@@ -451,7 +451,9 @@ module.exports = db => {
       if (sqlQueryString.slice(-5) !== 'WHERE') {
         sqlQueryString += ' AND';
       }
-      sqlQueryString += ` (salary >= ${sqlQuery.salary_min} AND salary <= ${sqlQuery.salary_max})`;
+      sqlQueryString += ` (salary >= ${
+        sqlQuery.salary_min * 100
+      } AND salary <= ${sqlQuery.salary_max * 100})`;
     }
 
     if (sqlQueryString.slice(-5) === 'WHERE') {

@@ -95,12 +95,12 @@ export default function ApplyModal(props) {
         <Box className={classes.apply_modal}>
           {applicationSubmitted ? (
             <div class="submitted-container">
-              <p id="submitted-msg">Application Submitted</p>
+              <p id="submitted-msg">Application Submitted!</p>
               <div id="submitted-actions">
                 <Button
                   variant="contained"
                   onClick={() => {
-                    navigate(-1);
+                    handleView();
                   }}
                 >
                   Search More Jobs

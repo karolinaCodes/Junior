@@ -5,11 +5,18 @@
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	min-height: 90.5vh;
 	width: auto;
+	min-height: 90.5vh;
 	background-image: url('/images/form-backround.png');
 	background-size: cover;
 	background-position: center right;
+
+	img {
+		max-width: 5rem;
+		height: auto;
+		z-index: 999;
+		margin-bottom: 35%;
+	}
 }
 
 .new-job-form {
@@ -31,6 +38,10 @@
 		margin-top: 2rem;
 		color: $white;
 		background-color: $blue;
+	}
+
+	h1 {
+		margin-top: 4rem;
 	}
 
 	#cancel-job,

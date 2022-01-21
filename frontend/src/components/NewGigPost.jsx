@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { TextField, Button, FormLabel } from '@mui/material';
 
 import './styles/NewGigPost.scss';
@@ -9,7 +9,7 @@ export default function NewGigPost(props) {
 	const { currentUser } = props;
 	const [gigForm, setGigForm] = useState({
 		employer_id: currentUser.id,
-		job_title: '',
+		job_title: 'New Gig',
 		description: '',
 		pay: '',
 		deadline: '',
@@ -35,66 +35,81 @@ export default function NewGigPost(props) {
 					deadline: '',
 					photo_url: '',
 				});
+				navigate('/profile');
 			})
 			.catch(err => {
 				console.log(err);
 			});
 	};
 
+	const navigate = useNavigate();
+
 	return (
 		<div className='new-gig-content'>
+			<img src='images/junior-logomark.png'></img>
 			<form className='new-gig-form' onSubmit={postGig}>
-				<h1>New Gig:</h1>
+				<h1>{gigForm.job_title}</h1>
 				<TextField
 					id='gig-name'
+					sx={{ minWidth: '80%' }}
 					label='Gig Name'
 					variant='outlined'
 					onChange={e => setGigForm({ ...gigForm, job_title: e.target.value })}
 					value={gigForm.job_title}
 				/>
-				<TextField
-					id='pay'
-					sx={{ mt: '1rem' }}
-					label='Pay'
-					variant='outlined'
-					type='number'
-					value={gigForm.pay}
-					onChange={e => setGigForm({ ...gigForm, pay: e.target.value })}
-				/>
-				<h3>Deadline</h3>
-				<TextField
-					id='deadline'
-					sx={{ mt: '1rem' }}
-					type='date'
-					variant='outlined'
-					value={gigForm.deadline}
-					onChange={e => setGigForm({ ...gigForm, deadline: e.target.value })}
-				/>
-				<TextField
-					id='photo-url'
-					sx={{ mt: '1rem' }}
-					label='Thumbnail Photo'
-					variant='outlined'
-					value={gigForm.photo_url}
-					onChange={e => setGigForm({ ...gigForm, photo_url: e.target.value })}
-				/>
+				<div id='pay-photo'>
+					<TextField
+						id='photo-url'
+						sx={{
+							ml: '2rem',
+						}}
+						label='Thumbnail Photo'
+						variant='outlined'
+						value={gigForm.photo_url}
+						onChange={e =>
+							setGigForm({ ...gigForm, photo_url: e.target.value })
+						}
+					/>
+					<TextField
+						id='pay'
+						sx={{ ml: '1rem' }}
+						label='Pay'
+						variant='outlined'
+						type='number'
+						value={gigForm.pay}
+						onChange={e => setGigForm({ ...gigForm, pay: e.target.value })}
+					/>
+					<TextField
+						id='deadline'
+						helperText='Deadline'
+						sx={{ ml: '1rem', mr: '2rem', mb: 0 }}
+						type='date'
+						variant='outlined'
+						value={gigForm.deadline}
+						onChange={e => setGigForm({ ...gigForm, deadline: e.target.value })}
+					/>
+				</div>
 				<TextField
 					id='gig-description'
-					sx={{ mt: '1rem' }}
+					sx={{
+						minWidth: '80%',
+					}}
 					label='Gig Description'
 					variant='outlined'
 					multiline={true}
+					minRows={5}
 					value={gigForm.description}
 					onChange={e =>
 						setGigForm({ ...gigForm, description: e.target.value })
 					}
 				/>
-				<div>
+				<div id='gig-buttons'>
 					{/* <Button variant='contained' size='large' type='submit' onClick={null}>
 						Upload Images
 					</Button> */}
 					<Button
 						id='post-gig'
+						sx={{ margin: 0 }}
 						variant='contained'
 						size='large'
 						type='submit'
@@ -104,10 +119,12 @@ export default function NewGigPost(props) {
 					</Button>
 					<Button
 						id='cancel-gig'
-						component={Link}
-						to='/profile'
+						sx={{ margin: 0 }}
 						variant='contained'
 						size='large'
+						onClick={e => {
+							navigate('/profile');
+						}}
 					>
 						Cancel
 					</Button>

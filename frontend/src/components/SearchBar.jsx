@@ -1,5 +1,4 @@
 import './styles/SearchBar.scss';
-import {Link} from 'react-router-dom';
 import axios from 'axios';
 import {TextField, Button} from '@mui/material';
 import {useNavigate} from 'react-router-dom';

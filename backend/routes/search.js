@@ -7,7 +7,7 @@ module.exports = ({
   getJobsByType,
   getJobsByMulti,
 }) => {
-  /* GET list of job and gigs by query */
+  /* GET list of job and gigs by query string*/
   router.get('/query', (req, res) => {
     console.log(req.query.queryString);
     getJobsAndGigsByQuery(req.query.queryString)

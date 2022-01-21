@@ -6,15 +6,73 @@ import Box from '@mui/material/Box';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
+import axios from 'axios';
+import {useNavigate} from 'react-router-dom';
 
 import LoginForm from '../components/LoginForm';
 
 export default function LandingPage(props) {
   const {loginView, handleLoginView, currentUser, setCurrentUser} = props;
   const [jobType, setJobType] = useState('');
+  const [searchResults, setSearchResults] = useState([]);
+  const [queryString, setQueryString] = useState('');
+
+  console.log(jobType);
+  console.log(queryString);
+  let navigate = useNavigate();
 
   const handleChange = event => {
     setJobType(event.target.value);
+  };
+
+  const handleSubmit = e => {
+    // console.log(queryString, city, schedule, jobType, value[0], value[1]);
+    e.preventDefault();
+    if (!jobType) {
+      return;
+    }
+    // if (
+    //   (!queryString && !city && !schedule && !jobType, !value[0], !value[1])
+    // ) {
+    const results = axios
+      .get('/api/search/multi-filter', {
+        params: {
+          queryString,
+          toggle: jobType === 'All' ? '' : jobType,
+        },
+      })
+      .then(res => {
+        console.log('heher', res.data);
+        navigate('/jobs', {state: {data: res.data}});
+        return;
+      })
+      .catch(err => console.log(err));
+    return;
+    // }
+
+    // const results = axios
+    //   .get('/api/search/multi-filter', {
+    //     params: {
+    //       queryString,
+    //       city,
+    //       job_type: schedule,
+    //       toggle: jobType === 'All' ? '' : jobType,
+    //       salary_min: value[0],
+    //       salary_max: value[1],
+    //     },
+    //   })
+    //   .then(res => {
+    //     // console.log(res.data);
+    //     setSearchResults(res.data);
+    //     return;
+    //   })
+    //   .catch(err => console.log(err));
+  };
+
+  const keyCheck = e => {
+    if (e.keyCode === 13) {
+      e.preventDefault();
+    }
   };
 
   const searchView = () => {
@@ -46,12 +104,20 @@ export default function LandingPage(props) {
                 </Select>
               </FormControl>
             </Box>
-            <TextField id="search-bar" label="Find Work" variant="outlined" />
+            <TextField
+              id="search-bar"
+              label="Find Work"
+              variant="outlined"
+              onChange={e => setQueryString(e.target.value)}
+              value={queryString}
+              onKeyDown={e => keyCheck(e)}
+            />
             <Button
               sx={{ml: '2rem'}}
               variant="contained"
-              size="large"
-              href="/jobs"
+              size="med"
+              type="submit"
+              onClick={handleSubmit}
             >
               SEARCH
             </Button>

@@ -26,6 +26,8 @@ import {InputAdornment} from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 
+import {useLocation} from 'react-router-dom';
+
 import {makeStyles} from '@mui/styles';
 
 ////////////////////IMPORTS///////////
@@ -139,6 +141,8 @@ const useStyles = makeStyles({
 });
 
 export default function JobSearch(props) {
+  const {state} = useLocation();
+
   const {currentUser} = props;
   const [query, setQuery] = useState('');
   const [city, setCity] = useState('');
@@ -153,8 +157,16 @@ export default function JobSearch(props) {
 
   const classes = useStyles();
 
+  console.log(searchResults);
+
   // TO ADD? every time queryString changes, make send new request, so changes as typing
   useEffect(() => {
+    if (state) {
+      console.log('here');
+      const {data} = state;
+      return setSearchResults(data);
+    }
+
     const results = axios
       .get('/api/search/query', {
         params: {

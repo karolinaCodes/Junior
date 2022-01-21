@@ -5,6 +5,15 @@ const logger = require('morgan');
 const db = require('./db');
 const dbHelpers = require('./helpers/dbHelpers')(db);
 const devHelpers = require('./helpers/devHelpers')(db);
+const employerHelpers = require('./helpers/employerHelpers')(db);
+// const devHelpers = require('./helpers/devHelpers')(db);
+// const devHelpers = require('./helpers/devHelpers')(db);
+// const devHelpers = require('./helpers/devHelpers')(db);
+// const devHelpers = require('./helpers/devHelpers')(db);
+// const devHelpers = require('./helpers/devHelpers')(db);
+// const devHelpers = require('./helpers/devHelpers')(db);
+// const devHelpers = require('./helpers/devHelpers')(db);
+// const devHelpers = require('./helpers/devHelpers')(db);
 const app = express();
 const bodyParser = require('body-parser');
 
@@ -34,7 +43,7 @@ const searchRouter = require('./routes/search');
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
 app.use('/api/devs', devsRouter(devHelpers));
-app.use('/api/employers', employersRouter(dbHelpers));
+app.use('/api/employers', employersRouter(employerHelpers));
 app.use('/api/projects', projectsRouter(dbHelpers));
 app.use('/api/auth', authRouter(dbHelpers));
 app.use('/api/job_postings', jobPostingsRouter(dbHelpers));

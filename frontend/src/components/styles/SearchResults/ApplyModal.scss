@@ -1,4 +1,4 @@
-@import 'variables';
+@import '../variables';
 
 .dialog-content {
   display: flex;
@@ -43,12 +43,36 @@
 
 #apply-user-photo {
   border-radius: 50%;
+  max-width: 200px;
 }
 
-// .apply-dialog-content {
-//   // display: flex;
-// }
+.apply-profile-data {
+  display: flex;
+  justify-content: space-around;
+}
+
+.apply-profile-pic {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.apply-phone-city {
+  display: flex;
+}
+
+#city {
+  margin-left: 20px;
+}
+
+#job-title {
+  text-align: center;
+}
 
 .apply-profile-bio {
-  display: flex;
+  margin: 50px;
+}
+
+.apply-user-info {
+  // margin: 1rem;
 }

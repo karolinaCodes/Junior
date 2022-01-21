@@ -10,13 +10,18 @@
 body {
   margin: 0;
   background-color: $white;
-  font-family: $text;
+  font-family: $brand;
   color: $black;
-  p, h1, h2, h3, h4, h5 {
+  p,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5 {
     font-family: 'Assistant';
   }
   .modal-button {
-    background-color: #1D869D;
+    background-color: #1d869d;
     color: $white;
     text-transform: none;
     padding-right: 2rem;
@@ -43,7 +48,7 @@ body {
     align-content: flex-start;
     margin: 1rem;
     border-radius: 13px;
-    box-shadow: 0px 3px 8px rgba(8,35,48,0.05);
+    box-shadow: 0px 3px 8px rgba(8, 35, 48, 0.05);
   }
   .MuiButton-root {
     background-color: $blue;
@@ -59,13 +64,13 @@ body {
   .MuiButton-outlined {
     background-color: $white;
     color: $blue;
-    border: 1px solid $blue
+    border: 1px solid $blue;
   }
 
   .MuiButton-outlined:hover {
     background-color: $white;
     color: $lightblue;
-    border: 1px solid $lightblue
+    border: 1px solid $lightblue;
   }
   .MuiCard-root {
     align-content: flex-start;
@@ -75,11 +80,9 @@ body {
   }
 }
 
-
 code {
   font-family: 'Assistant', Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
-
 
 /* Increase the specificity */
 // .Button:disabled {

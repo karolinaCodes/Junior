@@ -30,6 +30,7 @@ export default function Login(props) {
 			.then(res => {
 				setCurrentUser(res.data);
 				console.log(res.data);
+				handleLoginView();
 			})
 			.catch(err => {
 				console.log(err);
@@ -65,7 +66,7 @@ export default function Login(props) {
 						variant='contained'
 						size='large'
 						type='submit'
-						onClick={e => handleLoginView()}
+						onClick={null}
 					>
 						LOG IN
 					</Button>

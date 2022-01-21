@@ -25,10 +25,10 @@ import './App.scss';
 
 function App() {
 	const [loginView, setLoginView] = useState(false);
-	const [currentUser, setCurrentUser] = useState({});
+	// const [currentUser, setCurrentUser] = useState({});
 	let navigate = useNavigate();
-	const context = useContext(UserContext);
-	console.log('USER CONTEXT', context);
+	const { currentUser, setCurrentUser } = useContext(UserContext);
+	// console.log('USER CONTEXT', context);
 	useEffect(() => {
 		axios
 			.post('/api/auth/check')
@@ -52,6 +52,7 @@ function App() {
 	console.log(checkUser());
 
 	const handleLoginView = e => {
+		console.log('IN LOGIN VIEW', currentUser);
 		if (checkUser()) {
 			console.log('INHERE');
 			setLoginView(false);

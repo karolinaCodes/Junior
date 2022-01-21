@@ -13,7 +13,7 @@ export default function Profile(props) {
 				image={thumbnail_photo_url}
 				alt={title}
 			/>
-			<p>{description}</p>
+			<p className="description">{description}</p>
 		</CardContent>
 	);
 }

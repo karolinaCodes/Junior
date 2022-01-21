@@ -12,9 +12,69 @@ body {
   background-color: $white;
   font-family: $text;
   color: $black;
-  font-family: 'Assistant';
+  p, h1, h2, h3, h4, h5 {
+    font-family: 'Assistant';
+  }
+  .modal-button {
+    background-color: #1D869D;
+    color: $white;
+    text-transform: none;
+    padding-right: 2rem;
+    padding-left: 2rem;
+  }
 }
+.profile-content {
+  .description {
+    color: $grey;
+    overflow: hidden;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    margin-top: 10px;
+    line-height: 1.5rem;
+  }
+  .MuiCard-root {
+    align-content: flex-start;
+    margin: 1rem;
+    border-radius: 13px;
+    box-shadow: 0px 3px 8px rgba(8,35,48,0.05);
+  }
+  .MuiButton-root {
+    background-color: $blue;
+    color: $white;
+    text-transform: none;
+    padding-right: 2rem;
+    padding-left: 2rem;
+  }
+  .MuiButton-root:hover {
+    background-color: $lightblue;
+  }
+
+  .MuiButton-outlined {
+    background-color: $white;
+    color: $blue;
+    border: 1px solid $blue
+  }
+
+  .MuiButton-outlined:hover {
+    background-color: $white;
+    color: $lightblue;
+    border: 1px solid $lightblue
+  }
+  .MuiCard-root {
+    align-content: flex-start;
+  }
+  .MuiCardActions-root {
+    justify-content: space-between;
+  }
+}
+
 
 code {
   font-family: 'Assistant', Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
+
+
+/* Increase the specificity */
+// .Button:disabled {
+//   color: white;
+// }

@@ -1,17 +1,19 @@
 // FONTS
 $brand: 'Assistant', sans-serif;
-$text: 'Roboto', sans-serif;
+$text: 'Assistant', sans-serif;
 $reg: 400;
 $bold: 700;
 
 // COLORS
 $white: #f9f9f9;
-$black: #26242a;
+$black: rgb(38, 36, 42);
 $blue: #223d55;
 $thiccblue: #182c5b;
 $invis: #182c5b00;
 $sand: #e3d3ca;
 $brown: #3d2b2a;
+$grey: #505050;
+$mint: #1D869D;
 
 // .MuiButton-root
 @mixin outline {

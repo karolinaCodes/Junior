@@ -61,72 +61,69 @@ export default function Profile(props) {
   const parsedJobs = jobsArray.map(job => {
     const data = <JobPostingModal key={'Job-modal-' + job.id} {...job} />;
 
-    //need to check current path
-    // /employer   => /job/...
-    // /employer/ => job/...
-    const applicationLink = `job/${job.id}/applications`;
-    return (
+    const applicationLink = `employerprofile/job/${job.id}/applications`;
+    const postingLink = `job/${job.id}`;
+		return (
       <Grid item xs={12} sm={6} md={4} lg={3} key={'Job-grid-item-' + job.id}>
-        <Grid container direction="column" key={'Job-grid-container-' + job.id}>
-          <Paper key={'Job-paper-' + job.id}>
-            <Card key={'Job-card-' + job.id}>
-              <CardActionArea
-                key={'Job-card-action' + job.id}
-                onClick={() => {
-                  setModalData(data);
-                  handleView();
-                }}
-              >
-                <JobPostingCard
-                  key={'Job-card-' + job.id}
-                  type="job"
-                  {...job}
-                />
-              </CardActionArea>
-              <CardActions key={'Job-card-actions-' + job.id}>
-                <Button
-                  key={'Job-button-' + job.id}
-                  onClick={() => window.open(applicationLink, '_self')}
-                >
-                  View Applications
-                </Button>
-              </CardActions>
-            </Card>
-          </Paper>
+        <Grid container direction='column' key={'Job-grid-container-' + job.id}>
+          <Card key={'Job-card-' + job.id}>
+            <CardActionArea key={'Job-card-action' + job.id}
+              onClick={() => {
+              setModalData(data);
+              handleView();
+            }}>
+              <JobPostingCard key={'Job-card-' + job.id}
+                type='job'
+                {...job}
+              />
+            </CardActionArea>
+            <CardActions key={'Job-card-actions-' + job.id}>
+              <Button key={'Job-button-' + job.id}
+                onClick={() => window.open(applicationLink, "_self")}>
+                Applications
+              </Button>
+              <Button key={'Job-button-post-' + job.id}
+                className='card-footer'
+                onClick={() => window.open(postingLink, "_self")}>
+                Posting
+              </Button>
+            </CardActions>
+          </Card>
         </Grid>
       </Grid>
     );
   });
   const parsedGigs = gigsArray.map(gig => {
-    const data = <GigPostingModal key={'Gig-modal-' + gig.id} {...gig} />;
-    const applicationLink = `gig/${gig.id}/applications`;
-    return (
-      <Grid item xs={12} sm={6} md={4} lg={3} key={'Gig-grid-item-' + gig.id}>
-        <Grid container direction="column" key={'Gig-grid-container-' + gig.id}>
-          <Paper key={'Gig-paper-' + gig.id}>
-            <Card key={'Gig-card-' + gig.id}>
-              <CardActionArea
-                key={'Gig-card-action' + gig.id}
-                onClick={() => {
-                setModalData(data);
-                handleView();
-              }}>
-                <JobPostingCard key={'Gig-card-post-' + gig.id}
-                  type='gig'
-                  {...gig}
-                />
-              </CardActionArea>
-              <CardActions key={'Gig-card-actions-' + gig.id}>
-                <Button
-                  key={'Gig-button-' + gig.id}
-                  className="card-footer"
-                  onClick={() => window.open(applicationLink, '_self')}
-                >
-                  View Applications
-                </Button>
-              </CardActions>
-            </Card>
-          </Paper>
+    const data = (<GigPostingModal key={'Gig-modal-' + gig.id} {...gig} />);
+    const applicationLink = `employerprofile/gig/${gig.id}/applications`;
+    const postingLink = `gig/${gig.id}`;
+		return (
+      <Grid item xs={12} sm={6} md={4} lg={3} key={'Gig-grid-item-' + gig.id} >
+        <Grid container direction='column' key={'Gig-grid-container-' + gig.id}>
+          <Card key={'Gig-card-' + gig.id}>
+            <CardActionArea key={'Gig-card-action' + gig.id}
+              onClick={() => {
+              setModalData(data);
+              handleView();
+            }}>
+              <JobPostingCard key={'Gig-card-post-' + gig.id}
+                type='gig'
+                {...gig}
+              />
+            </CardActionArea>
+            <CardActions key={'Gig-card-actions-' + gig.id}>
+              <Button key={'Gig-button-' + gig.id}
+                className='card-footer'
+                onClick={() => window.open(applicationLink, "_self")}>
+                Applications
+              </Button>
+              <Button key={'Gig-button-post-' + gig.id}
+                className='card-footer'
+                onClick={() => window.open(postingLink, "_self")}>
+                Posting
+              </Button>
+            </CardActions>
+          </Card>
         </Grid>
       </Grid>
     );
@@ -156,8 +153,8 @@ export default function Profile(props) {
         <h1>No postings.</h1>
       )}
       {parsedJobs.length !== 0 && (
-        <section className="profile-cards">
-          <Grid container rowSpacing={1} columnSpacing={{xs: 1, sm: 2, md: 3}}>
+        <section className='profile-cards'>
+          <Grid container>
             <Grid item xs={12}>
               <h1>{company_name ? company_name + "'s " : null}Job Postings:</h1>
             </Grid>
@@ -166,8 +163,8 @@ export default function Profile(props) {
         </section>
       )}
       {parsedGigs.length !== 0 && (
-        <section className="profile-cards">
-          <Grid container rowSpacing={1} columnSpacing={{xs: 1, sm: 2, md: 3}}>
+        <section className='profile-cards'>
+          <Grid container>
             <Grid item xs={12}>
               <h1>{company_name ? company_name + "'s " : null}Gig Postings:</h1>
             </Grid>

@@ -1,4 +1,5 @@
 // DB queries for EMPLOYERS //
+
 module.exports = db => {
 	const getEmployers = () => {
 		const query = {

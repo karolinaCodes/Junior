@@ -17,22 +17,24 @@ export default function Posting(props) {
     formatted_pay,
     deadline,
     formatted_deadline,
-    photo_url
+    photo_url,
+    total_applications
   } = props;
 
   return (
     <CardContent>
       <h1>{job_title}</h1>
-      {pay && <p><strong>Compensation:</strong> ${pay / 100.00}</p>}
+      {is_open && <p><strong>Accepting Applicants:</strong> {is_open ? 'Yes' : 'No'} <strong>Total Applicants:</strong> {total_applications}</p>}
+      {pay && <p><strong>Total Applicants:</strong> {total_applications}</p>}
       {photo_url && <CardMedia
 				component="img"
 				image={photo_url}
 				alt={job_title}
-			/>}
+        />}
       {city && <p> {city}, Canada ({is_remote ? 'Remote' : 'On-site'})</p>}
       {salary && <p>Salary: ${formatted_salary} ({job_type})</p>}
+        {pay && <p><strong>Compensation:</strong> ${formatted_pay}</p>}
       <p>Date Posted: {formatted_date}</p>
-      {is_open && <p>Accepting Applicants: {is_open ? 'Yes' : 'No'}</p>}
 			{deadline && <p>Deadline: {formatted_deadline}</p>}
       <p className="description">{description}</p>
     </CardContent>

@@ -3,7 +3,7 @@ import {Grid} from '@mui/material';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 
 export default function ApplicationCard(props) {
-	const { job_title, description, salary, date_posted, job_type, is_remote, employer_email, company_name, employer_bio, employer_photo_url, deadline, photo_url, application_date, city } =	props;
+	const { job_title, description, salary, formatted_salary, date_posted, date_applied, job_type, is_remote, employer_email, company_name, employer_bio, employer_photo_url, deadline, photo_url, application_date, city } =	props;
 		
 	const formattedDate = new Date(date_posted).toLocaleDateString('en-US', {
 		year: 'numeric',
@@ -15,7 +15,7 @@ export default function ApplicationCard(props) {
 		month: 'long',
 		day: 'numeric',
 	})
-	const formattedApplicationDate = new Date(application_date).toLocaleDateString('en-US', {
+	const formattedApplicationDate = new Date(date_applied).toLocaleDateString('en-US', {
 		year: 'numeric',
 		month: 'long',
 		day: 'numeric',
@@ -34,7 +34,7 @@ export default function ApplicationCard(props) {
 				<h3>{job_title}</h3>
 				<p>{company_name}</p>
 				{city && <p><LocationOnIcon /> {city} ({is_remote ? 'Remote' : 'On-site'})</p>}
-				<p>Salary: ${salary}</p>
+				<p>Salary: {salary}</p>
 				<p>{date_posted && `Date Posted: ${formattedDate}`}</p>
 				<p>{job_type ? job_type : `Deadline: ${formattedDeadline}`}</p>
 			</Grid>

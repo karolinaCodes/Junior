@@ -1,5 +1,5 @@
 import './styles/PortfolioCard.scss';
-import {CardContent, CardActionArea} from '@mui/material';
+import {CardContent, CardMedia, CardActionArea} from '@mui/material';
 
 export default function Profile(props) {
   const {
@@ -7,24 +7,34 @@ export default function Profile(props) {
     description,
     city,
     salary,
+    formatted_salary,
     job_type,
     is_remote,
     date_posted,
+    formatted_date,
     is_open,
+    pay,
+    formatted_pay,
+    deadline,
+    formatted_deadline,
+    photo_url
   } = props;
-  const datePostedFormatted = new Date(date_posted).toLocaleDateString();
 
   return (
-    <>
+    <CardContent>
       <h1>{job_title}</h1>
-      <p>{city}</p>
-      <p>${salary}</p>
-      <p>
-        {job_type}, Remote: {is_remote ? 'Yes' : 'No'}
-      </p>
-      <p>Date Posted: {datePostedFormatted}</p>
-      <p>Accepting Applicants: {is_open ? 'Yes' : 'No'}</p>
+      {pay && <strong><p>Compensation: ${pay / 100.00}</p></strong>}
+      {photo_url && <CardMedia
+				component="img"
+				image={photo_url}
+				alt={job_title}
+			/>}
+      {city && <p> {city}, Canada ({is_remote ? 'Remote' : 'On-site'})</p>}
+      {salary && <p>Salary: ${formatted_salary} ({job_type})</p>}
+      <p>Date Posted: {formatted_date}</p>
+      {is_open && <p>Accepting Applicants: {is_open ? 'Yes' : 'No'}</p>}
+			{deadline && <p>Deadline: {formatted_deadline}</p>}
       <p>{description}</p>
-    </>
+    </CardContent>
   );
 }

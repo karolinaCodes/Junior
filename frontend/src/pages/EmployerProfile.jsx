@@ -3,7 +3,6 @@ import './styles/Profile.scss';
 import {Grid, Button, Modal, Box, Paper, Card, CardActionArea, CardActions, Dialog} from '@mui/material';
 import JobPostingCard from '../components/JobPostingCard';
 import JobPostingModal from '../components/JobPostingModal';
-import GigPostingCard from '../components/GigPostingCard';
 import GigPostingModal from '../components/GigPostingModal';
 import axios from 'axios';
 
@@ -94,7 +93,7 @@ export default function Profile(props) {
                 setModalData(data);
                 handleView();
               }}>
-                <GigPostingCard key={'Gig-card-post-' + gig.id}
+                <JobPostingCard key={'Gig-card-post-' + gig.id}
                   type='gig'
                   {...gig}
                 />

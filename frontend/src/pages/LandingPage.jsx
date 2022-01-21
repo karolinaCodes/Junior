@@ -1,5 +1,4 @@
 import './styles/LandingPage.scss';
-import {Link} from 'react-router-dom';
 import {TextField, Button} from '@mui/material';
 import {useEffect, useState} from 'react';
 import Box from '@mui/material/Box';
@@ -8,13 +7,11 @@ import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
 import axios from 'axios';
 import {useNavigate} from 'react-router-dom';
-
 import LoginForm from '../components/LoginForm';
 
 export default function LandingPage(props) {
   const {loginView, handleLoginView, currentUser, setCurrentUser} = props;
   const [jobType, setJobType] = useState('');
-  const [searchResults, setSearchResults] = useState([]);
   const [queryString, setQueryString] = useState('');
 
   let navigate = useNavigate();

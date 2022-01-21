@@ -186,6 +186,7 @@ module.exports = db => {
 	};
 
   return {
+		getUserByEmail,
 		getDevs,
 		getDevById,
 		getProjectsByDevId,

@@ -35,7 +35,7 @@ body {
     padding-left: 2rem;
   }
 }
-.profile-content {
+.profile-content, .application-content, .posting-content, .profile-cards {
   .description {
     color: $grey;
     overflow: hidden;

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import './styles/NewJobPost.scss';
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
@@ -11,9 +11,10 @@ import {
 } from '@mui/material';
 import { useEffect } from 'react';
 import { maxWidth } from '@mui/system';
+import { UserContext } from '../Providers/userProvider';
 
 export default function NewJobPost(props) {
-	const { currentUser } = props;
+	const { currentUser } = useContext(UserContext);
 	const [jobForm, setJobForm] = useState({
 		employer_id: currentUser.id,
 		job_title: 'Job Title',

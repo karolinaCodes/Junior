@@ -9,13 +9,14 @@
 	width: auto;
 	background-image: url('/images/form-backround.png');
 	background-size: cover;
-	background-position: center right;
+	background-position: center center;
 
 	img {
 		max-width: 5rem;
 		height: auto;
 		z-index: 999;
-		margin-bottom: 35%;
+		position: absolute;
+		top: 9.5rem;
 	}
 }
 

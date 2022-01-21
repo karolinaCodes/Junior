@@ -54,133 +54,53 @@ export default function Applications(props) {
 		});
 	}, []);
 
-<<<<<<< HEAD
 	const applicationsArray = posting.applications;
 	const parsedApplications = applicationsArray.map(application => {
 		const data = (
 			<ApplicationModal
-				key={'Application-modal-' + application.junior_dev_id}
+				key={'Application-modal-' + application.id}
 				{...application}
 			/>
 		);
 		return (
-			<Grid
-				item
-				xs={12}
-				md={6}
-				key={'Application-grid-' + application.junior_dev_id}
-			>
-				<Paper
+			<Grid item xs={12} md={6} key={'Application-grid-' + application.id}>
+				<Card
 					className='card-click'
 					onClick={() => {
 						setModalData(data);
 						handleView();
 					}}
-					key={'Application-paper-' + application.junior_dev_id}
+					key={'Application-paper-' + application.id}
 				>
 					<ApplicationCard
-						key={'Application-card-' + application.junior_dev_id}
+						key={'Application-card-' + application.id}
 						{...application}
 					/>
-				</Paper>
+				</Card>
 			</Grid>
 		);
 	});
 
 	return (
-		<div className='posting-content'>
-			{/* Insert post component */}
-			{/* <h1>{posting.posting.job_title}</h1>
-      <h2>Description</h2>
-      <p>{posting.posting.description}</p>
-      <div>
-        <p>
-          Posted{' '}
-          {new Date(posting.posting.date_posted).toLocaleDateString('en-US', {
-            year: 'numeric',
-            month: 'long',
-            day: 'numeric',
-          })}
-          {posting.posting.salary && ` $${posting.posting.salary}`}
-          {posting.posting.pay && ` Offer: ${posting.posting.pay} CAD`}
-        </p>
-      </div> */}
-			<div className='application-content'>
+		<div className='application-content'>
+			<Grid container direction='column'>
 				<h1>Applications</h1>
 				<p>Total applications: {posting.applications.length}</p>
-				<Grid container direction='column'>
-					<section className='application-cards'>
-						<Grid container item spacing={3}>
-							{parsedApplications}
-						</Grid>
-					</section>
-				</Grid>
+				<section className='application-cards'>
+					<Grid container item>
+						{parsedApplications}
+					</Grid>
+				</section>
+			</Grid>
 
-				<Dialog
-					open={openModal}
-					onClose={handleView}
-					fullWidth={true}
-					maxWidth={'md'}
-				>
-					<Box className='application-modal'>{modalData}</Box>
-				</Dialog>
-			</div>
+			<Dialog
+				open={openModal}
+				onClose={handleView}
+				fullWidth={true}
+				maxWidth={'md'}
+			>
+				<Box className='application-modal'>{modalData}</Box>
+			</Dialog>
 		</div>
 	);
-=======
-  const applicationsArray = posting.applications;
-  const parsedApplications = applicationsArray.map(application => {
-    const data = (
-      <ApplicationModal
-        key={'Application-modal-' + application.id}
-        {...application}
-      />
-    );
-    return (
-      <Grid
-        item
-        xs={12}
-        md={6}
-        key={'Application-grid-' + application.id}
-      >
-        <Card
-          className="card-click"
-          onClick={() => {
-            setModalData(data);
-            handleView();
-          }}
-          key={'Application-paper-' + application.id}
-        >
-          <ApplicationCard
-            key={'Application-card-' + application.id}
-            {...application}
-          />
-        </Card>
-      </Grid>
-    );
-  });
-
-  return (
-    <div className="application-content">
-      <Grid container direction="column">
-      <h1>Applications</h1>
-      <p>Total applications: {posting.applications.length}</p>
-        <section className="application-cards">
-          <Grid container item>
-            {parsedApplications}
-          </Grid>
-        </section>
-      </Grid>
-
-      <Dialog
-        open={openModal}
-        onClose={handleView}
-        fullWidth={true}
-        maxWidth={'md'}
-      >
-        <Box className="application-modal">{modalData}</Box>
-      </Dialog>
-    </div>
-  );
->>>>>>> main
 }

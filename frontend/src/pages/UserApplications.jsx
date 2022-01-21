@@ -2,9 +2,6 @@ import './styles/Profile.scss';
 import { Card, Modal, Box, Grid, Paper, Dialog } from '@mui/material';
 import { useContext, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { Card, Modal, Box, Grid, Dialog } from '@mui/material';
-import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
 import UserApplicationCard from '../components/UserApplicationCard';
 import UserApplicationModal from '../components/UserApplicationModal';
 
@@ -45,6 +42,9 @@ export default function UserApplications(props) {
 			});
 		}
 	}, [id]);
+
+	const jobApplicationsArray = applications.jobApplications;
+	const gigApplicationsArray = applications.gigApplications;
 
 	const parsedJobApplications = jobApplicationsArray.map(application => {
 		const data = (
@@ -91,55 +91,6 @@ export default function UserApplications(props) {
 						{...application}
 					/>
 				</Card>
-			</Grid>
-		);
-	});
-
-	const parsedJobApplications = jobApplicationsArray.map(application => {
-		const data = (
-			<UserApplicationModal
-				key={'Job-application-modal-' + application.id}
-				{...application}
-			/>
-		);
-		return (
-			<Grid item xs={12} md={6} key={'Job-application-grid-' + application.id}>
-				<Paper
-					key={'Job-application-paper-' + application.id}
-					onClick={() => {
-						setModalData(data);
-						handleView();
-					}}
-				>
-					<UserApplicationCard
-						key={'Job-application-card-' + application.id}
-						{...application}
-					/>
-				</Paper>
-			</Grid>
-		);
-	});
-	const parsedGigApplications = gigApplicationsArray.map(application => {
-		const data = (
-			<UserApplicationModal
-				key={'Gig-application-modal-' + application.id}
-				{...application}
-			/>
-		);
-		return (
-			<Grid item xs={12} md={6} key={'Gig-application-grid-' + application.id}>
-				<Paper
-					key={'Gig-application-paper-' + application.id}
-					onClick={() => {
-						setModalData(data);
-						handleView();
-					}}
-				>
-					<UserApplicationCard
-						key={'Gig-application-card-' + application.id}
-						{...application}
-					/>
-				</Paper>
 			</Grid>
 		);
 	});

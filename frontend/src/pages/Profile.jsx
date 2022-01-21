@@ -73,36 +73,34 @@ export default function Profile(props) {
 					direction='column'
 					key={'Project-grid-container-' + project.project_id}
 				>
-					<Paper key={'Project-paper-' + project.project_id}>
-						<Card key={'Project-card-' + project.project_id}>
-							<CardActionArea
-								key={'Job-card-action' + project.project_id}
-								onClick={() => {
-									setModalData(data);
-									handleView();
-								}}
+					<Card key={'Project-card-' + project.project_id}>
+						<CardActionArea
+							key={'Job-card-action' + project.project_id}
+							onClick={() => {
+								setModalData(data);
+								handleView();
+							}}
+						>
+							<PortfolioCard
+								key={'Portfolio-card-' + project.project_id}
+								{...project}
+							/>
+						</CardActionArea>
+						<CardActions key={'Job-card-actions-' + project.project_id}>
+							<Button
+								key={'Job-button-github-' + project.project_id}
+								onClick={() => window.open(project.github_link, '_self')}
 							>
-								<PortfolioCard
-									key={'Portfolio-card-' + project.project_id}
-									{...project}
-								/>
-							</CardActionArea>
-							<CardActions key={'Job-card-actions-' + project.project_id}>
-								<Button
-									key={'Job-button-github-' + project.project_id}
-									onClick={() => window.open(project.github_link, '_self')}
-								>
-									Github
-								</Button>
-								<Button
-									key={'Job-button-live-' + project.project_id}
-									onClick={() => window.open(project.live_link, '_self')}
-								>
-									Live Link
-								</Button>
-							</CardActions>
-						</Card>
-					</Paper>
+								Github
+							</Button>
+							<Button variant='outlined'
+								key={'Job-button-live-' + project.project_id}
+								onClick={() => window.open(project.live_link, '_self')}
+							>
+								Live Link
+							</Button>
+						</CardActions>
+					</Card>
 				</Grid>
 			</Grid>
 		);
@@ -121,7 +119,7 @@ export default function Profile(props) {
 			<UserProfileInfo currentUser={currentUser} />
 			{profile.projects.length === 0 && <h1>No projects added</h1>}
 			<section className='profile-cards'>
-				<Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
+				<Grid container>
 					<Grid item xs={12}>
 						<h1>{`${first_name} ${last_name}`} Portfolio:</h1>
 					</Grid>

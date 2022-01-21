@@ -10,7 +10,7 @@ export default function PortfolioModal(props) {
 			<Grid item>
 				<h1>{title}</h1>
 			</Grid>
-			<Grid item>
+			<Grid item xs={12}>
 				<CardMedia
 					component="img"
 					id='project-img'

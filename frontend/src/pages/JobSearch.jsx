@@ -139,7 +139,7 @@ const useStyles = makeStyles({
 	},
 });
 
-export default function JobSearch() {
+export default function JobSearch(props) {
 	const { currentUser } = useContext(UserContext);
 
 	const { state } = useLocation();
@@ -151,7 +151,7 @@ export default function JobSearch() {
 	const [jobType, setJobType] = useState('');
 	const [open, setOpen] = useState(false);
 	const [jobApplying, setJobApplying] = useState('');
-	const [value, setValue] = useState([50000, 70000]);
+	const [value, setValue] = useState([40000, 70000]);
 	// value = salary range
 
 	const classes = useStyles();
@@ -277,7 +277,7 @@ export default function JobSearch() {
 		setSchedule('');
 		setQueryString('');
 		setJobType('');
-		setValue([50000, 70000]);
+		setValue([40000, 70000]);
 	};
 
 	return (
@@ -346,7 +346,7 @@ export default function JobSearch() {
 					<Slider
 						size='small'
 						value={value}
-						min={40000}
+						min={30000}
 						max={80000}
 						onChange={handleSlider}
 						className={classes.slider}

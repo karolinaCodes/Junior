@@ -15,6 +15,15 @@ const useStyles = makeStyles({
     'margin-right': '10px',
     'text-transform': 'none',
   },
+  apply_modal: {
+    'background-color': '#182c5b',
+    color: 'white',
+    display: 'flex;',
+    'justify-content': 'center;',
+  },
+  see_applications: {
+    'text-decoration': 'none',
+  },
 });
 
 export default function ApplyModal(props) {
@@ -80,22 +89,23 @@ export default function ApplyModal(props) {
         open={openModal}
         onClose={handleView}
         fullWidth={true}
-        maxWidth={'md'}
+        maxWidth={applicationSubmitted ? 'sm' : 'md'}
+        // sx={{maxWidth: '2000px'}}
       >
-        <Box>
+        <Box className={classes.apply_modal}>
           {applicationSubmitted ? (
-            <div>
-              'Application Submitted'
-              <div>
+            <div class="submitted-container">
+              <p id="submitted-msg">Application Submitted!</p>
+              <div id="submitted-actions">
                 <Button
                   variant="contained"
                   onClick={() => {
-                    navigate(-1);
+                    handleView();
                   }}
                 >
                   Search More Jobs
                 </Button>
-                <Link to="/">
+                <Link to="/" className={classes.see_applications}>
                   <Button variant="contained">View Application</Button>
                 </Link>
               </div>
@@ -113,14 +123,15 @@ export default function ApplyModal(props) {
                   <Link to="/profile">Profile</Link>
                 </div>
                 <div className="apply-user-info">
-                  <h1>{`${currentUser.first_name} ${currentUser.last_name}`}</h1>
-                  <h2>{currentUser.headline ? currentUser.headline : 'N/A'}</h2>
+                  <h1 id="apply-name">{`${currentUser.first_name} ${currentUser.last_name}`}</h1>
+                  <h2 id="apply-headline">
+                    {currentUser.headline ? currentUser.headline : 'N/A'}
+                  </h2>
                   <div className="apply-phone-city">
-                    <h3> {currentUser.phone_number}</h3>
-                    <h3 id="city"> {currentUser.city}, Canada</h3>
+                    <h3 id="apply-phone"> {currentUser.phone_number}</h3>
+                    <h3 id="apply-email"> {currentUser.email}</h3>
+                    <h3 id="apply-city"> {currentUser.city}, Canada</h3>
                   </div>
-
-                  <h3> {currentUser.email}</h3>
                   <h4>Github</h4>
                   <p>
                     {currentUser.github_url ? currentUser.github_url : 'N/A'}
@@ -135,22 +146,22 @@ export default function ApplyModal(props) {
                       ? currentUser.linkedin_url
                       : 'N/A'}
                   </p>
+                  <div className="btn-container">
+                    {applicationSubmitted ? null : (
+                      <Button variant="contained" onClick={submitApplication}>
+                        Submit Application
+                      </Button>
+                    )}
+                    {!applicationSubmitted && (
+                      <Button onClick={handleView} variant="contained">
+                        Close
+                      </Button>
+                    )}
+                  </div>
                 </div>
               </div>
             </section>
           )}
-          <div>
-            {applicationSubmitted ? null : (
-              <Button variant="contained" onClick={submitApplication}>
-                Submit Application
-              </Button>
-            )}
-            {!applicationSubmitted && (
-              <Button onClick={handleView} variant="contained">
-                Close
-              </Button>
-            )}
-          </div>
         </Box>
       </Dialog>
     </div>

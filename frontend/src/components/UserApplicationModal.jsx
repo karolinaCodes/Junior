@@ -4,24 +4,10 @@ import LocationOnIcon from '@mui/icons-material/LocationOn';
 import {Link} from 'react-router-dom';
 
 export default function ApplicationCard(props) {
-	const { job_title, description, salary, date_posted, job_type, is_remote, employer_email, company_name, employer_bio, employer_photo_url, deadline, photo_url, application_date, city } =	props;
-		
-	const formattedDate = `Date Posted: ${new Date(date_posted).toLocaleDateString('en-US', {
-		year: 'numeric',
-		month: 'long',
-		day: 'numeric',
-	})}`;
-	const formattedTypeOrDeadline = job_type ? job_type : `Deadline: ${new Date(deadline).toLocaleDateString('en-US', {
-		year: 'numeric',
-		month: 'long',
-		day: 'numeric',
-	})}`;
-	const formattedApplicationDate = `Applied on: ${new Date(application_date).toLocaleDateString('en-US', {
-		year: 'numeric',
-		month: 'long',
-		day: 'numeric',
-	})}`;
+	const { job_title, description, salary, formatted_salary, date_posted, formatted_date, date_applied, formatted_date_applied, job_type, is_remote, employer_email, company_name, employer_bio, employer_photo_url, deadline, photo_url, city, pay, formatted_pay, formatted_deadline } =	props;
 	const location = `${city} ${is_remote ? 'Remote' : 'On-site'}`;
+	const formattedTypeOrDeadline = job_type ? job_type : `Deadline: ${formatted_deadline}`;
+
 	return (
 		<>
 			<Grid item>
@@ -33,7 +19,7 @@ export default function ApplicationCard(props) {
 							src={employer_photo_url}
 							alt={`Photo of ${company_name}`}
 						/>
-					<p>{formattedApplicationDate}</p>
+					<p>{formatted_date_applied}</p>
 				</Grid>
 				<Grid item className='application-info'>
 					<List>
@@ -56,7 +42,7 @@ export default function ApplicationCard(props) {
 						</ListItemButton>
 						{date_posted && <ListItemButton>
 							<ListItem disablePadding>
-								<ListItemText primary={formattedDate} />
+								<ListItemText primary={formatted_date} />
 							</ListItem>
 						</ListItemButton>}
 						<ListItem>

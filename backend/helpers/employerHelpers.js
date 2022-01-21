@@ -30,10 +30,20 @@ module.exports = db => {
 			text: `SELECT employers.id as employer_id, 
         company_name, email, bio, employers.photo_url as employer_photo_url, 
         job_postings.*, trim(to_char(salary/100, '999,999,990')) as formatted_salary,
+				applications_table.total_applications,
         to_char(date_posted,'FMMonth DD, YYYY') as formatted_date
         FROM employers
         JOIN job_postings ON employers.id = job_postings.employer_id
-        WHERE employers.id = $1`,
+				JOIN job_applications ON job_applications.job_posting_id = job_postings.id
+				JOIN (
+					SELECT job_posting_id as selected_posting_id,
+					COUNT(job_posting_id) as total_applications
+					FROM job_applications
+					GROUP BY selected_posting_id
+					) AS applications_table
+					ON job_posting_id = selected_posting_id
+        WHERE employers.id = $1
+				`,
 			values: [id],
 		};
 
@@ -48,10 +58,19 @@ module.exports = db => {
 			text: `SELECT employers.id as employer_id, 
         company_name, email, bio, employers.photo_url as employer_photo_url, 
         gig_postings.*, trim(to_char(pay/100, '999,999,990')) as formatted_pay,
+				applications_table.total_applications,
         to_char(date_posted,'FMMonth DD, YYYY') as formatted_date,
         to_char(deadline,'FMMonth DD, YYYY') as formatted_deadline
         FROM employers
         JOIN gig_postings ON employers.id = gig_postings.employer_id
+				JOIN gig_applications ON gig_applications.gig_posting_id = gig_postings.id
+				JOIN (
+					SELECT gig_posting_id as selected_posting_id,
+					COUNT(gig_posting_id) as total_applications
+					FROM gig_applications
+					GROUP BY selected_posting_id
+					) AS applications_table
+					ON gig_posting_id = selected_posting_id
         WHERE employers.id = $1`,
 			values: [id],
 		};

@@ -100,7 +100,6 @@ export default function Profile() {
 								Github
 							</Button>
 							<Button
-								variant='outlined'
 								key={'Job-button-live-' + project.project_id}
 								onClick={() => window.open(project.live_link, '_self')}
 							>

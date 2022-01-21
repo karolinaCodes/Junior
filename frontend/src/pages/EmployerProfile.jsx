@@ -94,7 +94,7 @@ export default function Profile(props) {
     );
   });
   const parsedGigs = gigsArray.map(gig => {
-    const data = (<GigPostingModal key={'Gig-modal-' + gig.id} {...gig} />);
+    const data = (<JobPostingModal key={'Gig-modal-' + gig.id} {...gig} />);
     const applicationLink = `employerprofile/gig/${gig.id}/applications`;
     const postingLink = `gig/${gig.id}`;
 		return (
@@ -134,7 +134,6 @@ export default function Profile(props) {
       <Grid
         container
         className="profile-bio"
-        columnSpacing={{xs: 1, sm: 2, md: 3}}
       >
         <Grid item className="profile-pic">
           <img id="profile-pic" src={photo_url} alt="Avatar"></img>
@@ -149,29 +148,33 @@ export default function Profile(props) {
           <h4>Gig Postings: {profile.gigs.length}</h4>
         </Grid>
       </Grid>
-      {parsedJobs.length === 0 && parsedGigs.length === 0 && (
-        <h1>No postings.</h1>
-      )}
-      {parsedJobs.length !== 0 && (
-        <section className='profile-cards'>
-          <Grid container>
-            <Grid item xs={12}>
-              <h1>{company_name ? company_name + "'s " : null}Job Postings:</h1>
-            </Grid>
-            {parsedJobs}
-          </Grid>
+      <Grid container direction='column'>
+        <section className="posting-content">
+          {parsedJobs.length === 0 && parsedGigs.length === 0 && (
+            <h1>No postings.</h1>
+          )}
+          {parsedJobs.length !== 0 && (
+            <section className='profile-cards'>
+              <Grid container>
+                <Grid item xs={12}>
+                  <h1>{company_name ? company_name + "'s " : null}Job Postings:</h1>
+                </Grid>
+                {parsedJobs}
+              </Grid>
+            </section>
+          )}
+          {parsedGigs.length !== 0 && (
+            <section className='profile-cards'>
+              <Grid container>
+                <Grid item xs={12}>
+                  <h1>{company_name ? company_name + "'s " : null}Gig Postings:</h1>
+                </Grid>
+                {parsedGigs}
+              </Grid>
+            </section>
+          )}
         </section>
-      )}
-      {parsedGigs.length !== 0 && (
-        <section className='profile-cards'>
-          <Grid container>
-            <Grid item xs={12}>
-              <h1>{company_name ? company_name + "'s " : null}Gig Postings:</h1>
-            </Grid>
-            {parsedGigs}
-          </Grid>
-        </section>
-      )}
+      </Grid>
       <Dialog
         open={openModal}
         onClose={handleView}

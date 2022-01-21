@@ -54,6 +54,7 @@ export default function Applications(props) {
 		});
 	}, []);
 
+<<<<<<< HEAD
 	const applicationsArray = posting.applications;
 	const parsedApplications = applicationsArray.map(application => {
 		const data = (
@@ -126,4 +127,60 @@ export default function Applications(props) {
 			</div>
 		</div>
 	);
+=======
+  const applicationsArray = posting.applications;
+  const parsedApplications = applicationsArray.map(application => {
+    const data = (
+      <ApplicationModal
+        key={'Application-modal-' + application.id}
+        {...application}
+      />
+    );
+    return (
+      <Grid
+        item
+        xs={12}
+        md={6}
+        key={'Application-grid-' + application.id}
+      >
+        <Card
+          className="card-click"
+          onClick={() => {
+            setModalData(data);
+            handleView();
+          }}
+          key={'Application-paper-' + application.id}
+        >
+          <ApplicationCard
+            key={'Application-card-' + application.id}
+            {...application}
+          />
+        </Card>
+      </Grid>
+    );
+  });
+
+  return (
+    <div className="application-content">
+      <Grid container direction="column">
+      <h1>Applications</h1>
+      <p>Total applications: {posting.applications.length}</p>
+        <section className="application-cards">
+          <Grid container item>
+            {parsedApplications}
+          </Grid>
+        </section>
+      </Grid>
+
+      <Dialog
+        open={openModal}
+        onClose={handleView}
+        fullWidth={true}
+        maxWidth={'md'}
+      >
+        <Box className="application-modal">{modalData}</Box>
+      </Dialog>
+    </div>
+  );
+>>>>>>> main
 }

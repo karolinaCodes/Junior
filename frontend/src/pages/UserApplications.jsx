@@ -2,6 +2,9 @@ import './styles/Profile.scss';
 import { Card, Modal, Box, Grid, Paper, Dialog } from '@mui/material';
 import { useContext, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { Card, Modal, Box, Grid, Dialog } from '@mui/material';
+import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import UserApplicationCard from '../components/UserApplicationCard';
 import UserApplicationModal from '../components/UserApplicationModal';
 
@@ -43,8 +46,54 @@ export default function UserApplications(props) {
 		}
 	}, [id]);
 
-	const jobApplicationsArray = applications.jobApplications;
-	const gigApplicationsArray = applications.gigApplications;
+	const parsedJobApplications = jobApplicationsArray.map(application => {
+		const data = (
+			<UserApplicationModal
+				key={'Job-application-modal-' + application.id}
+				{...application}
+			/>
+		);
+		return (
+			<Grid item xs={12} md={6} key={'Job-application-grid-' + application.id}>
+				<Card
+					key={'Job-application-Card-' + application.id}
+					onClick={() => {
+						setModalData(data);
+						handleView();
+					}}
+				>
+					<UserApplicationCard
+						key={'Job-application-card-' + application.id}
+						{...application}
+					/>
+				</Card>
+			</Grid>
+		);
+	});
+	const parsedGigApplications = gigApplicationsArray.map(application => {
+		const data = (
+			<UserApplicationModal
+				key={'Gig-application-modal-' + application.id}
+				{...application}
+			/>
+		);
+		return (
+			<Grid item xs={12} md={6} key={'Gig-application-grid-' + application.id}>
+				<Card
+					key={'Gig-application-Card-' + application.id}
+					onClick={() => {
+						setModalData(data);
+						handleView();
+					}}
+				>
+					<UserApplicationCard
+						key={'Gig-application-card-' + application.id}
+						{...application}
+					/>
+				</Card>
+			</Grid>
+		);
+	});
 
 	const parsedJobApplications = jobApplicationsArray.map(application => {
 		const data = (
@@ -97,18 +146,20 @@ export default function UserApplications(props) {
 
 	return (
 		<div className='application-content'>
-			<h1>Applications</h1>
-			Total applications:{' '}
-			{applications.jobApplications.length +
-				applications.gigApplications.length}
 			<Grid container direction='column'>
+				<h1>My Applications</h1>
+				<p>
+					Total applications:{' '}
+					{applications.jobApplications.length +
+						applications.gigApplications.length}
+				</p>
 				<section className='application-cards'>
 					<h3>Job Applications:</h3>
-					<Grid container item spacing={3}>
+					<Grid container item>
 						{parsedJobApplications}
 					</Grid>
 					<h3>Gig Applications:</h3>
-					<Grid container item spacing={3}>
+					<Grid container item>
 						{parsedGigApplications}
 					</Grid>
 				</section>

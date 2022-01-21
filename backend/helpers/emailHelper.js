@@ -1,7 +1,7 @@
 const sgMail = require('@sendgrid/mail');
-sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
-export default function sendEmail(params) {
+const sendEmail = params => {
+	sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 	const msg = params;
 
 	/*
@@ -13,8 +13,10 @@ export default function sendEmail(params) {
   html: '<strong>and easy to do anywhere, even with Node.js</strong>',
   */
 
-	sgMail.send(msg).then(
-		() => {},
+	return sgMail.send(msg).then(
+		() => {
+			console.log('EMAIL SENT:');
+		},
 		error => {
 			console.error(error);
 
@@ -23,4 +25,6 @@ export default function sendEmail(params) {
 			}
 		}
 	);
-}
+};
+
+module.exports = sendEmail;

@@ -1,6 +1,6 @@
 import {useState, useEffect} from 'react';
 import axios from 'axios';
-import '../styles/ApplyModal.scss';
+import '../styles/SearchResults/ApplyModal.scss';
 import {Button, Box, Typography, Modal, Dialog} from '@mui/material';
 import {Link} from 'react-router-dom';
 import {useNavigate} from 'react-router-dom';
@@ -19,6 +19,18 @@ const useStyles = makeStyles({
 
 export default function ApplyModal(props) {
   const {currentUser, jobApplying, handleClick} = props;
+
+  // const {
+  //   first_name,
+  //   last_name,
+  //   email,
+  //   photo_url,
+  //   github_url,
+  //   linkedIn_url,
+  //   bio,
+  //   resume_link,
+  // } = profile.dev;
+
   const [open, setOpen] = useState(false);
   const [profile, setProfile] = useState({
     dev: {},
@@ -38,30 +50,6 @@ export default function ApplyModal(props) {
     handleView();
     handleClick && handleClick();
   };
-
-  // const style = {
-  //   width: 1 / 2,
-  //   height: 1 / 2,
-  //   display: 'flex',
-  //   flexDirection: 'column',
-  //   margin: '10% 0 0 25%',
-  //   background: '#223d55',
-  //   color: 'black',
-  //   alignItems: 'center',
-  //   justifyContent: 'center',
-  //   borderRadius: '2rem',
-  // };
-
-  const {
-    first_name,
-    last_name,
-    email,
-    photo_url,
-    github_url,
-    linkedIn_url,
-    bio,
-    resume_link,
-  } = profile.dev;
 
   const submitApplication = () => {
     axios
@@ -92,9 +80,9 @@ export default function ApplyModal(props) {
         open={openModal}
         onClose={handleView}
         fullWidth={true}
-        maxWidth={'sm'}
+        maxWidth={'md'}
       >
-        <Box className="apply-dialog-content">
+        <Box>
           {applicationSubmitted ? (
             <div>
               'Application Submitted'
@@ -114,7 +102,7 @@ export default function ApplyModal(props) {
             </div>
           ) : (
             <section className="apply-profile-bio">
-              <h1>Apply for {jobApplying.job_title}</h1>
+              <h1 id="job-title">Apply for {jobApplying.job_title}</h1>
               <div className="apply-profile-data">
                 <div className="apply-profile-pic">
                   <img
@@ -124,41 +112,45 @@ export default function ApplyModal(props) {
                   ></img>
                   <Link to="/profile">Profile</Link>
                 </div>
-                <div>
+                <div className="apply-user-info">
                   <h1>{`${currentUser.first_name} ${currentUser.last_name}`}</h1>
-                  <h1>{currentUser.headline ? currentUser.headline : 'N/A'}</h1>
-                  <h1> {currentUser.phone_number}</h1>
-                  <h1> {currentUser.city}, Canada</h1>
+                  <h2>{currentUser.headline ? currentUser.headline : 'N/A'}</h2>
+                  <div className="apply-phone-city">
+                    <h3> {currentUser.phone_number}</h3>
+                    <h3 id="city"> {currentUser.city}, Canada</h3>
+                  </div>
 
-                  <h1> {currentUser.email}</h1>
-                  <h1>
-                    Github{' '}
+                  <h3> {currentUser.email}</h3>
+                  <h4>Github</h4>
+                  <p>
                     {currentUser.github_url ? currentUser.github_url : 'N/A'}
-                  </h1>
-                  <h1>
-                    Resume Link{' '}
+                  </p>
+                  <h4>Resume Link </h4>
+                  <p>
                     {currentUser.resume_url ? currentUser.resume_url : 'N/A'}
-                  </h1>
-                  <h1>
-                    LinkedIn{' '}
+                  </p>
+                  <h4>LinkedIn</h4>
+                  <p>
                     {currentUser.linkedin_url
                       ? currentUser.linkedin_url
                       : 'N/A'}
-                  </h1>
+                  </p>
                 </div>
               </div>
             </section>
           )}
-          {applicationSubmitted ? null : (
-            <Button variant="contained" onClick={submitApplication}>
-              Submit Application
-            </Button>
-          )}
-          {!applicationSubmitted && (
-            <Button onClick={handleView} variant="contained">
-              Close
-            </Button>
-          )}
+          <div>
+            {applicationSubmitted ? null : (
+              <Button variant="contained" onClick={submitApplication}>
+                Submit Application
+              </Button>
+            )}
+            {!applicationSubmitted && (
+              <Button onClick={handleView} variant="contained">
+                Close
+              </Button>
+            )}
+          </div>
         </Box>
       </Dialog>
     </div>

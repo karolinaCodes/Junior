@@ -14,10 +14,6 @@
   h1 {
     color: $sand;
   }
-  button {
-    color: $white;
-    background-color: $white;
-  }
   .profile-pic {
     padding: 1em;
     display: flex;
@@ -35,5 +31,8 @@
   }
   .application-info {
     justify-content: space-evenly;
+  }
+  #project-img {
+    padding-bottom: 1rem;
   }
 }

@@ -18,19 +18,21 @@ export default function PortfolioModal(props) {
 					alt={title}
 				/>
 			</Grid>
-			<Grid container sx={{justifyContent: 'space-around'}}>
+			<Grid container sx={{justifyContent: 'space-between'}}>
 				<Grid item>
-					<Button>
-						<a href={github_link} rel="noreferrer" target='_blank'>
-							Github
-						</a>
+					<Button className="modal-button"
+						onClick={() => window.open(github_link, '_self')}
+						size="large"
+					>
+						Github
 					</Button>
 				</Grid>
 				<Grid item>
-					<Button>
-						<a href={live_link} rel="noreferrer" target='_blank'>
-							Live Version
-						</a>
+					<Button  className="modal-button"
+						onClick={() => window.open(live_link, '_self')}
+						size="large"
+					>
+						Live Version
 					</Button>
 				</Grid>
 			</Grid>

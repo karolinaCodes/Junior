@@ -73,36 +73,34 @@ export default function Profile(props) {
 					direction='column'
 					key={'Project-grid-container-' + project.project_id}
 				>
-					<Paper key={'Project-paper-' + project.project_id}>
-						<Card key={'Project-card-' + project.project_id}>
-							<CardActionArea
-								key={'Job-card-action' + project.project_id}
-								onClick={() => {
-									setModalData(data);
-									handleView();
-								}}
+					<Card key={'Project-card-' + project.project_id}>
+						<CardActionArea
+							key={'Job-card-action' + project.project_id}
+							onClick={() => {
+								setModalData(data);
+								handleView();
+							}}
+						>
+							<PortfolioCard
+								key={'Portfolio-card-' + project.project_id}
+								{...project}
+							/>
+						</CardActionArea>
+						<CardActions key={'Job-card-actions-' + project.project_id}>
+							<Button
+								key={'Job-button-github-' + project.project_id}
+								onClick={() => window.open(project.github_link, '_self')}
 							>
-								<PortfolioCard
-									key={'Portfolio-card-' + project.project_id}
-									{...project}
-								/>
-							</CardActionArea>
-							<CardActions key={'Job-card-actions-' + project.project_id}>
-								<Button
-									key={'Job-button-github-' + project.project_id}
-									onClick={() => window.open(project.github_link, '_self')}
-								>
-									Github
-								</Button>
-								<Button
-									key={'Job-button-live-' + project.project_id}
-									onClick={() => window.open(project.live_link, '_self')}
-								>
-									Live Link
-								</Button>
-							</CardActions>
-						</Card>
-					</Paper>
+								Github
+							</Button>
+							<Button variant='outlined'
+								key={'Job-button-live-' + project.project_id}
+								onClick={() => window.open(project.live_link, '_self')}
+							>
+								Live Link
+							</Button>
+						</CardActions>
+					</Card>
 				</Grid>
 			</Grid>
 		);
@@ -110,32 +108,10 @@ export default function Profile(props) {
 
 	return (
 		<div className='profile-content'>
-			<Button
-				variant='outlined'
-				onClick={() => {
-					navigate(-1);
-				}}
-			>
-				GO BACK
-			</Button>
-			{/* <Grid container className="profile-bio" columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
-        <Grid item className="profile-pic">
-          <img id="profile-pic" src={photo_url} alt="Avatar"></img>
-        </Grid>
-        <Grid item className="profile-name">
-          <h4>Name: {`${first_name} ${last_name}`}</h4>
-          <h4>Bio: {bio ? bio : 'N/A'}</h4>
-        </Grid>
-        <Grid item className="profile-links">
-          <h4>Email: {email}</h4>
-          <h4>GitHub: {github_url ? github_url : 'N/A'}</h4>
-          <h4>LinkedIn: {linkedIn_url ? linkedIn_url : 'N/A'}</h4>
-        </Grid>
-      </Grid> */}
 			<UserProfileInfo currentUser={currentUser} />
 			{profile.projects.length === 0 && <h1>No projects added</h1>}
 			<section className='profile-cards'>
-				<Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
+				<Grid container>
 					<Grid item xs={12}>
 						<h1>{`${first_name} ${last_name}`} Portfolio:</h1>
 					</Grid>

@@ -4,7 +4,7 @@ import LocationOnIcon from '@mui/icons-material/LocationOn';
 
 export default function ApplicationCard(props) {
 	const { job_title, description, salary, formatted_salary, date_posted, formatted_date, date_applied, formatted_date_applied, job_type, is_remote, employer_email, company_name, employer_bio, employer_photo_url, deadline, photo_url, city, pay, formatted_pay, formatted_deadline } =	props;
-	const location = `${city} ${is_remote ? 'Remote' : 'On-site'}`;
+	const location = `${city} (${is_remote ? 'Remote' : 'On-site'})`;
 
 	return (
 		<Grid container direction='row' className='profile-info'>

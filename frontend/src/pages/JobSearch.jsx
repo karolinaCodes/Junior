@@ -3,7 +3,6 @@ import {useEffect, useState} from 'react';
 import './styles/JobSearch.scss';
 import axios from 'axios';
 import Box from '@mui/material/Box';
-import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
@@ -27,7 +26,6 @@ import SearchIcon from '@mui/icons-material/Search';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 
 import {useLocation} from 'react-router-dom';
-
 import {makeStyles} from '@mui/styles';
 
 ////////////////////IMPORTS///////////

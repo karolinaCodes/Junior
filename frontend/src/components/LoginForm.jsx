@@ -7,13 +7,7 @@ import { UserContext } from '../Providers/userProvider';
 
 export default function Login(props) {
 	const { handleLoginView } = props;
-	const {
-		// loginView,
-		// setLoginView,
-		// handleLoginView,
-		currentUser,
-		setCurrentUser,
-	} = useContext(UserContext);
+	const { currentUser, setCurrentUser } = useContext(UserContext);
 
 	const navigate = useNavigate();
 
@@ -36,6 +30,15 @@ export default function Login(props) {
 				console.log(err);
 			});
 	};
+
+	useEffect(() => {
+		if (currentUser.company_name) {
+			navigate('/employerprofile');
+		} else {
+			navigate('/profile');
+		}
+		handleLoginView();
+	}, [currentUser]);
 
 	return (
 		<div>

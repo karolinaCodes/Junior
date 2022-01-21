@@ -1,5 +1,7 @@
-import { useEffect, useState } from 'react';
 import './styles/Profile.scss';
+import { useEffect, useState, useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { UserContext } from '../Providers/userProvider';
 import {
 	Grid,
 	Button,
@@ -15,10 +17,9 @@ import PortfolioCard from '../components/PortfolioCard';
 import PortfolioModal from '../components/PortfolioModal';
 import UserProfileInfo from '../components/UserProfileInfo';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
 
-export default function Profile(props) {
-	const { currentUser } = props;
+export default function Profile() {
+	const { currentUser } = useContext(UserContext);
 	const navigate = useNavigate();
 
 	console.log('', currentUser);

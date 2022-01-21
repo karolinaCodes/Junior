@@ -8,21 +8,8 @@ import UserMenu from '../components/UserMenu';
 import axios from 'axios';
 
 export default function NavBar(props) {
-	const {
-		// loginView,
-		// setLoginView,
-		// handleLoginView,
-		currentUser,
-		setCurrentUser,
-	} = useContext(UserContext);
-
-	const {
-		loginView,
-		setLoginView,
-		handleLoginView,
-		// currentUser,
-		// setCurrentUser,
-	} = props;
+	const { handleLoginView } = props;
+	const { currentUser, setCurrentUser } = useContext(UserContext);
 
 	const location = useLocation();
 
@@ -52,7 +39,7 @@ export default function NavBar(props) {
 				Hire Talent
 			</Link>
 			{!currentUser.id && (
-				<Button id='login' variant='outlined' onClick={e => handleLoginView(e)}>
+				<Button id='login' variant='outlined' onClick={e => handleLoginView()}>
 					Login
 				</Button>
 			)}

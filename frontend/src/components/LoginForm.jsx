@@ -1,11 +1,19 @@
 import './styles/LoginForm.scss';
 import { TextField, Button } from '@mui/material';
 import axios from 'axios';
-import { useEffect } from 'react';
+import { useEffect, useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { UserContext } from '../Providers/userProvider';
 
 export default function Login(props) {
-	const { handleLoginView, currentUser, setCurrentUser } = props;
+	const { handleLoginView } = props;
+	const {
+		// loginView,
+		// setLoginView,
+		// handleLoginView,
+		currentUser,
+		setCurrentUser,
+	} = useContext(UserContext);
 
 	const navigate = useNavigate();
 
@@ -27,15 +35,6 @@ export default function Login(props) {
 				console.log(err);
 			});
 	};
-
-	useEffect(() => {
-		if (currentUser.company_name) {
-			navigate('/employerprofile');
-		} else {
-			navigate('/profile');
-		}
-		handleLoginView();
-	}, [currentUser]);
 
 	return (
 		<div>
@@ -66,7 +65,7 @@ export default function Login(props) {
 						variant='contained'
 						size='large'
 						type='submit'
-						onClick={e => console.log('USER:', currentUser)}
+						onClick={e => handleLoginView()}
 					>
 						LOG IN
 					</Button>

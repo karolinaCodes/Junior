@@ -21,6 +21,8 @@ export default function Profile(props) {
 	const { currentUser } = props;
 	const navigate = useNavigate();
 
+	console.log('', currentUser);
+
 	const [profile, setProfile] = useState({
 		dev: {},
 		projects: [],
@@ -49,7 +51,10 @@ export default function Profile(props) {
 				}
 			);
 		}
-	}, [id]);
+	}, [currentUser]);
+
+	console.log('profile', profile);
+	console.log('profile.projects:', profile.projects);
 
 	const projectsArray = profile.projects;
 	const parsedProjects = projectsArray.map(project => {
@@ -93,7 +98,8 @@ export default function Profile(props) {
 							>
 								Github
 							</Button>
-							<Button variant='outlined'
+							<Button
+								variant='outlined'
 								key={'Job-button-live-' + project.project_id}
 								onClick={() => window.open(project.live_link, '_self')}
 							>

@@ -1,17 +1,27 @@
+import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import Button from '@mui/material/Button';
 import { useLocation } from 'react-router-dom';
+import { UserContext } from '../Providers/userProvider';
 import './styles/NavBar.scss';
 import UserMenu from '../components/UserMenu';
 import axios from 'axios';
 
 export default function NavBar(props) {
 	const {
+		// loginView,
+		// setLoginView,
+		// handleLoginView,
+		currentUser,
+		setCurrentUser,
+	} = useContext(UserContext);
+
+	const {
 		loginView,
 		setLoginView,
 		handleLoginView,
-		currentUser,
-		setCurrentUser,
+		// currentUser,
+		// setCurrentUser,
 	} = props;
 
 	const location = useLocation();

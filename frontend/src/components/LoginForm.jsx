@@ -21,7 +21,6 @@ export default function Login(props) {
 			.post('/api/auth/login', data)
 			.then(res => {
 				setCurrentUser(res.data);
-				navigate('/profile');
 				console.log(res.data);
 			})
 			.catch(err => {
@@ -30,6 +29,11 @@ export default function Login(props) {
 	};
 
 	useEffect(() => {
+		if (currentUser.company_name) {
+			navigate('/employerprofile');
+		} else {
+			navigate('/profile');
+		}
 		handleLoginView();
 	}, [currentUser]);
 

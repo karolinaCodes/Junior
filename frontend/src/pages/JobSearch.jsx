@@ -150,7 +150,7 @@ export default function JobSearch(props) {
   const [jobType, setJobType] = useState('');
   const [open, setOpen] = useState(false);
   const [jobApplying, setJobApplying] = useState('');
-  const [value, setValue] = React.useState([50000, 70000]);
+  const [value, setValue] = useState([50000, 70000]);
   // value = salary range
 
   const classes = useStyles();
@@ -271,6 +271,14 @@ export default function JobSearch(props) {
     setOpen(true);
   };
 
+  const clearFields = () => {
+    setCity('');
+    setSchedule('');
+    setQueryString('');
+    setJobType('');
+    setValue([50000, 70000]);
+  };
+
   return (
     <div className="jobsearch-content">
       <form className="jobsearch-search" onSubmit={handleSubmit}>
@@ -345,7 +353,12 @@ export default function JobSearch(props) {
           />
         </Box>
         <div className={classes.form_actions}>
-          <Button variant="text" size="large" className={classes.clear_btn}>
+          <Button
+            variant="text"
+            size="large"
+            className={classes.clear_btn}
+            onClick={clearFields}
+          >
             Clear
           </Button>
           <Button

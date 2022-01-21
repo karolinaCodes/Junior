@@ -1,5 +1,5 @@
 import './styles/Profile.scss';
-import {Card, Modal, Box, Grid, Paper, Dialog} from '@mui/material';
+import {Card, Modal, Box, Grid, Dialog} from '@mui/material';
 import {useEffect, useState} from 'react';
 import {useParams} from 'react-router-dom';
 import UserApplicationCard from '../components/UserApplicationCard';
@@ -52,7 +52,7 @@ export default function UserApplications(props) {
         md={6}
         key={'Job-application-grid-' + application.id}
       >
-        <Paper key={'Job-application-paper-' + application.id}
+        <Card key={'Job-application-Card-' + application.id}
           onClick={() => {
           setModalData(data);
           handleView();
@@ -60,7 +60,7 @@ export default function UserApplications(props) {
           <UserApplicationCard key={'Job-application-card-' + application.id}
             {...application}
           />
-        </Paper>
+        </Card>
       </Grid>
     );
   });
@@ -72,7 +72,7 @@ export default function UserApplications(props) {
         md={6}
         key={'Gig-application-grid-' + application.id}
       >
-        <Paper key={'Gig-application-paper-' + application.id}
+        <Card key={'Gig-application-Card-' + application.id}
           onClick={() => {
           setModalData(data);
           handleView();
@@ -80,7 +80,7 @@ export default function UserApplications(props) {
           <UserApplicationCard key={'Gig-application-card-' + application.id}
             {...application}
           />
-        </Paper>
+        </Card>
       </Grid>
     );
   });
@@ -88,9 +88,9 @@ export default function UserApplications(props) {
 
   return (
     <div className="application-content">
-        <h1>Applications</h1>
-        Total applications: {applications.jobApplications.length + applications.gigApplications.length}
         <Grid container direction='column'>
+          <h1>Applications</h1>
+          <p>Total applications: {applications.jobApplications.length + applications.gigApplications.length}</p>
           <section className="application-cards">
             <h3>Job Applications:</h3>
             <Grid container item spacing={3}>

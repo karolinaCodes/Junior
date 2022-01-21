@@ -2,10 +2,11 @@ import './styles/NewProjectPost.scss';
 import { useNavigate } from 'react-router-dom';
 import { TextField, Button, Paper } from '@mui/material';
 import axios from 'axios';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
+import { UserContext } from '../Providers/userProvider';
 
 export default function NewProjectPost(props) {
-	const { currentUser } = props;
+	const { currentUser } = useContext(UserContext);
 	const [projectForm, setProjectForm] = useState({
 		junior_dev_id: currentUser.id,
 		title: 'New Project',

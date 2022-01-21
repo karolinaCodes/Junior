@@ -1,12 +1,13 @@
 import axios from 'axios';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { TextField, Button, FormLabel } from '@mui/material';
 
 import './styles/NewGigPost.scss';
+import { UserContext } from '../Providers/userProvider';
 
 export default function NewGigPost(props) {
-	const { currentUser } = props;
+	const { currentUser } = useContext(UserContext);
 	const [gigForm, setGigForm] = useState({
 		employer_id: currentUser.id,
 		job_title: 'New Gig',

@@ -15,16 +15,17 @@ const jobApplicationHelpers = require('./helpers/jobApplicationHelpers')(db);
 const jobPostingHelpers = require('./helpers/jobPostingHelpers')(db);
 const projectHelpers = require('./helpers/projectHelpers')(db);
 const searchHelpers = require('./helpers/searchHelpers')(db);
+const sendEmail = require('./helpers/emailHelper.js');
 
 // MIDDLEWARE
 // use dotenv?
 app.use(logger('dev'));
 app.use(express.json());
-app.use(express.urlencoded({extended: false}));
+app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.urlencoded({ extended: true }));
 
 // Separated Routes for each Resource
 const devsRouter = require('./routes/devs');
@@ -49,10 +50,17 @@ app.use('/api/gig_applications', gigApplicationsRouter(gigApplicationHelpers));
 app.use('/api/search', searchRouter(searchHelpers));
 
 // Note: mount other resources here, using the same pattern above
+app.post('/send_email', (req, res) => {
+	const params = req.body.params;
+
+	sendEmail(params).then(() => {
+		res.send();
+	});
+});
 
 // Home page
 app.get('/', (req, res) => {
-  res.render('index');
+	res.render('index');
 });
 
 // EXAMPLES

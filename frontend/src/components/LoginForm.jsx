@@ -1,11 +1,13 @@
 import './styles/LoginForm.scss';
 import { TextField, Button } from '@mui/material';
 import axios from 'axios';
-import { useEffect } from 'react';
+import { useEffect, useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { UserContext } from '../Providers/userProvider';
 
 export default function Login(props) {
-	const { handleLoginView, currentUser, setCurrentUser } = props;
+	const { handleLoginView } = props;
+	const { currentUser, setCurrentUser } = useContext(UserContext);
 
 	const navigate = useNavigate();
 
@@ -22,6 +24,7 @@ export default function Login(props) {
 			.then(res => {
 				setCurrentUser(res.data);
 				console.log(res.data);
+				handleLoginView();
 			})
 			.catch(err => {
 				console.log(err);
@@ -66,7 +69,7 @@ export default function Login(props) {
 						variant='contained'
 						size='large'
 						type='submit'
-						onClick={e => console.log('USER:', currentUser)}
+						onClick={null}
 					>
 						LOG IN
 					</Button>

@@ -1,18 +1,15 @@
+import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import Button from '@mui/material/Button';
 import { useLocation } from 'react-router-dom';
+import { UserContext } from '../Providers/userProvider';
 import './styles/NavBar.scss';
 import UserMenu from '../components/UserMenu';
 import axios from 'axios';
 
 export default function NavBar(props) {
-	const {
-		loginView,
-		setLoginView,
-		handleLoginView,
-		currentUser,
-		setCurrentUser,
-	} = props;
+	const { handleLoginView } = props;
+	const { currentUser, setCurrentUser } = useContext(UserContext);
 
 	const location = useLocation();
 
@@ -42,7 +39,7 @@ export default function NavBar(props) {
 				Hire Talent
 			</Link>
 			{!currentUser.id && (
-				<Button id='login' variant='outlined' onClick={e => handleLoginView(e)}>
+				<Button id='login' variant='outlined' onClick={e => handleLoginView()}>
 					Login
 				</Button>
 			)}

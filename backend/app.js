@@ -2,8 +2,11 @@ const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
+
+const app = express();
+const bodyParser = require('body-parser');
+
 const db = require('./db');
-const dbHelpers = require('./helpers/dbHelpers')(db);
 const devHelpers = require('./helpers/devHelpers')(db);
 const employerHelpers = require('./helpers/employerHelpers')(db);
 const gigPostingHelpers = require('./helpers/gigPostingHelpers')(db);
@@ -11,11 +14,7 @@ const gigApplicationHelpers = require('./helpers/gigApplicationHelpers')(db);
 const jobApplicationHelpers = require('./helpers/jobApplicationHelpers')(db);
 const jobPostingHelpers = require('./helpers/jobPostingHelpers')(db);
 const projectHelpers = require('./helpers/projectHelpers')(db);
-// const Helpers = require('./helpers/Helpers')(db);
-// const Helpers = require('./helpers/Helpers')(db);
-// const Helpers = require('./helpers/Helpers')(db);
-const app = express();
-const bodyParser = require('body-parser');
+const searchHelpers = require('./helpers/searchHelpers')(db);
 
 // MIDDLEWARE
 // use dotenv?
@@ -28,7 +27,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.urlencoded({extended: true}));
 
 // Separated Routes for each Resource
-// Note: Feel free to replace the example routes below with your own
 const devsRouter = require('./routes/devs');
 const employersRouter = require('./routes/employers');
 const projectsRouter = require('./routes/projects');
@@ -38,29 +36,21 @@ const gigPostingsRouter = require('./routes/gig_postings');
 const jobApplicationsRouter = require('./routes/job_applications');
 const gigApplicationsRouter = require('./routes/gig_applications');
 const searchRouter = require('./routes/search');
-// const authenticateRouter = require('./routes/authenticate');
 
 // Mount all resource routes
-// Note: Feel free to replace the example routes below with your own
+app.use('/api/auth', authRouter(devHelpers));
 app.use('/api/devs', devsRouter(devHelpers));
 app.use('/api/employers', employersRouter(employerHelpers));
 app.use('/api/projects', projectsRouter(projectHelpers));
-app.use('/api/auth', authRouter(dbHelpers));
 app.use('/api/job_postings', jobPostingsRouter(jobPostingHelpers));
 app.use('/api/gig_postings', gigPostingsRouter(gigPostingHelpers));
 app.use('/api/job_applications', jobApplicationsRouter(jobApplicationHelpers));
 app.use('/api/gig_applications', gigApplicationsRouter(gigApplicationHelpers));
-app.use('/api/search', searchRouter(dbHelpers));
-// app.use('/api/authenticate', authenticateRouter(dbHelpers));
-
-// app.use('/api/job_applications/:id', jobApplicationsRouter(dbHelpers)); // <- doesnt work
+app.use('/api/search', searchRouter(searchHelpers));
 
 // Note: mount other resources here, using the same pattern above
 
 // Home page
-// Warning: avoid creating more routes in this file!
-// Separate them into separate routes files (see above).
-
 app.get('/', (req, res) => {
   res.render('index');
 });

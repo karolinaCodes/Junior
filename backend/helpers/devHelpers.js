@@ -46,45 +46,6 @@ module.exports = db => {
 			.then(result => result.rows[0])
 			.catch(err => err);
 	};
-
-	// For sign up- stretch
-	const addDev = (
-		first_name,
-		last_name,
-		email,
-		password,
-		phone_number,
-		headline,
-		bio,
-		photo_url,
-		github_url,
-		linkedIn_url,
-		resume_url,
-		location
-	) => {
-		const query = {
-			text: `INSERT INTO junior_devs (first_name, last_name, email, password, phone_number, headline, bio, photo_url, github_url, linkedIn_url, resume_url, location) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING *`,
-			values: [
-				first_name,
-				last_name,
-				email,
-				password,
-				phone_number,
-				headline,
-				bio,
-				photo_url,
-				github_url,
-				linkedIn_url,
-				resume_url,
-				location,
-			],
-		};
-
-		return db
-			.query(query)
-			.then(result => result.rows[0])
-			.catch(err => err);
-	};
 	
 	const getProjectsByDevId = id => {
 		const query = {
@@ -153,12 +114,85 @@ module.exports = db => {
 			.catch(err => err);
 	};
 	
+	// STRETCH //
+
+	// Sign up new dev
+	const addDev = (
+		first_name,
+		last_name,
+		email,
+		password,
+		phone_number,
+		headline,
+		bio,
+		photo_url,
+		github_url,
+		linkedIn_url,
+		resume_url,
+		location
+	) => {
+		const query = {
+			text: `INSERT INTO junior_devs (first_name, last_name, email, password, phone_number, headline, bio, photo_url, github_url, linkedIn_url, resume_url, location) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING *`,
+			values: [
+				first_name,
+				last_name,
+				email,
+				password,
+				phone_number,
+				headline,
+				bio,
+				photo_url,
+				github_url,
+				linkedIn_url,
+				resume_url,
+				location,
+			],
+		};
+
+		return db
+			.query(query)
+			.then(result => result.rows[0])
+			.catch(err => err);
+	};
+
+	// Get all accepted job applications by dev id
+	const getAcceptedJobApplications = junior_dev_id => {
+		const query = {
+			text: `SELECT * FROM job_applications
+      WHERE is_accepted = true
+			AND junior_dev_id = $1`,
+			values: [junior_dev_id],
+		};
+
+		return db
+			.query(query)
+			.then(result => result.rows[0])
+			.catch(err => err);
+	};
+
+	// Get all accepted gig applications by dev id
+	const getAcceptedGigApplications = junior_dev_id => {
+		const query = {
+			text: `SELECT * FROM gig_applications
+      WHERE is_accepted = true
+      AND junior_dev_id = $1`,
+			values: [junior_dev_id],
+		};
+
+		return db
+			.query(query)
+			.then(result => result.rows[0])
+			.catch(err => err);
+	};
+
   return {
 		getDevs,
 		getDevById,
 		getProjectsByDevId,
 		getJobApplicationsByDevId,
 		getGigApplicationsByDevId,
-		addDev,
+		// addDev,
+		// getAcceptedJobApplications,
+		// getAcceptedGigApplications,
   };
 };

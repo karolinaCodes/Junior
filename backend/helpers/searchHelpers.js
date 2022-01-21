@@ -1,3 +1,5 @@
+// DB queries for SEARCH FUNCTION //
+
 module.exports = db => {
 	// Jobs and Gigs Search //
 	const getJobsAndGigsByQuery = queryString => {
@@ -121,43 +123,10 @@ module.exports = db => {
 			.catch(err => err);
 	};
 
-	const getAcceptedJobApplications = junior_dev_id => {
-		const query = {
-			text: `SELECT * FROM job_applications
-      WHERE is_accepted = true
-			AND junior_dev_id = $1`,
-			values: [junior_dev_id],
-		};
-
-		return db
-			.query(query)
-			.then(result => result.rows[0])
-			.catch(err => err);
-	};
-
-	const getAcceptedGigApplications = junior_dev_id => {
-		const query = {
-			text: `SELECT * FROM gig_applications
-      WHERE is_accepted = true
-      AND junior_dev_id = $1`,
-			values: [junior_dev_id],
-		};
-
-		return db
-			.query(query)
-			.then(result => result.rows[0])
-			.catch(err => err);
-	};
-
 	return {
-		getProjectsByDevId,
 		getJobsAndGigsByQuery,
 		getJobsByCity,
 		getJobsByType,
 		getJobsByMulti,
-		getJobApplicationsByDevId,
-		getGigApplicationsByDevId,
-		getAcceptedJobApplications,
-		getAcceptedGigApplications,
 	};
 };

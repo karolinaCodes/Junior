@@ -1,23 +1,34 @@
 import {useEffect, useState} from 'react';
 import './styles/Profile.scss';
-import {Grid, Button, Modal, Box, Paper, Card, CardActionArea, CardActions, Dialog} from '@mui/material';
+import {
+  Grid,
+  Button,
+  Modal,
+  Box,
+  Paper,
+  Card,
+  CardActionArea,
+  CardActions,
+  Dialog,
+} from '@mui/material';
 import JobPostingCard from '../components/JobPostingCard';
 import JobPostingModal from '../components/JobPostingModal';
 import GigPostingModal from '../components/GigPostingModal';
 import axios from 'axios';
 
+
 export default function Profile(props) {
   const [profile, setProfile] = useState({
     employer: {},
     jobs: [],
-    gigs: []
+    gigs: [],
   });
   const [openModal, setOpenModal] = useState(false);
   const [modalData, setModalData] = useState();
 
-	const handleView = () => {
-		openModal === true ? setOpenModal(false) : setOpenModal(true);
-	};
+  const handleView = () => {
+    openModal === true ? setOpenModal(false) : setOpenModal(true);
+  };
 
   // FOR TESTING
   const id = 1;
@@ -33,21 +44,22 @@ export default function Profile(props) {
       axios.get(employerUrl),
       axios.get(employerJobsUrl),
       axios.get(employerGigsUrl),
-    ]).then((all) => {
+    ]).then(all => {
       const [employerData, jobPostingsData, gigPostingsData] = all;
-      setProfile(prev => ({...prev,
+      setProfile(prev => ({
+        ...prev,
         employer: employerData.data,
         jobs: jobPostingsData.data,
-        gigs: gigPostingsData.data
+        gigs: gigPostingsData.data,
       }));
     });
   }, []);
 
   const jobsArray = profile.jobs;
   const gigsArray = profile.gigs;
-  
-	const parsedJobs = jobsArray.map(job => {
-    const data = (<JobPostingModal key={'Job-modal-' + job.id} {...job} />);
+
+  const parsedJobs = jobsArray.map(job => {
+    const data = <JobPostingModal key={'Job-modal-' + job.id} {...job} />;
 
     const applicationLink = `employerprofile/job/${job.id}/applications`;
     const postingLink = `job/${job.id}`;
@@ -79,8 +91,8 @@ export default function Profile(props) {
           </Card>
         </Grid>
       </Grid>
-    )
-	});
+    );
+  });
   const parsedGigs = gigsArray.map(gig => {
     const data = (<GigPostingModal key={'Gig-modal-' + gig.id} {...gig} />);
     const applicationLink = `employerprofile/gig/${gig.id}/applications`;
@@ -114,12 +126,16 @@ export default function Profile(props) {
           </Card>
         </Grid>
       </Grid>
-		)
-	});
+    );
+  });
 
   return (
     <div className="profile-content">
-      <Grid container className="profile-bio" columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
+      <Grid
+        container
+        className="profile-bio"
+        columnSpacing={{xs: 1, sm: 2, md: 3}}
+      >
         <Grid item className="profile-pic">
           <img id="profile-pic" src={photo_url} alt="Avatar"></img>
         </Grid>
@@ -133,7 +149,9 @@ export default function Profile(props) {
           <h4>Gig Postings: {profile.gigs.length}</h4>
         </Grid>
       </Grid>
-      {(parsedJobs.length === 0 && parsedGigs.length === 0) && (<h1>No postings.</h1>)}
+      {parsedJobs.length === 0 && parsedGigs.length === 0 && (
+        <h1>No postings.</h1>
+      )}
       {parsedJobs.length !== 0 && (
         <section className='profile-cards'>
           <Grid container>
@@ -148,7 +166,7 @@ export default function Profile(props) {
         <section className='profile-cards'>
           <Grid container>
             <Grid item xs={12}>
-            <h1>{company_name ? company_name + "'s " : null}Gig Postings:</h1>
+              <h1>{company_name ? company_name + "'s " : null}Gig Postings:</h1>
             </Grid>
             {parsedGigs}
           </Grid>
@@ -159,12 +177,8 @@ export default function Profile(props) {
         onClose={handleView}
         fullWidth={true}
         maxWidth={'md'}
-        >
-        <Box
-          className='portfolio-modal'
-        >
-          {modalData}
-        </Box>
+      >
+        <Box className="portfolio-modal">{modalData}</Box>
       </Dialog>
     </div>
   );

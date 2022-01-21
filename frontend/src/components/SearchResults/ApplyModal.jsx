@@ -18,6 +18,11 @@ const useStyles = makeStyles({
   apply_modal: {
     'background-color': '#182c5b',
     color: 'white',
+    display: 'flex;',
+    'justify-content': 'center;',
+  },
+  see_applications: {
+    'text-decoration': 'none',
   },
 });
 
@@ -84,14 +89,14 @@ export default function ApplyModal(props) {
         open={openModal}
         onClose={handleView}
         fullWidth={true}
-        maxWidth={'md'}
+        maxWidth={applicationSubmitted ? 'sm' : 'md'}
         // sx={{maxWidth: '2000px'}}
       >
         <Box className={classes.apply_modal}>
           {applicationSubmitted ? (
-            <div>
-              'Application Submitted'
-              <div>
+            <div class="submitted-container">
+              <p id="submitted-msg">Application Submitted</p>
+              <div id="submitted-actions">
                 <Button
                   variant="contained"
                   onClick={() => {
@@ -100,7 +105,7 @@ export default function ApplyModal(props) {
                 >
                   Search More Jobs
                 </Button>
-                <Link to="/">
+                <Link to="/" className={classes.see_applications}>
                   <Button variant="contained">View Application</Button>
                 </Link>
               </div>

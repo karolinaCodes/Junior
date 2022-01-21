@@ -17,6 +17,7 @@ import ApplyModal from './components/ApplyModal';
 import NewProjectPost from './components/NewProjectPost.jsx';
 import Applications from './pages/Applications.jsx';
 import UserApplications from './pages/UserApplications.jsx';
+import ApplicationsTest from './pages/TestApplications.jsx';
 
 //import css
 import './App.scss';
@@ -111,6 +112,10 @@ function App() {
 				<Route
 					path='/profile/applications'
 					element={<UserApplications currentUser={currentUser} />}
+				/>
+				<Route
+					path='/testapps'
+					element={<ApplicationsTest currentUser={currentUser} />}
 				/>
 			</Routes>
 		</div>

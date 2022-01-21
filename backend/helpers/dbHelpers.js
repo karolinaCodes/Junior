@@ -730,11 +730,12 @@ module.exports = db => {
 			.catch(err => err);
 	};
 
-	const getAcceptedGigApplications = employer_id => {
+	const getAcceptedGigApplications = id => {
 		const query = {
 			text: `SELECT * FROM gig_applications
-      WHERE is_accepted = true`,
-			values: [gig_posting_id, junior_dev_id],
+      WHERE is_accepted = true
+      AND junior_dev_id = $1`,
+			values: [id],
 		};
 
 		return db

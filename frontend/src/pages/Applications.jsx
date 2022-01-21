@@ -90,7 +90,7 @@ export default function Applications(props) {
       <h1>Applications</h1>
       <p>Total applications: {posting.applications.length}</p>
         <section className="application-cards">
-          <Grid container item spacing={3}>
+          <Grid container item>
             {parsedApplications}
           </Grid>
         </section>

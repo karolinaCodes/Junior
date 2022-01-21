@@ -93,7 +93,7 @@ export default function Profile(props) {
 							>
 								Github
 							</Button>
-							<Button variant='outlined'
+							<Button
 								key={'Job-button-live-' + project.project_id}
 								onClick={() => window.open(project.live_link, '_self')}
 							>

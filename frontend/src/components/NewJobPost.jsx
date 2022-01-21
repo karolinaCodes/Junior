@@ -49,8 +49,7 @@ export default function NewJobPost(props) {
 					job_title: 'Job Title',
 					description: '',
 					city: '',
-					salary_min: '',
-					salary_max: '',
+					salary: '',
 					job_type: 'Full-Time',
 					is_remote: false,
 					is_open: true,
@@ -65,6 +64,7 @@ export default function NewJobPost(props) {
 
 	return (
 		<div className='new-job-content'>
+			<img src='images/junior-logomark.png'></img>
 			<form className='new-job-form' onSubmit={postJob}>
 				<h1>{jobForm.job_title}</h1>
 				<TextField

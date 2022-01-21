@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { TextField, Button, FormLabel } from '@mui/material';
 
 import './styles/NewGigPost.scss';
@@ -35,14 +35,18 @@ export default function NewGigPost(props) {
 					deadline: '',
 					photo_url: '',
 				});
+				navigate('/profile');
 			})
 			.catch(err => {
 				console.log(err);
 			});
 	};
 
+	const navigate = useNavigate();
+
 	return (
 		<div className='new-gig-content'>
+			<img src='images/junior-logomark.png'></img>
 			<form className='new-gig-form' onSubmit={postGig}>
 				<h1>{gigForm.job_title}</h1>
 				<TextField
@@ -116,10 +120,11 @@ export default function NewGigPost(props) {
 					<Button
 						id='cancel-gig'
 						sx={{ margin: 0 }}
-						component={Link}
-						to='/profile'
 						variant='contained'
 						size='large'
+						onClick={e => {
+							navigate('/profile');
+						}}
 					>
 						Cancel
 					</Button>

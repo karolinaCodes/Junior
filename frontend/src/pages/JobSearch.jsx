@@ -202,15 +202,30 @@ export default function JobSearch(props) {
       return;
     }
 
+    if (jobType === 'all') {
+      const results = axios
+        .get('/api/search/query', {
+          params: {
+            queryString,
+          },
+        })
+        .then(res => {
+          setSearchResults(res.data);
+          return;
+        })
+        .catch(err => console.log(err));
+      return;
+    }
+
     const results = axios
       .get('/api/search/multi-filter', {
         params: {
           queryString,
-          city,
-          job_type: schedule,
-          toggle: jobType === 'all' ? '' : jobType,
-          salary_min: value[0],
-          salary_max: value[1],
+          city: jobType === 'gigs' ? '' : city,
+          job_type: jobType === 'gigs' ? '' : schedule,
+          toggle: jobType,
+          salary_min: jobType === 'gigs' ? '' : value[0],
+          salary_max: jobType === 'gigs' ? '' : value[1],
         },
       })
       .then(res => {

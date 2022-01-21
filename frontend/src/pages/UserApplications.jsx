@@ -88,20 +88,20 @@ export default function UserApplications(props) {
 
   return (
     <div className="application-content">
-        <Grid container direction='column'>
-          <h1>Applications</h1>
-          <p>Total applications: {applications.jobApplications.length + applications.gigApplications.length}</p>
-          <section className="application-cards">
-            <h3>Job Applications:</h3>
-            <Grid container item spacing={3}>
-              {parsedJobApplications}
-            </Grid>
-            <h3>Gig Applications:</h3>
-            <Grid container item spacing={3}>
-              {parsedGigApplications}
-            </Grid>
-          </section>
-        </Grid>
+      <Grid container direction='column'>
+        <h1>My Applications</h1>
+        <p>Total applications: {applications.jobApplications.length + applications.gigApplications.length}</p>
+        <section className="application-cards">
+          <h3>Job Applications:</h3>
+          <Grid container item>
+            {parsedJobApplications}
+          </Grid>
+          <h3>Gig Applications:</h3>
+          <Grid container item>
+            {parsedGigApplications}
+          </Grid>
+        </section>
+      </Grid>
       <Dialog
         open={openModal}
         onClose={handleView}

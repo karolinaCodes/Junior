@@ -3,7 +3,7 @@ import {Grid, List, ListItem, ListItemText, ListItemButton} from '@mui/material'
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 
 export default function ApplicationCard(props) {
-	const { first_name, last_name, email, bio, photo_url, github_url, linkedIn_url, resume_url, location, dev_photo_url, date_applied, formatted_date_applied } =
+	const { first_name, last_name, email, bio, photo_url, github_url, linkedIn_url, resume_url, location, dev_photo_url, date_applied, formatted_date_applied, formatted_date } =
 		props;
 
 	return (
@@ -13,9 +13,9 @@ export default function ApplicationCard(props) {
 					src={photo_url}
 					alt={`Photo of ${first_name} ${last_name}`}
 				/>
-				<p>{`Applied on: ${formatted_date_applied}`}</p>
+				<p>Applied on: <br />{formatted_date}</p>
 			</Grid>
-			<Grid item className='application-name' container xs='auto' direction='column'>
+			<Grid item container xs='auto' direction='column'>
 				<Grid item>
 					<h3>{`${first_name} ${last_name}`}</h3>
 				</Grid>

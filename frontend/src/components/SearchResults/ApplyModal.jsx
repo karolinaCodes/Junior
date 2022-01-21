@@ -21,9 +21,6 @@ const useStyles = makeStyles({
     display: 'flex;',
     'justify-content': 'center;',
   },
-  see_applications: {
-    'text-decoration': 'none',
-  },
 });
 
 export default function ApplyModal(props) {
@@ -105,9 +102,14 @@ export default function ApplyModal(props) {
                 >
                   Search More Jobs
                 </Button>
-                <Link to="/" className={classes.see_applications}>
-                  <Button variant="contained">View Application</Button>
-                </Link>
+                <Button
+                  variant="contained"
+                  onClick={() => {
+                    navigate('/profile/applications');
+                  }}
+                >
+                  View Application
+                </Button>
               </div>
             </div>
           ) : (

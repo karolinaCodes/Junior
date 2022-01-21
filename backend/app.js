@@ -10,7 +10,7 @@ const gigPostingHelpers = require('./helpers/gigPostingHelpers')(db);
 const gigApplicationHelpers = require('./helpers/gigApplicationHelpers')(db);
 const jobApplicationHelpers = require('./helpers/jobApplicationHelpers')(db);
 const jobPostingHelpers = require('./helpers/jobPostingHelpers')(db);
-// const Helpers = require('./helpers/Helpers')(db);
+const projectHelpers = require('./helpers/projectHelpers')(db);
 // const Helpers = require('./helpers/Helpers')(db);
 // const Helpers = require('./helpers/Helpers')(db);
 // const Helpers = require('./helpers/Helpers')(db);
@@ -44,7 +44,7 @@ const searchRouter = require('./routes/search');
 // Note: Feel free to replace the example routes below with your own
 app.use('/api/devs', devsRouter(devHelpers));
 app.use('/api/employers', employersRouter(employerHelpers));
-app.use('/api/projects', projectsRouter(dbHelpers));
+app.use('/api/projects', projectsRouter(projectHelpers));
 app.use('/api/auth', authRouter(dbHelpers));
 app.use('/api/job_postings', jobPostingsRouter(jobPostingHelpers));
 app.use('/api/gig_postings', gigPostingsRouter(gigPostingHelpers));

@@ -1,61 +1,4 @@
 module.exports = db => {
-	// PROJECTS //
-	const getProjectsByDevId = id => {
-		const query = {
-			text: `SELECT junior_devs.id as junior_dev_id, first_name, last_name, email,
-        projects.id as project_id, title, description, thumbnail_photo_url, github_link, live_link
-        FROM junior_devs
-        INNER JOIN projects
-        ON junior_devs.id = projects.junior_dev_id
-        WHERE junior_dev_id= $1
-        `,
-			values: [id],
-		};
-
-		return db
-			.query(query)
-			.then(result => result.rows)
-			.catch(err => err);
-	};
-
-	const getProjectById = id => {
-		const query = {
-			text: `SELECT * FROM projects WHERE id= $1`,
-			values: [id],
-		};
-
-		return db
-			.query(query)
-			.then(result => result.rows[0])
-			.catch(err => err);
-	};
-
-	const addProject = (
-		junior_dev_id,
-		title,
-		description,
-		thumbnail_photo_url,
-		github_link,
-		live_link
-	) => {
-		console.log('here');
-		const query = {
-			text: `INSERT INTO projects (junior_dev_id, title, description, thumbnail_photo_url, github_link, live_link) VALUES ($1, $2, $3, $4, $5, $6) RETURNING *`,
-			values: [
-				junior_dev_id,
-				title,
-				description,
-				thumbnail_photo_url,
-				github_link,
-				live_link,
-			],
-		};
-		return db
-			.query(query)
-			.then(result => result.rows[0])
-			.catch(err => err);
-	};
-
 	// Jobs and Gigs Search //
 	const getJobsAndGigsByQuery = queryString => {
 		const q1 = {
@@ -177,61 +120,6 @@ module.exports = db => {
 			})
 			.catch(err => err);
 	};
-	//
-
-
-
-	const getJobApplicationsByDevId = junior_dev_id => {
-		const query = {
-			text: `
-        SELECT job_applications.*, job_postings.*,
-        employers.email as employer_email, company_name, employers.bio as employer_bio, employers.photo_url as employer_photo_url,
-        junior_devs.email as dev_email, first_name, last_name,phone_number, headline, junior_devs.bio as dev_bio, junior_devs.photo_url as dev_photo_url,
-        trim(to_char(salary/100, '999,999,990')) as formatted_salary,
-        to_char(date_posted,'FMMonth DD, YYYY') as formatted_date,
-        to_char(date_applied,'FMMonth DD, YYYY') as formatted_date_applied
-        FROM job_applications
-        JOIN job_postings ON job_applications.job_posting_id = job_postings.id
-        JOIN junior_devs ON job_applications.junior_dev_id = junior_devs.id
-        JOIN employers ON job_postings.employer_id = employers.id
-        WHERE job_applications.junior_dev_id = $1
-        `,
-			values: [junior_dev_id],
-		};
-
-		return db
-			.query(query)
-			.then(result => result.rows)
-			.catch(err => err);
-	};
-
-
-
-	
-	const getGigApplicationsByDevId = junior_dev_id => {
-		const query = {
-			text: `
-        SELECT gig_applications.*, gig_postings.*,
-        trim(to_char(pay/100, '999,999,990')) as formatted_pay,
-        employers.email as employer_email, company_name, employers.bio as employer_bio, employers.photo_url as employer_photo_url,
-        junior_devs.email as dev_email, first_name, last_name,phone_number, headline, junior_devs.bio as dev_bio, junior_devs.photo_url as dev_photo_url,
-        to_char(date_posted,'FMMonth DD, YYYY') as formatted_date,
-        to_char(deadline,'FMMonth DD, YYYY') as formatted_deadline,
-        to_char(date_applied,'FMMonth DD, YYYY') as formatted_date_applied
-        FROM gig_applications
-        JOIN gig_postings ON gig_applications.gig_posting_id = gig_postings.id
-        JOIN junior_devs ON gig_applications.junior_dev_id = junior_devs.id
-        JOIN employers ON gig_postings.employer_id = employers.id
-        WHERE gig_applications.junior_dev_id = $1
-        `,
-			values: [junior_dev_id],
-		};
-
-		return db
-			.query(query)
-			.then(result => result.rows)
-			.catch(err => err);
-	};
 
 	const getAcceptedJobApplications = junior_dev_id => {
 		const query = {
@@ -263,8 +151,6 @@ module.exports = db => {
 
 	return {
 		getProjectsByDevId,
-		getProjectById,
-		addProject,
 		getJobsAndGigsByQuery,
 		getJobsByCity,
 		getJobsByType,

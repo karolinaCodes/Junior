@@ -108,14 +108,6 @@ export default function Profile(props) {
 
 	return (
 		<div className='profile-content'>
-			<Button
-				variant='outlined'
-				onClick={() => {
-					navigate(-1);
-				}}
-			>
-				GO BACK
-			</Button>
 			<UserProfileInfo currentUser={currentUser} />
 			{profile.projects.length === 0 && <h1>No projects added</h1>}
 			<section className='profile-cards'>

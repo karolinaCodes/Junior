@@ -34,7 +34,7 @@ export default function Profile(props) {
       <p>Date Posted: {formatted_date}</p>
       {is_open && <p>Accepting Applicants: {is_open ? 'Yes' : 'No'}</p>}
 			{deadline && <p>Deadline: {formatted_deadline}</p>}
-      <p>{description}</p>
+      <p className="description">{description}</p>
     </CardContent>
   );
 }

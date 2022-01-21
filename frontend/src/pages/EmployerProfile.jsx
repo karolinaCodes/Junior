@@ -53,6 +53,7 @@ export default function Profile(props) {
     // /employer   => /job/...
     // /employer/ => job/...
     const applicationLink = `job/${job.id}/applications`;
+    const postingLink = `job/${job.id}`;
 		return (
       <Grid item xs={12} sm={6} md={4} lg={3} key={'Job-grid-item-' + job.id}>
         <Grid container direction='column' key={'Job-grid-container-' + job.id}>
@@ -70,7 +71,12 @@ export default function Profile(props) {
             <CardActions key={'Job-card-actions-' + job.id}>
               <Button key={'Job-button-' + job.id}
                 onClick={() => window.open(applicationLink, "_self")}>
-                View Applications
+                Applications
+              </Button>
+              <Button key={'Job-button-post-' + job.id}
+                className='card-footer'
+                onClick={() => window.open(postingLink, "_self")}>
+                Posting
               </Button>
             </CardActions>
           </Card>
@@ -81,30 +87,34 @@ export default function Profile(props) {
   const parsedGigs = gigsArray.map(gig => {
     const data = (<GigPostingModal key={'Gig-modal-' + gig.id} {...gig} />);
     const applicationLink = `gig/${gig.id}/applications`;
+    const postingLink = `gig/${gig.id}`;
 		return (
       <Grid item xs={12} sm={6} md={4} lg={3} key={'Gig-grid-item-' + gig.id} >
         <Grid container direction='column' key={'Gig-grid-container-' + gig.id}>
-          <Paper key={'Gig-paper-' + gig.id}>
-            <Card key={'Gig-card-' + gig.id}>
-              <CardActionArea key={'Gig-card-action' + gig.id}
-                onClick={() => {
-                setModalData(data);
-                handleView();
-              }}>
-                <JobPostingCard key={'Gig-card-post-' + gig.id}
-                  type='gig'
-                  {...gig}
-                />
-              </CardActionArea>
-              <CardActions key={'Gig-card-actions-' + gig.id}>
-                <Button key={'Gig-button-' + gig.id}
-                  className='card-footer'
-                  onClick={() => window.open(applicationLink, "_self")}>
-                  View Applications
-                </Button>
-              </CardActions>
-            </Card>
-          </Paper>
+          <Card key={'Gig-card-' + gig.id}>
+            <CardActionArea key={'Gig-card-action' + gig.id}
+              onClick={() => {
+              setModalData(data);
+              handleView();
+            }}>
+              <JobPostingCard key={'Gig-card-post-' + gig.id}
+                type='gig'
+                {...gig}
+              />
+            </CardActionArea>
+            <CardActions key={'Gig-card-actions-' + gig.id}>
+              <Button key={'Gig-button-' + gig.id}
+                className='card-footer'
+                onClick={() => window.open(applicationLink, "_self")}>
+                Applications
+              </Button>
+              <Button key={'Gig-button-post-' + gig.id}
+                className='card-footer'
+                onClick={() => window.open(postingLink, "_self")}>
+                Posting
+              </Button>
+            </CardActions>
+          </Card>
         </Grid>
       </Grid>
 		)

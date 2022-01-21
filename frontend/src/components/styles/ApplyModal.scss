@@ -1,37 +1,54 @@
 @import 'variables';
 
-.apply-modal {
-  .profile-pic {
-    text-align: center;
-    & a {
-      color: $sand;
-      text-decoration: none;
-    }
-  }
-}
+.dialog-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: justify;
+  padding: 0 1em;
+  background: $white;
+  color: $white;
+  align-items: flex-start;
+  overflow-wrap: break-word;
+  width: 100%;
 
-.MuiBox-root {
   h1 {
     color: $sand;
   }
 
-  h1:hover {
+  button {
     color: $white;
+    background-color: $blue;
+  }
+  .profile-pic {
+    padding: 1em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  img#profile-pic {
+    max-width: 150px;
+    height: auto;
+    border-radius: 50%;
+  }
+  .profile-info {
+    width: auto;
+  }
+  .application-info {
+    justify-content: space-evenly;
   }
 }
 
-.profile-data {
-  display: flex;
-}
-
-#user-photo {
+#apply-user-photo {
   border-radius: 50%;
 }
 
-.profile-pic {
-  text-align: center;
-  & a {
-    color: $sand;
-    text-decoration: none;
-  }
+// .apply-dialog-content {
+//   // display: flex;
+// }
+
+.apply-profile-bio {
+  display: flex;
 }

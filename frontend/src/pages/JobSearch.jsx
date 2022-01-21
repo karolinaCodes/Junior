@@ -153,8 +153,6 @@ export default function JobSearch(props) {
 
   const classes = useStyles();
 
-  // console.log(value);
-
   // TO ADD? every time queryString changes, make send new request, so changes as typing
   useEffect(() => {
     const results = axios

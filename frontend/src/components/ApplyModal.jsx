@@ -1,7 +1,7 @@
 import {useState, useEffect} from 'react';
 import axios from 'axios';
 import './styles/ApplyModal.scss';
-import {Button, Modal, Box, Typography} from '@mui/material';
+import {Button, Box, Typography, Modal, Dialog} from '@mui/material';
 import {Link} from 'react-router-dom';
 import {useNavigate} from 'react-router-dom';
 import {makeStyles} from '@mui/styles';
@@ -28,8 +28,10 @@ export default function ApplyModal(props) {
 
   const navigate = useNavigate();
 
+  const [openModal, setOpenModal] = useState(false);
+
   const handleView = () => {
-    open === true ? setOpen(false) : setOpen(true);
+    openModal === true ? setOpenModal(false) : setOpenModal(true);
   };
 
   const handleClickandView = () => {
@@ -37,18 +39,18 @@ export default function ApplyModal(props) {
     handleClick && handleClick();
   };
 
-  const style = {
-    width: 1 / 2,
-    height: 1 / 2,
-    display: 'flex',
-    flexDirection: 'column',
-    margin: '10% 0 0 25%',
-    background: '#223d55',
-    color: 'black',
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderRadius: '2rem',
-  };
+  // const style = {
+  //   width: 1 / 2,
+  //   height: 1 / 2,
+  //   display: 'flex',
+  //   flexDirection: 'column',
+  //   margin: '10% 0 0 25%',
+  //   background: '#223d55',
+  //   color: 'black',
+  //   alignItems: 'center',
+  //   justifyContent: 'center',
+  //   borderRadius: '2rem',
+  // };
 
   const {
     first_name,
@@ -85,8 +87,14 @@ export default function ApplyModal(props) {
       >
         Apply
       </Button>
-      <Modal open={open} onClose={handleView}>
-        <Box sx={style}>
+
+      <Dialog
+        open={openModal}
+        onClose={handleView}
+        fullWidth={true}
+        maxWidth={'sm'}
+      >
+        <Box className="apply-dialog-content">
           {applicationSubmitted ? (
             <div>
               'Application Submitted'
@@ -105,12 +113,12 @@ export default function ApplyModal(props) {
               </div>
             </div>
           ) : (
-            <section className="profile-bio">
+            <section className="apply-profile-bio">
               <h1>Apply for {jobApplying.job_title}</h1>
-              <div className="profile-data">
-                <div className="profile-pic">
+              <div className="apply-profile-data">
+                <div className="apply-profile-pic">
                   <img
-                    id="user-photo"
+                    id="apply-user-photo"
                     src={currentUser.photo_url}
                     alt="Avatar"
                   ></img>
@@ -152,7 +160,7 @@ export default function ApplyModal(props) {
             </Button>
           )}
         </Box>
-      </Modal>
+      </Dialog>
     </div>
   );
 }

@@ -5,8 +5,6 @@ import {useParams} from 'react-router-dom';
 import ApplicationCard from '../components/ApplicationCard';
 import ApplicationModal from '../components/ApplicationModal';
 
-import Dialogue from '../components/Dialogue';
-
 import axios from 'axios';
 
 export default function Applications(props) {

@@ -1,6 +1,5 @@
-import {Dialog} from '@mui/material';
 import {useState} from 'react';
-import {Button} from '@mui/material';
+import {Button, Box, Dialog} from '@mui/material';
 
 export default function Modal(props) {
   const {

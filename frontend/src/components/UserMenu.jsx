@@ -95,6 +95,14 @@ export default function PositionedMenu(props) {
 						>
 							Find Work
 						</MenuItem>
+						<MenuItem
+							onClick={e => {
+								navigate('/profile/applications');
+								handleClose();
+							}}
+						>
+							Applications
+						</MenuItem>
 					</div>
 				)}
 				{currentUser.company_name && (
@@ -107,14 +115,7 @@ export default function PositionedMenu(props) {
 						>
 							Profile
 						</MenuItem>
-						<MenuItem
-							onClick={e => {
-								navigate('/applications');
-								handleClose();
-							}}
-						>
-							Applications
-						</MenuItem>
+
 						<MenuItem
 							onClick={e => {
 								navigate('/newjob');

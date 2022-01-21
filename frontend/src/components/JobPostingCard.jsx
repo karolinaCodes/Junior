@@ -1,7 +1,7 @@
 import './styles/PortfolioCard.scss';
-import {CardContent, CardMedia, CardActionArea} from '@mui/material';
+import {CardContent, CardMedia} from '@mui/material';
 
-export default function Profile(props) {
+export default function Posting(props) {
   const {
     job_title,
     description,
@@ -23,7 +23,7 @@ export default function Profile(props) {
   return (
     <CardContent>
       <h1>{job_title}</h1>
-      {pay && <strong><p>Compensation: ${pay / 100.00}</p></strong>}
+      {pay && <p><strong>Compensation:</strong> ${pay / 100.00}</p>}
       {photo_url && <CardMedia
 				component="img"
 				image={photo_url}

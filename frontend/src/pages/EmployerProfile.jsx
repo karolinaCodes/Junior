@@ -94,7 +94,7 @@ export default function Profile(props) {
     );
   });
   const parsedGigs = gigsArray.map(gig => {
-    const data = (<GigPostingModal key={'Gig-modal-' + gig.id} {...gig} />);
+    const data = (<JobPostingModal key={'Gig-modal-' + gig.id} {...gig} />);
     const applicationLink = `employerprofile/gig/${gig.id}/applications`;
     const postingLink = `gig/${gig.id}`;
 		return (

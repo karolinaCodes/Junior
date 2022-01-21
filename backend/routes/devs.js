@@ -1,7 +1,13 @@
 const express = require('express');
 const router = express.Router();
 
-module.exports = ({getDevs, getDevById, getProjectsByDevId, getJobApplicationsByDevId, getGigApplicationsByDevId}) => {
+module.exports = ({
+  getDevs,
+  getDevById,
+  getProjectsByDevId,
+  getJobApplicationsByDevId,
+  getGigApplicationsByDevId
+}) => {
   /* GET list of all devs */
   router.get('/', (req, res) => {
     getDevs()

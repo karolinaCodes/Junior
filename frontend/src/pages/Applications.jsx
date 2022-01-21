@@ -112,6 +112,7 @@ export default function Applications(props) {
             </Grid>
           </section>
         </Grid>
+
         <Dialog
           open={openModal}
           onClose={handleView}

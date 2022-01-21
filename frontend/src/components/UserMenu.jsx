@@ -69,16 +69,16 @@ export default function PositionedMenu(props) {
 				open={open}
 				onClose={handleClose}
 			>
-				<MenuItem
-					onClick={e => {
-						navigate('/profile');
-						handleClose();
-					}}
-				>
-					Profile
-				</MenuItem>
 				{currentUser.first_name && (
 					<div>
+						<MenuItem
+							onClick={e => {
+								navigate('/profile');
+								handleClose();
+							}}
+						>
+							Profile
+						</MenuItem>
 						<MenuItem
 							onClick={e => {
 								navigate('/newproject');
@@ -99,6 +99,14 @@ export default function PositionedMenu(props) {
 				)}
 				{currentUser.company_name && (
 					<div>
+						<MenuItem
+							onClick={e => {
+								navigate('/employerprofile');
+								handleClose();
+							}}
+						>
+							Profile
+						</MenuItem>
 						<MenuItem
 							onClick={e => {
 								navigate('/applications');

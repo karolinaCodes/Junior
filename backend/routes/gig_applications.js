@@ -1,7 +1,11 @@
 const express = require('express');
 const router = express.Router();
 
-module.exports = ({ getGigApplicationById, addGigApplication }) => {
+module.exports = ({
+	getGigApplicationById,
+	addGigApplication,
+	acceptGigApplication,
+}) => {
 	/* GET a gig application by gig_applications.id */
 	router.get('/:id', (req, res) => {
 		getGigApplicationById(req.params.id)
@@ -13,19 +17,8 @@ module.exports = ({ getGigApplicationById, addGigApplication }) => {
 			);
 	});
 
-	/* GET all accepted gig applications */
-	router.get('/accepted', (req, res) => {
-		getAcceptedGigApplications(req.params.id)
-			.then(application => res.json(application))
-			.catch(err =>
-				res.json({
-					error: err.message,
-				})
-			);
-	});
-
 	/* Accept a gig application */
-	router.post('/accept', (req, res) => {
+	router.post('/accept/:id', (req, res) => {
 		acceptGigApplication(req.params.id)
 			.then(application => res.json(application))
 			.catch(err =>

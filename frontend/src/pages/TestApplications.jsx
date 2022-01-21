@@ -5,14 +5,16 @@ import './styles/TestApplications.scss';
 
 export default function ApplicationsTest(props) {
 	const { currentUser } = props;
-	const [accepted, setAccepted] = useState({});
+	const [accepted, setAccepted] = useState('');
 
-	const { id } = currentUser;
+	// const { id } = currentUser;
+
+	const id = 2;
 
 	useEffect(() => {
 		const getApplications = () => {
 			axios
-				.get(`/api/gig_applications/accepted`, {
+				.post(`/api/job_applications/accept/${id}`, {
 					params: {
 						id: id,
 					},
@@ -37,7 +39,7 @@ export default function ApplicationsTest(props) {
 		<div id='test-apps'>
 			<h1>Applications:</h1>
 			<h2>{currentUser.id}</h2>
-			{/* <h2>{showApps}</h2> */}
+			<h2>{accepted.id}</h2>
 		</div>
 	);
 }

@@ -689,12 +689,12 @@ module.exports = db => {
 			.catch(err => err);
 	};
 
-	const acceptGigApplication = id => {
+	const acceptGigApplication = gig_application_id => {
 		const query = {
 			text: `UPDATE gig_applications
       SET is_accepted = true
-      WHERE id = ${id}`,
-			values: [gig_posting_id, junior_dev_id],
+      WHERE id = $1`,
+			values: [gig_application_id],
 		};
 
 		return db
@@ -703,12 +703,12 @@ module.exports = db => {
 			.catch(err => err);
 	};
 
-	const acceptJobApplication = id => {
+	const acceptJobApplication = job_application_id => {
 		const query = {
 			text: `UPDATE job_applications
       SET is_accepted = true
-      WHERE id = ${id}`,
-			values: [gig_posting_id, junior_dev_id],
+      WHERE id = $1`,
+			values: [job_application_id],
 		};
 
 		return db
@@ -717,11 +717,12 @@ module.exports = db => {
 			.catch(err => err);
 	};
 
-	const getAcceptedJobApplications = employer_id => {
+	const getAcceptedJobApplications = junior_dev_id => {
 		const query = {
 			text: `SELECT * FROM job_applications
-      WHERE is_accepted = true`,
-			values: [gig_posting_id, junior_dev_id],
+      WHERE is_accepted = true
+			AND junior_dev_id = $1`,
+			values: [junior_dev_id],
 		};
 
 		return db
@@ -730,12 +731,12 @@ module.exports = db => {
 			.catch(err => err);
 	};
 
-	const getAcceptedGigApplications = id => {
+	const getAcceptedGigApplications = junior_dev_id => {
 		const query = {
 			text: `SELECT * FROM gig_applications
       WHERE is_accepted = true
       AND junior_dev_id = $1`,
-			values: [id],
+			values: [junior_dev_id],
 		};
 
 		return db

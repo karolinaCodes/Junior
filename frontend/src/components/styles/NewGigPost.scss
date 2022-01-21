@@ -10,6 +10,13 @@
 	background-image: url('/images/form-backround.png');
 	background-size: cover;
 	background-position: center right;
+
+	img {
+		max-width: 5rem;
+		height: auto;
+		z-index: 999;
+		margin-bottom: 35%;
+	}
 }
 
 .new-gig-form {
@@ -26,12 +33,21 @@
 	box-shadow: 5px 5px 10px #1c1c1c50;
 	color: $black;
 
-	button,
-	a {
-		margin-top: 2rem;
+	h1 {
+		margin-top: 4rem;
 	}
 	#cancel-gig,
 	#post-gig {
 		margin-left: 1rem;
+	}
+
+	button,
+	a {
+		color: $white;
+		background-color: $blue;
+	}
+
+	#gig-buttons {
+		margin-bottom: 5%;
 	}
 }

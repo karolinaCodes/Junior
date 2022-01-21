@@ -39,6 +39,7 @@ export default function NewProjectPost(props) {
 					live_link: '',
 					original_request: '',
 				});
+				navigate('/profile');
 			})
 			.catch(err => {
 				console.log(err);
@@ -47,6 +48,7 @@ export default function NewProjectPost(props) {
 
 	return (
 		<div className='new-project-content'>
+			<img src='images/junior-logomark.png'></img>
 			<form className='new-project-form' onSubmit={postProject}>
 				<h1>{projectForm.title}</h1>
 				<TextField
@@ -137,9 +139,7 @@ export default function NewProjectPost(props) {
 						variant='contained'
 						size='large'
 						type='submit'
-						onClick={e => {
-							navigate('/profile');
-						}}
+						onClick={null}
 					>
 						Post Project
 					</Button>

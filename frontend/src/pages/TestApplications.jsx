@@ -7,8 +7,8 @@ export default function ApplicationsTest(props) {
 	const { currentUser } = props;
 	const [accepted, setAccepted] = useState('');
 
-	// const { id } = currentUser;
-
+	// sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+	// this should be the APPLICATION ID
 	const id = 2;
 
 	useEffect(() => {
@@ -27,7 +27,6 @@ export default function ApplicationsTest(props) {
 					console.log(err);
 				});
 		};
-
 		getApplications();
 	}, []);
 

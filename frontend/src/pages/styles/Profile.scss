@@ -30,13 +30,22 @@
 // 	}
 // }
 
-.profile-content, .application-content {
+.profile-content,
+.application-content {
 	display: flex;
-	flex-direction: column;
+	flex-direction: row;
 	align-items: center;
 	align-content: center;
 	justify-content: flex-start;
-	margin: 0 1em;
+	margin-right: $margin6;
+	margin-top: 2vh;
+	min-width: 80vw;
+
+	#profile-title {
+		margin-top: 0;
+		margin-left: 1vw;
+	}
+
 	.MuiCard-root {
 		padding: 0;
 		h1 {
@@ -51,5 +60,7 @@
 	}
 	.profile-bio {
 		word-wrap: break-word;
+		align-self: flex-start;
+		margin-top: 2vh;
 	}
 }

@@ -8,6 +8,7 @@ module.exports = ({
 	getJobApplicationsByDevId,
 	getGigApplicationsByDevId,
 	getAcceptedGigs,
+	editProfile,
 }) => {
 	/* GET list of all devs */
 	router.get('/', (req, res) => {
@@ -78,5 +79,17 @@ module.exports = ({
 				})
 			);
 	});
+
+	//Update user profile
+	router.post('/edit', (req, res) => {
+		editProfile(req.params.id)
+			.then(profile => res.json(profile))
+			.catch(err =>
+				res.json({
+					error: err.message,
+				})
+			);
+	});
+
 	return router;
 };

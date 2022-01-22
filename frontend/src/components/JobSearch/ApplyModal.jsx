@@ -58,6 +58,13 @@ export default function ApplyModal(props) {
 				setApplicationSubmitted(true);
 				return res.data;
 			})
+			.then(data => {
+				sendEmail(
+					'creativereyne@gmail.com',
+					currentUser,
+					jobApplying.job_title
+				);
+			})
 			.catch(err => {
 				console.log(err);
 			});

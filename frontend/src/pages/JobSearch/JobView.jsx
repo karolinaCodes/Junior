@@ -1,6 +1,5 @@
 // import './styles/LandingPage.scss';
 import '../styles/JobView.scss';
-import {Link} from 'react-router-dom';
 import {TextField, Button, Modal, Box} from '@mui/material';
 import {useContext, useEffect, useState} from 'react';
 import {useParams} from 'react-router-dom';
@@ -16,7 +15,6 @@ import {UserContext} from '../../Providers/userProvider';
 
 export default function LandingPage(props) {
   const {currentUser} = useContext(UserContext);
-  const [open, setOpen] = useState(false);
   const {job_id} = useParams();
   const [jobPosting, setJobPosting] = useState('');
 
@@ -97,7 +95,7 @@ export default function LandingPage(props) {
         </div>
         <div>
           <ApplyModal currentUser={currentUser} jobApplying={jobPosting} />
-          <Button variant="outlined">Save Gig</Button>
+          <Button variant="outlined">Save Job</Button>
         </div>
       </div>
     </div>

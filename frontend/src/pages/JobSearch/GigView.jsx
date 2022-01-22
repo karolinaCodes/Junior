@@ -7,7 +7,7 @@ import {UserContext} from '../../Providers/userProvider';
 import {Button} from '@mui/material';
 
 export default function LandingPage(props) {
-  const {currentUser} = useContext(UserContext);
+  const {currentUser, savedJobsGigs} = useContext(UserContext);
   const {gig_id} = useParams();
   const [gigPosting, setGigPosting] = useState('');
 

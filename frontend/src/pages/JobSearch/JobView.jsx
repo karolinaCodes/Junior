@@ -1,22 +1,30 @@
 // import './styles/LandingPage.scss';
 import '../styles/JobView.scss';
-import {TextField, Button, Modal, Box} from '@mui/material';
+import {Button} from '@mui/material';
 import {useContext, useEffect, useState} from 'react';
 import {useParams} from 'react-router-dom';
-
+import axios from 'axios';
+import ApplyModal from '../../components/JobSearch/ApplyModal';
+import {UserContext} from '../../Providers/userProvider';
+import {useNavigate} from 'react-router-dom';
+// icons //
 import WorkOutlineOutlinedIcon from '@mui/icons-material/WorkOutlineOutlined';
 import FmdGoodOutlinedIcon from '@mui/icons-material/FmdGoodOutlined';
 import LocalOfferOutlinedIcon from '@mui/icons-material/LocalOfferOutlined';
 
-import axios from 'axios';
-
-import ApplyModal from '../../components/JobSearch/ApplyModal';
-import {UserContext} from '../../Providers/userProvider';
-
 export default function LandingPage(props) {
-  const {currentUser} = useContext(UserContext);
+  const {currentUser, savedJobsGigs} = useContext(UserContext);
+  const {jobs} = savedJobsGigs;
   const {job_id} = useParams();
   const [jobPosting, setJobPosting] = useState('');
+  const [saved, setSaved] = useState(false);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (jobs) {
+      jobs.filter(job => job.job_posting_id === +job_id) && setSaved(true);
+    }
+  }, [jobs]);
 
   useEffect(() => {
     // get job posting info
@@ -29,19 +37,13 @@ export default function LandingPage(props) {
       .catch(err => {
         console.log(err);
       });
-
-    // get user info
-    axios
-      .get(`/api/devs/`)
-      .then(res => {
-        console.log(res.data);
-      })
-      .catch(err => {
-        console.log(err);
-      });
   }, []);
 
   const saveJob = () => {
+    if (saved) {
+      navigate('/saved');
+    }
+
     axios
       .post('/api/save/', {
         devId: currentUser.id,
@@ -85,7 +87,7 @@ export default function LandingPage(props) {
       <img src={jobPosting.photo_url} />
       <div className="job-desc-container">
         <div className="job-desc-img-pic">
-          <div>
+          <div className="job-btn-container">
             <h2 id="desc-label">Description</h2>
             <p>{jobPosting.description}</p>
           </div>
@@ -96,8 +98,12 @@ export default function LandingPage(props) {
         </div>
         <div>
           <ApplyModal currentUser={currentUser} jobApplying={jobPosting} />
-          <Button variant="outlined" onClick={saveJob}>
-            Save Job
+          <Button
+            variant={saved ? 'contained' : 'outlined'}
+            color={saved ? 'primary' : 'secondary'}
+            onClick={saveJob}
+          >
+            {saved && 'SAVED'}
           </Button>
         </div>
       </div>

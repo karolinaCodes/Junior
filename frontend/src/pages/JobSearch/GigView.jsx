@@ -8,7 +8,6 @@ import {Button} from '@mui/material';
 
 export default function LandingPage(props) {
   const {currentUser} = useContext(UserContext);
-  const [open, setOpen] = useState(false);
   const {gig_id} = useParams();
   const [gigPosting, setGigPosting] = useState('');
 

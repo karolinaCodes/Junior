@@ -1,11 +1,11 @@
 import axios from 'axios';
-import {useNavigate} from 'react-router-dom';
 const {useState, createContext, useEffect, useMemo} = require('react');
 
 const UserContext = createContext();
 
 const UserProvider = function (props) {
   const [currentUser, setCurrentUser] = useState({});
+  const [savedJobsGigs, setSavedJobsGigs] = useState({});
 
   useEffect(() => {
     axios
@@ -22,9 +22,24 @@ const UserProvider = function (props) {
       });
   }, []);
 
+  useEffect(() => {
+    if (currentUser) {
+      axios
+        .get(`/api/save/${currentUser.id}`)
+        .then(res => {
+          setSavedJobsGigs(res.data);
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    }
+  }, [currentUser]);
+
   const value = useMemo(() => ({
     currentUser,
     setCurrentUser,
+    savedJobsGigs,
+    setSavedJobsGigs,
   }));
 
   return (

@@ -7,24 +7,7 @@ import axios from 'axios';
 import {UserContext} from '../Providers/userProvider';
 
 export default function Applications(props) {
-  const {currentUser} = useContext(UserContext);
-  const [saved, setSaved] = useState({});
-
-  useEffect(() => {
-    if (currentUser) {
-      axios
-        .get(`/api/save/${currentUser.id}`)
-        .then(res => {
-          console.log(res.data);
-          setSaved(res.data);
-        })
-        .catch(err => {
-          console.log(err);
-        });
-    }
-  }, [currentUser]);
-
-  console.log(saved.jobs);
+  const {currentUser, savedJobsGigs} = useContext(UserContext);
 
   return (
     <div className="application-content">
@@ -33,21 +16,21 @@ export default function Applications(props) {
         <section className="application-cards">
           <h3>Saved Jobs</h3>
           <Grid container item>
-            {saved.jobs &&
-              saved.jobs.map(savedJob => {
+            {savedJobsGigs.jobs &&
+              savedJobsGigs.jobs.map((savedJob, index) => {
                 return (
                   <Grid
                     item
                     xs={12}
                     md={6}
-                    key={'SavedJobsGigs-grid-' + savedJob.job_posting_id}
+                    key={'SavedJobs-grid-' + savedJob.job_posting_id}
                   >
                     <Card
                       className="card-click"
-                      key={'SavedJobsGigs-paper-' + savedJob.job_posting_id}
+                      key={'SavedJobs-paper-' + savedJob.job_posting_id}
                     >
                       <SavedJobsGigsCard
-                        key={'SavedJobsGigs-card-' + savedJob.job_posting_id}
+                        key={'SavedJobs-card-' + savedJob.job_posting_id}
                         saved={savedJob}
                       />
                     </Card>
@@ -57,21 +40,21 @@ export default function Applications(props) {
           </Grid>
           <h3>Saved Gigs</h3>
           <Grid container item>
-            {saved.gigs &&
-              saved.gigs.map(savedGig => {
+            {savedJobsGigs.gigs &&
+              savedJobsGigs.gigs.map(savedGig => {
                 return (
                   <Grid
                     item
                     xs={12}
                     md={6}
-                    key={'SavedJobsGigs-grid-' + savedGig.gig_posting_id}
+                    key={'SavedGigs-grid-' + savedGig.gig_posting_id}
                   >
                     <Card
                       className="card-click"
-                      key={'SavedJobsGigs-paper-' + savedGig.gig_posting_id}
+                      key={'SavedGigs-paper-' + savedGig.gig_posting_id}
                     >
                       <SavedJobsGigsCard
-                        key={'SavedJobsGigs-card-' + savedGig.gig_posting_id}
+                        key={'SavedGigs-card-' + savedGig.gig_posting_id}
                         saved={savedGig}
                       />
                     </Card>

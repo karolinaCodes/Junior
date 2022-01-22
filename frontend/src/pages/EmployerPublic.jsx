@@ -1,6 +1,6 @@
 import './styles/Profile.scss';
 import {useEffect, useState, useContext} from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { UserContext } from '../Providers/userProvider';
 import {
   Grid,
@@ -14,15 +14,16 @@ import {
   Dialog,
 } from '@mui/material';
 import JobPostingCard from '../components/JobPostingCard';
-import JobPostingModal from '../components/JobPostingModal';
 import axios from 'axios';
 
 
 export default function Profile(props) {
   const { currentUser } = useContext(UserContext);
-  
+  console.log('currentUser',currentUser);
+  const {id} = useParams();
+  console.log('useParams',id);
 	const navigate = useNavigate();
-
+  
   const [profile, setProfile] = useState({
     employer: {},
     jobs: [],
@@ -35,9 +36,10 @@ export default function Profile(props) {
     openModal === true ? setOpenModal(false) : setOpenModal(true);
   };
 
-  const { id } = currentUser;
+  // const { id } = currentUser;
   
   const {company_name, email, photo_url, bio} = profile.employer;
+  // const {company_name, email, photo_url, bio} = '';
   
   useEffect(() => {
     const employerUrl = `/api/employers/${id}`;
@@ -60,7 +62,7 @@ export default function Profile(props) {
         }));
       });
     }
-  }, [currentUser]);
+  }, [id]);
 
   const jobsArray = profile.jobs;
   const gigsArray = profile.gigs;

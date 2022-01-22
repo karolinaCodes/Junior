@@ -5,11 +5,24 @@ import axios from 'axios';
 import ApplyModal from '../../components/JobSearch/ApplyModal';
 import {UserContext} from '../../Providers/userProvider';
 import {Button} from '@mui/material';
+import {useNavigate} from 'react-router-dom';
+import BookmarkIcon from '@mui/icons-material/Bookmark';
+import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
 
 export default function LandingPage(props) {
   const {currentUser, savedJobsGigs} = useContext(UserContext);
+  const {gigs} = savedJobsGigs;
   const {gig_id} = useParams();
   const [gigPosting, setGigPosting] = useState('');
+  const [saved, setSaved] = useState(false);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (gigs) {
+      gigs.filter(gig => gig.gig_posting_id === +gig_id).length &&
+        setSaved(true);
+    }
+  }, [gigs]);
 
   useEffect(() => {
     axios
@@ -24,6 +37,10 @@ export default function LandingPage(props) {
   }, []);
 
   const saveGig = () => {
+    if (saved) {
+      navigate('/saved');
+    }
+
     axios
       .post('/api/save/', {
         devId: currentUser.id,
@@ -32,6 +49,7 @@ export default function LandingPage(props) {
       })
       .then(res => {
         console.log(res.data);
+        setSaved(true);
       })
       .catch(err => {
         console.log(err);
@@ -69,8 +87,13 @@ export default function LandingPage(props) {
           </p>
           <div>
             <ApplyModal currentUser={currentUser} jobApplying={gigPosting} />
-            <Button variant="outlined" onClick={saveGig}>
-              Save Gig
+            <Button
+              variant={saved ? 'contained' : 'outlined'}
+              color={saved ? 'success' : 'primary'}
+              onClick={saveGig}
+            >
+              {saved ? <BookmarkIcon /> : <BookmarkBorderIcon />}{' '}
+              {saved ? 'SAVED' : 'Save'}
             </Button>
           </div>
         </div>

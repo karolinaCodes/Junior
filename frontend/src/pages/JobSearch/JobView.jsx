@@ -11,6 +11,8 @@ import {useNavigate} from 'react-router-dom';
 import WorkOutlineOutlinedIcon from '@mui/icons-material/WorkOutlineOutlined';
 import FmdGoodOutlinedIcon from '@mui/icons-material/FmdGoodOutlined';
 import LocalOfferOutlinedIcon from '@mui/icons-material/LocalOfferOutlined';
+import BookmarkIcon from '@mui/icons-material/Bookmark';
+import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
 
 export default function LandingPage(props) {
   const {currentUser, savedJobsGigs} = useContext(UserContext);
@@ -22,7 +24,8 @@ export default function LandingPage(props) {
 
   useEffect(() => {
     if (jobs) {
-      jobs.filter(job => job.job_posting_id === +job_id) && setSaved(true);
+      jobs.filter(job => job.job_posting_id === +job_id).length &&
+        setSaved(true);
     }
   }, [jobs]);
 
@@ -52,6 +55,7 @@ export default function LandingPage(props) {
       })
       .then(res => {
         console.log(res.data);
+        setSaved(true);
       })
       .catch(err => {
         console.log(err);
@@ -100,10 +104,11 @@ export default function LandingPage(props) {
           <ApplyModal currentUser={currentUser} jobApplying={jobPosting} />
           <Button
             variant={saved ? 'contained' : 'outlined'}
-            color={saved ? 'primary' : 'secondary'}
+            color={saved ? 'success' : 'primary'}
             onClick={saveJob}
           >
-            {saved && 'SAVED'}
+            {saved ? <BookmarkIcon /> : <BookmarkBorderIcon />}{' '}
+            {saved ? 'SAVED' : 'Save'}
           </Button>
         </div>
       </div>

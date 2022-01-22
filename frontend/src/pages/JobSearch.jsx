@@ -151,6 +151,7 @@ export default function JobSearch(props) {
   const [value, setValue] = useState([40000, 70000]);
   // value = salary range
   const classes = useStyles();
+  console.log(jobApplying);
 
   useEffect(() => {
     if (state) {

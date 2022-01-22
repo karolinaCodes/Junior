@@ -49,6 +49,7 @@ export default function UserApplications(props) {
 				>
 					<UserApplicationCard
 						key={'Job-application-card-' + application.id}
+						type={'job'}
 						{...application}
 					/>
 				</Card>
@@ -63,6 +64,7 @@ export default function UserApplications(props) {
 				>
 					<UserApplicationCard
 						key={'Gig-application-card-' + application.id}
+						type='gig'
 						{...application}
 					/>
 				</Card>

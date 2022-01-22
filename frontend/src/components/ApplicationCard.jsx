@@ -125,7 +125,7 @@ export default function ApplicationCard(props) {
 							<Button 
 								color="error"
 								onClick={() => {
-									// declineApplication(id, postType)
+									// declineApplication(id, postType);
 									console.log('decline', id, postType);
 								}}
 							>

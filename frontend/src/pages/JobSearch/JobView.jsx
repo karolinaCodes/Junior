@@ -91,16 +91,14 @@ export default function LandingPage(props) {
       <img src={jobPosting.photo_url} />
       <div className="job-desc-container">
         <div className="job-desc-img-pic">
-          <div className="job-btn-container">
-            <h2 id="desc-label">Description</h2>
-            <p>{jobPosting.description}</p>
-          </div>
+          <h2 id="desc-label">Description</h2>
+          <p>{jobPosting.description}</p>
           <div className="employer-pic-container">
             <img src={jobPosting.employer_photo_url} className="job-desc-img" />
             <p>{jobPosting.company_name} </p>
           </div>
         </div>
-        <div>
+        <div className="posting-btn-container">
           <ApplyModal currentUser={currentUser} jobApplying={jobPosting} />
           <Button
             variant={saved ? 'contained' : 'outlined'}

@@ -85,7 +85,7 @@ export default function LandingPage(props) {
               })}{' '}
             </b>
           </p>
-          <div>
+          <div className="posting-btn-container">
             <ApplyModal currentUser={currentUser} jobApplying={gigPosting} />
             <Button
               variant={saved ? 'contained' : 'outlined'}

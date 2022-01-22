@@ -1,35 +1,47 @@
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
-const { useState, createContext, useEffect, useMemo } = require('react');
+import {useNavigate} from 'react-router-dom';
+const {useState, createContext, useEffect, useMemo} = require('react');
 
 const UserContext = createContext();
 
 const UserProvider = function (props) {
-	const [currentUser, setCurrentUser] = useState({});
+  const [currentUser, setCurrentUser] = useState({});
 
-	useEffect(() => {
-		axios
-			.post('/api/auth/check')
-			.then(res => {
-				console.log(
-					res.data,
-					'successfully retrieved cookie FROM USER PROVIDER'
-				);
-				setCurrentUser(prev => res.data);
-			})
-			.catch(err => {
-				console.log(err);
-			});
-	}, []);
+  useEffect(() => {
+    console.log('eere');
+    axios
+      .get('/api/saved_jobs_gigs/1')
+      .then(res => {
+        console.log(res.data);
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  }, []);
 
-	const value = useMemo(() => ({
-		currentUser,
-		setCurrentUser,
-	}));
+  useEffect(() => {
+    axios
+      .post('/api/auth/check')
+      .then(res => {
+        console.log(
+          res.data,
+          'successfully retrieved cookie FROM USER PROVIDER'
+        );
+        setCurrentUser(prev => res.data);
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  }, []);
 
-	return (
-		<UserContext.Provider value={value}>{props.children}</UserContext.Provider>
-	);
+  const value = useMemo(() => ({
+    currentUser,
+    setCurrentUser,
+  }));
+
+  return (
+    <UserContext.Provider value={value}>{props.children}</UserContext.Provider>
+  );
 };
 
-export { UserProvider, UserContext };
+export {UserProvider, UserContext};

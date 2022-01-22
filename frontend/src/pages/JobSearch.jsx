@@ -153,6 +153,18 @@ export default function JobSearch(props) {
   const classes = useStyles();
 
   useEffect(() => {
+    console.log('eere');
+    axios
+      .get('/api/saved_jobs_gigs/1')
+      .then(res => {
+        console.log(res.data);
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  }, []);
+
+  useEffect(() => {
     if (state) {
       const {data} = state;
       return setSearchResults(data);
@@ -169,19 +181,6 @@ export default function JobSearch(props) {
       })
       .catch(err => console.log(err));
   }, []);
-
-  const style = {
-    width: 1 / 2,
-    height: 1 / 2,
-    display: 'flex',
-    flexDirection: 'column',
-    margin: '10% 0 0 25%',
-    background: '#223d55',
-    color: 'black',
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderRadius: '2rem',
-  };
 
   const keyCheck = e => {
     if (e.keyCode === 13) {

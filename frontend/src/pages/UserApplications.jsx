@@ -19,11 +19,6 @@ export default function UserApplications(props) {
 	});
 
 	const [openModal, setOpenModal] = useState(false);
-	const [modalData, setModalData] = useState();
-
-	const handleView = () => {
-		openModal === true ? setOpenModal(false) : setOpenModal(true);
-	};
 
 	useEffect(() => {
 		if (id) {
@@ -47,20 +42,10 @@ export default function UserApplications(props) {
 	const gigApplicationsArray = applications.gigApplications;
 
 	const parsedJobApplications = jobApplicationsArray.map(application => {
-		const data = (
-			<UserApplicationModal
-				key={'Job-application-modal-' + application.id}
-				{...application}
-			/>
-		);
 		return (
 			<Grid item xs={12} md={6} key={'Job-application-grid-' + application.id}>
 				<Card
 					key={'Job-application-Card-' + application.id}
-					onClick={() => {
-						setModalData(data);
-						handleView();
-					}}
 				>
 					<UserApplicationCard
 						key={'Job-application-card-' + application.id}
@@ -71,20 +56,10 @@ export default function UserApplications(props) {
 		);
 	});
 	const parsedGigApplications = gigApplicationsArray.map(application => {
-		const data = (
-			<UserApplicationModal
-				key={'Gig-application-modal-' + application.id}
-				{...application}
-			/>
-		);
 		return (
 			<Grid item xs={12} md={6} key={'Gig-application-grid-' + application.id}>
 				<Card
 					key={'Gig-application-Card-' + application.id}
-					onClick={() => {
-						setModalData(data);
-						handleView();
-					}}
 				>
 					<UserApplicationCard
 						key={'Gig-application-card-' + application.id}
@@ -115,14 +90,6 @@ export default function UserApplications(props) {
 					</Grid>
 				</section>
 			</Grid>
-			<Dialog
-				open={openModal}
-				onClose={handleView}
-				fullWidth={true}
-				maxWidth={'sm'}
-			>
-				<Box className='application-modal'>{modalData}</Box>
-			</Dialog>
 		</div>
 	);
 }

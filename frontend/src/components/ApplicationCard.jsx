@@ -3,10 +3,10 @@ import { useContext, useEffect, useState } from 'react';
 import { styled } from '@mui/material/styles';
 import {Grid, Button, List, ListItem, ListItemText, ListItemButton, IconButton, CardContent, CardActions, Collapse} from '@mui/material';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+
 export default function ApplicationCard(props) {
-	const { first_name, last_name, phone_number, headline, city, email, bio, photo_url, github_url, linkedIn_url, resume_url, location, dev_photo_url, date_applied, formatted_date_applied, formatted_date } =
+	const { first_name, last_name, phone_number, headline, city, email, bio, photo_url, github_url, linkedIn_url, resume_url, location, dev_photo_url, date_applied, formatted_date_applied, formatted_date, dev_location } =
 		props;
-	const formattedLocation = `${city}, Canada`;
 
 	const [expanded, setExpanded] = useState(false);
 
@@ -49,7 +49,7 @@ export default function ApplicationCard(props) {
 								{email}
 							</Grid>
 							<Grid item xs={4}>
-								{formattedLocation}
+								{dev_location}
 							</Grid>
 							<Grid item xs={4}
 								onClick={() => window.open(github_url, '_self')}
@@ -99,7 +99,7 @@ export default function ApplicationCard(props) {
 			</CardActions>
 			<Collapse in={expanded} timeout="auto" unmountOnExit>
 				<CardContent>
-					{bio}
+					<p className="description">{bio}</p>
 				</CardContent>
 			</Collapse>
 		</>

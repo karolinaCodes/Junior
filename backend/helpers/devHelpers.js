@@ -192,7 +192,7 @@ module.exports = db => {
 			gig_applications
 			JOIN gig_postings
 			ON gig_posting_id = gig_postings.id
-      WHERE junior_dev_id = 1
+      WHERE junior_dev_id = $1
 			AND is_accepted = true`,
 			values: [junior_dev_id],
 		};

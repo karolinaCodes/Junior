@@ -78,6 +78,5 @@ module.exports = db => {
 		addGigApplication,
 		acceptGigApplication,
 		completeGigApplication,
-		getAcceptedGigs,
 	};
 };

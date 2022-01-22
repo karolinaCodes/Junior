@@ -5,9 +5,10 @@ import {Grid, Button, List, ListItem, ListItemText, ListItemButton, IconButton, 
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 export default function ApplicationCard(props) {
-	const { job_title, description, salary, formatted_salary, date_posted, formatted_date, date_applied, formatted_date_applied, job_type, is_remote, employer_email, company_name, employer_bio, employer_photo_url, deadline, photo_url, city, pay, formatted_pay, formatted_deadline, posting_location } =	props;
+	const { job_title, description, salary, formatted_salary, date_posted, formatted_date, date_applied, formatted_date_applied, job_type, is_remote, employer_email, company_name, employer_bio, employer_photo_url, deadline, photo_url, city, pay, formatted_pay, formatted_deadline, posting_location, job_posting_id, gig_posting_id } =	props;
 
 	const location = `${posting_location} (${is_remote ? 'Remote' : 'On-site'})`;
+	const postingLink = job_posting_id ? `/job/${job_posting_id}` : `/gig/${gig_posting_id}`
 
 	const [expanded, setExpanded] = useState(false);
 
@@ -56,7 +57,10 @@ export default function ApplicationCard(props) {
 				<Grid container direction='row' xs>
 					<Grid item container xs>
 						<Grid item>
-							<Button color="success">
+							<Button
+								color="success"
+								onClick={() => window.open(postingLink, "_self")}
+							>
 								View Posting
 							</Button>
 						</Grid>

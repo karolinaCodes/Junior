@@ -26,7 +26,6 @@ export default function SavedJobsGigsCard(props) {
     formatted_pay,
     city,
     pay,
-    deadline,
     formatted_deadline_date,
     is_remote,
   } = props.saved;
@@ -113,7 +112,7 @@ export default function SavedJobsGigsCard(props) {
             See More
             <ExpandMore
               expand={expanded}
-              // onClick={handleExpandClick}
+              onClick={handleExpandClick}
               aria-expanded={expanded}
               aria-label="show more"
             >
@@ -123,7 +122,9 @@ export default function SavedJobsGigsCard(props) {
         </Grid>
       </CardActions>
       <Collapse in={expanded} timeout="auto" unmountOnExit>
-        <CardContent>{/* <p className="description">{bio}</p> */}</CardContent>
+        <CardContent>
+          <p className="description">{description}</p>
+        </CardContent>
       </Collapse>
     </>
   );

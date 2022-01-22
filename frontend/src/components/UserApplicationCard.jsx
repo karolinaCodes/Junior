@@ -34,7 +34,7 @@ export default function ApplicationCard(props) {
 	return (
 		<>
 			<CardContent>
-				<Grid container direction='row' xs className='profile-info'>
+				<Grid container direction='row' className='profile-info'>
 					<Grid item className='profile-pic'>
 						<img id="profile-pic"
 							src={employer_photo_url}
@@ -57,7 +57,7 @@ export default function ApplicationCard(props) {
 				</Grid>
 			</CardContent>
 			<CardActions disableSpacing>
-				<Grid container direction='row' xs>
+				<Grid container direction='row'>
 					<Grid item container xs>
 						<Grid item>
 							<Button

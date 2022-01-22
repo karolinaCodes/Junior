@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 
-module.exports = ({getSavedJobsGigsByUserId}) => {
+module.exports = ({getSavedJobsGigsByUserId, saveJobGigs}) => {
   // GET all saved jobs and gigs by user id
   router.get('/:id', (req, res) => {
     const {id} = req.params;
@@ -18,12 +18,13 @@ module.exports = ({getSavedJobsGigsByUserId}) => {
       );
   });
 
-  router.post('/:devId/:jobGigId:/:jobType', (req, res) => {
-    const {id} = req.params;
-    getSavedJobsGigsByUserId(id)
+  router.post('/', (req, res) => {
+    const {devId, jobGigId, jobType} = req.body;
+    console.log(devId, jobGigId, jobType);
+    saveJobGigs(devId, jobGigId, jobType)
       .then(saved => {
         console.log(saved);
-        res.json(saved);
+        return res.json(saved);
       })
       .catch(err =>
         res.json({

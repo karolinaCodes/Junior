@@ -41,7 +41,29 @@ module.exports = db => {
       .catch(err => err);
   };
 
+  const saveJobGigs = (devId, jobGigId, jobType) => {
+    let query = '';
+    if (jobType === 'job') {
+      query = {
+        text: `INSERT INTO saved_jobs (junior_dev_id, job_posting_id) VALUES ($1, $2) RETURNING *`,
+        values: [devId, jobGigId],
+      };
+    } else {
+      query = {
+        text: `INSERT INTO saved_gigs (junior_dev_id, gig_posting_id) VALUES ($1, $2) RETURNING *`,
+        values: [devId, jobGigId],
+      };
+    }
+    console.log(query);
+
+    return db
+      .query(query)
+      .then(result => result.rows[0])
+      .catch(err => err);
+  };
+
   return {
     getSavedJobsGigsByUserId,
+    saveJobGigs,
   };
 };

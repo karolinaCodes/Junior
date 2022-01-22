@@ -26,10 +26,13 @@ export default function LandingPage(props) {
 
   const saveGig = () => {
     axios
-      .post(`/api/gig_postings/${gig_id}`)
+      .post('/api/save/', {
+        devId: currentUser.id,
+        jobGigId: +gig_id,
+        jobType: 'gig',
+      })
       .then(res => {
         console.log(res.data);
-        setGigPosting(res.data);
       })
       .catch(err => {
         console.log(err);

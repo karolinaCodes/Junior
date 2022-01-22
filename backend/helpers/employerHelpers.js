@@ -27,22 +27,24 @@ module.exports = db => {
   // Job and gig posting by employer ID //
   const getJobPostingsByEmployerId = id => {
 		const query = {
-			text: `SELECT employers.id as employer_id, 
-        company_name, email, bio, employers.photo_url as employer_photo_url, 
-        job_postings.*, trim(to_char(salary/100, '999,999,990')) as formatted_salary,
+			text: `SELECT employer_id, 
+				company_name, email, bio, employers.photo_url as employer_photo_url, 
+        job_postings.id as job_posting_id, 
+				job_postings.*,
 				applications_table.total_applications,
-        to_char(date_posted,'FMMonth DD, YYYY') as formatted_date
-        FROM employers
-        JOIN job_postings ON employers.id = job_postings.employer_id
-				JOIN job_applications ON job_applications.job_posting_id = job_postings.id
-				JOIN (
+				trim(to_char(salary/100, '999,999,990')) as formatted_salary,
+        to_char(date_posted,'FMMonth d, YYYY') as formatted_date
+        FROM job_postings
+        JOIN employers ON employers.id = job_postings.employer_id
+				LEFT JOIN (
 					SELECT job_posting_id as selected_posting_id,
 					COUNT(job_posting_id) as total_applications
 					FROM job_applications
 					GROUP BY selected_posting_id
 					) AS applications_table
-					ON job_posting_id = selected_posting_id
-        WHERE employers.id = $1
+					ON job_postings.id = selected_posting_id
+        WHERE employer_id = $1
+				ORDER BY job_posting_id
 				`,
 			values: [id],
 		};
@@ -55,23 +57,25 @@ module.exports = db => {
 
 	const getGigPostingsByEmployerId = id => {
 		const query = {
-			text: `SELECT employers.id as employer_id, 
-        company_name, email, bio, employers.photo_url as employer_photo_url, 
-        gig_postings.*, trim(to_char(pay/100, '999,999,990')) as formatted_pay,
+			text: `SELECT employer_id, 
+				company_name, email, bio, employers.photo_url as employer_photo_url, 
+				gig_postings.*, trim(to_char(pay/100, '999,999,990')) as formatted_pay,
+				gig_postings.id as gig_posting_id,
 				applications_table.total_applications,
-        to_char(date_posted,'FMMonth DD, YYYY') as formatted_date,
-        to_char(deadline,'FMMonth DD, YYYY') as formatted_deadline
-        FROM employers
-        JOIN gig_postings ON employers.id = gig_postings.employer_id
-				JOIN gig_applications ON gig_applications.gig_posting_id = gig_postings.id
-				JOIN (
+				to_char(date_posted,'FMMonth d, YYYY') as formatted_date,
+				to_char(deadline,'FMMonth d, YYYY') as formatted_deadline
+        FROM gig_postings
+        JOIN employers ON employers.id = gig_postings.employer_id
+				LEFT JOIN (
 					SELECT gig_posting_id as selected_posting_id,
 					COUNT(gig_posting_id) as total_applications
 					FROM gig_applications
 					GROUP BY selected_posting_id
 					) AS applications_table
-					ON gig_posting_id = selected_posting_id
-        WHERE employers.id = $1`,
+					ON gig_postings.id = selected_posting_id
+        WHERE employers.id = $1
+				ORDER BY gig_posting_id
+				`,
 			values: [id],
 		};
 
@@ -87,8 +91,8 @@ module.exports = db => {
 			text: `SELECT job_applications.*, job_postings.*, job_postings.id as post_id, employers.id as employer_id,
         junior_devs.id as dev_id, junior_devs.email as dev_email, first_name, last_name, junior_devs.bio as dev_bio, junior_devs.photo_url as dev_photo_url,
         trim(to_char(salary/100, '999,999,990')) as formatted_salary,
-        to_char(date_posted,'FMMonth DD, YYYY') as formatted_date,
-        to_char(date_applied,'FMMonth DD, YYYY') as formatted_date_applied
+        to_char(date_posted,'FMMonth d, YYYY') as formatted_date,
+        to_char(date_applied,'FMMonth d, YYYY') as formatted_date_applied
         FROM job_applications
         JOIN job_postings ON job_applications.job_posting_id = job_postings.id
         JOIN employers ON job_postings.employer_id = employers.id
@@ -108,9 +112,9 @@ module.exports = db => {
 			text: `SELECT gig_applications.*, gig_postings.*, gig_postings.id as post_id, employers.id as employer_id,
         junior_devs.id as dev_id, junior_devs.email as dev_email, first_name, last_name, junior_devs.bio as dev_bio, junior_devs.photo_url as dev_photo_url,
         trim(to_char(pay/100, '999,999,990')) as formatted_pay,
-        to_char(date_posted,'FMMonth DD, YYYY') as formatted_date,
-        to_char(deadline,'FMMonth DD, YYYY') as formatted_deadline,
-        to_char(date_applied,'FMMonth DD, YYYY') as formatted_date_applied
+        to_char(date_posted,'FMMonth d, YYYY') as formatted_date,
+        to_char(deadline,'FMMonth d, YYYY') as formatted_deadline,
+        to_char(date_applied,'FMMonth d, YYYY') as formatted_date_applied
         FROM gig_applications
         JOIN gig_postings ON gig_applications.gig_posting_id = gig_postings.id
         JOIN employers ON gig_postings.employer_id = employers.id

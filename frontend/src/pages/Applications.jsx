@@ -58,6 +58,7 @@ export default function Applications(props) {
 				>
 					<ApplicationCard
 						key={'Application-card-' + application.id}
+            type={posttype}
 						{...application}
 					/>
 				</Card>

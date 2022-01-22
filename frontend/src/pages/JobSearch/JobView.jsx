@@ -35,24 +35,25 @@ export default function LandingPage(props) {
       .get(`/api/devs/`)
       .then(res => {
         console.log(res.data);
-        // setJobPosting(res.data);
       })
       .catch(err => {
         console.log(err);
       });
   }, []);
 
-  const style = {
-    width: 1 / 2,
-    height: 1 / 2,
-    display: 'flex',
-    flexDirection: 'column',
-    margin: '10% 0 0 25%',
-    background: '#223d55',
-    color: 'black',
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderRadius: '2rem',
+  const saveJob = () => {
+    axios
+      .post('/api/save/', {
+        devId: currentUser.id,
+        jobGigId: +job_id,
+        jobType: 'job',
+      })
+      .then(res => {
+        console.log(res.data);
+      })
+      .catch(err => {
+        console.log(err);
+      });
   };
 
   return (
@@ -95,7 +96,9 @@ export default function LandingPage(props) {
         </div>
         <div>
           <ApplyModal currentUser={currentUser} jobApplying={jobPosting} />
-          <Button variant="outlined">Save Job</Button>
+          <Button variant="outlined" onClick={saveJob}>
+            Save Job
+          </Button>
         </div>
       </div>
     </div>

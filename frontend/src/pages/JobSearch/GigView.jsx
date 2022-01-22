@@ -2,9 +2,9 @@ import '../styles/GigView.scss';
 import {useContext, useEffect, useState} from 'react';
 import {useParams} from 'react-router-dom';
 import axios from 'axios';
-
 import ApplyModal from '../../components/JobSearch/ApplyModal';
 import {UserContext} from '../../Providers/userProvider';
+import {Button} from '@mui/material';
 
 export default function LandingPage(props) {
   const {currentUser} = useContext(UserContext);
@@ -66,7 +66,10 @@ export default function LandingPage(props) {
               })}{' '}
             </b>
           </p>
-          <ApplyModal currentUser={currentUser} jobApplying={gigPosting} />
+          <div>
+            <ApplyModal currentUser={currentUser} jobApplying={gigPosting} />
+            <Button variant="outlined">Save Gig</Button>
+          </div>
         </div>
       </div>
     </div>

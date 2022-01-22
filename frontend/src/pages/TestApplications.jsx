@@ -61,7 +61,7 @@ export default function ApplicationsTest(props) {
 				.catch(err => console.log(err));
 		};
 
-		email();
+		// email();
 	}, []);
 
 	return (

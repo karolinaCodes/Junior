@@ -101,7 +101,7 @@ export default function Profile(props) {
     : [];
     
   const parsedGigs = Array.isArray(jobsArray) ? gigsArray.map(gig => {
-    const data = (<JobPostingCard key={'Gig-modal-' + gig.id} {...gig} />);
+    const data = (<Card><JobPostingCard key={'Gig-modal-' + gig.id} {...gig} /></Card>);
     const applicationLink = `employerprofile/gig/${gig.id}/applications`;
     const postingLink = `gig/${gig.id}`;
 		return (

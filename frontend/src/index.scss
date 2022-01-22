@@ -34,6 +34,9 @@ body {
     padding-right: 2rem;
     padding-left: 2rem;
   }
+  .MuiCardActionArea-root {
+		min-height: 1rem;
+	}
 }
 .profile-content, .application-content, .posting-content, .profile-cards, .application-cards {
   .description {

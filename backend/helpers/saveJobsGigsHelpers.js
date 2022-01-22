@@ -3,7 +3,11 @@
 module.exports = db => {
   const getSavedJobsGigsByUserId = devId => {
     const q1 = {
-      text: `SELECT * FROM saved_jobs
+      text: `SELECT saved_jobs.*, job_postings.*, employers.*,
+      trim(to_char(salary/100, '999,999,990')) as formatted_salary,
+      to_char(date_posted,'FMMonth DD, YYYY') as formatted_date,
+      CONCAT(job_postings.city,', Canada') as posting_location
+      FROM saved_jobs
       JOIN job_postings
       ON saved_jobs.job_posting_id = job_postings.id
       JOIN employers
@@ -13,7 +17,10 @@ module.exports = db => {
     };
 
     const q2 = {
-      text: `SELECT * FROM saved_gigs
+      text: `SELECT saved_gigs.*, gig_postings.*, employers.*,
+      trim(to_char(pay/100, '999,999,990')) as formatted_salary,
+      to_char(date_posted,'FMMonth DD, YYYY') as formatted_date
+      FROM saved_gigs
       JOIN gig_postings
       ON saved_gigs.gig_posting_id = gig_postings.id
       JOIN employers

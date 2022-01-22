@@ -24,19 +24,18 @@ export default function LandingPage(props) {
       });
   }, []);
 
-  const style = {
-    width: 1 / 2,
-    height: 1 / 2,
-    display: 'flex',
-    flexDirection: 'column',
-    margin: '10% 0 0 25%',
-    background: '#223d55',
-    color: 'black',
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderRadius: '2rem',
+  const saveGig = () => {
+    axios
+      .post(`/api/gig_postings/${gig_id}`)
+      .then(res => {
+        console.log(res.data);
+        setGigPosting(res.data);
+      })
+      .catch(err => {
+        console.log(err);
+      });
   };
-  console.log(gigPosting.gig_images);
+
   return (
     <div className="content-container">
       <div className="gig-content">
@@ -68,7 +67,9 @@ export default function LandingPage(props) {
           </p>
           <div>
             <ApplyModal currentUser={currentUser} jobApplying={gigPosting} />
-            <Button variant="outlined">Save Gig</Button>
+            <Button variant="outlined" onClick={saveGig}>
+              Save Gig
+            </Button>
           </div>
         </div>
       </div>

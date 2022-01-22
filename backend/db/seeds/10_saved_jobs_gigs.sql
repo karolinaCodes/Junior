@@ -1,3 +1,3 @@
-INSERT INTO saved_jobs_gigs (junior_dev_id, job_gig_id, job_type) VALUES (1, 1, 'job');
-INSERT INTO saved_jobs_gigs (junior_dev_id, job_gig_id,job_type) VALUES (1, 2, 'job');
-INSERT INTO saved_jobs_gigs (junior_dev_id, job_gig_id,job_type) VALUES (1, 3, 'gig');
+INSERT INTO saved_jobs (junior_dev_id, job_posting_id) VALUES (1, 1);
+INSERT INTO saved_jobs (junior_dev_id, job_posting_id) VALUES (1, 2);
+INSERT INTO saved_jobs (junior_dev_id, job_posting_id) VALUES (1, 3);

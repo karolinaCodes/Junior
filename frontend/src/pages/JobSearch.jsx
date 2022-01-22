@@ -153,18 +153,6 @@ export default function JobSearch(props) {
   const classes = useStyles();
 
   useEffect(() => {
-    console.log('eere');
-    axios
-      .get('/api/saved_jobs_gigs/1')
-      .then(res => {
-        console.log(res.data);
-      })
-      .catch(err => {
-        console.log(err);
-      });
-  }, []);
-
-  useEffect(() => {
     if (state) {
       const {data} = state;
       return setSearchResults(data);

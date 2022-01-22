@@ -8,18 +8,6 @@ const UserProvider = function (props) {
   const [currentUser, setCurrentUser] = useState({});
 
   useEffect(() => {
-    console.log('eere');
-    axios
-      .get('/api/saved_jobs_gigs/1')
-      .then(res => {
-        console.log(res.data);
-      })
-      .catch(err => {
-        console.log(err);
-      });
-  }, []);
-
-  useEffect(() => {
     axios
       .post('/api/auth/check')
       .then(res => {

@@ -105,7 +105,7 @@ export default function PositionedMenu(props) {
             </MenuItem>
             <MenuItem
               onClick={e => {
-                navigate('/profile/applications');
+                navigate('/saved');
                 handleClose();
               }}
             >

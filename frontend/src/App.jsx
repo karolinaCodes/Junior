@@ -19,6 +19,7 @@ import UserApplications from './pages/UserApplications.jsx';
 import ApplicationsTest from './pages/TestApplications.jsx';
 import {UserContext} from './Providers/userProvider.jsx';
 import Footer from './components/Footer';
+import SavedJobsGigs from './pages/SavedJobsGigs';
 
 //import css
 import './App.scss';
@@ -66,6 +67,7 @@ function App() {
         />
         <Route path="/profile/applications" element={<UserApplications />} />
         <Route path="/testapps" element={<ApplicationsTest />} />
+        <Route path="/saved" element={<SavedJobsGigs />} />
       </Routes>
       {window.location.pathname !== '/' ? <Footer /> : null}
     </div>

@@ -2,6 +2,11 @@
 
 .main-content {
   color: #26242a;
+  display: flex;
+  width: 100%;
+  padding: 0 4rem;
+  gap: 5rem;
+  justify-content: space-between;
 }
 
 .jobsearch-content {
@@ -18,7 +23,6 @@
   background: #fbfbfb;
   padding: 1rem 0 1rem 0;
   width: 100%;
-  // box-shadow: 0px 4px 8px rgba(8, 35, 48, 0.2);
   box-shadow: 0px 3px 8px rgba(8, 35, 48, 0.05);
   gap: 30px;
 }
@@ -37,16 +41,9 @@ input:focus {
   outline: none;
 }
 
-.main-content {
-  display: flex;
-  width: 100%;
-  justify-content: space-around;
-}
-
 .checkboxes {
   text-align: left;
-  width: 25%;
-  padding: 0 9rem 0 3rem;
+  max-width: 700px;
 }
 
 .checkboxes svg {
@@ -75,18 +72,15 @@ input:focus {
 
 .searchResults-container {
   margin-top: 18px;
+  & h4 {
+    text-align: left;
+  }
 }
 
 .search-results-img {
   border-radius: 50%;
   width: 25% !important;
   height: 25%;
-}
-
-.searchResults-container {
-  & h4 {
-    text-align: left;
-  }
 }
 
 .card-content {

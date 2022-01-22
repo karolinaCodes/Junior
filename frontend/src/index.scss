@@ -44,6 +44,15 @@ body {
     margin-top: 10px;
     line-height: 1.5rem;
   }
+  .profile-pic {
+		// margin: 1rem;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		text-align: center;
+		flex-direction: column;
+		max-width: $profile-md;
+  }
   .MuiCard-root {
     align-content: flex-start;
     margin: 1rem;

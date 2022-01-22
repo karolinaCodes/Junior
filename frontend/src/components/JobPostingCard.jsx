@@ -24,12 +24,12 @@ export default function Posting(props) {
   return (
     <CardContent>
       <h1>{job_title}</h1>
-      <Grid container direction='row' className="applicants-info">
+      <Grid container direction='row' className="applicants-info" sx={{justifyContent: 'space-between'}}>
         {is_open && <Grid item>
           <p><strong>Accepting Applicants:</strong> {is_open ? 'Yes' : 'No'}</p>
         </Grid>}
         <Grid item>
-          <p><strong>Total Applicants:</strong> {total_applications}</p>
+          <p><strong>Total Applicants:</strong> {total_applications ? total_applications : '0'}</p>
         </Grid>
       </Grid>
       {photo_url && <CardMedia

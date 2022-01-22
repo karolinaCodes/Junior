@@ -14,7 +14,8 @@ module.exports = db => {
 		const query = {
 			text: `SELECT gig_applications.*, gig_postings.*, 
         employers.email as employer_email, company_name, employers.bio as employer_bio, employers.photo_url as employer_photo_url,
-        junior_devs.email as dev_email, first_name, last_name,phone_number, headline, junior_devs.bio as dev_bio, junior_devs.photo_url as dev_photo_url,
+        junior_devs.email as dev_email, first_name, last_name, phone_number, headline, junior_devs.bio as dev_bio, junior_devs.photo_url as dev_photo_url,
+				city, CONCAT(junior_devs.city,', Canada') as dev_location
         trim(to_char(pay/100, '999,999,990')) as formatted_pay,
         to_char(date_posted,'FMMonth DD, YYYY') as formatted_date,
         to_char(deadline,'FMMonth DD, YYYY') as formatted_deadline,

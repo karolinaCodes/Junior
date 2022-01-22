@@ -15,6 +15,10 @@ $brown: #3d2b2a;
 $grey: #505050;
 $mint: #1D869D;
 
+// SIZES
+$profile-md: 150px;
+$profile-sm: 75px;
+
 // .MuiButton-root
 @mixin outline {
 	color: $white;

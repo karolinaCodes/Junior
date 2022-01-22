@@ -95,7 +95,10 @@ export default function LandingPage(props) {
             <p>{jobPosting.company_name} </p>
           </div>
         </div>
-        <ApplyModal currentUser={currentUser} jobApplying={jobPosting} />
+        <div>
+          <ApplyModal currentUser={currentUser} jobApplying={jobPosting} />
+          <Button variant="outlined">Save Gig</Button>
+        </div>
       </div>
     </div>
   );

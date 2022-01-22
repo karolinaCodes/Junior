@@ -1,7 +1,8 @@
 import {useState, useEffect} from 'react';
 import axios from 'axios';
 import '../styles/SearchResults/ApplyModal.scss';
-import {Button, Box, Typography, Modal, Dialog} from '@mui/material';
+import {Button, Box, Dialog} from '@mui/material';
+import LocalPhoneOutlinedIcon from '@mui/icons-material/LocalPhoneOutlined';
 import {Link} from 'react-router-dom';
 import {useNavigate} from 'react-router-dom';
 import {makeStyles} from '@mui/styles';
@@ -21,35 +22,17 @@ const useStyles = makeStyles({
     color: 'white',
     display: 'flex;',
     'justify-content': 'center;',
-    '&:hover': {backgroundColor: '#75a4ce'},
   },
 });
 
 export default function ApplyModal(props) {
   const {currentUser, jobApplying, handleClick} = props;
-  // console.log(sendEmail);
 
-  // const {
-  //   first_name,
-  //   last_name,
-  //   email,
-  //   photo_url,
-  //   github_url,
-  //   linkedIn_url,
-  //   bio,
-  //   resume_link,
-  // } = profile.dev;
-
-  const [open, setOpen] = useState(false);
-  const [profile, setProfile] = useState({
-    dev: {},
-  });
   const [applicationSubmitted, setApplicationSubmitted] = useState(false);
-  const classes = useStyles();
-
-  const navigate = useNavigate();
-
   const [openModal, setOpenModal] = useState(false);
+
+  const classes = useStyles();
+  const navigate = useNavigate();
 
   const handleView = () => {
     openModal === true ? setOpenModal(false) : setOpenModal(true);
@@ -70,10 +53,6 @@ export default function ApplyModal(props) {
         console.log(res.data);
         setApplicationSubmitted(true);
         return res.data;
-      })
-      .then(data => {
-        console.log(data);
-        // sendEmail('creativereyne@gmail.com', currentUser, data.job_title);
       })
       .catch(err => {
         console.log(err);

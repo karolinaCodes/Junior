@@ -73,7 +73,8 @@ module.exports = db => {
         trim(to_char(pay/100, '999,999,990')) as formatted_pay,
         to_char(date_posted,'FMMonth DD, YYYY') as formatted_date,
         to_char(deadline,'FMMonth DD, YYYY') as formatted_deadline,
-        to_char(date_applied,'FMMonth DD, YYYY') as formatted_date_applied
+        to_char(date_applied,'FMMonth DD, YYYY') as formatted_date_applied,
+				CONCAT(junior_devs.city,', Canada') as dev_location
         FROM gig_applications
         JOIN gig_postings ON gig_applications.gig_posting_id = gig_postings.id
         JOIN employers ON gig_postings.employer_id = employers.id

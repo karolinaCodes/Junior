@@ -6,7 +6,8 @@ module.exports = db => {
 			text: `SELECT employers.id as employer_id, 
       company_name, email, bio, photo_url, 
       job_postings.*, trim(to_char(salary/100, '999,999,990')) as formatted_salary,
-      to_char(date_posted,'FMMonth DD, YYYY') as formatted_date
+      to_char(date_posted,'FMMonth DD, YYYY') as formatted_date,
+			CONCAT(job_postings.city,', Canada') as posting_location
       FROM employers
       JOIN job_postings ON employers.id = job_postings.employer_id`,
 		};
@@ -22,7 +23,8 @@ module.exports = db => {
 			text: `SELECT employers.id as employer_id, 
         company_name, email, bio, employers.photo_url as employer_photo_url, 
         job_postings.*, trim(to_char(salary/100, '999,999,990')) as formatted_salary,
-        to_char(date_posted,'FMMonth DD, YYYY') as formatted_date
+        to_char(date_posted,'FMMonth DD, YYYY') as formatted_date,
+				CONCAT(job_postings.city,', Canada') as posting_location
         FROM employers
         JOIN job_postings ON employers.id = job_postings.employer_id
         WHERE job_postings.id = $1`,
@@ -82,7 +84,9 @@ module.exports = db => {
       text: `SELECT job_applications.*, job_postings.*, junior_devs.*, junior_devs.photo_url as dev_photo_url,
         trim(to_char(salary/100, '999,999,990')) as formatted_salary,
         to_char(date_posted,'FMMonth DD, YYYY') as formatted_date,
-        to_char(date_applied,'FMMonth DD, YYYY') as formatted_date_applied
+        to_char(date_applied,'FMMonth DD, YYYY') as formatted_date_applied,
+				CONCAT(job_postings.city,', Canada') as posting_location,
+				CONCAT(junior_devs.city,', Canada') as dev_location
         FROM job_applications
         JOIN job_postings ON job_applications.job_posting_id = job_postings.id
         JOIN employers ON job_postings.employer_id = employers.id

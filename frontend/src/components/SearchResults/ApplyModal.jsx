@@ -135,19 +135,27 @@ export default function ApplyModal(props) {
                     <h3 id="apply-city"> {currentUser.city}, Canada</h3>
                   </div>
                   <h4>Github</h4>
-                  <p>
+                  <a
+                    href={currentUser.github_url ? currentUser.github_url : ''}
+                  >
                     {currentUser.github_url ? currentUser.github_url : 'N/A'}
-                  </p>
+                  </a>
                   <h4>Resume Link </h4>
-                  <p>
+                  <a
+                    href={currentUser.resume_url ? currentUser.resume_url : ''}
+                  >
                     {currentUser.resume_url ? currentUser.resume_url : 'N/A'}
-                  </p>
+                  </a>
                   <h4>LinkedIn</h4>
-                  <p>
+                  <a
+                    href={
+                      currentUser.linkedin_url ? currentUser.linkedin_url : ''
+                    }
+                  >
                     {currentUser.linkedin_url
                       ? currentUser.linkedin_url
                       : 'N/A'}
-                  </p>
+                  </a>
                   <div className="btn-container">
                     {applicationSubmitted ? null : (
                       <Button variant="contained" onClick={submitApplication}>

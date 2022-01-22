@@ -7,6 +7,7 @@ import axios from 'axios';
 import ApplyModal from '../../components/JobSearch/ApplyModal';
 import {UserContext} from '../../Providers/userProvider';
 import {useNavigate} from 'react-router-dom';
+
 // icons //
 import WorkOutlineOutlinedIcon from '@mui/icons-material/WorkOutlineOutlined';
 import FmdGoodOutlinedIcon from '@mui/icons-material/FmdGoodOutlined';
@@ -44,7 +45,7 @@ export default function LandingPage(props) {
 
   const saveJob = () => {
     if (saved) {
-      navigate('/saved');
+      return navigate('/saved');
     }
 
     axios

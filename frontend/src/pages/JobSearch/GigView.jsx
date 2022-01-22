@@ -38,7 +38,7 @@ export default function LandingPage(props) {
 
   const saveGig = () => {
     if (saved) {
-      navigate('/saved');
+      return navigate('/saved');
     }
 
     axios

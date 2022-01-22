@@ -1,7 +1,4 @@
 // DB queries for GIG APPLICATIONS //
-// getGigApplicationById,
-// addGigApplication,
-// acceptGigApplication,
 
 module.exports = db => {
   /* Retrieve all gig application data, gig posting data,

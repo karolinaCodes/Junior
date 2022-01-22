@@ -23,7 +23,7 @@ import Chip from '@mui/material/Chip';
 import Slider from '@mui/material/Slider';
 import {InputAdornment} from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
-import LocationOnIcon from '@mui/icons-material/LocationOn';
+import FmdGoodOutlinedIcon from '@mui/icons-material/FmdGoodOutlined';
 
 import {useLocation} from 'react-router-dom';
 import {makeStyles} from '@mui/styles';
@@ -328,7 +328,7 @@ export default function JobSearch(props) {
           InputProps={{
             startAdornment: (
               <InputAdornment position="start">
-                <LocationOnIcon />
+                <FmdGoodOutlinedIcon />
               </InputAdornment>
             ),
           }}

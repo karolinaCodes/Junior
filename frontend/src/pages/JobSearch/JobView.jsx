@@ -5,9 +5,9 @@ import {TextField, Button, Modal, Box} from '@mui/material';
 import {useContext, useEffect, useState} from 'react';
 import {useParams} from 'react-router-dom';
 
-import WorkIcon from '@mui/icons-material/Work';
-import LocationOnIcon from '@mui/icons-material/LocationOn';
-import LocalOfferIcon from '@mui/icons-material/LocalOffer';
+import WorkOutlineOutlinedIcon from '@mui/icons-material/WorkOutlineOutlined';
+import FmdGoodOutlinedIcon from '@mui/icons-material/FmdGoodOutlined';
+import LocalOfferOutlinedIcon from '@mui/icons-material/LocalOfferOutlined';
 
 import axios from 'axios';
 
@@ -44,10 +44,6 @@ export default function LandingPage(props) {
       });
   }, []);
 
-  const handleView = () => {
-    open === true ? setOpen(false) : setOpen(true);
-  };
-
   const style = {
     width: 1 / 2,
     height: 1 / 2,
@@ -63,16 +59,23 @@ export default function LandingPage(props) {
 
   return (
     <div className="gig-content">
-      <h1>{jobPosting.job_title}</h1>
-      <div>
-        <WorkIcon />
-        <span>{jobPosting.is_remote ? 'Remote' : jobPosting.city}</span>
-        <LocationOnIcon />
-        <span>{jobPosting.job_type}</span>
-        <LocalOfferIcon />
-        <span>${jobPosting.salary}</span>
+      <h1 className="jobview-job-title">{jobPosting.job_title}</h1>
+      <div className="job-details-logos">
+        <div>
+          {' '}
+          <WorkOutlineOutlinedIcon />
+          <span>{jobPosting.is_remote ? 'Remote' : jobPosting.city}</span>
+        </div>
+        <div>
+          <FmdGoodOutlinedIcon />
+          <span>{jobPosting.job_type}</span>
+        </div>
+        <div>
+          <LocalOfferOutlinedIcon />
+          <span>${jobPosting.salary}</span>
+        </div>
       </div>
-      <span>
+      <span className="posted-on">
         Posted{' '}
         {new Date(jobPosting.date_posted).toLocaleDateString('en-US', {
           year: 'numeric',
@@ -81,12 +84,19 @@ export default function LandingPage(props) {
         })}
       </span>
       <img src={jobPosting.photo_url} />
-      <h2>Description</h2>
-      <div className="job-description">
-        <p>{jobPosting.description}</p>
-        <img src={jobPosting.employer_photo_url} />
+      <div className="job-desc-container">
+        <div className="job-desc-img-pic">
+          <div>
+            <h2 id="desc-label">Description</h2>
+            <p>{jobPosting.description}</p>
+          </div>
+          <div className="employer-pic-container">
+            <img src={jobPosting.employer_photo_url} className="job-desc-img" />
+            <p>{jobPosting.company_name} </p>
+          </div>
+        </div>
+        <ApplyModal currentUser={currentUser} jobApplying={jobPosting} />
       </div>
-      <ApplyModal currentUser={currentUser} jobApplying={jobPosting} />
     </div>
   );
 }

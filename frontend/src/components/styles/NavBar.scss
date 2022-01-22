@@ -2,61 +2,61 @@
 
 // --------------------- HOMEPAGE NAV BAR ----------------- //
 .nav-home {
-	@include navHome;
+  @include navHome;
 }
 
 // --------------------- NORMAL NAV BAR ----------------- //
 .nav-bar {
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-	background-color: $blue;
-	height: 90px;
-	width: 100%;
-	z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: $blue;
+  height: 90px;
+  width: 100%;
+  z-index: 999;
 
-	a {
-		font-size: 20px;
-		font-weight: $reg;
-		color: $white;
-		text-decoration: none;
-		margin-left: 2rem;
-	}
+  a {
+    font-size: 20px;
+    font-weight: $reg;
+    color: $white;
+    text-decoration: none;
+    margin-left: 2rem;
+  }
 
-	#find-work {
-		margin-left: 20%;
-	}
+  #find-work {
+    margin-left: 20%;
+  }
 
-	a:hover {
-		color: $sand;
-	}
+  a:hover {
+    color: $sand;
+  }
 
-	#login {
-		@include outline;
-		margin-left: 2rem;
+  #login {
+    @include outline;
+    margin-left: 2rem;
 
-		&:hover {
-			color: $sand;
-			border-color: $sand;
-		}
-	}
+    &:hover {
+      color: $sand;
+      border-color: $sand;
+    }
+  }
 
-	#signup {
-		@include solidwhite;
-		margin-right: 8rem;
-		margin-left: 1rem;
+  #signup {
+    @include solidwhite;
+    margin-right: 8rem;
+    margin-left: 1rem;
 
-		&:hover {
-			color: $sand;
-		}
-	}
+    &:hover {
+      color: $sand;
+    }
+  }
 
-	#logo {
-		text-decoration: none;
-		font-size: 60px;
-		font-family: $brand;
-		font-weight: $bold;
-		color: $white;
-		margin: 0 0 0 8rem;
-	}
+  #logo {
+    text-decoration: none;
+    font-size: 60px;
+    font-family: $brand;
+    font-weight: $bold;
+    color: $white;
+    margin: 0 0 0 8rem;
+  }
 }

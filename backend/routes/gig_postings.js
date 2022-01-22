@@ -4,6 +4,7 @@ const router = express.Router();
 module.exports = ({
   getGigPostings,
   getGigById,
+  getGigImagesByGigId,
   getApplicationsByGigPostingId,
   addGigPosting,
 }) => {
@@ -20,8 +21,14 @@ module.exports = ({
 
   // return data for single job post based on its jobPostingId
   router.get('/:id', (req, res) => {
-    getGigById(req.params.id)
-      .then(gig => res.json(gig))
+    const {id} = req.params;
+    getGigById(id)
+      .then(gig => {
+        getGigImagesByGigId(id).then(images => {
+          gig.gig_images = images;
+          res.json(gig);
+        });
+      })
       .catch(err =>
         res.json({
           error: err.message,

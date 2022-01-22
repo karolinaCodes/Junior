@@ -1,0 +1,44 @@
+.gig-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  max-width: 1250px;
+}
+
+.gig-img-container {
+  display: flex;
+  gap: 20px;
+}
+
+.gig-img {
+  max-width: 300px;
+  box-shadow: 0px 3px 8px rgba(8, 35, 48, 0.25);
+}
+
+#gig-jobtitle {
+  margin: 0.5rem 0 2rem 0;
+}
+
+#gig-desc-label {
+  align-self: flex-start;
+  margin-top: 2.5rem;
+}
+
+.content-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2rem;
+}
+
+.gig-desc {
+  line-height: 1.7rem;
+}
+
+.apply-modal {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+}

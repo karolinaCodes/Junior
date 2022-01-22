@@ -5,6 +5,7 @@ import {Button, Box, Typography, Modal, Dialog} from '@mui/material';
 import {Link} from 'react-router-dom';
 import {useNavigate} from 'react-router-dom';
 import {makeStyles} from '@mui/styles';
+import useSendEmail from '../../hooks/useSendEmail';
 
 const useStyles = makeStyles({
   apply_btn: {
@@ -25,6 +26,8 @@ const useStyles = makeStyles({
 
 export default function ApplyModal(props) {
   const {currentUser, jobApplying, handleClick} = props;
+  const sendEmail = useSendEmail();
+  // console.log(sendEmail);
 
   // const {
   //   first_name,
@@ -66,6 +69,11 @@ export default function ApplyModal(props) {
       .then(res => {
         console.log(res.data);
         setApplicationSubmitted(true);
+        return res.data;
+      })
+      .then(data => {
+        console.log(data);
+        sendEmail('creativereyne@gmail.com', currentUser, data.job_title);
       })
       .catch(err => {
         console.log(err);
@@ -87,11 +95,10 @@ export default function ApplyModal(props) {
         onClose={handleView}
         fullWidth={true}
         maxWidth={applicationSubmitted ? 'sm' : 'md'}
-        // sx={{maxWidth: '2000px'}}
       >
         <Box className={classes.apply_modal}>
           {applicationSubmitted ? (
-            <div class="submitted-container">
+            <div className="submitted-container">
               <p id="submitted-msg">Application Submitted!</p>
               <div id="submitted-actions">
                 <Button

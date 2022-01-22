@@ -18,8 +18,8 @@ module.exports = db => {
 
     const q2 = {
       text: `SELECT saved_gigs.*, gig_postings.*, employers.*,
-      trim(to_char(pay/100, '999,999,990')) as formatted_salary,
-      to_char(date_posted,'FMMonth DD, YYYY') as formatted_date
+      trim(to_char(pay/100, '999,999,990')) as formatted_pay,
+      to_char(date_posted,'FMMonth DD, YYYY') as formatted_deadline_date
       FROM saved_gigs
       JOIN gig_postings
       ON saved_gigs.gig_posting_id = gig_postings.id

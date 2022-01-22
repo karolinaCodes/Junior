@@ -10,21 +10,28 @@ import {
   Collapse,
 } from '@mui/material';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import {useNavigate} from 'react-router';
 
 export default function SavedJobsGigsCard(props) {
   const {
     gig_posting_id,
+    job_posting_id,
     company_name,
-    date_posted,
+    formatted_date,
     description,
     job_title,
     job_type,
     photo_url,
-    salary,
+    formatted_salary,
+    formatted_pay,
     city,
     pay,
     deadline,
+    formatted_deadline_date,
+    is_remote,
   } = props.saved;
+
+  const navigate = useNavigate();
 
   const [expanded, setExpanded] = useState(false);
 
@@ -64,15 +71,22 @@ export default function SavedJobsGigsCard(props) {
               sx={{justifyContent: 'space-between'}}
             >
               <Grid item xs={4}>
-                {city && <p>{city}, Canada</p>}
-                {salary && (
+                {<h3>{job_title}</h3>}
+                {city && (
                   <p>
-                    Salary: ${salary} ({job_type})
+                    {city}, Canada {is_remote && '(Remote)'}
                   </p>
                 )}
-                {pay && <p>Compensation: ${pay}</p>}
-                {date_posted && <p>Date Posted: {date_posted}</p>}
-                {deadline && <p>Deadline: {deadline}</p>}
+                {formatted_salary && (
+                  <p>
+                    Salary: ${formatted_salary} ({job_type})
+                  </p>
+                )}
+                {formatted_pay && <p>Compensation: ${formatted_pay}</p>}
+                {formatted_date && <p>Date Posted: {formatted_date}</p>}
+                {formatted_deadline_date && (
+                  <p>Deadline: {formatted_deadline_date}</p>
+                )}
               </Grid>
             </Grid>
           </Grid>
@@ -82,7 +96,14 @@ export default function SavedJobsGigsCard(props) {
         <Grid container direction="row">
           <Grid item container xs>
             <Grid item>
-              <Button color="success">
+              <Button
+                color="success"
+                onClick={() => {
+                  gig_posting_id
+                    ? navigate(`/gig/${gig_posting_id}`)
+                    : navigate(`/job/${job_posting_id}`);
+                }}
+              >
                 {`View ${gig_posting_id ? 'Gig' : 'Job'} Posting`}
               </Button>
             </Grid>

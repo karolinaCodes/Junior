@@ -31,8 +31,8 @@ export default function Applications(props) {
       <Grid container direction="column">
         <h1>Saved</h1>
         <section className="application-cards">
+          <h3>Saved Jobs</h3>
           <Grid container item>
-            <p>Saved Jobs</p>
             {saved.jobs &&
               saved.jobs.map(savedJob => {
                 return (
@@ -54,7 +54,9 @@ export default function Applications(props) {
                   </Grid>
                 );
               })}
-            <p>Saved Gigs</p>
+          </Grid>
+          <h3>Saved Gigs</h3>
+          <Grid container item>
             {saved.gigs &&
               saved.gigs.map(savedGig => {
                 return (

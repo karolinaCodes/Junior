@@ -1,14 +1,16 @@
 import './styles/PortfolioCard.scss';
 import { useContext, useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { styled } from '@mui/material/styles';
-import {Grid, Button, List, ListItem, ListItemText, ListItemButton, IconButton, CardContent, CardActions, Collapse} from '@mui/material';
+import {Grid, Button, List, ListItem, ListItemText, ListItemButton, IconButton, CardContent, CardActions, Collapse, useControlled} from '@mui/material';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import axios from 'axios';
 
 export default function ApplicationCard(props) {
-	const { job_title, description, salary, formatted_salary, date_posted, formatted_date, date_applied, formatted_date_applied, job_type, is_remote, employer_email, company_name, employer_bio, employer_photo_url, deadline, photo_url, city, pay, formatted_pay, formatted_deadline, posting_location, job_posting_id, gig_posting_id } =	props;
+	const { job_title, description, salary, formatted_salary, date_posted, formatted_date, date_applied, formatted_date_applied, job_type, is_remote, employer_email, company_name, employer_bio, employer_photo_url, deadline, photo_url, city, pay, formatted_pay, formatted_deadline, posting_location, job_posting_id, gig_posting_id, is_accepted, is_completed } =	props;
 
 	//Job or gig
-	const { type } = props;
+	const { type } = 'gig';
 
 	const location = `${posting_location} (${is_remote ? 'Remote' : 'On-site'})`;
 	const postingLink = job_posting_id ? `/job/${job_posting_id}` : `/gig/${gig_posting_id}`;
@@ -30,7 +32,29 @@ export default function ApplicationCard(props) {
 			duration: theme.transitions.duration.shortest,
 		}),
 	}));
+//('api/gig_postings/complete/:id'
+	const markComplete = () => {
+		console.log('posting id',gig_posting_id);
+		return axios
+			.post(`../api/gig_applications/complete/${gig_posting_id}`)
+			.then((res) => {
+				console.log(res.data)
+			})
+			.catch(err => console.log(err))
+	}
 
+	const navigate = useNavigate();
+	
+	const createProject = () => {
+		navigate('/newproject', { state: {title: job_title, description: description}})
+	}
+
+	/*
+	junior_dev_id: currentUser.id,
+	title: job_title,
+	original_request: description,
+	*/
+	
 	return (
 		<>
 			<CardContent>
@@ -68,12 +92,37 @@ export default function ApplicationCard(props) {
 							</Button>
 						</Grid>
 						<Grid item>
-							<Button
-								color="error"
-								onClick={() => console.log('delete ', type, postingLink)}
-							>
-								Delete Application
-							</Button>
+							{!is_accepted &&
+								<Button
+									color="error"
+									onClick={() => console.log('delete ', type, postingLink)}
+								>
+									Delete Application
+								</Button>
+							}
+							{(is_accepted && !is_completed) && 
+								<Button
+									color="error"
+									onClick={() => {
+										markComplete();
+										console.log('complete ', postingLink);
+									}}
+								>
+									Mark Completed
+								</Button>
+							}
+							{is_completed  && 
+								<Button
+									color="error"
+									onClick={() => {
+										createProject();
+										console.log('CreateProj ', job_title, description);
+									}}
+								>
+									Create Project
+								</Button>
+							}
+
 						</Grid>
 					</Grid>
 					<Grid item className="expand-text">

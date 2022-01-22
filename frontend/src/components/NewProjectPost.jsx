@@ -1,12 +1,14 @@
 import './styles/NewProjectPost.scss';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { TextField, Button, Paper } from '@mui/material';
 import axios from 'axios';
-import { useState, useEffect, useContext } from 'react';
+import { useState, useEffect, useContext} from 'react';
 import { UserContext } from '../Providers/userProvider';
 
 export default function NewProjectPost(props) {
 	const { currentUser } = useContext(UserContext);
+	const { state } = useLocation();
+
 	const [projectForm, setProjectForm] = useState({
 		junior_dev_id: currentUser.id,
 		title: 'New Project',
@@ -17,14 +19,22 @@ export default function NewProjectPost(props) {
 		original_request: '',
 	});
 
+	console.log(projectForm)
+
 	let navigate = useNavigate();
 
 	useEffect(() => {
-		setProjectForm({ ...projectForm, employer_id: currentUser.id });
+		setProjectForm({ ...projectForm, junior_dev_id: currentUser.id });
+
+		if (state) {
+			setProjectForm({ ...projectForm, title: state.title, original_request: state.description });
+		}
 	}, [currentUser]);
 
 	const postProject = e => {
 		e.preventDefault();
+
+		console.log('PROJECT FORM', projectForm)
 
 		axios
 			.post('/api/projects/new', projectForm)
@@ -100,10 +110,10 @@ export default function NewProjectPost(props) {
 						}
 					/>
 				</div>
-				<div id='desc-section'>
+
 					<TextField
 						id='project-description'
-						sx={{ mt: '1rem', minWidth: '37%' }}
+						sx={{ mt: '1rem', minWidth: '80%' }}
 						label='Project Description'
 						variant='filled'
 						multiline={true}
@@ -117,8 +127,8 @@ export default function NewProjectPost(props) {
 						id='original-request'
 						sx={{
 							mt: '1rem',
-							ml: '2rem',
-							minWidth: '37%',
+							mb: '1rem',
+							minWidth: '80%',
 						}}
 						label='Original Request'
 						variant='filled'
@@ -132,7 +142,7 @@ export default function NewProjectPost(props) {
 							})
 						}
 					/>
-				</div>
+
 				<div id='project-buttons'>
 					<Button
 						id='post-project'

@@ -36,7 +36,6 @@ const useStyles = makeStyles({
     display: 'grid',
     gridTemplateColumns: 'repeat(3, 1fr)',
     'grid-gap': '1.4rem',
-    'margin-right': '50px',
     ['@media (min-width:1700px)']: {
       gridTemplateColumns: 'repeat(4, 1fr)',
     },
@@ -141,9 +140,7 @@ const useStyles = makeStyles({
 
 export default function JobSearch(props) {
   const {currentUser} = useContext(UserContext);
-
   const {state} = useLocation();
-  const [query, setQuery] = useState('');
   const [city, setCity] = useState('');
   const [schedule, setSchedule] = useState('');
   const [queryString, setQueryString] = useState('');

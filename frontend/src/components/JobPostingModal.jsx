@@ -25,7 +25,7 @@ export default function Posting(props) {
     <CardContent>
       <h1>{job_title}</h1>
       {is_open && <p><strong>Accepting Applicants:</strong> {is_open ? 'Yes' : 'No'} <strong>Total Applicants:</strong> {total_applications}</p>}
-      {pay && <p><strong>Total Applicants:</strong> {total_applications}</p>}
+      <p><strong>Total Applicants:</strong> {total_applications ? total_applications : '0'}</p>
       {photo_url && <CardMedia
 				component="img"
 				image={photo_url}

@@ -1,5 +1,7 @@
-import {useEffect, useState} from 'react';
 import './styles/Profile.scss';
+import {useEffect, useState, useContext} from 'react';
+import { useNavigate } from 'react-router-dom';
+import { UserContext } from '../Providers/userProvider';
 import {
   Grid,
   Button,
@@ -13,11 +15,13 @@ import {
 } from '@mui/material';
 import JobPostingCard from '../components/JobPostingCard';
 import JobPostingModal from '../components/JobPostingModal';
-import GigPostingModal from '../components/GigPostingModal';
 import axios from 'axios';
 
 
 export default function Profile(props) {
+  const { currentUser } = useContext(UserContext);
+	const navigate = useNavigate();
+
   const [profile, setProfile] = useState({
     employer: {},
     jobs: [],
@@ -30,36 +34,38 @@ export default function Profile(props) {
     openModal === true ? setOpenModal(false) : setOpenModal(true);
   };
 
-  // FOR TESTING
-  const id = 1;
-  //
-
+  const { id } = currentUser;
+  
   const {company_name, email, photo_url, bio} = profile.employer;
-
+  
   useEffect(() => {
-    const employerUrl = '/api/employers/' + id;
-    const employerJobsUrl = '/api/employers/' + id + '/job_postings';
-    const employerGigsUrl = '/api/employers/' + id + '/gig_postings';
-    Promise.all([
-      axios.get(employerUrl),
-      axios.get(employerJobsUrl),
-      axios.get(employerGigsUrl),
-    ]).then(all => {
-      const [employerData, jobPostingsData, gigPostingsData] = all;
-      setProfile(prev => ({
-        ...prev,
-        employer: employerData.data,
-        jobs: jobPostingsData.data,
-        gigs: gigPostingsData.data,
-      }));
-    });
-  }, []);
+    const employerUrl = `/api/employers/${id}`;
+    const employerJobsUrl = `/api/employers/${id}/job_postings`;
+    const employerGigsUrl = `/api/employers/${id}/gig_postings`;
+    if (id) {
+      const employerPromise = axios.get(employerUrl);
+      const jobsPromise = axios.get(employerJobsUrl);
+      const gigsPromise = axios.get(employerGigsUrl);
+      Promise.all([employerPromise, jobsPromise, gigsPromise])
+      .then(data => {
+        const employerData = data[0].data;
+        const jobPostingsData = data[1].data;
+        const gigPostingsData = data[2].data;
+        setProfile(prev => ({
+          ...prev,
+          jobs: jobPostingsData,
+          employer: employerData,
+          gigs: gigPostingsData,
+        }));
+      });
+    }
+  }, [currentUser]);
 
   const jobsArray = profile.jobs;
   const gigsArray = profile.gigs;
 
-  const parsedJobs = jobsArray.map(job => {
-    const data = <JobPostingModal key={'Job-modal-' + job.id} {...job} />;
+  const parsedJobs = Array.isArray(jobsArray) ? jobsArray.map(job => {
+    const data = <JobPostingCard key={'Job-modal-' + job.id} {...job} />;
 
     const applicationLink = `employerprofile/job/${job.id}/applications`;
     const postingLink = `job/${job.id}`;
@@ -91,10 +97,11 @@ export default function Profile(props) {
           </Card>
         </Grid>
       </Grid>
-    );
-  });
-  const parsedGigs = gigsArray.map(gig => {
-    const data = (<JobPostingModal key={'Gig-modal-' + gig.id} {...gig} />);
+    )})
+    : [];
+    
+  const parsedGigs = Array.isArray(jobsArray) ? gigsArray.map(gig => {
+    const data = (<JobPostingCard key={'Gig-modal-' + gig.id} {...gig} />);
     const applicationLink = `employerprofile/gig/${gig.id}/applications`;
     const postingLink = `gig/${gig.id}`;
 		return (
@@ -126,8 +133,8 @@ export default function Profile(props) {
           </Card>
         </Grid>
       </Grid>
-    );
-  });
+    )})
+    : [];
 
   return (
     <div className="profile-content">

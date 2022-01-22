@@ -28,6 +28,7 @@ module.exports = ({
 				})
 			);
 	});
+
 	router.post('/complete/:id', (req, res) => {
 		completeGigApplication(req.params.id)
 			.then(application => res.json(application))

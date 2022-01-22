@@ -46,7 +46,7 @@ module.exports = db => {
 			.then(result => result.rows[0])
 			.catch(err => err);
 	};
-	
+
 	const getProjectsByDevId = id => {
 		const query = {
 			text: `SELECT junior_devs.id as junior_dev_id, first_name, last_name, email,
@@ -64,7 +64,7 @@ module.exports = db => {
 			.then(result => result.rows)
 			.catch(err => err);
 	};
-  
+
 	const getJobApplicationsByDevId = junior_dev_id => {
 		const query = {
 			text: `
@@ -89,7 +89,7 @@ module.exports = db => {
 			.then(result => result.rows)
 			.catch(err => err);
 	};
-	
+
 	const getGigApplicationsByDevId = junior_dev_id => {
 		const query = {
 			text: `
@@ -114,7 +114,7 @@ module.exports = db => {
 			.then(result => result.rows)
 			.catch(err => err);
 	};
-	
+
 	// STRETCH //
 
 	// Sign up new dev
@@ -186,15 +186,33 @@ module.exports = db => {
 			.catch(err => err);
 	};
 
-  return {
+	const getAcceptedGigs = junior_dev_id => {
+		const query = {
+			text: `SELECT * FROM 
+			gig_applications
+			JOIN gig_postings
+			ON gig_posting_id = gig_postings.id
+      WHERE junior_dev_id = 1
+			AND is_accepted = true`,
+			values: [junior_dev_id],
+		};
+
+		return db
+			.query(query)
+			.then(result => result.rows)
+			.catch(err => err);
+	};
+
+	return {
 		getUserByEmail,
 		getDevs,
 		getDevById,
 		getProjectsByDevId,
 		getJobApplicationsByDevId,
 		getGigApplicationsByDevId,
+		getAcceptedGigs,
 		// addDev,
 		// getAcceptedJobApplications,
 		// getAcceptedGigApplications,
-  };
+	};
 };

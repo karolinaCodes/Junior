@@ -1,9 +1,13 @@
 @import './pages/styles/variables.scss';
 
-// .App {
-// 	text-align: center;
+.App {
+  min-height: 90vh;
+}
 
-// 	// .MuiFormControl-root {
-// 	// 	margin: 0.5rem;
-// 	// }
-// }
+.nav-bar {
+  min-height: 10vh;
+}
+
+.footer {
+  min-height: 5vh;
+}

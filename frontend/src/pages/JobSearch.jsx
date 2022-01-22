@@ -287,9 +287,9 @@ export default function JobSearch(props) {
               inputProps={{'aria-label': 'Without label'}}
               defaultValue={'all'}
             >
-              {/* <MenuItem disabled value="">
+              <MenuItem disabled value="">
                 <em>Job Type</em>
-              </MenuItem> */}
+              </MenuItem>
               <MenuItem value={'all'}>All</MenuItem>
               <MenuItem value={'jobs'}>Jobs</MenuItem>
               <MenuItem value={'gigs'}>Gigs</MenuItem>
@@ -645,6 +645,7 @@ export default function JobSearch(props) {
                             openApplication(searchResults.indexOf(item))
                           }
                         />
+
                         {item.deadline ? (
                           <Link
                             to={`/gig/${item.id}`}

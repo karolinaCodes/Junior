@@ -13,7 +13,7 @@ $thiccblue: #182c5b;
 $invis: #182c5b00;
 $sand: #e3d3ca;
 $brown: #3d2b2a;
-$mint: #1D869D;
+$mint: #1d869d;
 $grey: #707070;
 
 // SIZES
@@ -22,12 +22,12 @@ $profile-sm: 75px;
 
 // .MuiButton-root
 @mixin outline {
-	color: $white;
-	border-color: $white;
+  color: $white;
+  border-color: $white;
 }
 
 // .MuiButton-root
 @mixin solid {
-	color: $white;
-	background-color: $blue;
+  color: $white;
+  background-color: $blue;
 }

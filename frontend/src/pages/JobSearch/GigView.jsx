@@ -41,6 +41,9 @@ export default function LandingPage(props) {
     <div className="content-container">
       <div className="gig-content">
         <h1 id="gig-jobtitle">{gigPosting.job_title}</h1>
+        <p>
+          <em>Posted on January 30, 2022</em>
+        </p>
         <div className="gig-img-container">
           {gigPosting &&
             gigPosting.gig_images.map((image, index) => (

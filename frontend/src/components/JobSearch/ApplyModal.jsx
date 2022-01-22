@@ -15,11 +15,13 @@ const useStyles = makeStyles({
     'margin-right': '10px',
     'text-transform': 'none',
   },
+
   apply_modal: {
     'background-color': '#182c5b',
     color: 'white',
     display: 'flex;',
     'justify-content': 'center;',
+    '&:hover': {backgroundColor: '#75a4ce'},
   },
 });
 
@@ -94,7 +96,7 @@ export default function ApplyModal(props) {
         fullWidth={true}
         maxWidth={applicationSubmitted ? 'sm' : 'md'}
       >
-        <Box className={classes.apply_modal}>
+        <Box className={classes.apply_modal} id="apply-modal">
           {applicationSubmitted ? (
             <div className="submitted-container">
               <p id="submitted-msg">Application Submitted!</p>

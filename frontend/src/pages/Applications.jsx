@@ -1,9 +1,10 @@
 import './styles/Profile.scss';
-import { Card, Modal, Box, Grid, Paper, Dialog } from '@mui/material';
+import { Card, Button, Modal, Box, Grid, Paper, Dialog, CardActions, IconButton, Collapse, CardContent } from '@mui/material';
 import { useContext, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import ApplicationCard from '../components/ApplicationCard';
 import ApplicationModal from '../components/ApplicationModal';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 import axios from 'axios';
 import { UserContext } from '../Providers/userProvider';
@@ -23,13 +24,6 @@ export default function Applications(props) {
 		posting: {},
 		applications: [''],
 	});
-
-	const [openModal, setOpenModal] = useState(false);
-	const [modalData, setModalData] = useState();
-
-	const handleView = () => {
-		openModal === true ? setOpenModal(false) : setOpenModal(true);
-	};
 
 	// TESTING
 	const employerid = 1;
@@ -56,20 +50,10 @@ export default function Applications(props) {
 
 	const applicationsArray = posting.applications;
 	const parsedApplications = applicationsArray.map(application => {
-		const data = (
-			<ApplicationModal
-				key={'Application-modal-' + application.id}
-				{...application}
-			/>
-		);
 		return (
 			<Grid item xs={12} md={6} key={'Application-grid-' + application.id}>
 				<Card
 					className='card-click'
-					onClick={() => {
-						setModalData(data);
-						handleView();
-					}}
 					key={'Application-paper-' + application.id}
 				>
 					<ApplicationCard
@@ -92,15 +76,6 @@ export default function Applications(props) {
 					</Grid>
 				</section>
 			</Grid>
-
-			<Dialog
-				open={openModal}
-				onClose={handleView}
-				fullWidth={true}
-				maxWidth={'md'}
-			>
-				<Box className='application-modal'>{modalData}</Box>
-			</Dialog>
 		</div>
 	);
 }

@@ -1,56 +1,64 @@
 const express = require('express');
 const router = express.Router();
 
-module.exports = ({getProjectById, addProject}) => {
-  // GET single project by project id
-  router.get('/:id', (req, res) => {
-    getProjectById(req.params.id)
-      .then(project => {
-        res.json(project);
-      })
-      .catch(err =>
-        res.json({
-          error: err.message,
-        })
-      );
-  });
+module.exports = ({ getProjectById, addProject, deleteProjectById }) => {
+	// GET single project by project id
+	router.get('/:id', (req, res) => {
+		getProjectById(req.params.id)
+			.then(project => {
+				res.json(project);
+			})
+			.catch(err =>
+				res.json({
+					error: err.message,
+				})
+			);
+	});
 
-  router.post('/new', (req, res) => {
-    const {
-      junior_dev_id,
-      title,
-      description,
-      thumbnail_photo_url,
-      github_link,
-      live_link,
-    } = req.body;
+	router.post('/delete/:id', (req, res) => {
+		deleteProjectById(req.params.id)
+			.then(data => {
+				res.json(data);
+			})
+			.catch(err => console.log(err));
+	});
 
-    console.log(
-      junior_dev_id,
-      title,
-      description,
-      thumbnail_photo_url,
-      github_link,
-      live_link
-    );
+	router.post('/new', (req, res) => {
+		const {
+			junior_dev_id,
+			title,
+			description,
+			thumbnail_photo_url,
+			github_link,
+			live_link,
+		} = req.body;
 
-    addProject(
-      junior_dev_id,
-      title,
-      description,
-      thumbnail_photo_url,
-      github_link,
-      live_link
-    )
-      .then(addedProject => {
-        res.json(addedProject);
-      })
-      .catch(err =>
-        res.json({
-          error: err.message,
-        })
-      );
-  });
+		console.log(
+			junior_dev_id,
+			title,
+			description,
+			thumbnail_photo_url,
+			github_link,
+			live_link
+		);
 
-  return router;
+		addProject(
+			junior_dev_id,
+			title,
+			description,
+			thumbnail_photo_url,
+			github_link,
+			live_link
+		)
+			.then(addedProject => {
+				res.json(addedProject);
+			})
+			.catch(err =>
+				res.json({
+					error: err.message,
+				})
+			);
+	});
+
+	return router;
 };

@@ -1,8 +1,12 @@
-import {useState, useEffect} from 'react';
+import {useState} from 'react';
 import axios from 'axios';
 import '../styles/SearchResults/ApplyModal.scss';
 import {Button, Box, Dialog} from '@mui/material';
 import LocalPhoneOutlinedIcon from '@mui/icons-material/LocalPhoneOutlined';
+import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
+import FmdGoodOutlinedIcon from '@mui/icons-material/FmdGoodOutlined';
+import {FiGithub} from 'react-icons/fi';
+import {AiOutlineFolderOpen, AiOutlineLinkedin} from 'react-icons/ai';
 import {Link} from 'react-router-dom';
 import {useNavigate} from 'react-router-dom';
 import {makeStyles} from '@mui/styles';
@@ -116,32 +120,47 @@ export default function ApplyModal(props) {
                     {currentUser.headline ? currentUser.headline : 'N/A'}
                   </h2>
                   <div className="apply-phone-city">
+                    <LocalPhoneOutlinedIcon />
                     <h3 id="apply-phone"> {currentUser.phone_number}</h3>
+                    <EmailOutlinedIcon />
                     <h3 id="apply-email"> {currentUser.email}</h3>
+                    <FmdGoodOutlinedIcon />
+
                     <h3 id="apply-city"> {currentUser.city}, Canada</h3>
                   </div>
-                  <h4>Github</h4>
+                  <div>
+                    <FiGithub />
+                    <h4>Github</h4>
+                  </div>
                   <a
                     href={currentUser.github_url ? currentUser.github_url : ''}
                   >
                     {currentUser.github_url ? currentUser.github_url : 'N/A'}
                   </a>
-                  <h4>Resume Link </h4>
-                  <a
-                    href={currentUser.resume_url ? currentUser.resume_url : ''}
-                  >
-                    {currentUser.resume_url ? currentUser.resume_url : 'N/A'}
-                  </a>
-                  <h4>LinkedIn</h4>
-                  <a
-                    href={
-                      currentUser.linkedin_url ? currentUser.linkedin_url : ''
-                    }
-                  >
-                    {currentUser.linkedin_url
-                      ? currentUser.linkedin_url
-                      : 'N/A'}
-                  </a>
+                  <div>
+                    <AiOutlineFolderOpen />
+                    <h4>Resume Link </h4>
+                    <a
+                      href={
+                        currentUser.resume_url ? currentUser.resume_url : ''
+                      }
+                    >
+                      {currentUser.resume_url ? currentUser.resume_url : 'N/A'}
+                    </a>
+                  </div>
+                  <div>
+                    <AiOutlineLinkedin />
+                    <h4>LinkedIn</h4>
+                    <a
+                      href={
+                        currentUser.linkedin_url ? currentUser.linkedin_url : ''
+                      }
+                    >
+                      {currentUser.linkedin_url
+                        ? currentUser.linkedin_url
+                        : 'N/A'}
+                    </a>
+                  </div>
                   <div className="btn-container">
                     {applicationSubmitted ? null : (
                       <Button variant="contained" onClick={submitApplication}>

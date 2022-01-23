@@ -4,7 +4,7 @@ import {TextField, Button} from '@mui/material';
 import {useNavigate} from 'react-router-dom';
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
 import Box from '@mui/material/Box';
 import FormControl from '@mui/material/FormControl';
 
@@ -20,7 +20,7 @@ export default function SearchBar(props) {
 
   const handleSubmit = e => {
     console.log(jobType, queryString);
-    e.preventDefault();
+    e && e.preventDefault();
 
     if (!jobType) {
       return;
@@ -60,7 +60,7 @@ export default function SearchBar(props) {
 
   const keyCheck = e => {
     if (e.keyCode === 13) {
-      e.preventDefault();
+      handleSubmit();
     }
   };
 

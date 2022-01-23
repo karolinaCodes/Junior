@@ -128,12 +128,12 @@ module.exports = db => {
 		bio,
 		photo_url,
 		github_url,
-		linkedIn_url,
+		linkedin_url,
 		resume_url,
 		location
 	) => {
 		const query = {
-			text: `INSERT INTO junior_devs (first_name, last_name, email, password, phone_number, headline, bio, photo_url, github_url, linkedIn_url, resume_url, location) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING *`,
+			text: `INSERT INTO junior_devs (first_name, last_name, email, password, phone_number, headline, bio, photo_url, github_url, linkedin_url, resume_url, location) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING *`,
 			values: [
 				email,
 				password,
@@ -141,7 +141,7 @@ module.exports = db => {
 				headline,
 				photo_url,
 				github_url,
-				linkedIn_url,
+				linkedin_url,
 				resume_url,
 				location,
 			],
@@ -200,45 +200,35 @@ module.exports = db => {
 			.catch(err => err);
 	};
 
-	const editProfile = (
-		email,
-		phone_number,
-		headline,
-		bio,
-		github_url,
-		linkedIn_url,
-		resume_url,
-		city,
-		id
-	) => {
+	const editProfile = params => {
 		const query = {
 			text: `UPDATE junior_devs
-				SET email = $1
-				phone_number = $2
-				headline = $3
-				bio = $4
-				github_url = $5
-				linkedIn_url = $6
-				resume_url = $7
+				SET email = $1,
+				phone_number = $2,
+				headline = $3,
+				bio = $4,
+				github_url = $5,
+				linkedin_url = $6,
+				resume_url = $7,
 				city = $8
 				WHERE id = $9
 				RETURNING *
 				`,
 			values: [
-				email,
-				phone_number,
-				headline,
-				bio,
-				github_url,
-				linkedIn_url,
-				resume_url,
-				city,
-				id,
+				params.email,
+				params.phone_number,
+				params.headline,
+				params.bio,
+				params.github_url,
+				params.linkedin_url,
+				params.resume_url,
+				params.city,
+				params.id,
 			],
 		};
 		return db
 			.query(query)
-			.then(result => result.rows)
+			.then(result => console.log(result))
 			.catch(err => err);
 	};
 

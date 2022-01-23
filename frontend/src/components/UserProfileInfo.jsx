@@ -9,7 +9,7 @@ import { UserContext } from '../Providers/userProvider';
 import { useEffect } from 'react';
 
 export default function UserProfileInfo(props) {
-	const { currentUser } = useContext(UserContext);
+	const { currentUser, setCurrentUser } = useContext(UserContext);
 	const [profileView, setProfileView] = useState('browse');
 	const [editForm, setEditForm] = useState({
 		...currentUser,
@@ -29,7 +29,7 @@ export default function UserProfileInfo(props) {
 		city,
 		photo_url,
 		github_url,
-		linkedIn_url,
+		linkedin_url,
 		bio,
 		id,
 	} = currentUser;
@@ -39,10 +39,10 @@ export default function UserProfileInfo(props) {
 	*/
 
 	const updateProfile = () => {
-		return axios
-			.post('/api/devs/edit', editForm)
+		axios
+			.post(`/api/devs/edit`, editForm)
 			.then(res => {
-				console.log(res);
+				setCurrentUser(prev => ({ ...prev, ...editForm }));
 				setProfileView('browse');
 			})
 			.catch(err => console.log(err));
@@ -94,6 +94,8 @@ export default function UserProfileInfo(props) {
 						></TextField>
 						<TextField
 							size='small'
+							multiline={true}
+							maxRows={3}
 							sx={{ mt: '2vh' }}
 							label='Email'
 							value={editForm.email}
@@ -132,11 +134,17 @@ export default function UserProfileInfo(props) {
 							size='small'
 							sx={{ mt: '2vh', mb: '2vh' }}
 							label='LinkedIn'
-							value={editForm.linkedIn_url}
+							value={editForm.linkedin_url}
 							onChange={e =>
-								setEditForm({ ...editForm, linkedIn_url: e.target.value })
+								setEditForm({ ...editForm, linkedin_url: e.target.value })
 							}
 						></TextField>
+					</Grid>
+					<Grid
+						item
+						className='profile-buttons'
+						sx={{ justifyContent: 'space-evenly' }}
+					>
 						<Chip label='Save' onClick={e => editProfile()} />
 						<Chip label='Cancel' onClick={e => setProfileView('browse')} />
 					</Grid>
@@ -160,7 +168,13 @@ export default function UserProfileInfo(props) {
 							<a href={resume_url}>Resume</a>
 						</h4>
 						<h4>{github_url ? github_url : 'N/A'}</h4>
-						<h4>{linkedIn_url ? linkedIn_url : 'N/A'}</h4>
+						<h4>{linkedin_url ? linkedin_url : 'N/A'}</h4>
+					</Grid>
+					<Grid
+						item
+						className='profile-buttons'
+						sx={{ justifyContent: 'space-evenly' }}
+					>
 						<Chip onClick={e => editProfile()} label='Edit Profile' />
 					</Grid>
 				</>

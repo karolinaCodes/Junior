@@ -80,9 +80,9 @@ module.exports = ({
 			);
 	});
 
-	//Update user profile
+	//Update user profile 3001/api/devs/edit/1
 	router.post('/edit', (req, res) => {
-		editProfile(req.params.id)
+		editProfile(req.body)
 			.then(profile => res.json(profile))
 			.catch(err =>
 				res.json({

@@ -1,10 +1,10 @@
 // DB queries for GIG APPLICATIONS //
 
 module.exports = db => {
-  /* Retrieve all gig application data, gig posting data,
+	/* Retrieve all gig application data, gig posting data,
       employer email, company_name, bio, photo_url,
       junior_dev email, first_name, last_name, headline, bio, photo_url,
-      github_url, linkedIn_url, resume_url, location
+      github_url, linkedin_url, resume_url, location
   */
 
 	const getGigApplicationById = id => {
@@ -58,9 +58,25 @@ module.exports = db => {
 			.then(result => result.rows[0])
 			.catch(err => err);
 	};
-  return {
+
+	const completeGigApplication = gig_application_id => {
+		const query = {
+			text: `UPDATE gig_applications
+      SET is_completed = true
+      WHERE id = $1`,
+			values: [gig_application_id],
+		};
+
+		return db
+			.query(query)
+			.then(result => result.rows[0])
+			.catch(err => err);
+	};
+
+	return {
 		getGigApplicationById,
 		addGigApplication,
 		acceptGigApplication,
+		completeGigApplication,
 	};
 };

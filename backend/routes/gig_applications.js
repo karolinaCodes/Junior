@@ -5,6 +5,7 @@ module.exports = ({
 	getGigApplicationById,
 	addGigApplication,
 	acceptGigApplication,
+	completeGigApplication,
 }) => {
 	/* GET a gig application by gig_applications.id */
 	router.get('/:id', (req, res) => {
@@ -20,6 +21,16 @@ module.exports = ({
 	/* Accept a gig application */
 	router.post('/accept/:id', (req, res) => {
 		acceptGigApplication(req.params.id)
+			.then(application => res.json(application))
+			.catch(err =>
+				res.json({
+					error: err.message,
+				})
+			);
+	});
+
+	router.post('/complete/:id', (req, res) => {
+		completeGigApplication(req.params.id)
 			.then(application => res.json(application))
 			.catch(err =>
 				res.json({

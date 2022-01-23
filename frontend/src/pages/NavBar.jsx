@@ -12,7 +12,7 @@ const defaultUser = {
 	bio: String,
 	photo_url: String,
 	github_url: String,
-	linkedIn_url: String,
+	linkedin_url: String,
 	resume_url: String,
 	location: String,
 	company_name: String,

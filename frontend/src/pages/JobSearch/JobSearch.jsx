@@ -34,17 +34,8 @@ import {useLocation} from 'react-router-dom';
 // context //
 import {UserContext} from '../../Providers/userProvider';
 
+// styles //
 const useStyles = makeStyles({
-  searchResults: {
-    display: 'grid',
-    gridTemplateColumns: 'repeat(3, 1fr)',
-    'grid-gap': '1.4rem',
-    'margin-right': '50px',
-    ['@media (min-width:1700px)']: {
-      gridTemplateColumns: 'repeat(4, 1fr)',
-    },
-  },
-
   description: {
     overflow: 'hidden',
     display: ' -webkit-box',
@@ -553,7 +544,7 @@ export default function JobSearch(props) {
             <span>Recommended Jobs </span>
             <span id="recommended-num">{searchResults.length}</span>
           </h3>
-          <div className={classes.searchResults}>
+          <div className="searchResults">
             {searchResults.length > 0 &&
               searchResults.map((item, index) => {
                 return (

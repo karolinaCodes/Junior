@@ -49,7 +49,7 @@ export default function Posting(props) {
           />}
         {city && <p> {city}, Canada ({is_remote ? 'Remote' : 'On-site'})</p>}
         {salary && <p>Salary: ${formatted_salary} ({job_type})</p>}
-          {pay && <p><strong>Compensation:</strong> ${formatted_pay}</p>}
+        {pay && <p><strong>Compensation:</strong> ${formatted_pay}</p>}
         <p>Date Posted: {formatted_date}</p>
         {deadline && <p>Deadline: {formatted_deadline}</p>}
         <p className="description">{description}</p>

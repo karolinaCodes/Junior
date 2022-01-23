@@ -12,11 +12,11 @@ module.exports = db => {
         JOIN employers ON employers.id = gig_postings.employer_id`,
     };
 
-    return db
-      .query(query)
-      .then(result => result.rows)
-      .catch(err => err);
-  };
+		return db
+			.query(query)
+			.then(result => result.rows)
+			.catch(err => err);
+	};
 
   const getGigById = id => {
     const query = {
@@ -28,38 +28,38 @@ module.exports = db => {
         FROM gig_postings
         JOIN employers ON employers.id = gig_postings.employer_id
         WHERE gig_postings.id = $1`,
-      values: [id],
-    };
+			values: [id],
+		};
 
-    return db
-      .query(query)
-      .then(result => result.rows[0])
-      .catch(err => err);
-  };
+		return db
+			.query(query)
+			.then(result => result.rows[0])
+			.catch(err => err);
+	};
 
-  const getGigImagesByGigId = id => {
-    const query = {
-      text: `SELECT gig_posting_images.photo_url FROM gig_posting_images JOIN gig_postings ON gig_postings.id = gig_posting_id WHERE gig_postings.id =$1;`,
-      values: [id],
-    };
+	const getGigImagesByGigId = id => {
+		const query = {
+			text: `SELECT gig_posting_images.photo_url FROM gig_posting_images JOIN gig_postings ON gig_postings.id = gig_posting_id WHERE gig_postings.id =$1;`,
+			values: [id],
+		};
 
-    return db
-      .query(query)
-      .then(result => result.rows)
-      .catch(err => err);
-  };
+		return db
+			.query(query)
+			.then(result => result.rows)
+			.catch(err => err);
+	};
 
-  const addGigPosting = (employer_id, gig_name, description, pay, deadline) => {
-    console.log(
-      'addGigPosting',
-      employer_id,
-      gig_name,
-      description,
-      pay,
-      deadline
-    );
-    const query = {
-      text: `INSERT INTO gig_postings (
+	const addGigPosting = (employer_id, gig_name, description, pay, deadline) => {
+		console.log(
+			'addGigPosting',
+			employer_id,
+			gig_name,
+			description,
+			pay,
+			deadline
+		);
+		const query = {
+			text: `INSERT INTO gig_postings (
         employer_id,
         job_title,
         description,
@@ -68,14 +68,14 @@ module.exports = db => {
         ) VALUES (
           $1, $2, $3, $4, $5
         ) RETURNING *`,
-      values: [employer_id, gig_name, description, pay, deadline],
-    };
+			values: [employer_id, gig_name, description, pay, deadline],
+		};
 
-    return db
-      .query(query)
-      .then(result => result.rows[0])
-      .catch(err => err);
-  };
+		return db
+			.query(query)
+			.then(result => result.rows[0])
+			.catch(err => err);
+	};
 
   const getApplicationsByGigPostingId = id => {
     const query = {
@@ -87,25 +87,25 @@ module.exports = db => {
         to_char(date_posted,'FMMonth d, YYYY') as formatted_date,
         to_char(deadline,'FMMonth d, YYYY') as formatted_deadline,
         to_char(date_applied,'FMMonth d, YYYY') as formatted_date_applied,
-				CONCAT(junior_devs.city,', Canada') as dev_location
+				CONCAT(junior_devs.city,', Canada') as dev_location, gig_applications.id as pid
         FROM gig_applications
         JOIN gig_postings ON gig_applications.gig_posting_id = gig_postings.id
         JOIN employers ON gig_postings.employer_id = employers.id
         JOIN junior_devs ON gig_applications.junior_dev_id = junior_devs.id
         WHERE gig_applications.gig_posting_id = $1`,
-      values: [id],
-    };
+			values: [id],
+		};
 
-    return db
-      .query(query)
-      .then(result => result.rows)
-      .catch(err => err);
-  };
-  return {
-    getGigPostings,
-    getGigById,
-    getGigImagesByGigId,
-    addGigPosting,
-    getApplicationsByGigPostingId,
-  };
+		return db
+			.query(query)
+			.then(result => result.rows)
+			.catch(err => err);
+	};
+	return {
+		getGigPostings,
+		getGigById,
+		getGigImagesByGigId,
+		addGigPosting,
+		getApplicationsByGigPostingId,
+	};
 };

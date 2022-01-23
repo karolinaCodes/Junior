@@ -6,17 +6,17 @@ import UserApplicationCard from '../components/UserApplicationCard';
 import ConfirmModal from '../components/UserApplicationConfirmModal';
 
 import axios from 'axios';
-import { UserContext } from '../Providers/userProvider';
+import {UserContext} from '../Providers/userProvider';
 
 export default function UserApplications(props) {
-	// const { first_name, last_name, id } = props.currentUser;
-	const { currentUser } = useContext(UserContext);
-	// console.log(currentUser);
-	const id = 1;
-	const [applications, setApplications] = useState({
-		jobApplications: [],
-		gigApplications: [],
-	});
+  // const { first_name, last_name, id } = props.currentUser;
+  const {currentUser} = useContext(UserContext);
+  // console.log(currentUser);
+  const id = 1;
+  const [applications, setApplications] = useState({
+    jobApplications: [],
+    gigApplications: [],
+  });
 
 	const [openModal, setOpenModal] = useState(false);
 	const [modalData, setModalData] = useState();
@@ -58,8 +58,8 @@ export default function UserApplications(props) {
 		}
 	}, [id, view]);
 
-	const jobApplicationsArray = applications.jobApplications;
-	const gigApplicationsArray = applications.gigApplications;
+  const jobApplicationsArray = applications.jobApplications;
+  const gigApplicationsArray = applications.gigApplications;
 
 	const parsedJobApplications = jobApplicationsArray.map(application => {
 		return (
@@ -94,7 +94,7 @@ export default function UserApplications(props) {
 	});
 
 	return (
-		<div className='application-content'>
+		<div className='application-content page-container'>
 			<Grid container direction='column'>
 				<h1>My Applications</h1>
 				<Grid item container direction='row' sx={{justifyContent: 'space-between'}}>

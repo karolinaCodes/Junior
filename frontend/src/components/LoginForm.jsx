@@ -19,7 +19,6 @@ export default function Login(props) {
       password: document.getElementById('password').value,
     };
 
-<<<<<<< HEAD
 		axios
 			.post('/api/auth/login', data)
 			.then(res => {
@@ -45,28 +44,6 @@ export default function Login(props) {
 	// 	}
 	// 	handleLoginView();
 	// }, [currentUser]);
-=======
-    axios
-      .post('/api/auth/login', data)
-      .then(res => {
-        setCurrentUser(res.data);
-        console.log(res.data);
-        handleLoginView();
-      })
-      .catch(err => {
-        console.log(err);
-      });
-  };
-
-  useEffect(() => {
-    if (currentUser.company_name) {
-      navigate('/employerprofile');
-    } else {
-      navigate('/profile');
-    }
-    handleLoginView();
-  }, [currentUser]);
->>>>>>> main
 
   return (
     <div>

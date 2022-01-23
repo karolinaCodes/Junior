@@ -1,13 +1,11 @@
 import './styles/Profile.scss';
-import axios from 'axios';
 import {Card, Grid} from '@mui/material';
-import {useContext, useEffect} from 'react';
+import {useContext} from 'react';
 import SavedJobsGigsCard from '../components/SavedJobsGigsCard';
 import {UserContext} from '../Providers/userProvider';
 
 export default function Applications(props) {
-  const {currentUser, savedJobsGigs, setSavedJobsGigs} =
-    useContext(UserContext);
+  const {savedJobsGigs} = useContext(UserContext);
 
   return (
     <div className="application-content page-container">
@@ -17,7 +15,7 @@ export default function Applications(props) {
           <h3>Saved Jobs</h3>
           <Grid container item>
             {savedJobsGigs.jobs &&
-              savedJobsGigs.jobs.map((savedJob, index) => {
+              savedJobsGigs.jobs.map(savedJob => {
                 return (
                   <Grid
                     item

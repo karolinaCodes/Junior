@@ -264,7 +264,7 @@ export default function JobSearch(props) {
   };
 
   return (
-    <div className="jobsearch-content">
+    <div className="page-container jobsearch-content">
       <form className="jobsearch-search" onSubmit={handleSubmit}>
         {/* {JOB TYPE DROPDOWN----------------------} */}
         <Box sx={{minWidth: 120}}>

@@ -1,10 +1,17 @@
 @import './pages/styles/variables.scss';
 @import url('https://fonts.googleapis.com/css2?family=Assistant:wght@400;700&family=Roboto:wght@400;700&display=swap');
-
 @import url('https://fonts.googleapis.com/css2?family=Assistant:wght@200;300;400;500;600;700;800&display=swap');
 
 * {
   box-sizing: border-box;
+}
+
+.App {
+  min-height: 90vh;
+}
+
+.page-container {
+  min-height: 80vh;
 }
 
 body {
@@ -35,7 +42,11 @@ body {
     padding-left: 2rem;
   }
 }
-.profile-content, .application-content, .posting-content, .profile-cards, .application-cards {
+.profile-content,
+.application-content,
+.posting-content,
+.profile-cards,
+.application-cards {
   .description {
     color: $grey;
     overflow: hidden;
@@ -45,12 +56,12 @@ body {
     line-height: 1.5rem;
   }
   .profile-pic {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		text-align: center;
-		flex-direction: column;
-		max-width: $profile-md;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+    max-width: $profile-md;
   }
   .MuiCard-root {
     align-content: flex-start;

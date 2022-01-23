@@ -79,7 +79,7 @@ export default function Applications(props) {
   });
 
   return (
-    <div className="application-content">
+    <div className="application-content page-container">
       <Grid container direction="column">
         <h1>Applications</h1>
         <p>Total applications: {posting.applications.length}</p>

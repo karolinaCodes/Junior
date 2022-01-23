@@ -17,11 +17,15 @@ import PortfolioCard from '../components/PortfolioCard';
 import PortfolioModal from '../components/PortfolioModal';
 import UserProfileInfo from '../components/UserProfileInfo';
 import axios from 'axios';
+import {useLocation} from 'react-router-dom';
 
 export default function Profile() {
   const {currentUser} = useContext(UserContext);
+  const {state} = useLocation();
+  const [goBack, setGoBack] = useState(state);
   const navigate = useNavigate();
 
+  console.log(goBack);
   console.log('', currentUser);
 
   const [profile, setProfile] = useState({
@@ -115,6 +119,9 @@ export default function Profile() {
     <div className="profile-content page-container">
       <UserProfileInfo currentUser={currentUser} />
       {profile.projects.length === 0 && <h1>No projects added</h1>}
+      {goBack && (
+        <Button onClick={() => navigate(-1)}>Back to search results</Button>
+      )}
       <section className="profile-cards">
         <Grid container>
           <Grid item xs={12} id="profile-title">

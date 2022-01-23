@@ -13,8 +13,8 @@ export default function ApplicationCard(props) {
 	const postingLink = job_posting_id ? `/job/${job_posting_id}` : `/gig/${gig_posting_id}`;
 	
 	const [expanded, setExpanded] = useState(false);
-	const [openModal, setOpenModal] = useState(false);
-
+	const [complete, setComplete] = useState(false);
+	
 	const navigate = useNavigate();
 	
 	const handleExpandClick = () => {
@@ -36,6 +36,7 @@ export default function ApplicationCard(props) {
 //('api/gig_postings/complete/:id'
 	const markComplete = () => {
 		console.log('posting id',gig_posting_id);
+		setComplete(true);
 		return axios
 			.post(`../api/gig_applications/complete/${gig_posting_id}`)
 			.then((res) => {
@@ -128,18 +129,18 @@ export default function ApplicationCard(props) {
 									Delete Application
 								</Button>
 							}
-							{(is_accepted && !is_completed) && 
+							{(is_accepted && !is_completed && !complete) && 
 								<Button
 									color="error"
 									onClick={() => {
-										askConfirmComplete();
+										markComplete();
 										console.log('complete ', postingLink);
 									}}
 								>
 									Mark Completed
 								</Button>
 							}
-							{is_completed  && 
+							{(is_completed || complete) && 
 								<Button
 									color="error"
 									onClick={() => {
@@ -150,7 +151,6 @@ export default function ApplicationCard(props) {
 									Create Project
 								</Button>
 							}
-
 						</Grid>
 					</Grid>
 					<Grid item className="expand-text">

@@ -1,24 +1,22 @@
 import './styles/PortfolioCard.scss';
 import { useContext, useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { styled } from '@mui/material/styles';
-import {Grid, Button, Chip, List, ListItem, ListItemText, ListItemButton, IconButton, CardContent, CardActions, Collapse, Dialog, Box, useControlled} from '@mui/material';
+import {Avatar, Grid, Button, Chip, List, ListItem, ListItemText, ListItemButton, IconButton, CardContent, CardActions, Collapse, Dialog, Box, useControlled} from '@mui/material';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import axios from 'axios';
 
 export default function ApplicationCard(props) {
-	const { job_title, description, salary, formatted_salary, date_posted, formatted_date, date_applied, formatted_date_applied, job_type, is_remote, employer_email, company_name, employer_bio, employer_photo_url, deadline, photo_url, city, pay, formatted_pay, formatted_deadline, posting_location, job_posting_id, gig_posting_id, is_accepted, is_completed } =	props;
-
-	//Job or gig
-	const { type } = 'gig';
-
+	const { job_title, description, salary, formatted_salary, date_posted, formatted_date, date_applied, formatted_date_applied, job_type, is_remote, employer_id, employer_email, company_name, employer_bio, employer_photo_url, deadline, photo_url, city, pay, formatted_pay, formatted_deadline, posting_location, job_posting_id, gig_posting_id, is_accepted, is_completed } =	props;
+	
 	const location = `${posting_location} (${is_remote ? 'Remote' : 'On-site'})`;
 	const postingLink = job_posting_id ? `/job/${job_posting_id}` : `/gig/${gig_posting_id}`;
-
+	
 	const [expanded, setExpanded] = useState(false);
 	const [openModal, setOpenModal] = useState(false);
 	const [modalData, setModalData] = useState();
-
+	const navigate = useNavigate();
+	
 	const handleExpandClick = () => {
 		setExpanded(!expanded);
 	};
@@ -46,7 +44,7 @@ export default function ApplicationCard(props) {
 			.catch(err => console.log(err))
 	}
 
-	const navigate = useNavigate();
+
 	
 	const createProject = () => {
 		navigate('/newproject', { state: {title: job_title, description: description}})
@@ -67,11 +65,15 @@ export default function ApplicationCard(props) {
 			<CardContent>
 				<Grid container direction='row' className='profile-info'>
 					<Grid item className='profile-pic'>
-						<img id="profile-pic"
-							src={employer_photo_url}
+						<Avatar
+							id="profile-pic"
 							alt={`Photo of ${company_name}`}
+							src={employer_photo_url}
+							sx={{ width: 150, height: 150 }}
+							onClick={() => navigate(`/employerprofile/${employer_id}`)}
 						/>
-							<h3>{company_name}</h3>
+							<h3 onClick={() => navigate(`/employerprofile/${employer_id}`)}
+							>{company_name}</h3>
 					</Grid>
 					<Grid item xs className='application-info' container direction='column' sx={{marginLeft: '1rem'}}>
 						<Grid item container direction='row' sx={{justifyContent: 'space-between'}}>

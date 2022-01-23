@@ -1,5 +1,5 @@
 import './styles/Profile.scss';
-import { Card, Modal, Box, Grid, Paper, Dialog, Button } from '@mui/material';
+import { Card, Modal, Box, Grid, Paper, Dialog, Button, ToggleButton, ToggleButtonGroup } from '@mui/material';
 import { useContext, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import UserApplicationCard from '../components/UserApplicationCard';
@@ -20,25 +20,15 @@ export default function UserApplications(props) {
 
 	const [openModal, setOpenModal] = useState(false);
 	const [modalData, setModalData] = useState();
-	const [view, setView] = useState({
-		jobs: true,
-		gigs: true
-	});
+	const [view, setView] = useState('job');
 
   const handleModal = () => {
     openModal === true ? setOpenModal(false) : setOpenModal(true);
   };
 
-	const handleJobs = () => {
-		view.jobs ?
-		setView(prev => ({...prev, jobs: false}))
-		: setView(prev => ({...prev, jobs: true}));
-	}
-	const handleGigs = () => {
-		view.gigs ? 
-			setView(prev => ({...prev, gigs: false}))
-			: setView(prev => ({...prev, gigs: true}));
-	}
+  const handleView = () => {
+    view === 'job' ? setView('gig') : setView('job') ;
+  };
 
 	useEffect(() => {
 		if (id) {
@@ -100,35 +90,26 @@ export default function UserApplications(props) {
 				<Grid item container direction='row' sx={{justifyContent: 'space-between'}}>
 					<Grid item>
 						<p>
-							{`Total applications: ${
-								(view.jobs ? applications.jobApplications.length : 0)
-								+ (view.gigs ? applications.gigApplications.length : 0)}
-							`}
+							{view === 'job' && `Job applications: ${applications.jobApplications.length}`}
+							{view === 'gig' && `Gig applications: ${applications.gigApplications.length}`}
 						</p>
 					</Grid>
 					<Grid item>
-						<Button
-							variant={view.jobs ? 'contained' : 'outlined'}
-							onClick={() => {
-								handleJobs();
-							}}
+						<ToggleButtonGroup
+							color="primary"
+							value={view}
+							exclusive
+							onChange={handleView}
 						>
-							Job
-						</Button>
-						<Button
-							variant={view.gigs ? 'contained' : 'outlined'}
-							onClick={() => {
-								handleGigs();
-							}}
-						>
-							Gig
-						</Button>
+							<ToggleButton value="job">Jobs</ToggleButton>
+							<ToggleButton value="gig">Gigs</ToggleButton>
+						</ToggleButtonGroup>
 					</Grid>
 				</Grid>
 				<section className='application-cards'>
 					<Grid container item>
-						{view.jobs && parsedJobApplications}
-						{view.gigs && parsedGigApplications}
+						{view === 'job' && parsedJobApplications}
+						{view === 'gig' && parsedGigApplications}
 					</Grid>
 				</section>
 			</Grid>

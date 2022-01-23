@@ -20,14 +20,14 @@ export default function UserApplications(props) {
 
 	const [openModal, setOpenModal] = useState(false);
 	const [modalData, setModalData] = useState();
-	const [view, setView] = useState('job');
+	const [view, setView] = useState('all');
 
   const handleModal = () => {
     openModal === true ? setOpenModal(false) : setOpenModal(true);
   };
 
-  const handleView = () => {
-    view === 'job' ? setView('gig') : setView('job') ;
+  const handleView = (value) => {
+		setView(value);
   };
 
 	useEffect(() => {
@@ -92,6 +92,7 @@ export default function UserApplications(props) {
 						<p>
 							{view === 'job' && `Job applications: ${applications.jobApplications.length}`}
 							{view === 'gig' && `Gig applications: ${applications.gigApplications.length}`}
+							{view === 'all' && `Total applications: ${applications.gigApplications.length + applications.jobApplications.length}`}
 						</p>
 					</Grid>
 					<Grid item>
@@ -99,9 +100,10 @@ export default function UserApplications(props) {
 							color="primary"
 							value={view}
 							exclusive
-							onChange={handleView}
+							onChange={e => handleView(e.target.value)}
 						>
 							<ToggleButton value="job">Jobs</ToggleButton>
+							<ToggleButton value="all">All</ToggleButton>
 							<ToggleButton value="gig">Gigs</ToggleButton>
 						</ToggleButtonGroup>
 					</Grid>
@@ -110,6 +112,7 @@ export default function UserApplications(props) {
 					<Grid container item>
 						{view === 'job' && parsedJobApplications}
 						{view === 'gig' && parsedGigApplications}
+						{view === 'all' && <>{parsedJobApplications}{parsedGigApplications}</>}
 					</Grid>
 				</section>
 			</Grid>

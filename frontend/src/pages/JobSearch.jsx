@@ -1,16 +1,14 @@
 import * as React from 'react';
 import {useEffect, useState, useContext} from 'react';
-import '../styles/JobSearch.scss';
+import './styles/JobSearch.scss';
 import axios from 'axios';
-
-// components //
-import ApplyModal from '../../components/JobSearch/ApplyModal';
-
-// mui //
 import Box from '@mui/material/Box';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
+import {Link} from 'react-router-dom';
+
+import ApplyModal from '../components/SearchResults/ApplyModal';
 import {TextField, Button} from '@mui/material';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
@@ -20,22 +18,29 @@ import Typography from '@mui/material/Typography';
 import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
+
 import Chip from '@mui/material/Chip';
 import Slider from '@mui/material/Slider';
 import {InputAdornment} from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
-import FmdGoodOutlinedIcon from '@mui/icons-material/FmdGoodOutlined';
-import {makeStyles} from '@mui/styles';
+import LocationOnIcon from '@mui/icons-material/LocationOn';
 
-// react-router //
-import {Link} from 'react-router-dom';
 import {useLocation} from 'react-router-dom';
+import {makeStyles} from '@mui/styles';
+import {UserContext} from '../Providers/userProvider';
 
-// context //
-import {UserContext} from '../../Providers/userProvider';
+////////////////////IMPORTS///////////
 
-// styles //
 const useStyles = makeStyles({
+  searchResults: {
+    display: 'grid',
+    gridTemplateColumns: 'repeat(3, 1fr)',
+    'grid-gap': '1.4rem',
+    ['@media (min-width:1700px)']: {
+      gridTemplateColumns: 'repeat(4, 1fr)',
+    },
+  },
+
   description: {
     overflow: 'hidden',
     display: ' -webkit-box',
@@ -105,7 +110,6 @@ const useStyles = makeStyles({
     border: '1px solid #ced4da',
     'border-radius': '4px',
     padding: 0,
-    width: '200px',
   },
 
   slider: {
@@ -141,20 +145,19 @@ export default function JobSearch(props) {
   const [schedule, setSchedule] = useState('');
   const [queryString, setQueryString] = useState('');
   const [searchResults, setSearchResults] = useState([]);
-  const [jobType, setJobType] = useState('all');
+  const [jobType, setJobType] = useState('');
   const [open, setOpen] = useState(false);
   const [jobApplying, setJobApplying] = useState('');
   const [value, setValue] = useState([40000, 70000]);
   // value = salary range
-
   const classes = useStyles();
+  console.log(jobApplying);
 
   useEffect(() => {
     if (state) {
       const {data} = state;
       return setSearchResults(data);
     }
-
     const results = axios
       .get('/api/search/query', {
         params: {
@@ -190,7 +193,8 @@ export default function JobSearch(props) {
           },
         })
         .then(res => {
-          setSearchResults(res.data);
+          console.log(res.data);
+          // setSearchResults(res.data);
           return;
         })
         .catch(err => console.log(err));
@@ -209,7 +213,8 @@ export default function JobSearch(props) {
         },
       })
       .then(res => {
-        setSearchResults(res.data);
+        console.log(res.data);
+        // setSearchResults(res.data);
         return;
       })
       .catch(err => console.log(err));
@@ -225,12 +230,11 @@ export default function JobSearch(props) {
 
   const openApplication = index => {
     const posting = searchResults[index];
-    console.log(posting);
-
     if (posting.deadline) {
       axios
         .get(`/api/gig_postings/${posting.id}`)
         .then(res => {
+          // console.log(res.data);
           setJobApplying(res.data);
         })
         .catch(err => {
@@ -240,6 +244,7 @@ export default function JobSearch(props) {
       axios
         .get(`/api/job_postings/${posting.id}`)
         .then(res => {
+          // console.log(res.data);
           setJobApplying(res.data);
         })
         .catch(err => {
@@ -258,13 +263,18 @@ export default function JobSearch(props) {
   };
 
   return (
-    <div className="page-container jobsearch-content">
+    <div className="jobsearch-content page-container">
       <form className="jobsearch-search" onSubmit={handleSubmit}>
         {/* {JOB TYPE DROPDOWN----------------------} */}
         <Box sx={{minWidth: 120}}>
           <FormControl fullWidth className={classes.drop_down}>
-            <Select value={jobType} onChange={handleChange}>
-              <MenuItem value={'all'}>All Opportunities</MenuItem>
+            <Select
+              value={jobType}
+              onChange={handleChange}
+              defaultValue={'all'}
+              label="Job Type"
+            >
+              <MenuItem value={'all'}>All</MenuItem>
               <MenuItem value={'jobs'}>Jobs</MenuItem>
               <MenuItem value={'gigs'}>Gigs</MenuItem>
             </Select>
@@ -297,7 +307,7 @@ export default function JobSearch(props) {
           InputProps={{
             startAdornment: (
               <InputAdornment position="start">
-                <FmdGoodOutlinedIcon />
+                <LocationOnIcon />
               </InputAdornment>
             ),
           }}
@@ -544,7 +554,7 @@ export default function JobSearch(props) {
             <span>Recommended Jobs </span>
             <span id="recommended-num">{searchResults.length}</span>
           </h3>
-          <div className="searchResults">
+          <div className={classes.searchResults}>
             {searchResults.length > 0 &&
               searchResults.map((item, index) => {
                 return (
@@ -619,6 +629,7 @@ export default function JobSearch(props) {
                             openApplication(searchResults.indexOf(item))
                           }
                         />
+
                         {item.deadline ? (
                           <Link
                             to={`/gig/${item.id}`}

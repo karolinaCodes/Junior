@@ -8,6 +8,7 @@ import NewJobPost from './components/NewJobPost.jsx';
 import NewGigPost from './components/NewGigPost';
 import Profile from './pages/Profile.jsx';
 import EmployerProfile from './pages/EmployerProfile.jsx';
+import EmployerPublic from './pages/EmployerPublic.jsx';
 import NavBar from './components/NavBar.jsx';
 import GigView from './pages/JobSearch/GigView';
 import JobView from './pages/JobSearch/JobView.jsx';
@@ -54,6 +55,7 @@ function App() {
         />
         <Route path="/profile" element={<Profile />} />
         <Route path="/employerprofile" element={<EmployerProfile />} />
+        <Route path="/employer/:id" element={<EmployerPublic />} />
         <Route path="/jobs" element={<JobSearch />} />
         <Route path="/newproject" element={<NewProjectPost />} />
         <Route path="/newjob" element={<NewJobPost />} />

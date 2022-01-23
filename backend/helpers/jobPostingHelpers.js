@@ -3,13 +3,15 @@
 module.exports = db => {
 	const getJobPostings = () => {
 		const query = {
-			text: `SELECT employers.id as employer_id, 
+			text: `SELECT job_postings.id as job_posting_id, employers.id as employer_id, 
       company_name, email, bio, photo_url, 
       job_postings.*, trim(to_char(salary/100, '999,999,990')) as formatted_salary,
-      to_char(date_posted,'FMMonth DD, YYYY') as formatted_date,
+      to_char(date_posted,'FMMonth d, YYYY') as formatted_date,
 			CONCAT(job_postings.city,', Canada') as posting_location
-      FROM employers
-      JOIN job_postings ON employers.id = job_postings.employer_id`,
+      FROM job_postings
+      JOIN employers ON employers.id = job_postings.employer_id
+			ORDER BY job_postings.id
+			`,
 		};
 
 		return db
@@ -20,10 +22,10 @@ module.exports = db => {
 
 	const getJobById = id => {
 		const query = {
-			text: `SELECT employers.id as employer_id, 
+			text: `SELECT job_postings.id as job_posting_id, employers.id as employer_id, 
         company_name, email, bio, employers.photo_url as employer_photo_url, 
         job_postings.*, trim(to_char(salary/100, '999,999,990')) as formatted_salary,
-        to_char(date_posted,'FMMonth DD, YYYY') as formatted_date,
+        to_char(date_posted,'FMMonth d, YYYY') as formatted_date,
 				CONCAT(job_postings.city,', Canada') as posting_location
         FROM employers
         JOIN job_postings ON employers.id = job_postings.employer_id
@@ -81,7 +83,8 @@ module.exports = db => {
 
   const getApplicationsByJobPostingId = id => {
     const query = {
-      text: `SELECT job_applications.*, job_postings.*, junior_devs.*, junior_devs.photo_url as dev_photo_url,
+      text: `SELECT job_applications.id as app_id,
+				job_applications.*, job_postings.*, junior_devs.*, junior_devs.photo_url as dev_photo_url,
         trim(to_char(salary/100, '999,999,990')) as formatted_salary,
         to_char(date_posted,'FMMonth DD, YYYY') as formatted_date,
         to_char(date_applied,'FMMonth DD, YYYY') as formatted_date_applied,

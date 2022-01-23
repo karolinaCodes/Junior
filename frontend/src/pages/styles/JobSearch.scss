@@ -120,3 +120,16 @@ div .salary-slider {
 .jobsearch-search fieldset {
   border: none;
 }
+
+.searchResults {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 1.4rem;
+  margin-right: 50px;
+}
+
+@media (min-width: 1700px) {
+  searchresults {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}

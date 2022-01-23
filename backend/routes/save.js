@@ -21,16 +21,19 @@ module.exports = ({getSavedJobsGigsByUserId, saveJobGigs}) => {
   router.post('/', (req, res) => {
     const {devId, jobGigId, jobType} = req.body;
     console.log(devId, jobGigId, jobType);
-    saveJobGigs(devId, jobGigId, jobType)
-      .then(saved => {
-        console.log(saved);
-        return res.json(saved);
-      })
-      .catch(err =>
-        res.json({
-          error: err.message,
+
+    saveJobGigs(devId, jobGigId, jobType).then(saved => {
+      console.log(saved);
+      getSavedJobsGigsByUserId(devId)
+        .then(savedJobsGigs => {
+          res.json(savedJobsGigs);
         })
-      );
+        .catch(err =>
+          res.json({
+            error: err.message,
+          })
+        );
+    });
   });
 
   return router;

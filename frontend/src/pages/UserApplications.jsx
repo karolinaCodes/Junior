@@ -1,24 +1,44 @@
 import './styles/Profile.scss';
-import { Card, Modal, Box, Grid, Paper, Dialog } from '@mui/material';
+import { Card, Modal, Box, Grid, Paper, Dialog, Button } from '@mui/material';
 import { useContext, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import UserApplicationCard from '../components/UserApplicationCard';
-import UserApplicationModal from '../components/UserApplicationModal';
+import ConfirmModal from '../components/UserApplicationConfirmModal';
 
 import axios from 'axios';
-import { UserContext } from '../Providers/userProvider';
+import {UserContext} from '../Providers/userProvider';
 
 export default function UserApplications(props) {
-	// const { first_name, last_name, id } = props.currentUser;
-	const { currentUser } = useContext(UserContext);
-	// console.log(currentUser);
-	const id = 1;
-	const [applications, setApplications] = useState({
-		jobApplications: [],
-		gigApplications: [],
-	});
+  // const { first_name, last_name, id } = props.currentUser;
+  const {currentUser} = useContext(UserContext);
+  // console.log(currentUser);
+  const id = 1;
+  const [applications, setApplications] = useState({
+    jobApplications: [],
+    gigApplications: [],
+  });
 
 	const [openModal, setOpenModal] = useState(false);
+	const [modalData, setModalData] = useState();
+	const [view, setView] = useState({
+		jobs: true,
+		gigs: true
+	});
+
+  const handleModal = () => {
+    openModal === true ? setOpenModal(false) : setOpenModal(true);
+  };
+
+	const handleJobs = () => {
+		view.jobs ?
+		setView(prev => ({...prev, jobs: false}))
+		: setView(prev => ({...prev, jobs: true}));
+	}
+	const handleGigs = () => {
+		view.gigs ? 
+			setView(prev => ({...prev, gigs: false}))
+			: setView(prev => ({...prev, gigs: true}));
+	}
 
 	useEffect(() => {
 		if (id) {
@@ -36,10 +56,10 @@ export default function UserApplications(props) {
 				}));
 			});
 		}
-	}, [id]);
+	}, [id, view]);
 
-	const jobApplicationsArray = applications.jobApplications;
-	const gigApplicationsArray = applications.gigApplications;
+  const jobApplicationsArray = applications.jobApplications;
+  const gigApplicationsArray = applications.gigApplications;
 
 	const parsedJobApplications = jobApplicationsArray.map(application => {
 		return (
@@ -57,6 +77,7 @@ export default function UserApplications(props) {
 		);
 	});
 	const parsedGigApplications = gigApplicationsArray.map(application => {
+		const data = (<ConfirmModal key={'Gig-confirm-' + application.id} {...application} />);
 		return (
 			<Grid item xs={12} md={6} key={'Gig-application-grid-' + application.id}>
 				<Card
@@ -73,25 +94,55 @@ export default function UserApplications(props) {
 	});
 
 	return (
-		<div className='application-content'>
+		<div className='application-content page-container'>
 			<Grid container direction='column'>
 				<h1>My Applications</h1>
-				<p>
-					Total applications:{' '}
-					{applications.jobApplications.length +
-						applications.gigApplications.length}
-				</p>
-				<section className='application-cards'>
-					<h3>Job Applications:</h3>
-					<Grid container item>
-						{parsedJobApplications}
+				<Grid item container direction='row' sx={{justifyContent: 'space-between'}}>
+					<Grid item>
+						<p>
+							{`Total applications: ${
+								(view.jobs ? applications.jobApplications.length : 0)
+								+ (view.gigs ? applications.gigApplications.length : 0)}
+							`}
+						</p>
 					</Grid>
-					<h3>Gig Applications:</h3>
+					<Grid item>
+						<Button
+							variant={view.jobs ? 'contained' : 'outlined'}
+							onClick={() => {
+								handleJobs();
+							}}
+						>
+							Job
+						</Button>
+						<Button
+							variant={view.gigs ? 'contained' : 'outlined'}
+							onClick={() => {
+								handleGigs();
+							}}
+						>
+							Gig
+						</Button>
+					</Grid>
+				</Grid>
+				<section className='application-cards'>
 					<Grid container item>
-						{parsedGigApplications}
+						{view.jobs && parsedJobApplications}
+						{view.gigs && parsedGigApplications}
 					</Grid>
 				</section>
 			</Grid>
+			<Dialog
+        open={openModal}
+        onClose={handleModal}
+        fullWidth={true}
+        maxWidth={'md'}
+      >
+        <Box className="portfolio-modal">
+					Test
+
+				</Box>
+      </Dialog>
 		</div>
 	);
 }

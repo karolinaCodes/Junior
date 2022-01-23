@@ -27,9 +27,8 @@ module.exports = db => {
   // Job and gig posting by employer ID //
   const getJobPostingsByEmployerId = id => {
 		const query = {
-			text: `SELECT employer_id, 
-				company_name, email, bio, employers.photo_url as employer_photo_url, 
-        job_postings.id as job_posting_id, 
+			text: `SELECT job_postings.id as job_posting_id, 
+				employer_id, company_name, email, bio, employers.photo_url as employer_photo_url, 
 				job_postings.*,
 				applications_table.total_applications,
 				trim(to_char(salary/100, '999,999,990')) as formatted_salary,
@@ -58,7 +57,7 @@ module.exports = db => {
 
 	const getGigPostingsByEmployerId = id => {
 		const query = {
-			text: `SELECT employer_id, 
+			text: `SELECT gig_postings.id as gig_posting_id, employer_id, 
 				company_name, email, bio, employers.photo_url as employer_photo_url, 
 				gig_postings.*, trim(to_char(pay/100, '999,999,990')) as formatted_pay,
 				gig_postings.id as gig_posting_id,
@@ -89,7 +88,7 @@ module.exports = db => {
   // Job and gig applications by employer id //
 	const getAllJobApplicationsForEmployer = id => {
 		const query = {
-			text: `SELECT job_applications.*, job_postings.*, job_postings.id as post_id, employers.id as employer_id,
+			text: `SELECT job_applications.*, job_applications.id as app_id, job_postings.*, job_postings.id as post_id, employers.id as employer_id,
         junior_devs.id as dev_id, junior_devs.email as dev_email, first_name, last_name, junior_devs.bio as dev_bio, junior_devs.photo_url as dev_photo_url,
         trim(to_char(salary/100, '999,999,990')) as formatted_salary,
         to_char(date_posted,'FMMonth d, YYYY') as formatted_date,
@@ -112,7 +111,7 @@ module.exports = db => {
 
   const getAllGigApplicationsForEmployer = id => {
 		const query = {
-			text: `SELECT gig_applications.*, gig_postings.*, gig_postings.id as post_id, employers.id as employer_id,
+			text: `SELECT gig_applications.*, gig_applications.id as app_id, gig_postings.id as post_id, employers.id as employer_id,
         junior_devs.id as dev_id, junior_devs.email as dev_email, first_name, last_name, junior_devs.bio as dev_bio, junior_devs.photo_url as dev_photo_url,
         trim(to_char(pay/100, '999,999,990')) as formatted_pay,
         to_char(date_posted,'FMMonth d, YYYY') as formatted_date,

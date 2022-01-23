@@ -58,9 +58,24 @@ module.exports = db => {
 			.catch(err => err);
 	};
 
+	const deleteJobApplication = id => {
+		console.log('IN QUERY',id)
+		const query = {
+			text: `DELETE FROM job_applications
+      WHERE id = $1`,
+			values: [id],
+		};
+
+		return db
+			.query(query)
+			.then(result => result.rows[0])
+			.catch(err => err);
+	}
+
 	return {
 		getJobApplicationById,
 		addJobApplication,
 		acceptJobApplication,
+		deleteJobApplication
 	};
 };

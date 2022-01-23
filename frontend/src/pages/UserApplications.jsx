@@ -11,8 +11,9 @@ import {UserContext} from '../Providers/userProvider';
 export default function UserApplications(props) {
   // const { first_name, last_name, id } = props.currentUser;
   const {currentUser} = useContext(UserContext);
+	const {id} = currentUser;
   // console.log(currentUser);
-  const id = 1;
+  // const id =  1;
   const [applications, setApplications] = useState({
     jobApplications: [],
     gigApplications: [],
@@ -59,7 +60,11 @@ export default function UserApplications(props) {
 				>
 					<UserApplicationCard
 						key={'Job-application-card-' + application.id}
-						type={'job'}
+						type='job'
+						applications={applications}
+						setApplications={setApplications}
+						view={view}
+						setView={setView}
 						{...application}
 					/>
 				</Card>
@@ -76,6 +81,10 @@ export default function UserApplications(props) {
 					<UserApplicationCard
 						key={'Gig-application-card-' + application.id}
 						type='gig'
+						applications={applications}
+						setApplications={setApplications}
+						view={view}
+						setView={setView}
 						{...application}
 					/>
 				</Card>

@@ -74,10 +74,24 @@ module.exports = db => {
 			.catch(err => err);
 	};
 
+	const deleteGigApplication = gig_application_id => {
+		const query = {
+			text: `DELETE FROM gig_applications
+      WHERE id = $1`,
+			values: [gig_application_id],
+		};
+
+		return db
+			.query(query)
+			.then(result => result.rows[0])
+			.catch(err => err);
+	}
+
 	return {
 		getGigApplicationById,
 		addGigApplication,
 		acceptGigApplication,
 		completeGigApplication,
+		deleteGigApplication,
 	};
 };

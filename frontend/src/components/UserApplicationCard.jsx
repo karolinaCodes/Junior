@@ -49,6 +49,11 @@ export default function ApplicationCard(props) {
 		navigate('/newproject', { state: {title: job_title, description: description}})
 	}
 
+	const deleteApplication = id => {
+		
+		console.log('delete', id);
+	}
+
 	/*
 	junior_dev_id: currentUser.id,
 	title: job_title,
@@ -66,7 +71,7 @@ export default function ApplicationCard(props) {
 						/>
 							<h3>{company_name}</h3>
 					</Grid>
-					<Grid item xs={10} className='application-info' container direction='column' sx={{marginLeft: '1rem'}}>
+					<Grid item xs className='application-info' container direction='column' sx={{marginLeft: '1rem'}}>
 						<Grid item>
 							<h3>{job_title} (Applied on: {formatted_date})</h3>
 						</Grid>
@@ -95,7 +100,7 @@ export default function ApplicationCard(props) {
 							{!is_accepted &&
 								<Button
 									color="error"
-									onClick={() => console.log('delete ', type, postingLink)}
+									onClick={() => deleteApplication(job_posting_id || gig_posting_id)}
 								>
 									Delete Application
 								</Button>

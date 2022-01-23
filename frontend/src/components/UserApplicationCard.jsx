@@ -2,7 +2,7 @@ import './styles/PortfolioCard.scss';
 import { useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { styled } from '@mui/material/styles';
-import {Grid, Button, List, ListItem, ListItemText, ListItemButton, IconButton, CardContent, CardActions, Collapse, useControlled} from '@mui/material';
+import {Grid, Button, Chip, List, ListItem, ListItemText, ListItemButton, IconButton, CardContent, CardActions, Collapse, Dialog, Box, useControlled} from '@mui/material';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import axios from 'axios';
 
@@ -16,10 +16,13 @@ export default function ApplicationCard(props) {
 	const postingLink = job_posting_id ? `/job/${job_posting_id}` : `/gig/${gig_posting_id}`;
 
 	const [expanded, setExpanded] = useState(false);
+	const [openModal, setOpenModal] = useState(false);
+	const [modalData, setModalData] = useState();
 
 	const handleExpandClick = () => {
 		setExpanded(!expanded);
 	};
+
 
 	// For application expander (down arrow)
 	const ExpandMore = styled((props) => {
@@ -54,11 +57,10 @@ export default function ApplicationCard(props) {
 		console.log('delete', id);
 	}
 
-	/*
-	junior_dev_id: currentUser.id,
-	title: job_title,
-	original_request: description,
-	*/
+	const askConfirmComplete = () => {
+		
+		// markComplete();
+	}
 	
 	return (
 		<>
@@ -72,8 +74,17 @@ export default function ApplicationCard(props) {
 							<h3>{company_name}</h3>
 					</Grid>
 					<Grid item xs className='application-info' container direction='column' sx={{marginLeft: '1rem'}}>
-						<Grid item>
-							<h3>{job_title} (Applied on: {formatted_date})</h3>
+						<Grid item container direction='row' sx={{justifyContent: 'space-between'}}>
+							<Grid item>
+								<h3>{job_title} (Applied on: {formatted_date})</h3>
+							</Grid>
+							<Grid item>
+								<Chip
+									label={job_posting_id ? 'Job' : 'Gig'}
+									color={job_posting_id ? "primary" : "success"}
+									variant="outlined"
+								/>
+							</Grid>
 						</Grid>
 						<Grid item>
 							{city && <p>{location}</p>}
@@ -109,7 +120,7 @@ export default function ApplicationCard(props) {
 								<Button
 									color="error"
 									onClick={() => {
-										markComplete();
+										askConfirmComplete();
 										console.log('complete ', postingLink);
 									}}
 								>
@@ -148,6 +159,7 @@ export default function ApplicationCard(props) {
 				<p className="description">{description}</p>
 				</CardContent>
 			</Collapse>
+
 		</>
 	);
 }

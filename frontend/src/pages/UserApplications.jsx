@@ -3,7 +3,7 @@ import { Card, Modal, Box, Grid, Paper, Dialog } from '@mui/material';
 import { useContext, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import UserApplicationCard from '../components/UserApplicationCard';
-import UserApplicationModal from '../components/UserApplicationModal';
+import ConfirmModal from '../components/UserApplicationConfirmModal';
 
 import axios from 'axios';
 import { UserContext } from '../Providers/userProvider';
@@ -19,6 +19,10 @@ export default function UserApplications(props) {
 	});
 
 	const [openModal, setOpenModal] = useState(false);
+	const [modalData, setModalData] = useState();
+  const handleModal = () => {
+    openModal === true ? setOpenModal(false) : setOpenModal(true);
+  };
 
 	useEffect(() => {
 		if (id) {
@@ -57,6 +61,7 @@ export default function UserApplications(props) {
 		);
 	});
 	const parsedGigApplications = gigApplicationsArray.map(application => {
+		const data = (<ConfirmModal key={'Gig-confirm-' + application.id} {...application} />);
 		return (
 			<Grid item xs={12} md={6} key={'Gig-application-grid-' + application.id}>
 				<Card
@@ -82,16 +87,23 @@ export default function UserApplications(props) {
 						applications.gigApplications.length}
 				</p>
 				<section className='application-cards'>
-					<h3>Job Applications:</h3>
 					<Grid container item>
 						{parsedJobApplications}
-					</Grid>
-					<h3>Gig Applications:</h3>
-					<Grid container item>
 						{parsedGigApplications}
 					</Grid>
 				</section>
 			</Grid>
+			<Dialog
+        open={openModal}
+        onClose={handleModal}
+        fullWidth={true}
+        maxWidth={'md'}
+      >
+        <Box className="portfolio-modal">
+					Test
+
+				</Box>
+      </Dialog>
 		</div>
 	);
 }

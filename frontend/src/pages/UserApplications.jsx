@@ -1,5 +1,5 @@
 import './styles/Profile.scss';
-import { Card, Modal, Box, Grid, Paper, Dialog } from '@mui/material';
+import { Card, Modal, Box, Grid, Paper, Dialog, Button } from '@mui/material';
 import { useContext, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import UserApplicationCard from '../components/UserApplicationCard';
@@ -20,9 +20,25 @@ export default function UserApplications(props) {
 
 	const [openModal, setOpenModal] = useState(false);
 	const [modalData, setModalData] = useState();
+	const [view, setView] = useState({
+		jobs: true,
+		gigs: true
+	});
+
   const handleModal = () => {
     openModal === true ? setOpenModal(false) : setOpenModal(true);
   };
+
+	const handleJobs = () => {
+		view.jobs ?
+		setView(prev => ({...prev, jobs: false}))
+		: setView(prev => ({...prev, jobs: true}));
+	}
+	const handleGigs = () => {
+		view.gigs ? 
+			setView(prev => ({...prev, gigs: false}))
+			: setView(prev => ({...prev, gigs: true}));
+	}
 
 	useEffect(() => {
 		if (id) {
@@ -40,7 +56,7 @@ export default function UserApplications(props) {
 				}));
 			});
 		}
-	}, [id]);
+	}, [id, view]);
 
 	const jobApplicationsArray = applications.jobApplications;
 	const gigApplicationsArray = applications.gigApplications;
@@ -81,15 +97,38 @@ export default function UserApplications(props) {
 		<div className='application-content'>
 			<Grid container direction='column'>
 				<h1>My Applications</h1>
-				<p>
-					Total applications:{' '}
-					{applications.jobApplications.length +
-						applications.gigApplications.length}
-				</p>
+				<Grid item container direction='row' sx={{justifyContent: 'space-between'}}>
+					<Grid item>
+						<p>
+							{`Total applications: ${
+								(view.jobs ? applications.jobApplications.length : 0)
+								+ (view.gigs ? applications.gigApplications.length : 0)}
+							`}
+						</p>
+					</Grid>
+					<Grid item>
+						<Button
+							variant={view.jobs ? 'contained' : 'outlined'}
+							onClick={() => {
+								handleJobs();
+							}}
+						>
+							Job
+						</Button>
+						<Button
+							variant={view.gigs ? 'contained' : 'outlined'}
+							onClick={() => {
+								handleGigs();
+							}}
+						>
+							Gig
+						</Button>
+					</Grid>
+				</Grid>
 				<section className='application-cards'>
 					<Grid container item>
-						{parsedJobApplications}
-						{parsedGigApplications}
+						{view.jobs && parsedJobApplications}
+						{view.gigs && parsedGigApplications}
 					</Grid>
 				</section>
 			</Grid>

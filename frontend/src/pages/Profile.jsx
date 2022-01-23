@@ -94,13 +94,15 @@ export default function Profile() {
 						<CardActions key={'Job-card-actions-' + project.project_id}>
 							<Button
 								key={'Job-button-github-' + project.project_id}
-								onClick={() => window.open(project.github_link, '_self')}
-							>
+								onClick={() => (project.github_link ? window.open(project.github_link, '_self') : null)}
+								disabled={!project.github_link}
+								>
 								Github
 							</Button>
 							<Button
 								key={'Job-button-live-' + project.project_id}
-								onClick={() => window.open(project.live_link, '_self')}
+								onClick={() => (project.live_link ? window.open(project.live_link, '_self') : null)}
+								disabled={!project.live_link}
 							>
 								Live Link
 							</Button>

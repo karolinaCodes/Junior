@@ -58,16 +58,16 @@ export default function UserProfileInfo(props) {
 
 	return (
 		<Grid container className='profile-bio' direction='column'>
+			<Grid item className='profile-pic'>
+				<img id='profile-pic' src={photo_url} alt='Avatar'></img>
+			</Grid>
 			{profileView === 'edit' && (
 				<form onSubmit={editProfile}>
-					<Grid item className='profile-pic'>
-						<img id='profile-pic' src={photo_url} alt='Avatar'></img>
-					</Grid>
 					<Grid item className='profile-name'>
 						<h4>{`${first_name} ${last_name}`}</h4>
 						<TextField
 							size='small'
-							sx={{ mt: '2vh' }}
+							sx={{ mt: '2vh', minWidth: '12vw' }}
 							label='Headline'
 							value={editForm.headline}
 							onChange={e =>
@@ -76,7 +76,7 @@ export default function UserProfileInfo(props) {
 						></TextField>
 						<TextField
 							size='small'
-							sx={{ mt: '2vh' }}
+							sx={{ mt: '2vh', minWidth: '12vw' }}
 							label='City'
 							value={editForm.city}
 							onChange={e => setEditForm({ ...editForm, city: e.target.value })}
@@ -87,7 +87,7 @@ export default function UserProfileInfo(props) {
 							size='small'
 							multiline={true}
 							maxRows={3}
-							sx={{ mt: '2vh' }}
+							sx={{ mt: '2vh', minWidth: '12vw' }}
 							label='Bio'
 							value={editForm.bio}
 							onChange={e => setEditForm({ ...editForm, bio: e.target.value })}
@@ -96,7 +96,7 @@ export default function UserProfileInfo(props) {
 							size='small'
 							multiline={true}
 							maxRows={3}
-							sx={{ mt: '2vh' }}
+							sx={{ mt: '2vh', minWidth: '12vw' }}
 							label='Email'
 							value={editForm.email}
 							onChange={e =>
@@ -105,7 +105,7 @@ export default function UserProfileInfo(props) {
 						></TextField>
 						<TextField
 							size='small'
-							sx={{ mt: '2vh' }}
+							sx={{ mt: '2vh', minWidth: '12vw' }}
 							label='Phone Number'
 							value={editForm.phone_number}
 							onChange={e =>
@@ -114,7 +114,7 @@ export default function UserProfileInfo(props) {
 						></TextField>
 						<TextField
 							size='small'
-							sx={{ mt: '2vh' }}
+							sx={{ mt: '2vh', minWidth: '12vw' }}
 							label='Resume'
 							value={editForm.resume_url}
 							onChange={e =>
@@ -123,7 +123,7 @@ export default function UserProfileInfo(props) {
 						></TextField>
 						<TextField
 							size='small'
-							sx={{ mt: '2vh' }}
+							sx={{ mt: '2vh', minWidth: '12vw' }}
 							label='GitHub'
 							value={editForm.github_url}
 							onChange={e =>
@@ -132,7 +132,7 @@ export default function UserProfileInfo(props) {
 						></TextField>
 						<TextField
 							size='small'
-							sx={{ mt: '2vh', mb: '2vh' }}
+							sx={{ mt: '2vh', mb: '2vh', minWidth: '12vw' }}
 							label='LinkedIn'
 							value={editForm.linkedin_url}
 							onChange={e =>
@@ -152,9 +152,6 @@ export default function UserProfileInfo(props) {
 			)}
 			{profileView === 'browse' && (
 				<>
-					<Grid item className='profile-pic'>
-						<img id='profile-pic' src={photo_url} alt='Avatar'></img>
-					</Grid>
 					<Grid item className='profile-name'>
 						<h4>{`${first_name} ${last_name}`}</h4>
 						<h4>{headline}</h4>

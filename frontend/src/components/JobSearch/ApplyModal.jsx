@@ -7,7 +7,6 @@ import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
 import FmdGoodOutlinedIcon from '@mui/icons-material/FmdGoodOutlined';
 import { FiGithub } from 'react-icons/fi';
 import { AiOutlineFolderOpen, AiOutlineLinkedin } from 'react-icons/ai';
-import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { makeStyles } from '@mui/styles';
 import { useContext } from 'react';

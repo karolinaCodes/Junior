@@ -67,6 +67,7 @@ export default function LandingPage(props) {
 
   return (
     <div className="gig-content page-container">
+      <Button onClick={() => navigate(-1)}>Back To Search</Button>
       <h1 className="jobview-job-title">{jobPosting.job_title}</h1>
       <div className="job-details-logos">
         <div>

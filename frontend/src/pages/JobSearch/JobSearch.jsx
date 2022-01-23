@@ -170,7 +170,7 @@ export default function JobSearch(props) {
 
   const keyCheck = e => {
     if (e.keyCode === 13) {
-      e.preventDefault();
+      handleSubmit();
     }
   };
 

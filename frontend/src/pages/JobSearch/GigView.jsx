@@ -61,6 +61,7 @@ export default function GigView(props) {
   return (
     <div className="content-container page-container">
       <div className="gig-content">
+        <Button onClick={() => navigate(-1)}>Back To Search</Button>
         <h1 id="gig-jobtitle">{gigPosting.job_title}</h1>
         <p>
           <em>Posted on January 30, 2022</em>

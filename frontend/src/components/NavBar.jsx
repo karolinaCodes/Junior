@@ -36,7 +36,7 @@ export default function NavBar(props) {
 			<Link to='/profile'>How it works</Link>
 			<Link to='/profile'>Company</Link>
 			{currentUser.company_name && (
-				<Link id='hire-talent' to='/profile'>
+				<Link id='hire-talent' to='/employerprofile'>
 					Hire Talent
 				</Link>
 			)}

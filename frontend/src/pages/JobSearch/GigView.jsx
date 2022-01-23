@@ -9,7 +9,7 @@ import {useNavigate} from 'react-router-dom';
 import BookmarkIcon from '@mui/icons-material/Bookmark';
 import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
 
-export default function LandingPage(props) {
+export default function GigView(props) {
   const {currentUser, savedJobsGigs, setSavedJobsGigs} =
     useContext(UserContext);
   const {gigs} = savedJobsGigs;
@@ -51,6 +51,7 @@ export default function LandingPage(props) {
       .then(res => {
         console.log(res.data);
         setSaved(true);
+        setSavedJobsGigs(res.data);
       })
       .catch(err => {
         console.log(err);

@@ -1,11 +1,13 @@
 import './styles/Profile.scss';
+import axios from 'axios';
 import {Card, Grid} from '@mui/material';
-import {useContext} from 'react';
+import {useContext, useEffect} from 'react';
 import SavedJobsGigsCard from '../components/SavedJobsGigsCard';
 import {UserContext} from '../Providers/userProvider';
 
 export default function Applications(props) {
-  const {currentUser, savedJobsGigs} = useContext(UserContext);
+  const {currentUser, savedJobsGigs, setSavedJobsGigs} =
+    useContext(UserContext);
 
   return (
     <div className="application-content page-container">

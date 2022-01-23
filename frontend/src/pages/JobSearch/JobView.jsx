@@ -16,7 +16,8 @@ import BookmarkIcon from '@mui/icons-material/Bookmark';
 import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
 
 export default function LandingPage(props) {
-  const {currentUser, savedJobsGigs} = useContext(UserContext);
+  const {currentUser, savedJobsGigs, setSavedJobsGigs} =
+    useContext(UserContext);
   const {jobs} = savedJobsGigs;
   const {job_id} = useParams();
   const [jobPosting, setJobPosting] = useState('');
@@ -57,6 +58,7 @@ export default function LandingPage(props) {
       .then(res => {
         console.log(res.data);
         setSaved(true);
+        setSavedJobsGigs(res.data);
       })
       .catch(err => {
         console.log(err);

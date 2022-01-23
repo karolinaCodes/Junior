@@ -1,15 +1,16 @@
-INSERT INTO junior_devs (first_name,last_name,email,password,phone_number, city, headline, bio, github_url, linkedin_url, resume_url) VALUES (
-  'Marija',
-  'Yamada',
-  '1@junior.com',
+INSERT INTO junior_devs (first_name,last_name,email,password,phone_number, city, headline, bio, photo_url, github_url, linkedin_url, resume_url) VALUES (
+  'Alexander',
+  'Reyne',
+  'creativereyne@gmail.com',
   '123',
   '306.821.3553',
-  'Toronto',
+  'Saskatoon',
   'Full-stack Developer',
   'Student. Coffee maven. Hardcore food nerd. Amateur music fanatic. Problem solver. Travel fan. Total web enthusiast.',
-  'https://github.com/MarijaCodes',
-  'https://www.linkedin.com/in/karolina-swislocki-0662b0210/',
-'https://resume.creddle.io/resume/gf5ixfvh8s6'
+  'https://avatars.githubusercontent.com/u/85032662?s=400&u=74436a897a8b39116013a1950b272e57fc214b75&v=4',
+  'https://github.com/Alex-Reyne',
+  'https://www.linkedin.com/in/alexanderreyne/',
+  'https://drive.google.com/file/d/1qwTq0XySY2WjYinKWsfmt2BhM_ztlNmN/view?usp=sharing'
 );
 INSERT INTO junior_devs (first_name,last_name,email,password,phone_number, city, headline, bio, github_url, linkedin_url, resume_url) VALUES (
   'Mamoun',

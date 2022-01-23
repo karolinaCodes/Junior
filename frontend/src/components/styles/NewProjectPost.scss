@@ -10,13 +10,6 @@
 	background-image: url('/images/form-backround.png');
 	background-size: cover;
 	background-position: center center;
-	img {
-		max-width: 5rem;
-		height: auto;
-		z-index: 999;
-		position: absolute;
-		top: 9.5rem;
-	}
 }
 
 .new-project-form {
@@ -32,6 +25,14 @@
 	z-index: 0;
 	box-shadow: 5px 5px 10px #1c1c1c50;
 	color: $black;
+
+	img {
+		max-width: 10%;
+		height: auto;
+		// z-index: 999;
+		// position: absolute;
+		// top: 9.5rem;
+	}
 
 	h1 {
 		margin-top: 4rem;

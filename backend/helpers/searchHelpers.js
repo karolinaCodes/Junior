@@ -4,11 +4,21 @@ module.exports = db => {
   // Jobs and Gigs Search //
   const getJobsAndGigsByQuery = queryString => {
     const q1 = {
-      text: `SELECT employers.id as employer_id, company_name, email, bio, employers.photo_url as employer_photo_url, job_postings.* FROM employers JOIN job_postings ON employers.id = job_postings.employer_id WHERE job_title ILIKE '%${queryString}%' OR description ILIKE '%${queryString}%';`,
+      text: `SELECT employers.id as employer_id, company_name, email, bio, employers.photo_url as employer_photo_url, job_postings.* 
+      FROM employers
+      JOIN job_postings
+      ON employers.id = job_postings.employer_id
+      WHERE job_title ILIKE '%${queryString}%' OR description ILIKE '%${queryString}%'
+      ORDER BY date_posted;`,
       // values: [queryString],
     };
     const q2 = {
-      text: `SELECT employers.id as employer_id, company_name, email, bio, employers.photo_url as employer_photo_url, gig_postings.* FROM employers JOIN gig_postings ON employers.id = gig_postings.employer_id WHERE job_title ILIKE '%${queryString}%' OR description ILIKE '%${queryString}%';`,
+      text: `SELECT employers.id as employer_id, company_name, email, bio, employers.photo_url as employer_photo_url, gig_postings.* 
+      FROM employers
+      JOIN gig_postings
+      ON employers.id = gig_postings.employer_id
+      WHERE job_title ILIKE '%${queryString}%' OR description ILIKE '%${queryString}%'
+      ORDER BY date_posted;`,
       // values: [queryString],
     };
     // SELECT employers.id as employer_id, company_name, email, bio, employers.photo_url as employer_photo_url, job_postings.* FROM employers JOIN job_postings ON employers.id = job_postings.employer_id WHERE

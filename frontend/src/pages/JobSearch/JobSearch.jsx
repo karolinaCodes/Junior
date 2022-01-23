@@ -403,7 +403,7 @@ export default function JobSearch(props) {
               className="salary-slider"
             >
               <span id="salary">Salary</span>{' '}
-              <span id="salary-range"> {`$${value[0]} -$${value[1]}`}</span>
+              <span id="salary-range"> {`$${value[0]} - $${value[1]}`}</span>
             </Typography>
             <Slider
               size="small"

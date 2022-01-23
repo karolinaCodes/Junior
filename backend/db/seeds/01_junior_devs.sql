@@ -1,4 +1,4 @@
-INSERT INTO junior_devs (first_name,last_name,email,password,phone_number, city, headline, bio, github_url, linkedIn_url, resume_url) VALUES (
+INSERT INTO junior_devs (first_name,last_name,email,password,phone_number, city, headline, bio, github_url, linkedin_url, resume_url) VALUES (
   'Marija',
   'Yamada',
   '1@junior.com',
@@ -11,7 +11,7 @@ INSERT INTO junior_devs (first_name,last_name,email,password,phone_number, city,
   'https://www.linkedin.com/in/karolina-swislocki-0662b0210/',
 'https://resume.creddle.io/resume/gf5ixfvh8s6'
 );
-INSERT INTO junior_devs (first_name,last_name,email,password,phone_number, city, headline, bio, github_url, linkedIn_url, resume_url) VALUES (
+INSERT INTO junior_devs (first_name,last_name,email,password,phone_number, city, headline, bio, github_url, linkedin_url, resume_url) VALUES (
   'Mamoun',
   'Nevin',
   '2@junior.com',
@@ -24,7 +24,7 @@ INSERT INTO junior_devs (first_name,last_name,email,password,phone_number, city,
   'https://www.linkedin.com/in/karolina-swislocki-0662b0210/',
 'https://resume.creddle.io/resume/gf5ixfvh8s6'
 );
-INSERT INTO junior_devs (first_name,last_name,email,password,phone_number, city, headline, bio, github_url, linkedIn_url, resume_url) VALUES (
+INSERT INTO junior_devs (first_name,last_name,email,password,phone_number, city, headline, bio, github_url, linkedin_url, resume_url) VALUES (
   'Alice',
   'McPhee',
   '3@junior.com',
@@ -37,7 +37,7 @@ INSERT INTO junior_devs (first_name,last_name,email,password,phone_number, city,
   'https://www.linkedin.com/in/karolina-swislocki-0662b0210/',
 'https://resume.creddle.io/resume/gf5ixfvh8s6'
 );
-INSERT INTO junior_devs (first_name,last_name,email,password,phone_number, city, headline, bio, github_url, linkedIn_url, resume_url) VALUES (
+INSERT INTO junior_devs (first_name,last_name,email,password,phone_number, city, headline, bio, github_url, linkedin_url, resume_url) VALUES (
   'Sergio',
   'Holm',
   '4@junior.com',
@@ -50,7 +50,7 @@ INSERT INTO junior_devs (first_name,last_name,email,password,phone_number, city,
   'https://www.linkedin.com/in/karolina-swislocki-0662b0210/',
 'https://resume.creddle.io/resume/gf5ixfvh8s6'
 );
-INSERT INTO junior_devs (first_name,last_name,email,password,phone_number, city, headline, bio, github_url, linkedIn_url, resume_url) VALUES (
+INSERT INTO junior_devs (first_name,last_name,email,password,phone_number, city, headline, bio, github_url, linkedin_url, resume_url) VALUES (
   'Klemen',
   'Hackett',
   '5@junior.com',
@@ -63,7 +63,7 @@ INSERT INTO junior_devs (first_name,last_name,email,password,phone_number, city,
   'https://www.linkedin.com/in/karolina-swislocki-0662b0210/',
 'https://resume.creddle.io/resume/gf5ixfvh8s6'
 );
-INSERT INTO junior_devs (first_name,last_name,email,password,phone_number, city, headline, bio, github_url, linkedIn_url, resume_url) VALUES (
+INSERT INTO junior_devs (first_name,last_name,email,password,phone_number, city, headline, bio, github_url, linkedin_url, resume_url) VALUES (
   'Apollonia',
   'Beitel',
   '6@junior.com',
@@ -76,7 +76,7 @@ INSERT INTO junior_devs (first_name,last_name,email,password,phone_number, city,
   s://www.linkedin.com/in/karolina-swislocki-0662b0210/',
 'https://resume.creddle.io/resume/gf5ixfvh8s6'
 );
-INSERT INTO junior_devs (first_name,last_name,email,password,phone_number, city, headline, bio, github_url, linkedIn_url, resume_url) VALUES (
+INSERT INTO junior_devs (first_name,last_name,email,password,phone_number, city, headline, bio, github_url, linkedin_url, resume_url) VALUES (
   'Gvidas',
   'Antonov',
   '7@junior.com',
@@ -89,7 +89,7 @@ INSERT INTO junior_devs (first_name,last_name,email,password,phone_number, city,
   'https://www.linkedin.com/in/karolina-swislocki-0662b0210/',
 'https://resume.creddle.io/resume/gf5ixfvh8s6'
 );
-INSERT INTO junior_devs (first_name,last_name,email,password,phone_number, city, headline, bio, github_url, linkedIn_url, resume_url) VALUES (
+INSERT INTO junior_devs (first_name,last_name,email,password,phone_number, city, headline, bio, github_url, linkedin_url, resume_url) VALUES (
   'Titus',
   'Lukeson',
   '8@junior.com',
@@ -102,7 +102,7 @@ INSERT INTO junior_devs (first_name,last_name,email,password,phone_number, city,
   s','https://www.linkedin.com/in/karolina-swislock
 i-0662b0210/','https://resume.creddle.io/resume/gf5ixfvh8s6'
 );
-INSERT INTO junior_devs (first_name,last_name,email,password,phone_number, city, headline, bio, github_url, linkedIn_url, resume_url) VALUES (
+INSERT INTO junior_devs (first_name,last_name,email,password,phone_number, city, headline, bio, github_url, linkedin_url, resume_url) VALUES (
   'Pylyp',
   'Gates',
   '9@junior.com',
@@ -115,7 +115,7 @@ INSERT INTO junior_devs (first_name,last_name,email,password,phone_number, city,
   s','https://www.linkedin.com/in/karolina-swislock
 i-0662b0210/','https://resume.creddle.io/resume/gf5ixfvh8s6'
 );
-INSERT INTO junior_devs (first_name,last_name,email,password,phone_number, city, headline, bio, github_url, linkedIn_url, resume_url) VALUES (
+INSERT INTO junior_devs (first_name,last_name,email,password,phone_number, city, headline, bio, github_url, linkedin_url, resume_url) VALUES (
   'Senan',
   'Thompson',
   '10@junior.com',

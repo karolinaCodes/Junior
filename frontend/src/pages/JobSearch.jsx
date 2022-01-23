@@ -36,7 +36,6 @@ const useStyles = makeStyles({
     display: 'grid',
     gridTemplateColumns: 'repeat(3, 1fr)',
     'grid-gap': '1.4rem',
-    'margin-right': '50px',
     ['@media (min-width:1700px)']: {
       gridTemplateColumns: 'repeat(4, 1fr)',
     },
@@ -141,9 +140,7 @@ const useStyles = makeStyles({
 
 export default function JobSearch(props) {
   const {currentUser} = useContext(UserContext);
-
   const {state} = useLocation();
-  const [query, setQuery] = useState('');
   const [city, setCity] = useState('');
   const [schedule, setSchedule] = useState('');
   const [queryString, setQueryString] = useState('');
@@ -154,6 +151,7 @@ export default function JobSearch(props) {
   const [value, setValue] = useState([40000, 70000]);
   // value = salary range
   const classes = useStyles();
+  console.log(jobApplying);
 
   useEffect(() => {
     if (state) {
@@ -172,19 +170,6 @@ export default function JobSearch(props) {
       })
       .catch(err => console.log(err));
   }, []);
-
-  const style = {
-    width: 1 / 2,
-    height: 1 / 2,
-    display: 'flex',
-    flexDirection: 'column',
-    margin: '10% 0 0 25%',
-    background: '#223d55',
-    color: 'black',
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderRadius: '2rem',
-  };
 
   const keyCheck = e => {
     if (e.keyCode === 13) {
@@ -278,7 +263,7 @@ export default function JobSearch(props) {
   };
 
   return (
-    <div className="jobsearch-content">
+    <div className="jobsearch-content page-container">
       <form className="jobsearch-search" onSubmit={handleSubmit}>
         {/* {JOB TYPE DROPDOWN----------------------} */}
         <Box sx={{minWidth: 120}}>
@@ -286,13 +271,9 @@ export default function JobSearch(props) {
             <Select
               value={jobType}
               onChange={handleChange}
-              displayEmpty
-              inputProps={{'aria-label': 'Without label'}}
               defaultValue={'all'}
+              label="Job Type"
             >
-              {/* <MenuItem disabled value="">
-                <em>Job Type</em>
-              </MenuItem> */}
               <MenuItem value={'all'}>All</MenuItem>
               <MenuItem value={'jobs'}>Jobs</MenuItem>
               <MenuItem value={'gigs'}>Gigs</MenuItem>
@@ -648,6 +629,7 @@ export default function JobSearch(props) {
                             openApplication(searchResults.indexOf(item))
                           }
                         />
+
                         {item.deadline ? (
                           <Link
                             to={`/gig/${item.id}`}

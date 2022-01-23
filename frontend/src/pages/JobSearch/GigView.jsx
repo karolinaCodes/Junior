@@ -2,15 +2,28 @@ import '../styles/GigView.scss';
 import {useContext, useEffect, useState} from 'react';
 import {useParams} from 'react-router-dom';
 import axios from 'axios';
-
 import ApplyModal from '../../components/JobSearch/ApplyModal';
 import {UserContext} from '../../Providers/userProvider';
+import {Button} from '@mui/material';
+import {useNavigate} from 'react-router-dom';
+import BookmarkIcon from '@mui/icons-material/Bookmark';
+import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
 
-export default function LandingPage(props) {
-  const {currentUser} = useContext(UserContext);
-  const [open, setOpen] = useState(false);
+export default function GigView(props) {
+  const {currentUser, savedJobsGigs, setSavedJobsGigs} =
+    useContext(UserContext);
+  const {gigs} = savedJobsGigs;
   const {gig_id} = useParams();
   const [gigPosting, setGigPosting] = useState('');
+  const [saved, setSaved] = useState(false);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (gigs) {
+      gigs.filter(gig => gig.gig_posting_id === +gig_id).length &&
+        setSaved(true);
+    }
+  }, [gigs]);
 
   useEffect(() => {
     axios
@@ -24,21 +37,29 @@ export default function LandingPage(props) {
       });
   }, []);
 
-  const style = {
-    width: 1 / 2,
-    height: 1 / 2,
-    display: 'flex',
-    flexDirection: 'column',
-    margin: '10% 0 0 25%',
-    background: '#223d55',
-    color: 'black',
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderRadius: '2rem',
+  const saveGig = () => {
+    if (saved) {
+      return navigate('/saved');
+    }
+
+    axios
+      .post('/api/save/', {
+        devId: currentUser.id,
+        jobGigId: +gig_id,
+        jobType: 'gig',
+      })
+      .then(res => {
+        console.log(res.data);
+        setSaved(true);
+        setSavedJobsGigs(res.data);
+      })
+      .catch(err => {
+        console.log(err);
+      });
   };
-  console.log(gigPosting.gig_images);
+
   return (
-    <div className="content-container">
+    <div className="content-container page-container">
       <div className="gig-content">
         <h1 id="gig-jobtitle">{gigPosting.job_title}</h1>
         <p>
@@ -66,7 +87,17 @@ export default function LandingPage(props) {
               })}{' '}
             </b>
           </p>
-          <ApplyModal currentUser={currentUser} jobApplying={gigPosting} />
+          <div className="posting-btn-container">
+            <ApplyModal currentUser={currentUser} jobApplying={gigPosting} />
+            <Button
+              variant={saved ? 'contained' : 'outlined'}
+              color={saved ? 'success' : 'primary'}
+              onClick={saveGig}
+            >
+              {saved ? <BookmarkIcon /> : <BookmarkBorderIcon />}{' '}
+              {saved ? 'SAVED' : 'Save'}
+            </Button>
+          </div>
         </div>
       </div>
     </div>

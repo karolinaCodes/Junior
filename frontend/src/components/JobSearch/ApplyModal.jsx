@@ -58,9 +58,37 @@ export default function ApplyModal(props) {
         setApplicationSubmitted(true);
         return res.data;
       })
+      .then(data => {
+        sendEmail(
+          'creativereyne@gmail.com',
+          currentUser,
+          jobApplying.job_title
+        );
+      })
       .catch(err => {
         console.log(err);
       });
+  };
+
+  const sendEmail = (email, currentUser, job_title) => {
+    axios
+      .post('/send_email', {
+        params: {
+          to: email,
+          from: 'applyjuniorstacks@gmail.com', // Use the email address or domain you verified
+          subject: `${job_title}: New Application From ${currentUser.first_name} ${currentUser.last_name}`,
+          text: `You've got a new application on Junior Stacks!`,
+          html: `<h1>You've got a new application on <a href='http://localhost:3000/'>Junior Stacks!</a><h1>`,
+        },
+      })
+      .then(res => {
+        console.log('yay!');
+      })
+      .catch(err => console.log(err));
+  };
+
+  const navigateToProfile = () => {
+    navigate('/profile', {state: true});
   };
 
   return (
@@ -112,7 +140,7 @@ export default function ApplyModal(props) {
                     src={currentUser.photo_url}
                     alt="Avatar"
                   ></img>
-                  <Link to="/profile">Profile</Link>
+                  <button onClick={navigateToProfile}>Profile</button>
                 </div>
                 <div className="apply-user-info">
                   <h1 id="apply-name">{`${currentUser.first_name} ${currentUser.last_name}`}</h1>

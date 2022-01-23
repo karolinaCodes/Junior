@@ -4,15 +4,21 @@ import {TextField, Button} from '@mui/material';
 import {useNavigate} from 'react-router-dom';
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
-import {useEffect, useState} from 'react';
+import {useState} from 'react';
 import Box from '@mui/material/Box';
 import FormControl from '@mui/material/FormControl';
+import {makeStyles} from '@mui/styles';
+
+const useStyles = makeStyles({
+  drop_down: {
+    width: '180px',
+  },
+});
 
 export default function SearchBar(props) {
-  // const {state, onSubmit, onChange} = props;
-
-  const [jobType, setJobType] = useState('');
+  const [jobType, setJobType] = useState('all');
   const [queryString, setQueryString] = useState('');
+  const classes = useStyles();
 
   let navigate = useNavigate();
 
@@ -69,17 +75,9 @@ export default function SearchBar(props) {
   return (
     <form className="search">
       <Box sx={{minWidth: 120}}>
-        <FormControl fullWidth>
-          <Select
-            value={jobType}
-            onChange={handleChange}
-            displayEmpty
-            inputProps={{'aria-label': 'Without label'}}
-          >
-            <MenuItem disabled value="">
-              <em>Job Type</em>
-            </MenuItem>
-            <MenuItem value={'all'}>All</MenuItem>
+        <FormControl fullWidth className={classes.drop_down}>
+          <Select value={jobType} onChange={handleChange}>
+            <MenuItem value={'all'}>All Opportunities</MenuItem>
             <MenuItem value={'jobs'}>Jobs</MenuItem>
             <MenuItem value={'gigs'}>Gigs</MenuItem>
           </Select>

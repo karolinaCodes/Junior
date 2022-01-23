@@ -2,13 +2,15 @@ import * as React from 'react';
 import {useEffect, useState, useContext} from 'react';
 import '../styles/JobSearch.scss';
 import axios from 'axios';
+
+// components //
+import ApplyModal from '../../components/JobSearch/ApplyModal';
+
+// mui //
 import Box from '@mui/material/Box';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
-import {Link} from 'react-router-dom';
-
-import ApplyModal from '../../components/JobSearch/ApplyModal';
 import {TextField, Button} from '@mui/material';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
@@ -18,18 +20,19 @@ import Typography from '@mui/material/Typography';
 import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
-
 import Chip from '@mui/material/Chip';
 import Slider from '@mui/material/Slider';
 import {InputAdornment} from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 import FmdGoodOutlinedIcon from '@mui/icons-material/FmdGoodOutlined';
-
-import {useLocation} from 'react-router-dom';
 import {makeStyles} from '@mui/styles';
-import {UserContext} from '../../Providers/userProvider';
 
-////////////////////IMPORTS///////////
+// react-router //
+import {Link} from 'react-router-dom';
+import {useLocation} from 'react-router-dom';
+
+// context //
+import {UserContext} from '../../Providers/userProvider';
 
 const useStyles = makeStyles({
   searchResults: {
@@ -111,6 +114,7 @@ const useStyles = makeStyles({
     border: '1px solid #ced4da',
     'border-radius': '4px',
     padding: 0,
+    width: '200px',
   },
 
   slider: {
@@ -141,14 +145,12 @@ const useStyles = makeStyles({
 
 export default function JobSearch(props) {
   const {currentUser} = useContext(UserContext);
-
   const {state} = useLocation();
-  const [query, setQuery] = useState('');
   const [city, setCity] = useState('');
   const [schedule, setSchedule] = useState('');
   const [queryString, setQueryString] = useState('');
   const [searchResults, setSearchResults] = useState([]);
-  const [jobType, setJobType] = useState('');
+  const [jobType, setJobType] = useState('all');
   const [open, setOpen] = useState(false);
   const [jobApplying, setJobApplying] = useState('');
   const [value, setValue] = useState([40000, 70000]);
@@ -156,7 +158,6 @@ export default function JobSearch(props) {
 
   const classes = useStyles();
 
-  // TO ADD? every time queryString changes, make send new request, so changes as typing
   useEffect(() => {
     if (state) {
       const {data} = state;
@@ -175,19 +176,6 @@ export default function JobSearch(props) {
       })
       .catch(err => console.log(err));
   }, []);
-
-  const style = {
-    width: 1 / 2,
-    height: 1 / 2,
-    display: 'flex',
-    flexDirection: 'column',
-    margin: '10% 0 0 25%',
-    background: '#223d55',
-    color: 'black',
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderRadius: '2rem',
-  };
 
   const keyCheck = e => {
     if (e.keyCode === 13) {
@@ -230,7 +218,6 @@ export default function JobSearch(props) {
         },
       })
       .then(res => {
-        // console.log(res.data);
         setSearchResults(res.data);
         return;
       })
@@ -248,11 +235,11 @@ export default function JobSearch(props) {
   const openApplication = index => {
     const posting = searchResults[index];
     console.log(posting);
+
     if (posting.deadline) {
       axios
         .get(`/api/gig_postings/${posting.id}`)
         .then(res => {
-          // console.log(res.data);
           setJobApplying(res.data);
         })
         .catch(err => {
@@ -262,7 +249,6 @@ export default function JobSearch(props) {
       axios
         .get(`/api/job_postings/${posting.id}`)
         .then(res => {
-          // console.log(res.data);
           setJobApplying(res.data);
         })
         .catch(err => {
@@ -281,21 +267,13 @@ export default function JobSearch(props) {
   };
 
   return (
-    <div className="jobsearch-content">
+    <div className="page-container jobsearch-content">
       <form className="jobsearch-search" onSubmit={handleSubmit}>
         {/* {JOB TYPE DROPDOWN----------------------} */}
         <Box sx={{minWidth: 120}}>
           <FormControl fullWidth className={classes.drop_down}>
-            <Select
-              value={jobType}
-              onChange={handleChange}
-              displayEmpty
-              inputProps={{'aria-label': 'Without label'}}
-            >
-              <MenuItem disabled value="">
-                <em>Job Type</em>
-              </MenuItem>
-              <MenuItem value={'all'}>All</MenuItem>
+            <Select value={jobType} onChange={handleChange}>
+              <MenuItem value={'all'}>All Opportunities</MenuItem>
               <MenuItem value={'jobs'}>Jobs</MenuItem>
               <MenuItem value={'gigs'}>Gigs</MenuItem>
             </Select>

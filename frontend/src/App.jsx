@@ -20,9 +20,11 @@ import UserApplications from './pages/UserApplications.jsx';
 import ApplicationsTest from './pages/TestApplications.jsx';
 import {UserContext} from './Providers/userProvider.jsx';
 import Footer from './components/Footer';
+import SavedJobsGigs from './pages/SavedJobsGigs';
 
 //import css
 import './App.scss';
+import UserAcceptedGigs from './components/UserAcceptedGigs.jsx';
 
 function App() {
   const {currentUser} = useContext(UserContext);
@@ -68,6 +70,8 @@ function App() {
         />
         <Route path="/profile/applications" element={<UserApplications />} />
         <Route path="/testapps" element={<ApplicationsTest />} />
+        <Route path="/saved" element={<SavedJobsGigs />} />
+        <Route path="/acceptedgigs" element={<UserAcceptedGigs />} />
       </Routes>
       {window.location.pathname !== '/' ? <Footer /> : null}
     </div>

@@ -14,6 +14,11 @@
   gap: 10rem;
 }
 
+.job-btn-container {
+  display: flex;
+  justify-content: center;
+}
+
 #desc-label {
   margin: 0.5rem 0;
 }
@@ -50,4 +55,9 @@
 
 .jobview-job-title {
   margin: 3rem auto 1rem auto;
+}
+
+.posting-btn-container {
+  display: flex;
+  justify-content: center;
 }

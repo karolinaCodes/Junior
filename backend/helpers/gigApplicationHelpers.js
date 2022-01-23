@@ -1,15 +1,16 @@
 // DB queries for GIG APPLICATIONS //
 
 module.exports = db => {
-  /* Retrieve all gig application data, gig posting data,
+	/* Retrieve all gig application data, gig posting data,
       employer email, company_name, bio, photo_url,
       junior_dev email, first_name, last_name, headline, bio, photo_url,
-      github_url, linkedIn_url, resume_url, location
+      github_url, linkedin_url, resume_url, location
   */
 
 	const getGigApplicationById = id => {
 		const query = {
-			text: `SELECT gig_applications.*, gig_postings.*, 
+			text: `SELECT gig_applications.id as app_id,
+				gig_applications.*, gig_postings.*, 
         employers.email as employer_email, company_name, employers.bio as employer_bio, employers.photo_url as employer_photo_url,
         junior_devs.email as dev_email, first_name, last_name, phone_number, headline, junior_devs.bio as dev_bio, junior_devs.photo_url as dev_photo_url,
 				city, CONCAT(junior_devs.city,', Canada') as dev_location
@@ -58,9 +59,25 @@ module.exports = db => {
 			.then(result => result.rows[0])
 			.catch(err => err);
 	};
-  return {
+
+	const completeGigApplication = gig_application_id => {
+		const query = {
+			text: `UPDATE gig_applications
+      SET is_completed = true
+      WHERE id = $1`,
+			values: [gig_application_id],
+		};
+
+		return db
+			.query(query)
+			.then(result => result.rows[0])
+			.catch(err => err);
+	};
+
+	return {
 		getGigApplicationById,
 		addGigApplication,
 		acceptGigApplication,
+		completeGigApplication,
 	};
 };

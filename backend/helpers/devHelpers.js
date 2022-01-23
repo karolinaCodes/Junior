@@ -46,7 +46,7 @@ module.exports = db => {
 			.then(result => result.rows[0])
 			.catch(err => err);
 	};
-	
+
 	const getProjectsByDevId = id => {
 		const query = {
 			text: `SELECT junior_devs.id as junior_dev_id, first_name, last_name, email,
@@ -64,7 +64,7 @@ module.exports = db => {
 			.then(result => result.rows)
 			.catch(err => err);
 	};
-  
+
 	const getJobApplicationsByDevId = junior_dev_id => {
 		const query = {
 			text: `
@@ -89,7 +89,7 @@ module.exports = db => {
 			.then(result => result.rows)
 			.catch(err => err);
 	};
-	
+
 	const getGigApplicationsByDevId = junior_dev_id => {
 		const query = {
 			text: `
@@ -114,7 +114,7 @@ module.exports = db => {
 			.then(result => result.rows)
 			.catch(err => err);
 	};
-	
+
 	// STRETCH //
 
 	// Sign up new dev
@@ -128,23 +128,20 @@ module.exports = db => {
 		bio,
 		photo_url,
 		github_url,
-		linkedIn_url,
+		linkedin_url,
 		resume_url,
 		location
 	) => {
 		const query = {
-			text: `INSERT INTO junior_devs (first_name, last_name, email, password, phone_number, headline, bio, photo_url, github_url, linkedIn_url, resume_url, location) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING *`,
+			text: `INSERT INTO junior_devs (first_name, last_name, email, password, phone_number, headline, bio, photo_url, github_url, linkedin_url, resume_url, location) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING *`,
 			values: [
-				first_name,
-				last_name,
 				email,
 				password,
 				phone_number,
 				headline,
-				bio,
 				photo_url,
 				github_url,
-				linkedIn_url,
+				linkedin_url,
 				resume_url,
 				location,
 			],
@@ -186,15 +183,66 @@ module.exports = db => {
 			.catch(err => err);
 	};
 
-  return {
+	const getAcceptedGigs = junior_dev_id => {
+		const query = {
+			text: `SELECT * FROM 
+			gig_applications
+			JOIN gig_postings
+			ON gig_posting_id = gig_postings.id
+      WHERE junior_dev_id = $1
+			AND is_accepted = true`,
+			values: [junior_dev_id],
+		};
+
+		return db
+			.query(query)
+			.then(result => result.rows)
+			.catch(err => err);
+	};
+
+	const editProfile = params => {
+		const query = {
+			text: `UPDATE junior_devs
+				SET email = $1,
+				phone_number = $2,
+				headline = $3,
+				bio = $4,
+				github_url = $5,
+				linkedin_url = $6,
+				resume_url = $7,
+				city = $8
+				WHERE id = $9
+				RETURNING *
+				`,
+			values: [
+				params.email,
+				params.phone_number,
+				params.headline,
+				params.bio,
+				params.github_url,
+				params.linkedin_url,
+				params.resume_url,
+				params.city,
+				params.id,
+			],
+		};
+		return db
+			.query(query)
+			.then(result => console.log(result))
+			.catch(err => err);
+	};
+
+	return {
 		getUserByEmail,
 		getDevs,
 		getDevById,
 		getProjectsByDevId,
 		getJobApplicationsByDevId,
 		getGigApplicationsByDevId,
+		getAcceptedGigs,
+		editProfile,
 		// addDev,
 		// getAcceptedJobApplications,
 		// getAcceptedGigApplications,
-  };
+	};
 };

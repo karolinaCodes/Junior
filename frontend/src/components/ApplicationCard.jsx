@@ -1,20 +1,49 @@
 import './styles/PortfolioCard.scss';
 import { useContext, useEffect, useState } from 'react';
 import { styled } from '@mui/material/styles';
-import {Grid, Button, List, ListItem, ListItemText, ListItemButton, IconButton, CardContent, CardActions, Collapse} from '@mui/material';
+import {
+	Grid,
+	Button,
+	List,
+	ListItem,
+	ListItemText,
+	ListItemButton,
+	IconButton,
+	CardContent,
+	CardActions,
+	Collapse,
+} from '@mui/material';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import axios from 'axios';
 
 export default function ApplicationCard(props) {
-	const { first_name, last_name, phone_number, headline, city, email, bio, photo_url, github_url, linkedIn_url, resume_url, location, dev_photo_url, date_applied, formatted_date_applied, formatted_date, dev_location, id } =
-		props;
-		
+	const {
+		first_name,
+		last_name,
+		phone_number,
+		headline,
+		city,
+		email,
+		bio,
+		photo_url,
+		github_url,
+		linkedin_url,
+		resume_url,
+		location,
+		dev_photo_url,
+		date_applied,
+		formatted_date_applied,
+		formatted_date,
+		dev_location,
+		id,
+	} = props;
+
 	//Check if job or gig application
 	const postType = props.type;
 
 	const [expanded, setExpanded] = useState(false);
 	const [accepted, setAccepted] = useState(false);
-		
+
 	const handleExpandClick = () => {
 		setExpanded(!expanded);
 	};
@@ -23,36 +52,36 @@ export default function ApplicationCard(props) {
 		console.log('accept ' + postingId);
 		if (postType === 'job') {
 			axios
-			.post(`../../../api/job_applications/accept/${postingId}`,{ 
-				job_application_id: postingId,
-			})
-			.then(res => {
-				console.log(res.data);
-				console.log('acceptApplication job');
-				setAccepted(res.data);
-				return res.data;
-			})
-			.catch(err => {
-				console.log(err);
-			})
+				.post(`../../../api/job_applications/accept/${postingId}`, {
+					job_application_id: postingId,
+				})
+				.then(res => {
+					console.log(res.data);
+					console.log('acceptApplication job');
+					setAccepted(res.data);
+					return res.data;
+				})
+				.catch(err => {
+					console.log(err);
+				});
 		} else if (postType === 'gig') {
 			axios
-			.post(`../../../api/gig_applications/accept/${postingId}`, {
-				gig_application_id: postingId,
-			})
-			.then(res => {
-				console.log(res.data);
-				console.log('acceptApplication gig');
-				setAccepted(res.data);
-			})
-			.catch(err => {
-				console.log(err);
-			})
-		};
+				.post(`../../../api/gig_applications/accept/${postingId}`, {
+					gig_application_id: postingId,
+				})
+				.then(res => {
+					console.log(res.data);
+					console.log('acceptApplication gig');
+					setAccepted(res.data);
+				})
+				.catch(err => {
+					console.log(err);
+				});
+		}
 	};
 
 	// For application expander (down arrow)
-	const ExpandMore = styled((props) => {
+	const ExpandMore = styled(props => {
 		const { expand, ...other } = props;
 		return <IconButton {...other} />;
 	})(({ theme, expand }) => ({
@@ -62,23 +91,29 @@ export default function ApplicationCard(props) {
 			duration: theme.transitions.duration.shortest,
 		}),
 	}));
-	
+
 	return (
 		<>
 			<CardContent>
-				<Grid container direction='row' className="stretch">
+				<Grid container direction='row' className='stretch'>
 					<Grid item xs='auto' className='profile-pic'>
-						<img id="profile-pic"
+						<img
+							id='profile-pic'
 							src={dev_photo_url}
 							alt={`Photo of ${first_name} ${last_name}`}
 						/>
 					</Grid>
-					<Grid item container xs={10} direction='column'>
+					<Grid item container xs direction='column'>
 						<Grid item>
 							<h3>{`${first_name} ${last_name} (${headline})`}</h3>
 							<p>Applied on: {formatted_date}</p>
 						</Grid>
-						<Grid item container direction='row' sx={{justifyContent: 'space-between'}}>
+						<Grid
+							item
+							container
+							direction='row'
+							sx={{ justifyContent: 'space-between' }}
+						>
 							<Grid item xs={4}>
 								{phone_number}
 							</Grid>
@@ -88,17 +123,23 @@ export default function ApplicationCard(props) {
 							<Grid item xs={4}>
 								{dev_location}
 							</Grid>
-							<Grid item xs={4}
+							<Grid
+								item
+								xs={4}
 								onClick={() => window.open(github_url, '_self')}
 							>
 								Github: {github_url ? github_url : 'N/A'}
 							</Grid>
-							<Grid item xs={4}
-								onClick={() => window.open(linkedIn_url, '_self')}
+							<Grid
+								item
+								xs={4}
+								onClick={() => window.open(linkedin_url, '_self')}
 							>
-								LinkedIn: {linkedIn_url ? linkedIn_url : 'N/A'}
+								LinkedIn: {linkedin_url ? linkedin_url : 'N/A'}
 							</Grid>
-							<Grid item xs={4}
+							<Grid
+								item
+								xs={4}
 								onClick={() => window.open(resume_url, '_self')}
 							>
 								Resume: {resume_url ? resume_url : 'N/A'}
@@ -112,9 +153,9 @@ export default function ApplicationCard(props) {
 					<Grid item container xs>
 						<Grid item>
 							<Button
-								color="success"
+								color='success'
 								onClick={() => {
-									acceptApplication(id, postType)
+									acceptApplication(id, postType);
 									console.log(id, postType);
 								}}
 							>
@@ -122,8 +163,8 @@ export default function ApplicationCard(props) {
 							</Button>
 						</Grid>
 						<Grid item>
-							<Button 
-								color="error"
+							<Button
+								color='error'
 								onClick={() => {
 									// declineApplication(id, postType);
 									console.log('decline', id, postType);
@@ -133,22 +174,22 @@ export default function ApplicationCard(props) {
 							</Button>
 						</Grid>
 					</Grid>
-					<Grid item className="expand-text">
-						See More 
+					<Grid item className='expand-text'>
+						See More
 						<ExpandMore
 							expand={expanded}
 							onClick={handleExpandClick}
 							aria-expanded={expanded}
-							aria-label="show more"
+							aria-label='show more'
 						>
 							<ExpandMoreIcon />
 						</ExpandMore>
 					</Grid>
 				</Grid>
 			</CardActions>
-			<Collapse in={expanded} timeout="auto" unmountOnExit>
+			<Collapse in={expanded} timeout='auto' unmountOnExit>
 				<CardContent>
-					<p className="description">{bio}</p>
+					<p className='description'>{bio}</p>
 				</CardContent>
 			</Collapse>
 		</>

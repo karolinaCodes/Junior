@@ -132,6 +132,10 @@ const useStyles = makeStyles({
   form_actions: {
     'margin-left': '60px',
   },
+
+  slider_container: {
+    margin: '2rem 0',
+  },
 });
 
 export default function JobSearch(props) {
@@ -259,92 +263,79 @@ export default function JobSearch(props) {
 
   return (
     <div className="page-container jobsearch-content">
-      <form className="jobsearch-search" onSubmit={handleSubmit}>
-        {/* {JOB TYPE DROPDOWN----------------------} */}
-        <Box sx={{minWidth: 120}}>
-          <FormControl fullWidth className={classes.drop_down}>
-            <Select value={jobType} onChange={handleChange}>
-              <MenuItem value={'all'}>All Opportunities</MenuItem>
-              <MenuItem value={'jobs'}>Jobs</MenuItem>
-              <MenuItem value={'gigs'}>Gigs</MenuItem>
-            </Select>
-          </FormControl>
-        </Box>
-        <TextField
-          placeholder="Keywords, job title"
-          onChange={e => setQueryString(e.target.value)}
-          value={queryString}
-          onKeyDown={e => keyCheck(e)}
-          className={classes.search_query}
-          InputProps={{
-            startAdornment: (
-              <InputAdornment position="start">
-                <SearchIcon />
-              </InputAdornment>
-            ),
-          }}
-        ></TextField>
-        <TextField
-          disabled={jobType === 'gigs' || jobType === 'all'}
-          id={(jobType === 'gigs' || jobType === 'all') && 'outlined-disabled'}
-          label={(jobType === 'gigs' || jobType === 'all') && 'Disabled'}
-          id="search-bar"
-          variant="outlined"
-          placeholder="City"
-          onChange={e => setCity(e.target.value)}
-          value={city}
-          onKeyDown={e => keyCheck(e)}
-          InputProps={{
-            startAdornment: (
-              <InputAdornment position="start">
-                <FmdGoodOutlinedIcon />
-              </InputAdornment>
-            ),
-          }}
-        />
-        {/* {SLIDER---------------------------------} */}
-        <Box sx={{width: 300}}>
-          <Typography
-            id="non-linear-slider"
-            gutterBottom
-            className="salary-slider"
-          >
-            <span id="salary">Salary</span>{' '}
-            <span id="salary-range"> {`$${value[0]} -$${value[1]}`}</span>
-          </Typography>
-          <Slider
-            size="small"
-            value={value}
-            min={30000}
-            max={80000}
-            onChange={handleSlider}
-            className={classes.slider}
-            disabled={jobType === 'gigs' || jobType === 'all'}
-          />
-        </Box>
-        <div className={classes.form_actions}>
-          <Button
-            variant="text"
-            size="large"
-            className={classes.clear_btn}
-            onClick={clearFields}
-          >
-            Clear
-          </Button>
-          <Button
-            variant="outlined"
-            size="large"
-            type="submit"
-            className={classes.search_btn}
-          >
-            Search
-          </Button>
+      <div className="jobsearch-header-container">
+        <div class="jobsearch-img-container">
+          <img src="/images/crew.jpeg" alt="two people working on computer" />
         </div>
-      </form>
+        <form className="jobsearch-search" onSubmit={handleSubmit}>
+          {/* {JOB TYPE DROPDOWN----------------------} */}
+          <Box sx={{minWidth: 120}}>
+            <FormControl fullWidth className={classes.drop_down}>
+              <Select value={jobType} onChange={handleChange}>
+                <MenuItem value={'all'}>All Opportunities</MenuItem>
+                <MenuItem value={'jobs'}>Jobs</MenuItem>
+                <MenuItem value={'gigs'}>Gigs</MenuItem>
+              </Select>
+            </FormControl>
+          </Box>
+          <TextField
+            placeholder="Keywords, job title"
+            onChange={e => setQueryString(e.target.value)}
+            value={queryString}
+            onKeyDown={e => keyCheck(e)}
+            className={classes.search_query}
+            InputProps={{
+              startAdornment: (
+                <InputAdornment position="start">
+                  <SearchIcon />
+                </InputAdornment>
+              ),
+            }}
+          ></TextField>
+          <TextField
+            disabled={jobType === 'gigs' || jobType === 'all'}
+            id={
+              (jobType === 'gigs' || jobType === 'all') && 'outlined-disabled'
+            }
+            label={(jobType === 'gigs' || jobType === 'all') && 'Disabled'}
+            id="search-bar"
+            variant="outlined"
+            placeholder="City"
+            onChange={e => setCity(e.target.value)}
+            value={city}
+            onKeyDown={e => keyCheck(e)}
+            InputProps={{
+              startAdornment: (
+                <InputAdornment position="start">
+                  <FmdGoodOutlinedIcon />
+                </InputAdornment>
+              ),
+            }}
+          />
+          <div className={classes.form_actions}>
+            <Button
+              variant="text"
+              size="large"
+              className={classes.clear_btn}
+              onClick={clearFields}
+            >
+              Clear
+            </Button>
+            <Button
+              variant="outlined"
+              size="large"
+              type="submit"
+              className={classes.search_btn}
+            >
+              Search
+            </Button>
+          </div>
+        </form>
+      </div>
       <div className="main-content">
         {/* {CHECKBOXES-------------------------------} */}
         <div className="checkboxes">
-          <div className="checkboxes-section">
+          <div className="checkboxes-section-details">
             <h3>Details</h3>
           </div>
           {/* {SCHEDULE---------------------------} */}
@@ -404,6 +395,26 @@ export default function JobSearch(props) {
               />
             </FormGroup>
           </div>
+          {/* {SLIDER---------------------------------} */}
+          <Box sx={{width: 250}} className={classes.slider_container}>
+            <Typography
+              id="non-linear-slider"
+              gutterBottom
+              className="salary-slider"
+            >
+              <span id="salary">Salary</span>{' '}
+              <span id="salary-range"> {`$${value[0]} -$${value[1]}`}</span>
+            </Typography>
+            <Slider
+              size="small"
+              value={value}
+              min={30000}
+              max={80000}
+              onChange={handleSlider}
+              className={classes.slider}
+              disabled={jobType === 'gigs' || jobType === 'all'}
+            />
+          </Box>
           {/* LANGUAGES--------------------------------- */}
           <div className="checkboxes-section">
             <h4>Languages</h4>

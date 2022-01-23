@@ -4,9 +4,10 @@
   color: #26242a;
   display: flex;
   width: 100%;
-  padding: 0 4rem;
+  padding: 0rem 10rem;
   gap: 5rem;
-  min-height: 100vh;
+  min-height: 90vh;
+  margin-top: 100px;
 }
 
 .jobsearch-content {
@@ -22,9 +23,13 @@
   align-items: center;
   background: #fbfbfb;
   padding: 1rem 0 1rem 0;
-  width: 100%;
+  width: 70%;
   box-shadow: 0px 3px 8px rgba(8, 35, 48, 0.05);
+  margin-bottom: -80px;
   gap: 30px;
+  border-radius: 5px;
+  position: absolute;
+  bottom: 0;
 }
 
 .jobsearch-search input {
@@ -34,6 +39,14 @@
   background: #fbfbfb;
   padding: 0;
   height: 40px;
+}
+
+.jobsearch-header-container {
+  max-height: 600px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 textarea:focus,
@@ -55,6 +68,15 @@ input:focus {
 }
 
 .checkboxes-section {
+  // border-bottom: 1px solid #c4c4c4;
+  margin: 0;
+  padding: 18px 0px 18px 0px;
+  span {
+    font-size: 15px;
+  }
+}
+
+.checkboxes-section-details {
   border-bottom: 1px solid #c4c4c4;
   margin: 0;
   padding: 18px 0px 18px 0px;
@@ -113,10 +135,6 @@ div .salary-slider {
   font-family: 'Assistant' !important;
 }
 
-.checkboxes-section span {
-  font-size: 15px;
-}
-
 .jobsearch-search fieldset {
   border: none;
 }
@@ -131,5 +149,13 @@ div .salary-slider {
 @media (min-width: 1700px) {
   .searchResults {
     grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.jobsearch-img-container {
+  max-height: 300px;
+  img {
+    height: 100%;
+    width: 100%;
   }
 }

@@ -7,10 +7,12 @@ import { useNavigate } from 'react-router-dom';
 
 import Avatar from '@mui/material/Avatar';
 import Stack from '@mui/material/Stack';
+import { UserContext } from '../Providers/userProvider';
+import { useContext } from 'react';
 
 export default function PositionedMenu(props) {
-	const { currentUser, logout } = props;
-
+	const { logout } = props;
+	const { currentUser } = useContext(UserContext);
 	const [anchorEl, setAnchorEl] = React.useState(null);
 	const open = Boolean(anchorEl);
 	const handleClick = event => {
@@ -23,7 +25,6 @@ export default function PositionedMenu(props) {
 	const handleLogout = () => {
 		navigate('/');
 		logout();
-		handleClose();
 	};
 
 	const navigate = useNavigate();

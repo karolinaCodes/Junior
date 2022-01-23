@@ -62,17 +62,11 @@ export default function Applications(props) {
 
   const applicationsArray = posting.applications;
   const parsedApplications = applicationsArray.map(application => {
+    console.log(application);
     return (
-      <Grid item xs={12} md={6} key={'Application-grid-' + application.id}>
-        <Card
-          className="card-click"
-          key={'Application-paper-' + application.id}
-        >
-          <ApplicationCard
-            key={'Application-card-' + application.id}
-            type={posttype}
-            {...application}
-          />
+      <Grid item xs={12} md={6} key={'Application-grid-' + application.pid}>
+        <Card className="card-click">
+          <ApplicationCard type={posttype} {...application} />
         </Card>
       </Grid>
     );

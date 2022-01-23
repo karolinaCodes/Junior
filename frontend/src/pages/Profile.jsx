@@ -16,6 +16,7 @@ import {
 import PortfolioCard from '../components/PortfolioCard';
 import PortfolioModal from '../components/PortfolioModal';
 import UserProfileInfo from '../components/UserProfileInfo';
+import NewProjectPost from '../components/NewProjectPost';
 import axios from 'axios';
 import {useLocation} from 'react-router-dom';
 
@@ -97,6 +98,8 @@ export default function Profile() {
 						</CardActionArea>
 						<CardActions key={'Job-card-actions-' + project.project_id}>
 							<Button
+                variant="contained"
+                color="primary"
 								key={'Job-button-github-' + project.project_id}
 								onClick={() => (project.github_link ? window.open(project.github_link, '_self') : null)}
 								disabled={!project.github_link}
@@ -104,6 +107,8 @@ export default function Profile() {
 								Github
 							</Button>
 							<Button
+                variant="contained"
+                color="primary"
 								key={'Job-button-live-' + project.project_id}
 								onClick={() => (project.live_link ? window.open(project.live_link, '_self') : null)}
 								disabled={!project.live_link}
@@ -117,14 +122,27 @@ export default function Profile() {
 		);
 	});
 
+  // const addNewButton = <Grid item><Card>'Add New'</Card></Grid>;
+  const newProjectModal = <NewProjectPost />;
+
   return (
     <div className="profile-content page-container">
       <UserProfileInfo currentUser={currentUser} />
       {profile.projects.length === 0 && <h1>No projects added</h1>}
       {goBack && (
-        <Button onClick={() => navigate(-1)}>Back to search results</Button>
+        <Button
+        variant="contained"  
+        color="primary" onClick={() => navigate(-1)}>Back to search results</Button>
       )}
       <section className="profile-cards">
+      <Button
+        onClick={() => {
+          setModalData(newProjectModal);
+          handleView();
+        }}
+      >
+        Hey
+      </Button>
         <Grid container>
           <Grid item xs={12} id="profile-title">
             <h1>{`${first_name} ${last_name}`} Portfolio:</h1>

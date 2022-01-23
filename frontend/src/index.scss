@@ -73,11 +73,13 @@ body {
     box-shadow: 0px 3px 8px rgba(8, 35, 48, 0.05);
   }
   .MuiButton-root {
-    background-color: $blue;
-    color: $white;
     text-transform: none;
     padding-right: 2rem;
     padding-left: 2rem;
+  }
+  .MuiButton-containedPrimary {
+    background-color: $blue;
+    color: $white;
   }
   .MuiButton-root:hover {
     background-color: $lightblue;

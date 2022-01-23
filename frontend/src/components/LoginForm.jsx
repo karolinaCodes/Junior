@@ -24,21 +24,26 @@ export default function Login(props) {
 			.then(res => {
 				setCurrentUser(res.data);
 				console.log(res.data);
-				handleLoginView();
+				if (currentUser.company_name) {
+					navigate('/employerprofile');
+				} else {
+					navigate('/profile');
+				}
 			})
 			.catch(err => {
 				console.log(err);
 			});
 	};
 
-	useEffect(() => {
-		if (currentUser.company_name) {
-			navigate('/employerprofile');
-		} else {
-			navigate('/profile');
-		}
-		handleLoginView();
-	}, [currentUser]);
+	// useEffect(() => {
+	// 	console.log('IN SHITTY USE EFFECT', currentUser)
+	// 	if (currentUser.company_name) {
+	// 		navigate('/employerprofile');
+	// 	} else {
+	// 		navigate('/profile');
+	// 	}
+	// 	handleLoginView();
+	// }, [currentUser]);
 
 	return (
 		<div>

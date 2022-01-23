@@ -6,6 +6,7 @@ module.exports = ({
 	addGigApplication,
 	acceptGigApplication,
 	completeGigApplication,
+	deleteGigApplication
 }) => {
 	/* GET a gig application by gig_applications.id */
 	router.get('/:id', (req, res) => {
@@ -31,6 +32,17 @@ module.exports = ({
 
 	router.post('/complete/:id', (req, res) => {
 		completeGigApplication(req.params.id)
+			.then(application => res.json(application))
+			.catch(err =>
+				res.json({
+					error: err.message,
+				})
+			);
+	});
+
+	/* DELETE a gig application */
+	router.post('/delete/:id', (req, res) => {
+		deleteGigApplication(req.params.id)
 			.then(application => res.json(application))
 			.catch(err =>
 				res.json({

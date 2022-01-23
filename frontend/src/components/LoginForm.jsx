@@ -1,44 +1,45 @@
 import './styles/LoginForm.scss';
-import {TextField, Button} from '@mui/material';
+import { TextField, Button } from '@mui/material';
 import axios from 'axios';
-import {useEffect, useContext} from 'react';
-import {Link, useNavigate} from 'react-router-dom';
-import {UserContext} from '../Providers/userProvider';
+import { useEffect, useContext } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { UserContext } from '../Providers/userProvider';
 
 export default function Login(props) {
-  const {handleLoginView} = props;
-  const {currentUser, setCurrentUser} = useContext(UserContext);
+	const { handleLoginView } = props;
+	const { currentUser, setCurrentUser } = useContext(UserContext);
 
-  const navigate = useNavigate();
+	const navigate = useNavigate();
 
-  const login = e => {
-    e.preventDefault();
+	const login = e => {
+		e.preventDefault();
 
-    const data = {
-      email: document.getElementById('email').value,
-      password: document.getElementById('password').value,
-    };
+		const data = {
+			email: document.getElementById('email').value,
+			password: document.getElementById('password').value,
+		};
 
-    axios
-      .post('/api/auth/login', data)
-      .then(res => {
-        setCurrentUser(res.data);
-        console.log(res.data);
-        handleLoginView();
-      })
-      .catch(err => {
-        console.log(err);
-      });
-  };
+		axios
+			.post('/api/auth/login', data)
+			.then(res => {
+				setCurrentUser(res.data);
+				console.log(res.data);
+				handleLoginView();
+			})
+			.catch(err => {
+				console.log(err);
+			});
+	};
 
-  useEffect(() => {
-    if (currentUser.company_name) {
-      navigate('/employerprofile');
-    } else {
-      navigate('/profile');
-    }
-    handleLoginView();
-  }, [currentUser]);
+	// useEffect(() => {
+	// 	console.log('IN SHITTY USE EFFECT', currentUser)
+	// 	if (currentUser.company_name) {
+	// 		navigate('/employerprofile');
+	// 	} else {
+	// 		navigate('/profile');
+	// 	}
+	// 	handleLoginView();
+	// }, [currentUser]);
 
   return (
     <div>

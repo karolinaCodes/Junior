@@ -5,6 +5,7 @@ module.exports = ({
 	getJobApplicationById,
 	addJobApplication,
 	acceptJobApplication,
+	deleteJobApplication
 }) => {
 	/* GET a job application by job_applications.id */
 	router.get('/:id', (req, res) => {
@@ -20,6 +21,17 @@ module.exports = ({
 	/* Accept a gig application */
 	router.post('/accept/:id', (req, res) => {
 		acceptJobApplication(req.params.id)
+			.then(application => res.json(application))
+			.catch(err =>
+				res.json({
+					error: err.message,
+				})
+			);
+	});
+
+	router.post('/delete/:id', (req, res) => {
+		console.log('IN HELPER',req.params.id)
+		deleteJobApplication(req.params.id)
 			.then(application => res.json(application))
 			.catch(err =>
 				res.json({

@@ -7,14 +7,14 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import axios from 'axios';
 
 export default function ApplicationCard(props) {
-	const { job_title, description, salary, formatted_salary, date_posted, formatted_date, date_applied, formatted_date_applied, job_type, is_remote, employer_id, employer_email, company_name, employer_bio, employer_photo_url, deadline, photo_url, city, pay, formatted_pay, formatted_deadline, posting_location, job_posting_id, gig_posting_id, is_accepted, is_completed } =	props;
+	const { view, setView, setApplications, id, job_title, description, salary, formatted_salary, date_posted, formatted_date, date_applied, formatted_date_applied, job_type, is_remote, employer_id, employer_email, company_name, employer_bio, employer_photo_url, deadline, photo_url, city, pay, formatted_pay, formatted_deadline, posting_location, job_posting_id, gig_posting_id, is_accepted, is_completed } =	props;
 	
 	const location = `${posting_location} (${is_remote ? 'Remote' : 'On-site'})`;
 	const postingLink = job_posting_id ? `/job/${job_posting_id}` : `/gig/${gig_posting_id}`;
 	
 	const [expanded, setExpanded] = useState(false);
-	const [openModal, setOpenModal] = useState(false);
-	const [modalData, setModalData] = useState();
+	const [complete, setComplete] = useState(false);
+	
 	const navigate = useNavigate();
 	
 	const handleExpandClick = () => {
@@ -36,6 +36,7 @@ export default function ApplicationCard(props) {
 //('api/gig_postings/complete/:id'
 	const markComplete = () => {
 		console.log('posting id',gig_posting_id);
+		setComplete(true);
 		return axios
 			.post(`../api/gig_applications/complete/${gig_posting_id}`)
 			.then((res) => {
@@ -51,8 +52,18 @@ export default function ApplicationCard(props) {
 	}
 
 	const deleteApplication = id => {
-		
-		console.log('delete', id);
+		const type = job_posting_id ? 'job_applications' : 'gig_applications';
+		console.log('delete', type, id);
+		axios
+			.post(`../api/${type}/delete/${id}`)
+			.then(res => {
+				view === 'job' ?
+				setView('all') :
+				view === 'gig' ?
+				setView('all') :
+				setView('job')
+			})
+			.catch(err => console.log(err))
 	}
 
 	const askConfirmComplete = () => {
@@ -113,23 +124,23 @@ export default function ApplicationCard(props) {
 							{!is_accepted &&
 								<Button
 									color="error"
-									onClick={() => deleteApplication(job_posting_id || gig_posting_id)}
+									onClick={() => deleteApplication(id)}
 								>
 									Delete Application
 								</Button>
 							}
-							{(is_accepted && !is_completed) && 
+							{(is_accepted && !is_completed && !complete) && 
 								<Button
 									color="error"
 									onClick={() => {
-										askConfirmComplete();
+										markComplete();
 										console.log('complete ', postingLink);
 									}}
 								>
 									Mark Completed
 								</Button>
 							}
-							{is_completed  && 
+							{(is_completed || complete) && 
 								<Button
 									color="error"
 									onClick={() => {
@@ -140,7 +151,6 @@ export default function ApplicationCard(props) {
 									Create Project
 								</Button>
 							}
-
 						</Grid>
 					</Grid>
 					<Grid item className="expand-text">

@@ -58,7 +58,7 @@ export default function LandingPage(props) {
   };
 
   return (
-    <div className="content-container">
+    <div className="content-container page-container">
       <div className="gig-content">
         <h1 id="gig-jobtitle">{gigPosting.job_title}</h1>
         <p>

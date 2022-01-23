@@ -8,7 +8,7 @@ export default function Applications(props) {
   const {currentUser, savedJobsGigs} = useContext(UserContext);
 
   return (
-    <div className="application-content">
+    <div className="application-content page-container">
       <Grid container direction="column">
         <h1>Saved</h1>
         <section className="application-cards">

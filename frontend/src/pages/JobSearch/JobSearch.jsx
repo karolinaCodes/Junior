@@ -2,13 +2,15 @@ import * as React from 'react';
 import {useEffect, useState, useContext} from 'react';
 import '../styles/JobSearch.scss';
 import axios from 'axios';
+
+// components //
+import ApplyModal from '../../components/JobSearch/ApplyModal';
+
+// mui //
 import Box from '@mui/material/Box';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
-import {Link} from 'react-router-dom';
-
-import ApplyModal from '../../components/JobSearch/ApplyModal';
 import {TextField, Button} from '@mui/material';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
@@ -18,18 +20,19 @@ import Typography from '@mui/material/Typography';
 import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
-
 import Chip from '@mui/material/Chip';
 import Slider from '@mui/material/Slider';
 import {InputAdornment} from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 import FmdGoodOutlinedIcon from '@mui/icons-material/FmdGoodOutlined';
-
-import {useLocation} from 'react-router-dom';
 import {makeStyles} from '@mui/styles';
-import {UserContext} from '../../Providers/userProvider';
 
-////////////////////IMPORTS///////////
+// react-router //
+import {Link} from 'react-router-dom';
+import {useLocation} from 'react-router-dom';
+
+// context //
+import {UserContext} from '../../Providers/userProvider';
 
 const useStyles = makeStyles({
   searchResults: {

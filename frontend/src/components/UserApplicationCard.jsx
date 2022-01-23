@@ -70,9 +70,9 @@ export default function ApplicationCard(props) {
 							alt={`Photo of ${company_name}`}
 							src={employer_photo_url}
 							sx={{ width: 150, height: 150 }}
-							onClick={() => navigate(`/employerprofile/${employer_id}`)}
+							onClick={() => navigate(`/employer/${employer_id}`)}
 						/>
-							<h3 onClick={() => navigate(`/employerprofile/${employer_id}`)}
+							<h3 onClick={() => navigate(`/employer/${employer_id}`)}
 							>{company_name}</h3>
 					</Grid>
 					<Grid item xs className='application-info' container direction='column' sx={{marginLeft: '1rem'}}>

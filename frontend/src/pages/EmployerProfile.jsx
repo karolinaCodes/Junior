@@ -13,7 +13,7 @@ import {
   CardActions,
   Dialog,
 } from '@mui/material';
-import JobPostingCard from '../components/JobPostingCard';
+import JobPostingCard from '../components/JobPostingCardEdit';
 import JobPostingModal from '../components/JobPostingModal';
 import axios from 'axios';
 

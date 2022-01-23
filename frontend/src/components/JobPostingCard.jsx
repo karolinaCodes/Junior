@@ -25,11 +25,6 @@ export default function Posting(props) {
   return (
     <>
       <CardHeader
-        action={
-          <IconButton aria-label="settings">
-            <MoreVertIcon />
-          </IconButton>
-        }
         title={job_title}
         subheader={formatted_date}
       />

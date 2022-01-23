@@ -55,7 +55,7 @@ function App() {
         />
         <Route path="/profile" element={<Profile />} />
         <Route path="/employerprofile" element={<EmployerProfile />} />
-        <Route path="/employerprofile/:id" element={<EmployerPublic />} />
+        <Route path="/employer/:id" element={<EmployerPublic />} />
         <Route path="/jobs" element={<JobSearch />} />
         <Route path="/newproject" element={<NewProjectPost />} />
         <Route path="/newjob" element={<NewJobPost />} />

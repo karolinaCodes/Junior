@@ -71,7 +71,6 @@ export default function Profile() {
 				xs={1}
 				sm={6}
 				md={4}
-				lg={3}
 				key={'Project-grid-' + project.project_id}
 			>
 				<Grid
@@ -118,7 +117,7 @@ export default function Profile() {
 			{profile.projects.length === 0 && <h1>No projects added</h1>}
 			<section className='profile-cards'>
 				<Grid container>
-					<Grid item xs={12}>
+					<Grid item xs={12} id='profile-title'>
 						<h1>{`${first_name} ${last_name}`} Portfolio:</h1>
 					</Grid>
 					{parsedProjects}

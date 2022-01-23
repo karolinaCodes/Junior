@@ -1,11 +1,11 @@
 // DB queries for JOB APPLICATIONS //
 
 module.exports = db => {
-  // Job Applications //
+	// Job Applications //
 	/* Retrieve all job application data, job posting data,
     employer email, company_name, bio, photo_url,
     junior_dev email, first_name, last_name, bio, photo_url,
-    github_url, linkedIn_url, resume_url, location
+    github_url, linkedin_url, resume_url, location
   */
 
 	const getJobApplicationById = id => {
@@ -21,16 +21,16 @@ module.exports = db => {
         JOIN employers ON job_postings.employer_id = employers.id
         JOIN junior_devs ON job_applications.junior_dev_id = junior_devs.id
         WHERE job_applications.id = $1`,
-      values: [id],
-    };
+			values: [id],
+		};
 
-    return db
-      .query(query)
-      .then(result => result.rows[0])
-      .catch(err => err);
-  };
+		return db
+			.query(query)
+			.then(result => result.rows[0])
+			.catch(err => err);
+	};
 
-  const addJobApplication = (job_posting_id, junior_dev_id) => {
+	const addJobApplication = (job_posting_id, junior_dev_id) => {
 		const query = {
 			text: `INSERT INTO job_applications (
         job_posting_id, junior_dev_id
@@ -57,10 +57,10 @@ module.exports = db => {
 			.then(result => result.rows[0])
 			.catch(err => err);
 	};
-  
-  return {
-    getJobApplicationById,
-    addJobApplication,
-    acceptJobApplication,
-  };
+
+	return {
+		getJobApplicationById,
+		addJobApplication,
+		acceptJobApplication,
+	};
 };

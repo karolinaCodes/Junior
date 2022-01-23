@@ -1,11 +1,11 @@
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
 const { useState, createContext, useEffect, useMemo } = require('react');
 
 const UserContext = createContext();
 
 const UserProvider = function (props) {
 	const [currentUser, setCurrentUser] = useState({});
+	const [savedJobsGigs, setSavedJobsGigs] = useState({});
 
 	useEffect(() => {
 		axios
@@ -22,10 +22,12 @@ const UserProvider = function (props) {
 			});
 	}, []);
 
-	const value = useMemo(() => ({
+	const value = {
 		currentUser,
 		setCurrentUser,
-	}));
+		savedJobsGigs,
+		setSavedJobsGigs,
+	};
 
 	return (
 		<UserContext.Provider value={value}>{props.children}</UserContext.Provider>

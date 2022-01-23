@@ -69,7 +69,7 @@ export default function NewJobPost(props) {
 			<form className='new-job-form' onSubmit={postJob}>
 				<h1>{jobForm.job_title}</h1>
 				<TextField
-					id='job-title'
+					id='new-job-title'
 					label='Job Title'
 					sx={{ minWidth: '80%' }}
 					variant='outlined'

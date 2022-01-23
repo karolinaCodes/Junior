@@ -51,7 +51,6 @@ export default function GigView(props) {
       .then(res => {
         console.log(res.data);
         setSaved(true);
-        // api request returns all saved jobs/gigs //
         setSavedJobsGigs(res.data);
       })
       .catch(err => {

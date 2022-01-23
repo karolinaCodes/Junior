@@ -33,7 +33,7 @@ const UserProvider = function (props) {
           console.log(err);
         });
     }
-  }, [currentUser, savedJobsGigs]);
+  }, [savedJobsGigs]);
 
   const value = useMemo(() => ({
     currentUser,

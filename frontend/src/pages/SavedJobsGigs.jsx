@@ -1,9 +1,7 @@
 import './styles/Profile.scss';
 import {Card, Grid} from '@mui/material';
-import {useContext, useEffect, useState} from 'react';
+import {useContext} from 'react';
 import SavedJobsGigsCard from '../components/SavedJobsGigsCard';
-
-import axios from 'axios';
 import {UserContext} from '../Providers/userProvider';
 
 export default function Applications(props) {

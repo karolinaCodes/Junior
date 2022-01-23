@@ -10,7 +10,8 @@ import BookmarkIcon from '@mui/icons-material/Bookmark';
 import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
 
 export default function LandingPage(props) {
-  const {currentUser, savedJobsGigs} = useContext(UserContext);
+  const {currentUser, savedJobsGigs, setSavedJobsGigs} =
+    useContext(UserContext);
   const {gigs} = savedJobsGigs;
   const {gig_id} = useParams();
   const [gigPosting, setGigPosting] = useState('');

@@ -103,7 +103,7 @@ export default function ApplicationCard(props) {
 							alt={`Photo of ${first_name} ${last_name}`}
 						/>
 					</Grid>
-					<Grid item container xs={10} direction='column'>
+					<Grid item container xs direction='column'>
 						<Grid item>
 							<h3>{`${first_name} ${last_name} (${headline})`}</h3>
 							<p>Applied on: {formatted_date}</p>

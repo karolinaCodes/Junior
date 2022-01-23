@@ -61,59 +61,61 @@ export default function Profile() {
   console.log('profile', profile);
   console.log('profile.projects:', profile.projects);
 
-  const projectsArray = profile.projects;
-  const parsedProjects = projectsArray.map(project => {
-    const data = (
-      <PortfolioModal
-        key={'Project-modal-' + project.project_id}
-        {...project}
-      />
-    );
-    return (
-      <Grid
-        item
-        xs={1}
-        sm={6}
-        md={4}
-        key={'Project-grid-' + project.project_id}
-      >
-        <Grid
-          container
-          direction="column"
-          key={'Project-grid-container-' + project.project_id}
-        >
-          <Card key={'Project-card-' + project.project_id}>
-            <CardActionArea
-              key={'Job-card-action' + project.project_id}
-              onClick={() => {
-                setModalData(data);
-                handleView();
-              }}
-            >
-              <PortfolioCard
-                key={'Portfolio-card-' + project.project_id}
-                {...project}
-              />
-            </CardActionArea>
-            <CardActions key={'Job-card-actions-' + project.project_id}>
-              <Button
-                key={'Job-button-github-' + project.project_id}
-                onClick={() => window.open(project.github_link, '_self')}
-              >
-                Github
-              </Button>
-              <Button
-                key={'Job-button-live-' + project.project_id}
-                onClick={() => window.open(project.live_link, '_self')}
-              >
-                Live Link
-              </Button>
-            </CardActions>
-          </Card>
-        </Grid>
-      </Grid>
-    );
-  });
+	const projectsArray = profile.projects;
+	const parsedProjects = projectsArray.map(project => {
+		const data = (
+			<PortfolioModal
+				key={'Project-modal-' + project.project_id}
+				{...project}
+			/>
+		);
+		return (
+			<Grid
+				item
+				xs={1}
+				sm={6}
+				md={4}
+				key={'Project-grid-' + project.project_id}
+			>
+				<Grid
+					container
+					direction='column'
+					key={'Project-grid-container-' + project.project_id}
+				>
+					<Card key={'Project-card-' + project.project_id}>
+						<CardActionArea
+							key={'Job-card-action' + project.project_id}
+							onClick={() => {
+								setModalData(data);
+								handleView();
+							}}
+						>
+							<PortfolioCard
+								key={'Portfolio-card-' + project.project_id}
+								{...project}
+							/>
+						</CardActionArea>
+						<CardActions key={'Job-card-actions-' + project.project_id}>
+							<Button
+								key={'Job-button-github-' + project.project_id}
+								onClick={() => (project.github_link ? window.open(project.github_link, '_self') : null)}
+								disabled={!project.github_link}
+								>
+								Github
+							</Button>
+							<Button
+								key={'Job-button-live-' + project.project_id}
+								onClick={() => (project.live_link ? window.open(project.live_link, '_self') : null)}
+								disabled={!project.live_link}
+							>
+								Live Link
+							</Button>
+						</CardActions>
+					</Card>
+				</Grid>
+			</Grid>
+		);
+	});
 
   return (
     <div className="profile-content page-container">

@@ -2,7 +2,7 @@ import './styles/NewProjectPost.scss';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { TextField, Button, Paper } from '@mui/material';
 import axios from 'axios';
-import { useState, useEffect, useContext} from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { UserContext } from '../Providers/userProvider';
 
 export default function NewProjectPost(props) {
@@ -19,7 +19,7 @@ export default function NewProjectPost(props) {
 		original_request: '',
 	});
 
-	console.log(projectForm)
+	console.log(projectForm);
 
 	let navigate = useNavigate();
 
@@ -27,14 +27,18 @@ export default function NewProjectPost(props) {
 		setProjectForm({ ...projectForm, junior_dev_id: currentUser.id });
 
 		if (state) {
-			setProjectForm({ ...projectForm, title: state.title, original_request: state.description });
+			setProjectForm({
+				...projectForm,
+				title: state.title,
+				original_request: state.description,
+			});
 		}
 	}, [currentUser]);
 
 	const postProject = e => {
 		e.preventDefault();
 
-		console.log('PROJECT FORM', projectForm)
+		console.log('PROJECT FORM', projectForm);
 
 		axios
 			.post('/api/projects/new', projectForm)
@@ -59,9 +63,9 @@ export default function NewProjectPost(props) {
 
 	return (
 		<div className='new-project-content'>
-			<img src='images/junior-logomark.png'></img>
 			<form className='new-project-form' onSubmit={postProject}>
 				<h1>{projectForm.title}</h1>
+				<img id='project-img' src={projectForm.thumbnail_photo_url} />
 				<TextField
 					id='project-name'
 					sx={{ minWidth: '80%' }}
@@ -111,37 +115,37 @@ export default function NewProjectPost(props) {
 					/>
 				</div>
 
-					<TextField
-						id='project-description'
-						sx={{ mt: '1rem', minWidth: '80%' }}
-						label='Project Description'
-						variant='filled'
-						multiline={true}
-						minRows={5}
-						value={projectForm.description}
-						onChange={e =>
-							setProjectForm({ ...projectForm, description: e.target.value })
-						}
-					/>
-					<TextField
-						id='original-request'
-						sx={{
-							mt: '1rem',
-							mb: '1rem',
-							minWidth: '80%',
-						}}
-						label='Original Request'
-						variant='filled'
-						multiline={true}
-						minRows={5}
-						value={projectForm.original_request}
-						onChange={e =>
-							setProjectForm({
-								...projectForm,
-								original_request: e.target.value,
-							})
-						}
-					/>
+				<TextField
+					id='project-description'
+					sx={{ mt: '1rem', minWidth: '80%' }}
+					label='Project Description'
+					variant='filled'
+					multiline={true}
+					minRows={5}
+					value={projectForm.description}
+					onChange={e =>
+						setProjectForm({ ...projectForm, description: e.target.value })
+					}
+				/>
+				<TextField
+					id='original-request'
+					sx={{
+						mt: '1rem',
+						mb: '1rem',
+						minWidth: '80%',
+					}}
+					label='Original Request'
+					variant='filled'
+					multiline={true}
+					minRows={5}
+					value={projectForm.original_request}
+					onChange={e =>
+						setProjectForm({
+							...projectForm,
+							original_request: e.target.value,
+						})
+					}
+				/>
 
 				<div id='project-buttons'>
 					<Button

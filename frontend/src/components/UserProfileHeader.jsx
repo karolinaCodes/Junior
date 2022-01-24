@@ -15,7 +15,8 @@ import {
 } from '@mui/icons-material';
 import ProfileMenu from '../components/ProfileMenu';
 
-export default function UserProfileHeader() {
+export default function UserProfileHeader(props) {
+	const { setModalData, openModal, setOpenModal } = props;
 	const { currentUser, setCurrentUser } = useContext(UserContext);
 	const [profileView, setProfileView] = useState('browse');
 	const [editForm, setEditForm] = useState({
@@ -138,7 +139,11 @@ export default function UserProfileHeader() {
 									<h3>{headline}</h3>
 								</Grid>
 								<Grid item id='kebab' sx={{ justifySelf: 'flex-end' }}>
-									<ProfileMenu />
+									<ProfileMenu
+										setModalData={setModalData}
+										openModal={openModal}
+										setOpenModal={setOpenModal}
+									/>
 								</Grid>
 							</Grid>
 						</Grid>

@@ -15,7 +15,6 @@ import {
 } from '@mui/material';
 import UserProfileHeader from '../components/UserProfileHeader';
 import UserProfileBio from '../components/UserProfileBio';
-import NewProjectPost from '../components/NewProjectPost';
 import axios from 'axios';
 import { useLocation } from 'react-router-dom';
 import UserProjects from '../components/UserProjects';
@@ -42,8 +41,6 @@ export default function Profile() {
 
 	const { first_name, last_name, id } = currentUser;
 
-	const newProjectModal = <NewProjectPost />;
-
 	useEffect(() => {
 		if (id) {
 			const devUrl = '/api/devs/' + id;
@@ -66,7 +63,11 @@ export default function Profile() {
 
 	return (
 		<>
-			<UserProfileHeader />
+			<UserProfileHeader
+				setModalData={setModalData}
+				openModal={openModal}
+				setOpenModal={setOpenModal}
+			/>
 			<div className='profile-content page-container'>
 				<UserProfileBio />
 				{profile.projects.length === 0 && <h1>No projects added</h1>}
@@ -80,14 +81,6 @@ export default function Profile() {
 					</Button>
 				)}
 				<section className='profile-cards'>
-					<Button
-						onClick={() => {
-							setModalData(newProjectModal);
-							handleView();
-						}}
-					>
-						Hey
-					</Button>
 					<Grid container>
 						<UserProjects
 							profile={profile}

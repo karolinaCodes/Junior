@@ -9,12 +9,13 @@ import Avatar from '@mui/material/Avatar';
 import Stack from '@mui/material/Stack';
 import { UserContext } from '../Providers/userProvider';
 import { useContext } from 'react';
+import NewProjectPost from './NewProjectPost';
 
 import { IconButton } from '@mui/material';
 import { MoreVert } from '@mui/icons-material';
 
 export default function PositionedMenu(props) {
-	const { logout } = props;
+	const { setModalData, openModal, setOpenModal } = props;
 	const { currentUser } = useContext(UserContext);
 	const [anchorEl, setAnchorEl] = React.useState(null);
 	const open = Boolean(anchorEl);
@@ -26,6 +27,10 @@ export default function PositionedMenu(props) {
 	};
 
 	const navigate = useNavigate();
+	const handleView = () => {
+		openModal === true ? setOpenModal(false) : setOpenModal(true);
+	};
+	const newProjectModal = <NewProjectPost />;
 
 	return (
 		<div className='user-menu-container'>
@@ -60,7 +65,8 @@ export default function PositionedMenu(props) {
 					<div>
 						<MenuItem
 							onClick={e => {
-								// navigate('/newproject');
+								setModalData(newProjectModal);
+								handleView();
 								handleClose();
 							}}
 						>

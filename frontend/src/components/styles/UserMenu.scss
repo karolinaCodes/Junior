@@ -3,27 +3,31 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Outfit:wght@100;200;300;400;500;600;700&display=swap');
 
 * {
-	// font-family: 'Poppins', sans-serif !important;
+  // font-family: 'Poppins', sans-serif !important;
 }
 .name {
-	color: white;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	font-size: 20px;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
 }
 
 .profile-info {
-	display: flex;
+  display: flex;
 }
 
 #demo-positioned-button > div > div > div {
-	border: 1px solid white;
+  border: 1px solid white;
 }
 
 ul {
-	& a {
-		text-decoration: none;
-		color: #666666;
-	}
+  & a {
+    text-decoration: none;
+    color: #666666;
+  }
+}
+
+.user-menu-container {
+  margin-left: 2rem;
 }

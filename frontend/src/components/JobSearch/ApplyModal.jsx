@@ -28,6 +28,8 @@ const useStyles = makeStyles({
     height: '2.5rem',
     'margin-right': '10px',
     'text-transform': 'none',
+    'flex-grow': 1,
+    'max-width': '118px',
   },
 
   apply_modal: {

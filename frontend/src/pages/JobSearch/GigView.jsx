@@ -2,16 +2,16 @@ import '../styles/GigView.scss';
 import {useContext, useEffect, useState} from 'react';
 import axios from 'axios';
 
-// components
+// components //
 import ApplyModal from '../../components/JobSearch/ApplyModal';
 
-// react-router
+// react-router //
 import {useParams} from 'react-router-dom';
 
-// context
+// context //
 import {UserContext} from '../../Providers/userProvider';
 
-// mui
+// mui //
 import {Button} from '@mui/material';
 import {useNavigate} from 'react-router-dom';
 import BookmarkIcon from '@mui/icons-material/Bookmark';

@@ -2,20 +2,20 @@ import './styles/Profile.scss';
 import axios from 'axios';
 import {useEffect, useState, useContext} from 'react';
 
-// react router
+// react router //
 import {useNavigate, useLocation} from 'react-router-dom';
 
-// components
+// components //
 import UserProfileHeader from '../components/UserProfileHeader';
 import UserProfileBio from '../components/UserProfileBio';
 import UserProjects from '../components/UserProjects';
 import UserApplications from '../components/UserApplications';
 import SavedPostings from '../components/SavedJobsGigs';
 
-// context
+// context //
 import {UserContext} from '../Providers/userProvider';
 
-// mui
+// mui //
 import {
   Grid,
   Button,

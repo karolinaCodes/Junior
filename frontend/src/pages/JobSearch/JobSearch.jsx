@@ -68,7 +68,10 @@ const useStyles = makeStyles({
     height: '2.5rem',
     'text-transform': 'none',
     color: '#192c5b',
-    border: '1px solid #192c5b',
+    // border: '1px solid #192c5b',
+    border: 'none',
+    'flex-grow': 1,
+    background: '#EEF3F9',
   },
 
   learn_more_link: {
@@ -145,6 +148,11 @@ const useStyles = makeStyles({
 
   slider_container: {
     margin: '2rem 0',
+  },
+  apply_btn_container: {
+    'justify-content': 'space-between;',
+    margin: 0,
+    padding: '0! important',
   },
 });
 
@@ -637,7 +645,7 @@ export default function JobSearch(props) {
                           {item.description}
                         </Typography>
                       </CardContent>
-                      <CardActions className="apply-btn">
+                      <CardActions className={classes.apply_btn_container}>
                         <ApplyModal
                           currentUser={currentUser}
                           jobApplying={jobApplying}

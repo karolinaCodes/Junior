@@ -275,7 +275,7 @@ export default function JobSearch(props) {
   return (
     <div className="page-container jobsearch-content">
       <div className="jobsearch-header-container">
-        <div class="jobsearch-img-container">
+        <div className="jobsearch-img-container">
           <img src="/images/crew.jpeg" alt="two people working on computer" />
         </div>
         <form className="jobsearch-search" onSubmit={handleSubmit}>

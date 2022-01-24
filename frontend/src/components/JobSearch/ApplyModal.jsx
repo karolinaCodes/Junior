@@ -134,7 +134,7 @@ export default function ApplyModal(props) {
             </div>
           ) : (
             <section className="apply-profile-bio">
-              <h1 id="job-title">Apply for {jobApplying.job_title}</h1>
+              <h1 id="job-title">Application for {jobApplying.job_title}</h1>
               <div className="apply-profile-data">
                 <div className="apply-profile-pic">
                   <img

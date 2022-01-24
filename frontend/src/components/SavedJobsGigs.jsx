@@ -42,7 +42,7 @@ export default function Applications(props) {
 
 	return (
 		<div className='application-content page-container'>
-			<Grid container xs={12} direction='column'>
+			<Grid container direction='column'>
 				<Grid
 					item
 					container

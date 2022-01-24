@@ -35,27 +35,32 @@ INSERT INTO job_postings (employer_id, job_title, company_desc, description, res
     '2022-01-11 21:05:44');
 INSERT INTO job_postings (employer_id,job_title,description,city,salary,job_type,is_remote, date_posted) VALUES (
     1,'Ruby on Rails Coordinator',
-    'Bring to the table win-win survival strategies to ensure proactive domination. At the end of the day, going forward, a new normal that has evolved from generation X is on the runway heading towards a streamlined cloud solution. User generated content in real-time will have multiple touchpoints for offshoring.',
+    'We are a custom software consulting and development shop specialized in MVPs and to help small to medium size startups build and grow their technical team. We work with a diverse range of clients from IOT, med-tech, AI, social media web applications, e-commerce and mobile applications and our technology stack of choice is Ruby on Rails on the back-end and ReactJS/ReactNative on front-end and mobile.
+    Currently we are looking for senior full-stack software engineer with Rails and ReactJS experience to grow our team. This is a permanent position for candidates located in Toronto.',
     'Toronto',5000000,'Full-time',true, '2022-01-12 21:05:44');
 
 INSERT INTO job_postings (employer_id,job_title,description,city,salary,job_type,is_remote, date_posted) VALUES (
     1,'JavaScript Developer',
-    'Capitalize on low hanging fruit to identify a ballpark value added activity to beta test. Override the digital divide with additional clickthroughs from DevOps. Nanotechnology immersion along the information highway will close the loop on focusing solely on the bottom line.',
+    'We are seeking an experienced Full-Stack JavaScript Developer with advanced knowledge of JavaScript, Node.js and frameworks like React and Angular. You will be a subject-matter expert due to your understanding of these frameworks and of the entire development process. You will contribute to a multidisciplinary web and mobile development team working with many talented engineers, developers, designers and QA analysts throughout Spiria.',
     'Vancouver',6000000,'Full-time',false, '2022-01-09 21:05:44');
 
 INSERT INTO job_postings (employer_id,job_title,description,city,salary,job_type,is_remote, date_posted) VALUES (
     1,'Front End Web Developer',
-    'Podcasting operational change management inside of workflows to establish a framework. Taking seamless key performance indicators offline to maximise the long tail. Keeping your eye on the ball while performing a deep dive on the start-up mentality to derive convergence on cross-platform integration.',
+    'You will work closely and collaboratively with our team consisting of developers, designers, and product owners to design and build new features and products. You will be shipping code used by hundreds of thousands of applicants per year.
+    We value strong developers who can work across all areas of the stack. As a growing startup, we’re able to provide a wide range of challenges and interesting projects, as well as giving our employees the opportunity to develop skills in areas that interest them.',
     'Burlington',5000000,'Full-time',true, '2022-01-04 21:05:44');
 
 INSERT INTO job_postings (employer_id,job_title,description,city,salary,job_type,is_remote, date_posted) VALUES (
     2,'UI Developer',
-    'Collaboratively administrate empowered markets via plug-and-play networks. Dynamically procrastinate B2C users after installed base benefits. Dramatically visualize customer directed convergence without revolutionary ROI.',
+    'As a Front-End Developer, you will be responsible for creating a best-in-class experience across Sunwing Travel Group’s web and mobile portfolio. You will work closely with designers and the development team to translate and integrate UI/UX mock-ups into responsive websites and applications for the Sunwing Travel Group.
+    You will have a strong commitment to collaborative problem-solving to implement complex design and deliver quality products. As a motivated team player with the ability to multi-task in a fast-paced environment, you will be proficient in working with multiple groups and departments across the organization.
+',
     'Waterloo',6000000,'Part-time',true, '2022-01-13 21:04:08');
 
 INSERT INTO job_postings (employer_id,job_title,description,city,salary,job_type,is_remote, date_posted) VALUES (
     2,'Entry Level Software Developer',
-    'Efficiently unleash cross-media information without cross-media value. Quickly maximize timely deliverables for real-time schemas. Dramatically maintain clicks-and-mortar solutions without functional solutions.',
+    'As an Entry Level Software Developer, you will be joining a team that is building brand new mobile banking application on the cloud. You will be responsible for developing the front end of the application in React and the back end API in Node.JS.
+',
     'Surrey',4000000,'Full-time',true, '2022-01-11 21:04:08');
 
 INSERT INTO job_postings (employer_id,job_title,description,city,salary,job_type,is_remote, date_posted) VALUES (
@@ -75,15 +80,16 @@ INSERT INTO job_postings (employer_id,job_title,description,city,salary,job_type
 
 INSERT INTO job_postings (employer_id,job_title,description,city,salary,job_type,is_remote, date_posted) VALUES (
     2,'Junior Full Stack Developer',
-    'Phosfluorescently engage worldwide methodologies with web-enabled technology. Interactively coordinate proactive e-commerce via process-centric "outside the box" thinking. Completely pursue scalable customer service through sustainable potentialities.',
+    'As a developer within clinets Digital team , you could be working on leading edge microservice APIs, supporting employees and growing our digital footprint - what you help build will be the underlying systems that help our team achieve better customer experiences. The services you will build will need to be both performant and resilient.',
     'Calgary',6500000,'Full-time',true, '2022-01-13 21:04:08');
     
 INSERT INTO job_postings (employer_id,job_title,description,city,salary,job_type,is_remote, date_posted) VALUES (
     2,'Junior Front-end Developer',
-    'Phosfluorescently engage worldwide methodologies with web-enabled technology. Interactively coordinate proactive e-commerce via process-centric "outside the box" thinking. Completely pursue scalable customer service through sustainable potentialities.',
+    'You will work closely and collaboratively with our team consisting of developers, designers, and product owners to design and build new features and products. You will be shipping code used by hundreds of thousands of applicants per year.
+',
     'Toronto',7000000,'Full-time',true, '2022-01-11 21:04:13');
 
 INSERT INTO job_postings (employer_id,job_title,description,city,salary,job_type,is_remote, date_posted) VALUES (
     2,'Junior Back-end Developer',
-    'Phosfluorescently engage worldwide methodologies with web-enabled technology. Interactively coordinate proactive e-commerce via process-centric "outside the box" thinking. Completely pursue scalable customer service through sustainable potentialities.',
+    'We are seeking a Full Stack JavaScript Developer to work on an exciting new web application. As a member of our software development team, your duties will include development and architecture of responsive web applications and RESTful APIs for eCommerce. This role is ideal for ambitious developers who enjoy working closely with a small team and feel confident in their technical ability to take ownership of full stack development.',
     'Toronto',6000000,'Full-time',true, '2022-01-10 21:04:13');

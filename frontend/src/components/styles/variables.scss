@@ -67,7 +67,11 @@ $margin6: 6vw;
 
   #login {
     @include outline;
-    margin-left: 2rem;
+    border: 2px solid $white;
+    color: $white;
+    font-weight: 600;
+    // margin-left: 2rem;
+    height: 43px;
 
     &:hover {
       color: $sand;
@@ -77,8 +81,10 @@ $margin6: 6vw;
 
   #signup {
     @include solid;
+    font-weight: 600;
     margin-right: 8rem;
     margin-left: 1rem;
+    height: 43px;
 
     &:hover {
       color: $sand;
@@ -92,5 +98,7 @@ $margin6: 6vw;
     font-weight: $bold;
     color: $blue;
     margin: 0 0 0 8rem;
+    display: flex;
+    align-items: center;
   }
 }

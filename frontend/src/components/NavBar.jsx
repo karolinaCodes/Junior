@@ -28,11 +28,7 @@ export default function NavBar(props) {
     <div className={navClassCheck()}>
       <Link id="logo" to="/">
         <img
-          src={
-            location.pathname === '/'
-              ? '/images/junior-logo-blue.png'
-              : '/images/junior-logo-white.png'
-          }
+          src="/images/Screen_Shot_2022-01-24_at_3.31.14_PM__2_-removebg-preview.png"
           id="logo-img"
         />
       </Link>

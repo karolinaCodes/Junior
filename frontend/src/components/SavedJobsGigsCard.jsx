@@ -69,7 +69,7 @@ export default function SavedJobsGigsCard(props) {
 							direction='row'
 							sx={{ justifyContent: 'space-between' }}
 						>
-							<Grid item xs>
+							<Grid item>
 								{<h3>{job_title}</h3>}
 								{city && (
 									<p>

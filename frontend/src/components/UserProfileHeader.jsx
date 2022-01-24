@@ -16,9 +16,10 @@ import {
 import ProfileMenu from '../components/ProfileMenu';
 
 export default function UserProfileHeader(props) {
-	const { setModalData, openModal, setOpenModal } = props;
+	const { setModalData, openModal, setOpenModal, setProfileView, profileView } =
+		props;
 	const { currentUser, setCurrentUser } = useContext(UserContext);
-	const [profileView, setProfileView] = useState('browse');
+	const [profileEdit, setProfileEdit] = useState(false);
 	const [editForm, setEditForm] = useState({
 		...currentUser,
 	});
@@ -47,14 +48,14 @@ export default function UserProfileHeader(props) {
 			.post(`/api/devs/edit`, editForm)
 			.then(res => {
 				setCurrentUser(prev => ({ ...prev, ...editForm }));
-				setProfileView('browse');
+				setProfileEdit(false);
 			})
 			.catch(err => console.log(err));
 	};
 
 	const editProfile = () => {
-		if (profileView !== 'edit') {
-			setProfileView('edit');
+		if (!profileEdit) {
+			setProfileEdit(true);
 		} else {
 			updateProfile();
 		}
@@ -69,7 +70,7 @@ export default function UserProfileHeader(props) {
 			></img>
 			<img id='portfolio-profile-pic' src={photo_url} alt='Avatar'></img>
 			<Grid container direction='row' className='profile-header'>
-				{profileView === 'edit' && (
+				{profileEdit === true && (
 					<form onSubmit={editProfile}>
 						<Grid item className='profile-name'>
 							<h4>{`${first_name} ${last_name}`}</h4>
@@ -120,11 +121,11 @@ export default function UserProfileHeader(props) {
 							sx={{ justifyContent: 'space-evenly' }}
 						>
 							<Chip label='Save' onClick={e => editProfile()} />
-							<Chip label='Cancel' onClick={e => setProfileView('browse')} />
+							<Chip label='Cancel' onClick={e => setProfileEdit(false)} />
 						</Grid>
 					</form>
 				)}
-				{profileView === 'browse' && (
+				{profileEdit === false && (
 					<Grid item container direction='column'>
 						<Grid item container>
 							<Grid
@@ -143,6 +144,8 @@ export default function UserProfileHeader(props) {
 										setModalData={setModalData}
 										openModal={openModal}
 										setOpenModal={setOpenModal}
+										setProfileView={setProfileView}
+										profileView={profileView}
 									/>
 								</Grid>
 							</Grid>

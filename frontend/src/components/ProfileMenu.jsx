@@ -15,7 +15,8 @@ import { IconButton } from '@mui/material';
 import { MoreVert } from '@mui/icons-material';
 
 export default function PositionedMenu(props) {
-	const { setModalData, openModal, setOpenModal } = props;
+	const { setModalData, openModal, setOpenModal, profileView, setProfileView } =
+		props;
 	const { currentUser } = useContext(UserContext);
 	const [anchorEl, setAnchorEl] = React.useState(null);
 	const open = Boolean(anchorEl);
@@ -65,6 +66,14 @@ export default function PositionedMenu(props) {
 					<div>
 						<MenuItem
 							onClick={e => {
+								setProfileView('projects');
+								handleClose();
+							}}
+						>
+							Portfolio
+						</MenuItem>
+						<MenuItem
+							onClick={e => {
 								setModalData(newProjectModal);
 								handleView();
 								handleClose();
@@ -75,6 +84,7 @@ export default function PositionedMenu(props) {
 						<MenuItem
 							onClick={e => {
 								// navigate('/profile/applications');
+								setProfileView('applications');
 								handleClose();
 							}}
 						>
@@ -83,10 +93,11 @@ export default function PositionedMenu(props) {
 						<MenuItem
 							onClick={e => {
 								// navigate('/saved');
+								setProfileView('saved');
 								handleClose();
 							}}
 						>
-							Saved
+							Saved Jobs
 						</MenuItem>
 					</div>
 				)}

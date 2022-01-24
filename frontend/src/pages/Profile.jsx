@@ -18,6 +18,8 @@ import UserProfileBio from '../components/UserProfileBio';
 import axios from 'axios';
 import { useLocation } from 'react-router-dom';
 import UserProjects from '../components/UserProjects';
+import UserApplications from '../components/UserApplications';
+import SavedPostings from '../components/SavedJobsGigs';
 
 export default function Profile() {
 	const { currentUser } = useContext(UserContext);
@@ -34,6 +36,7 @@ export default function Profile() {
 	});
 	const [openModal, setOpenModal] = useState(false);
 	const [modalData, setModalData] = useState();
+	const [profileView, setProfileView] = useState('projects');
 
 	const handleView = () => {
 		openModal === true ? setOpenModal(false) : setOpenModal(true);
@@ -61,12 +64,31 @@ export default function Profile() {
 	console.log('profile', profile);
 	console.log('profile.projects:', profile.projects);
 
+	const userProjects = (
+		<UserProjects
+			profile={profile}
+			setProfile={setProfile}
+			openModal={openModal}
+			setOpenModal={setOpenModal}
+			modalData={modalData}
+			setModalData={setModalData}
+			handleView={handleView}
+			projects={profile.projects}
+		/>
+	);
+
+	const userApplications = <UserApplications />;
+
+	const savedPostings = <SavedPostings />;
+
 	return (
 		<>
 			<UserProfileHeader
 				setModalData={setModalData}
 				openModal={openModal}
 				setOpenModal={setOpenModal}
+				profileView={profileView}
+				setProfileView={setProfileView}
 			/>
 			<div className='profile-content page-container'>
 				<UserProfileBio />
@@ -82,16 +104,9 @@ export default function Profile() {
 				)}
 				<section className='profile-cards'>
 					<Grid container>
-						<UserProjects
-							profile={profile}
-							setProfile={setProfile}
-							openModal={openModal}
-							setOpenModal={setOpenModal}
-							modalData={modalData}
-							setModalData={setModalData}
-							handleView={handleView}
-							projects={profile.projects}
-						/>
+						{profileView === 'projects' && userProjects}
+						{profileView === 'applications' && userApplications}
+						{profileView === 'saved' && savedPostings}
 					</Grid>
 				</section>
 				<Dialog

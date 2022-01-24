@@ -14,11 +14,15 @@
 	}
 }
 
-.application-cards, .profile-cards {
+.profile-cards {
 	flex-direction: column;
 	justify-content: space-between;
 	text-align: justify;
 	overflow-wrap: break-word;
+	margin-right: 7vw;
+	#saved {
+		min-width: 70%;
+	}
 	.MuiCardActionArea-root {
 		cursor: pointer;
 	}
@@ -36,7 +40,7 @@
 		h1 {
 			margin-top: 0;
 		}
-		
+
 		p {
 			margin-bottom: 0;
 		}
@@ -60,7 +64,7 @@
 		text-align: center;
 		flex-direction: column;
 		max-width: $profile-sm;
-  }
+	}
 	.profile-info {
 		min-width: 400px;
 	}

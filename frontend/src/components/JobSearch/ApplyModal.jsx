@@ -37,6 +37,7 @@ const useStyles = makeStyles({
     display: 'flex;',
     'justify-content': 'center;',
   },
+
   edit: {
     color: '#182c5b',
     border: '2px solid #182c5b',
@@ -53,6 +54,18 @@ const useStyles = makeStyles({
     position: 'absolute',
     right: 0,
     margin: '10px',
+  },
+
+  more_jobs: {
+    color: '#182c5b',
+    border: '2px solid #182c5b',
+    'text-transform': 'none',
+    'font-weight': 700,
+  },
+
+  view_application: {
+    background: '#182c5b',
+    'text-transform': 'none',
   },
 });
 
@@ -142,10 +155,11 @@ export default function ApplyModal(props) {
               <p id="submitted-msg">Application Submitted!</p>
               <div id="submitted-actions">
                 <Button
-                  variant="contained"
+                  variant="outlined"
                   onClick={() => {
                     handleView();
                   }}
+                  className={classes.more_jobs}
                 >
                   Search More Jobs
                 </Button>
@@ -154,6 +168,7 @@ export default function ApplyModal(props) {
                   onClick={() => {
                     navigate('/profile/applications');
                   }}
+                  className={classes.view_application}
                 >
                   View Application
                 </Button>

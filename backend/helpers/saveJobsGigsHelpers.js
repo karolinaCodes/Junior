@@ -5,7 +5,7 @@ module.exports = db => {
     const q1 = {
       text: `SELECT saved_jobs.*, job_postings.*, employers.*,
       trim(to_char(salary/100, '999,999,990')) as formatted_salary,
-      to_char(date_posted,'FMMonth DD, YYYY') as formatted_date,
+      to_char(date_posted,'FMMonth FMDD, YYYY') as formatted_date,
       CONCAT(job_postings.city,', Canada') as posting_location
       FROM saved_jobs
       JOIN job_postings
@@ -19,7 +19,7 @@ module.exports = db => {
     const q2 = {
       text: `SELECT saved_gigs.*, gig_postings.*, employers.*,
       trim(to_char(pay/100, '999,999,990')) as formatted_pay,
-      to_char(date_posted,'FMMonth DD, YYYY') as formatted_deadline_date
+      to_char(date_posted,'FMMonth FMDD, YYYY') as formatted_deadline_date
       FROM saved_gigs
       JOIN gig_postings
       ON saved_gigs.gig_posting_id = gig_postings.id

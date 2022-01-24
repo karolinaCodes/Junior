@@ -14,8 +14,8 @@ module.exports = db => {
         employers.email as employer_email, company_name, employers.bio as employer_bio, employers.photo_url as employer_photo_url,
         junior_devs.email as dev_email, first_name, last_name,phone_number,headline, junior_devs.bio as dev_bio, junior_devs.photo_url as dev_photo_url,
         trim(to_char(salary/100, '999,999,990')) as formatted_salary,
-        to_char(date_posted,'FMMonth DD, YYYY') as formatted_date,
-        to_char(date_applied,'FMMonth DD, YYYY') as formatted_date_applied
+        to_char(date_posted,'FMMonth FMDD, YYYY') as formatted_date,
+        to_char(date_applied,'FMMonth FMDD, YYYY') as formatted_date_applied
         FROM job_applications
         JOIN job_postings ON job_applications.job_posting_id = job_postings.id
         JOIN employers ON job_postings.employer_id = employers.id

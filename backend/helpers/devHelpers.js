@@ -73,8 +73,8 @@ module.exports = db => {
         junior_devs.email as dev_email, first_name, last_name,phone_number, headline, junior_devs.bio as dev_bio, junior_devs.photo_url as dev_photo_url,
 				CONCAT(job_postings.city,', Canada') as posting_location,
         trim(to_char(salary/100, '999,999,990')) as formatted_salary,
-        to_char(date_posted,'FMMonth DD, YYYY') as formatted_date,
-        to_char(date_applied,'FMMonth DD, YYYY') as formatted_date_applied
+        to_char(date_posted,'FMMonth FMDD, YYYY') as formatted_date,
+        to_char(date_applied,'FMMonth FMDD, YYYY') as formatted_date_applied
         FROM job_applications
         JOIN job_postings ON job_applications.job_posting_id = job_postings.id
         JOIN junior_devs ON job_applications.junior_dev_id = junior_devs.id
@@ -97,9 +97,9 @@ module.exports = db => {
         trim(to_char(pay/100, '999,999,990')) as formatted_pay,
         employers.email as employer_email, company_name, employers.bio as employer_bio, employers.photo_url as employer_photo_url,
         junior_devs.email as dev_email, first_name, last_name,phone_number, headline, junior_devs.bio as dev_bio, junior_devs.photo_url as dev_photo_url,
-        to_char(date_posted,'FMMonth DD, YYYY') as formatted_date,
-        to_char(deadline,'FMMonth DD, YYYY') as formatted_deadline,
-        to_char(date_applied,'FMMonth DD, YYYY') as formatted_date_applied
+        to_char(date_posted,'FMMonth FMDD, YYYY') as formatted_date,
+        to_char(deadline,'FMMonth FMDD, YYYY') as formatted_deadline,
+        to_char(date_applied,'FMMonth FMDD, YYYY') as formatted_date_applied
         FROM gig_applications
         JOIN gig_postings ON gig_applications.gig_posting_id = gig_postings.id
         JOIN junior_devs ON gig_applications.junior_dev_id = junior_devs.id

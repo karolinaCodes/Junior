@@ -53,6 +53,7 @@ const useStyles = makeStyles({
     position: 'absolute',
     right: 0,
     margin: '10px',
+    top: 0,
   },
 
   more_jobs: {

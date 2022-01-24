@@ -88,7 +88,7 @@ export default function GigView(props) {
           </Button>
         </div>
         <h1 id="gig-jobtitle">{gigPosting.job_title}</h1>
-        <p>
+        <p className="posted-on">
           <em>Posted on January 30, 2022</em>
         </p>
         <div className="gig-img-container">

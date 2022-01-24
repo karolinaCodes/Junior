@@ -2,8 +2,7 @@ INSERT INTO job_postings (employer_id, job_title, company_desc, description, res
     1,
     'React Developer',
     'At Tweeter, we hustle, we grind and we grow. As the team members that make up #TweeterForce, we care, we compete and we support each other every day. We’re on a mission to deliver a best-in-class client experience driven by technology, data, and of course, our people.
-   As the leading provider of website, analytics and virtual events solutions to investor relations and the capital markets, Tweeter is a trusted partner to over 2,400 of the world’s most successful public companies and institutions – and we are growing at an incredible pace. We’re on our way to becoming the largest capital markets platform company in the world. That’s where you come in.
-   We hire smart, curious, and talented people to push boundaries, reimagine what’s possible and turn challenges into opportunities, all while keeping the needs of our clients at the heart of everything we do.',
+   As the leading provider of website, analytics and virtual events solutions to investor relations and the capital markets, Tweeter is a trusted partner to over 2,400 of the world’s most successful public companies and institutions – and we are growing at an incredible pace. We’re on our way to becoming the largest capital markets platform company in the world. That’s where you come in.',
     'We are looking for a Front-End Web and Mobile Developer motivated to combine the art of design with the art of programming. Responsibilities will include translating UI/UX design wireframes to actual code to produce visual elements of the application. You will work with the UI/UX designer and bridge the gap between graphical design and technical implementation, taking an active role on both sides and defining how the application looks as well as how it works.',
     'Ensuring user experience determines design choices.
     Developing features to enhance the user experience.
@@ -12,14 +11,14 @@ INSERT INTO job_postings (employer_id, job_title, company_desc, description, res
     Building reusable code for future use.
     Optimizing mobile applications for maximum speed and scalability.
     Maintaining brand consistency throughout the design.',
-    'Proficient understanding of :
-    React Native
-    Objective C & Swift for iOS applications
-    ReactJS
+    'Proficient understanding of:/
+    - React Native/
+    - Objective C & Swift for iOS applications/
+    - ReactJS/
     Web markup, including HTML5, CSS and preprocessors
-    Client-side scripting and debugging using JavaScript and Typescript with libraries and their interactions with RESTful APIs.
-    Cross-browser compatibility issues and ways to work around them.
-    Code versioning tools, such as Git.', 
+    - Client-side scripting and debugging using JavaScript and Typescript with libraries and their interactions with RESTful APIs./
+    - Cross-browser compatibility issues and ways to work around them./
+    - Code versioning tools, such as Git.', 
     'Casual dress
     Company events
     Dental care
@@ -28,7 +27,7 @@ INSERT INTO job_postings (employer_id, job_title, company_desc, description, res
     Paid time off
     RRSP match
     Vision care
-    Work from home',
+    Work from home.',
     'Toronto',
     4500000,
     'Full-time',

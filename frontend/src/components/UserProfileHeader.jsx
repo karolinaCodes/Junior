@@ -1,13 +1,19 @@
 import './styles/UserProfileHeader.scss';
 
-import { Chip, Grid, Input, TextField } from '@mui/material';
+import { Chip, Grid, Input, TextField, IconButton } from '@mui/material';
 import { useState } from 'react';
 import axios from 'axios';
 import { minHeight } from '@mui/system';
 import { useContext } from 'react';
 import { UserContext } from '../Providers/userProvider';
 import { useEffect } from 'react';
-import { PersonPinCircle, PhoneAndroid, Email } from '@mui/icons-material';
+import {
+	PersonPinCircle,
+	PhoneAndroid,
+	Email,
+	MoreVert,
+} from '@mui/icons-material';
+import ProfileMenu from '../components/ProfileMenu';
 
 export default function UserProfileHeader() {
 	const { currentUser, setCurrentUser } = useContext(UserContext);
@@ -119,9 +125,22 @@ export default function UserProfileHeader() {
 				)}
 				{profileView === 'browse' && (
 					<Grid item container direction='column'>
-						<Grid item id='profile-name'>
-							<h1>{`${first_name} ${last_name}`}</h1>
-							<h3>{headline}</h3>
+						<Grid item container>
+							<Grid
+								item
+								container
+								direction='row'
+								sx={{ justifyContent: 'space-between' }}
+								id='profile-name'
+							>
+								<Grid item xs>
+									<h1>{`${first_name} ${last_name}`}</h1>
+									<h3>{headline}</h3>
+								</Grid>
+								<Grid item id='kebab' sx={{ justifySelf: 'flex-end' }}>
+									<ProfileMenu />
+								</Grid>
+							</Grid>
 						</Grid>
 						<Grid
 							item

@@ -13,7 +13,7 @@ import {
 	CardContent,
 } from '@mui/material';
 import { useContext, useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useLocation } from 'react-router-dom';
 import ApplicationCard from '../components/ApplicationCard';
 import ApplicationModal from '../components/ApplicationModal';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
@@ -24,49 +24,44 @@ import { UserContext } from '../Providers/userProvider';
 export default function Applications(props) {
 	const { currentUser } = useContext(UserContext);
 	// Get the posting id from url
-	// const {employerid, posttype, postid} = useParams();
-	const { posttype, postid } = useParams();
+	// const { postType, postId } = useParams();
 	// path="/:employerid/:type/:posting_id/applications"
 	// Declare job or gig
 
-	const [profile, setProfile] = useState({
-		employer: {},
-	});
+	const { postType, postId } = props.applications;
+	const { employer, profileView, setProfileView } = props;
+
+	console.log(`type ${postType}, id ${postId}`);
 	const [posting, setPosting] = useState({
 		posting: {},
 		applications: [''],
 	});
 
-	// TESTING
-	const employerid = 1;
-	// TESTING
+	const location = useLocation();
+	console.log('location', location);
 
 	useEffect(() => {
-		const employerUrl = `/api/employers/${employerid}`;
-		const postingUrl = `/api/${posttype}_postings/${postid}`;
-		const applicationsUrl = `/api/${posttype}_postings/${postid}/applications`;
-		Promise.all([
-			axios.get(employerUrl),
-			axios.get(postingUrl),
-			axios.get(applicationsUrl),
-		]).then(all => {
-			const [employerData, postingData, applicationsData] = all;
-			setProfile(prev => ({ ...prev, employer: employerData.data }));
-			setPosting(prev => ({
-				...prev,
-				posting: postingData.data,
-				applications: applicationsData.data,
-			}));
-		});
-	}, []);
+		const postingUrl = `/api/${postType}_postings/${postId}`;
+		const applicationsUrl = `/api/${postType}_postings/${postId}/applications`;
+		Promise.all([axios.get(postingUrl), axios.get(applicationsUrl)]).then(
+			all => {
+				const [postingData, applicationsData] = all;
+				setPosting(prev => ({
+					...prev,
+					posting: postingData.data,
+					applications: applicationsData.data,
+				}));
+			}
+		);
+	}, [profileView]);
 
 	const applicationsArray = posting.applications;
 	const parsedApplications = applicationsArray.map(application => {
 		console.log(application);
 		return (
-			<Grid item xs={12} md={6} key={'Application-grid-' + application.pid}>
+			<Grid item xs={12} md={6} key={'Application-grid-' + application.app_id}>
 				<Card className='card-click'>
-					<ApplicationCard type={posttype} {...application} />
+					<ApplicationCard type={postType} {...application} />
 				</Card>
 			</Grid>
 		);
@@ -75,9 +70,15 @@ export default function Applications(props) {
 	return (
 		<div className='application-content page-container'>
 			<Grid container direction='column'>
-				<h1>Applications</h1>
-				<p>Total applications: {posting.applications.length}</p>
 				<section className='application-cards'>
+					<Grid item>
+						<Button
+							id='applications-back-button'
+							onClick={e => setProfileView('postings')}
+						>
+							Back
+						</Button>
+					</Grid>
 					<Grid container item>
 						{parsedApplications}
 					</Grid>

@@ -20,6 +20,16 @@
 	text-align: justify;
 	overflow-wrap: break-word;
 	margin-right: 7vw;
+	.MuiCardHeader-title {
+		text-align: left;
+		font-size: 1.3rem;
+	}
+	.MuiCardHeader-root {
+		padding-bottom: 0;
+	}
+	// .MuiCardContent-root {
+	// 	padding-top: 0;
+	// }
 	#saved {
 		min-width: 70%;
 	}
@@ -43,6 +53,7 @@
 
 		p {
 			margin-bottom: 0;
+			margin-top: 0;
 		}
 		img {
 			max-width: 500px;

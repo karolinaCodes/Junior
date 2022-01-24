@@ -24,8 +24,8 @@ module.exports = db => {
 			.catch(err => err);
 	};
 
-  // Job and gig posting by employer ID //
-  const getJobPostingsByEmployerId = id => {
+	// Job and gig posting by employer ID //
+	const getJobPostingsByEmployerId = id => {
 		const query = {
 			text: `SELECT job_postings.id as job_posting_id, 
 				employer_id, company_name, email, bio, employers.photo_url as employer_photo_url, 
@@ -85,7 +85,7 @@ module.exports = db => {
 			.catch(err => err);
 	};
 
-  // Job and gig applications by employer id //
+	// Job and gig applications by employer id //
 	const getAllJobApplicationsForEmployer = id => {
 		const query = {
 			text: `SELECT job_applications.*, job_applications.id as app_id, job_postings.*, job_postings.id as post_id, employers.id as employer_id,
@@ -109,7 +109,7 @@ module.exports = db => {
 			.catch(err => err);
 	};
 
-  const getAllGigApplicationsForEmployer = id => {
+	const getAllGigApplicationsForEmployer = id => {
 		const query = {
 			text: `SELECT gig_applications.*, gig_applications.id as app_id, gig_postings.id as post_id, employers.id as employer_id,
         junior_devs.id as dev_id, junior_devs.email as dev_email, first_name, last_name, junior_devs.bio as dev_bio, junior_devs.photo_url as dev_photo_url,
@@ -132,12 +132,35 @@ module.exports = db => {
 			.catch(err => err);
 	};
 
+	const editEmployerProfile = params => {
+		const query = {
+			text: `UPDATE employers
+				SET email = $1,
+				company_name = $2,
+				bio = $3
+				WHERE id = $4
+				RETURNING *
+				`,
+			values: [
+				params.email,
+				params.company_name,
+				params.bio,
+				params.employer_id,
+			],
+		};
+		return db
+			.query(query)
+			.then(result => console.log(result))
+			.catch(err => err);
+	};
+
 	return {
 		getEmployers,
 		getEmployerById,
-    getJobPostingsByEmployerId,
-    getGigPostingsByEmployerId,
-    getAllJobApplicationsForEmployer,
-    getAllGigApplicationsForEmployer,
-  };
+		getJobPostingsByEmployerId,
+		getGigPostingsByEmployerId,
+		getAllJobApplicationsForEmployer,
+		getAllGigApplicationsForEmployer,
+		editEmployerProfile,
+	};
 };

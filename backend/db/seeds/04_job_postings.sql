@@ -59,8 +59,12 @@ INSERT INTO job_postings (employer_id,job_title,description,city,salary,job_type
 
 INSERT INTO job_postings (employer_id,job_title,description,city,salary,job_type,is_remote, date_posted) VALUES (
     2,'Software Developer',
+<<<<<<< HEAD
     'As an Entry Level Software Developer, you will be joining a team that is building brand new mobile banking application on the cloud. You will be responsible for developing the front end of the application in React and the back end API in Node.JS.
 ',
+=======
+    'Efficiently unleash cross-media information without cross-media value. Quickly maximize timely deliverables for real-time schemas. Dramatically maintain clicks-and-mortar solutions without functional solutions.',
+>>>>>>> feature/employer-profile-page
     'Surrey',4000000,'Full-time',true, '2022-01-11 21:04:08');
 
 INSERT INTO job_postings (employer_id,job_title,description,city,salary,job_type,is_remote, date_posted) VALUES (

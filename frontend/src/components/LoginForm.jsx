@@ -32,7 +32,7 @@ export default function Login(props) {
 
 	useEffect(() => {
 		if (currentUser.company_name) {
-			navigate('/employerprofile');
+			navigate(`/employer/${currentUser.id}`);
 		} else {
 			navigate(`/dev/${currentUser.id}`);
 		}

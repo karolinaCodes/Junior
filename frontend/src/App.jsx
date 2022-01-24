@@ -8,7 +8,6 @@ import NewJobPost from './components/NewJobPost.jsx';
 import NewGigPost from './components/NewGigPost';
 import Profile from './pages/Profile.jsx';
 import EmployerProfile from './pages/EmployerProfile.jsx';
-import EmployerPublic from './pages/EmployerPublic.jsx';
 import NavBar from './components/NavBar.jsx';
 import GigView from './pages/JobSearch/GigView';
 import JobView from './pages/JobSearch/JobView.jsx';
@@ -16,6 +15,7 @@ import PortfolioModal from './components/PortfolioModal';
 import ApplyModal from './components/JobSearch/ApplyModal';
 import NewProjectPost from './components/NewProjectPost.jsx';
 import ApplicationsTest from './pages/TestApplications.jsx';
+import Applications from './components/Applications.jsx';
 import { UserContext } from './Providers/userProvider.jsx';
 import Footer from './components/Footer';
 import SavedJobsGigs from './pages/SavedJobsGigs';
@@ -52,8 +52,7 @@ function App() {
 					}
 				/>
 				<Route path='/dev/:dev_id' element={<Profile />} />
-				<Route path='/employerprofile' element={<EmployerProfile />} />
-				<Route path='/employer/:id' element={<EmployerPublic />} />
+				<Route path='/employer/:employer_id' element={<EmployerProfile />} />
 				<Route path='/jobs' element={<JobSearch />} />
 				<Route path='/newproject' element={<NewProjectPost />} />
 				<Route path='/newjob' element={<NewJobPost />} />
@@ -62,10 +61,10 @@ function App() {
 				<Route path='/applymodal' element={<ApplyModal />} />
 				<Route path='/gig/:gig_id' element={<GigView />} />
 				<Route path='/job/:job_id' element={<JobView />} />
-				{/* <Route
-					path='/employerprofile/:posttype/:postid/applications'
+				<Route
+					path='/employer/:posttype/:postid/applications'
 					element={<Applications />}
-				/> */}
+				/>
 				<Route path='/testapps' element={<ApplicationsTest />} />
 				<Route path='/saved' element={<SavedJobsGigs />} />
 				<Route path='/acceptedgigs' element={<UserAcceptedGigs />} />

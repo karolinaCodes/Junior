@@ -16,7 +16,7 @@ import {
 import PortfolioCard from '../components/PortfolioCard';
 import PortfolioModal from '../components/PortfolioModal';
 import UserProfileHeader from '../components/UserProfileHeader';
-import UserProfileBio from '../components/UserProfileBio'
+import UserProfileBio from '../components/UserProfileBio';
 import NewProjectPost from '../components/NewProjectPost';
 import axios from 'axios';
 import { useLocation } from 'react-router-dom';
@@ -76,7 +76,7 @@ export default function Profile() {
 				item
 				xs={1}
 				sm={6}
-				md={4}
+				md={3}
 				key={'Project-grid-' + project.project_id}
 			>
 				<Grid
@@ -129,42 +129,46 @@ export default function Profile() {
 
 	const newProjectModal = <NewProjectPost />;
 
-  return (
-    <>
-    <UserProfileHeader />
-    <div className="profile-content page-container">
-      <UserProfileBio />
-      {profile.projects.length === 0 && <h1>No projects added</h1>}
-      {goBack && (
-        <Button
-        variant="contained"  
-        color="primary" onClick={() => navigate(-1)}>Back to search results</Button>
-      )}
-      <section className="profile-cards">
-      <Button
-        onClick={() => {
-          setModalData(newProjectModal);
-          handleView();
-        }}
-      >
-        Hey
-      </Button>
-        <Grid container>
-          <Grid item xs={12} id="profile-title">
-            <h1>{`${first_name} ${last_name}`} Portfolio:</h1>
-          </Grid>
-          {parsedProjects}
-        </Grid>
-      </section>
-      <Dialog
-        open={openModal}
-        onClose={handleView}
-        fullWidth={true}
-        maxWidth={'md'}
-      >
-        <Box className="portfolio-modal">{modalData}</Box>
-      </Dialog>
-    </div>
-    </>
-  );
+	return (
+		<>
+			<UserProfileHeader />
+			<div className='profile-content page-container'>
+				<UserProfileBio />
+				{profile.projects.length === 0 && <h1>No projects added</h1>}
+				{goBack && (
+					<Button
+						variant='contained'
+						color='primary'
+						onClick={() => navigate(-1)}
+					>
+						Back to search results
+					</Button>
+				)}
+				<section className='profile-cards'>
+					<Button
+						onClick={() => {
+							setModalData(newProjectModal);
+							handleView();
+						}}
+					>
+						Hey
+					</Button>
+					<Grid container>
+						<Grid item xs={12} id='profile-title'>
+							<h1>{`${first_name} ${last_name}`} Portfolio:</h1>
+						</Grid>
+						{parsedProjects}
+					</Grid>
+				</section>
+				<Dialog
+					open={openModal}
+					onClose={handleView}
+					fullWidth={true}
+					maxWidth={'md'}
+				>
+					<Box className='portfolio-modal'>{modalData}</Box>
+				</Dialog>
+			</div>
+		</>
+	);
 }

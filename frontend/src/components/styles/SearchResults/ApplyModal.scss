@@ -45,11 +45,14 @@
   border-radius: 50%;
   max-width: 200px;
   margin-bottom: 20px;
+  border: 3px solid #182c5b;
+  box-shadow: 0px 3px 8px rgba(8, 35, 48, 0.5);
 }
 
 .apply-profile-data {
   display: flex;
   justify-content: space-around;
+  flex-direction: column;
 }
 
 .apply-profile-pic {
@@ -66,6 +69,7 @@
 .apply-phone-city {
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 #city {
@@ -78,31 +82,26 @@
 
 .apply-profile-bio {
   margin-bottom: 40px;
+  max-width: 660px;
 }
 
 #apply-name {
-  margin-bottom: 10px;
+  font-size: 30px;
 }
 
 #apply-headline {
   margin: 8px 0;
 }
-
-#apply-phone,
-#apply-city,
-#apply-email {
-  margin: 8px 0;
+#apply-name-headline {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
-
-// #apply-email {
-//   margin:
-// }
 
 .apply-user-info {
   h4 {
     margin: 10px 0;
   }
-  margin: 0 0 0 40px;
 }
 
 .btn-container {
@@ -130,4 +129,17 @@
   display: flex;
   justify-content: space-between;
   gap: 10px;
+}
+
+.apply-text-icon {
+  display: flex;
+  align-items: center;
+  h3,
+  h4 {
+    margin-left: 5px;
+  }
+}
+
+#submitted-msg {
+  font-weight: 700;
 }

@@ -1,15 +1,24 @@
-import {useState} from 'react';
+import {useState, useContext} from 'react';
 import axios from 'axios';
 import '../styles/SearchResults/ApplyModal.scss';
+
+// mui //
 import {Button, Box, Dialog} from '@mui/material';
-import LocalPhoneOutlinedIcon from '@mui/icons-material/LocalPhoneOutlined';
+import {makeStyles} from '@mui/styles';
+
+// icons //
 import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
 import FmdGoodOutlinedIcon from '@mui/icons-material/FmdGoodOutlined';
-import {FiGithub} from 'react-icons/fi';
-import {AiOutlineFolderOpen, AiOutlineLinkedin} from 'react-icons/ai';
+import CancelOutlinedIcon from '@mui/icons-material/CancelOutlined';
+import LocalPhoneIcon from '@mui/icons-material/LocalPhone';
+import GitHubIcon from '@mui/icons-material/GitHub';
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import FolderIcon from '@mui/icons-material/Folder';
+
+// react-router
 import {useNavigate} from 'react-router-dom';
-import {makeStyles} from '@mui/styles';
-import {useContext} from 'react';
+
+// context //
 import {UserContext} from '../../Providers/userProvider.jsx';
 
 const useStyles = makeStyles({
@@ -23,10 +32,40 @@ const useStyles = makeStyles({
   },
 
   apply_modal: {
-    'background-color': '#182c5b',
-    color: 'white',
+    'background-color': '#EEF3F9',
+    color: '#182c5b',
     display: 'flex;',
     'justify-content': 'center;',
+  },
+
+  edit: {
+    color: '#182c5b',
+    border: '2px solid #182c5b',
+    'text-transform': 'none',
+    'font-weight': 700,
+  },
+
+  submit: {
+    background: '#182c5b',
+    'text-transform': 'none',
+  },
+
+  exit_btn: {
+    position: 'absolute',
+    right: 0,
+    margin: '10px',
+  },
+
+  more_jobs: {
+    color: '#182c5b',
+    border: '2px solid #182c5b',
+    'text-transform': 'none',
+    'font-weight': 700,
+  },
+
+  view_application: {
+    background: '#182c5b',
+    'text-transform': 'none',
   },
 });
 
@@ -108,6 +147,7 @@ export default function ApplyModal(props) {
         onClose={handleView}
         fullWidth={true}
         maxWidth={applicationSubmitted ? 'sm' : 'md'}
+        className={classes.dialog}
       >
         <Box className={classes.apply_modal} id="apply-modal">
           {applicationSubmitted ? (
@@ -115,10 +155,11 @@ export default function ApplyModal(props) {
               <p id="submitted-msg">Application Submitted!</p>
               <div id="submitted-actions">
                 <Button
-                  variant="contained"
+                  variant="outlined"
                   onClick={() => {
                     handleView();
                   }}
+                  className={classes.more_jobs}
                 >
                   Search More Jobs
                 </Button>
@@ -127,6 +168,7 @@ export default function ApplyModal(props) {
                   onClick={() => {
                     navigate('/profile/applications');
                   }}
+                  className={classes.view_application}
                 >
                   View Application
                 </Button>
@@ -134,7 +176,7 @@ export default function ApplyModal(props) {
             </div>
           ) : (
             <section className="apply-profile-bio">
-              <h1 id="job-title">Apply for {jobApplying.job_title}</h1>
+              <h1 id="job-title">Application for {jobApplying.job_title}</h1>
               <div className="apply-profile-data">
                 <div className="apply-profile-pic">
                   <img
@@ -142,24 +184,30 @@ export default function ApplyModal(props) {
                     src={currentUser.photo_url}
                     alt="Avatar"
                   ></img>
-                  <button onClick={navigateToProfile}>Profile</button>
                 </div>
                 <div className="apply-user-info">
-                  <h1 id="apply-name">{`${currentUser.first_name} ${currentUser.last_name}`}</h1>
-                  <h2 id="apply-headline">
-                    {currentUser.headline ? currentUser.headline : 'N/A'}
-                  </h2>
-                  <div className="apply-phone-city">
-                    <LocalPhoneOutlinedIcon />
-                    <h3 id="apply-phone"> {currentUser.phone_number}</h3>
-                    <EmailOutlinedIcon />
-                    <h3 id="apply-email"> {currentUser.email}</h3>
-                    <FmdGoodOutlinedIcon />
-
-                    <h3 id="apply-city"> {currentUser.city}, Canada</h3>
+                  <div id="apply-name-headline">
+                    <h1 id="apply-name">{`${currentUser.first_name} ${currentUser.last_name}`}</h1>
+                    <h2 id="apply-headline">
+                      {currentUser.headline ? currentUser.headline : 'N/A'}
+                    </h2>
                   </div>
-                  <div>
-                    <FiGithub />
+                  <div className="apply-phone-city">
+                    <div className="apply-text-icon">
+                      <LocalPhoneIcon />
+                      <h3 id="apply-phone"> {currentUser.phone_number}</h3>
+                    </div>
+                    <div className="apply-text-icon">
+                      <EmailOutlinedIcon />
+                      <h3 id="apply-email"> {currentUser.email}</h3>
+                    </div>
+                    <div className="apply-text-icon">
+                      <FmdGoodOutlinedIcon />
+                      <h3 id="apply-city"> {currentUser.city}, Canada</h3>
+                    </div>
+                  </div>
+                  <div className="apply-text-icon">
+                    <GitHubIcon />
                     <h4>Github</h4>
                   </div>
                   <a
@@ -168,8 +216,10 @@ export default function ApplyModal(props) {
                     {currentUser.github_url ? currentUser.github_url : 'N/A'}
                   </a>
                   <div>
-                    <AiOutlineFolderOpen />
-                    <h4>Resume Link </h4>
+                    <div className="apply-text-icon">
+                      <FolderIcon />
+                      <h4>Resume Link </h4>
+                    </div>
                     <a
                       href={
                         currentUser.resume_url ? currentUser.resume_url : ''
@@ -179,8 +229,10 @@ export default function ApplyModal(props) {
                     </a>
                   </div>
                   <div>
-                    <AiOutlineLinkedin />
-                    <h4>LinkedIn</h4>
+                    <div className="apply-text-icon">
+                      <LinkedInIcon />
+                      <h4>LinkedIn</h4>
+                    </div>
                     <a
                       href={
                         currentUser.linkedin_url ? currentUser.linkedin_url : ''
@@ -193,13 +245,21 @@ export default function ApplyModal(props) {
                   </div>
                   <div className="btn-container">
                     {applicationSubmitted ? null : (
-                      <Button variant="contained" onClick={submitApplication}>
-                        Submit Application
+                      <Button
+                        variant="outlined"
+                        onClick={navigateToProfile}
+                        className={classes.edit}
+                      >
+                        Edit Profile
                       </Button>
                     )}
-                    {!applicationSubmitted && (
-                      <Button onClick={handleView} variant="contained">
-                        Close
+                    {applicationSubmitted ? null : (
+                      <Button
+                        variant="contained"
+                        onClick={submitApplication}
+                        className={classes.submit}
+                      >
+                        Submit Application
                       </Button>
                     )}
                   </div>
@@ -207,6 +267,10 @@ export default function ApplyModal(props) {
               </div>
             </section>
           )}
+          <CancelOutlinedIcon
+            onClick={handleView}
+            className={classes.exit_btn}
+          />
         </Box>
       </Dialog>
     </div>

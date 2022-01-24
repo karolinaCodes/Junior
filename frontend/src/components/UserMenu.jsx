@@ -75,7 +75,7 @@ export default function PositionedMenu(props) {
 					<div>
 						<MenuItem
 							onClick={e => {
-								navigate('/profile');
+								navigate(`/dev/${currentUser.id}`);
 								handleClose();
 							}}
 						>

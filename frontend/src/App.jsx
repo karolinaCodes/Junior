@@ -51,7 +51,7 @@ function App() {
 						/>
 					}
 				/>
-				<Route path='/profile' element={<Profile />} />
+				<Route path='/dev/:dev_id' element={<Profile />} />
 				<Route path='/employerprofile' element={<EmployerProfile />} />
 				<Route path='/employer/:id' element={<EmployerPublic />} />
 				<Route path='/jobs' element={<JobSearch />} />

@@ -1,5 +1,5 @@
 import './styles/UserProfileBio.scss';
-
+import { useParams } from 'react-router-dom';
 import { Chip, Grid, Input, TextField } from '@mui/material';
 import { useState } from 'react';
 import axios from 'axios';
@@ -21,9 +21,7 @@ export default function UserProfileHeader(props) {
 
 	const { resume_url, github_url, linkedin_url, bio, id } = currentUser;
 
-	/* 
-
-	*/
+	const { dev_id } = props;
 
 	const updateProfile = () => {
 		axios
@@ -105,19 +103,21 @@ export default function UserProfileHeader(props) {
 							<a href={resume_url}>Resume</a>
 						</h4>
 						<h4>
-							<a href={github_url ? github_url : 'N/A'}>Guthub</a>
+							<a href={github_url ? github_url : 'N/A'}>Github</a>
 						</h4>
 						<h4>
 							<a href={linkedin_url ? linkedin_url : 'N/A'}>LinkedIn</a>
 						</h4>
 					</Grid>
-					<Grid
-						item
-						className='profile-buttons'
-						sx={{ justifyContent: 'space-evenly' }}
-					>
-						<Chip onClick={e => editProfile()} label='Edit Info' />
-					</Grid>
+					{id == dev_id && (
+						<Grid
+							item
+							className='profile-buttons'
+							sx={{ justifyContent: 'space-evenly' }}
+						>
+							<Chip onClick={e => editProfile()} label='Edit Info' />
+						</Grid>
+					)}
 				</>
 			)}
 		</Grid>

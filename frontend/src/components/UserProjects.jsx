@@ -39,9 +39,6 @@ export default function UserProjects(props) {
 
 	const { first_name, last_name, id } = currentUser;
 
-	console.log('profile', profile);
-	console.log('profile.projects:', profile.projects);
-
 	const projectsArray = projects;
 	// const parsedProjects = 'Test';
 	const parsedProjects = projectsArray.map(project => {

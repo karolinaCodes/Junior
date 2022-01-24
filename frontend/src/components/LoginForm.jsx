@@ -29,66 +29,66 @@ export default function Login(props) {
 				console.log(err);
 			});
 	};
-	
+
 	useEffect(() => {
 		if (currentUser.company_name) {
 			navigate('/employerprofile');
 		} else {
-			navigate('/profile');
+			navigate(`/dev/${currentUser.id}`);
 		}
 		handleLoginView();
 	}, [currentUser]);
 
-  return (
-    <div>
-      <div id="login-box">
-        <form className="login" onSubmit={login}>
-          <h1>Log in to your account</h1>
-          <h2>
-            Log in now to get started building your portolfio and launch your
-            career
-          </h2>
-          <TextField
-            sx={{mt: '0rem', ml: '10%', mr: '10%'}}
-            id="email"
-            label="email"
-          />
-          <TextField
-            id="password"
-            sx={{mt: '1rem', ml: '10%', mr: '10%'}}
-            label="password"
-            type="password"
-            variant="outlined"
-          />
-          <Link className="forgot-password" to="/" onClick={handleLoginView}>
-            Forgot password?
-          </Link>
-          <Button
-            sx={{ml: '10%', mr: '10%', mt: '1rem'}}
-            variant="contained"
-            size="large"
-            type="submit"
-            onClick={null}
-          >
-            LOG IN
-          </Button>
-          <p className="signup">
-            Not registered yet? <Link to="/sign-up">Create an account</Link>
-          </p>
-          <div className="login-footer">
-            <p>© 2020 Junior. All rights reserved</p>
-            <p className="tos-text">
-              <Link to="/" onClick={handleLoginView}>
-                Terms of Service
-              </Link>{' '}
-              -{' '}
-              <Link to="/" onClick={handleLoginView}>
-                Privacy Policy
-              </Link>
-            </p>
-          </div>
-        </form>
-      </div>
-    </div>
-  );
+	return (
+		<div>
+			<div id='login-box'>
+				<form className='login' onSubmit={login}>
+					<h1>Log in to your account</h1>
+					<h2>
+						Log in now to get started building your portolfio and launch your
+						career
+					</h2>
+					<TextField
+						sx={{ mt: '0rem', ml: '10%', mr: '10%' }}
+						id='email'
+						label='email'
+					/>
+					<TextField
+						id='password'
+						sx={{ mt: '1rem', ml: '10%', mr: '10%' }}
+						label='password'
+						type='password'
+						variant='outlined'
+					/>
+					<Link className='forgot-password' to='/' onClick={handleLoginView}>
+						Forgot password?
+					</Link>
+					<Button
+						sx={{ ml: '10%', mr: '10%', mt: '1rem' }}
+						variant='contained'
+						size='large'
+						type='submit'
+						onClick={null}
+					>
+						LOG IN
+					</Button>
+					<p className='signup'>
+						Not registered yet? <Link to='/sign-up'>Create an account</Link>
+					</p>
+					<div className='login-footer'>
+						<p>© 2020 Junior. All rights reserved</p>
+						<p className='tos-text'>
+							<Link to='/' onClick={handleLoginView}>
+								Terms of Service
+							</Link>{' '}
+							-{' '}
+							<Link to='/' onClick={handleLoginView}>
+								Privacy Policy
+							</Link>
+						</p>
+					</div>
+				</form>
+			</div>
+		</div>
+	);
 }

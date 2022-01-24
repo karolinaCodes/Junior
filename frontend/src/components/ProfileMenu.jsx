@@ -36,14 +36,17 @@ export default function PositionedMenu(props) {
 	return (
 		<div className='user-menu-container'>
 			<div className='profile-info'>
-				<IconButton aria-label='settings' sx={{ mr: '7vw', mt: '2vh' }}>
+				<IconButton
+					onClick={handleClick}
+					aria-label='settings'
+					sx={{ mr: '7vw', mt: '2vh' }}
+				>
 					<MoreVert
 						fontSize='large'
 						sx={{ borderRadius: 50 }}
 						aria-controls={open ? 'demo-positioned-menu' : undefined}
 						aria-haspopup='true'
 						aria-expanded={open ? 'true' : undefined}
-						onClick={handleClick}
 					/>
 				</IconButton>
 			</div>

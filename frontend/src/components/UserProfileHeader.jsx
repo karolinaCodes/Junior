@@ -16,8 +16,15 @@ import {
 import ProfileMenu from '../components/ProfileMenu';
 
 export default function UserProfileHeader(props) {
-	const { setModalData, openModal, setOpenModal, setProfileView, profileView } =
-		props;
+	const {
+		setModalData,
+		openModal,
+		setOpenModal,
+		setProfileView,
+		profileView,
+		dev_id,
+		profile,
+	} = props;
 	const { currentUser, setCurrentUser } = useContext(UserContext);
 	const [profileEdit, setProfileEdit] = useState(false);
 	const [editForm, setEditForm] = useState({
@@ -37,11 +44,7 @@ export default function UserProfileHeader(props) {
 		city,
 		photo_url,
 		id,
-	} = currentUser;
-
-	/* 
-
-	*/
+	} = profile.dev;
 
 	const updateProfile = () => {
 		axios
@@ -183,13 +186,15 @@ export default function UserProfileHeader(props) {
 								</h4>
 							</Grid>
 						</Grid>
-						{/* <Grid
-							item
-							className='profile-buttons'
-							sx={{ justifyContent: 'space-evenly' }}
-						>
-							<Chip onClick={e => editProfile()} label='Edit Profile' />
-						</Grid> */}
+						{id == dev_id && (
+							<Grid
+								item
+								className='profile-buttons'
+								sx={{ justifyContent: 'space-evenly' }}
+							>
+								<Chip onClick={e => editProfile()} label='Edit Info' />
+							</Grid>
+						)}
 					</Grid>
 				)}
 			</Grid>

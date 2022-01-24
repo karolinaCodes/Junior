@@ -94,10 +94,16 @@ const useStyles = makeStyles({
 
   'search_query::placeholder': {
     'font-family': 'Assistant',
+    'flex-grow': 1,
   },
 
   'search_query fieldset': {
     border: 'none',
+  },
+
+  drop_down_box: {
+    'flex-grow': 1,
+    'justify-content': 'center',
   },
 
   drop_down: {
@@ -105,7 +111,8 @@ const useStyles = makeStyles({
     border: '1px solid #ced4da',
     'border-radius': '4px',
     padding: 0,
-    width: '200px',
+    width: '100%',
+    'flex-grow': 1,
   },
 
   slider: {
@@ -117,12 +124,14 @@ const useStyles = makeStyles({
     color: '#182c5b',
     padding: '20px',
     height: '2.5rem',
+    width: '10rem',
+    background: '#EEF3F9',
   },
 
   search_btn: {
     'text-transform': 'none',
     color: '#f9f9f9',
-    width: '7rem',
+    width: '10rem',
     height: '2.5rem',
     'margin-left': '10px',
     'text-transform': 'none',
@@ -130,7 +139,9 @@ const useStyles = makeStyles({
   },
 
   form_actions: {
-    'margin-left': '60px',
+    'flex-grow': 1,
+    display: 'flex',
+    'justify-content': 'center',
   },
 
   slider_container: {
@@ -269,8 +280,8 @@ export default function JobSearch(props) {
         </div>
         <form className="jobsearch-search" onSubmit={handleSubmit}>
           {/* {JOB TYPE DROPDOWN----------------------} */}
-          <Box sx={{minWidth: 120}}>
-            <FormControl fullWidth className={classes.drop_down}>
+          <Box className={classes.drop_down_box}>
+            <FormControl fullWidth className={classes.drop_down_box}>
               <Select value={jobType} onChange={handleChange}>
                 <MenuItem value={'all'}>All Opportunities</MenuItem>
                 <MenuItem value={'jobs'}>Jobs</MenuItem>
@@ -283,8 +294,9 @@ export default function JobSearch(props) {
             onChange={e => setQueryString(e.target.value)}
             value={queryString}
             onKeyDown={e => keyCheck(e)}
-            className={classes.search_query}
+            className={classes.drop_down_box}
             InputProps={{
+              className: 'drop_down_box',
               startAdornment: (
                 <InputAdornment position="start">
                   <SearchIcon />
@@ -304,6 +316,7 @@ export default function JobSearch(props) {
             onChange={e => setCity(e.target.value)}
             value={city}
             onKeyDown={e => keyCheck(e)}
+            className={classes.drop_down_box}
             InputProps={{
               startAdornment: (
                 <InputAdornment position="start">

@@ -22,7 +22,7 @@
   justify-content: center;
   align-items: center;
   background: #fbfbfb;
-  padding: 1rem 0 1rem 0;
+  padding: 1rem;
   width: 70%;
   box-shadow: 0px 3px 8px rgba(8, 35, 48, 0.05);
   margin-bottom: -80px;
@@ -157,4 +157,8 @@ div .salary-slider {
     height: 100%;
     width: 100%;
   }
+}
+
+.drop_down_box {
+  justify-content: center;
 }

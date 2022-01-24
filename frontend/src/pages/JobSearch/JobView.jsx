@@ -59,7 +59,7 @@ export default function LandingPage(props) {
 
   const saveJob = () => {
     if (saved) {
-      return navigate('/profile');
+      return navigate('/profile', {state: 'saved'});
     }
 
     axios
@@ -116,8 +116,16 @@ export default function LandingPage(props) {
       <img src={jobPosting.photo_url} />
       <div className="job-desc-container">
         <div className="job-desc-img-pic">
-          <h2 id="desc-label">Description</h2>
+          <h2 id="desc-label">About {jobPosting.company_name}</h2>
+          <p>{jobPosting.company_desc}</p>
+          <h2 id="desc-label">Job description</h2>
           <p>{jobPosting.description}</p>
+          <h2 id="desc-label">Responsibilities</h2>
+          <p>{jobPosting.responsibilities}</p>
+          <h2 id="desc-label">Qualifications</h2>
+          <p>{jobPosting.qualifications}</p>
+          <h2 id="desc-label">Benefits</h2>
+          <p>{jobPosting.benefits}</p>
           <div className="employer-pic-container">
             <img src={jobPosting.employer_photo_url} className="job-desc-img" />
             <p>{jobPosting.company_name} </p>

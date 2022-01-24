@@ -43,6 +43,7 @@ export default function Profile() {
   const [goBack, setGoBack] = useState(state);
   const navigate = useNavigate();
   const classes = useStyles();
+  console.log(state);
 
   console.log('', currentUser);
 
@@ -119,6 +120,7 @@ export default function Profile() {
           setOpenModal={setOpenModal}
           profileView={profileView}
           setProfileView={setProfileView}
+          profileMenuState={state}
         />
       </div>
       <div className="profile-content page-container">

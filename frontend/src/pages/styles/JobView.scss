@@ -14,6 +14,11 @@
   gap: 10rem;
 }
 
+.job-desc {
+  display: flex;
+  flex-direction: column;
+}
+
 .job-btn-container {
   display: flex;
   justify-content: center;
@@ -54,7 +59,7 @@
 }
 
 .jobview-job-title {
-  margin: 3rem auto 1rem auto;
+  margin: 2rem auto 1rem auto;
 }
 
 .posting-btn-container {
@@ -66,4 +71,12 @@
   width: 100%;
   display: flex;
   justify-content: flex-start;
+}
+
+.desc-text {
+  font-size: 16px;
+}
+
+#posting-company-name {
+  font-size: 18px;
 }

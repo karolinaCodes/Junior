@@ -9,6 +9,7 @@
   background: #f9f9f9;
   padding: 0.5rem;
   margin: 2rem 10% 15% 10%;
+  height: 4rem;
 
   #search-bar {
     width: 26rem;
@@ -38,6 +39,17 @@
   > fieldset {
   border: none;
 }
+
+// search bar text field
+#white-box
+  > form
+  > div.MuiFormControl-root.MuiTextField-root.makeStyles-textfield-5.css-1u3bzj6-MuiFormControl-root-MuiTextField-root
+  > div
+  > fieldset:focus-within {
+  background: '#182c5b';
+}
+
+// #white-box > form > div.MuiFormControl-root.MuiTextField-root.makeStyles-textfield-2.css-1u3bzj6-MuiFormControl-root-MuiTextField-root > div > fieldset
 
 // dropdown arrow down svg
 #white-box > form > div.MuiBox-root.css-ece9u5 > div > div > svg {

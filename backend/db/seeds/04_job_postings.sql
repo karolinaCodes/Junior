@@ -1,35 +1,38 @@
-INSERT INTO job_postings (employer_id,job_title,description,city,salary,job_type,is_remote,date_posted) VALUES (
-    1,'React Developer',
-    'We are looking for a Front-End Web and Mobile Developer motivated to combine the art of design with the art of programming. Responsibilities will include translating UI/UX design wireframes to actual code to produce visual elements of the application. You will work with the UI/UX designer and bridge the gap between graphical design and technical implementation, taking an active role on both sides and defining how the application looks as well as how it works.
-
-    Front End Developers work in teams alongside Backend Developers and User Experience Designers to ensure all elements of web creation are consistent. This requires excellent communication and interpersonal skills.
-    Responsibilities:
-
-    Ensuring user experience determines design choices.
+INSERT INTO job_postings (employer_id, job_title, company_desc, description, responsibilities, qualifications, benefits, city, salary, job_type,is_remote, date_posted) VALUES (
+    1,
+    'React Developer',
+    'At Tweeter, we hustle, we grind and we grow. As the team members that make up #TweeterForce, we care, we compete and we support each other every day. We’re on a mission to deliver a best-in-class client experience driven by technology, data, and of course, our people.
+   As the leading provider of website, analytics and virtual events solutions to investor relations and the capital markets, Tweeter is a trusted partner to over 2,400 of the world’s most successful public companies and institutions – and we are growing at an incredible pace. We’re on our way to becoming the largest capital markets platform company in the world. That’s where you come in.',
+    'We are looking for a Front-End Web and Mobile Developer motivated to combine the art of design with the art of programming. Responsibilities will include translating UI/UX design wireframes to actual code to produce visual elements of the application. You will work with the UI/UX designer and bridge the gap between graphical design and technical implementation, taking an active role on both sides and defining how the application looks as well as how it works.',
+    'Ensuring user experience determines design choices.
     Developing features to enhance the user experience.
     Balancing functional and aesthetic design.
     Ensuring optimized web design for mobile devices.
     Building reusable code for future use.
     Optimizing mobile applications for maximum speed and scalability.
-    Maintaining brand consistency throughout the design.
-    
-    Requirements:
-
-Proficient understanding of :
-
-React Native
-Objective C & Swift for iOS applications
-ReactJS
-Web markup, including HTML5, CSS and preprocessors
-Client-side scripting and debugging using JavaScript and Typescript with libraries and their interactions with RESTful APIs.
-Cross-browser compatibility issues and ways to work around them.
-Code versioning tools, such as Git.
-
-Additional experience to get you to the front of the line:
-server-side CSS pre-processing platforms
-asynchronous request handling, partial page updates
-',
-    'Toronto',4500000,'Full-time',true, '2022-01-11 21:05:44');
+    Maintaining brand consistency throughout the design.',
+    'Proficient understanding of:/
+    - React Native/
+    - Objective C & Swift for iOS applications/
+    - ReactJS/
+    Web markup, including HTML5, CSS and preprocessors
+    - Client-side scripting and debugging using JavaScript and Typescript with libraries and their interactions with RESTful APIs./
+    - Cross-browser compatibility issues and ways to work around them./
+    - Code versioning tools, such as Git.', 
+    'Casual dress
+    Company events
+    Dental care
+    Extended health care
+    Life insurance
+    Paid time off
+    RRSP match
+    Vision care
+    Work from home.',
+    'Toronto',
+    4500000,
+    'Full-time',
+    true, 
+    '2022-01-11 21:05:44');
 INSERT INTO job_postings (employer_id,job_title,description,city,salary,job_type,is_remote, date_posted) VALUES (
     1,'Ruby on Rails Coordinator',
     'Bring to the table win-win survival strategies to ensure proactive domination. At the end of the day, going forward, a new normal that has evolved from generation X is on the runway heading towards a streamlined cloud solution. User generated content in real-time will have multiple touchpoints for offshoring.',

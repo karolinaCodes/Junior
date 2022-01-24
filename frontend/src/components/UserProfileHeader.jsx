@@ -186,7 +186,7 @@ export default function UserProfileHeader(props) {
 								</h4>
 							</Grid>
 						</Grid>
-						{id == dev_id && (
+						{/* {currentUser.id == dev_id && (
 							<Grid
 								item
 								className='profile-buttons'
@@ -194,7 +194,7 @@ export default function UserProfileHeader(props) {
 							>
 								<Chip onClick={e => editProfile()} label='Edit Info' />
 							</Grid>
-						)}
+						)} */}
 					</Grid>
 				)}
 			</Grid>

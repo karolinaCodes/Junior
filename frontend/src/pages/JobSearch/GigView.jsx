@@ -56,7 +56,7 @@ export default function GigView(props) {
 
 	const saveGig = () => {
 		if (saved) {
-			return navigate(`/dev/${currentUser.id}`);
+			return navigate(`/dev/${currentUser.id}`, { state: 'saved' });
 		}
 
 		axios

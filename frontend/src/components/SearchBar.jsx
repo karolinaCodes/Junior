@@ -20,11 +20,13 @@ const useStyles = makeStyles({
     color: 'white',
     'font-weight': 500,
     'border-radius': '4px',
+    height: '3rem',
   },
 
   textfield: {
     border: 'none',
     'margin-left': '10px',
+    // '&:focus': {background: '#182c5b'},
   },
 
   search_btn: {

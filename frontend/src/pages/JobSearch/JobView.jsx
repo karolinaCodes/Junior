@@ -59,7 +59,7 @@ export default function LandingPage(props) {
 
 	const saveJob = () => {
 		if (saved) {
-			return navigate(`/dev/${currentUser.id}`);
+			return navigate(`/dev/${currentUser.id}`, { state: 'saved' });
 		}
 
 		axios
@@ -106,21 +106,52 @@ export default function LandingPage(props) {
 				</div>
 			</div>
 			<span className='posted-on'>
-				Posted{' '}
-				{new Date(jobPosting.date_posted).toLocaleDateString('en-US', {
-					year: 'numeric',
-					month: 'long',
-					day: 'numeric',
-				})}
+				<em>
+					Posted{' '}
+					{new Date(jobPosting.date_posted).toLocaleDateString('en-US', {
+						year: 'numeric',
+						month: 'long',
+						day: 'numeric',
+					})}
+				</em>
 			</span>
 			<img src={jobPosting.photo_url} />
 			<div className='job-desc-container'>
 				<div className='job-desc-img-pic'>
-					<h2 id='desc-label'>Description</h2>
-					<p>{jobPosting.description}</p>
+					<div className='job-desc'>
+						<div>
+							<h3 id='desc-label'>About {jobPosting.company_name}</h3>
+							<p className='desc-text'>{jobPosting.company_desc}</p>
+						</div>
+
+						<div>
+							<h3 id='desc-label'>About the Role</h3>
+							<p className='desc-text'>{jobPosting.description}</p>
+						</div>
+
+						<div>
+							<h3 id='desc-label'>Key Responsibilities</h3>
+							<p className='desc-text'>{jobPosting.responsibilities}</p>
+						</div>
+
+						<div>
+							<h3 id='desc-label'>Qualifications</h3>
+							<p className='desc-text'>
+								{jobPosting && jobPosting.qualifications}
+							</p>
+						</div>
+
+						<div>
+							<h3 id='desc-label'>Benefits</h3>
+							<p className='desc-text'>{jobPosting.benefits}</p>
+						</div>
+					</div>
+
 					<div className='employer-pic-container'>
 						<img src={jobPosting.employer_photo_url} className='job-desc-img' />
-						<p>{jobPosting.company_name} </p>
+						<p id='posting-company-name'>
+							<b>{jobPosting.company_name} </b>
+						</p>
 					</div>
 				</div>
 				<div className='posting-btn-container'>

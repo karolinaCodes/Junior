@@ -35,8 +35,6 @@ const useStyles = makeStyles({
 	apply_modal: {
 		'background-color': '#EEF3F9',
 		color: '#182c5b',
-		// display: 'flex;',
-		// 'justify-content': 'center;',
 	},
 
 	edit: {
@@ -55,6 +53,7 @@ const useStyles = makeStyles({
 		position: 'absolute',
 		right: 0,
 		margin: '10px',
+		top: 0,
 	},
 
 	more_jobs: {
@@ -167,7 +166,7 @@ export default function ApplyModal(props) {
 								<Button
 									variant='contained'
 									onClick={() => {
-										navigate('/profile/applications');
+										navigate('/profile', { state: 'applications' });
 									}}
 									className={classes.view_application}
 								>

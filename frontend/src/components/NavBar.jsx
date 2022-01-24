@@ -27,7 +27,14 @@ export default function NavBar(props) {
   return (
     <div className={navClassCheck()}>
       <Link id="logo" to="/">
-        Junior.
+        <img
+          src={
+            location.pathname === '/'
+              ? '/images/junior-logo-blue.png'
+              : '/images/junior-logo-white.png'
+          }
+          id="logo-img"
+        />
       </Link>
       <div className="nav-links">
         <Link id="find-work" to="/jobs">
@@ -40,23 +47,25 @@ export default function NavBar(props) {
             Hire Talent
           </Link>
         )}
-        {!currentUser.id && (
-          <Button
-            id="login"
-            variant="outlined"
-            onClick={e => handleLoginView()}
-          >
-            Login
-          </Button>
-        )}
-        {!currentUser.id && (
-          <Button id="signup" variant="contained">
-            Sign Up
-          </Button>
-        )}
-        {currentUser.id && (
-          <UserMenu currentUser={currentUser} logout={logout} />
-        )}
+        <div>
+          {!currentUser.id && (
+            <Button
+              id="login"
+              variant="outlined"
+              onClick={e => handleLoginView()}
+            >
+              Log In
+            </Button>
+          )}
+          {!currentUser.id && (
+            <Button id="signup" variant="contained">
+              Sign Up
+            </Button>
+          )}
+          {currentUser.id && (
+            <UserMenu currentUser={currentUser} logout={logout} />
+          )}
+        </div>
       </div>
     </div>
   );

@@ -24,12 +24,12 @@ $margin6: 6vw;
 
 // .MuiButton-root
 @mixin outline {
-	color: $white;
-	border-color: $white;
+  color: $white;
+  border-color: $white;
 }
 
 // .MuiButton-root
 @mixin solid {
-	color: $white;
-	background-color: $blue;
+  color: $white;
+  background-color: $blue;
 }

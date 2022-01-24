@@ -8,6 +8,7 @@ module.exports = ({
 	getGigPostingsByEmployerId,
 	getAllJobApplicationsForEmployer,
 	getAllGigApplicationsForEmployer,
+	editEmployerProfile,
 }) => {
 	/* GET all employers */
 	router.get('/', (req, res) => {
@@ -64,6 +65,17 @@ module.exports = ({
 	router.get('/:id/gig/applications', (req, res) => {
 		getAllGigApplicationsForEmployer(req.params.id)
 			.then(postings => res.json(postings))
+			.catch(err =>
+				res.json({
+					error: err.message,
+				})
+			);
+	});
+
+	//Update user profile 3001/api/employers/edit
+	router.post('/edit', (req, res) => {
+		editEmployerProfile(req.body)
+			.then(profile => res.json(profile))
 			.catch(err =>
 				res.json({
 					error: err.message,

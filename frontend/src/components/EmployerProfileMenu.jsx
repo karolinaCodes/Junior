@@ -2,16 +2,22 @@ import * as React from 'react';
 import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
-import './styles/UserMenu.scss';
+import './styles/ProfileMenu.scss';
 import { useNavigate } from 'react-router-dom';
 
 import Avatar from '@mui/material/Avatar';
 import Stack from '@mui/material/Stack';
 import { UserContext } from '../Providers/userProvider';
 import { useContext } from 'react';
+import NewJobPost from '../components/NewJobPost';
+import NewGigPost from '../components/NewGigPost';
+
+import { IconButton } from '@mui/material';
+import { MoreVert } from '@mui/icons-material';
 
 export default function PositionedMenu(props) {
-	const { logout } = props;
+	const { setModalData, openModal, setOpenModal, profileView, setProfileView } =
+		props;
 	const { currentUser } = useContext(UserContext);
 	const [anchorEl, setAnchorEl] = React.useState(null);
 	const open = Boolean(anchorEl);
@@ -22,39 +28,29 @@ export default function PositionedMenu(props) {
 		setAnchorEl(null);
 	};
 
-	const handleLogout = () => {
-		navigate('/');
-		logout();
-	};
-
 	const navigate = useNavigate();
-
-	function ImageAvatars() {
-		return (
-			<Stack direction='row' spacing={2}>
-				<Avatar alt='Sarah' src={currentUser.photo_url} className='avatar' />
-			</Stack>
-		);
-	}
+	const handleView = () => {
+		openModal === true ? setOpenModal(false) : setOpenModal(true);
+	};
+	const newJobModal = <NewJobPost />;
+	const newGigModal = <NewGigPost />;
 
 	return (
 		<div className='user-menu-container'>
 			<div className='profile-info'>
-				<span className='name'>
-					{currentUser.first_name} {currentUser.last_name}
-				</span>
-				<Button
-					sx={{ mr: '8rem', borderRadius: 50 }}
-					id='demo-positioned-button'
-					aria-controls={open ? 'demo-positioned-menu' : undefined}
-					aria-haspopup='true'
-					aria-expanded={open ? 'true' : undefined}
+				<IconButton
 					onClick={handleClick}
+					aria-label='settings'
+					sx={{ mr: '7vw', mt: '2vh' }}
 				>
-					<div className='profile-info'>
-						<ImageAvatars />
-					</div>
-				</Button>
+					<MoreVert
+						fontSize='large'
+						sx={{ borderRadius: 50 }}
+						aria-controls={open ? 'demo-positioned-menu' : undefined}
+						aria-haspopup='true'
+						aria-expanded={open ? 'true' : undefined}
+					/>
+				</IconButton>
 			</div>
 			<Menu
 				id='demo-positioned-menu'
@@ -71,40 +67,12 @@ export default function PositionedMenu(props) {
 				open={open}
 				onClose={handleClose}
 			>
-				{currentUser.first_name && (
-					<div>
-						<MenuItem
-							onClick={e => {
-								navigate(`/dev/${currentUser.id}`);
-								handleClose();
-							}}
-						>
-							Profile
-						</MenuItem>
-						<MenuItem
-							onClick={e => {
-								navigate('/jobs');
-								handleClose();
-							}}
-						>
-							Find Work
-						</MenuItem>
-					</div>
-				)}
 				{currentUser.company_name && (
 					<div>
 						<MenuItem
 							onClick={e => {
-								navigate(`/employer/${currentUser.id}`);
-								handleClose();
-							}}
-						>
-							Profile
-						</MenuItem>
-
-						<MenuItem
-							onClick={e => {
-								navigate('/newjob');
+								setModalData(newJobModal);
+								handleView();
 								handleClose();
 							}}
 						>
@@ -112,22 +80,23 @@ export default function PositionedMenu(props) {
 						</MenuItem>
 						<MenuItem
 							onClick={e => {
-								navigate('/newgig');
+								setModalData(newGigModal);
+								handleView();
 								handleClose();
 							}}
 						>
 							Post Gig
 						</MenuItem>
+						<MenuItem
+							onClick={e => {
+								setProfileView('applications');
+								handleClose();
+							}}
+						>
+							Applications
+						</MenuItem>
 					</div>
 				)}
-				<MenuItem
-					onClick={e => {
-						handleLogout();
-						handleClose();
-					}}
-				>
-					Logout
-				</MenuItem>
 			</Menu>
 		</div>
 	);

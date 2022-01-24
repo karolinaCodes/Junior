@@ -24,40 +24,33 @@ import { UserContext } from '../Providers/userProvider';
 export default function Applications(props) {
 	const { currentUser } = useContext(UserContext);
 	// Get the posting id from url
-	// const {employerid, posttype, postid} = useParams();
 	const { posttype, postid } = useParams();
 	// path="/:employerid/:type/:posting_id/applications"
 	// Declare job or gig
 
-	const [profile, setProfile] = useState({
-		employer: {},
-	});
 	const [posting, setPosting] = useState({
 		posting: {},
 		applications: [''],
 	});
 
-	// TESTING
-	const employerid = 1;
-	// TESTING
+	const { employer } = props;
+
+	// FOR TESTING //
+	// const employerid = id;
 
 	useEffect(() => {
-		const employerUrl = `/api/employers/${employerid}`;
 		const postingUrl = `/api/${posttype}_postings/${postid}`;
 		const applicationsUrl = `/api/${posttype}_postings/${postid}/applications`;
-		Promise.all([
-			axios.get(employerUrl),
-			axios.get(postingUrl),
-			axios.get(applicationsUrl),
-		]).then(all => {
-			const [employerData, postingData, applicationsData] = all;
-			setProfile(prev => ({ ...prev, employer: employerData.data }));
-			setPosting(prev => ({
-				...prev,
-				posting: postingData.data,
-				applications: applicationsData.data,
-			}));
-		});
+		Promise.all([axios.get(postingUrl), axios.get(applicationsUrl)]).then(
+			all => {
+				const [postingData, applicationsData] = all;
+				setPosting(prev => ({
+					...prev,
+					posting: postingData.data,
+					applications: applicationsData.data,
+				}));
+			}
+		);
 	}, []);
 
 	const applicationsArray = posting.applications;

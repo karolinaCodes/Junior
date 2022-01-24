@@ -15,7 +15,8 @@ export default function NewGigPost(props) {
 		description: '',
 		pay: '',
 		deadline: '',
-		photo_url: '',
+		photo_url:
+			'https://www.elegantthemes.com/blog/wp-content/uploads/2020/02/000-Online-Code-Editors.png',
 	});
 
 	useEffect(() => {
@@ -24,7 +25,7 @@ export default function NewGigPost(props) {
 
 	const handleClose = () => {
 		setOpenModal(false);
-	}
+	};
 
 	const postGig = e => {
 		e.preventDefault();
@@ -39,9 +40,10 @@ export default function NewGigPost(props) {
 					description: '',
 					pay: '',
 					deadline: '',
-					photo_url: '',
+					photo_url:
+						'https://www.elegantthemes.com/blog/wp-content/uploads/2020/02/000-Online-Code-Editors.png',
 				});
-				handleClose()
+				handleClose();
 			})
 			.catch(err => {
 				console.log(err);
@@ -59,7 +61,7 @@ export default function NewGigPost(props) {
 				label='Gig Name'
 				variant='filled'
 				fullWidth
-				sx={{mb: '1rem', backgroundColor: '#f6fafd' }}
+				sx={{ mb: '1rem', backgroundColor: '#f6fafd' }}
 				onChange={e => setGigForm({ ...gigForm, job_title: e.target.value })}
 				value={gigForm.job_title}
 			/>
@@ -68,20 +70,25 @@ export default function NewGigPost(props) {
 				label='Thumbnail Photo'
 				variant='filled'
 				fullWidth
-				sx={{backgroundColor: '#f6fafd' }}
+				sx={{ backgroundColor: '#f6fafd' }}
 				value={gigForm.photo_url}
-				onChange={e =>
-					setGigForm({ ...gigForm, photo_url: e.target.value })
-				}
+				onChange={e => setGigForm({ ...gigForm, photo_url: e.target.value })}
 			/>
-			<Grid container direction='row' id='first-row' xs={12} gap={2} sx={{mt: '1rem' }}>
+			<Grid
+				container
+				direction='row'
+				id='first-row'
+				xs={12}
+				gap={2}
+				sx={{ mt: '1rem' }}
+			>
 				<Grid item xs>
 					<TextField
 						id='pay'
 						label='Pay'
 						variant='filled'
 						fullWidth
-						sx={{backgroundColor: '#f6fafd' }}
+						sx={{ backgroundColor: '#f6fafd' }}
 						type='number'
 						value={gigForm.pay}
 						onChange={e => setGigForm({ ...gigForm, pay: e.target.value })}
@@ -94,7 +101,7 @@ export default function NewGigPost(props) {
 						type='date'
 						variant='filled'
 						fullWidth
-						sx={{backgroundColor: '#f6fafd' }}
+						sx={{ backgroundColor: '#f6fafd' }}
 						value={gigForm.deadline}
 						onChange={e => setGigForm({ ...gigForm, deadline: e.target.value })}
 					/>
@@ -105,13 +112,11 @@ export default function NewGigPost(props) {
 				label='Gig Description'
 				variant='filled'
 				fullWidth
-				sx={{mb: '1rem', mt: '1rem', backgroundColor: '#f6fafd'}}
+				sx={{ mb: '1rem', mt: '1rem', backgroundColor: '#f6fafd' }}
 				multiline={true}
 				minRows={5}
 				value={gigForm.description}
-				onChange={e =>
-					setGigForm({ ...gigForm, description: e.target.value })
-				}
+				onChange={e => setGigForm({ ...gigForm, description: e.target.value })}
 			/>
 			<div id='gig-buttons'>
 				{/* <Button variant='contained' size='large' type='submit' onClick={null}>

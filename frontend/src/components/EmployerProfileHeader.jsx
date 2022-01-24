@@ -1,4 +1,4 @@
-import './styles/UserProfileHeader.scss';
+import './styles/EmployerProfileHeader.scss';
 
 import { Chip, Grid, Input, TextField, IconButton } from '@mui/material';
 import { useState } from 'react';
@@ -13,7 +13,7 @@ import {
 	Email,
 	MoreVert,
 } from '@mui/icons-material';
-import ProfileMenu from '../components/ProfileMenu';
+import ProfileMenu from './EmployerProfileMenu';
 
 export default function UserProfileHeader(props) {
 	const {
@@ -22,7 +22,7 @@ export default function UserProfileHeader(props) {
 		setOpenModal,
 		setProfileView,
 		profileView,
-		dev_id,
+		employer_id,
 		profile,
 	} = props;
 	const { currentUser, setCurrentUser } = useContext(UserContext);
@@ -35,20 +35,11 @@ export default function UserProfileHeader(props) {
 		setEditForm(prev => ({ ...prev, ...currentUser }));
 	}, [currentUser]);
 
-	const {
-		first_name,
-		last_name,
-		email,
-		phone_number,
-		headline,
-		city,
-		photo_url,
-		id,
-	} = profile.dev;
+	const { company_name, email, bio, photo_url, id } = profile.employer;
 
 	const updateProfile = () => {
 		axios
-			.post(`/api/devs/edit`, editForm)
+			.post(`/api/employers/edit`, editForm)
 			.then(res => {
 				setCurrentUser(prev => ({ ...prev, ...editForm }));
 				setProfileEdit(false);
@@ -68,7 +59,7 @@ export default function UserProfileHeader(props) {
 		<>
 			<img
 				id='header-image'
-				src='https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80'
+				src='https://images.unsplash.com/photo-1536304228051-5ffee78924ac?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80'
 				alt='Avatar'
 			></img>
 			<img id='portfolio-profile-pic' src={photo_url} alt='Avatar'></img>
@@ -76,27 +67,15 @@ export default function UserProfileHeader(props) {
 				{profileEdit === true && (
 					<form onSubmit={editProfile}>
 						<Grid item className='profile-name'>
-							<h4>{`${first_name} ${last_name}`}</h4>
 							<TextField
 								size='small'
 								sx={{ mt: '2vh', minWidth: '12vw' }}
-								label='Headline'
-								value={editForm.headline}
+								label='Company Name'
+								value={editForm.company_name}
 								onChange={e =>
-									setEditForm({ ...editForm, headline: e.target.value })
+									setEditForm({ ...editForm, company_name: e.target.value })
 								}
 							></TextField>
-							<TextField
-								size='small'
-								sx={{ mt: '2vh', minWidth: '12vw' }}
-								label='City'
-								value={editForm.city}
-								onChange={e =>
-									setEditForm({ ...editForm, city: e.target.value })
-								}
-							></TextField>
-						</Grid>
-						<Grid item className='profile-links'>
 							<TextField
 								size='small'
 								multiline={true}
@@ -108,16 +87,8 @@ export default function UserProfileHeader(props) {
 									setEditForm({ ...editForm, email: e.target.value })
 								}
 							></TextField>
-							<TextField
-								size='small'
-								sx={{ mt: '2vh', minWidth: '12vw' }}
-								label='Phone Number'
-								value={editForm.phone_number}
-								onChange={e =>
-									setEditForm({ ...editForm, phone_number: e.target.value })
-								}
-							></TextField>
 						</Grid>
+						<Grid item className='profile-links'></Grid>
 						<Grid
 							item
 							className='profile-buttons'
@@ -139,10 +110,9 @@ export default function UserProfileHeader(props) {
 								id='profile-name'
 							>
 								<Grid item xs>
-									<h1>{`${first_name} ${last_name}`}</h1>
-									<h3>{headline}</h3>
+									<h1>{company_name}</h1>
 								</Grid>
-								{currentUser.id == dev_id && currentUser.first_name && (
+								{currentUser.id == employer_id && currentUser.company_name && (
 									<Grid item id='kebab' sx={{ justifySelf: 'flex-end' }}>
 										<ProfileMenu
 											setModalData={setModalData}
@@ -166,29 +136,13 @@ export default function UserProfileHeader(props) {
 							<Grid item>
 								<h4>
 									<sub>
-										<PersonPinCircle />{' '}
-									</sub>
-									{city}
-								</h4>
-							</Grid>
-							<Grid item>
-								<h4>
-									<sub>
-										<PhoneAndroid />{' '}
-									</sub>
-									{phone_number}
-								</h4>
-							</Grid>
-							<Grid item>
-								<h4>
-									<sub>
 										<Email />{' '}
 									</sub>
 									{email}
 								</h4>
 							</Grid>
 						</Grid>
-						{currentUser.id == dev_id && currentUser.first_name && (
+						{/* {currentUser.id == employer_id && currentUser.company_name && (
 							<Grid
 								item
 								className='profile-buttons'
@@ -196,7 +150,7 @@ export default function UserProfileHeader(props) {
 							>
 								<Chip onClick={e => editProfile()} label='Edit Info' />
 							</Grid>
-						)}
+						)} */}
 					</Grid>
 				)}
 			</Grid>

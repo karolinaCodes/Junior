@@ -15,6 +15,8 @@ import {
 } from '@mui/material';
 import JobPostingCard from '../components/JobPostingCardEdit';
 import JobPostingModal from '../components/JobPostingModal';
+import NewJobPost from '../components/NewJobPost';
+import NewGigPost from '../components/NewGigPost';
 import axios from 'axios';
 
 export default function Profile(props) {
@@ -57,11 +59,13 @@ export default function Profile(props) {
         }));
       });
     }
-  }, [currentUser]);
+  }, [currentUser, openModal]);
 
+  // Get job and gig information for employer from state
   const jobsArray = profile.jobs;
   const gigsArray = profile.gigs;
 
+  // Create cards for each job and gig
   const parsedJobs = Array.isArray(jobsArray)
     ? jobsArray.map(job => {
         const data = <JobPostingCard key={'Job-modal-' + job.id} {...job} />;
@@ -174,6 +178,16 @@ export default function Profile(props) {
       })
     : [];
 
+    // Set data for New Job and New Gig modals
+    const newJobModal = <NewJobPost
+      openModal={openModal}
+      setOpenModal={setOpenModal}
+      handleView={handleView} />;
+    const newGigModal = <NewGigPost
+      openModal={openModal}
+      setOpenModal={setOpenModal}
+      handleView={handleView} />;
+
   return (
     <div className="profile-content page-container">
       <Grid container className="profile-bio">
@@ -192,6 +206,22 @@ export default function Profile(props) {
       </Grid>
       <Grid container direction="column">
         <section className="posting-content">
+        <Button
+          onClick={() => {
+            setModalData(newJobModal);
+            handleView();
+          }}
+        >
+          Hey
+        </Button>
+        <Button
+          onClick={() => {
+            setModalData(newGigModal);
+            handleView();
+          }}
+        >
+          Listen
+        </Button>
           {parsedJobs.length === 0 && parsedGigs.length === 0 && (
             <h1>No postings.</h1>
           )}

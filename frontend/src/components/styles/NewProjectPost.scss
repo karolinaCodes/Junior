@@ -44,14 +44,17 @@
 		min-width: 25%;
 	}
 
-	#cancel-project,
-	#post-project {
-		margin-left: 1rem;
-	}
-
 	button {
 		color: $white;
+	}
+
+	#post-project {
 		background-color: $mint;
+	}
+
+	#cancel-project {
+		border-color: $white;
+		margin-left: 1rem;
 	}
 }
 
@@ -63,4 +66,5 @@
 
 #project-buttons {
 	margin-bottom: 5%;
+	align-self: center;
 }

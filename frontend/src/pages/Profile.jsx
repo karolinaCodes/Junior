@@ -15,7 +15,8 @@ import {
 } from '@mui/material';
 import PortfolioCard from '../components/PortfolioCard';
 import PortfolioModal from '../components/PortfolioModal';
-import UserProfileInfo from '../components/UserProfileInfo';
+import UserProfileHeader from '../components/UserProfileHeader';
+import UserProfileBio from '../components/UserProfileBio'
 import NewProjectPost from '../components/NewProjectPost';
 import axios from 'axios';
 import { useLocation } from 'react-router-dom';
@@ -57,7 +58,7 @@ export default function Profile() {
 				}
 			);
 		}
-	}, [currentUser]);
+	}, [currentUser, openModal]);
 
 	console.log('profile', profile);
 	console.log('profile.projects:', profile.projects);
@@ -126,12 +127,13 @@ export default function Profile() {
 		);
 	});
 
-	// const addNewButton = <Grid item><Card>'Add New'</Card></Grid>;
 	const newProjectModal = <NewProjectPost />;
 
   return (
+    <>
+    <UserProfileHeader />
     <div className="profile-content page-container">
-      <UserProfileInfo currentUser={currentUser} />
+      <UserProfileBio />
       {profile.projects.length === 0 && <h1>No projects added</h1>}
       {goBack && (
         <Button
@@ -163,5 +165,6 @@ export default function Profile() {
         <Box className="portfolio-modal">{modalData}</Box>
       </Dialog>
     </div>
+    </>
   );
 }

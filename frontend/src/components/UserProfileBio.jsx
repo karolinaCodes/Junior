@@ -1,4 +1,4 @@
-import './styles/UserProfileInfo.scss';
+import './styles/UserProfileHeader.scss';
 
 import { Chip, Grid, Input, TextField } from '@mui/material';
 import { useState } from 'react';
@@ -8,7 +8,7 @@ import { useContext } from 'react';
 import { UserContext } from '../Providers/userProvider';
 import { useEffect } from 'react';
 
-export default function UserProfileInfo(props) {
+export default function UserProfileHeader(props) {
 	const { currentUser, setCurrentUser } = useContext(UserContext);
 	const [profileView, setProfileView] = useState('browse');
 	const [editForm, setEditForm] = useState({
@@ -20,14 +20,7 @@ export default function UserProfileInfo(props) {
 	}, [currentUser]);
 
 	const {
-		first_name,
-		last_name,
-		email,
-		phone_number,
-		headline,
 		resume_url,
-		city,
-		photo_url,
 		github_url,
 		linkedin_url,
 		bio,
@@ -59,29 +52,9 @@ export default function UserProfileInfo(props) {
 	return (
 		<Grid container className='profile-bio' direction='column'>
 			<Grid item className='profile-pic'>
-				<img id='profile-pic' src={photo_url} alt='Avatar'></img>
 			</Grid>
 			{profileView === 'edit' && (
 				<form onSubmit={editProfile}>
-					<Grid item className='profile-name'>
-						<h4>{`${first_name} ${last_name}`}</h4>
-						<TextField
-							size='small'
-							sx={{ mt: '2vh', minWidth: '12vw' }}
-							label='Headline'
-							value={editForm.headline}
-							onChange={e =>
-								setEditForm({ ...editForm, headline: e.target.value })
-							}
-						></TextField>
-						<TextField
-							size='small'
-							sx={{ mt: '2vh', minWidth: '12vw' }}
-							label='City'
-							value={editForm.city}
-							onChange={e => setEditForm({ ...editForm, city: e.target.value })}
-						></TextField>
-					</Grid>
 					<Grid item className='profile-links'>
 						<TextField
 							size='small'
@@ -91,26 +64,6 @@ export default function UserProfileInfo(props) {
 							label='Bio'
 							value={editForm.bio}
 							onChange={e => setEditForm({ ...editForm, bio: e.target.value })}
-						></TextField>
-						<TextField
-							size='small'
-							multiline={true}
-							maxRows={3}
-							sx={{ mt: '2vh', minWidth: '12vw' }}
-							label='Email'
-							value={editForm.email}
-							onChange={e =>
-								setEditForm({ ...editForm, email: e.target.value })
-							}
-						></TextField>
-						<TextField
-							size='small'
-							sx={{ mt: '2vh', minWidth: '12vw' }}
-							label='Phone Number'
-							value={editForm.phone_number}
-							onChange={e =>
-								setEditForm({ ...editForm, phone_number: e.target.value })
-							}
 						></TextField>
 						<TextField
 							size='small'
@@ -152,15 +105,8 @@ export default function UserProfileInfo(props) {
 			)}
 			{profileView === 'browse' && (
 				<>
-					<Grid item className='profile-name'>
-						<h4>{`${first_name} ${last_name}`}</h4>
-						<h4>{headline}</h4>
-						<h4>{city}</h4>
-					</Grid>
 					<Grid item className='profile-links'>
 						<h4>{bio ? bio : 'N/A'}</h4>
-						<h4>{email}</h4>
-						<h4>{phone_number}</h4>
 						<h4>
 							<a href={resume_url}>Resume</a>
 						</h4>

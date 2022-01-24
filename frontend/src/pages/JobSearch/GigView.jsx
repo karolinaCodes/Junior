@@ -1,13 +1,29 @@
 import '../styles/GigView.scss';
 import {useContext, useEffect, useState} from 'react';
-import {useParams} from 'react-router-dom';
 import axios from 'axios';
+
+// components
 import ApplyModal from '../../components/JobSearch/ApplyModal';
+
+// react-router
+import {useParams} from 'react-router-dom';
+
+// context
 import {UserContext} from '../../Providers/userProvider';
+
+// mui
 import {Button} from '@mui/material';
 import {useNavigate} from 'react-router-dom';
 import BookmarkIcon from '@mui/icons-material/Bookmark';
 import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
+import {makeStyles} from '@mui/styles';
+
+const useStyles = makeStyles({
+  back_btn: {
+    color: '#182c5b',
+    'border-color': '#182c5b',
+  },
+});
 
 export default function GigView(props) {
   const {currentUser, savedJobsGigs, setSavedJobsGigs} =
@@ -17,6 +33,7 @@ export default function GigView(props) {
   const [gigPosting, setGigPosting] = useState('');
   const [saved, setSaved] = useState(false);
   const navigate = useNavigate();
+  const classes = useStyles();
 
   useEffect(() => {
     if (gigs) {
@@ -39,7 +56,7 @@ export default function GigView(props) {
 
   const saveGig = () => {
     if (saved) {
-      return navigate('/saved');
+      return navigate('/profile');
     }
 
     axios
@@ -61,7 +78,15 @@ export default function GigView(props) {
   return (
     <div className="content-container page-container">
       <div className="gig-content">
-        <Button onClick={() => navigate(-1)}>Back To Search</Button>
+        <div id="back-btn">
+          <Button
+            variant="outlined"
+            className={classes.back_btn}
+            onClick={() => navigate(-1)}
+          >
+            Back To Search
+          </Button>
+        </div>
         <h1 id="gig-jobtitle">{gigPosting.job_title}</h1>
         <p>
           <em>Posted on January 30, 2022</em>

@@ -37,11 +37,17 @@
   line-height: 1.7rem;
 }
 
-.apply-modal {
-  display: flex;
-  justify-content: center;
-}
+// .apply-modal {
+//   display: flex;
+//   justify-content: center;
+// }
 
 .gig-content p {
   margin: 0.5rem 0 1.5rem 0;
+}
+
+#back-btn {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
 }

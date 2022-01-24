@@ -1,19 +1,31 @@
-// import './styles/LandingPage.scss';
 import '../styles/JobView.scss';
-import {Button} from '@mui/material';
-import {useContext, useEffect, useState} from 'react';
-import {useParams} from 'react-router-dom';
 import axios from 'axios';
-import ApplyModal from '../../components/JobSearch/ApplyModal';
-import {UserContext} from '../../Providers/userProvider';
-import {useNavigate} from 'react-router-dom';
+import {useContext, useEffect, useState} from 'react';
 
-// icons //
+// components
+import ApplyModal from '../../components/JobSearch/ApplyModal';
+
+// react-router
+import {useParams, useNavigate} from 'react-router-dom';
+
+// context
+import {UserContext} from '../../Providers/userProvider';
+
+// mui //
+import {Button} from '@mui/material';
+import {makeStyles} from '@mui/styles';
 import WorkOutlineOutlinedIcon from '@mui/icons-material/WorkOutlineOutlined';
 import FmdGoodOutlinedIcon from '@mui/icons-material/FmdGoodOutlined';
 import LocalOfferOutlinedIcon from '@mui/icons-material/LocalOfferOutlined';
 import BookmarkIcon from '@mui/icons-material/Bookmark';
 import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
+
+const useStyles = makeStyles({
+  back_btn: {
+    color: '#182c5b',
+    'border-color': '#182c5b',
+  },
+});
 
 export default function LandingPage(props) {
   const {currentUser, savedJobsGigs, setSavedJobsGigs} =
@@ -23,6 +35,7 @@ export default function LandingPage(props) {
   const [jobPosting, setJobPosting] = useState('');
   const [saved, setSaved] = useState(false);
   const navigate = useNavigate();
+  const classes = useStyles();
 
   useEffect(() => {
     if (jobs) {
@@ -46,7 +59,7 @@ export default function LandingPage(props) {
 
   const saveJob = () => {
     if (saved) {
-      return navigate('/saved');
+      return navigate('/profile');
     }
 
     axios
@@ -67,7 +80,15 @@ export default function LandingPage(props) {
 
   return (
     <div className="gig-content page-container">
-      <Button onClick={() => navigate(-1)}>Back To Search</Button>
+      <div id="back-btn">
+        <Button
+          variant="outlined"
+          onClick={() => navigate(-1)}
+          className={classes.back_btn}
+        >
+          Back To Results
+        </Button>
+      </div>
       <h1 className="jobview-job-title">{jobPosting.job_title}</h1>
       <div className="job-details-logos">
         <div>

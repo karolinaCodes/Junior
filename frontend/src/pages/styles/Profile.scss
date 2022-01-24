@@ -32,33 +32,44 @@
 
 .profile-content,
 .application-content {
-	display: flex;
-	flex-direction: row;
-	align-items: flex-start;
-	margin-right: 6vw;
-	margin-top: 2vh;
-	min-width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  margin-right: 6vw;
+  margin-top: 2vh;
+  min-width: 100%;
 
-	#profile-title {
-		margin-top: 0;
-		margin-left: 1vw;
-	}
+  #profile-title {
+    margin-top: 0;
+    margin-left: 1vw;
+  }
 
-	.MuiCard-root {
-		padding: 0;
-		h1 {
-			margin-top: 0;
-		}
-	}
-	.MuiCardActionArea-root {
-		cursor: pointer;
-		overflow: hidden;
-		aspect-ratio: auto 15/12;
-		justify-content: flex-start;
-	}
-	.profile-bio {
-		word-wrap: break-word;
-		align-self: flex-start;
-		margin-top: 2vh;
-	}
+  .MuiCard-root {
+    padding: 0;
+    h1 {
+      margin-top: 0;
+    }
+  }
+  .MuiCardActionArea-root {
+    cursor: pointer;
+    overflow: hidden;
+    aspect-ratio: auto 15/12;
+    justify-content: flex-start;
+  }
+  .profile-bio {
+    word-wrap: break-word;
+    align-self: flex-start;
+    margin-top: 2vh;
+  }
+}
+
+#profile-back-btn {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  z-index: 999;
+  position: absolute;
+  right: 30px;
+  top: 110px;
+  margin-left: 200px;
 }

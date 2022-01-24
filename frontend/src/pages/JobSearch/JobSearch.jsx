@@ -65,7 +65,6 @@ const useStyles = makeStyles({
   },
 
   learn_more_btn: {
-    width: '8.2rem',
     height: '2.5rem',
     'text-transform': 'none',
     color: '#192c5b',

@@ -26,7 +26,6 @@ const useStyles = makeStyles({
     color: '#f9f9f9',
     'background-color': '#182c5b',
     height: '2.5rem',
-    width: '8.2rem',
     'margin-right': '10px',
     'text-transform': 'none',
   },
@@ -34,8 +33,8 @@ const useStyles = makeStyles({
   apply_modal: {
     'background-color': '#EEF3F9',
     color: '#182c5b',
-    display: 'flex;',
-    'justify-content': 'center;',
+    // display: 'flex;',
+    // 'justify-content': 'center;',
   },
 
   edit: {
@@ -133,7 +132,7 @@ export default function ApplyModal(props) {
   };
 
   return (
-    <div className="apply-modal">
+    <>
       <Button
         onClick={handleClickandView}
         variant="contained"
@@ -273,6 +272,6 @@ export default function ApplyModal(props) {
           />
         </Box>
       </Dialog>
-    </div>
+    </>
   );
 }

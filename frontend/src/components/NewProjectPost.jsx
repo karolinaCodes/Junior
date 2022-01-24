@@ -6,6 +6,7 @@ import { useState, useEffect, useContext } from 'react';
 import { UserContext } from '../Providers/userProvider';
 
 export default function NewProjectPost(props) {
+	const { setOpenModal } = props;
 	const { currentUser } = useContext(UserContext);
 	const { state } = useLocation();
 
@@ -35,6 +36,10 @@ export default function NewProjectPost(props) {
 		}
 	}, [currentUser]);
 
+	const handleClose = () => {
+		setOpenModal(false);
+	}
+
 	const postProject = e => {
 		e.preventDefault();
 
@@ -54,7 +59,7 @@ export default function NewProjectPost(props) {
 					live_link: '',
 					original_request: '',
 				});
-				navigate('/profile');
+				handleClose();
 			})
 			.catch(err => {
 				console.log(err);
@@ -71,7 +76,7 @@ export default function NewProjectPost(props) {
 					label='Project Name'
 					variant='filled'
 					fullWidth
-					sx={{backgroundColor: '#f6fafd' }}
+					sx={{ backgroundColor: '#f6fafd' }}
 					onChange={e =>
 						setProjectForm({ ...projectForm, title: e.target.value })
 					}
@@ -173,11 +178,9 @@ export default function NewProjectPost(props) {
 					<Button
 						id='cancel-project'
 						sx={{ margin: 0 }}
-						variant='contained'
+						variant='outlined'
 						size='large'
-						onClick={e => {
-							navigate('/profile');
-						}}
+						onClick={handleClose}
 					>
 						Cancel
 					</Button>

@@ -49,26 +49,29 @@ module.exports = db => {
 			.catch(err => err);
 	};
 
-	const addGigPosting = (employer_id, gig_name, description, pay, deadline) => {
+	const addGigPosting = (employer_id, gig_name, description, pay, deadline, photo_url) => {
 		console.log(
 			'addGigPosting',
 			employer_id,
 			gig_name,
 			description,
 			pay,
-			deadline
+			deadline,
+			photo_url
 		);
+		const pay_dollars = pay * 100;
 		const query = {
 			text: `INSERT INTO gig_postings (
         employer_id,
         job_title,
         description,
         pay,
-        deadline
+        deadline, 
+				photo_url
         ) VALUES (
-          $1, $2, $3, $4, $5
+          $1, $2, $3, $4, $5, $6
         ) RETURNING *`,
-			values: [employer_id, gig_name, description, pay, deadline],
+			values: [employer_id, gig_name, description, pay_dollars, deadline, photo_url],
 		};
 
 		return db

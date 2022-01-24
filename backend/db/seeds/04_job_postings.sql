@@ -54,7 +54,7 @@ INSERT INTO job_postings (employer_id,job_title,description,city,salary,job_type
     'Waterloo',6000000,'Part-time',true, '2022-01-13 21:04:08');
 
 INSERT INTO job_postings (employer_id,job_title,description,city,salary,job_type,is_remote, date_posted) VALUES (
-    2,'Entry Level Software Developer',
+    2,'Software Developer',
     'Efficiently unleash cross-media information without cross-media value. Quickly maximize timely deliverables for real-time schemas. Dramatically maintain clicks-and-mortar solutions without functional solutions.',
     'Surrey',4000000,'Full-time',true, '2022-01-11 21:04:08');
 

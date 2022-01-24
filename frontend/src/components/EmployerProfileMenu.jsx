@@ -89,11 +89,11 @@ export default function PositionedMenu(props) {
 						</MenuItem>
 						<MenuItem
 							onClick={e => {
-								setProfileView('applications');
+								setProfileView('postings');
 								handleClose();
 							}}
 						>
-							Applications
+							Postings
 						</MenuItem>
 					</div>
 				)}

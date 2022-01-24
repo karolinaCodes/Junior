@@ -33,6 +33,10 @@ export default function Profile(props) {
 	const [openModal, setOpenModal] = useState(false);
 	const [modalData, setModalData] = useState();
 	const [profileView, setProfileView] = useState('postings');
+	const [applications, setApplications] = useState({
+		postType: 'job',
+		postId: '2',
+	});
 
 	const handleView = () => {
 		openModal === true ? setOpenModal(false) : setOpenModal(true);
@@ -93,7 +97,7 @@ export default function Profile(props) {
 		? jobsArray.map(job => {
 				const data = <JobPostingCard key={'Job-modal-' + job.id} {...job} />;
 
-				const applicationLink = `employerprofile/job/${job.id}/applications`;
+				// const applicationLink = `employerprofile/job/${job.id}/applications`;
 				const postingLink = `job/${job.id}`;
 				return (
 					<Grid
@@ -123,21 +127,26 @@ export default function Profile(props) {
 										{...job}
 									/>
 								</CardActionArea>
-								<CardActions key={'Job-card-actions-' + job.id}>
-									<Button
-										key={'Job-button-' + job.id}
-										onClick={() => window.open(applicationLink, '_self')}
-									>
-										Applications
-									</Button>
-									<Button
-										key={'Job-button-post-' + job.id}
-										className='card-footer'
-										onClick={() => window.open(postingLink, '_self')}
-									>
-										Posting
-									</Button>
-								</CardActions>
+								{currentUser.company_name === company_name && (
+									<CardActions key={'Job-card-actions-' + job.id}>
+										<Button
+											key={'Job-button-' + job.id}
+											onClick={() => {
+												setApplications({ postType: 'job', postId: job.id });
+												setProfileView('applications');
+											}}
+										>
+											Applications
+										</Button>
+										<Button
+											key={'Job-button-post-' + job.id}
+											className='card-footer'
+											onClick={() => window.open(postingLink, '_self')}
+										>
+											Posting
+										</Button>
+									</CardActions>
+								)}
 							</Card>
 						</Grid>
 					</Grid>
@@ -148,7 +157,7 @@ export default function Profile(props) {
 	const parsedGigs = Array.isArray(jobsArray)
 		? gigsArray.map(gig => {
 				const data = <JobPostingCard key={'Gig-modal-' + gig.id} {...gig} />;
-				const applicationLink = `employerprofile/gig/${gig.id}/applications`;
+				// const applicationLink = `employerprofile/gig/${gig.id}/applications`;
 				const postingLink = `gig/${gig.id}`;
 				return (
 					<Grid
@@ -178,22 +187,27 @@ export default function Profile(props) {
 										{...gig}
 									/>
 								</CardActionArea>
-								<CardActions key={'Gig-card-actions-' + gig.id}>
-									<Button
-										key={'Gig-button-' + gig.id}
-										className='card-footer'
-										onClick={() => window.open(applicationLink, '_self')}
-									>
-										Applications
-									</Button>
-									<Button
-										key={'Gig-button-post-' + gig.id}
-										className='card-footer'
-										onClick={() => window.open(postingLink, '_self')}
-									>
-										Posting
-									</Button>
-								</CardActions>
+								{currentUser.company_name === company_name && (
+									<CardActions key={'Gig-card-actions-' + gig.id}>
+										<Button
+											key={'Gig-button-' + gig.id}
+											className='card-footer'
+											onClick={() => {
+												setApplications({ postType: 'gig', postId: gig.id });
+												setProfileView('applications');
+											}}
+										>
+											Applications
+										</Button>
+										<Button
+											key={'Gig-button-post-' + gig.id}
+											className='card-footer'
+											onClick={() => window.open(postingLink, '_self')}
+										>
+											Posting
+										</Button>
+									</CardActions>
+								)}
 							</Card>
 						</Grid>
 					</Grid>
@@ -272,10 +286,14 @@ export default function Profile(props) {
 						{/* Applications */}
 						{profileView === 'applications' && (
 							<>
-								<Applications employer={profile.employer} />
+								<Applications
+									employer={profile.employer}
+									profileView={profileView}
+									setProfileView={setProfileView}
+									applications={applications}
+								/>
 							</>
 						)}
-
 						{/* Postings page */}
 
 						{profileView === 'postings' && (

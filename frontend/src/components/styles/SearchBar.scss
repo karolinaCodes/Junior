@@ -4,12 +4,11 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 100px;
-
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin: 20px;
+  border: 1px solid rgba(0, 0, 0, 0.23);
+  border-radius: 4px;
+  background: #f9f9f9;
+  padding: 0.5rem;
+  margin: 2rem 10% 15% 10%;
 
   #search-bar {
     width: 26rem;
@@ -27,5 +26,32 @@
     color: $blue;
     font-weight: $bold;
     margin-left: 2rem;
+  }
+}
+
+// drop down and text field
+#white-box > form > div.MuiBox-root.css-ece9u5 > div > div > fieldset,
+#white-box
+  > form
+  > div.MuiFormControl-root.MuiTextField-root.css-1u3bzj6-MuiFormControl-root-MuiTextField-root
+  > div
+  > fieldset {
+  border: none;
+}
+
+// dropdown arrow down svg
+#white-box > form > div.MuiBox-root.css-ece9u5 > div > div > svg {
+  color: white;
+}
+
+#search-btn-container {
+  width: 3rem;
+  height: 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 4px;
+  &:hover {
+    background: #e0eefe;
   }
 }

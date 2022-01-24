@@ -1,4 +1,18 @@
 INSERT INTO junior_devs (first_name,last_name,email,password,phone_number, city, headline, bio, photo_url, github_url, linkedin_url, resume_url) VALUES (
+  'Karolina',
+  'Swislocki',
+  'karolinaswislocki@hotmail.com',
+  '123',
+  '306.821.3553',
+  'Toronto',
+  'Full-stack Developer',
+  'Student. Coffee maven. Hardcore food nerd. Amateur music fanatic. Problem solver. Travel fan. Total web enthusiast.',
+  'https://media-exp1.licdn.com/dms/image/C4E03AQF3EU6ck0WYiw/profile-displayphoto-shrink_800_800/0/1641490468974?e=1648684800&v=beta&t=Tk3YA3pss1wnMzPgsNnkyS23hbTI3bSiG3hrvbXD-aE',
+  'https://github.com/karolinaCodes',
+  'https://www.linkedin.com/in/karolina-swislocki-0662b0210/',
+  'https://resume.creddle.io/resume/gf5ixfvh8s6'
+);
+INSERT INTO junior_devs (first_name,last_name,email,password,phone_number, city, headline, bio, photo_url, github_url, linkedin_url, resume_url) VALUES (
   'Alexander',
   'Reyne',
   'creativereyne@gmail.com',
@@ -11,19 +25,6 @@ INSERT INTO junior_devs (first_name,last_name,email,password,phone_number, city,
   'https://github.com/Alex-Reyne',
   'https://www.linkedin.com/in/alexanderreyne/',
   'https://drive.google.com/file/d/1qwTq0XySY2WjYinKWsfmt2BhM_ztlNmN/view?usp=sharing'
-);
-INSERT INTO junior_devs (first_name,last_name,email,password,phone_number, city, headline, bio, github_url, linkedin_url, resume_url) VALUES (
-  'Mamoun',
-  'Nevin',
-  '2@junior.com',
-  '123',
-  '306.821.3553',
-  'Toronto',
-  'Full-stack Developer',
-  'Award-winning social media aficionado. Subtly charming food fanatic. Beer maven. Creator. Music fan. Freelance organizer.',
-  'https://github.com/MamounCodes',
-  'https://www.linkedin.com/in/karolina-swislocki-0662b0210/',
-'https://resume.creddle.io/resume/gf5ixfvh8s6'
 );
 INSERT INTO junior_devs (first_name,last_name,email,password,phone_number, city, headline, bio, github_url, linkedin_url, resume_url) VALUES (
   'Alice',

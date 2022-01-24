@@ -118,7 +118,7 @@ const useStyles = makeStyles({
   },
 
   slider: {
-    color: '#182c5b',
+    color: '#048679',
   },
 
   clear_btn: {

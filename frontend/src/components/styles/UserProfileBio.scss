@@ -1,15 +1,20 @@
 @import 'variables';
 
 .profile-bio {
-	padding-top: 1rem;
+	padding: 2rem 2rem;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-evenly;
 	text-align: left;
-	min-width: 12vw;
-	max-width: 12vw;
-	margin-left: $margin6;
+	min-width: 15vw;
+	max-width: 15vw;
+	margin-left: 4vw;
 	margin-right: 2vw;
+	background-color: #fff;
+	// border: solid;
+	// border-color: $blue;
+	box-shadow: 3px 3px 10px #00000025;
+	border-radius: 0.5rem;
 
 	.MuiGrid-item {
 		padding: 0;
@@ -22,15 +27,28 @@
 		width: 100%;
 		margin-bottom: 2vh;
 	}
-	img#profile-pic {
-		border-radius: 50%;
-		width: 100%;
-		height: auto;
-	}
+
 	.profile-name {
 		width: 100%;
 	}
 	.profile-links {
 		width: 100%;
+	}
+
+	h4 {
+		margin-top: 0;
+
+		a {
+			color: $blue;
+			text-decoration: none;
+		}
+	}
+
+	h3 {
+		margin-top: -1rem;
+	}
+
+	.MuiChip-root {
+		margin-left: 1rem;
 	}
 }

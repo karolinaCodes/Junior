@@ -1,4 +1,4 @@
-import './styles/UserProfileHeader.scss';
+import './styles/UserProfileBio.scss';
 
 import { Chip, Grid, Input, TextField } from '@mui/material';
 import { useState } from 'react';
@@ -19,13 +19,7 @@ export default function UserProfileHeader(props) {
 		setEditForm(prev => ({ ...prev, ...currentUser }));
 	}, [currentUser]);
 
-	const {
-		resume_url,
-		github_url,
-		linkedin_url,
-		bio,
-		id,
-	} = currentUser;
+	const { resume_url, github_url, linkedin_url, bio, id } = currentUser;
 
 	/* 
 
@@ -51,8 +45,7 @@ export default function UserProfileHeader(props) {
 
 	return (
 		<Grid container className='profile-bio' direction='column'>
-			<Grid item className='profile-pic'>
-			</Grid>
+			<Grid item className='profile-pic'></Grid>
 			{profileView === 'edit' && (
 				<form onSubmit={editProfile}>
 					<Grid item className='profile-links'>
@@ -106,19 +99,24 @@ export default function UserProfileHeader(props) {
 			{profileView === 'browse' && (
 				<>
 					<Grid item className='profile-links'>
+						<h3>Bio</h3>
 						<h4>{bio ? bio : 'N/A'}</h4>
 						<h4>
 							<a href={resume_url}>Resume</a>
 						</h4>
-						<h4>{github_url ? github_url : 'N/A'}</h4>
-						<h4>{linkedin_url ? linkedin_url : 'N/A'}</h4>
+						<h4>
+							<a href={github_url ? github_url : 'N/A'}>Guthub</a>
+						</h4>
+						<h4>
+							<a href={linkedin_url ? linkedin_url : 'N/A'}>LinkedIn</a>
+						</h4>
 					</Grid>
 					<Grid
 						item
 						className='profile-buttons'
 						sx={{ justifyContent: 'space-evenly' }}
 					>
-						<Chip onClick={e => editProfile()} label='Edit Profile' />
+						<Chip onClick={e => editProfile()} label='Edit Info' />
 					</Grid>
 				</>
 			)}

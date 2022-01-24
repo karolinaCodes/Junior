@@ -268,7 +268,7 @@ export default function JobSearch(props) {
     setCity('');
     setSchedule('');
     setQueryString('');
-    setJobType('');
+    setJobType('all');
     setValue([40000, 70000]);
   };
 
@@ -416,7 +416,10 @@ export default function JobSearch(props) {
               className="salary-slider"
             >
               <span id="salary">Salary</span>{' '}
-              <span id="salary-range"> {`$${value[0]} - $${value[1]}`}</span>
+              <span id="salary-range">
+                {' '}
+                {`$${value[0].toLocaleString()}  -  $${value[1].toLocaleString()}`}
+              </span>
             </Typography>
             <Slider
               size="small"

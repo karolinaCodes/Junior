@@ -1,18 +1,43 @@
+import {useState} from 'react';
 import './styles/SearchBar.scss';
 import axios from 'axios';
-import {TextField, Button} from '@mui/material';
+
+// react-router //
 import {useNavigate} from 'react-router-dom';
+
+// mui //
+import {TextField, Button} from '@mui/material';
+import {makeStyles} from '@mui/styles';
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
-import {useState, useEffect} from 'react';
 import Box from '@mui/material/Box';
 import FormControl from '@mui/material/FormControl';
+import SearchIcon from '@mui/icons-material/Search';
+
+const useStyles = makeStyles({
+  dropdown: {
+    background: '#182c5b',
+    color: 'white',
+    'font-weight': 500,
+    'border-radius': '4px',
+  },
+
+  textfield: {
+    border: 'none',
+    'margin-left': '10px',
+  },
+
+  search_btn: {
+    'font-size': '28px',
+  },
+});
 
 export default function SearchBar(props) {
   const [jobType, setJobType] = useState('all');
   const [queryString, setQueryString] = useState('');
 
   let navigate = useNavigate();
+  const classes = useStyles();
 
   const handleChange = event => {
     setJobType(event.target.value);
@@ -34,7 +59,6 @@ export default function SearchBar(props) {
           },
         })
         .then(res => {
-          // console.log(res.data);
           navigate('/jobs', {state: {data: res.data}});
           return;
         })
@@ -50,7 +74,6 @@ export default function SearchBar(props) {
         },
       })
       .then(res => {
-        // console.log(res.data);
         navigate('/jobs', {state: {data: res.data}});
         return;
       })
@@ -67,8 +90,12 @@ export default function SearchBar(props) {
   return (
     <form className="search">
       <Box sx={{minWidth: 120}}>
-        <FormControl fullWidth>
-          <Select value={jobType} onChange={handleChange}>
+        <FormControl fullWidth className={classes.dropdown}>
+          <Select
+            value={jobType}
+            onChange={handleChange}
+            className={classes.dropdown}
+          >
             <MenuItem value={'all'}>All</MenuItem>
             <MenuItem value={'jobs'}>Jobs</MenuItem>
             <MenuItem value={'gigs'}>Gigs</MenuItem>
@@ -82,16 +109,19 @@ export default function SearchBar(props) {
         onChange={e => setQueryString(e.target.value)}
         value={queryString}
         onKeyDown={e => keyCheck(e)}
+        className={classes.textfield}
       />
-      <Button
+      {/* <Button
         sx={{ml: '2rem'}}
         variant="contained"
         size="med"
         type="submit"
-        onClick={handleSubmit}
-      >
-        SEARCH
-      </Button>
+        
+      > */}
+      <div id="search-btn-container" onClick={handleSubmit}>
+        <SearchIcon className={classes.search_btn} />
+      </div>
+      {/* </Button> */}
     </form>
   );
 }

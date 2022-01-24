@@ -3,109 +3,109 @@
 @import url('https://fonts.googleapis.com/css2?family=Assistant:wght@200;300;400;500;600;700;800&display=swap');
 
 * {
-	box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 .App {
-	min-height: 90vh;
+  min-height: 90vh;
 }
 
 .page-container {
-	min-height: 85vh;
+  min-height: 86vh;
 }
 
 body {
-	margin: 0;
-	background-color: $white;
-	font-family: $brand;
-	color: $black;
-	p,
-	h1,
-	h2,
-	h3,
-	h4,
-	h5 {
-		font-family: 'Assistant';
-	}
-	.modal-button {
-		background-color: #1d869d;
-		color: $white;
-		text-transform: none;
-		padding-right: 2rem;
-		padding-left: 2rem;
-	}
-	.modal-button:hover {
-		background-color: $white;
-		color: $black;
-		text-transform: none;
-		padding-right: 2rem;
-		padding-left: 2rem;
-	}
-	.MuiCardActionArea-root {
-		min-height: 1rem;
-	}
+  margin: 0;
+  background-color: $white;
+  font-family: $brand;
+  color: $black;
+  p,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5 {
+    font-family: 'Assistant';
+  }
+  .modal-button {
+    background-color: #1d869d;
+    color: $white;
+    text-transform: none;
+    padding-right: 2rem;
+    padding-left: 2rem;
+  }
+  .modal-button:hover {
+    background-color: $white;
+    color: $black;
+    text-transform: none;
+    padding-right: 2rem;
+    padding-left: 2rem;
+  }
+  .MuiCardActionArea-root {
+    min-height: 1rem;
+  }
 }
 .profile-content,
 .application-content,
 .posting-content,
 .profile-cards,
 .application-cards {
-	.description {
-		color: $grey;
-		overflow: hidden;
-		-webkit-line-clamp: 3;
-		-webkit-box-orient: vertical;
-		margin-top: 10px;
-		line-height: 1.5rem;
-	}
-	.profile-pic {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		text-align: center;
-		flex-direction: column;
-		max-width: $profile-md;
-	}
-	.MuiCard-root {
-		align-content: flex-start;
-		margin: 1rem;
-		border-radius: 13px;
-		box-shadow: 0px 3px 8px rgba(8, 35, 48, 0.05);
-	}
-	.MuiButton-root {
-		text-transform: none;
-		padding-right: 2rem;
-		padding-left: 2rem;
-	}
-	.MuiButton-containedPrimary {
-		background-color: $blue;
-		color: $white;
-	}
-	.MuiButton-root:hover {
-		background-color: $lightblue;
-	}
+  .description {
+    color: $grey;
+    overflow: hidden;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    margin-top: 10px;
+    line-height: 1.5rem;
+  }
+  .profile-pic {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+    max-width: $profile-md;
+  }
+  .MuiCard-root {
+    align-content: flex-start;
+    margin: 1rem;
+    border-radius: 13px;
+    box-shadow: 0px 3px 8px rgba(8, 35, 48, 0.05);
+  }
+  .MuiButton-root {
+    text-transform: none;
+    padding-right: 2rem;
+    padding-left: 2rem;
+  }
+  .MuiButton-containedPrimary {
+    background-color: $blue;
+    color: $white;
+  }
+  .MuiButton-root:hover {
+    background-color: $lightblue;
+  }
 
-	.MuiButton-outlined {
-		background-color: $white;
-		color: $blue;
-		border: 1px solid $blue;
-	}
+  .MuiButton-outlined {
+    background-color: $white;
+    color: $blue;
+    border: 1px solid $blue;
+  }
 
-	.MuiButton-outlined:hover {
-		background-color: $white;
-		color: $lightblue;
-		border: 1px solid $lightblue;
-	}
-	.MuiCard-root {
-		align-content: flex-start;
-	}
-	.MuiCardActions-root {
-		justify-content: space-between;
-	}
+  .MuiButton-outlined:hover {
+    background-color: $white;
+    color: $lightblue;
+    border: 1px solid $lightblue;
+  }
+  .MuiCard-root {
+    align-content: flex-start;
+  }
+  .MuiCardActions-root {
+    justify-content: space-between;
+  }
 }
 
 code {
-	font-family: 'Assistant', Menlo, Monaco, Consolas, 'Courier New', monospace;
+  font-family: 'Assistant', Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
 
 /* Increase the specificity */

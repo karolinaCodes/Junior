@@ -2,11 +2,12 @@
 
 .footer {
   background: $blue;
-  min-height: 5vh;
+  height: 6vh;
   bottom: 0;
   width: 100%;
   display: flex;
   justify-content: center;
+  align-items: center;
   padding: 0.5rem 1.5rem;
   color: $white;
 }

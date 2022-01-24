@@ -11,13 +11,13 @@ INSERT INTO job_postings (employer_id, job_title, company_desc, description, res
     Building reusable code for future use.
     Optimizing mobile applications for maximum speed and scalability.
     Maintaining brand consistency throughout the design.',
-    'Proficient understanding of:/
-    - React Native/
-    - Objective C & Swift for iOS applications/
-    - ReactJS/
+    'Proficient understanding of:
+    - React Native
+    - Objective C & Swift for iOS applications
+    - ReactJS
     Web markup, including HTML5, CSS and preprocessors
-    - Client-side scripting and debugging using JavaScript and Typescript with libraries and their interactions with RESTful APIs./
-    - Cross-browser compatibility issues and ways to work around them./
+    - Client-side scripting and debugging using JavaScript and Typescript with libraries and their interactions with RESTful APIs.
+    - Cross-browser compatibility issues and ways to work around them.
     - Code versioning tools, such as Git.', 
     'Casual dress
     Company events

@@ -6,6 +6,7 @@ const UserContext = createContext();
 const UserProvider = function (props) {
 	const [currentUser, setCurrentUser] = useState({});
 	const [savedJobsGigs, setSavedJobsGigs] = useState({});
+	const [profileView, setProfileView] = useState('projects');
 
 	useEffect(() => {
 		axios
@@ -40,6 +41,8 @@ const UserProvider = function (props) {
 		setCurrentUser,
 		savedJobsGigs,
 		setSavedJobsGigs,
+		profileView,
+		setProfileView,
 	}));
 
 	return (

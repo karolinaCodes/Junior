@@ -38,7 +38,7 @@ const useStyles = makeStyles({
 });
 
 export default function Profile() {
-	const { currentUser } = useContext(UserContext);
+	const { currentUser, profileView, setProfileView } = useContext(UserContext);
 	const { state } = useLocation();
 	const [goBack, setGoBack] = useState(state);
 	const navigate = useNavigate();
@@ -52,7 +52,6 @@ export default function Profile() {
 	});
 	const [openModal, setOpenModal] = useState(false);
 	const [modalData, setModalData] = useState();
-	const [profileView, setProfileView] = useState('projects');
 
 	const handleView = () => {
 		openModal === true ? setOpenModal(false) : setOpenModal(true);

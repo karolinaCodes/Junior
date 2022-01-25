@@ -71,7 +71,7 @@ const useStyles = makeStyles({
 
 export default function ApplyModal(props) {
 	const { jobApplying, handleClick } = props;
-	const { currentUser } = useContext(UserContext);
+	const { currentUser, profileView, setProfileView } = useContext(UserContext);
 
 	const [applicationSubmitted, setApplicationSubmitted] = useState(false);
 	const [openModal, setOpenModal] = useState(false);
@@ -166,7 +166,8 @@ export default function ApplyModal(props) {
 								<Button
 									variant='contained'
 									onClick={() => {
-										navigate('/profile', { state: 'applications' });
+										navigate(`/dev/${currentUser.id}`);
+										setProfileView('applications');
 									}}
 									className={classes.view_application}
 								>

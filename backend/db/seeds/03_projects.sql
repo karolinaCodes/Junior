@@ -40,26 +40,56 @@ VALUES (1, 'Tinyapp',
 
 INSERT INTO projects (junior_dev_id, title, description, thumbnail_photo_url, github_link, live_link, original_request)
 VALUES (2, 'Creative Reyne',
-'A simple URL shortener app that takes a regular URL and transforms it into an encoded version (similar to bit.ly).', 
+'Creative Reyne is my design portfolio. Designed by myself and build by my friend before learned how to code and write web applications', 
 'https://raw.githubusercontent.com/Alex-Reyne/CreativeReyne/master/unknown.png', 
 'https://github.com/Alex-Reyne/CreativeReyne', 'https://www.creativereyne.ca/', 'Original Request test');
 
-INSERT INTO projects (junior_dev_id, title, description, thumbnail_photo_url, github_link, live_link, original_request)
+INSERT INTO projects (junior_dev_id, title, description, thumbnail_photo_url, github_link)
+VALUES (2, 'Junior',
+'Junior is a React app built with Express and is a combination of Indeed, Adobe Portfolio, and Fiver geared towards Junior Developers with under 3 years experience. Junior helps budding developers to showcase and build their portfolios. Connect with employers and keep active by completing gigs while looking for junior developer roles.', 
+'https://media.discordapp.net/attachments/374983262248108032/935436670713610300/unknown.png?width=851&height=422', 
+'https://github.com/Alex-Reyne/junior');
+
+INSERT INTO projects (junior_dev_id, title, description, thumbnail_photo_url, github_link)
 VALUES (2, 'Tweeter',
-'Tweeter is a simple, single-page Twitter clone with the functionality of posting tweets and viewing them on the main tweeter page.', 
+'Tweeter! A single-page Twitter clone styled with Flexbox and SASS to make it pop with a smooth, lightwieght design. Tweeter uses jQuery and Ajax to make requests and communicate with the backend server.', 
 'https://raw.githubusercontent.com/Alex-Reyne/tweeter/master/docs/Screen%20Shot%202021-11-18%20at%208.42.44%20PM.png', 
-'https://github.com/Alex-Reyne/tweeter', 'https://github.com/Alex-Reyne/tweeter', 'Original Request test');
+'https://github.com/Alex-Reyne/tweeter');
 
-INSERT INTO projects (junior_dev_id, title, description, thumbnail_photo_url, github_link, live_link, original_request)
+INSERT INTO projects (junior_dev_id, title, description, thumbnail_photo_url, github_link)
 VALUES (2, 'Interview Scheduler',
-'A single-page React application that allows students of the LightHouse Labs Web Development Bootcamp to book and manage an interview with a mentor.', 
+'Interview Scheduler is a React app that uses custom hooks and selector functions to allow users to create, edit, and cancel interviews.
+Development focused on a single page application (SPA) called Interview Scheduler, built using React.
+Data is persisted by the API server using a PostgreSQL database.
+The client application communicates with an API server over HTTP, using the JSON format.
+Jest, Storybook, and Cypress tests are used through the development of the project.', 
 'https://raw.githubusercontent.com/Alex-Reyne/scheduler/master/public/alex-reyne-scheduler.png', 
-'https://github.com/Alex-Reyne/scheduler', 'https://github.com/Alex-Reyne/scheduler', 'Original Request test');
+'https://github.com/Alex-Reyne/scheduler');
 
-INSERT INTO projects (junior_dev_id, title, description, thumbnail_photo_url, github_link, live_link, original_request)
-VALUES (2, 'Tinyapp',
-'A simple URL shortener app that takes a regular URL and transforms it into an encoded version (similar to bit.ly).', 
-'https://raw.githubusercontent.com/Alex-Reyne/tinyapp/master/docs/home.png', 
-'https://github.com/Alex-Reyne/tinyapp', 'https://github.com/Alex-Reyne/tinyapp', 'Original Request test');
+INSERT INTO projects (junior_dev_id, title, description, thumbnail_photo_url, github_link, original_request)
+VALUES (3, 'Tweeter',
+'Tweeter is a simple, single-page Twitter clone that runs on your local system. I hope you are eggs-sighted to start Tweeting!', 
+'https://raw.githubusercontent.com/sarahdeecee/tweeter/master/docs/screenshot-big.png', 
+'https://github.com/sarahdeecee/tweeter', 'Create a single-page Twitter clone that updates using jQuery.');
+
+INSERT INTO projects (junior_dev_id, title, description, thumbnail_photo_url, github_link, original_request)
+VALUES (3, 'Scheduler',
+'Interview Scheduler keeps tracks of your appointments for the week. Easily choose an open slot, enter a name, and choose an interviewer to book your appointment. With Interview Scheduler, you will never overbook your week again!
+Create, edit, and delete your appointments with ease! This single page application keeps everything simple and clean.', 
+'https://github.com/sarahdeecee/scheduler/raw/master/docs/errorcheck.gif', 
+'https://github.com/sarahdeecee/scheduler','Create a single-page scheduling app that schedules student with available interviewers for a given week.');
+
+INSERT INTO projects (junior_dev_id, title, description, thumbnail_photo_url, github_link, original_request)
+VALUES (3, 'Jungle',
+'A mini e-commerce application designed in Ruby and built with Rails for purposes of teaching Rails by example.', 
+'https://github.com/sarahdeecee/jungle-rails/raw/master/docs/screenshot-products.png', 
+'https://github.com/sarahdeecee/jungle-rails', 'Implement an e-commerce application with Ruby on Rails.');
+
+INSERT INTO projects (junior_dev_id, title, description, thumbnail_photo_url, github_link, original_request)
+VALUES (3, 'Todai Food-Pickup Ordering',
+'A takeout website for a Japanese restaurant called Todai. You can browse the menu, order, and receive a notification by text when your order is ready.
+The restaurant can keep track of orders and enter how long it takes to prepare each order.', 
+'https://i.imgur.com/ZX9mQDv.jpeg', 
+'https://github.com/sarahdeecee/food-pickup', 'Create an app in a group of three using the skills you have so far.');
 
 

@@ -166,8 +166,16 @@ export default function Profile() {
 					onClose={handleView}
 					fullWidth={true}
 					maxWidth={'md'}
+					sx={{
+						'& .MuiDialog-paper': {
+							borderRadius: '13px',
+							padding: '2rem',
+							color: '#fff',
+							backgroundColor: '#223d55',
+						},
+					}}
 				>
-					<Box className='portfolio-modal'>{modalData}</Box>
+					{modalData}
 				</Dialog>
 			</div>
 		</>

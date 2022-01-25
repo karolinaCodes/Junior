@@ -20,24 +20,24 @@ INSERT INTO junior_devs (first_name,last_name,email,password,phone_number, city,
   '306.821.3553',
   'Saskatoon',
   'Full-stack Developer',
-  'Student. Coffee maven. Hardcore food nerd. Amateur music fanatic. Problem solver. Travel fan. Total web enthusiast.',
+  'Full-Stack web developer and freelance graphic designer with 11 years of experience.',
   'https://avatars.githubusercontent.com/u/85032662?s=400&u=74436a897a8b39116013a1950b272e57fc214b75&v=4',
   'https://github.com/Alex-Reyne',
   'https://www.linkedin.com/in/alexanderreyne/',
   'https://drive.google.com/file/d/1qwTq0XySY2WjYinKWsfmt2BhM_ztlNmN/view?usp=sharing'
 );
 INSERT INTO junior_devs (first_name,last_name,email,password,phone_number, city, headline, bio, github_url, linkedin_url, resume_url) VALUES (
-  'Alice',
-  'McPhee',
-  '3@junior.com',
+  'Sarah',
+  'Dela Cruz',
+  'sarah.delacruz@gmail.com',
   '123',
-  '306.821.3553',
-  'Toronto',
+  '456.1678.4567',
+  'Waterloo',
   'Full-stack Developer',
-  'Friendly zombie fan. Professional bacon guru. Music evangelist. Travel expert. Future teen idol. Avid pop culture geek.',
-  'https://github.com/AliceCodes',
-  'https://www.linkedin.com/in/karolina-swislocki-0662b0210/',
-'https://resume.creddle.io/resume/gf5ixfvh8s6'
+  'Solution-driven full stack web developer with an eye for design and a passion for client satisfaction.',
+  'https://github.com/sarahdeecee',
+  'https://www.linkedin.com/in/sarah-delacruz/',
+  'https://resume.io/r/eF4em6lp3'
 );
 INSERT INTO junior_devs (first_name,last_name,email,password,phone_number, city, headline, bio, github_url, linkedin_url, resume_url) VALUES (
   'Sergio',

@@ -45,11 +45,6 @@ body {
 	.MuiCardActionArea-root {
 		min-height: 1rem;
 	}
-	// .MuiPaper-root {
-	// 	border-radius: 13px;
-	// 	padding: 1rem;
-	// 	background-color: $blue;
-	// }
 }
 .profile-content,
 .application-content,
@@ -76,7 +71,7 @@ body {
 		align-content: flex-start;
 		margin: 1rem;
 		border-radius: 13px;
-		box-shadow: 0px 3px 8px rgba(8, 35, 48, 0.05);
+		box-shadow: 3px 3px 10px #00000025;
 	}
 	.MuiButton-root {
 		text-transform: none;

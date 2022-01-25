@@ -38,7 +38,7 @@ const useStyles = makeStyles({
 });
 
 export default function Profile() {
-	const { currentUser } = useContext(UserContext);
+	const { currentUser, profileView, setProfileView } = useContext(UserContext);
 	const { state } = useLocation();
 	const [goBack, setGoBack] = useState(state);
 	const navigate = useNavigate();
@@ -52,7 +52,6 @@ export default function Profile() {
 	});
 	const [openModal, setOpenModal] = useState(false);
 	const [modalData, setModalData] = useState();
-	const [profileView, setProfileView] = useState('projects');
 
 	const handleView = () => {
 		openModal === true ? setOpenModal(false) : setOpenModal(true);
@@ -63,14 +62,14 @@ export default function Profile() {
 	const location = useLocation();
 
 	const { dev_id } = useParams();
-	console.log(`useParams: ${typeof useParams().dev_id}`);
+	// console.log(`useParams: ${typeof useParams().dev_id}`);
 
 	// Check if logged in user = profile shown
-	if (dev_id === id) {
-		console.log(`edit profile dev_id: ${dev_id}, id: ${id}`);
-	} else {
-		console.log(`public profile dev_id: ${dev_id}, id: ${id}`);
-	}
+	// if (dev_id === id) {
+	// 	console.log(`edit profile dev_id: ${dev_id}, id: ${id}`);
+	// } else {
+	// 	console.log(`public profile dev_id: ${dev_id}, id: ${id}`);
+	// }
 
 	useEffect(() => {
 		if (dev_id === id) {
@@ -114,6 +113,10 @@ export default function Profile() {
 			projects={profile.projects}
 		/>
 	);
+
+	if (dev_id != id) {
+		setProfileView('projects');
+	}
 
 	const userApplications = <UserApplications />;
 

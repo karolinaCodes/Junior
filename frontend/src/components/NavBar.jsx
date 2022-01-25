@@ -1,29 +1,30 @@
-import {useContext} from 'react';
-import {Link} from 'react-router-dom';
+import { useContext } from 'react';
+import { Link } from 'react-router-dom';
 import Button from '@mui/material/Button';
-import {useLocation} from 'react-router-dom';
-import {UserContext} from '../Providers/userProvider';
+import { useLocation } from 'react-router-dom';
+import { UserContext } from '../Providers/userProvider';
 import './styles/NavBar.scss';
 import UserMenu from '../components/UserMenu';
 import axios from 'axios';
 
 export default function NavBar(props) {
-  const {handleLoginView} = props;
-  const {currentUser, setCurrentUser} = useContext(UserContext);
+	const { handleLoginView } = props;
+	const { currentUser, setCurrentUser } = useContext(UserContext);
 
-  const location = useLocation();
+	const location = useLocation();
 
-  const logout = () => {
-    axios
-      .post('api/auth/logout')
-      .then(res => setCurrentUser(res.data))
-      .catch(err => console.log(err));
-  };
+	const logout = () => {
+		axios
+			.post('api/auth/logout')
+			.then(res => setCurrentUser(res.data))
+			.catch(err => console.log(err));
+	};
 
-  const navClassCheck = () => {
-    return location.pathname === '/' ? 'nav-home' : 'nav-bar';
-  };
+	const navClassCheck = () => {
+		return location.pathname === '/' ? 'nav-home' : 'nav-bar';
+	};
 
+<<<<<<< HEAD
   return (
     <div className={navClassCheck()}>
       <Link id="logo" to="/">
@@ -63,4 +64,50 @@ export default function NavBar(props) {
       </div>
     </div>
   );
+=======
+	const logoText = '< Junior />';
+
+	return (
+		<div className={navClassCheck()}>
+			<Link id='logo' to='/'>
+				{/* <img
+          src="/images/Screen_Shot_2022-01-24_at_3.31.14_PM__2_-removebg-preview.png"
+          id="logo-img"
+        /> */}
+				<h1 id='logo-text'>{logoText}</h1>
+			</Link>
+			<div className='nav-links'>
+				<Link id='find-work' to='/jobs'>
+					Find Work
+				</Link>
+				<Link to='/profile'>How it works</Link>
+				<Link to='/profile'>Company</Link>
+				{currentUser.company_name && (
+					<Link id='hire-talent' to='/employerprofile'>
+						Hire Talent
+					</Link>
+				)}
+				<div>
+					{!currentUser.id && (
+						<Button
+							id='login'
+							variant='outlined'
+							onClick={e => handleLoginView()}
+						>
+							Log In
+						</Button>
+					)}
+					{!currentUser.id && (
+						<Button id='signup' variant='contained'>
+							Sign Up
+						</Button>
+					)}
+					{currentUser.id && (
+						<UserMenu currentUser={currentUser} logout={logout} />
+					)}
+				</div>
+			</div>
+		</div>
+	);
+>>>>>>> 1c5529d8b61031d52b600b854361d305e43ca0ad
 }

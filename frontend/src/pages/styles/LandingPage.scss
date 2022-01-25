@@ -1,34 +1,36 @@
 @import 'variables';
 
 .landing-wrapper {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  background-image: url('/images/landing-page-image-gradient.png');
-  background-size: cover;
-  background-position: center right;
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+	background-image: url('/images/landing-page-image-gradient.png');
+	background-size: cover;
+	background-position: center right;
 }
 
 #white-box {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  margin: 6rem 0 0 7rem;
-  width: 40%;
-  height: 78vh;
-  border-radius: 1%;
-  background: rgba(255, 255, 255, 0.61);
-  position: absolute;
-  z-index: 0;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	margin: 6rem 0 0 7rem;
+	width: 40%;
+	height: 78vh;
+	border-radius: 1%;
+	background: rgba(255, 255, 255, 0.61);
+	position: absolute;
+	z-index: 0;
 
-  h1 {
-    font-size: 53px;
-    font-weight: 800;
-    color: $thiccblue;
-    letter-spacing: 0.5px;
-    margin: 0 10% 0 10%;
-  }
+	h1 {
+		font-size: 65px;
+		font-weight: 800;
+		color: $thiccblue;
+		letter-spacing: 0.5px;
+		margin: 0 10% 0 10%;
+	}
 
+<<<<<<< HEAD
   p {
     color: #1c1c1c80;
     font-weight: 500;
@@ -36,41 +38,51 @@
     margin: 2rem 10% 2rem 10%;
     font-size: 18px;
   }
+=======
+	p {
+		color: #1c1c1c80;
+		font-weight: 500;
+		line-height: 2rem;
+		margin: 2rem 10% 2rem 10%;
+		font-size: 17px;
+	}
+>>>>>>> 1c5529d8b61031d52b600b854361d305e43ca0ad
 
-  h1,
-  p {
-    text-align: center;
-  }
+	h1,
+	p {
+		text-align: center;
+	}
 
-  .get-paid {
-    margin-bottom: 2rem;
-  }
+	.get-paid {
+		margin-bottom: 2rem;
+	}
 
-  img {
-    opacity: 75%;
-    align-self: center;
-    max-width: 30rem;
-    margin-bottom: 2rem;
-  }
+	img {
+		opacity: 75%;
+		align-self: center;
+		max-width: 30rem;
+		margin-bottom: 0;
+		margin-top: 7rem;
+	}
 }
 
 @media only screen and (min-width: 1900px) {
-  #white-box {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    margin: 9rem 0 0 7rem;
-    min-width: 35%;
-    min-height: 60vh;
-    border-radius: 1%;
-    background: rgba(255, 255, 255, 0.61);
-    position: absolute;
-    z-index: 0;
+	#white-box {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		margin: 9rem 0 0 7rem;
+		min-width: 35%;
+		min-height: 60vh;
+		border-radius: 1%;
+		background: rgba(255, 255, 255, 0.61);
+		position: absolute;
+		z-index: 0;
 
-    h1,
-    p {
-      margin: 0 10% 0 10%;
-      text-align: left;
-    }
-  }
+		h1,
+		p {
+			margin: 0 10% 0 10%;
+			text-align: left;
+		}
+	}
 }

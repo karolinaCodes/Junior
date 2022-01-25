@@ -1,69 +1,77 @@
 @import './variables.scss';
 
 .search {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border: 1px solid rgba(0, 0, 0, 0.23);
-  border-radius: 4px;
-  background: #f9f9f9;
-  padding: 0.5rem;
-  margin: 3.5rem 10% 10% 10%;
-  height: 4rem;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	// border: 1px solid rgba(0, 0, 0, 0.23);
+	box-shadow: 3px 3px 10px #26242a50;
+	border-radius: 1rem;
+	background: #f9f9f9;
+	padding: 0.5rem;
+	margin: 3.5rem 10% 10% 10%;
+	height: 3rem;
+	max-width: 35rem;
 
-  #search-bar {
-    width: 26rem;
-  }
+	#search-bar {
+		width: 20rem;
+	}
 
-  button {
-    background-color: #182c5b;
-    color: #f9f9f9;
-    font-weight: $bold;
-    margin-left: 2rem;
-  }
+	button {
+		background-color: #182c5b;
+		color: #f9f9f9;
+		font-weight: $bold;
+		margin-left: 2rem;
+	}
 
-  button:hover {
-    background-color: $sand;
-    color: $blue;
-    font-weight: $bold;
-    margin-left: 2rem;
-  }
+	button:hover {
+		background-color: $sand;
+		color: $blue;
+		font-weight: $bold;
+		margin-left: 2rem;
+	}
+
+	.makeStyles-dropdown-1 {
+		height: 2.25rem;
+	}
 }
 
 // drop down and text field
 #white-box > form > div.MuiBox-root.css-ece9u5 > div > div > fieldset,
 #white-box
-  > form
-  > div.MuiFormControl-root.MuiTextField-root.css-1u3bzj6-MuiFormControl-root-MuiTextField-root
-  > div
-  > fieldset {
-  border: none;
+	> form
+	> div.MuiFormControl-root.MuiTextField-root.css-1u3bzj6-MuiFormControl-root-MuiTextField-root
+	> div
+	> fieldset {
+	border: none;
+	height: 2.5rem;
 }
 
 // search bar text field
 #white-box
-  > form
-  > div.MuiFormControl-root.MuiTextField-root.makeStyles-textfield-5.css-1u3bzj6-MuiFormControl-root-MuiTextField-root
-  > div
-  > fieldset:focus-within {
-  background: '#182c5b';
+	> form
+	> div.MuiFormControl-root.MuiTextField-root.makeStyles-textfield-5.css-1u3bzj6-MuiFormControl-root-MuiTextField-root
+	> div
+	> fieldset:focus-within {
+	background: '#182c5b';
+	height: 2.5rem;
 }
 
 // #white-box > form > div.MuiFormControl-root.MuiTextField-root.makeStyles-textfield-2.css-1u3bzj6-MuiFormControl-root-MuiTextField-root > div > fieldset
 
 // dropdown arrow down svg
 #white-box > form > div.MuiBox-root.css-ece9u5 > div > div > svg {
-  color: white;
+	color: #223d55;
 }
 
 #search-btn-container {
-  width: 3rem;
-  height: 3rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 4px;
-  &:hover {
-    background: #e0eefe;
-  }
+	width: 3rem;
+	height: 2.5rem;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: 4px;
+	&:hover {
+		background: #e0eefe;
+	}
 }

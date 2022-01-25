@@ -70,13 +70,7 @@ export default function Applications(props) {
 				</Grid>
 				<section className='application-cards'>
 					<Grid container item xs={12}>
-						{view === 'job' && parsedSavedJobs}
-						{view === 'gig' && parsedSavedGigs}
-						{view === 'all' && (
-							<>
-								{parsedSavedJobs} {parsedSavedGigs}
-							</>
-						)}
+						{parsedSavedJobs} {parsedSavedGigs}
 					</Grid>
 				</section>
 			</Grid>

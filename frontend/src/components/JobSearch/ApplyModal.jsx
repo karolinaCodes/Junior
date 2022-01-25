@@ -1,10 +1,10 @@
-import { useState, useContext } from 'react';
+import {useState, useContext} from 'react';
 import axios from 'axios';
 import '../styles/SearchResults/ApplyModal.scss';
 
 // mui //
-import { Button, Box, Dialog } from '@mui/material';
-import { makeStyles } from '@mui/styles';
+import {Button, Box, Dialog} from '@mui/material';
+import {makeStyles} from '@mui/styles';
 
 // icons //
 import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
@@ -16,131 +16,135 @@ import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import FolderIcon from '@mui/icons-material/Folder';
 
 // react-router
-import { useNavigate } from 'react-router-dom';
+import {useNavigate} from 'react-router-dom';
 
 // context //
-import { UserContext } from '../../Providers/userProvider.jsx';
+import {UserContext} from '../../Providers/userProvider.jsx';
 
 const useStyles = makeStyles({
-	apply_btn: {
-		color: '#f9f9f9',
-		'background-color': '#182c5b',
-		height: '2.5rem',
-		'margin-right': '10px',
-		'text-transform': 'none',
-		'flex-grow': 1,
-		'max-width': '118px',
-	},
+  apply_btn: {
+    color: '#f9f9f9',
+    'background-color': '#182c5b',
+    height: '2.5rem',
+    'margin-right': '10px',
+    'text-transform': 'none',
+    'flex-grow': 1,
+    'max-width': '118px',
+  },
 
-	apply_modal: {
-		'background-color': '#EEF3F9',
-		color: '#182c5b',
-	},
+  apply_modal: {
+    'background-color': '#EEF3F9',
+    color: '#182c5b',
+    display: 'flex',
+  },
 
-	edit: {
-		color: '#182c5b',
-		border: '2px solid #182c5b',
-		'text-transform': 'none',
-		'font-weight': 700,
-	},
+  edit: {
+    color: '#182c5b',
+    border: '2px solid #182c5b',
+    'text-transform': 'none',
+    'font-weight': 700,
+  },
 
-	submit: {
-		background: '#182c5b',
-		'text-transform': 'none',
-	},
+  submit: {
+    background: '#182c5b',
+    'text-transform': 'none',
+  },
 
-	exit_btn: {
-		position: 'absolute',
-		right: 0,
-		margin: '10px',
-		top: 0,
-	},
+  exit_btn: {
+    position: 'absolute',
+    right: 0,
+    margin: '10px',
+    top: 0,
+  },
 
-	more_jobs: {
-		color: '#182c5b',
-		border: '2px solid #182c5b',
-		'text-transform': 'none',
-		'font-weight': 700,
-	},
+  more_jobs: {
+    color: '#182c5b',
+    border: '2px solid #182c5b',
+    'text-transform': 'none',
+    'font-weight': 700,
+  },
 
-	view_application: {
-		background: '#182c5b',
-		'text-transform': 'none',
-	},
+  view_application: {
+    background: '#182c5b',
+    'text-transform': 'none',
+  },
+  icon: {
+    color: '#048679',
+  },
 });
 
 export default function ApplyModal(props) {
 	const { jobApplying, handleClick } = props;
 	const { currentUser, profileView, setProfileView } = useContext(UserContext);
 
-	const [applicationSubmitted, setApplicationSubmitted] = useState(false);
-	const [openModal, setOpenModal] = useState(false);
+  const [applicationSubmitted, setApplicationSubmitted] = useState(false);
+  const [openModal, setOpenModal] = useState(false);
 
-	const classes = useStyles();
-	const navigate = useNavigate();
+  const classes = useStyles();
+  const navigate = useNavigate();
 
-	const handleView = () => {
-		openModal === true ? setOpenModal(false) : setOpenModal(true);
-	};
+  const handleView = () => {
+    openModal === true ? setOpenModal(false) : setOpenModal(true);
+  };
 
-	const handleClickandView = () => {
-		handleView();
-		handleClick && handleClick();
-	};
+  const handleClickandView = () => {
+    handleView();
+    handleClick && handleClick();
+  };
 
-	const submitApplication = () => {
-		axios
-			.post('/api/job_applications/new', {
-				job_posting_id: jobApplying.id,
-				junior_dev_id: currentUser.id,
-			})
-			.then(res => {
-				console.log(res.data);
-				setApplicationSubmitted(true);
-				return res.data;
-			})
-			.then(data => {
-				sendEmail(
-					'creativereyne@gmail.com',
-					currentUser,
-					jobApplying.job_title
-				);
-			})
-			.catch(err => {
-				console.log(err);
-			});
-	};
+  const submitApplication = () => {
+    axios
+      .post('/api/job_applications/new', {
+        job_posting_id: jobApplying.id,
+        junior_dev_id: currentUser.id,
+      })
+      .then(res => {
+        console.log(res.data);
+        setApplicationSubmitted(true);
+        return res.data;
+      })
+      .then(data => {
+        sendEmail(
+          'creativereyne@gmail.com',
+          currentUser,
+          jobApplying.job_title
+        );
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
 
-	const sendEmail = (email, currentUser, job_title) => {
-		axios
-			.post('/send_email', {
-				params: {
-					to: email,
-					from: 'applyjuniorstacks@gmail.com', // Use the email address or domain you verified
-					subject: `${job_title}: New Application From ${currentUser.first_name} ${currentUser.last_name}`,
-					text: `You've got a new application on Junior!`,
-					html: `<h1>You've got a new application on <a href='http://localhost:3000/'>Junior!</a><h1>`,
-				},
-			})
-			.then(res => {
-				console.log('yay!');
-			})
-			.catch(err => console.log(err));
-	};
+  const sendEmail = (email, currentUser, job_title) => {
+    axios
+      .post('/send_email', {
+        params: {
+          to: email,
+          from: 'applyjuniorstacks@gmail.com', // Use the email address or domain you verified
+          subject: `${job_title}: New Application From ${currentUser.first_name} ${currentUser.last_name}`,
+          text: `You've got a new application on Junior!`,
+          html: `<h1>You've got a new application on <a href='http://localhost:3000/'>Junior!</a><h1>`,
+        },
+      })
+      .then(res => {
+        console.log('yay!');
+      })
+      .catch(err => console.log(err));
+  };
 
-	const navigateToProfile = () => {
-		navigate(`/dev/${currentUser.id}`, { state: true });
-	};
+  const navigateToProfile = () => {
+    navigate(`/dev/${currentUser.id}`, {state: true});
+  };
 
-	return (
-		<>
-			<Button
-				onClick={handleClickandView}
-				variant='contained'
-				className={classes.apply_btn}
-			>
-				Apply
-			</Button>
+  return (
+    <>
+      <Button
+        onClick={handleClickandView}
+        variant="contained"
+        className={classes.apply_btn}
+      >
+        Apply
+      </Button>
 
 			<Dialog
 				open={openModal}

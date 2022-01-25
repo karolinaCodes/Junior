@@ -8,7 +8,7 @@ import {
 	FormControlLabel,
 	Switch,
 	MenuItem,
-	Grid
+	Grid,
 } from '@mui/material';
 import { useEffect } from 'react';
 import { maxWidth } from '@mui/system';
@@ -42,7 +42,7 @@ export default function NewJobPost(props) {
 
 	const handleClose = () => {
 		setOpenModal(false);
-	}
+	};
 
 	const postJob = e => {
 		e.preventDefault();
@@ -61,7 +61,7 @@ export default function NewJobPost(props) {
 					is_remote: false,
 					is_open: true,
 				});
-				handleClose()
+				handleClose();
 			})
 			.catch(err => {
 				console.log(err);
@@ -78,18 +78,24 @@ export default function NewJobPost(props) {
 				id='new-job-title'
 				label='Job Title'
 				fullWidth
-				sx={{backgroundColor: '#f6fafd' }}
+				sx={{ backgroundColor: '#f6fafd' }}
 				variant='filled'
 				onChange={e => setJobForm({ ...jobForm, job_title: e.target.value })}
 				value={jobForm.job_title}
 			/>
 			<div id='city-salary'>
-			<Grid container direction='row' id='first-row' gap={5} sx={{mt: '1rem' }}>
+				<Grid
+					container
+					direction='row'
+					id='first-row'
+					gap={5}
+					sx={{ mt: '1rem' }}
+				>
 					<Grid item xs>
 						<TextField
 							fullWidth
 							id='city'
-							sx={{backgroundColor: '#f6fafd'}}
+							sx={{ backgroundColor: '#f6fafd' }}
 							label='City'
 							variant='filled'
 							multiline={true}
@@ -101,7 +107,7 @@ export default function NewJobPost(props) {
 						<TextField
 							fullWidth
 							id='salary'
-							sx={{backgroundColor: '#f6fafd' }}
+							sx={{ backgroundColor: '#f6fafd' }}
 							label='Yearly Salary'
 							variant='filled'
 							type='number'
@@ -118,7 +124,7 @@ export default function NewJobPost(props) {
 					fullWidth
 					id='job-description'
 					color='primary'
-					sx={{backgroundColor: '#f6fafd'}}
+					sx={{ backgroundColor: '#f6fafd' }}
 					label='Job Description'
 					variant='filled'
 					multiline={true}
@@ -135,7 +141,7 @@ export default function NewJobPost(props) {
 						id='job-type'
 						label='Job Type'
 						variant='filled'
-						sx={{backgroundColor: '#f6fafd', mb: '2rem'}}
+						sx={{ backgroundColor: '#f6fafd', mb: '2rem' }}
 						value={jobForm.job_type}
 						select
 						onChange={e => {
@@ -149,7 +155,7 @@ export default function NewJobPost(props) {
 					<FormControlLabel
 						id='remote-switch'
 						control={<Switch default value={jobForm.is_remote} />}
-						sx={{color: '#f6fafd' }}
+						sx={{ color: '#f6fafd' }}
 						label='Remote Position'
 						onChange={e => isRemote(e)}
 					/>
@@ -168,7 +174,9 @@ export default function NewJobPost(props) {
 				</Button>
 				<Button
 					id='cancel-job'
-					onClick={ handleClose }
+					onClick={e => {
+						handleClose();
+					}}
 					variant='outlined'
 					size='large'
 				>

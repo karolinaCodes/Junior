@@ -60,6 +60,8 @@ export default function Profile() {
 
 	const { first_name, last_name, id } = currentUser;
 
+	const location = useLocation();
+
 	const { dev_id } = useParams();
 	console.log(`useParams: ${typeof useParams().dev_id}`);
 
@@ -98,7 +100,7 @@ export default function Profile() {
 				}
 			);
 		}
-	}, [currentUser, openModal]);
+	}, [currentUser, openModal, location]);
 
 	const userProjects = (
 		<UserProjects

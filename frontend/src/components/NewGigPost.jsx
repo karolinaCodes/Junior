@@ -137,7 +137,9 @@ export default function NewGigPost(props) {
 					sx={{ margin: 0 }}
 					variant='outlined'
 					size='large'
-					onClick={handleClose}
+					onClick={e => {
+						handleClose();
+					}}
 				>
 					Cancel
 				</Button>

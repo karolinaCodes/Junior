@@ -1,6 +1,6 @@
 import './styles/Profile.scss';
 import { useEffect, useState, useContext } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import { UserContext } from '../Providers/userProvider';
 import {
 	Grid,
@@ -23,7 +23,6 @@ import Applications from '../components/Applications';
 
 export default function Profile(props) {
 	const { currentUser } = useContext(UserContext);
-	const navigate = useNavigate();
 
 	const [profile, setProfile] = useState({
 		employer: {},
@@ -43,6 +42,8 @@ export default function Profile(props) {
 	};
 
 	const { employer_id } = useParams();
+
+	const location = useLocation();
 
 	const { company_name, email, photo_url, bio } = profile.employer;
 	const { id } =
@@ -86,7 +87,7 @@ export default function Profile(props) {
 				}));
 			});
 		}
-	}, [currentUser, openModal]);
+	}, [currentUser, openModal, location]);
 
 	// Get job and gig information for employer from state
 	const jobsArray = profile.jobs;

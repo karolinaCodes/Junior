@@ -27,11 +27,10 @@ export default function PositionedMenu(props) {
 		setAnchorEl(null);
 	};
 
-	const navigate = useNavigate();
 	const handleView = () => {
 		openModal === true ? setOpenModal(false) : setOpenModal(true);
 	};
-	const newProjectModal = <NewProjectPost />;
+	const newProjectModal = <NewProjectPost setOpenModal={setOpenModal} />;
 
 	return (
 		<div className='user-menu-container'>

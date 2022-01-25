@@ -32,8 +32,8 @@ export default function PositionedMenu(props) {
 	const handleView = () => {
 		openModal === true ? setOpenModal(false) : setOpenModal(true);
 	};
-	const newJobModal = <NewJobPost />;
-	const newGigModal = <NewGigPost />;
+	const newJobModal = <NewJobPost setOpenModal={setOpenModal} />;
+	const newGigModal = <NewGigPost setOpenModal={setOpenModal} />;
 
 	return (
 		<div className='user-menu-container'>

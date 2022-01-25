@@ -23,9 +23,8 @@ export default function UserProfileHeader(props) {
 		setEditForm(prev => ({ ...prev, ...currentUser }));
 	}, [currentUser]);
 
-	const { resume_url, github_url, linkedin_url, bio, id } = currentUser;
-
-	const { dev_id } = props;
+	const { dev_id, user } = props;
+	const { resume_url, github_url, linkedin_url, bio, id } = user;
 
 	const updateProfile = () => {
 		axios

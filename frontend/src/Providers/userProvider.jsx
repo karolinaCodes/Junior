@@ -7,6 +7,15 @@ const UserProvider = function (props) {
 	const [currentUser, setCurrentUser] = useState({});
 	const [savedJobsGigs, setSavedJobsGigs] = useState({});
 	const [profileView, setProfileView] = useState('projects');
+	const [projectForm, setProjectForm] = useState({
+		junior_dev_id: currentUser.id,
+		title: 'New Project',
+		description: '',
+		thumbnail_photo_url: '',
+		github_link: '',
+		live_link: '',
+		original_request: '',
+	});
 
 	useEffect(() => {
 		axios
@@ -34,6 +43,16 @@ const UserProvider = function (props) {
 					console.log(err);
 				});
 		}
+
+		setProjectForm({
+			junior_dev_id: currentUser.id,
+			title: 'New Project',
+			description: '',
+			thumbnail_photo_url: '',
+			github_link: '',
+			live_link: '',
+			original_request: '',
+		});
 	}, [currentUser, setSavedJobsGigs]);
 
 	const value = useMemo(() => ({
@@ -43,6 +62,8 @@ const UserProvider = function (props) {
 		setSavedJobsGigs,
 		profileView,
 		setProfileView,
+		projectForm,
+		setProjectForm,
 	}));
 
 	return (

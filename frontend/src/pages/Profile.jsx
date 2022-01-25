@@ -38,13 +38,19 @@ const useStyles = makeStyles({
 });
 
 export default function Profile() {
-	const { currentUser, profileView, setProfileView } = useContext(UserContext);
+	const {
+		currentUser,
+		profileView,
+		setProfileView,
+		projectForm,
+		setProjectForm,
+	} = useContext(UserContext);
 	const { state } = useLocation();
 	const [goBack, setGoBack] = useState(state);
 	const navigate = useNavigate();
 	const classes = useStyles();
 
-	// console.log('', currentUser);
+	console.log('IN PROFLE:', projectForm);
 
 	const [profile, setProfile] = useState({
 		dev: {},
@@ -52,16 +58,6 @@ export default function Profile() {
 	});
 	const [openModal, setOpenModal] = useState(false);
 	const [modalData, setModalData] = useState();
-
-	const [projectForm, setProjectForm] = useState({
-		junior_dev_id: currentUser.id,
-		title: 'New Project',
-		description: '',
-		thumbnail_photo_url: '',
-		github_link: '',
-		live_link: '',
-		original_request: '',
-	});
 
 	const handleView = () => {
 		openModal === true ? setOpenModal(false) : setOpenModal(true);
@@ -111,23 +107,6 @@ export default function Profile() {
 		}
 	}, [currentUser, openModal, location]);
 
-	useEffect(() => {
-		setProjectForm({ ...projectForm, junior_dev_id: currentUser.id });
-
-		if (state) {
-			setProjectForm({
-				junior_dev_id: currentUser.id,
-				title: 'New Project',
-				description: '',
-				thumbnail_photo_url: '',
-				github_link: '',
-				live_link: '',
-				original_request: '',
-			});
-		}
-		
-	}, [currentUser]);
-
 	const userProjects = (
 		<UserProjects
 			profile={profile}
@@ -145,11 +124,16 @@ export default function Profile() {
 		setProfileView('projects');
 	}
 
-	const userApplications = <UserApplications
-		projectForm={projectForm}
-		setProjectForm={setProjectForm}
-		setModalData={setModalData}
-	/>;
+	const userApplications = (
+		<UserApplications
+			projectForm={projectForm}
+			setProjectForm={setProjectForm}
+			setModalData={setModalData}
+			setModalData={setModalData}
+			openModal={openModal}
+			setOpenModal={setOpenModal}
+		/>
+	);
 
 	const savedPostings = <SavedPostings />;
 
@@ -181,7 +165,7 @@ export default function Profile() {
 				/>
 			</div>
 			<div className='profile-content page-container'>
-				<UserProfileBio dev_id={dev_id} />
+				<UserProfileBio dev_id={dev_id} user={profile.dev} />
 				{profile.projects.length === 0 && <h1>No projects added</h1>}
 				<section className='profile-cards'>
 					<Grid container>

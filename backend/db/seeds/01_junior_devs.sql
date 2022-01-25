@@ -40,7 +40,7 @@ INSERT INTO junior_devs (first_name,last_name,email,password,phone_number, city,
   'https://www.linkedin.com/in/alexanderreyne/',
   'https://drive.google.com/file/d/1qwTq0XySY2WjYinKWsfmt2BhM_ztlNmN/view?usp=sharing'
 );
-INSERT INTO junior_devs (first_name,last_name,email,password,phone_number, city, headline, bio, github_url, linkedin_url, resume_url) VALUES (
+INSERT INTO junior_devs (first_name,last_name,email,password,phone_number, city, headline, bio, photo_url, github_url, linkedin_url, resume_url) VALUES (
   'Sarah',
   'Dela Cruz',
   'sarah.delacruz@gmail.com',
@@ -49,6 +49,7 @@ INSERT INTO junior_devs (first_name,last_name,email,password,phone_number, city,
   'Waterloo',
   'Full-stack Developer',
   'Solution-driven full stack web developer with an eye for design and a passion for client satisfaction.',
+  'https://avatars.githubusercontent.com/u/6501508?s=400&u=18add3e591596026b565eccc22106f545a836ce8&v=4',
   'https://github.com/sarahdeecee',
   'https://www.linkedin.com/in/sarah-delacruz/',
   'https://resume.io/r/eF4em6lp3'

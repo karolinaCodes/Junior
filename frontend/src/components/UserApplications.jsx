@@ -22,7 +22,8 @@ export default function UserApplications(props) {
 	const { currentUser, setProfileView } = useContext(UserContext);
 	const { id } = currentUser;
 
-	const {projectForm, setProjectForm} = props;
+	const { projectForm, setProjectForm, openModal, setOpenModal, setModalData } =
+		props;
 	// console.log(currentUser);
 	// const id =  1;
 	const [applications, setApplications] = useState({
@@ -30,8 +31,6 @@ export default function UserApplications(props) {
 		gigApplications: [],
 	});
 
-	const [openModal, setOpenModal] = useState(false);
-	const [modalData, setModalData] = useState();
 	const [view, setView] = useState('all');
 	const [applicationChange, setApplicationChange] = useState(false);
 
@@ -138,13 +137,15 @@ export default function UserApplications(props) {
 						<Button
 							onClick={e => {
 								setApplicationChange(true);
-							}}>
+							}}
+						>
 							Set True
 						</Button>
 						<Button
 							onClick={e => {
 								setApplicationChange(false);
-							}}>
+							}}
+						>
 							Set False
 						</Button>
 					</Grid>
@@ -162,14 +163,24 @@ export default function UserApplications(props) {
 					</Grid>
 				</section>
 			</Grid>
-			<Dialog
+			{/* <Dialog
 				open={openModal}
-				onClose={handleModal}
+				onClose={handleView}
 				fullWidth={true}
 				maxWidth={'md'}
+				scroll='body'
+				sx={{
+					'& .MuiDialog-paper': {
+						borderRadius: '13px',
+						padding: '2rem',
+						color: '#fff',
+						backgroundColor: '#223d55',
+					},
+					h1: { mt: 0 },
+				}}
 			>
 				<Box className='portfolio-modal'>{modalData}</Box>
-			</Dialog>
+			</Dialog> */}
 		</div>
 	);
 }

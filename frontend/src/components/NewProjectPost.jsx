@@ -6,13 +6,15 @@ import { useState, useEffect, useContext } from 'react';
 import { UserContext } from '../Providers/userProvider';
 
 export default function NewProjectPost(props) {
-	const { setOpenModal, projectForm, setProjectForm } = props;
-	const { currentUser } = useContext(UserContext);
+	const { setOpenModal } = props;
+	const { currentUser, projectForm, setProjectForm } = useContext(UserContext);
 	const { state } = useLocation();
 
 	const handleClose = () => {
 		setOpenModal(false);
 	};
+
+	console.log('IN PROJECT POST:', projectForm);
 
 	const postProject = e => {
 		e.preventDefault();

@@ -17,7 +17,7 @@ import { MoreVert } from '@mui/icons-material';
 export default function PositionedMenu(props) {
 	const { setModalData, openModal, setOpenModal, profileView, setProfileView } =
 		props;
-	const { currentUser } = useContext(UserContext);
+	const { currentUser, projectForm, setProjectForm } = useContext(UserContext);
 	const [anchorEl, setAnchorEl] = React.useState(null);
 	const open = Boolean(anchorEl);
 	const handleClick = event => {
@@ -30,7 +30,13 @@ export default function PositionedMenu(props) {
 	const handleView = () => {
 		openModal === true ? setOpenModal(false) : setOpenModal(true);
 	};
-	const newProjectModal = <NewProjectPost setOpenModal={setOpenModal} />;
+	const newProjectModal = (
+		<NewProjectPost
+			setOpenModal={setOpenModal}
+			projectForm={projectForm}
+			setProjectForm={setProjectForm}
+		/>
+	);
 
 	return (
 		<div className='user-menu-container'>

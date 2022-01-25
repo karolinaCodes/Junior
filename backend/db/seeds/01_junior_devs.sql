@@ -1,4 +1,18 @@
 INSERT INTO junior_devs (first_name,last_name,email,password,phone_number, city, headline, bio, photo_url, github_url, linkedin_url, resume_url) VALUES (
+  'Larry',
+  'Ligthouse',
+  'larrylighthouse@junior.com',
+  '123',
+  '306.821.3553',
+  'Toronto',
+  'Full-stack Developer',
+  'Student. Coffee maven. Hardcore food nerd. Amateur music fanatic. Problem solver. Travel fan. Total web enthusiast.',
+  'https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80',
+  'https://github.com/karolinaCodes',
+  'https://www.linkedin.com/in/karolina-swislocki-0662b0210/',
+  'https://resume.creddle.io/resume/gf5ixfvh8s6'
+);
+INSERT INTO junior_devs (first_name,last_name,email,password,phone_number, city, headline, bio, photo_url, github_url, linkedin_url, resume_url) VALUES (
   'Karolina',
   'Swislocki',
   'karolinaswislocki@hotmail.com',

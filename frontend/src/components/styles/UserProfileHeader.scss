@@ -1,102 +1,103 @@
 @import 'variables';
 
 .profile-header {
-	display: flex;
-	flex-direction: row;
-	justify-content: flex-start;
-	text-align: left;
-	min-width: 100%;
-	max-width: 100%;
-	background-color: #fff;
-	// border-bottom: solid;
-	// border-color: $blue;
-	box-shadow: 3px 3px 10px #00000025;
-	margin-top: -0.25rem;
-	height: 11rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  text-align: left;
+  min-width: 100%;
+  max-width: 100%;
+  background-color: #fff;
+  // border-bottom: solid;
+  // border-color: $blue;
+  box-shadow: 3px 3px 10px #00000025;
+  margin-top: -0.25rem;
+  height: 11rem;
 
-	.MuiGrid-item {
-		padding: 0;
-	}
+  .MuiGrid-item {
+    padding: 0;
+  }
 
-	#profile-name-edit {
-		h1 {
-			margin-top: 0.5rem;
-			margin-bottom: 0;
-		}
-	}
+  #profile-name-edit {
+    h1 {
+      margin-top: 0.5rem;
+      margin-bottom: 0;
+    }
+  }
 
-	#profile-name {
-		margin-left: 20vw;
+  #profile-name {
+    margin-left: 20vw;
 
-		h1 {
-			margin-top: 0.5rem;
-			margin-bottom: 0;
-		}
+    h1 {
+      margin-top: 0.5rem;
+      margin-bottom: 0;
+    }
 
-		h3 {
-			margin-top: 10px;
-			font-weight: 600;
-			font-size: 22px;
-		}
+    h3 {
+      margin-top: 10px;
+      font-weight: 600;
+      font-size: 22px;
+    }
 
-		svg {
-			color: #048679;
-		}
+    svg {
+      color: #048679;
+    }
 
-		// #kebab {
-		// 	margin-right: 7vw;
-		// 	margin-top: 2vh;
-		// }
-	}
+    // #kebab {
+    // 	margin-right: 7vw;
+    // 	margin-top: 2vh;
+    // }
+  }
 
-	#contact-info {
-		margin-left: 20%;
-		max-width: 80%;
-		color: #757575;
+  #contact-info {
+    margin-left: 20%;
+    max-width: 80%;
+    color: #757575;
 
-		sub {
-			margin-right: 0.3rem;
-		}
-	}
+    sub {
+      margin-right: 0.3rem;
+    }
+  }
 }
 
 #profile-edit-options {
-	margin-left: 20vw;
+  margin-left: 20vw;
 }
 
 #portfolio-profile-pic {
-	display: flex;
-	align-items: center;
-	max-height: 200px;
-	max-width: 200px;
-	margin-left: 6vw;
-	border-radius: 50%;
-	position: absolute;
-	background-color: #fff;
-	padding: 0.25rem;
-	box-shadow: 3px 3px 10px #00000025;
-	top: 15vh;
-	z-index: 999;
+  display: flex;
+  align-items: center;
+  height: 200px;
+  width: 200px;
+  margin-left: 6vw;
+  border-radius: 50%;
+  position: absolute;
+  background-color: #fff;
+  padding: 0.25rem;
+  box-shadow: 3px 3px 10px #00000025;
+  top: 15vh;
+  z-index: 999;
+  object-fit: cover;
 }
 
 #header-image {
-	min-width: 100%;
-	z-index: 0;
-	max-height: 18vh;
-	object-fit: cover;
-	object-position: 30% 45%;
+  min-width: 100%;
+  z-index: 0;
+  max-height: 18vh;
+  object-fit: cover;
+  object-position: 30% 45%;
 }
 
 .prof-header-txt {
-	margin-top: 10px;
-	font-weight: 500;
+  margin-top: 10px;
+  font-weight: 500;
 }
 
 .bio-icon-text {
-	display: flex;
-	align-items: center;
-	margin-bottom: 20px;
-	h4 {
-		margin: 0 5px;
-	}
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  h4 {
+    margin: 0 5px;
+  }
 }

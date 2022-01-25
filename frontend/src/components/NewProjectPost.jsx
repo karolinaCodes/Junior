@@ -39,13 +39,9 @@ export default function NewProjectPost(props) {
 	const postProject = e => {
 		e.preventDefault();
 
-		console.log('PROJECT FORM', projectForm);
-
 		axios
 			.post('/api/projects/new', projectForm)
 			.then(res => {
-				// setCurrentUser(res.data);
-				console.log(res.data);
 				setProjectForm({
 					junior_dev_id: currentUser.id,
 					title: 'New Project',

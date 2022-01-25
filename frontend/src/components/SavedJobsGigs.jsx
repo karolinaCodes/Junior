@@ -1,15 +1,23 @@
 import axios from 'axios';
-import { Card, Grid, ToggleButton, ToggleButtonGroup } from '@mui/material';
+import {
+	Button,
+	Card,
+	Grid,
+	ToggleButton,
+	ToggleButtonGroup,
+} from '@mui/material';
 import { useContext, useEffect, useState } from 'react';
 import SavedJobsGigsCard from '../components/SavedJobsGigsCard';
 import { UserContext } from '../Providers/userProvider';
+// import useVisualMode from '../hooks/useVisualMode';
 
 export default function Applications(props) {
-	const { currentUser, savedJobsGigs, setSavedJobsGigs } =
+	const { currentUser, savedJobsGigs, setSavedJobsGigs, setProfileView } =
 		useContext(UserContext);
-	const { setProfileView, profileView } = props;
 
 	const [view, setView] = useState('all');
+
+	// const { back, transition } = useVisualMode('projects');
 
 	const handleView = value => {
 		setView(value);
@@ -50,17 +58,14 @@ export default function Applications(props) {
 					sx={{ justifyContent: 'space-between' }}
 				>
 					<Grid item>
-						<ToggleButtonGroup
-							color='primary'
-							value={view}
-							exclusive
-							id='toggle-user-applications'
-							onChange={e => handleView(e.target.value)}
+						<Button
+							id='profile-go-back-button'
+							onClick={e => {
+								setProfileView('projects');
+							}}
 						>
-							<ToggleButton value='job'>Jobs</ToggleButton>
-							<ToggleButton value='all'>All</ToggleButton>
-							<ToggleButton value='gig'>Gigs</ToggleButton>
-						</ToggleButtonGroup>
+							Portfolio
+						</Button>
 					</Grid>
 				</Grid>
 				<section className='application-cards'>

@@ -19,7 +19,7 @@ import { UserContext } from '../Providers/userProvider';
 
 export default function UserApplications(props) {
 	// const { first_name, last_name, id } = props.currentUser;
-	const { currentUser } = useContext(UserContext);
+	const { currentUser, setProfileView } = useContext(UserContext);
 	const { id } = currentUser;
 	// console.log(currentUser);
 	// const id =  1;
@@ -109,17 +109,14 @@ export default function UserApplications(props) {
 					sx={{ justifyContent: 'space-between' }}
 				>
 					<Grid item>
-						<ToggleButtonGroup
-							color='primary'
-							value={view}
-							exclusive
-							id='toggle-user-applications'
-							onChange={e => handleView(e.target.value)}
+						<Button
+							id='profile-go-back-button'
+							onClick={e => {
+								setProfileView('projects');
+							}}
 						>
-							<ToggleButton value='job'>Jobs</ToggleButton>
-							<ToggleButton value='all'>All</ToggleButton>
-							<ToggleButton value='gig'>Gigs</ToggleButton>
-						</ToggleButtonGroup>
+							Portfolio
+						</Button>
 					</Grid>
 				</Grid>
 				<section className='application-cards'>

@@ -125,8 +125,6 @@ export default function Profile() {
 	return (
 		<>
 			<div>
-				<button onClick={e => navigate('/dev/1')}>HELLO 1</button>
-				<button onClick={e => navigate('/dev/2')}>HELLO 2</button>
 				{goBack && (
 					<div id='profile-back-btn'>
 						{' '}

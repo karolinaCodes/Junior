@@ -131,6 +131,8 @@ export default function Profile(props) {
 								{currentUser.company_name === company_name && (
 									<CardActions key={'Job-card-actions-' + job.id}>
 										<Button
+											variant='contained'
+											color='primary'
 											key={'Job-button-' + job.id}
 											onClick={() => {
 												setApplications({ postType: 'job', postId: job.id });
@@ -140,6 +142,8 @@ export default function Profile(props) {
 											Applications
 										</Button>
 										<Button
+											variant='contained'
+											color='primary'
 											key={'Job-button-post-' + job.id}
 											className='card-footer'
 											onClick={() => window.open(postingLink, '_self')}
@@ -191,6 +195,8 @@ export default function Profile(props) {
 								{currentUser.company_name === company_name && (
 									<CardActions key={'Gig-card-actions-' + gig.id}>
 										<Button
+											variant='contained'
+											color='primary'
 											key={'Gig-button-' + gig.id}
 											className='card-footer'
 											onClick={() => {
@@ -201,6 +207,8 @@ export default function Profile(props) {
 											Applications
 										</Button>
 										<Button
+											variant='contained'
+											color='primary'
 											key={'Gig-button-post-' + gig.id}
 											className='card-footer'
 											onClick={() => window.open(postingLink, '_self')}
@@ -324,6 +332,7 @@ export default function Profile(props) {
 					onClose={handleView}
 					fullWidth={true}
 					maxWidth={'md'}
+					scroll='body'
 				>
 					<Box className='portfolio-modal'>{modalData}</Box>
 				</Dialog>

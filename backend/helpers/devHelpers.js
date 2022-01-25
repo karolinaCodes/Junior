@@ -68,7 +68,7 @@ module.exports = db => {
 	const getJobApplicationsByDevId = junior_dev_id => {
 		const query = {
 			text: `
-        SELECT job_applications.*, job_postings.*,
+        SELECT job_applications.id as app_id, job_applications.*, job_postings.*,
         employers.email as employer_email, company_name, employers.bio as employer_bio, employers.photo_url as employer_photo_url,
         junior_devs.email as dev_email, first_name, last_name,phone_number, headline, junior_devs.bio as dev_bio, junior_devs.photo_url as dev_photo_url,
 				CONCAT(job_postings.city,', Canada') as posting_location,
@@ -93,7 +93,8 @@ module.exports = db => {
 	const getGigApplicationsByDevId = junior_dev_id => {
 		const query = {
 			text: `
-        SELECT gig_applications.*, gig_postings.*,
+        SELECT gig_applications.id as app_id,
+				gig_applications.*, gig_postings.*,
         trim(to_char(pay/100, '999,999,990')) as formatted_pay,
         employers.email as employer_email, company_name, employers.bio as employer_bio, employers.photo_url as employer_photo_url,
         junior_devs.email as dev_email, first_name, last_name,phone_number, headline, junior_devs.bio as dev_bio, junior_devs.photo_url as dev_photo_url,

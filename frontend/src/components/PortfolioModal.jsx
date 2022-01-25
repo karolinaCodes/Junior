@@ -18,11 +18,11 @@ export default function Profile(props) {
 			<p className='description'>
 				{description ? description : 'No description'}
 			</p>
-
-			<CardActions>
+			<CardActions sx={{justifyContent: 'space-between'}}>
 				<Button
 					variant='contained'
 					color='primary'
+					className='modal-button'
 					onClick={() =>
 						github_link ? window.open(github_link, '_self') : null
 					}
@@ -33,6 +33,7 @@ export default function Profile(props) {
 				<Button
 					variant='contained'
 					color='primary'
+					className='modal-button'
 					onClick={() => (live_link ? window.open(live_link, '_self') : null)}
 					disabled={!live_link}
 				>

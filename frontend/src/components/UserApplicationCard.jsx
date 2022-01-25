@@ -5,9 +5,10 @@ import { styled } from '@mui/material/styles';
 import {Avatar, Grid, Button, Chip, List, ListItem, ListItemText, ListItemButton, IconButton, CardContent, CardActions, Collapse, Dialog, Box, useControlled} from '@mui/material';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import axios from 'axios';
+import NewProjectPost from './NewProjectPost';
 
 export default function ApplicationCard(props) {
-	const { view, setView, setApplications, id, job_title, description, salary, formatted_salary, date_posted, formatted_date, date_applied, formatted_date_applied, job_type, is_remote, employer_id, employer_email, company_name, employer_bio, employer_photo_url, deadline, photo_url, city, pay, formatted_pay, formatted_deadline, posting_location, job_posting_id, gig_posting_id, is_accepted, is_completed } =	props;
+	const { projectForm, setProjectForm, view, applicationChange, openModal, setOpenModal, setModalData, applications, setApplicationChange, app_id, job_title, description, salary, formatted_salary, date_posted, formatted_date, date_applied, formatted_date_applied, job_type, is_remote, employer_id, employer_email, company_name, employer_bio, employer_photo_url, deadline, photo_url, city, pay, formatted_pay, formatted_deadline, posting_location, job_posting_id, gig_posting_id, is_accepted, is_completed } =	props;
 	
 	const location = `${posting_location} (${is_remote ? 'Remote' : 'On-site'})`;
 	const postingLink = job_posting_id ? `/job/${job_posting_id}` : `/gig/${gig_posting_id}`;
@@ -41,27 +42,30 @@ export default function ApplicationCard(props) {
 			.post(`../api/gig_applications/complete/${gig_posting_id}`)
 			.then((res) => {
 				console.log(res.data)
+				setApplicationChange(false);
 			})
 			.catch(err => console.log(err))
 	}
-
-
 	
 	const createProject = () => {
-		navigate('/newproject', { state: {title: job_title, description: description}})
+		setProjectForm(prev => ({...prev, title: job_title, original_request: description}));
+		setOpenModal(true);
 	}
+
+	useEffect(() => {
+		setModalData(<NewProjectPost projectForm={projectForm} setProjectForm={setProjectForm} />)
+		
+	}, [projectForm])
 
 	const deleteApplication = id => {
 		const type = job_posting_id ? 'job_applications' : 'gig_applications';
 		console.log('delete', type, id);
 		axios
-			.post(`../api/${type}/delete/${id}`)
+			.post(`/api/${type}/delete`,{id})
 			.then(res => {
-				view === 'job' ?
-				setView('all') :
-				view === 'gig' ?
-				setView('all') :
-				setView('job')
+				console.log('done');
+				console.log('applications: ',applications);
+				setApplicationChange(false);
 			})
 			.catch(err => console.log(err))
 	}
@@ -124,7 +128,10 @@ export default function ApplicationCard(props) {
 							{!is_accepted &&
 								<Button
 									color="error"
-									onClick={() => deleteApplication(id)}
+									onClick={() => {
+										setApplicationChange(true);
+										deleteApplication(app_id);
+										;}}
 								>
 									Delete Application
 								</Button>
@@ -143,7 +150,7 @@ export default function ApplicationCard(props) {
 							{(is_completed || complete) && 
 								<Button
 									color="error"
-									onClick={() => {
+									onClick={(e) => {
 										createProject();
 										console.log('CreateProj ', job_title, description);
 									}}

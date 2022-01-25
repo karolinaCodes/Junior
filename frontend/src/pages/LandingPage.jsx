@@ -15,9 +15,11 @@ export default function LandingPage(props) {
           <h1 className="build">Build Your Portfolio.</h1>
           <h1 className="get-paid">Get Paid. Find Work.</h1>
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            <br></br>
-            eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            Junior helps budding developers to showcase and build their
+            portfolios.
+            <br />
+            Connect with employers and keep active by completing gigs while
+            looking for junior developer roles.
           </p>
           <SearchBar />
           <img src="images/homepage-brands.png" alt="trusted brands" />

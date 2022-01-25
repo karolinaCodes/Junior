@@ -27,10 +27,8 @@ export default function NavBar(props) {
   return (
     <div className={navClassCheck()}>
       <Link id="logo" to="/">
-        <img
-          src="/images/Screen_Shot_2022-01-24_at_3.31.14_PM__2_-removebg-preview.png"
-          id="logo-img"
-        />
+        {/* <img src="/images/Screen_Shot_2022-01-24_at_10.16.30_PM__2_-removebg-preview.png" /> */}
+        <h1>Junior</h1>
       </Link>
       <div className="nav-links">
         <Link id="find-work" to="/jobs">

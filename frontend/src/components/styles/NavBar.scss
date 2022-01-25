@@ -11,7 +11,7 @@
   align-items: center;
   justify-content: space-between;
   background-color: $blue;
-  min-height: 10vh;
+  height: 9vh;
   width: 100%;
   z-index: 999;
 
@@ -53,11 +53,15 @@
 
   #logo {
     text-decoration: none;
-    font-size: 60px;
     font-family: $brand;
-    font-weight: $bold;
     color: $white;
     margin: 0 0 0 8rem;
+    display: flex;
+    align-items: center;
+    h1 {
+      font-size: 20px;
+      font-weight: 800;
+    }
   }
 }
 
@@ -69,7 +73,6 @@
 }
 
 #logo-img {
-  height: 60px;
-  margin-top: 15px;
-  margin-left: 75px;
+  height: 50px;
+  margin-left: 2rem;
 }

@@ -44,7 +44,7 @@ $margin6: 6vw;
   align-items: center;
   justify-content: space-between;
   background-color: $invis;
-  min-height: 10vh;
+  height: 9vh;
   width: 100%;
   z-index: 999;
   position: fixed;
@@ -93,10 +93,15 @@ $margin6: 6vw;
 
   #logo {
     text-decoration: none;
-    font-size: 60px;
-    font-family: $brand;
-    font-weight: $bold;
-    color: $blue;
     margin: 0 0 0 6rem;
+    display: flex;
+    align-items: center;
+    h1 {
+      font-weight: 800;
+      color: $thiccblue;
+      font-size: 40px;
+      font-family: $brand;
+      margin-left: 10px;
+    }
   }
 }

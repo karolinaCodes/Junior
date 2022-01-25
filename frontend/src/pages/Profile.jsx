@@ -166,6 +166,7 @@ export default function Profile() {
 					onClose={handleView}
 					fullWidth={true}
 					maxWidth={'md'}
+					scroll='body'
 					sx={{
 						'& .MuiDialog-paper': {
 							borderRadius: '13px',
@@ -173,6 +174,7 @@ export default function Profile() {
 							color: '#fff',
 							backgroundColor: '#223d55',
 						},
+						h1: { mt: 0 },
 					}}
 				>
 					{modalData}

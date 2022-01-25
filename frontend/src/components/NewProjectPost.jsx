@@ -68,7 +68,7 @@ export default function NewProjectPost(props) {
 				label='Project Name'
 				variant='filled'
 				fullWidth
-				sx={{ backgroundColor: '#f6fafd' }}
+				sx={{ backgroundColor: '#f6fafd', mt: '1rem' }}
 				onChange={e =>
 					setProjectForm({ ...projectForm, title: e.target.value })
 				}
@@ -78,11 +78,11 @@ export default function NewProjectPost(props) {
 				container
 				direction='row'
 				id='first-row'
-				gridTemplateColumns='repeat(12, 1fr)'
-				gap={6.78}
-				sx={{ mt: '1rem' }}
+				xs={12}
+				gap={5}
+				sx={{ justifyContent: 'center', mt: '1rem' }}
 			>
-				<Grid item gridColumn='span 4'>
+				<Grid item xs={3.6}>
 					<TextField
 						id='thumbnail-photo'
 						sx={{
@@ -100,7 +100,7 @@ export default function NewProjectPost(props) {
 						}
 					/>
 				</Grid>
-				<Grid item gridColumn='span 4'>
+				<Grid item xs={3.6}>
 					<TextField
 						id='github-link'
 						sx={{ backgroundColor: '#f6fafd' }}
@@ -113,7 +113,7 @@ export default function NewProjectPost(props) {
 						}
 					/>
 				</Grid>
-				<Grid item gridColumn='span 4'>
+				<Grid item xs={3.6}>
 					<TextField
 						id='live-link'
 						sx={{ backgroundColor: '#f6fafd' }}

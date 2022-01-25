@@ -2,37 +2,37 @@
 
 .portfolio-modal,
 .application-modal {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  text-align: justify;
-  padding: 0 1em;
-  background: $blue;
-  color: $white;
-  align-items: flex-start;
-  overflow-wrap: break-word;
-  h1 {
-    color: $sand;
-  }
-  .profile-pic {
-    padding: 1em;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-  }
-  img#profile-pic {
-    max-width: 150px;
-    height: auto;
-    border-radius: 50%;
-  }
-  .profile-info {
-    width: auto;
-  }
-  .application-info {
-    justify-content: space-evenly;
-  }
-  #project-img {
-    padding-bottom: 1rem;
-  }
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	text-align: justify;
+	padding: 0 1em;
+	background: $blue;
+	color: $white;
+	align-items: flex-start;
+	overflow-wrap: break-word;
+	h1 {
+		color: $white;
+	}
+	.profile-pic {
+		padding: 1em;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-direction: column;
+	}
+	img#profile-pic {
+		max-width: 150px;
+		height: auto;
+		border-radius: 50%;
+	}
+	.profile-info {
+		width: auto;
+	}
+	.application-info {
+		justify-content: space-evenly;
+	}
+	#project-img {
+		padding-bottom: 1rem;
+	}
 }

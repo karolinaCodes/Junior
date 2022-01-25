@@ -1,31 +1,18 @@
 @import 'variables';
 
-.new-project-content {
-	// display: flex;
-	// flex-direction: column;
-	// justify-content: center;
-	// align-items: center;
-	// min-height: 90.5vh;
-	// width: auto;
-	// background-image: url('/images/form-backround.png');
-	// background-size: cover;
-	// background-position: center center;
-}
-
 .new-project-form {
 	display: flex;
 	flex-direction: column;
 	justify-content: space-around;
 	align-self: center;
-	min-width: 80%;
-	max-width: 80%;
+	width: 100%;
 	min-height: 70vh;
 	border-radius: 1%;
 	// background-color: #fff;
 	// position: absolute;
 	z-index: 0;
 	// box-shadow: 5px 5px 10px #1c1c1c50;
-	color: $black;
+	color: $white;
 
 	img {
 		align-self: center;
@@ -37,7 +24,7 @@
 	}
 
 	h1 {
-		margin-top: 4rem;
+		margin-top: 0;
 	}
 
 	.MuiTextField-root {
@@ -65,6 +52,5 @@
 }
 
 #project-buttons {
-	margin-bottom: 5%;
 	align-self: center;
 }

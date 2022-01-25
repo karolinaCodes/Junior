@@ -14,6 +14,7 @@ import {
 	CardActions,
 } from '@mui/material';
 import PortfolioCard from '../components/PortfolioCard';
+import PortfolioModal from '../components/PortfolioModal';
 import UserProfileHeader from '../components/UserProfileHeader';
 import UserProfileBio from '../components/UserProfileBio';
 import NewProjectPost from '../components/NewProjectPost';
@@ -42,7 +43,10 @@ export default function UserProjects(props) {
 	// const parsedProjects = 'Test';
 	const parsedProjects = projectsArray.map(project => {
 		const data = (
-			<PortfolioCard key={'Project-modal-' + project.project_id} {...project} />
+			<PortfolioModal
+				key={'Project-modal-' + project.project_id}
+				{...project}
+			/>
 		);
 
 		return (

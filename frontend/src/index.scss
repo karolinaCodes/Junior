@@ -45,6 +45,11 @@ body {
 	.MuiCardActionArea-root {
 		min-height: 1rem;
 	}
+	// .MuiPaper-root {
+	// 	border-radius: 13px;
+	// 	padding: 1rem;
+	// 	background-color: $blue;
+	// }
 }
 .profile-content,
 .application-content,
@@ -85,7 +90,9 @@ body {
 	.MuiButton-root:hover {
 		background-color: $lightblue;
 	}
-
+	.MuiButton-containedPrimary {
+		background-color: $blue;
+	}
 	.MuiButton-outlined {
 		background-color: $white;
 		color: $blue;

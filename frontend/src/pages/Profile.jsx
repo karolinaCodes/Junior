@@ -159,6 +159,8 @@ export default function Profile() {
 						{profileView === 'saved' && savedPostings}
 					</Grid>
 				</section>
+			</div>
+			<div id='portfolio-dialog'>
 				<Dialog
 					open={openModal}
 					onClose={handleView}

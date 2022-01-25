@@ -78,7 +78,7 @@ export default function UserProfileHeader(props) {
 			<Grid container direction='row' className='profile-header'>
 				{profileEdit === true && (
 					<form id='profile-edit-options' onSubmit={editProfile}>
-						<Grid item className='profile-name'>
+						<Grid item className='profile-name' id='profile-name-edit'>
 							<h1>{`${first_name} ${last_name}`}</h1>
 							<TextField
 								size='small'

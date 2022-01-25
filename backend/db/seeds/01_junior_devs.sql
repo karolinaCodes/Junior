@@ -1,6 +1,6 @@
 INSERT INTO junior_devs (first_name,last_name,email,password,phone_number, city, headline, bio, photo_url, github_url, linkedin_url, resume_url) VALUES (
   'Larry',
-  'Ligthouse',
+  'Lighthouse',
   'larrylighthouse@junior.com',
   '123',
   '306.821.3553',

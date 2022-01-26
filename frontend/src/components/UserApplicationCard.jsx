@@ -1,23 +1,16 @@
 import './styles/PortfolioCard.scss';
-import { useContext, useEffect, useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { styled } from '@mui/material/styles';
 import {
 	Avatar,
 	Grid,
 	Button,
 	Chip,
-	List,
-	ListItem,
-	ListItemText,
-	ListItemButton,
 	IconButton,
 	CardContent,
 	CardActions,
 	Collapse,
-	Dialog,
-	Box,
-	useControlled,
 } from '@mui/material';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import axios from 'axios';
@@ -27,8 +20,6 @@ export default function ApplicationCard(props) {
 	const {
 		projectForm,
 		setProjectForm,
-		view,
-		applicationChange,
 		openModal,
 		setOpenModal,
 		setModalData,
@@ -41,17 +32,12 @@ export default function ApplicationCard(props) {
 		formatted_salary,
 		date_posted,
 		formatted_date,
-		date_applied,
-		formatted_date_applied,
 		job_type,
 		is_remote,
 		employer_id,
-		employer_email,
 		company_name,
-		employer_bio,
 		employer_photo_url,
 		deadline,
-		photo_url,
 		city,
 		pay,
 		formatted_pay,
@@ -88,6 +74,7 @@ export default function ApplicationCard(props) {
 			duration: theme.transitions.duration.shortest,
 		}),
 	}));
+
 	//('api/gig_postings/complete/:id'
 	const markComplete = () => {
 		console.log('posting id', gig_posting_id);

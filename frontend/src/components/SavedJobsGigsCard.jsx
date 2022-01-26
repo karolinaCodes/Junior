@@ -67,7 +67,13 @@ export default function SavedJobsGigsCard(props) {
 							item
 							container
 							direction='row'
-							sx={{ justifyContent: 'space-between' }}
+							sx={{
+								marginLeft: '1rem',
+								alignItems: 'flex-end',
+								textAlign: 'right',
+								justifyContent: 'flex-end',
+								paddingRight: '2rem',
+							}}
 						>
 							<Grid item>
 								{<h3>{job_title}</h3>}

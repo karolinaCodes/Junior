@@ -1,8 +1,8 @@
-INSERT INTO projects (junior_dev_id, title, description, thumbnail_photo_url, github_link, live_link, original_request)
-VALUES (1, 'Junior',
-'Junior is a React app built with Express and is a combination of Indeed, Adobe Portfolio, and Fiver geared towards Junior Developers with under 3 years experience. Junior helps budding developers to showcase and build their portfolios. Connect with employers and keep active by completing gigs while looking for junior developer roles.', 
-'https://media.discordapp.net/attachments/374983262248108032/935436670713610300/unknown.png?width=851&height=422', 
-'https://github.com/Alex-Reyne/junior','http://localhost:3000/', 'Original Request test');
+-- INSERT INTO projects (junior_dev_id, title, description, thumbnail_photo_url, github_link, live_link, original_request)
+-- VALUES (1, 'Junior',
+-- 'Junior is a React app built with Express and is a combination of Indeed, Adobe Portfolio, and Fiver geared towards Junior Developers with under 3 years experience. Junior helps budding developers to showcase and build their portfolios. Connect with employers and keep active by completing gigs while looking for junior developer roles.', 
+-- 'https://media.discordapp.net/attachments/374983262248108032/935436670713610300/unknown.png?width=851&height=422', 
+-- 'https://github.com/Alex-Reyne/junior','http://localhost:3000/', 'Original Request test');
 
 INSERT INTO projects (junior_dev_id, title, description, thumbnail_photo_url, github_link, original_request)
 VALUES (1, 'Tweeter',

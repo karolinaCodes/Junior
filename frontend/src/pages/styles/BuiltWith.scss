@@ -1,15 +1,15 @@
 .builtw-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 5px;
-  box-shadow: 3px 3px 10px #00000025;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	border-radius: 2rem;
+	box-shadow: 3px 3px 10px #00000025;
 }
 
 .builtw-grid-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin: 2rem 10rem;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	margin: 3.25rem 10rem;
 }

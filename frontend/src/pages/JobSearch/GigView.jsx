@@ -98,7 +98,7 @@ export default function GigView(props) {
 					<Button
 						variant='outlined'
 						className={classes.back_btn}
-						onClick={() => navigate(-1)}
+						onClick={() => navigate('/jobs')}
 					>
 						Back To Search
 					</Button>

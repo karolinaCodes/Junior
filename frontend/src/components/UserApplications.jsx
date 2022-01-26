@@ -134,20 +134,6 @@ export default function UserApplications(props) {
 						>
 							Portfolio
 						</Button>
-						<Button
-							onClick={e => {
-								setApplicationChange(true);
-							}}
-						>
-							Set True
-						</Button>
-						<Button
-							onClick={e => {
-								setApplicationChange(false);
-							}}
-						>
-							Set False
-						</Button>
 					</Grid>
 				</Grid>
 				<section className='application-cards'>

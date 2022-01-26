@@ -59,16 +59,20 @@ module.exports = db => {
 	};
 
 	const deleteJobApplication = id => {
-		console.log('IN QUERY',id)
+		console.log('IN QUERY',id.id)
 		const query = {
 			text: `DELETE FROM job_applications
-      WHERE id = $1`,
-			values: [id],
+      WHERE id = $1
+			RETURNING *`,
+			values: [id.id],
 		};
-
+		
 		return db
 			.query(query)
-			.then(result => result.rows[0])
+			.then(result => {
+				result.rows[0]
+				console.log(result.rows);
+			})
 			.catch(err => err);
 	}
 

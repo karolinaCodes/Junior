@@ -21,6 +21,8 @@ export default function UserApplications(props) {
 	// const { first_name, last_name, id } = props.currentUser;
 	const { currentUser, setProfileView } = useContext(UserContext);
 	const { id } = currentUser;
+
+	const {projectForm, setProjectForm} = props;
 	// console.log(currentUser);
 	// const id =  1;
 	const [applications, setApplications] = useState({
@@ -31,6 +33,7 @@ export default function UserApplications(props) {
 	const [openModal, setOpenModal] = useState(false);
 	const [modalData, setModalData] = useState();
 	const [view, setView] = useState('all');
+	const [applicationChange, setApplicationChange] = useState(false);
 
 	const handleModal = () => {
 		openModal === true ? setOpenModal(false) : setOpenModal(true);
@@ -56,7 +59,7 @@ export default function UserApplications(props) {
 				}));
 			});
 		}
-	}, [id, view]);
+	}, [id, view, applicationChange, openModal]);
 
 	const jobApplicationsArray = applications.jobApplications;
 	const gigApplicationsArray = applications.gigApplications;
@@ -72,6 +75,14 @@ export default function UserApplications(props) {
 						setApplications={setApplications}
 						view={view}
 						setView={setView}
+						applicationChange={applicationChange}
+						setApplicationChange={setApplicationChange}
+						openModal={openModal}
+						setOpenModal={setOpenModal}
+						setModalData={setModalData}
+						projectForm={projectForm}
+						setProjectForm={setProjectForm}
+						setModalData={setModalData}
 						{...application}
 					/>
 				</Card>
@@ -92,6 +103,13 @@ export default function UserApplications(props) {
 						setApplications={setApplications}
 						view={view}
 						setView={setView}
+						applicationChange={applicationChange}
+						setApplicationChange={setApplicationChange}
+						openModal={openModal}
+						setOpenModal={setOpenModal}
+						projectForm={projectForm}
+						setProjectForm={setProjectForm}
+						setModalData={setModalData}
 						{...application}
 					/>
 				</Card>
@@ -117,6 +135,18 @@ export default function UserApplications(props) {
 						>
 							Portfolio
 						</Button>
+						<Button
+							onClick={e => {
+								setApplicationChange(true);
+							}}>
+							Set True
+						</Button>
+						<Button
+							onClick={e => {
+								setApplicationChange(false);
+							}}>
+							Set False
+						</Button>
 					</Grid>
 				</Grid>
 				<section className='application-cards'>
@@ -138,7 +168,7 @@ export default function UserApplications(props) {
 				fullWidth={true}
 				maxWidth={'md'}
 			>
-				<Box className='portfolio-modal'>Test</Box>
+				<Box className='portfolio-modal'>{modalData}</Box>
 			</Dialog>
 		</div>
 	);

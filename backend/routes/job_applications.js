@@ -5,7 +5,8 @@ module.exports = ({
 	getJobApplicationById,
 	addJobApplication,
 	acceptJobApplication,
-	deleteJobApplication
+	deleteJobApplication,
+	getJobApplicationsByDevId
 }) => {
 	/* GET a job application by job_applications.id */
 	router.get('/:id', (req, res) => {
@@ -29,9 +30,10 @@ module.exports = ({
 			);
 	});
 
-	router.post('/delete/:id', (req, res) => {
-		console.log('IN HELPER',req.params.id)
-		deleteJobApplication(req.params.id)
+	router.post('/delete', (req, res) => {
+		console.log('IN HELPER',req.body);
+		deleteJobApplication(req.body)
+			.then(getJobApplicationsByDevId(req.body))
 			.then(application => res.json(application))
 			.catch(err =>
 				res.json({

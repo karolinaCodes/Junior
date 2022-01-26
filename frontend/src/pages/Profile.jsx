@@ -53,6 +53,16 @@ export default function Profile() {
 	const [openModal, setOpenModal] = useState(false);
 	const [modalData, setModalData] = useState();
 
+	const [projectForm, setProjectForm] = useState({
+		junior_dev_id: currentUser.id,
+		title: 'New Project',
+		description: '',
+		thumbnail_photo_url: '',
+		github_link: '',
+		live_link: '',
+		original_request: '',
+	});
+
 	const handleView = () => {
 		openModal === true ? setOpenModal(false) : setOpenModal(true);
 	};
@@ -101,6 +111,23 @@ export default function Profile() {
 		}
 	}, [currentUser, openModal, location]);
 
+	useEffect(() => {
+		setProjectForm({ ...projectForm, junior_dev_id: currentUser.id });
+
+		if (state) {
+			setProjectForm({
+				junior_dev_id: currentUser.id,
+				title: 'New Project',
+				description: '',
+				thumbnail_photo_url: '',
+				github_link: '',
+				live_link: '',
+				original_request: '',
+			});
+		}
+		
+	}, [currentUser]);
+
 	const userProjects = (
 		<UserProjects
 			profile={profile}
@@ -118,7 +145,11 @@ export default function Profile() {
 		setProfileView('projects');
 	}
 
-	const userApplications = <UserApplications />;
+	const userApplications = <UserApplications
+		projectForm={projectForm}
+		setProjectForm={setProjectForm}
+		setModalData={setModalData}
+	/>;
 
 	const savedPostings = <SavedPostings />;
 

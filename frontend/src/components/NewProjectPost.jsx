@@ -6,31 +6,9 @@ import { useState, useEffect, useContext } from 'react';
 import { UserContext } from '../Providers/userProvider';
 
 export default function NewProjectPost(props) {
-	const { setOpenModal } = props;
+	const { setOpenModal, projectForm, setProjectForm } = props;
 	const { currentUser } = useContext(UserContext);
 	const { state } = useLocation();
-
-	const [projectForm, setProjectForm] = useState({
-		junior_dev_id: currentUser.id,
-		title: 'New Project',
-		description: '',
-		thumbnail_photo_url: '',
-		github_link: '',
-		live_link: '',
-		original_request: '',
-	});
-
-	useEffect(() => {
-		setProjectForm({ ...projectForm, junior_dev_id: currentUser.id });
-
-		if (state) {
-			setProjectForm({
-				...projectForm,
-				title: state.title,
-				original_request: state.description,
-			});
-		}
-	}, [currentUser]);
 
 	const handleClose = () => {
 		setOpenModal(false);

@@ -12,7 +12,7 @@
 }
 
 .page-container {
-	min-height: 86vh;
+	min-height: 47vh;
 }
 
 body {
@@ -45,6 +45,17 @@ body {
 	}
 	.MuiCardActionArea-root {
 		min-height: 1rem;
+	}
+	.MuiButton-outlined:hover {
+		background-color: $white;
+		color: $lightblue;
+		border: 1px solid $lightblue
+	}
+	.MuiButton-containedPrimary:hover {
+		background-color: $lightblue;
+	}
+	.MuiButton-root {
+		text-transform: none;
 	}
 }
 .profile-content,
@@ -89,7 +100,7 @@ body {
 	.MuiButton-containedPrimary {
 		background-color: $blue;
 	}
-	.MuiButton-outlined {
+	.MuiButton-outlinedPrimary {
 		background-color: $white;
 		color: $blue;
 		border: 1px solid $blue;

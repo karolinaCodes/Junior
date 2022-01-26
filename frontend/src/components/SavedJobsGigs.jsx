@@ -59,6 +59,8 @@ export default function Applications(props) {
 				>
 					<Grid item>
 						<Button
+							variant='outlined'
+							color='secondary'
 							id='profile-go-back-button'
 							onClick={e => {
 								setProfileView('projects');

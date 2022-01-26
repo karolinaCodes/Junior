@@ -66,11 +66,37 @@ body {
 		max-width: 20rem;
 	}
 }
+
+.apply-text-icon {
+	display: flex;
+	justify-content: flex-end;
+
+	h4 {
+		margin-bottom: 0;
+	}
+}
+
+.apply-text {
+	display: flex;
+	justify-content: flex-end;
+	text-align: right;
+
+	p {
+		margin: 0 0;
+	}
+
+	h3 {
+		margin-bottom: 0;
+	}
+}
+
 .profile-content,
 .application-content,
 .posting-content,
 .profile-cards,
 .application-cards {
+	min-width: 70%;
+
 	.description {
 		color: $grey;
 		overflow: hidden;

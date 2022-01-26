@@ -1,45 +1,51 @@
 import './styles/PortfolioCard.scss';
-import { useContext, useEffect, useState } from 'react';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { styled } from '@mui/material/styles';
 import {
 	Grid,
 	Button,
-	List,
-	ListItem,
-	ListItemText,
-	ListItemButton,
 	IconButton,
 	CardContent,
 	CardActions,
 	Collapse,
+	Avatar,
 } from '@mui/material';
+import {
+	FolderIcon,
+	FolderOpen,
+	GitHub,
+	LinkedIn,
+	EmailOutlined,
+	FmdGoodOutlined,
+	CancelOutlined,
+	LocalPhone,
+} from '@mui/icons-material';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import axios from 'axios';
 
 export default function ApplicationCard(props) {
 	const {
+		app_id,
 		first_name,
 		last_name,
 		phone_number,
 		headline,
-		city,
 		email,
 		bio,
-		photo_url,
 		github_url,
 		linkedin_url,
 		resume_url,
-		location,
 		dev_photo_url,
-		date_applied,
-		formatted_date_applied,
 		formatted_date,
 		dev_location,
-		id,
+		junior_dev_id,
+		is_accepted,
 	} = props;
-
 	//Check if job or gig application
 	const postType = props.type;
+
+	const navigate = useNavigate();
 
 	const [expanded, setExpanded] = useState(false);
 	const [accepted, setAccepted] = useState(false);
@@ -95,54 +101,77 @@ export default function ApplicationCard(props) {
 	return (
 		<>
 			<CardContent>
-				<Grid container direction='row' className='stretch'>
-					<Grid item xs='auto' className='profile-pic'>
-						<img
+				<Grid
+					container
+					xs={12}
+					direction='row'
+					sx={{ width: '100%' }}
+					className='profile-info'
+				>
+					<Grid item className='profile-pic'>
+						<Avatar
 							id='profile-pic'
 							src={dev_photo_url}
 							alt={`Photo of ${first_name} ${last_name}`}
+							sx={{ width: 150, height: 150 }}
+							onClick={() => navigate(`/dev/${junior_dev_id}`)}
 						/>
 					</Grid>
 					<Grid item container xs direction='column'>
-						<Grid item>
+						<Grid
+							item
+							xs
+							sx={{
+								marginLeft: '1rem',
+								alignItems: 'flex-end',
+								textAlign: 'right',
+							}}
+						>
 							<h3>{`${first_name} ${last_name} (${headline})`}</h3>
 							<p>Applied on: {formatted_date}</p>
+						</Grid>
+						<Grid container item direction='row' className='apply-text'>
+							<Grid item xs={12}>
+								<p>{phone_number}</p>
+								<p>{email}</p>
+								<p>{dev_location}</p>
+							</Grid>
 						</Grid>
 						<Grid
 							item
 							container
 							direction='row'
-							sx={{ justifyContent: 'space-between' }}
+							sx={{ alignContent: 'center' }}
 						>
-							<Grid item xs={4}>
-								{phone_number}
-							</Grid>
-							<Grid item xs={4}>
-								{email}
-							</Grid>
-							<Grid item xs={4}>
-								{dev_location}
+							<Grid
+								item
+								xs={4}
+								onClick={() => window.open(resume_url, '_blank')}
+								className='apply-text-icon'
+							>
+								<h4>
+									<FolderOpen /> Resume
+								</h4>
 							</Grid>
 							<Grid
 								item
 								xs={4}
-								onClick={() => window.open(github_url, '_self')}
+								onClick={() => window.open(github_url, '_blank')}
+								className='apply-text-icon'
 							>
-								Github: {github_url ? github_url : 'N/A'}
+								<h4>
+									<GitHub /> Github
+								</h4>
 							</Grid>
 							<Grid
 								item
 								xs={4}
-								onClick={() => window.open(linkedin_url, '_self')}
+								onClick={() => window.open(linkedin_url, '_blank')}
+								className='apply-text-icon'
 							>
-								LinkedIn: {linkedin_url ? linkedin_url : 'N/A'}
-							</Grid>
-							<Grid
-								item
-								xs={4}
-								onClick={() => window.open(resume_url, '_self')}
-							>
-								Resume: {resume_url ? resume_url : 'N/A'}
+								<h4>
+									<LinkedIn /> LinkedIn
+								</h4>
 							</Grid>
 						</Grid>
 					</Grid>
@@ -152,26 +181,58 @@ export default function ApplicationCard(props) {
 				<Grid container direction='row'>
 					<Grid item container xs>
 						<Grid item>
-							<Button
-								color='success'
-								onClick={() => {
-									acceptApplication(id, postType);
-									console.log(id, postType);
-								}}
-							>
-								Accept
-							</Button>
+							{!is_accepted && (
+								<Button
+									variant='outlined'
+									color='success'
+									sx={{ mr: '1rem' }}
+									onClick={() => {
+										acceptApplication(app_id, postType);
+										console.log(app_id, postType);
+									}}
+								>
+									Accept
+								</Button>
+							)}
+							{is_accepted && (
+								<Button
+									variant='contained'
+									color='success'
+									sx={{ mr: '1rem' }}
+									onClick={() => {
+										acceptApplication(app_id, postType);
+										console.log(app_id, postType);
+									}}
+								>
+									Accept
+								</Button>
+							)}
 						</Grid>
 						<Grid item>
-							<Button
-								color='error'
-								onClick={() => {
-									// declineApplication(id, postType);
-									console.log('decline', id, postType);
-								}}
-							>
-								Decline
-							</Button>
+							{!is_accepted && (
+								<Button
+									variant='outlined'
+									color='error'
+									onClick={() => {
+										// declineApplication(id, postType);
+										console.log('decline', app_id, postType);
+									}}
+								>
+									Decline
+								</Button>
+							)}
+							{is_accepted && (
+								<Button
+									variant='outlined'
+									color='error'
+									onClick={() => {
+										// declineApplication(id, postType);
+										console.log('decline', app_id, postType);
+									}}
+								>
+									Decline
+								</Button>
+							)}
 						</Grid>
 					</Grid>
 					<Grid item className='expand-text'>

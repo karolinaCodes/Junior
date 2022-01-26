@@ -14,7 +14,6 @@ import {
 	Dialog,
 } from '@mui/material';
 import JobPostingCard from '../components/JobPostingCard';
-import JobPostingModal from '../components/JobPostingModal';
 
 import axios from 'axios';
 import EmployerProfileBio from '../../src/components/EmployerProfileBio';

@@ -167,29 +167,27 @@ export default function ApplicationCard(props) {
 							textAlign: 'right',
 						}}
 					>
-						<Grid item container direction='row'>
-							<Grid item sx={{ h4: { mt: '0' }, h3: { mb: '0' } }}>
-								<h3>{job_title}</h3>
-								<h4>(Applied on: {formatted_date})</h4>
-							</Grid>
-							<Grid item>
-								<Chip
-									label={job_posting_id ? 'Job' : 'Gig'}
-									color={job_posting_id ? 'primary' : 'success'}
-									variant='outlined'
-								/>
-							</Grid>
-							<Grid item sx={{ p: { mb: '0', mt: '0' } }}>
-								{city && <p>{location}</p>}
-								{salary && (
-									<p>
-										Salary: ${formatted_salary} ({job_type})
-									</p>
-								)}
-								{pay && <p>Compensation: ${formatted_pay}</p>}
-								{date_posted && <p>Date Posted: {formatted_date}</p>}
-								{deadline && <p>Deadline: {formatted_deadline}</p>}
-							</Grid>
+						<Grid item sx={{ h4: { mt: '0' }, h3: { mb: '0' } }}>
+							<h3>{job_title}</h3>
+							<h4>(Applied on: {formatted_date})</h4>
+						</Grid>
+						<Grid item>
+							<Chip
+								label={job_posting_id ? 'Job' : 'Gig'}
+								color={job_posting_id ? 'primary' : 'success'}
+								variant='outlined'
+							/>
+						</Grid>
+						<Grid item sx={{ p: { mb: '0', mt: '0' } }}>
+							{city && <p>{location}</p>}
+							{salary && (
+								<p>
+									Salary: ${formatted_salary} ({job_type})
+								</p>
+							)}
+							{pay && <p>Compensation: ${formatted_pay}</p>}
+							{date_posted && <p>Date Posted: {formatted_date}</p>}
+							{deadline && <p>Deadline: {formatted_deadline}</p>}
 						</Grid>
 					</Grid>
 				</Grid>

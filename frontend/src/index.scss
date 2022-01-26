@@ -57,6 +57,14 @@ body {
 	.MuiButton-root {
 		text-transform: none;
 	}
+	.builtw-grid {
+		aspect-ratio: 1;
+	}
+	.builtw-img {
+		object-fit: contain;
+		padding: 2rem;
+		max-width: 20rem;
+	}
 }
 .profile-content,
 .application-content,

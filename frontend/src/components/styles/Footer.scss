@@ -2,13 +2,13 @@
 
 .footer {
   background: $blue;
-  height: 6vh;
+  height: $footer-height;
   bottom: 0;
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 0.5rem 1.5rem;
-  margin-top: 1rem;
+  margin-top: $footer-margin;
   color: $white;
 }

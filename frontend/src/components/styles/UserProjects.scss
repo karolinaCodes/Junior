@@ -35,7 +35,7 @@
 	display: flex;
 	flex-direction: row;
 	align-items: flex-start;
-	margin-top: 2vh;
+	margin-top: $profile-page-margin;
 	min-width: 100%;
 
 	#profile-title {

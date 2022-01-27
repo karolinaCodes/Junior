@@ -127,26 +127,14 @@ export default function UserApplications(props) {
 				>
 					<Grid item>
 						<Button
+							variant='outlined'
+							color='primary'
 							id='profile-go-back-button'
 							onClick={e => {
 								setProfileView('projects');
 							}}
 						>
-							Portfolio
-						</Button>
-						<Button
-							onClick={e => {
-								setApplicationChange(true);
-							}}
-						>
-							Set True
-						</Button>
-						<Button
-							onClick={e => {
-								setApplicationChange(false);
-							}}
-						>
-							Set False
+							Back to Portfolio
 						</Button>
 					</Grid>
 				</Grid>

@@ -163,6 +163,7 @@ export default function ApplyModal(props) {
                   variant="outlined"
                   onClick={() => {
                     handleView();
+                    navigate('/jobs');
                   }}
                   className={classes.more_jobs}
                 >

@@ -1,44 +1,23 @@
-// import './styles/Profile.scss';
-import {
-	Card,
-	Button,
-	Modal,
-	Box,
-	Grid,
-	Paper,
-	Dialog,
-	CardActions,
-	IconButton,
-	Collapse,
-	CardContent,
-} from '@mui/material';
-import { useContext, useEffect, useState } from 'react';
-import { useParams, useLocation } from 'react-router-dom';
-import ApplicationCard from '../components/ApplicationCard';
-import ApplicationModal from '../components/ApplicationModal';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-
 import axios from 'axios';
-import { UserContext } from '../Providers/userProvider';
+// import './styles/Profile.scss';
+import { useEffect, useState } from 'react';
+import { Card, Button, Grid } from '@mui/material';
+import ApplicationCard from '../components/ApplicationCard';
 
 export default function Applications(props) {
-	const { currentUser } = useContext(UserContext);
 	// Get the posting id from url
 	// const { postType, postId } = useParams();
 	// path="/:employerid/:type/:posting_id/applications"
 	// Declare job or gig
 
 	const { postType, postId } = props.applications;
-	const { employer, profileView, setProfileView } = props;
+	const { profileView, setProfileView } = props;
 
 	console.log(`type ${postType}, id ${postId}`);
 	const [posting, setPosting] = useState({
 		posting: {},
 		applications: [''],
 	});
-
-	const location = useLocation();
-	console.log('location', location);
 
 	useEffect(() => {
 		const postingUrl = `/api/${postType}_postings/${postId}`;
@@ -69,7 +48,7 @@ export default function Applications(props) {
 
 	return (
 		<div className='application-content page-container'>
-			<Grid container direction='column'>
+			<Grid container direction='column' sx={{ width: '100%' }}>
 				<section className='application-cards'>
 					<Grid item>
 						<Button

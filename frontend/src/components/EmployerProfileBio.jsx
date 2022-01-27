@@ -22,7 +22,7 @@ export default function UserProfileHeader(props) {
 
 	const { email, company_name, bio, id } = currentUser;
 
-	const { employer_id } = props;
+	const { employer } = props;
 
 	const updateProfile = () => {
 		axios
@@ -94,14 +94,14 @@ export default function UserProfileHeader(props) {
 			{profileView === 'browse' && (
 				<>
 					<Grid item className='profile-name'>
-						<h4>About {company_name}</h4>
-						<h4>{bio ? bio : 'N/A'}</h4>
+						<h3>About {employer.company_name}</h3>
+						<h4>{employer.bio ? employer.bio : 'N/A'}</h4>
 					</Grid>
 					<Grid item className='profile-links'>
 						<h4>Job Postings: {profile.jobs.length}</h4>
 						<h4>Gig Postings: {profile.gigs.length}</h4>
 					</Grid>
-					{id == employer_id && currentUser.company_name && (
+					{id == employer.id && currentUser.company_name && (
 						<Grid
 							item
 							className='profile-buttons'

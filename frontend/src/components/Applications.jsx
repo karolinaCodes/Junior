@@ -18,6 +18,7 @@ export default function Applications(props) {
 		posting: {},
 		applications: [''],
 	});
+	const [buttonAccepted, setButtonAccepted] = useState(false);
 
 	useEffect(() => {
 		const postingUrl = `/api/${postType}_postings/${postId}`;
@@ -32,7 +33,7 @@ export default function Applications(props) {
 				}));
 			}
 		);
-	}, [profileView]);
+	}, [profileView, buttonAccepted]);
 
 	const applicationsArray = posting.applications;
 	const parsedApplications = applicationsArray.map(application => {
@@ -40,7 +41,12 @@ export default function Applications(props) {
 		return (
 			<Grid item xs={12} md={6} key={'Application-grid-' + application.app_id}>
 				<Card className='card-click'>
-					<ApplicationCard type={postType} {...application} />
+					<ApplicationCard
+						type={postType}
+						buttonAccepted={buttonAccepted}
+						setButtonAccepted={setButtonAccepted}
+						{...application}
+					/>
 				</Card>
 			</Grid>
 		);

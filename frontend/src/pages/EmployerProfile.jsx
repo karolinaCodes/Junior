@@ -98,7 +98,7 @@ export default function Profile(props) {
 				const data = <JobPostingCard key={'Job-modal-' + job.id} {...job} />;
 
 				// const applicationLink = `employerprofile/job/${job.id}/applications`;
-				const postingLink = `job/${job.id}`;
+				const postingLink = `../job/${job.id}`;
 				return (
 					<Grid
 						item
@@ -162,7 +162,7 @@ export default function Profile(props) {
 		? gigsArray.map(gig => {
 				const data = <JobPostingCard key={'Gig-modal-' + gig.id} {...gig} />;
 				// const applicationLink = `employerprofile/gig/${gig.id}/applications`;
-				const postingLink = `gig/${gig.id}`;
+				const postingLink = `../gig/${gig.id}`;
 				return (
 					<Grid
 						item
@@ -256,7 +256,7 @@ export default function Profile(props) {
 				{/* <Grid item className='profile-pic'>
 					<img id='profile-pic' src={photo_url} alt='Avatar'></img>
 				</Grid> */}
-				<EmployerProfileBio profile={profile} />
+				<EmployerProfileBio profile={profile} employer={profile.employer} />
 				{/* <Grid item className='profile-name'>
 					<h4>Company Name: {company_name}</h4>
 					<h4>Bio: {bio ? bio : 'N/A'}</h4>
@@ -325,16 +325,36 @@ export default function Profile(props) {
 						)}
 					</Grid>
 				</section>
-				{/* </Grid> */}
-				<Dialog
-					open={openModal}
-					onClose={handleView}
-					fullWidth={true}
-					maxWidth={'md'}
-					scroll='body'
-				>
-					<Box className='portfolio-modal'>{modalData}</Box>
-				</Dialog>
+				<div id='portfolio-dialog'>
+					{/* </Grid> */}
+					<Dialog
+						open={openModal}
+						onClose={handleView}
+						fullWidth={true}
+						maxWidth={'md'}
+						scroll='body'
+						sx={{
+							'& .MuiDialog-paper': {
+								borderRadius: '13px',
+								padding: '2rem',
+								color: '#fff',
+								backgroundColor: '#223d55',
+							},
+							h1: { mt: 0 },
+							p: { fontSize: '20pt' },
+							'& .MuiCardHeader-subheader': {
+								color: '#fff',
+								fontSize: '16pt',
+							},
+							'& .MuiCardHeader-title': {
+								fontSize: '32pt',
+								fontWeight: 700,
+							},
+						}}
+					>
+						{modalData}
+					</Dialog>
+				</div>
 			</div>
 		</>
 	);

@@ -25,11 +25,17 @@ The frontend was built with React, React Router, SASS, and MaterialUI (MUI).
 ---
 
 Express.js
+
 PostgresSQL
+
 React
+
 Material UI
+
 SASS
+
 Nodejs
+
 Twilio
 
 ## Dependencies

@@ -16,9 +16,9 @@ The frontend was built with React, React Router, SASS, and MaterialUI (MUI).
 
 ---
 
-![Developer Page](frontend/public/videos/junior-dev-page.mov)
+![Developer Page](frontend/public/videos/junior-dev-page.gif)
 
-![Job Search Page](frontend/public/videos/junior-search-page.mov)
+![Job Search Page](frontend/public/videos/junior-search-page.gif)
 
 ## Stack
 

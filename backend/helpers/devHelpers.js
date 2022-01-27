@@ -55,6 +55,7 @@ module.exports = db => {
         INNER JOIN projects
         ON junior_devs.id = projects.junior_dev_id
         WHERE junior_dev_id= $1
+				ORDER BY project_id DESC
         `,
 			values: [id],
 		};
@@ -80,6 +81,7 @@ module.exports = db => {
         JOIN junior_devs ON job_applications.junior_dev_id = junior_devs.id
         JOIN employers ON job_postings.employer_id = employers.id
         WHERE job_applications.junior_dev_id = $1
+				ORDER BY app_id DESC
         `,
 			values: [junior_dev_id],
 		};
@@ -106,6 +108,7 @@ module.exports = db => {
         JOIN junior_devs ON gig_applications.junior_dev_id = junior_devs.id
         JOIN employers ON gig_postings.employer_id = employers.id
         WHERE gig_applications.junior_dev_id = $1
+				ORDER BY app_id DESC
         `,
 			values: [junior_dev_id],
 		};

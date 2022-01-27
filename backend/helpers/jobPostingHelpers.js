@@ -81,9 +81,9 @@ module.exports = db => {
 			.catch(err => err);
 	};
 
-  const getApplicationsByJobPostingId = id => {
-    const query = {
-      text: `SELECT job_applications.id as app_id,
+	const getApplicationsByJobPostingId = id => {
+		const query = {
+			text: `SELECT job_applications.id as app_id,
 				job_applications.*, job_postings.*, junior_devs.*, junior_devs.photo_url as dev_photo_url,
         trim(to_char(salary/100, '999,999,990')) as formatted_salary,
         to_char(date_posted,'FMMonth FMDD, YYYY') as formatted_date,
@@ -94,7 +94,8 @@ module.exports = db => {
         JOIN job_postings ON job_applications.job_posting_id = job_postings.id
         JOIN employers ON job_postings.employer_id = employers.id
         JOIN junior_devs ON job_applications.junior_dev_id = junior_devs.id
-        WHERE job_applications.job_posting_id = $1`,
+        WHERE job_applications.job_posting_id = $1
+				ORDER BY app_id`,
 			values: [id],
 		};
 
@@ -104,10 +105,10 @@ module.exports = db => {
 			.catch(err => err);
 	};
 
-  return {
-    getJobPostings,
-    getJobById,
-    getApplicationsByJobPostingId,
-    addJobPosting,
-  };
+	return {
+		getJobPostings,
+		getJobById,
+		getApplicationsByJobPostingId,
+		addJobPosting,
+	};
 };

@@ -44,7 +44,7 @@ module.exports = db => {
 					) AS applications_table
 					ON job_postings.id = selected_posting_id
         WHERE employer_id = $1
-				ORDER BY job_posting_id
+				ORDER BY job_posting_id DESC
 				`,
 			values: [id],
 		};
@@ -74,7 +74,7 @@ module.exports = db => {
 					) AS applications_table
 					ON gig_postings.id = selected_posting_id
         WHERE employers.id = $1
-				ORDER BY gig_posting_id
+				ORDER BY gig_posting_id DESC
 				`,
 			values: [id],
 		};
@@ -88,7 +88,7 @@ module.exports = db => {
 	// Job and gig applications by employer id //
 	const getAllJobApplicationsForEmployer = id => {
 		const query = {
-			text: `SELECT job_applications.*, job_applications.id as app_id, job_postings.*, job_postings.id as post_id, employers.id as employer_id,
+			text: `SELECT job_applications.id as app_id, job_applications.*, job_applications.id as app_id, job_postings.*, job_postings.id as post_id, employers.id as employer_id,
         junior_devs.id as dev_id, junior_devs.email as dev_email, first_name, last_name, junior_devs.bio as dev_bio, junior_devs.photo_url as dev_photo_url,
         trim(to_char(salary/100, '999,999,990')) as formatted_salary,
         to_char(date_posted,'FMMonth FMDD, YYYY') as formatted_date,
@@ -99,7 +99,9 @@ module.exports = db => {
         JOIN job_postings ON job_applications.job_posting_id = job_postings.id
         JOIN employers ON job_postings.employer_id = employers.id
         JOIN junior_devs ON job_applications.junior_dev_id = junior_devs.id
-        WHERE job_postings.employer_id = $1`,
+        WHERE job_postings.employer_id = $1
+				ORDER BY app_id DESC
+				`,
 			values: [id],
 		};
 
@@ -111,7 +113,7 @@ module.exports = db => {
 
 	const getAllGigApplicationsForEmployer = id => {
 		const query = {
-			text: `SELECT gig_applications.*, gig_applications.id as app_id, gig_postings.id as post_id, employers.id as employer_id,
+			text: `SELECT job_applications.id as app_id, gig_applications.*, gig_applications.id as app_id, gig_postings.id as post_id, employers.id as employer_id,
         junior_devs.id as dev_id, junior_devs.email as dev_email, first_name, last_name, junior_devs.bio as dev_bio, junior_devs.photo_url as dev_photo_url,
         trim(to_char(pay/100, '999,999,990')) as formatted_pay,
         to_char(date_posted,'FMMonth FMDD, YYYY') as formatted_date,
@@ -122,7 +124,8 @@ module.exports = db => {
         JOIN gig_postings ON gig_applications.gig_posting_id = gig_postings.id
         JOIN employers ON gig_postings.employer_id = employers.id
         JOIN junior_devs ON gig_applications.junior_dev_id = junior_devs.id
-        WHERE gig_postings.employer_id = $1`,
+        WHERE gig_postings.employer_id = $1
+				ORDER BY app_id DESC`,
 			values: [id],
 		};
 

@@ -20,7 +20,8 @@ module.exports = db => {
         JOIN job_postings ON job_applications.job_posting_id = job_postings.id
         JOIN employers ON job_postings.employer_id = employers.id
         JOIN junior_devs ON job_applications.junior_dev_id = junior_devs.id
-        WHERE job_applications.id = $1`,
+        WHERE job_applications.id = $1
+				ORDER BY app_id DESC`,
 			values: [id],
 		};
 
@@ -59,27 +60,27 @@ module.exports = db => {
 	};
 
 	const deleteJobApplication = id => {
-		console.log('IN QUERY',id.id)
+		console.log('IN QUERY', id.id);
 		const query = {
 			text: `DELETE FROM job_applications
       WHERE id = $1
 			RETURNING *`,
 			values: [id.id],
 		};
-		
+
 		return db
 			.query(query)
 			.then(result => {
-				result.rows[0]
+				result.rows[0];
 				console.log(result.rows);
 			})
 			.catch(err => err);
-	}
+	};
 
 	return {
 		getJobApplicationById,
 		addJobApplication,
 		acceptJobApplication,
-		deleteJobApplication
+		deleteJobApplication,
 	};
 };

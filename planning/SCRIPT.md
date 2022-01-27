@@ -2,17 +2,15 @@
 ## Intro (same as before) (1 min)
 | Person | Line |
 --- | --- |
-| Sarah | Hey Karolina! It’s been so long. What have you been up to?
-| Kar | Yeah, it has! I’ve just been so busy working at a medical office after completing my biology degree.
-| Sarah | Wow, that sounds cool! You know I was working in translation and events in Japan for a while, right? After I came back to Canada, I joined a web development bootcamp and I just graduated. 
-| Kar | Oh, no way! I just graduated from a web dev bootcamp as well! What have you been doing since?
-| | A wild Alex appears |
-| Alex | Hey! Sorry I’m late, what are you guys talking about?
-| Sarah | Oh we were just talking about web development! Me and Karolina just got into it recently!
-| Alex | Oh No way! Me too! I was doing freelance graphic design for the last few years but it’s gotten a lot harder since covid.
-| Sarah | Yeah, true. I’ve been so busy with bootcamp though that I haven’t had any time to build a portfolio. I wish there was somewhere I could find jobs, like specifically ones at my level  and showcase some of my projects in a nice format.
-| Kar | Oh! I heard about this site where you can do all that AND find freelance work to build your portfolio with!
-| Alex | Oh wait you’re talking about Junior! I use that site all the time now, here let me show you...
+| Sarah | Hey Alex! It’s been so long. What have you been up to?
+| Alex | I was doing freelance graphic design for the last few years but it’s gotten a lot harder since covid. So I decided to take this web development bootcamp!
+| Sarah | Wow, that sounds cool! Why did you wanna get into it? |
+| Alex | I guess I've just always had a passion for creating things and I wanted to be able to turn my designs into more functional works.
+| Sarah | Wow, that sounds great! Actually, I just graduated from a web dev bootcamp too. |
+| Alex | Oh that's awesome! and kinda funny, how did you end up deciding to get into it?
+| Sarah | Well you know, I was working in events and translation in Japan for a few years, but I used to design websites when I was in high school. It was a great chance to get back into it. |
+| Sarah | But I’ve been so busy with bootcamp though that I haven’t had any time to build a portfolio. I wish there was somewhere I could find jobs, like specifically ones at my level  and showcase some of my projects in a nice format.
+| Alex | Oh! I heard about this site where you can do all that AND find freelance work to build your portfolio with!
 
 ## Demo Time (3.5 min total)
 

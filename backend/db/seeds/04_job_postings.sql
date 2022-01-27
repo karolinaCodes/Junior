@@ -34,13 +34,13 @@ INSERT INTO job_postings (employer_id, job_title, company_desc, description, res
     true, 
     '2022-01-11 21:05:44');
 INSERT INTO job_postings (employer_id,job_title,description,city,salary,job_type,is_remote, date_posted) VALUES (
-    1,'Ruby on Rails Coordinator',
+    2,'Ruby on Rails Coordinator',
     'We are a custom software consulting and development shop specialized in MVPs and to help small to medium size startups build and grow their technical team. We work with a diverse range of clients from IOT, med-tech, AI, social media web applications, e-commerce and mobile applications and our technology stack of choice is Ruby on Rails on the back-end.
     Currently we are looking for senior full-stack software engineer with Rails experience to grow our team. This is a permanent position for candidates located in Toronto.',
     'Toronto',5000000,'Full-time',true, '2022-01-12 21:05:44');
 
 INSERT INTO job_postings (employer_id,job_title,description,city,salary,job_type,is_remote, date_posted) VALUES (
-    1,'JavaScript Developer',
+    3,'JavaScript Developer',
     'We are seeking an experienced Full-Stack JavaScript Developer with advanced knowledge of JavaScript, Node.js and frameworks like React and Angular. You will be a subject-matter expert due to your understanding of these frameworks and of the entire development process. You will contribute to a multidisciplinary web and mobile development team working with many talented engineers, developers, designers and QA analysts throughout Spiria.',
     'Vancouver',6000000,'Full-time',false, '2022-01-09 21:05:44');
 
@@ -63,12 +63,12 @@ INSERT INTO job_postings (employer_id,job_title,description,city,salary,job_type
     'Surrey',4000000,'Full-time',true, '2022-01-11 21:04:08');
 
 INSERT INTO job_postings (employer_id,job_title,description,city,salary,job_type,is_remote, date_posted) VALUES (
-    2,'HTML/CSS Developer',
+    1,'HTML/CSS Developer',
     'Firstly, your front-end development skills are well rounded. Ideally, you have 3+ years of experience working in a front-end/full-stack role. You’re familiar with web best practices, accessibility standards, and modern development stacks & frameworks. You may have mastered the basics of several programming languages (for this role, HTML, CSS, JavaScript, and PHP), but may still be unfamiliar with some advanced functions. You have an eye for good design, and while your focus is to make things function well, you particularly appreciate when they look good too. As a key component of our digital team, you will collaborate closely with our marketing and IT teams, and report to our Digital Team Lead.',
     'North Vancouver',4000000,'Part-time',true, '2022-01-09 21:04:08');
 
 INSERT INTO job_postings (employer_id,job_title,description,city,salary,job_type,is_remote, date_posted) VALUES (
-    2,'Web Developer',
+    1,'Web Developer',
     'Objectively innovate empowered manufactured products whereas parallel platforms. Holisticly predominate extensible testing procedures for reliable supply chains. Dramatically engage top-line web services vis-a-vis cutting-edge deliverables.',
     'Mississauga',4500000,'Contract',true, '2022-01-01 21:04:08');
 

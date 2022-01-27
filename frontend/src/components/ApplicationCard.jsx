@@ -32,7 +32,7 @@ export default function ApplicationCard(props) {
 		phone_number,
 		headline,
 		email,
-		bio,
+		dev_bio,
 		github_url,
 		linkedin_url,
 		resume_url,
@@ -247,7 +247,7 @@ export default function ApplicationCard(props) {
 			</CardActions>
 			<Collapse in={expanded} timeout='auto' unmountOnExit>
 				<CardContent>
-					<p className='description'>{bio}</p>
+					<p className='description'>{dev_bio}</p>
 				</CardContent>
 			</Collapse>
 		</>

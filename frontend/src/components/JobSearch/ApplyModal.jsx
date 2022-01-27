@@ -94,26 +94,51 @@ export default function ApplyModal(props) {
   };
 
   const submitApplication = () => {
-    axios
-      .post('/api/job_applications/new', {
-        job_posting_id: jobApplying.id,
-        junior_dev_id: currentUser.id,
-      })
-      .then(res => {
-        console.log(res.data);
-        setApplicationSubmitted(true);
-        return res.data;
-      })
-      .then(data => {
-        sendEmail(
-          'creativereyne@gmail.com',
-          currentUser,
-          jobApplying.job_title
-        );
-      })
-      .catch(err => {
-        console.log(err);
-      });
+    console.log(jobApplying.gig_posting_id);
+    if (jobApplying.gig_posting_id) {
+      axios
+        .post('/api/gig_applications/new', {
+          gig_posting_id: jobApplying.id,
+          junior_dev_id: currentUser.id,
+        })
+        .then(res => {
+          console.log(res.data);
+          setApplicationSubmitted(true);
+          return res.data;
+        })
+        .then(data => {
+          sendEmail(
+            'karolinaswislocki@hotmail.com',
+            currentUser,
+            jobApplying.job_title
+          );
+        })
+        .catch(err => {
+          console.log(err);
+        });
+      return;
+    } else {
+      axios
+        .post('/api/job_applications/new', {
+          job_posting_id: jobApplying.id,
+          junior_dev_id: currentUser.id,
+        })
+        .then(res => {
+          console.log(res.data);
+          setApplicationSubmitted(true);
+          return res.data;
+        })
+        .then(data => {
+          sendEmail(
+            'karolinaswislocki@hotmail.com',
+            currentUser,
+            jobApplying.job_title
+          );
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    }
   };
 
   const sendEmail = (email, currentUser, job_title) => {

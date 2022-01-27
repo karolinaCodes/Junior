@@ -16,7 +16,7 @@
 
 ## Demo Time (3.5 min total)
 
-### Profile & Projects (Sarah - 30 sec)
+### Profile & Projects (Alex - 30 sec)
 | Screen | Presenter |
 | --- | --- |
 | shares screen | talks about the profile |
@@ -24,7 +24,7 @@
 | edit info | He can edit his info and it's updated automatically thanks to React states. |
 | click a project (Creative Reyne) | Here we can see the information up close, with a link to the GitHub and Live Link as well |
 
-### Find Work (Kar - 30 sec)
+### Find Work (Sarah - 30 sec)
 | Screen | Presenter |
 | --- | --- |
 | click the Find Work page | Let's say Mr Larry is looking for work. Here he can find all the different job or gig postings from different employers |
@@ -32,14 +32,14 @@
 | find React Developer | that one looks cool. let's check it out |
 | click Learn More | ... |
 
-### Save posting (Kar - 30 sec)
+### Save posting (Sarah - 30 sec)
 | Screen | Presenter |
 | --- | --- |
 | scroll | Yeah this job looks cool. I think Larry should save it for later. |
 | click save, go to saved page | (mention how saved works) - so if we head to his saved page, we see the React position we just saved |
 | click Create Home-Page (back to posting) |  Let's check out this gig we saved earlier |
 
-### Apply, submit, email (Kar - 30 sec)
+### Apply, submit, email (Sarah - 30 sec)
 | Screen | Presenter |
 | --- | --- |
 | click apply | it looks good, let's apply |
@@ -78,9 +78,8 @@
 ## Conclusion (30 sec)
 | Person | Line |
 --- | --- |
-| Sarah | And that's all we have to show you today. We worked tirelessly for the last two weeks and learned a lot about our stack - specifically Postgres, React and Material UI, but also about working as a team and collaborating. We definitely found our strengths in different areas as we made progress. Personally I loved maintaining the database in Postgres and learning Material UI to achieve the design we wanted. |
-| Kar | I enjoyed/ (...). In the future, we want to add a chat and scheduling feature so that employers and devs would have an easier time communicating.
-| Alex | My favourite part was (...). We are really excited to get to show you our project. If you'd like to chat with us after the program you can find us in the Junior Stacks sessions room. |
+| Sarah | And that's all we have to show you today. We worked tirelessly for the last two weeks and learned a lot about our stack - specifically Postgres, React and Material UI, but also about working as a team and collaborating. We definitely found our strengths in different areas as we made progress. Personally I loved maintaining the database in Postgres and learning Material UI to achieve the design we wanted.
+| Alex | I really enjoyed Building the frontend with React, SASS and CSS, and and also Learning about axios to post forms to the backend. We are really excited to get to show you our project. If you'd like to chat with us after the program you can find us in the Junior Stacks sessions room. |
 | Sarah | We'd love to have you! Thanks for listening. |
 
 *wave goodbye and BE DONE FINALLY*

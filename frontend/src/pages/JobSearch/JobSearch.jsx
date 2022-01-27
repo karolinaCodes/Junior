@@ -72,6 +72,7 @@ const useStyles = makeStyles({
     border: 'none',
     'flex-grow': 1,
     background: '#EEF3F9',
+    '&:hover': {border: 'none !important'},
   },
 
   learn_more_link: {

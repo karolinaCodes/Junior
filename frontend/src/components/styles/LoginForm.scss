@@ -12,6 +12,15 @@
 	position: absolute;
 	z-index: 0;
 
+	p {
+		color: #1c1c1c56;
+
+		a {
+			color: #0091ffa8;
+			text-decoration: none;
+		}
+	}
+
 	.login {
 		display: flex;
 		flex-direction: column;

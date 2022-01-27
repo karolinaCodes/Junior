@@ -36,6 +36,7 @@ const useStyles = makeStyles({
     'background-color': '#EEF3F9',
     color: '#182c5b',
     display: 'flex',
+    justifyContent: 'center',
   },
 
   edit: {
@@ -74,8 +75,8 @@ const useStyles = makeStyles({
 });
 
 export default function ApplyModal(props) {
-	const { jobApplying, handleClick } = props;
-	const { currentUser, profileView, setProfileView } = useContext(UserContext);
+  const {jobApplying, handleClick} = props;
+  const {currentUser, profileView, setProfileView} = useContext(UserContext);
 
   const [applicationSubmitted, setApplicationSubmitted] = useState(false);
   const [openModal, setOpenModal] = useState(false);
@@ -146,138 +147,138 @@ export default function ApplyModal(props) {
         Apply
       </Button>
 
-			<Dialog
-				open={openModal}
-				onClose={handleView}
-				fullWidth={true}
-				maxWidth={applicationSubmitted ? 'sm' : 'md'}
-				className={classes.dialog}
-			>
-				<Box className={classes.apply_modal} id='apply-modal'>
-					{applicationSubmitted ? (
-						<div className='submitted-container'>
-							<p id='submitted-msg'>Application Submitted!</p>
-							<div id='submitted-actions'>
-								<Button
-									variant='outlined'
-									onClick={() => {
-										handleView();
-									}}
-									className={classes.more_jobs}
-								>
-									Search More Jobs
-								</Button>
-								<Button
-									variant='contained'
-									onClick={() => {
-										navigate(`/dev/${currentUser.id}`);
-										setProfileView('applications');
-									}}
-									className={classes.view_application}
-								>
-									View Application
-								</Button>
-							</div>
-						</div>
-					) : (
-						<section className='apply-profile-bio'>
-							<h1 id='job-title'>Application for {jobApplying.job_title}</h1>
-							<div className='apply-profile-data'>
-								<div className='apply-profile-pic'>
-									<img
-										id='apply-user-photo'
-										src={currentUser.photo_url}
-										alt='Avatar'
-									></img>
-								</div>
-								<div className='apply-user-info'>
-									<div id='apply-name-headline'>
-										<h1 id='apply-name'>{`${currentUser.first_name} ${currentUser.last_name}`}</h1>
-										<h2 id='apply-headline'>
-											{currentUser.headline ? currentUser.headline : 'N/A'}
-										</h2>
-									</div>
-									<div className='apply-phone-city'>
-										<div className='apply-text-icon'>
-											<LocalPhoneIcon />
-											<h3 id='apply-phone'> {currentUser.phone_number}</h3>
-										</div>
-										<div className='apply-text-icon'>
-											<EmailOutlinedIcon />
-											<h3 id='apply-email'> {currentUser.email}</h3>
-										</div>
-										<div className='apply-text-icon'>
-											<FmdGoodOutlinedIcon />
-											<h3 id='apply-city'> {currentUser.city}, Canada</h3>
-										</div>
-									</div>
-									<div className='apply-text-icon'>
-										<GitHubIcon />
-										<h4>Github</h4>
-									</div>
-									<a
-										href={currentUser.github_url ? currentUser.github_url : ''}
-									>
-										{currentUser.github_url ? currentUser.github_url : 'N/A'}
-									</a>
-									<div>
-										<div className='apply-text-icon'>
-											<FolderIcon />
-											<h4>Resume Link </h4>
-										</div>
-										<a
-											href={
-												currentUser.resume_url ? currentUser.resume_url : ''
-											}
-										>
-											{currentUser.resume_url ? currentUser.resume_url : 'N/A'}
-										</a>
-									</div>
-									<div>
-										<div className='apply-text-icon'>
-											<LinkedInIcon />
-											<h4>LinkedIn</h4>
-										</div>
-										<a
-											href={
-												currentUser.linkedin_url ? currentUser.linkedin_url : ''
-											}
-										>
-											{currentUser.linkedin_url
-												? currentUser.linkedin_url
-												: 'N/A'}
-										</a>
-									</div>
-									<div className='btn-container'>
-										{applicationSubmitted ? null : (
-											<Button
-												variant='outlined'
-												onClick={navigateToProfile}
-												className={classes.edit}
-											>
-												Edit Profile
-											</Button>
-										)}
-										{applicationSubmitted ? null : (
-											<Button
-												variant='contained'
-												onClick={submitApplication}
-												className={classes.submit}
-											>
-												Submit Application
-											</Button>
-										)}
-									</div>
-								</div>
-							</div>
-						</section>
-					)}
-					<CancelOutlinedIcon
-						onClick={handleView}
-						className={classes.exit_btn}
-					/>
-				</Box>
-			</Dialog>
-		</>
-	);
+      <Dialog
+        open={openModal}
+        onClose={handleView}
+        fullWidth={true}
+        maxWidth={applicationSubmitted ? 'sm' : 'md'}
+        className={classes.dialog}
+      >
+        <Box className={classes.apply_modal} id="apply-modal">
+          {applicationSubmitted ? (
+            <div className="submitted-container">
+              <p id="submitted-msg">Application Submitted!</p>
+              <div id="submitted-actions">
+                <Button
+                  variant="outlined"
+                  onClick={() => {
+                    handleView();
+                  }}
+                  className={classes.more_jobs}
+                >
+                  Search More Jobs
+                </Button>
+                <Button
+                  variant="contained"
+                  onClick={() => {
+                    navigate(`/dev/${currentUser.id}`);
+                    setProfileView('applications');
+                  }}
+                  className={classes.view_application}
+                >
+                  View Application
+                </Button>
+              </div>
+            </div>
+          ) : (
+            <section className="apply-profile-bio">
+              <h1 id="job-title">Application for {jobApplying.job_title}</h1>
+              <div className="apply-profile-data">
+                <div className="apply-profile-pic">
+                  <img
+                    id="apply-user-photo"
+                    src={currentUser.photo_url}
+                    alt="Avatar"
+                  ></img>
+                </div>
+                <div className="apply-user-info">
+                  <div id="apply-name-headline">
+                    <h1 id="apply-name">{`${currentUser.first_name} ${currentUser.last_name}`}</h1>
+                    <h2 id="apply-headline">
+                      {currentUser.headline ? currentUser.headline : 'N/A'}
+                    </h2>
+                  </div>
+                  <div className="apply-phone-city">
+                    <div className="apply-text-icon">
+                      <LocalPhoneIcon />
+                      <h3 id="apply-phone"> {currentUser.phone_number}</h3>
+                    </div>
+                    <div className="apply-text-icon">
+                      <EmailOutlinedIcon />
+                      <h3 id="apply-email"> {currentUser.email}</h3>
+                    </div>
+                    <div className="apply-text-icon">
+                      <FmdGoodOutlinedIcon />
+                      <h3 id="apply-city"> {currentUser.city}, Canada</h3>
+                    </div>
+                  </div>
+                  <div className="apply-text-icon">
+                    <GitHubIcon />
+                    <h4>Github</h4>
+                  </div>
+                  <a
+                    href={currentUser.github_url ? currentUser.github_url : ''}
+                  >
+                    {currentUser.github_url ? currentUser.github_url : 'N/A'}
+                  </a>
+                  <div>
+                    <div className="apply-text-icon">
+                      <FolderIcon />
+                      <h4>Resume Link </h4>
+                    </div>
+                    <a
+                      href={
+                        currentUser.resume_url ? currentUser.resume_url : ''
+                      }
+                    >
+                      {currentUser.resume_url ? currentUser.resume_url : 'N/A'}
+                    </a>
+                  </div>
+                  <div>
+                    <div className="apply-text-icon">
+                      <LinkedInIcon />
+                      <h4>LinkedIn</h4>
+                    </div>
+                    <a
+                      href={
+                        currentUser.linkedin_url ? currentUser.linkedin_url : ''
+                      }
+                    >
+                      {currentUser.linkedin_url
+                        ? currentUser.linkedin_url
+                        : 'N/A'}
+                    </a>
+                  </div>
+                  <div className="btn-container">
+                    {applicationSubmitted ? null : (
+                      <Button
+                        variant="outlined"
+                        onClick={navigateToProfile}
+                        className={classes.edit}
+                      >
+                        Edit Profile
+                      </Button>
+                    )}
+                    {applicationSubmitted ? null : (
+                      <Button
+                        variant="contained"
+                        onClick={submitApplication}
+                        className={classes.submit}
+                      >
+                        Submit Application
+                      </Button>
+                    )}
+                  </div>
+                </div>
+              </div>
+            </section>
+          )}
+          <CancelOutlinedIcon
+            onClick={handleView}
+            className={classes.exit_btn}
+          />
+        </Box>
+      </Dialog>
+    </>
+  );
 }

@@ -108,7 +108,7 @@ export default function ApplyModal(props) {
         })
         .then(data => {
           sendEmail(
-            'creativereyne@gmail.com',
+            'karolinaswislocki@hotmail.com',
             currentUser,
             jobApplying.job_title
           );
@@ -130,7 +130,7 @@ export default function ApplyModal(props) {
         })
         .then(data => {
           sendEmail(
-            'creativereyne@gmail.com',
+            'karolinaswislocki@hotmail.com',
             currentUser,
             jobApplying.job_title
           );

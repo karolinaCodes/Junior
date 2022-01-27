@@ -22,7 +22,8 @@ module.exports = db => {
         JOIN gig_postings ON gig_applications.gig_posting_id = gig_postings.id
         JOIN employers ON gig_postings.employer_id = employers.id
         JOIN junior_devs ON gig_applications.junior_dev_id = junior_devs.id
-        WHERE gig_applications.id = $1`,
+        WHERE gig_applications.id = $1
+				ORDER BY app_id DESC`,
 			values: [id],
 		};
 
@@ -85,7 +86,7 @@ module.exports = db => {
 			.query(query)
 			.then(result => result.rows[0])
 			.catch(err => err);
-	}
+	};
 
 	return {
 		getGigApplicationById,

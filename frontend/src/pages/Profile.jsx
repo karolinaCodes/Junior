@@ -190,6 +190,15 @@ export default function Profile() {
 							backgroundColor: '#223d55',
 						},
 						h1: { mt: 0 },
+						p: { fontSize: '20pt' },
+						'& .MuiCardHeader-subheader': {
+							color: '#fff',
+							fontSize: '16pt',
+						},
+						'& .MuiCardHeader-title': {
+							fontSize: '32pt',
+							fontWeight: 700,
+						},
 					}}
 				>
 					{modalData}

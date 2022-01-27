@@ -97,6 +97,10 @@ body {
 .application-cards {
 	min-width: 70%;
 
+	p {
+		font-size: 16px;
+	}
+
 	.description {
 		color: $grey;
 		overflow: hidden;

@@ -37,33 +37,19 @@ export default function Posting(props) {
 					direction='row'
 					className='applicants-info'
 					sx={{ justifyContent: 'space-between' }}
-				>
-					{/* {is_open && (
-						<Grid item>
-							<p>
-								<strong>Accepting Applicants:</strong> {is_open ? 'Yes' : 'No'}
-							</p>
-						</Grid>
-					)}
-					<Grid item>
-						<p>
-							<strong>Total Applicants:</strong>{' '}
-							{total_applications ? total_applications : '0'}
-						</p>
-					</Grid> */}
-				</Grid>
+				></Grid>
 				{photo_url && (
 					<CardMedia component='img' image={photo_url} alt={job_title} />
 				)}
 				{city && (
 					<p>
-						{' '}
-						{city}, Canada ({is_remote ? 'Remote' : 'On-site'})
+						<strong> {city}, Canada</strong> ({is_remote ? 'Remote' : 'On-site'}
+						)
 					</p>
 				)}
 				{salary && (
 					<p>
-						Salary: ${formatted_salary} ({job_type})
+						<strong>Salary: </strong>${formatted_salary} ({job_type})
 					</p>
 				)}
 				{pay && (
@@ -71,7 +57,9 @@ export default function Posting(props) {
 						<strong>Compensation:</strong> ${formatted_pay}
 					</p>
 				)}
-				<p>Date Posted: {formatted_date}</p>
+				<p>
+					<strong>Date Posted:</strong> {formatted_date}
+				</p>
 				<Grid
 					container
 					direction='row'
@@ -81,7 +69,12 @@ export default function Posting(props) {
 					{is_open && (
 						<Grid item>
 							<p>
-								<strong>Accepting Applicants:</strong> {is_open ? 'Yes' : 'No'}
+								<strong>
+									{' '}
+									{is_open
+										? 'Accepting Applicants'
+										: 'Not Accepting Applicants'}
+								</strong>
 							</p>
 						</Grid>
 					)}
@@ -92,7 +85,11 @@ export default function Posting(props) {
 						</p>
 					</Grid>
 				</Grid>
-				{deadline && <p>Deadline: {formatted_deadline}</p>}
+				{deadline && (
+					<p>
+						<strong>Deadline:</strong> {formatted_deadline}
+					</p>
+				)}
 				<p className='description'>{description}</p>
 			</CardContent>
 		</>

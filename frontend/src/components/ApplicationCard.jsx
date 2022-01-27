@@ -32,7 +32,7 @@ export default function ApplicationCard(props) {
 		phone_number,
 		headline,
 		email,
-		bio,
+		dev_bio,
 		github_url,
 		linkedin_url,
 		resume_url,
@@ -44,6 +44,7 @@ export default function ApplicationCard(props) {
 	} = props;
 	//Check if job or gig application
 	const postType = props.type;
+	const { buttonAccepted, setButtonAccepted } = props;
 
 	const navigate = useNavigate();
 
@@ -65,6 +66,7 @@ export default function ApplicationCard(props) {
 					console.log(res.data);
 					console.log('acceptApplication job');
 					setAccepted(res.data);
+					setButtonAccepted(false);
 					return res.data;
 				})
 				.catch(err => {
@@ -79,6 +81,7 @@ export default function ApplicationCard(props) {
 					console.log(res.data);
 					console.log('acceptApplication gig');
 					setAccepted(res.data);
+					setButtonAccepted(false);
 				})
 				.catch(err => {
 					console.log(err);
@@ -100,7 +103,7 @@ export default function ApplicationCard(props) {
 
 	return (
 		<>
-			<CardContent>
+			<CardContent sx={{ p: { margin: 0 } }}>
 				<Grid
 					container
 					xs={12}
@@ -183,28 +186,20 @@ export default function ApplicationCard(props) {
 						<Grid item>
 							{!is_accepted && (
 								<Button
-									variant='outlined'
-									color='success'
+									variant='contained'
+									color='primary'
 									sx={{ mr: '1rem' }}
 									onClick={() => {
 										acceptApplication(app_id, postType);
-										console.log(app_id, postType);
+										setButtonAccepted(true);
 									}}
 								>
 									Accept
 								</Button>
 							)}
 							{is_accepted && (
-								<Button
-									variant='contained'
-									color='success'
-									sx={{ mr: '1rem' }}
-									onClick={() => {
-										acceptApplication(app_id, postType);
-										console.log(app_id, postType);
-									}}
-								>
-									Accept
+								<Button variant='contained' color='primary' sx={{ mr: '1rem' }}>
+									Accepted ✔
 								</Button>
 							)}
 						</Grid>
@@ -212,9 +207,10 @@ export default function ApplicationCard(props) {
 							{!is_accepted && (
 								<Button
 									variant='outlined'
-									color='error'
+									color='primary'
 									onClick={() => {
 										// declineApplication(id, postType);
+										setButtonAccepted(true);
 										console.log('decline', app_id, postType);
 									}}
 								>
@@ -224,7 +220,8 @@ export default function ApplicationCard(props) {
 							{is_accepted && (
 								<Button
 									variant='outlined'
-									color='error'
+									color='primary'
+									disabled
 									onClick={() => {
 										// declineApplication(id, postType);
 										console.log('decline', app_id, postType);
@@ -250,7 +247,7 @@ export default function ApplicationCard(props) {
 			</CardActions>
 			<Collapse in={expanded} timeout='auto' unmountOnExit>
 				<CardContent>
-					<p className='description'>{bio}</p>
+					<p className='description'>{dev_bio}</p>
 				</CardContent>
 			</Collapse>
 		</>

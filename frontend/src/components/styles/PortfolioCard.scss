@@ -19,6 +19,15 @@
 	justify-content: space-between;
 	overflow-wrap: break-word;
 	margin-right: 7vw;
+	p {
+		margin: 0;
+		font-size: 16px;
+		margin-bottom: 0.5rem;
+	}
+
+	h3 {
+		margin-top: 1.5rem;
+	}
 
 	.MuiCardHeader-title {
 		text-align: left;

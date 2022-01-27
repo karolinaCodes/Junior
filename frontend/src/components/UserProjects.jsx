@@ -54,7 +54,8 @@ export default function UserProjects(props) {
 				item
 				xs={1}
 				sm={6}
-				md={3}
+				md={4}
+				lg={3}
 				key={'Project-grid-' + project.project_id}
 			>
 				<Grid

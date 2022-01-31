@@ -1,9 +1,12 @@
 import './styles/LandingPage.scss';
+import {useContext} from 'react';
+
+// components //
 import LoginForm from '../components/LoginForm';
 import SearchBar from '../components/SearchBar';
-import {useContext} from 'react';
+
+// context //
 import {UserContext} from '../Providers/userProvider';
-import Button from '@mui/material/Button';
 
 export default function LandingPage(props) {
   const {loginView, handleLoginView} = props;

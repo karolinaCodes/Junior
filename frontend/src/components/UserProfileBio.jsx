@@ -1,17 +1,16 @@
-import './styles/UserProfileBio.scss';
-import {useParams} from 'react-router-dom';
-import {Chip, Grid, Input, TextField} from '@mui/material';
-import {useState} from 'react';
 import axios from 'axios';
-import {minHeight} from '@mui/system';
-import {useContext} from 'react';
-import {UserContext} from '../Providers/userProvider';
-import {useEffect} from 'react';
-import FolderIcon from '@mui/icons-material/Folder';
+import './styles/UserProfileBio.scss';
+import {useState, useContext, useEffect} from 'react';
+
+// mui //
+import {Chip, Grid, TextField} from '@mui/material';
+import {makeStyles} from '@mui/styles';
 import FolderOpenIcon from '@mui/icons-material/FolderOpen';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
-import {makeStyles} from '@mui/styles';
+
+// context //
+import {UserContext} from '../Providers/userProvider';
 
 const useStyles = makeStyles({
   edit_chip: {background: '#E0EEFE'},

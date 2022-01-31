@@ -12,7 +12,6 @@ import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
 import Box from '@mui/material/Box';
 import FormControl from '@mui/material/FormControl';
-import SearchIcon from '@mui/icons-material/Search';
 
 const useStyles = makeStyles({
   dropdown: {

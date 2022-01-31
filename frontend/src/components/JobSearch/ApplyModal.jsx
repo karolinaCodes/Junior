@@ -1,6 +1,6 @@
 import {useState, useContext} from 'react';
-import axios from 'axios';
 import '../styles/SearchResults/ApplyModal.scss';
+import axios from 'axios';
 
 // mui //
 import {Button, Box, Dialog} from '@mui/material';

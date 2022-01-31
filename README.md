@@ -88,7 +88,7 @@ web-vitals: ^2.1.2
 ### in terminal:
 
 ```
-git clone git@github.com:Alex-Reyne/junior.git
+git clone git@github.com:karolinaCodes/junior.git
 ```
 
 ### From Junior Folder

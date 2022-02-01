@@ -2,8 +2,6 @@
 
 ## Description
 
----
-
 Junior is a full-stack web application that helps junior developers find jobs for their skill-level, find gigs in order to boost their resume, and to easily showcase a portfolio of their projects.
 
 Junior also allows employers to post jobs and gig work for developers to pick up.
@@ -14,15 +12,12 @@ The frontend was built with React, React Router, SASS, and MaterialUI (MUI).
 
 ## Screen Captures
 
----
-
 
 
 
 
 ## Stack
 
----
 
 Express.js
 
@@ -39,8 +34,6 @@ Nodejs
 Twilio
 
 ## Dependencies
-
----
 
 ### Back end
 
@@ -104,11 +97,9 @@ cd /frontend
 npm install
 npm start
 ```
-The front-end will be served at http://localhost:3000/ in your browser.
+The front-end will be served at http://localhost:3000/ , in your browser.
 
 ## Contributors
-
----
 
 ### Alexander Reyne: https://github.com/Alex-Reyne
 

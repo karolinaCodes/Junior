@@ -10,8 +10,9 @@ Junior uses a REST api backend with Express.js, PostgresSQL, and Twilio.
 
 The frontend was built with React, React Router, SASS, and MaterialUI (MUI).
 
-## Screen Captures
+## Entity Relationship Diagram
 
+![Junior](https://user-images.githubusercontent.com/82968631/152044478-f002bb6b-3411-4808-a2cb-7f5e07bae3ad.png)
 
 
 

@@ -15,7 +15,12 @@ The frontend was built with React, React Router, SASS, and MaterialUI (MUI).
 ![Junior](https://user-images.githubusercontent.com/82968631/152044478-f002bb6b-3411-4808-a2cb-7f5e07bae3ad.png)
 
 
+## Design
+### Whireframes
+https://whimsical.com/junior-AvKXEBvKzgYM9r3wUTuaDF
 
+### Mock-up
+Mock-up was created using Figma.
 
 ## Stack
 
@@ -81,7 +86,7 @@ web-vitals: ^2.1.2
 ```
 git clone git@github.com:karolinaCodes/junior.git
 ```
-2. Install back-end dependencies and start back-end server:
+2. Install back-end dependencies, seed the database and start back-end server:
 
 ```
 cd /backend

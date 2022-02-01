@@ -100,9 +100,10 @@ npm start
 The front-end will be served at http://localhost:3000/ , in your browser.
 
 ## Contributors
-
-### Alexander Reyne: https://github.com/Alex-Reyne
+### Karolina Swislocki: https://github.com/karolinaCodes
 
 ### Sarah Dela Cruz: https://github.com/sarahdeecee
 
-### Karolina Swislocki: https://github.com/karolinaCodes
+### Alexander Reyne: https://github.com/Alex-Reyne
+
+

@@ -81,17 +81,13 @@ react-timeago: ^6.2.1,
 web-vitals: ^2.1.2
 ```
 
-## Installation:
+## Setup:
 
----
-
-### in terminal:
-
+1. Clone the repository. In the terminal: 
 ```
 git clone git@github.com:karolinaCodes/junior.git
 ```
-
-### From Junior Folder
+2. Install back-end dependencies and start back-end server:
 
 ```
 cd /backend
@@ -99,16 +95,16 @@ npm install
 npm run db:reset
 npm start
 ```
+The back-end will be served at http://localhost:3001/.
+
+3. Install front-end dependencies and start the web server:
 
 ```
 cd /frontend
 npm install
 npm start
 ```
-
-Then start your browser and go to
-
-http://localhost:3000/
+The front-end will be served at http://localhost:3000/ in your browser.
 
 ## Contributors
 

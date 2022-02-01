@@ -2,13 +2,20 @@
 
 ## Description
 
-Junior is a full-stack web application that helps junior developers find jobs for their skill-level, find gigs in order to boost their resume, and to easily showcase a portfolio of their projects.
+Junior is a full-stack web application that was created to facilitate junior developers in finding jobs that match their skill-level, boosting their resume through finding and completing gigs, and providing a way to easily showcase a portfolio of their completed projects. Junior also facilitates employers in finding junior developers to fill their roles by allowing employers to post jobs and gigs to the job board and allowing employers to manage their postings, manage their applications, and accept or decline applications.
 
-Junior also allows employers to post jobs and gig work for developers to pick up.
+### Stack
+#### Back-end
+- Express.js 
+- Node.js
+- PostgresSQL
 
-Junior uses a REST api backend with Express.js, PostgresSQL, and Twilio.
-
-The frontend was built with React, React Router, SASS, and MaterialUI (MUI).
+#### Front-end
+- React.js
+- React-router
+- SASS
+- Material-UI
+- Twilio
 
 ## Entity Relationship Diagram
 
@@ -22,22 +29,6 @@ https://whimsical.com/junior-AvKXEBvKzgYM9r3wUTuaDF
 ### Mock-up
 Mock-up was created using Figma.
 
-## Stack
-
-
-Express.js
-
-PostgresSQL
-
-React
-
-Material UI
-
-SASS
-
-Nodejs
-
-Twilio
 
 ## Dependencies
 

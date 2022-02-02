@@ -4,19 +4,6 @@
 
 Junior is a full-stack web application that was created to facilitate junior developers in finding jobs that match their skill-level, boosting their resume through finding and completing gigs, and providing a way to easily showcase a portfolio. Junior also facilitates employers in finding junior developers to fill their roles by allowing employers to post jobs and gigs to the job board and allowing employers to manage their postings, manage their applications, and accept or decline applications.
 
-### Technology Stack
-#### Back-end
-- PostgresSQL
-- Express.js 
-- Node.js
-
-#### Front-end
-- React.js
-- React-router
-- SASS
-- Material-UI
-- Twilio
-
 ## Entity Relationship Diagram
 
 ![Junior](https://user-images.githubusercontent.com/82968631/152044478-f002bb6b-3411-4808-a2cb-7f5e07bae3ad.png)
@@ -71,6 +58,19 @@ Employers can also view all the application submission for each respective posti
 Employers can also add a new job or gig posting. They will need to fill in the form fields with the relevant information for the posting.
 
 ---
+
+### Technology Stack
+#### Back-end
+- PostgresSQL
+- Express.js 
+- Node.js
+
+#### Front-end
+- React.js
+- React-router
+- SASS
+- Material-UI
+- Twilio
 
 ## Dependencies
 

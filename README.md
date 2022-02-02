@@ -60,6 +60,8 @@ If a junior dev would like to save a posting to potentially apply for at a later
 
 #### Applying for Jobs & Gigs
 
+![Applying](frontend/public/videos/applying.gif)
+
 If a junior dev would like to apply for a gig or job, they can click the "Apply" button below the job description. This prompts a modal to appear where they can see a pre-filled application containing their personal details and links that will be sent to the employer. When the junior dev clicks "Submit Application", their application is sent to the employer and the employer receieves an email notifying them of the application submission. The junior dev can view their application by clicking "View application" which will redirect them to their profile where they can see all of their submitted applications displayed.
 
 #### Editing Your Info

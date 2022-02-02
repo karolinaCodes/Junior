@@ -59,6 +59,17 @@ If during the application process or at any point, the junior dev would like to 
 #### Adding New Projects
 Junior dev's can add new projects to their portfolio on the profile page. The junior dev will have to provide the project name, the photo url which will dynamically display the photo below the project title, a github link, a live link, the project description and the original request for the project. After the form is filled, the junior dev can post the project which will add the profile to their portfolio.
 
+---
+### Employers
+#### Profile
+Employers with a user account can log in to their account from the landing page. After successful login, they are re-directed to their profile page where they can view their job postings and/or gig postings. 
+
+#### Accept or Decline Applicant
+Employers can also view all the application submission for each respective posting from the profile page. They can publicly view the junior dev's profile and see their porfolio. If they make a decision on the junior dev's application, they can accept or decline them for position.
+
+#### Adding a New Gig or Job
+Employers can also add a new job or gig posting. They will need to fill in the form fields with the relevant information for the posting.
+
 ## Dependencies
 
 ### Back end

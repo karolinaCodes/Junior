@@ -1,5 +1,5 @@
 INSERT INTO job_applications (job_posting_id, junior_dev_id, date_applied)
-VALUES (1, 1, '2022-01-19T21:05:44.519Z');
+VALUES (3, 1, '2022-01-19T21:05:44.519Z');
 INSERT INTO job_applications (job_posting_id, junior_dev_id, date_applied)
 VALUES (1, 2, '2022-01-19T21:08:44.519Z');
 INSERT INTO job_applications (job_posting_id, junior_dev_id, date_applied)

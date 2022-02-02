@@ -19,9 +19,9 @@ export default function LandingPage(props) {
           <h1 className="build">Build your portfolio.</h1>
           <h1 className="get-paid">Get paid. Find work.</h1>
           <p>
-            Junior helps budding developers to showcase and build their
-            portfolios. Connect with employers and keep active by completing
-            gigs while looking for junior developer roles.
+            Junior helps budding developers build and showcase their portfolios.
+            Connect with employers and keep active by completing gigs while
+            looking for junior developer roles.
           </p>
           {/* <div> */}
           {/* <Button>Junior Developer</Button>

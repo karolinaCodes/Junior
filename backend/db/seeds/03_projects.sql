@@ -16,11 +16,13 @@ VALUES (1, 'Mocha and Chai',
 'https://user-images.githubusercontent.com/82968631/150898844-6590b5ce-39f3-4985-8024-7af02f277357.jpeg', 
 'https://github.com/karolinaCodes/Mocha-and-Chai/blob/master/README.md', 'https://github.com/karolinaCodes/Mocha-and-Chai/blob/master/README.md', 'Original Request test');
 
-INSERT INTO projects (junior_dev_id, title, description, thumbnail_photo_url, github_link, live_link, original_request)
-VALUES (1, 'Creative Reyne',
-'Creative Reyne is my design portfolio. Designed by myself and build by my friend before learned how to code and write web applications', 
-'https://raw.githubusercontent.com/Alex-Reyne/CreativeReyne/master/unknown.png', 
-'https://github.com/Alex-Reyne/CreativeReyne', 'https://www.creativereyne.ca/', 'Original Request test');
+INSERT INTO projects (junior_dev_id, title, description, thumbnail_photo_url, github_link, original_request)
+VALUES (1, 'Todai Food-Pickup Ordering',
+'A takeout website for a Japanese restaurant called Todai. You can browse the menu, order, and receive a notification by text when your order is ready.
+The restaurant can keep track of orders and enter how long it takes to prepare each order.', 
+'https://i.imgur.com/ZX9mQDv.jpeg', 
+'https://github.com/sarahdeecee/food-pickup', 'Create an app in a group of three using the skills you have so far.');
+
 
 INSERT INTO projects (junior_dev_id, title, description, thumbnail_photo_url, github_link, live_link, original_request)
 VALUES (2, 'Mocha and Chai',

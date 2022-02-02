@@ -24,9 +24,9 @@ Mock-up was created using Figma.
 
 ### Home Page
 
-When a user visits the site, they can choose to login to their personal account or freely search for jobs and gigs relevant to junior developers.
-
 ![Landing-page](frontend/public/videos/public-search.gif)
+
+When a user visits the site, they can choose to login to their personal account or freely search for jobs and gigs relevant to junior developers.
 
 ### _Junior Developers_
 
@@ -38,9 +38,12 @@ Junior developers with a user account can log in from the landing page. After su
 
 #### Job & Gig Search
 
+![Search-page](frontend/public/videos/search-page.gif)
+
 Junior developers can search for jobs and gigs by clicking "Find Work" in the navigation bar or in the user drop-down menu. On the job search page, junior dev's can browse through the active job and gig listings. The junior dev can filter the results in the search bar based on whether they are searching for gigs or jobs.
 
 If the junior dev is searching for a job, they can further narrow their search by providing a keyword, job title, or city, filtering by schedule or languages, or filtering by changing the salary range on the dynamic slider.
+
 If a junior dev is searching for gig postings, they can narrow their search by providing keywords and job titles, and filtering by languages.
 
 #### Viewing Job & Gig Postings

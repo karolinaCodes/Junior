@@ -108,9 +108,3 @@ interface Project_image {
 	photo_url: String;
 }
 ```
-
-/api/query
-{
-jobs: [{},{}],
-gigs: [{},{}]
-}

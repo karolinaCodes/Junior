@@ -52,7 +52,7 @@
 - [x] /api/project/:id
 - [x] /api/projects/new
 
-## Search DONE
+## Search
 
 - [x] /api/query
 - [x] /api/city

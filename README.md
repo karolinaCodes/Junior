@@ -128,7 +128,6 @@ npm install
 npm run db:reset
 npm start
 ```
-The back-end will be served at http://localhost:3001/.
 
 3. Install front-end dependencies and start the web server:
 

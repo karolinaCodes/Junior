@@ -86,9 +86,13 @@ Employers with a user account can log in from the landing page. After successful
 
 #### Accept or Decline Applicant
 
+![Accept-applicant](frontend/public/videos/accept-applicant.gif)
+
 Employers can also view all the application submission for each respective posting from the profile page. They can publicly view the junior dev's profile and see their porfolio. If they make a decision about the junior dev's application, they can accept or decline them for position.
 
 #### Adding a New Gig or Job
+
+![Add-posting](frontend/public/videos/add-posting.gif)
 
 Employers can also add a new job or gig posting. They will need to fill in the form fields with the relevant information for the posting.
 

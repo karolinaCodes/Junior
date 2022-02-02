@@ -48,6 +48,8 @@ If a junior dev is searching for gig postings, they can narrow their search by p
 
 #### Viewing Job & Gig Postings
 
+![Job-Gig-View](frontend/public/videos/job-gig-view.gif)
+
 If a junior dev views a job or gig posting they are interested in, they can click on "Learn more" to view more information about the posting. Below the job or gig description, junior dev's can choose to apply for the posting or save the posting to apply for at a later time.
 
 #### Saving Job & Gig Postings

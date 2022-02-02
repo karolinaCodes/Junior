@@ -29,6 +29,35 @@ https://whimsical.com/junior-AvKXEBvKzgYM9r3wUTuaDF
 ### Mock-up
 Mock-up was created using Figma.
 
+## Demo
+
+### Home Page
+When a user visits the site, they can choose to login to their personal account or freely search for jobs and gigs relevant to junior developers.
+
+---
+### Junior Developers
+#### Login & Profile/Portfolio
+Junior developers with a user account can login in to their account from the landing page. After successful login, they are re-directed to their profile page which also serves as their portfolio. Here they can view their personal details and links, and the projects they have added to their portfolio. Projects can be viewed in more detail in a modal by clicking on them. There is also a link to the project's github repository and if provided, there is a live link to the deployed project.
+
+#### Job & Gig Search
+Junior developers can search for jobs and gigs by clicking "Find Work" in the navigation bar or in the user drop-down menu. On the job search page, junior dev's can browser through the active job and gig listings. The junior dev can filter the results in the search bar based on whether they are searching for gigs or jobs. 
+If the junior dev is searching for a job, they can further narrrow their search by searching the database to find job postings that match a keyword or job title, city, filter by schedule or languages by checking off the checkboxes, or filter be changing the salary range on the dynamic slider. 
+If a junior dev is searching for gig postings, they can narrow their search by providing keywords and job titles, and filtering by languages.
+
+#### Viewing Job & Gig Postings
+If a junior dev views a job or gig posting they are interested in, they can click on "Learn more" to view more information about the posting. Below the job or gig description, junior dev's can choose to apply for the posting or save the posting to apply for at a later time.
+
+#### Saving Job & Gig Postings
+If a junior dev would like to save a posting to potentially apply for at a later date, they can click on the "Save" button. The junior dev can then view the saved posting on their profile by clicking on the dynamically changed "Saved" button. If the junior dev chooses would like to continue searching for more positions they can return to the job posting by clicking on the dynamically rendered button.
+
+#### Applying for Jobs & Gigs
+If a junior dev would like to apply for a gig or job, they can click the "Apply" button below the job description. This prompts a modal to appear where they can see a pre-filled application containing their personal details and links that will be sent to the employer. When the junior dev clicks "Submit Application", their application is sent to the employer and the employer receieves an email notifying them or the application submission. The junior dev can view thei application by clicking "View application" which will redirect them to their profile with all of their submitted applications displayed.
+
+#### Editing Your Info
+If during the application process or at any point, the junior dev would like to edit their profile information, they can do so on their profile page.
+
+#### Adding New Projects
+Junior dev's can add new projects to their portfolio on the profile page. The junior dev will have to provide the project name, the photo url which will dynamically display the photo below the project title, a github link, a live link, the project description and the original request for the project. After the form is filled, the junior dev can post the project which will add the profile to their portfolio.
 
 ## Dependencies
 
@@ -73,7 +102,8 @@ web-vitals: ^2.1.2
 
 ## Setup:
 
-1. Clone the repository. In the terminal: 
+1. Clone the repository. 
+In the terminal: 
 ```
 git clone git@github.com:karolinaCodes/junior.git
 ```

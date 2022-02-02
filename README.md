@@ -32,6 +32,8 @@ When a user visits the site, they can choose to login to their personal account 
 
 #### Login & Profile/Portfolio
 
+![Profile-page](frontend/public/videos/profile-page.gif)
+
 Junior developers with a user account can log in from the landing page. After successful login, they are re-directed to their profile page which also serves as their portfolio. Here they can view their personal details and links, and the projects they have added to their portfolio. Projects can be viewed in more detail in a modal by clicking on them. There is also a link to the project's github repository and if provided, there is a live link to the deployed project.
 
 #### Job & Gig Search

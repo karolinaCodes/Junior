@@ -54,6 +54,8 @@ If a junior dev views a job or gig posting they are interested in, they can clic
 
 #### Saving Job & Gig Postings
 
+![Save-postings](frontend/public/videos/save-postings.gif)
+
 If a junior dev would like to save a posting to potentially apply for at a later date, they can click on the "Save" button. The junior dev can then view the saved posting on their profile by clicking on the dynamically changed "Saved" button. If the junior dev would like to continue searching for more positions they can return to the job posting by clicking on the dynamically rendered button.
 
 #### Applying for Jobs & Gigs

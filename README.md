@@ -66,6 +66,8 @@ If a junior dev would like to apply for a gig or job, they can click the "Apply"
 
 #### Editing Your Info
 
+![Edit-info](frontend/public/videos/edit-info.gif)
+
 If during the application process or at any other point, the junior dev would like to edit their profile information, they can do so on their profile page.
 
 #### Adding New Projects

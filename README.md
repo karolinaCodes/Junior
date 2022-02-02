@@ -136,7 +136,7 @@ cd /frontend
 npm install
 npm start
 ```
-The front-end will be served at http://localhost:3000/ , in your browser.
+The front-end will be served at http://localhost:3000/ .
 
 ## Contributors
 ### Karolina Swislocki: https://github.com/karolinaCodes

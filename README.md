@@ -2,7 +2,7 @@
 
 ## Description
 
-Junior is a full-stack web application that was created to facilitate junior developers in finding jobs that match their skill-level, boosting their resume through finding and completing gigs, and providing a way to easily showcase a portfolio of their completed projects. Junior also facilitates employers in finding junior developers to fill their roles by allowing employers to post jobs and gigs to the job board and allowing employers to manage their postings, manage their applications, and accept or decline applications.
+Junior is a full-stack web application that was created to facilitate junior developers in finding jobs that match their skill-level, boosting their resume through finding and completing gigs, and providing a way to easily showcase a portfolio. Junior also facilitates employers in finding junior developers to fill their roles by allowing employers to post jobs and gigs to the job board and allowing employers to manage their postings, manage their applications, and accept or decline applications.
 
 ### Technology Stack
 #### Back-end

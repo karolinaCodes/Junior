@@ -70,6 +70,8 @@ Employers can also view all the application submission for each respective posti
 #### Adding a New Gig or Job
 Employers can also add a new job or gig posting. They will need to fill in the form fields with the relevant information for the posting.
 
+---
+
 ## Dependencies
 
 ### Back end

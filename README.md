@@ -80,6 +80,8 @@ Junior dev's can add new projects to their portfolio on their profile page. The 
 
 #### Profile
 
+![Employer-profile](frontend/public/videos/employer-profile.gif)
+
 Employers with a user account can log in from the landing page. After successful login, they are re-directed to their profile page where they can view their job postings and/or gig postings.
 
 #### Accept or Decline Applicant

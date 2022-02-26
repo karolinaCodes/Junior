@@ -19,7 +19,6 @@ https://whimsical.com/junior-AvKXEBvKzgYM9r3wUTuaDF
 
 Mock-up was created using Figma.
 
----
 
 ## Demo
 
@@ -31,7 +30,7 @@ When a user visits the site, they can choose to login to their personal account 
 
 ### _Junior Developers_
 
-#### Login & Profile/Portfolio
+### Login & Profile/Portfolio
 
 ![Profile-page](frontend/public/videos/profile-page.gif)
 
@@ -39,7 +38,7 @@ Junior developers with a user account can log in from the landing page. After su
 
 ---
 
-#### Job & Gig Advanced Search
+### Job & Gig Advanced Search
 
 ![Search-page](frontend/public/videos/search-page.gif)
 
@@ -51,7 +50,7 @@ If a junior dev is searching for gig postings, they can narrow their search by p
 
 ---
 
-#### Viewing Job & Gig Postings
+### Viewing Job & Gig Postings
 
 ![Job-Gig-View](frontend/public/videos/job-gig-view.gif)
 
@@ -59,7 +58,7 @@ If a junior dev views a job or gig posting they are interested in, they can clic
 
 ---
 
-#### Saving Job & Gig Postings
+### Saving Job & Gig Postings
 
 ![Save-postings](frontend/public/videos/save-postings.gif)
 
@@ -67,7 +66,7 @@ If a junior dev would like to save a posting to potentially apply for at a later
 
 ---
 
-#### Applying for Jobs & Gigs
+### Applying for Jobs & Gigs
 
 ![Applying](frontend/public/videos/applying.gif)
 
@@ -75,7 +74,7 @@ If a junior dev would like to apply for a gig or job, they can click the "Apply"
 
 ---
 
-#### Editing Your Info
+### Editing Your Info
 
 ![Edit-info](frontend/public/videos/edit-info.gif)
 
@@ -83,7 +82,7 @@ If during the application process or at any other point, the junior dev would li
 
 ---
 
-#### Adding New Projects
+### Adding New Projects
 
 ![Add-project](frontend/public/videos/add-project.gif)
 
@@ -93,7 +92,7 @@ Junior dev's can add new projects to their portfolio on their profile page. The 
 
 ### _Employers_
 
-#### Profile
+### Profile
 
 ![Employer-profile](frontend/public/videos/employer-profile.gif)
 
@@ -101,7 +100,7 @@ Employers with a user account can log in from the landing page. After successful
 
 ---
 
-#### Accept or Decline Applicant
+### Accept or Decline Applicant
 
 ![Accept-applicant](frontend/public/videos/accept-applicant.gif)
 
@@ -109,7 +108,7 @@ Employers can also view all the application submission for each respective posti
 
 ---
 
-#### Adding a New Gig or Job
+### Adding a New Gig or Job
 
 ![Add-posting](frontend/public/videos/add-posting.gif)
 
